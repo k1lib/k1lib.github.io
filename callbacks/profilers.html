@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>k1lib.callbacks.profilers package &mdash; k1lib 0.1 documentation</title>
+  <title>profilers package &mdash; k1lib 0.1 documentation</title>
   
 
   
@@ -87,28 +87,14 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../bioinfo/index.html">k1lib.bioinfo package</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">k1lib.callbacks package</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="index.html#subpackages">Subpackages</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">k1lib.callbacks.profilers package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#module-k1lib.callbacks.profilers.computation">k1lib.callbacks.profilers.computation module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#module-k1lib.callbacks.profilers.io">k1lib.callbacks.profilers.io module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#module-k1lib.callbacks.profilers.memory">k1lib.callbacks.profilers.memory module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#module-k1lib.callbacks.profilers.time">k1lib.callbacks.profilers.time module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">profilers package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-k1lib.callbacks.profilers.computation">computation module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-k1lib.callbacks.profilers.io">io module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-k1lib.callbacks.profilers.memory">memory module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-k1lib.callbacks.profilers.time">time module</a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.callbacks.callbacks">k1lib.callbacks.callbacks module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.callbacks.frozen">k1lib.callbacks.frozen module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.callbacks.hookModule">k1lib.callbacks.hookModule module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.callbacks.hookParam">k1lib.callbacks.hookParam module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.callbacks.limits">k1lib.callbacks.limits module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.callbacks.lossLandscape">k1lib.callbacks.lossLandscape module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.callbacks.loss_accuracy">k1lib.callbacks.loss_accuracy module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.callbacks.paramFinder">k1lib.callbacks.paramFinder module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.callbacks.profiler">k1lib.callbacks.profiler module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.callbacks.progress">k1lib.callbacks.progress module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.callbacks.recorder">k1lib.callbacks.recorder module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.callbacks.shorts">k1lib.callbacks.shorts module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#submodules">Submodules</a></li>
 </ul>
 </li>
 </ul>
@@ -173,7 +159,7 @@
         
           <li><a href="index.html">k1lib.callbacks package</a> &raquo;</li>
         
-      <li>k1lib.callbacks.profilers package</li>
+      <li>profilers package</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -192,56 +178,21 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <span class="target" id="module-k1lib.callbacks.profilers"></span><div class="section" id="k1lib-callbacks-profilers-package">
-<h1>k1lib.callbacks.profilers package<a class="headerlink" href="#k1lib-callbacks-profilers-package" title="Permalink to this headline">¶</a></h1>
+  <span class="target" id="module-k1lib.callbacks.profilers"></span><div class="section" id="profilers-package">
+<h1>profilers package<a class="headerlink" href="#profilers-package" title="Permalink to this headline">¶</a></h1>
 <p>This package is not supposed to be used by the end user though. These are
 just helpful modules used by <a class="reference internal" href="index.html#module-k1lib.callbacks.profiler" title="k1lib.callbacks.profiler"><code class="xref py py-mod docutils literal notranslate"><span class="pre">k1lib.callbacks.profiler</span></code></a></p>
+<p>Documenting everything here is kinda awkward, as just using it, you’ll get a better
+idea of what’s happening. If you want to dive deeper, then by all means, check out
+the source codes</p>
 <div class="section" id="module-k1lib.callbacks.profilers.computation">
-<span id="k1lib-callbacks-profilers-computation-module"></span><h2>k1lib.callbacks.profilers.computation module<a class="headerlink" href="#module-k1lib.callbacks.profilers.computation" title="Permalink to this headline">¶</a></h2>
-<dl class="py class">
-<dt id="k1lib.callbacks.profilers.computation.ComputationData">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">k1lib.callbacks.profilers.computation.</span></code><code class="sig-name descname"><span class="pre">ComputationData</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cProfiler</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mS</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="../selector.html#k1lib.selector.ModuleSelector" title="k1lib.selector.ModuleSelector"><span class="pre">k1lib.selector.ModuleSelector</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#k1lib.callbacks.profilers.computation.ComputationData" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<dl class="py method">
-<dt id="k1lib.callbacks.profilers.computation.ComputationData.__init__">
-<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cProfiler</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mS</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="../selector.html#k1lib.selector.ModuleSelector" title="k1lib.selector.ModuleSelector"><span class="pre">k1lib.selector.ModuleSelector</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#k1lib.callbacks.profilers.computation.ComputationData.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="k1lib.callbacks.profilers.computation.ComputationData.hook">
-<code class="sig-name descname"><span class="pre">hook</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#k1lib.callbacks.profilers.computation.ComputationData.hook" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt id="k1lib.callbacks.profilers.computation.ComputationData.unhook">
-<code class="sig-name descname"><span class="pre">unhook</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#k1lib.callbacks.profilers.computation.ComputationData.unhook" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
+<span id="computation-module"></span><h2>computation module<a class="headerlink" href="#module-k1lib.callbacks.profilers.computation" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
 <dt id="k1lib.callbacks.profilers.computation.ComputationProfiler">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">k1lib.callbacks.profilers.computation.</span></code><code class="sig-name descname"><span class="pre">ComputationProfiler</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">profiler</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Profiler</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#k1lib.callbacks.profilers.computation.ComputationProfiler" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">k1lib.callbacks.profilers.computation.</span></code><code class="sig-name descname"><span class="pre">ComputationProfiler</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">profiler</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Profiler</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/callbacks/profilers/computation.html#ComputationProfiler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.callbacks.profilers.computation.ComputationProfiler" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="index.html#k1lib.callbacks.callbacks.Callback" title="k1lib.callbacks.callbacks.Callback"><code class="xref py py-class docutils literal notranslate"><span class="pre">k1lib.callbacks.callbacks.Callback</span></code></a></p>
 <p>Profiles computation. Only provide reports on well known
 layers only, and thus can’t really be universal</p>
-<dl class="py method">
-<dt id="k1lib.callbacks.profilers.computation.ComputationProfiler.__init__">
-<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">profiler</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Profiler</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#k1lib.callbacks.profilers.computation.ComputationProfiler.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="k1lib.callbacks.profilers.computation.ComputationProfiler.startRun">
-<code class="sig-name descname"><span class="pre">startRun</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#k1lib.callbacks.profilers.computation.ComputationProfiler.startRun" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt id="k1lib.callbacks.profilers.computation.ComputationProfiler.selected">
-<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">selected</span></code><a class="headerlink" href="#k1lib.callbacks.profilers.computation.ComputationProfiler.selected" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
 <dl class="py method">
 <dt id="k1lib.callbacks.profilers.computation.ComputationProfiler.tpAvailable">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">tpAvailable</span></code><a class="headerlink" href="#k1lib.callbacks.profilers.computation.ComputationProfiler.tpAvailable" title="Permalink to this definition">¶</a></dt>
@@ -249,211 +200,82 @@ layers only, and thus can’t really be universal</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="k1lib.callbacks.profilers.computation.ComputationProfiler.startStep">
-<code class="sig-name descname"><span class="pre">startStep</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#k1lib.callbacks.profilers.computation.ComputationProfiler.startStep" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
 <dt id="k1lib.callbacks.profilers.computation.ComputationProfiler.run">
-<code class="sig-name descname"><span class="pre">run</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#k1lib.callbacks.profilers.computation.ComputationProfiler.run" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt id="k1lib.callbacks.profilers.computation.ComputationProfiler.detached">
-<code class="sig-name descname"><span class="pre">detached</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#k1lib.callbacks.profilers.computation.ComputationProfiler.detached" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname"><span class="pre">run</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/callbacks/profilers/computation.html#ComputationProfiler.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.callbacks.profilers.computation.ComputationProfiler.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Runs everything</p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="k1lib.callbacks.profilers.computation.ComputationProfiler.css">
-<code class="sig-name descname"><span class="pre">css</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">css</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#k1lib.callbacks.profilers.computation.ComputationProfiler.css" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt id="k1lib.callbacks.profilers.computation.ComputationProfiler.dependsOn">
-<code class="sig-name descname"><span class="pre">dependsOn</span></code><em class="property"><span class="pre">:</span> <span class="pre">Set</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#k1lib.callbacks.profilers.computation.ComputationProfiler.dependsOn" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname"><span class="pre">css</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">css</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/callbacks/profilers/computation.html#ComputationProfiler.css"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.callbacks.profilers.computation.ComputationProfiler.css" title="Permalink to this definition">¶</a></dt>
+<dd><p>Selects a small part of the network to highlight</p>
+</dd></dl>
 
 </dd></dl>
 
 </div>
 <div class="section" id="module-k1lib.callbacks.profilers.io">
-<span id="k1lib-callbacks-profilers-io-module"></span><h2>k1lib.callbacks.profilers.io module<a class="headerlink" href="#module-k1lib.callbacks.profilers.io" title="Permalink to this headline">¶</a></h2>
-<dl class="py class">
-<dt id="k1lib.callbacks.profilers.io.IOData">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">k1lib.callbacks.profilers.io.</span></code><code class="sig-name descname"><span class="pre">IOData</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ioProfiler</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mS</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="../selector.html#k1lib.selector.ModuleSelector" title="k1lib.selector.ModuleSelector"><span class="pre">k1lib.selector.ModuleSelector</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#k1lib.callbacks.profilers.io.IOData" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<dl class="py method">
-<dt id="k1lib.callbacks.profilers.io.IOData.__init__">
-<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ioProfiler</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mS</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="../selector.html#k1lib.selector.ModuleSelector" title="k1lib.selector.ModuleSelector"><span class="pre">k1lib.selector.ModuleSelector</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#k1lib.callbacks.profilers.io.IOData.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="k1lib.callbacks.profilers.io.IOData.hook">
-<code class="sig-name descname"><span class="pre">hook</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#k1lib.callbacks.profilers.io.IOData.hook" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt id="k1lib.callbacks.profilers.io.IOData.unhook">
-<code class="sig-name descname"><span class="pre">unhook</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#k1lib.callbacks.profilers.io.IOData.unhook" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
+<span id="io-module"></span><h2>io module<a class="headerlink" href="#module-k1lib.callbacks.profilers.io" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
 <dt id="k1lib.callbacks.profilers.io.IOProfiler">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">k1lib.callbacks.profilers.io.</span></code><code class="sig-name descname"><span class="pre">IOProfiler</span></code><a class="headerlink" href="#k1lib.callbacks.profilers.io.IOProfiler" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">k1lib.callbacks.profilers.io.</span></code><code class="sig-name descname"><span class="pre">IOProfiler</span></code><a class="reference internal" href="../_modules/k1lib/callbacks/profilers/io.html#IOProfiler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.callbacks.profilers.io.IOProfiler" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="index.html#k1lib.callbacks.callbacks.Callback" title="k1lib.callbacks.callbacks.Callback"><code class="xref py py-class docutils literal notranslate"><span class="pre">k1lib.callbacks.callbacks.Callback</span></code></a></p>
-<p>Profiles computation. Only provide reports on well known
-layers only, and thus can’t really be universal</p>
-<dl class="py method">
-<dt id="k1lib.callbacks.profilers.io.IOProfiler.startRun">
-<code class="sig-name descname"><span class="pre">startRun</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#k1lib.callbacks.profilers.io.IOProfiler.startRun" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt id="k1lib.callbacks.profilers.io.IOProfiler.startStep">
-<code class="sig-name descname"><span class="pre">startStep</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#k1lib.callbacks.profilers.io.IOProfiler.startStep" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
+<p>Gets input and output shapes of each layer</p>
 <dl class="py method">
 <dt id="k1lib.callbacks.profilers.io.IOProfiler.run">
-<code class="sig-name descname"><span class="pre">run</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#k1lib.callbacks.profilers.io.IOProfiler.run" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname"><span class="pre">run</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/callbacks/profilers/io.html#IOProfiler.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.callbacks.profilers.io.IOProfiler.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Runs everything</p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="k1lib.callbacks.profilers.io.IOProfiler.css">
-<code class="sig-name descname"><span class="pre">css</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">css</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#k1lib.callbacks.profilers.io.IOProfiler.css" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt id="k1lib.callbacks.profilers.io.IOProfiler.dependsOn">
-<code class="sig-name descname"><span class="pre">dependsOn</span></code><em class="property"><span class="pre">:</span> <span class="pre">Set</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#k1lib.callbacks.profilers.io.IOProfiler.dependsOn" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname"><span class="pre">css</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">css</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/callbacks/profilers/io.html#IOProfiler.css"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.callbacks.profilers.io.IOProfiler.css" title="Permalink to this definition">¶</a></dt>
+<dd><p>Selects a small part of the network to highlight</p>
+</dd></dl>
 
 </dd></dl>
 
 </div>
 <div class="section" id="module-k1lib.callbacks.profilers.memory">
-<span id="k1lib-callbacks-profilers-memory-module"></span><h2>k1lib.callbacks.profilers.memory module<a class="headerlink" href="#module-k1lib.callbacks.profilers.memory" title="Permalink to this headline">¶</a></h2>
-<dl class="py function">
-<dt id="k1lib.callbacks.profilers.memory.allocated">
-<code class="sig-prename descclassname"><span class="pre">k1lib.callbacks.profilers.memory.</span></code><code class="sig-name descname"><span class="pre">allocated</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="headerlink" href="#k1lib.callbacks.profilers.memory.allocated" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py class">
-<dt id="k1lib.callbacks.profilers.memory.MemoryData">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">k1lib.callbacks.profilers.memory.</span></code><code class="sig-name descname"><span class="pre">MemoryData</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mProfiler</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mS</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="../selector.html#k1lib.selector.ModuleSelector" title="k1lib.selector.ModuleSelector"><span class="pre">k1lib.selector.ModuleSelector</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#k1lib.callbacks.profilers.memory.MemoryData" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<dl class="py method">
-<dt id="k1lib.callbacks.profilers.memory.MemoryData.__init__">
-<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mProfiler</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mS</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="../selector.html#k1lib.selector.ModuleSelector" title="k1lib.selector.ModuleSelector"><span class="pre">k1lib.selector.ModuleSelector</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#k1lib.callbacks.profilers.memory.MemoryData.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="k1lib.callbacks.profilers.memory.MemoryData.hook">
-<code class="sig-name descname"><span class="pre">hook</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#k1lib.callbacks.profilers.memory.MemoryData.hook" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt id="k1lib.callbacks.profilers.memory.MemoryData.unhook">
-<code class="sig-name descname"><span class="pre">unhook</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#k1lib.callbacks.profilers.memory.MemoryData.unhook" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
+<span id="memory-module"></span><h2>memory module<a class="headerlink" href="#module-k1lib.callbacks.profilers.memory" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
 <dt id="k1lib.callbacks.profilers.memory.MemoryProfiler">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">k1lib.callbacks.profilers.memory.</span></code><code class="sig-name descname"><span class="pre">MemoryProfiler</span></code><a class="headerlink" href="#k1lib.callbacks.profilers.memory.MemoryProfiler" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">k1lib.callbacks.profilers.memory.</span></code><code class="sig-name descname"><span class="pre">MemoryProfiler</span></code><a class="reference internal" href="../_modules/k1lib/callbacks/profilers/memory.html#MemoryProfiler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.callbacks.profilers.memory.MemoryProfiler" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="index.html#k1lib.callbacks.callbacks.Callback" title="k1lib.callbacks.callbacks.Callback"><code class="xref py py-class docutils literal notranslate"><span class="pre">k1lib.callbacks.callbacks.Callback</span></code></a></p>
 <dl class="py method">
-<dt id="k1lib.callbacks.profilers.memory.MemoryProfiler.startRun">
-<code class="sig-name descname"><span class="pre">startRun</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#k1lib.callbacks.profilers.memory.MemoryProfiler.startRun" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt id="k1lib.callbacks.profilers.memory.MemoryProfiler.startStep">
-<code class="sig-name descname"><span class="pre">startStep</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#k1lib.callbacks.profilers.memory.MemoryProfiler.startStep" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt id="k1lib.callbacks.profilers.memory.MemoryProfiler.endRun">
-<code class="sig-name descname"><span class="pre">endRun</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#k1lib.callbacks.profilers.memory.MemoryProfiler.endRun" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
 <dt id="k1lib.callbacks.profilers.memory.MemoryProfiler.run">
-<code class="sig-name descname"><span class="pre">run</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#k1lib.callbacks.profilers.memory.MemoryProfiler.run" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname"><span class="pre">run</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/callbacks/profilers/memory.html#MemoryProfiler.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.callbacks.profilers.memory.MemoryProfiler.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Runs everything</p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="k1lib.callbacks.profilers.memory.MemoryProfiler.css">
-<code class="sig-name descname"><span class="pre">css</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">css</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#k1lib.callbacks.profilers.memory.MemoryProfiler.css" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt id="k1lib.callbacks.profilers.memory.MemoryProfiler.dependsOn">
-<code class="sig-name descname"><span class="pre">dependsOn</span></code><em class="property"><span class="pre">:</span> <span class="pre">Set</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#k1lib.callbacks.profilers.memory.MemoryProfiler.dependsOn" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname"><span class="pre">css</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">css</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/callbacks/profilers/memory.html#MemoryProfiler.css"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.callbacks.profilers.memory.MemoryProfiler.css" title="Permalink to this definition">¶</a></dt>
+<dd><p>Selects a small part of the network to highlight</p>
+</dd></dl>
 
 </dd></dl>
 
 </div>
 <div class="section" id="module-k1lib.callbacks.profilers.time">
-<span id="k1lib-callbacks-profilers-time-module"></span><h2>k1lib.callbacks.profilers.time module<a class="headerlink" href="#module-k1lib.callbacks.profilers.time" title="Permalink to this headline">¶</a></h2>
-<dl class="py class">
-<dt id="k1lib.callbacks.profilers.time.TimeData">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">k1lib.callbacks.profilers.time.</span></code><code class="sig-name descname"><span class="pre">TimeData</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tProfiler</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mS</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="../selector.html#k1lib.selector.ModuleSelector" title="k1lib.selector.ModuleSelector"><span class="pre">k1lib.selector.ModuleSelector</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#k1lib.callbacks.profilers.time.TimeData" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<dl class="py method">
-<dt id="k1lib.callbacks.profilers.time.TimeData.__init__">
-<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tProfiler</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mS</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="../selector.html#k1lib.selector.ModuleSelector" title="k1lib.selector.ModuleSelector"><span class="pre">k1lib.selector.ModuleSelector</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#k1lib.callbacks.profilers.time.TimeData.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="k1lib.callbacks.profilers.time.TimeData.hook">
-<code class="sig-name descname"><span class="pre">hook</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#k1lib.callbacks.profilers.time.TimeData.hook" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt id="k1lib.callbacks.profilers.time.TimeData.unhook">
-<code class="sig-name descname"><span class="pre">unhook</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#k1lib.callbacks.profilers.time.TimeData.unhook" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
+<span id="time-module"></span><h2>time module<a class="headerlink" href="#module-k1lib.callbacks.profilers.time" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
 <dt id="k1lib.callbacks.profilers.time.TimeProfiler">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">k1lib.callbacks.profilers.time.</span></code><code class="sig-name descname"><span class="pre">TimeProfiler</span></code><a class="headerlink" href="#k1lib.callbacks.profilers.time.TimeProfiler" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">k1lib.callbacks.profilers.time.</span></code><code class="sig-name descname"><span class="pre">TimeProfiler</span></code><a class="reference internal" href="../_modules/k1lib/callbacks/profilers/time.html#TimeProfiler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.callbacks.profilers.time.TimeProfiler" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="index.html#k1lib.callbacks.callbacks.Callback" title="k1lib.callbacks.callbacks.Callback"><code class="xref py py-class docutils literal notranslate"><span class="pre">k1lib.callbacks.callbacks.Callback</span></code></a></p>
 <p>Profiles execution time. Only measures forward times, as
 backward times can’t really be measured</p>
 <dl class="py method">
-<dt id="k1lib.callbacks.profilers.time.TimeProfiler.startRun">
-<code class="sig-name descname"><span class="pre">startRun</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#k1lib.callbacks.profilers.time.TimeProfiler.startRun" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt id="k1lib.callbacks.profilers.time.TimeProfiler.startStep">
-<code class="sig-name descname"><span class="pre">startStep</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#k1lib.callbacks.profilers.time.TimeProfiler.startStep" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
 <dt id="k1lib.callbacks.profilers.time.TimeProfiler.run">
-<code class="sig-name descname"><span class="pre">run</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#k1lib.callbacks.profilers.time.TimeProfiler.run" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname"><span class="pre">run</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/callbacks/profilers/time.html#TimeProfiler.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.callbacks.profilers.time.TimeProfiler.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Runs everything</p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="k1lib.callbacks.profilers.time.TimeProfiler.css">
-<code class="sig-name descname"><span class="pre">css</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">css</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#k1lib.callbacks.profilers.time.TimeProfiler.css" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt id="k1lib.callbacks.profilers.time.TimeProfiler.dependsOn">
-<code class="sig-name descname"><span class="pre">dependsOn</span></code><em class="property"><span class="pre">:</span> <span class="pre">Set</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#k1lib.callbacks.profilers.time.TimeProfiler.dependsOn" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname"><span class="pre">css</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">css</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/callbacks/profilers/time.html#TimeProfiler.css"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.callbacks.profilers.time.TimeProfiler.css" title="Permalink to this definition">¶</a></dt>
+<dd><p>Selects a small part of the network to highlight</p>
+</dd></dl>
 
 </dd></dl>
 

@@ -176,8 +176,8 @@ do. I put it here so that I can do:</p>
 <p>and everything will be in place</p>
 <dl class="py class">
 <dt id="k1lib.imports._OptionalImports">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">k1lib.imports.</span></code><code class="sig-name descname"><span class="pre">_OptionalImports</span></code><a class="headerlink" href="#k1lib.imports._OptionalImports" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">k1lib.imports.</span></code><code class="sig-name descname"><span class="pre">_OptionalImports</span></code><a class="reference internal" href="_modules/k1lib/imports.html#_OptionalImports"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.imports._OptionalImports" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>This class is supposed to be a singleton, with the object at
 <code class="xref py py-attr docutils literal notranslate"><span class="pre">k1lib.imports.OptionalImports</span></code>. The idea is, you can create libraries
 that has function funcA, which uses numpy. However, you don’t want to declare
@@ -185,14 +185,14 @@ your library that it depends on numpy, so if the user does not have numpy, you
 can print something out</p>
 <dl class="py method">
 <dt id="k1lib.imports._OptionalImports.__call__">
-<code class="sig-name descname"><span class="pre">__call__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">module</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#k1lib.imports._OptionalImports.__call__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">__call__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">module</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/imports.html#_OptionalImports.__call__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.imports._OptionalImports.__call__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Tries to import the module. If successful, return the module,
 else return None</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="k1lib.imports._OptionalImports.__contains__">
-<code class="sig-name descname"><span class="pre">__contains__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">module</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#k1lib.imports._OptionalImports.__contains__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">__contains__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">module</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/imports.html#_OptionalImports.__contains__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.imports._OptionalImports.__contains__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Whether someone already tried to import a module.</p>
 </dd></dl>
 

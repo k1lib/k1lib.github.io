@@ -32,6 +32,7 @@
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -169,68 +170,83 @@
   <div class="section" id="module-k1lib.viz">
 <span id="k1lib-viz-module"></span><h1>k1lib.viz module<a class="headerlink" href="#module-k1lib.viz" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
-<dt id="k1lib.viz.PlotDecorator">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">k1lib.viz.</span></code><code class="sig-name descname"><span class="pre">PlotDecorator</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sliceablePlot</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#k1lib.viz.SliceablePlot" title="k1lib.viz.SliceablePlot"><span class="pre">k1lib.viz.SliceablePlot</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#k1lib.viz.PlotDecorator" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<dl class="py method">
-<dt id="k1lib.viz.PlotDecorator.__init__">
-<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sliceablePlot</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#k1lib.viz.SliceablePlot" title="k1lib.viz.SliceablePlot"><span class="pre">k1lib.viz.SliceablePlot</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#k1lib.viz.PlotDecorator.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="k1lib.viz.PlotDecorator.run">
-<code class="sig-name descname"><span class="pre">run</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#k1lib.viz.PlotDecorator.run" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
 <dt id="k1lib.viz.SliceablePlot">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">k1lib.viz.</span></code><code class="sig-name descname"><span class="pre">SliceablePlot</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plotF</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">slice</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">slices</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">slice</span><span class="p"><span class="pre">,</span> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">slice</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">slice(None,</span> <span class="pre">None,</span> <span class="pre">None)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plotDecorators</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#k1lib.viz.PlotDecorator" title="k1lib.viz.PlotDecorator"><span class="pre">k1lib.viz.PlotDecorator</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">docs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#k1lib.viz.SliceablePlot" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">k1lib.viz.</span></code><code class="sig-name descname"><span class="pre">SliceablePlot</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plotF</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#slice" title="(in Python v3.9)"><span class="pre">slice</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><span class="pre">None</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">slices</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#slice" title="(in Python v3.9)"><span class="pre">slice</span></a><span class="p"><span class="pre">,</span> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#slice" title="(in Python v3.9)"><span class="pre">slice</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">slice(None,</span> <span class="pre">None,</span> <span class="pre">None)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plotDecorators</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">k1lib.viz._PlotDecorator</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">docs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/viz.html#SliceablePlot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.viz.SliceablePlot" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is a plot that is “sliceable”, meaning you can focus into
+a particular region of the plot quickly. A minimal example at
+<a class="reference internal" href="#k1lib.viz.SliceablePlot.decorate" title="k1lib.viz.SliceablePlot.decorate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">decorate()</span></code></a> looks something like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span><span class="o">,</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span><span class="o">,</span> <span class="nn">k1lib</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">normalF</span><span class="p">():</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="nd">@k1lib</span><span class="o">.</span><span class="n">viz</span><span class="o">.</span><span class="n">SliceablePlot</span><span class="o">.</span><span class="n">decorate</span>
+<span class="k">def</span> <span class="nf">plotF</span><span class="p">(</span><span class="n">_slice</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">_slice</span><span class="p">],</span> <span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)[</span><span class="n">_slice</span><span class="p">])</span>
+
+<span class="n">plotF</span><span class="p">()[</span><span class="mi">70</span><span class="p">:]</span> <span class="c1"># plots x^2 equation with x in [0.8, 2]</span>
+</pre></div>
+</div>
+<p>So, <code class="docutils literal notranslate"><span class="pre">normalF</span></code> plots the equation <span class="math notranslate nohighlight">\(x^2\)</span> with x going from -2 to 2.
+You can convert this into a <a class="reference internal" href="#k1lib.viz.SliceablePlot" title="k1lib.viz.SliceablePlot"><code class="xref py py-class docutils literal notranslate"><span class="pre">SliceablePlot</span></code></a> by adding a term of
+type <a class="reference external" href="https://docs.python.org/3/library/functions.html#slice" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">slice</span></code></a> to the args, and decorate with <a class="reference internal" href="#k1lib.viz.SliceablePlot.decorate" title="k1lib.viz.SliceablePlot.decorate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">decorate()</span></code></a>. Now,
+every time you slice the <a class="reference internal" href="#k1lib.viz.SliceablePlot" title="k1lib.viz.SliceablePlot"><code class="xref py py-class docutils literal notranslate"><span class="pre">SliceablePlot</span></code></a> with a specific range,
+<code class="docutils literal notranslate"><span class="pre">plotF</span></code> will receive it.</p>
+<p>How intuitive everything is depends on how you slice your data. <code class="docutils literal notranslate"><span class="pre">[70:]</span></code>
+results in x in [0.8, 2] is rather unintuitive. You can change it into
+something like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@k1lib</span><span class="o">.</span><span class="n">viz</span><span class="o">.</span><span class="n">SliceablePlot</span><span class="o">.</span><span class="n">decorate</span>
+<span class="k">def</span> <span class="nf">niceF</span><span class="p">(</span><span class="n">_slice</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span> <span class="n">r</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">Range</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">*</span><span class="n">r</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+    <span class="n">_slice</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">toRange</span><span class="p">(</span><span class="n">_k1lib</span><span class="o">.</span><span class="n">Range</span><span class="p">(</span><span class="n">n</span><span class="p">),</span> <span class="n">r</span><span class="o">.</span><span class="n">bound</span><span class="p">(</span><span class="n">_slice</span><span class="p">))</span><span class="o">.</span><span class="n">slice_</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">_slice</span><span class="p">],</span> <span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)[</span><span class="n">_slice</span><span class="p">])</span>
+
+<span class="n">niceF</span><span class="p">()[</span><span class="mf">0.3</span><span class="p">:</span><span class="mf">0.7</span><span class="p">]</span> <span class="c1"># plots x^2 equation with x in [0.3, 0.7]</span>
+<span class="n">niceF</span><span class="p">()[</span><span class="mf">0.3</span><span class="p">:]</span> <span class="c1"># plots x^2 equation with x in [0.3, 2]</span>
+</pre></div>
+</div>
+<p>The idea is to just take the input <a class="reference external" href="https://docs.python.org/3/library/functions.html#slice" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">slice</span></code></a>, put some bounds on
+its parts, then convert that slice from [-2, 2] to [0, 100]. Check
+out <a class="reference internal" href="index.html#k1lib.Range" title="k1lib.Range"><code class="xref py py-class docutils literal notranslate"><span class="pre">k1lib.Range</span></code></a> if it’s not obvious how this works.</p>
+<p>A really cool feature of <a class="reference internal" href="#k1lib.viz.SliceablePlot" title="k1lib.viz.SliceablePlot"><code class="xref py py-class docutils literal notranslate"><span class="pre">SliceablePlot</span></code></a> looks like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">niceF</span><span class="p">()</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s2">&quot;A&quot;</span><span class="p">])[</span><span class="o">-</span><span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This will plot <span class="math notranslate nohighlight">\(x^2\)</span> with range in [-1, 2] with a nice grid, and
+with y axis’s scale set to log. Essentially, undefined method calls
+on a <a class="reference internal" href="#k1lib.viz.SliceablePlot" title="k1lib.viz.SliceablePlot"><code class="xref py py-class docutils literal notranslate"><span class="pre">SliceablePlot</span></code></a> will translate into <code class="docutils literal notranslate"><span class="pre">plt</span></code> calls. So the
+above is roughly equivalent to this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s2">&quot;A&quot;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="_images/SliceablePlot.png" src="_images/SliceablePlot.png" />
+<p>This works even if you have multiple axes inside your figure. It’s
+wonderful, isn’t it?</p>
 <dl class="py method">
-<dt id="k1lib.viz.SliceablePlot.__init__">
-<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plotF</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">slice</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">slices</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">slice</span><span class="p"><span class="pre">,</span> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">slice</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">slice(None,</span> <span class="pre">None,</span> <span class="pre">None)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plotDecorators</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#k1lib.viz.PlotDecorator" title="k1lib.viz.PlotDecorator"><span class="pre">k1lib.viz.PlotDecorator</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">docs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#k1lib.viz.SliceablePlot.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+<dt id="k1lib.viz.SliceablePlot.decorate">
+<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">decorate</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/viz.html#SliceablePlot.decorate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.viz.SliceablePlot.decorate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decorates a plotting function so that it becomes a
+SliceablePlot.</p>
 </dd></dl>
 
-<dl class="py method">
-<dt id="k1lib.viz.SliceablePlot.squeezedSlices">
-<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">squeezedSlices</span></code><a class="headerlink" href="#k1lib.viz.SliceablePlot.squeezedSlices" title="Permalink to this definition">¶</a></dt>
-<dd><p>If <code class="xref py py-attr docutils literal notranslate"><span class="pre">slices</span></code> only has 1 element, then return that
-element, else return the entire list.</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py function">
-<dt id="k1lib.viz.plotSegments">
-<code class="sig-prename descclassname"><span class="pre">k1lib.viz.</span></code><code class="sig-name descname"><span class="pre">plotSegments</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">states</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colors</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#k1lib.viz.plotSegments" title="Permalink to this definition">¶</a></dt>
-<dd><p>Plots a line graph, with multiple segments with different colors.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>x</strong> – list of x coordinate at each point</p></li>
-<li><p><strong>y</strong> – list of y coordinates at each point</p></li>
-<li><p><strong>states</strong> – list of color at each point</p></li>
-<li><p><strong>colors</strong> – string colors to display for each states</p></li>
-</ul>
-</dd>
-</dl>
 </dd></dl>
 
 <dl class="py class">
 <dt id="k1lib.viz.Carousel">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">k1lib.viz.</span></code><code class="sig-name descname"><span class="pre">Carousel</span></code><a class="headerlink" href="#k1lib.viz.Carousel" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<dl class="py method">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">k1lib.viz.</span></code><code class="sig-name descname"><span class="pre">Carousel</span></code><a class="reference internal" href="_modules/k1lib/viz.html#Carousel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.viz.Carousel" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="py method">
 <dt id="k1lib.viz.Carousel.__init__">
-<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#k1lib.viz.Carousel.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/viz.html#Carousel.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.viz.Carousel.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates a new Carousel. You can then add images and whatnot.
 Will even work even when you export the notebook as html. Example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span><span class="o">,</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="n">c</span> <span class="o">=</span> <span class="n">Carousel</span><span class="p">()</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span><span class="o">,</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span><span class="o">,</span> <span class="nn">k1lib</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">viz</span><span class="o">.</span><span class="n">Carousel</span><span class="p">()</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">savePlt</span><span class="p">()</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">savePlt</span><span class="p">()</span>
 <span class="n">c</span> <span class="c1"># displays in notebook cell</span>
@@ -240,27 +256,57 @@ Will even work even when you export the notebook as html. Example:</p>
 
 <dl class="py method">
 <dt id="k1lib.viz.Carousel.save">
-<code class="sig-name descname"><span class="pre">save</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">_io.BytesIO</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#k1lib.viz.Carousel.save" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">save</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">_io.BytesIO</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.9)"><span class="pre">None</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/viz.html#Carousel.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.viz.Carousel.save" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generic image save function.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>f</strong> – lambda that provides a <code class="xref py py-class docutils literal notranslate"><span class="pre">io.BytesIO</span></code> for you to write to</p>
+<dd class="field-odd"><p><strong>f</strong> – lambda that provides a <a class="reference external" href="https://docs.python.org/3/library/io.html#io.BytesIO" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">io.BytesIO</span></code></a> for you to write to</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt id="k1lib.viz.Carousel.savePlt">
-<code class="sig-name descname"><span class="pre">savePlt</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#k1lib.viz.Carousel.savePlt" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">savePlt</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/viz.html#Carousel.savePlt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.viz.Carousel.savePlt" title="Permalink to this definition">¶</a></dt>
 <dd><p>Saves current plot from matplotlib</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="k1lib.viz.Carousel.savePIL">
-<code class="sig-name descname"><span class="pre">savePIL</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#k1lib.viz.Carousel.savePIL" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">savePIL</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/viz.html#Carousel.savePIL"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.viz.Carousel.savePIL" title="Permalink to this definition">¶</a></dt>
 <dd><p>Saves a PIL image</p>
 </dd></dl>
 
+</dd></dl>
+
+<dl class="py function">
+<dt id="k1lib.viz.plotSegments">
+<code class="sig-prename descclassname"><span class="pre">k1lib.viz.</span></code><code class="sig-name descname"><span class="pre">plotSegments</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">states</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colors</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/viz.html#plotSegments"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.viz.plotSegments" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plots a line graph, with multiple segments with different colors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – (nullable) list of x coordinate at each point</p></li>
+<li><p><strong>y</strong> – list of y coordinates at each point</p></li>
+<li><p><strong>states</strong> – list of color at each point</p></li>
+<li><p><strong>colors</strong> – string colors to display for each states</p></li>
+</ul>
+</dd>
+</dl>
+<p>Idea is, you have a normal line graph, but you want to color parts of
+the graph red, other parts blue. Then, you can pass a “state” array, with
+the same length as your data, filled with ints, like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span> <span class="mi">460800</span><span class="p">,</span>  <span class="mi">921600</span><span class="p">,</span>  <span class="mi">921600</span><span class="p">,</span> <span class="mi">1445888</span><span class="p">,</span> <span class="mi">1970176</span><span class="p">,</span> <span class="mi">1970176</span><span class="p">,</span> <span class="mi">2301952</span><span class="p">,</span>
+       <span class="mi">2633728</span><span class="p">,</span> <span class="mi">2633728</span><span class="p">,</span> <span class="mi">3043328</span><span class="p">,</span> <span class="mi">3452928</span><span class="p">,</span> <span class="mi">3452928</span><span class="p">,</span> <span class="mi">3457024</span><span class="p">,</span> <span class="mi">3461120</span><span class="p">,</span>
+       <span class="mi">3463680</span><span class="p">,</span> <span class="mi">3463680</span><span class="p">,</span> <span class="mi">3470336</span><span class="p">,</span> <span class="mi">3470336</span><span class="p">,</span> <span class="mi">3467776</span><span class="p">,</span> <span class="mi">3869184</span><span class="p">,</span> <span class="mi">3865088</span><span class="p">,</span>
+       <span class="mi">3865088</span><span class="p">,</span> <span class="mi">3046400</span><span class="p">,</span> <span class="mi">2972672</span><span class="p">,</span> <span class="mi">2972672</span><span class="p">,</span> <span class="mi">2309632</span><span class="p">,</span> <span class="mi">2504192</span><span class="p">,</span> <span class="mi">2504192</span><span class="p">,</span>
+       <span class="mi">1456128</span><span class="p">,</span> <span class="mi">1393664</span><span class="p">,</span> <span class="mi">1393664</span><span class="p">,</span>  <span class="mi">472576</span><span class="p">])</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>
+       <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">plotSegments</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;tab:blue&quot;</span><span class="p">,</span> <span class="s2">&quot;tab:red&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+<img alt="_images/plotSegments.png" src="_images/plotSegments.png" />
 </dd></dl>
 
 </div>
