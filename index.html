@@ -1,5 +1,5 @@
 <script>
-	let response = await fetch("version.txt");
-	let version = await response.text();
-	window.location = version.split("\n")[0];
+	fetch("version.txt").then(r => r.text().then(v => {
+		window.location = v;
+	}));
 </script>
