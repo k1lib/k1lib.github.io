@@ -269,6 +269,13 @@ root: Network
 module with name “a”. “b” will selects any module with class name “b”. Inheritance
 operators, like “a b” (indirect child) and “a &gt; b” (direct child) works the same as
 in CSS too.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can also use the asterisk “*” to select everything. So, <code class="docutils literal notranslate"><span class="pre">#a</span> <span class="pre">&gt;</span> <span class="pre">\*</span></code> will match
+all child of module with name “a”, and <code class="docutils literal notranslate"><span class="pre">#a</span> <span class="pre">\*</span></code> will select everything
+recursively under it. In fact, when you first create <a class="reference internal" href="index.html#k1lib.Learner" title="k1lib.Learner"><code class="xref py py-class docutils literal notranslate"><span class="pre">k1lib.Learner</span></code></a>,
+the css is “*” to select everything by default</p>
+</div>
 <p>For each selection sentences, you can attach specific properties to it. If no
 properties are specified, then the property “all” will be used. You can then get
 a list of selected modules:</p>

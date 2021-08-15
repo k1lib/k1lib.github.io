@@ -49,6 +49,7 @@ Module contents
 .. autoclass:: k1lib.Learner
    :members:
    :undoc-members:
+   :special-members: __call__
    :show-inheritance:
 
 .. autoclass:: k1lib.Object

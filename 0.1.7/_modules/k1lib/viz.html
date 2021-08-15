@@ -191,8 +191,8 @@
     <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">_plt</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span><span class="p">)</span>
 <div class="viewcode-block" id="SliceablePlot"><a class="viewcode-back" href="../../viz.html#k1lib.viz.SliceablePlot">[docs]</a><span class="k">class</span> <span class="nc">SliceablePlot</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;This is a plot that is &quot;sliceable&quot;, meaning you can focus into</span>
-<span class="sd">a particular region of the plot quickly. A minimal example at</span>
-<span class="sd">:meth:`decorate` looks something like this::</span>
+<span class="sd">a particular region of the plot quickly. A minimal example looks something</span>
+<span class="sd">like this::</span>
 
 <span class="sd">    import numpy as np, matplotlib.pyplot as plt, k1lib</span>
 <span class="sd">    x = np.linspace(-2, 2, 100)</span>
@@ -337,7 +337,19 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">imgs</span><span class="p">:</span><span class="n">_List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># all base64 imgs</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">defaultFormat</span> <span class="o">=</span> <span class="s2">&quot;jpeg&quot;</span></div>
 <div class="viewcode-block" id="Carousel.save"><a class="viewcode-back" href="../../viz.html#k1lib.viz.Carousel.save">[docs]</a>    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">:</span><span class="n">_Callable</span><span class="p">[[</span><span class="n">_io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">],</span> <span class="kc">None</span><span class="p">]):</span>
-        <span class="sd">&quot;&quot;&quot;Generic image save function.</span>
+        <span class="sd">&quot;&quot;&quot;Generic image save function. Treat :class:`io.BytesIO` as if it&#39;s</span>
+<span class="sd">a file when you&#39;re doing this::</span>
+<span class="sd">    </span>
+<span class="sd">    with open(&quot;file.txt&quot;) as f:</span>
+<span class="sd">        pass # &quot;f&quot; is similar to io.BytesIO</span>
+
+<span class="sd">So, you can do stuff like::</span>
+
+<span class="sd">    import matplotlib.pyplot as plt, numpy as np</span>
+<span class="sd">    x = np.linspace(-2, 2)</span>
+<span class="sd">    plt.plot(x, x**2)</span>
+<span class="sd">    c = k1lib.viz.Carousel()</span>
+<span class="sd">    c.save(lambda io: plt.savefig(io, format=&quot;png&quot;))</span>
 
 <span class="sd">:param f: lambda that provides a :class:`io.BytesIO` for you to write to</span>
 <span class="sd">&quot;&quot;&quot;</span>

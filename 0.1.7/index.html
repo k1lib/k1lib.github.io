@@ -218,44 +218,114 @@
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">k1lib.</span></code><code class="sig-name descname"><span class="pre">Learner</span></code><a class="reference internal" href="_modules/k1lib/_learner.html#Learner"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.Learner" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <dl class="py method">
+<dt id="k1lib.Learner.model">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">model</span></code><a class="headerlink" href="#k1lib.Learner.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set this to change the model to run</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="k1lib.Learner.data">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">data</span></code><a class="headerlink" href="#k1lib.Learner.data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set this to change the data (of type <a class="reference internal" href="data.html#k1lib.data.Data" title="k1lib.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">k1lib.data.Data</span></code></a>) to
+run against.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="k1lib.Learner.opt">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">opt</span></code><a class="headerlink" href="#k1lib.Learner.opt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set this to change the optimizer. If you’re making your own
+optimizers, beware to follow the PyTorch’s style guide as there are callbacks
+that modifies optimizer internals while training like
+<a class="reference internal" href="schedule.html#k1lib.schedule.ParamScheduler" title="k1lib.schedule.ParamScheduler"><code class="xref py py-class docutils literal notranslate"><span class="pre">k1lib.schedule.ParamScheduler</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py method">
 <dt id="k1lib.Learner.cbs">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">cbs</span></code><a class="headerlink" href="#k1lib.Learner.cbs" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>The <a class="reference internal" href="callbacks/index.html#k1lib.callbacks.callbacks.Callbacks" title="k1lib.callbacks.callbacks.Callbacks"><code class="xref py py-class docutils literal notranslate"><span class="pre">Callbacks</span></code></a> object. Initialized to
+include all the common callbacks. You can set a new one if you want to.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="k1lib.Learner.css">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">css</span></code><a class="headerlink" href="#k1lib.Learner.css" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>The css selector string. Set this to select other parts of the network.
+After setting, you can access the selector like this: <code class="code docutils literal notranslate"><span class="pre">l.selector</span></code></p>
+<p>See also: <a class="reference internal" href="selector.html#k1lib.selector.ModuleSelector" title="k1lib.selector.ModuleSelector"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModuleSelector</span></code></a></p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="k1lib.Learner.lossF">
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">lossF</span></code><a class="headerlink" href="#k1lib.Learner.lossF" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Set this to specify a loss function.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="k1lib.Learner.evaluate">
 <code class="sig-name descname"><span class="pre">evaluate</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/_learner.html#Learner.evaluate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.Learner.evaluate" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Function to visualize quickly how the network is doing. Undefined by default,
+just placed here as a convention, so you have to do something like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">l</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">Learner</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">xbs</span><span class="p">,</span> <span class="n">ybs</span><span class="p">,</span> <span class="n">ys</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Recorder</span><span class="o">.</span><span class="n">record</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="n">xbs</span><span class="p">),</span> <span class="n">torch</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="n">ys</span><span class="p">))</span>
+<span class="n">l</span><span class="o">.</span><span class="n">evaluate</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">evaluate</span><span class="p">(</span><span class="n">l</span><span class="p">))</span>
+</pre></div>
+</div>
+</dd></dl>
 
 <dl class="py method">
-<dt id="k1lib.Learner.warnings">
-<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">warnings</span></code><a class="headerlink" href="#k1lib.Learner.warnings" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dt id="k1lib.Learner.__call__">
+<code class="sig-name descname"><span class="pre">__call__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xb</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yb</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#k1lib.Learner.__call__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Executes just a small batch. Convenience method to query how the network is
+doing.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>xb</strong> – x batch</p></li>
+<li><p><strong>yb</strong> – y batch. If specified, return (y, loss), else return y alone</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt id="k1lib.Learner.load">
-<code class="sig-name descname"><span class="pre">load</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#k1lib.Learner.load" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">load</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fileName</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#k1lib.Learner.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads a <a class="reference internal" href="#k1lib.Learner" title="k1lib.Learner"><code class="xref py py-class docutils literal notranslate"><span class="pre">Learner</span></code></a> from a file. See also: <a class="reference internal" href="#k1lib.Learner.save" title="k1lib.Learner.save"><code class="xref py py-meth docutils literal notranslate"><span class="pre">save()</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>fileName</strong> – if empty, then will prompt for file name</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt id="k1lib.Learner.run">
 <code class="sig-name descname"><span class="pre">run</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">epochs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">batches</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#k1lib.Learner.run" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Main run function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>epochs</strong> – number of epochs to run. 1 epoch is the length of the dataset</p></li>
+<li><p><strong>batches</strong> – if set, then cancels the epoch after reaching the specified batch</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt id="k1lib.Learner.save">
 <code class="sig-name descname"><span class="pre">save</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fileName</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#k1lib.Learner.save" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Saves this <a class="reference internal" href="#k1lib.Learner" title="k1lib.Learner"><code class="xref py py-class docutils literal notranslate"><span class="pre">Learner</span></code></a> to file. See also: <a class="reference internal" href="#k1lib.Learner.load" title="k1lib.Learner.load"><code class="xref py py-meth docutils literal notranslate"><span class="pre">load()</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>fileName</strong> – if empty, then will save as “learner-0.pth”, with 0
+changeable to avoid conflicts. If resave this exact <a class="reference internal" href="#k1lib.Learner" title="k1lib.Learner"><code class="xref py py-class docutils literal notranslate"><span class="pre">Learner</span></code></a>, then
+use the old name generated before</p>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 
@@ -533,7 +603,7 @@ as in <cite>print()</cite></p>
 
 <dl class="py function">
 <dt id="k1lib.patch">
-<code class="sig-prename descclassname"><span class="pre">k1lib.</span></code><code class="sig-name descname"><span class="pre">patch</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_class</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.9)"><span class="pre">type</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">docs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/_basics.html#patch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.patch" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">k1lib.</span></code><code class="sig-name descname"><span class="pre">patch</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_class</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.9)"><span class="pre">type</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">docs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">static</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/_basics.html#patch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.patch" title="Permalink to this definition">¶</a></dt>
 <dd><p>Patches a function to a class/object.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -541,6 +611,7 @@ as in <cite>print()</cite></p>
 <li><p><strong>_class</strong> – object to patch function. Can also be a type</p></li>
 <li><p><strong>name</strong> – name of patched function, if different from current</p></li>
 <li><p><strong>docs</strong> – docs of patched function. Can be object with __doc__ attr</p></li>
+<li><p><strong>static</strong> – whether to wrap this inside <code class="xref py py-class docutils literal notranslate"><span class="pre">staticmethod</span></code> or not</p></li>
 </ul>
 </dd>
 </dl>

@@ -178,40 +178,57 @@
 <h1>Changelogs<a class="headerlink" href="#changelogs" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id2">
 <h2><a class="reference external" href="/0.1.7">0.1.7</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p>Functionality changes</p>
+<p>Interface with external modules:</p>
 <ul class="simple">
-<li><p>Swapped out <code class="docutils literal notranslate"><span class="pre">register_backward_hook</span></code> with <code class="docutils literal notranslate"><span class="pre">register_full_backward_hook</span></code> in
-<a class="reference internal" href="callbacks/index.html#k1lib.callbacks.hookModule.HookModule" title="k1lib.callbacks.hookModule.HookModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">HookModule</span></code></a> callback</p></li>
-<li><p>Changed <code class="docutils literal notranslate"><span class="pre">Callbacks.suspend()</span></code> to take in names only</p></li>
-<li><p>Added <code class="docutils literal notranslate"><span class="pre">Callbacks.suspendClasses()</span></code> to take in classes</p></li>
-<li><p>Changed <code class="docutils literal notranslate"><span class="pre">Callbacks.suspendEvaluation()</span></code> to <code class="docutils literal notranslate"><span class="pre">Callbacks.suspendEval()</span></code>, also
-added functionality for white and black lists</p></li>
-<li><p>Ripped out complex <code class="docutils literal notranslate"><span class="pre">Callback.__getattr__</span></code> mechanism (that automatically searches
-the parent learner) to improve speed</p></li>
-<li><p>Implemented grace stop handling for <a class="reference internal" href="index.html#k1lib.Learner" title="k1lib.Learner"><code class="xref py py-class docutils literal notranslate"><span class="pre">k1lib.Learner</span></code></a>. Before, if someone
-throws <a class="reference internal" href="index.html#k1lib.CancelRunException" title="k1lib.CancelRunException"><code class="xref py py-exc docutils literal notranslate"><span class="pre">k1lib.CancelRunException</span></code></a> while executing a batch, then it will
-immediately jump to the end of the run. Changed it so that it will be caught in
-the batch loop, execute checkpoints <code class="docutils literal notranslate"><span class="pre">cancelBatch</span></code> and <code class="docutils literal notranslate"><span class="pre">endBatch</span></code> and rethrow
-it. Same thing with <a class="reference internal" href="index.html#k1lib.CancelEpochException" title="k1lib.CancelEpochException"><code class="xref py py-exc docutils literal notranslate"><span class="pre">k1lib.CancelEpochException</span></code></a></p></li>
-<li><p>Added <a class="reference internal" href="callbacks/index.html#module-k1lib.callbacks.core" title="k1lib.callbacks.core"><code class="xref py py-mod docutils literal notranslate"><span class="pre">k1lib.callbacks.core</span></code></a> callbacks <code class="docutils literal notranslate"><span class="pre">Normal</span></code> and <code class="docutils literal notranslate"><span class="pre">RNN</span></code></p></li>
-<li><p>Moved loss function from being a core functionality inside <code class="docutils literal notranslate"><span class="pre">Learner</span></code> to an
-external callback, so that adapting multiple loss functions are possible</p></li>
-<li><p>Added <code class="docutils literal notranslate"><span class="pre">nonNone</span></code> cli tool</p></li>
-<li><p>Added <code class="docutils literal notranslate"><span class="pre">nn.Module.preserveDevice()</span></code> context manager</p></li>
-<li><p>Added more plot decorators for <code class="docutils literal notranslate"><span class="pre">MemoryProfiler</span></code></p></li>
+<li><p>Swapped out <code class="docutils literal notranslate"><span class="pre">register_backward_hook</span></code> with <a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.Module.html#torch.nn.Module.register_full_backward_hook" title="(in PyTorch vmaster (1.10.0a0+gitfa0a4e5 ))"><code class="xref py py-meth docutils literal notranslate"><span class="pre">register_full_backward_hook()</span></code></a>
+in <a class="reference internal" href="callbacks/index.html#k1lib.callbacks.hookModule.HookModule" title="k1lib.callbacks.hookModule.HookModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">HookModule</span></code></a> callback</p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">torch.nn.Module.preserveDevice()</span></code> context manager</p></li>
 </ul>
-<p>Style changes</p>
+<p>Callbacks:</p>
 <ul class="simple">
-<li><p>Changed <code class="docutils literal notranslate"><span class="pre">Callbacks.learner</span></code> to <code class="docutils literal notranslate"><span class="pre">Callbacks.l</span></code></p></li>
-<li><p>Changed <code class="docutils literal notranslate"><span class="pre">Callback.learner</span></code> to <code class="docutils literal notranslate"><span class="pre">Callbacks.l</span></code></p></li>
+<li><p>Changed <a class="reference internal" href="callbacks/index.html#k1lib.callbacks.callbacks.Callbacks.suspend" title="k1lib.callbacks.callbacks.Callbacks.suspend"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Callbacks.suspend()</span></code></a> to take in names only</p></li>
+<li><p>Added <a class="reference internal" href="callbacks/index.html#k1lib.callbacks.callbacks.Callbacks.suspendClasses" title="k1lib.callbacks.callbacks.Callbacks.suspendClasses"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Callbacks.suspendClasses()</span></code></a> to take in classes</p></li>
+<li><p>Changed <code class="xref py py-meth docutils literal notranslate"><span class="pre">Callbacks.suspendEvaluation()</span></code> to <a class="reference internal" href="callbacks/index.html#k1lib.callbacks.callbacks.Callbacks.suspendEval" title="k1lib.callbacks.callbacks.Callbacks.suspendEval"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Callbacks.suspendEval()</span></code></a>, also
+added functionality for white and black lists</p></li>
+<li><p>Ripped out complex <code class="xref py py-meth docutils literal notranslate"><span class="pre">Callback.__getattr__()</span></code> mechanism (that automatically searches
+the parent learner for missing attributes) to improve speed</p></li>
+<li><p>Added <a class="reference internal" href="callbacks/index.html#module-k1lib.callbacks.core" title="k1lib.callbacks.core"><code class="xref py py-mod docutils literal notranslate"><span class="pre">k1lib.callbacks.core</span></code></a> callbacks <a class="reference internal" href="callbacks/index.html#k1lib.callbacks.core.CoreNormal" title="k1lib.callbacks.core.CoreNormal"><code class="xref py py-class docutils literal notranslate"><span class="pre">CoreNormal</span></code></a>
+and <a class="reference internal" href="callbacks/index.html#k1lib.callbacks.core.CoreRNN" title="k1lib.callbacks.core.CoreRNN"><code class="xref py py-class docutils literal notranslate"><span class="pre">CoreRNN</span></code></a></p></li>
+<li><p>Added more plot decorators for <a class="reference internal" href="callbacks/profilers.html#k1lib.callbacks.profilers.memory.MemoryProfiler" title="k1lib.callbacks.profilers.memory.MemoryProfiler"><code class="xref py py-class docutils literal notranslate"><span class="pre">MemoryProfiler</span></code></a>,
+including backward-forward separator with their text</p></li>
 <li><p>Changed <a class="reference internal" href="callbacks/index.html#k1lib.callbacks.lossLandscape.LossLandscape" title="k1lib.callbacks.lossLandscape.LossLandscape"><code class="xref py py-class docutils literal notranslate"><span class="pre">LossLandscape</span></code></a> callback so that it
 follows the common flow structure. Before, it implements a whole new <code class="docutils literal notranslate"><span class="pre">cbs(...)</span></code>
 schema that essentially duplicated the loop inside of <a class="reference internal" href="index.html#k1lib.Learner" title="k1lib.Learner"><code class="xref py py-class docutils literal notranslate"><span class="pre">k1lib.Learner</span></code></a></p></li>
 </ul>
+<p>Learner:</p>
+<ul class="simple">
+<li><p>Implemented grace stop handling for <a class="reference internal" href="index.html#k1lib.Learner" title="k1lib.Learner"><code class="xref py py-class docutils literal notranslate"><span class="pre">Learner</span></code></a>. Before, if someone throws
+<a class="reference internal" href="index.html#k1lib.CancelRunException" title="k1lib.CancelRunException"><code class="xref py py-exc docutils literal notranslate"><span class="pre">CancelRunException</span></code></a> while executing a batch, then it will immediately jump
+to the end of the run. Changed it so that it will be caught in the batch loop,
+execute checkpoints <code class="docutils literal notranslate"><span class="pre">cancelBatch</span></code> and <code class="docutils literal notranslate"><span class="pre">endBatch</span></code> and rethrow it. Same thing
+with <a class="reference internal" href="index.html#k1lib.CancelEpochException" title="k1lib.CancelEpochException"><code class="xref py py-exc docutils literal notranslate"><span class="pre">CancelEpochException</span></code></a></p></li>
+<li><p>Moved loss function from being a core functionality inside <a class="reference internal" href="index.html#k1lib.Learner" title="k1lib.Learner"><code class="xref py py-class docutils literal notranslate"><span class="pre">Learner</span></code></a>
+to an external callback, so that adapting multiple loss functions are possible</p></li>
+<li><p>Added <a class="reference internal" href="index.html#k1lib.Learner.__call__" title="k1lib.Learner.__call__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Learner.__call__()</span></code></a></p></li>
+</ul>
+<p>Bioinfo cli:</p>
+<ul class="simple">
+<li><p>Added <a class="reference internal" href="bioinfo/cli.html#k1lib.bioinfo.cli.filt.isValue" title="k1lib.bioinfo.cli.filt.isValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">isValue</span></code></a>, <a class="reference internal" href="bioinfo/cli.html#k1lib.bioinfo.cli.filt.intersection" title="k1lib.bioinfo.cli.filt.intersection"><code class="xref py py-class docutils literal notranslate"><span class="pre">intersection</span></code></a>,
+<a class="reference internal" href="bioinfo/cli.html#k1lib.bioinfo.cli.structural.AA_" title="k1lib.bioinfo.cli.structural.AA_"><code class="xref py py-class docutils literal notranslate"><span class="pre">AA_</span></code></a>, <a class="reference internal" href="bioinfo/cli.html#k1lib.bioinfo.cli.structural.infinite" title="k1lib.bioinfo.cli.structural.infinite"><code class="xref py py-class docutils literal notranslate"><span class="pre">infinite</span></code></a>,
+<a class="reference internal" href="bioinfo/cli.html#k1lib.bioinfo.cli.utils.dereference" title="k1lib.bioinfo.cli.utils.dereference"><code class="xref py py-class docutils literal notranslate"><span class="pre">dereference</span></code></a> cli tools</p></li>
+<li><p>Modified <a class="reference internal" href="bioinfo/cli.html#k1lib.bioinfo.cli.input.cat" title="k1lib.bioinfo.cli.input.cat"><code class="xref py py-class docutils literal notranslate"><span class="pre">cat</span></code></a> to be able to take in file name by pipe</p></li>
+<li><p>Added new joining operator “+” between <a class="reference internal" href="bioinfo/cli.html#k1lib.bioinfo.cli.init.BaseCli" title="k1lib.bioinfo.cli.init.BaseCli"><code class="xref py py-class docutils literal notranslate"><span class="pre">init.BaseCli</span></code></a></p></li>
+</ul>
+<p>Style changes:</p>
+<ul class="simple">
+<li><p>Changed <code class="xref py py-attr docutils literal notranslate"><span class="pre">Callbacks.learner</span></code> to <a class="reference internal" href="callbacks/index.html#k1lib.callbacks.callbacks.Callbacks.l" title="k1lib.callbacks.callbacks.Callbacks.l"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Callbacks.l</span></code></a></p></li>
+<li><p>Changed <code class="xref py py-attr docutils literal notranslate"><span class="pre">Callback.learner</span></code> to <a class="reference internal" href="callbacks/index.html#k1lib.callbacks.callbacks.Callbacks.l" title="k1lib.callbacks.callbacks.Callbacks.l"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Callbacks.l</span></code></a></p></li>
+<li><p>Removed <a class="reference internal" href="eqn.html#module-k1lib.eqn" title="k1lib.eqn"><code class="xref py py-mod docutils literal notranslate"><span class="pre">k1lib.eqn</span></code></a> from <a class="reference internal" href="imports.html#module-k1lib.imports" title="k1lib.imports"><code class="xref py py-mod docutils literal notranslate"><span class="pre">k1lib.imports</span></code></a>’s namespace</p></li>
+</ul>
 </div>
 <div class="section" id="id3">
 <h2>0.1.6<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<p>I don’t really keep track of things 0.1.6 and before, so nothing here really</p>
+<p>I don’t really keep track of things 0.1.6 and before, so nothing here really.</p>
 </div>
 </div>
 

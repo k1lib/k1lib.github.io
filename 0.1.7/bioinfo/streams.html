@@ -247,13 +247,38 @@ examples above:</p>
 effectively split the input into 2 streams. 1 gets passed through <code class="docutils literal notranslate"><span class="pre">toRange()</span></code>,
 and 1 through <code class="docutils literal notranslate"><span class="pre">identity()</span></code>. So, the output is effectively
 <code class="docutils literal notranslate"><span class="pre">[Iterator[int],</span> <span class="pre">Iterator[str]]</span></code>, which we can join together just like before.</p>
-<p>When combining streams asymmetrically (using the <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> operator), the input to the
-streams need not be a list. Internally, k1lib uses the <code class="xref py py-meth docutils literal notranslate"><span class="pre">itertools.tee()</span></code> method
-to get multiple iterators from a single iterator, so as to avoid creating an entire
-list which would waste resources. Of course, whether this wastes resources or not
-depends a lot on how you structure things. If there is an operation that blows
-through the entire iterator before others use any elements, then that would slow
-things down.</p>
+<p>When combining streams asymmetrically (using the <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> operator, and all cli
+operators are the same), the input to the streams need not be a list. Internally,
+k1lib uses the <code class="xref py py-meth docutils literal notranslate"><span class="pre">itertools.tee()</span></code> method to get multiple iterators from a single
+iterator, so as to avoid creating an entire list which would waste resources. Of
+course, whether this wastes resources or not depends a lot on how you structure
+things. If there is an operation that blows through the entire iterator before
+others use any elements, then that would slow things down.</p>
+<p>Also, there’s another way to join cli operators together. Let’s check over an
+example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">even</span> <span class="o">=</span> <span class="n">filt</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="n">odd</span> <span class="o">=</span> <span class="n">filt</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="c1"># returns [[10, 12, 14, 16, 18], [31, 33, 35, 37, 39]]</span>
+<span class="p">[</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="nb">range</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">)]</span> <span class="o">|</span> <span class="p">(</span><span class="n">even</span> <span class="o">+</span> <span class="n">odd</span><span class="p">)</span> <span class="o">|</span> <span class="n">dereference</span><span class="p">()</span>
+<span class="c1"># pretty much identical to:</span>
+<span class="p">[</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span> <span class="o">|</span> <span class="n">even</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span> <span class="o">|</span> <span class="n">odd</span><span class="p">]</span> <span class="o">|</span> <span class="n">dereference</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This time, we’re using the <code class="docutils literal notranslate"><span class="pre">+</span></code> operator. What this does is pass different streams
+to their corresponding cli operator.</p>
+<p>It can be hard to remember what <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> and <code class="docutils literal notranslate"><span class="pre">+</span></code> do right away, so the strategy is to
+think of <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> as “I’m going to pass the (single) input stream to a() <strong>and</strong> b()
+<strong>and</strong> c(), so I should get 3 streams out in total”. For <code class="docutils literal notranslate"><span class="pre">+</span></code>, think of them as
+stacking floors of cli operators on top of another:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>+----------------+
+| stream1 -&gt; a() |
++----------------+
+| stream2 -&gt; b() |
++----------------+
+| stream3 -&gt; c() |
++----------------+
+</pre></div>
+</div>
 </div>
 </div>
 

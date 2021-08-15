@@ -243,9 +243,9 @@ on a table. So this table:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s2">&quot;col1</span><span class="se">\t</span><span class="s2">col2</span><span class="se">\t</span><span class="s2">col3&quot;</span><span class="p">,</span> <span class="s2">&quot;1</span><span class="se">\t</span><span class="s2">2</span><span class="se">\t</span><span class="s2">3&quot;</span><span class="p">,</span> <span class="s2">&quot;4</span><span class="se">\t</span><span class="s2">5</span><span class="se">\t</span><span class="s2">6&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>Essentially, each row is a single string, and each
-elements in a row are separated by a delimiter. You can
-set the default delimiter using <a class="reference internal" href="#k1lib.bioinfo.cli.bioinfoSettings" title="k1lib.bioinfo.cli.bioinfoSettings"><code class="xref py py-attr docutils literal notranslate"><span class="pre">k1lib.bioinfo.cli.bioinfoSettings</span></code></a> like this:</p>
+<p>Essentially, each row is a single string, and elements in a row are separated by a
+delimiter. You can set the default delimiter using
+<a class="reference internal" href="#k1lib.bioinfo.cli.bioinfoSettings" title="k1lib.bioinfo.cli.bioinfoSettings"><code class="xref py py-attr docutils literal notranslate"><span class="pre">bioinfoSettings</span></code></a> like this:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bioinfoSettings</span><span class="p">[</span><span class="s2">&quot;defaultDelim&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;,&quot;</span>
 </pre></div>
 </div>
@@ -265,35 +265,6 @@ check over this:</p>
 </div>
 <div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 37%" />
-<col style="width: 33%" />
-<col style="width: 31%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#module-k1lib.bioinfo.cli.bio" title="k1lib.bioinfo.cli.bio"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bio</span></code></a></p></td>
-<td><p><a class="reference internal" href="#module-k1lib.bioinfo.cli.entrez" title="k1lib.bioinfo.cli.entrez"><code class="xref py py-mod docutils literal notranslate"><span class="pre">entrez</span></code></a></p></td>
-<td><p><a class="reference internal" href="#module-k1lib.bioinfo.cli.mgi" title="k1lib.bioinfo.cli.mgi"><code class="xref py py-mod docutils literal notranslate"><span class="pre">mgi</span></code></a></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#module-k1lib.bioinfo.cli.filt" title="k1lib.bioinfo.cli.filt"><code class="xref py py-mod docutils literal notranslate"><span class="pre">filt</span></code></a></p></td>
-<td><p><a class="reference internal" href="#module-k1lib.bioinfo.cli.grep" title="k1lib.bioinfo.cli.grep"><code class="xref py py-mod docutils literal notranslate"><span class="pre">grep</span></code></a></p></td>
-<td><p><a class="reference internal" href="#module-k1lib.bioinfo.cli.init" title="k1lib.bioinfo.cli.init"><code class="xref py py-mod docutils literal notranslate"><span class="pre">init</span></code></a></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#module-k1lib.bioinfo.cli.input" title="k1lib.bioinfo.cli.input"><code class="xref py py-mod docutils literal notranslate"><span class="pre">input</span></code></a></p></td>
-<td><p><a class="reference internal" href="#module-k1lib.bioinfo.cli.kcsv" title="k1lib.bioinfo.cli.kcsv"><code class="xref py py-mod docutils literal notranslate"><span class="pre">kcsv</span></code></a></p></td>
-<td><p><a class="reference internal" href="#module-k1lib.bioinfo.cli.kxml" title="k1lib.bioinfo.cli.kxml"><code class="xref py py-mod docutils literal notranslate"><span class="pre">kxml</span></code></a></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#module-k1lib.bioinfo.cli.modifier" title="k1lib.bioinfo.cli.modifier"><code class="xref py py-mod docutils literal notranslate"><span class="pre">modifier</span></code></a></p></td>
-<td><p><a class="reference internal" href="#module-k1lib.bioinfo.cli.output" title="k1lib.bioinfo.cli.output"><code class="xref py py-mod docutils literal notranslate"><span class="pre">output</span></code></a></p></td>
-<td><p><a class="reference internal" href="#module-k1lib.bioinfo.cli.sam" title="k1lib.bioinfo.cli.sam"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sam</span></code></a></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#module-k1lib.bioinfo.cli.structural" title="k1lib.bioinfo.cli.structural"><code class="xref py py-mod docutils literal notranslate"><span class="pre">structural</span></code></a></p></td>
-<td><p><a class="reference internal" href="#module-k1lib.bioinfo.cli.utils" title="k1lib.bioinfo.cli.utils"><code class="xref py py-mod docutils literal notranslate"><span class="pre">utils</span></code></a></p></td>
-<td></td>
-</tr>
-</tbody>
-</table>
 <div class="section" id="module-k1lib.bioinfo.cli.bio">
 <span id="bio-module"></span><h3>bio module<a class="headerlink" href="#module-k1lib.bioinfo.cli.bio" title="Permalink to this headline">¶</a></h3>
 <p>This is for functions that are actually biology-related</p>
@@ -439,25 +410,25 @@ display the browser</p>
 </dd></dl>
 
 <dl class="py class">
-<dt id="k1lib.bioinfo.cli.filt.nonEmpty">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">k1lib.bioinfo.cli.filt.</span></code><code class="sig-name descname"><span class="pre">nonEmpty</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delim</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/bioinfo/cli/filt.html#nonEmpty"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.bioinfo.cli.filt.nonEmpty" title="Permalink to this definition">¶</a></dt>
+<dt id="k1lib.bioinfo.cli.filt.isValue">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">k1lib.bioinfo.cli.filt.</span></code><code class="sig-name descname"><span class="pre">isValue</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delim</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/bioinfo/cli/filt.html#isValue"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.bioinfo.cli.filt.isValue" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#k1lib.bioinfo.cli.filt.filt" title="k1lib.bioinfo.cli.filt.filt"><code class="xref py py-class docutils literal notranslate"><span class="pre">k1lib.bioinfo.cli.filt.filt</span></code></a></p>
 <dl class="py method">
-<dt id="k1lib.bioinfo.cli.filt.nonEmpty.__init__">
-<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delim</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/bioinfo/cli/filt.html#nonEmpty.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.bioinfo.cli.filt.nonEmpty.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Filters out lines’ column that is empty</p>
+<dt id="k1lib.bioinfo.cli.filt.isValue.__init__">
+<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delim</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/bioinfo/cli/filt.html#isValue.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.bioinfo.cli.filt.isValue.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filters out lines’ column that is different from the given value</p>
 </dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
-<dt id="k1lib.bioinfo.cli.filt.nonNone">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">k1lib.bioinfo.cli.filt.</span></code><code class="sig-name descname"><span class="pre">nonNone</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">delim</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/bioinfo/cli/filt.html#nonNone"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.bioinfo.cli.filt.nonNone" title="Permalink to this definition">¶</a></dt>
+<dt id="k1lib.bioinfo.cli.filt.inside">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">k1lib.bioinfo.cli.filt.</span></code><code class="sig-name descname"><span class="pre">inside</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Set</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delim</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/bioinfo/cli/filt.html#inside"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.bioinfo.cli.filt.inside" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#k1lib.bioinfo.cli.filt.filt" title="k1lib.bioinfo.cli.filt.filt"><code class="xref py py-class docutils literal notranslate"><span class="pre">k1lib.bioinfo.cli.filt.filt</span></code></a></p>
 <dl class="py method">
-<dt id="k1lib.bioinfo.cli.filt.nonNone.__init__">
-<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">delim</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/bioinfo/cli/filt.html#nonNone.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.bioinfo.cli.filt.nonNone.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Filters out lines that are None</p>
+<dt id="k1lib.bioinfo.cli.filt.inside.__init__">
+<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Set</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delim</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/bioinfo/cli/filt.html#inside.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.bioinfo.cli.filt.inside.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filters out lines’ column that is not in the specified set</p>
 </dd></dl>
 
 </dd></dl>
@@ -617,6 +588,21 @@ display the browser</p>
 
 </dd></dl>
 
+<dl class="py class">
+<dt id="k1lib.bioinfo.cli.filt.intersection">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">k1lib.bioinfo.cli.filt.</span></code><code class="sig-name descname"><span class="pre">intersection</span></code><a class="reference internal" href="../_modules/k1lib/bioinfo/cli/filt.html#intersection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.bioinfo.cli.filt.intersection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#k1lib.bioinfo.cli.init.BaseCli" title="k1lib.bioinfo.cli.init.BaseCli"><code class="xref py py-class docutils literal notranslate"><span class="pre">k1lib.bioinfo.cli.init.BaseCli</span></code></a></p>
+<p>Returns the intersection of multiple streams. Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">]]</span> <span class="o">|</span> <span class="n">intersection</span><span class="p">()</span> <span class="c1"># will return set([2, 4, 5])</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt id="k1lib.bioinfo.cli.filt.intersection.__ror__">
+<code class="sig-name descname"><span class="pre">__ror__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">its</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Set</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><a class="reference internal" href="../_modules/k1lib/bioinfo/cli/filt.html#intersection.__ror__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.bioinfo.cli.filt.intersection.__ror__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </div>
 <div class="section" id="module-k1lib.bioinfo.cli.grep">
 <span id="grep-module"></span><h3>grep module<a class="headerlink" href="#module-k1lib.bioinfo.cli.grep" title="Permalink to this headline">¶</a></h3>
@@ -676,11 +662,14 @@ it to the templateand yields</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">k1lib.bioinfo.cli</span> <span class="kn">import</span> <span class="o">*</span>
 </pre></div>
 </div>
-<p>You can just set the settings like this:</p>
+<p>…you can just set the settings like this:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bioinfoSettings</span><span class="p">[</span><span class="s2">&quot;defaultIndent&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span>
 </pre></div>
 </div>
-<p>There are a few settings: <span class="target" id="bioinfosettings">bioinfoSettings</span></p>
+</dd></dl>
+
+<blockquote id="bioinfosettings">
+<div><p>There are a few settings:</p>
 <ul class="simple">
 <li><p>defaultDelim: default delimiter used in-between columns when creating tables</p></li>
 <li><p>defaultIndent: default indent used for displaying nested structures</p></li>
@@ -689,8 +678,7 @@ it to the templateand yields</p>
 <li><p>strict: whether strict mode is on. Turning it on can help you debug stuff, but
 could also be a pain to work with</p></li>
 </ul>
-</dd></dl>
-
+</div></blockquote>
 <span class="target" id="module-k1lib.bioinfo.cli.init"></span><dl class="py function">
 <dt id="k1lib.bioinfo.cli.init.patchDefaultDelim">
 <code class="sig-prename descclassname"><span class="pre">k1lib.bioinfo.cli.init.</span></code><code class="sig-name descname"><span class="pre">patchDefaultDelim</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/bioinfo/cli/init.html#patchDefaultDelim"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.bioinfo.cli.init.patchDefaultDelim" title="Permalink to this definition">¶</a></dt>
@@ -745,7 +733,13 @@ could also be a pain to work with</p></li>
 <dl class="py method">
 <dt id="k1lib.bioinfo.cli.init.serial.__init__">
 <code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">clis</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#k1lib.bioinfo.cli.init.BaseCli" title="k1lib.bioinfo.cli.init.BaseCli"><span class="pre">k1lib.bioinfo.cli.init.BaseCli</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/bioinfo/cli/init.html#serial.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.bioinfo.cli.init.serial.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Merges clis into 1, feeding end to end</p>
+<dd><p>Merges clis into 1, feeding end to end. Used in chaining clis
+together without a prime iterator. Meaning, without this, stuff like this
+fails to run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">|</span> <span class="n">a</span><span class="p">()</span> <span class="o">|</span> <span class="n">b</span><span class="p">()</span> <span class="c1"># runs</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">a</span><span class="p">()</span> <span class="o">|</span> <span class="n">b</span><span class="p">();</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">|</span> <span class="n">c</span> <span class="c1"># doesn&#39;t run if this class doesn&#39;t exist</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py method">
@@ -762,8 +756,8 @@ could also be a pain to work with</p></li>
 <dl class="py method">
 <dt id="k1lib.bioinfo.cli.init.oneToMany.__init__">
 <code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">clis</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#k1lib.bioinfo.cli.init.BaseCli" title="k1lib.bioinfo.cli.init.BaseCli"><span class="pre">k1lib.bioinfo.cli.init.BaseCli</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/bioinfo/cli/init.html#oneToMany.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.bioinfo.cli.init.oneToMany.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Splits 1 stream into multiple streams, each for a cli
-in the list</p>
+<dd><p>Duplicates 1 stream into multiple streams, each for a cli in the
+list. Used in the “a &amp; b” joining operator</p>
 </dd></dl>
 
 <dl class="py method">
@@ -780,7 +774,8 @@ in the list</p>
 <dl class="py method">
 <dt id="k1lib.bioinfo.cli.init.manyToMany.__init__">
 <code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cli</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/bioinfo/cli/init.html#manyToMany.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.bioinfo.cli.init.manyToMany.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Applies multiple streams to a single cli</p>
+<dd><p>Applies multiple streams to a single cli. Used in the “a.all()”
+operator.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -790,13 +785,37 @@ in the list</p>
 
 </dd></dl>
 
+<dl class="py class">
+<dt id="k1lib.bioinfo.cli.init.manyToManySpecific">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">k1lib.bioinfo.cli.init.</span></code><code class="sig-name descname"><span class="pre">manyToManySpecific</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">clis</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#k1lib.bioinfo.cli.init.BaseCli" title="k1lib.bioinfo.cli.init.BaseCli"><span class="pre">k1lib.bioinfo.cli.init.BaseCli</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/bioinfo/cli/init.html#manyToManySpecific"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.bioinfo.cli.init.manyToManySpecific" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#k1lib.bioinfo.cli.init.BaseCli" title="k1lib.bioinfo.cli.init.BaseCli"><code class="xref py py-class docutils literal notranslate"><span class="pre">k1lib.bioinfo.cli.init.BaseCli</span></code></a></p>
+<dl class="py method">
+<dt id="k1lib.bioinfo.cli.init.manyToManySpecific.__init__">
+<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">clis</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#k1lib.bioinfo.cli.init.BaseCli" title="k1lib.bioinfo.cli.init.BaseCli"><span class="pre">k1lib.bioinfo.cli.init.BaseCli</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/bioinfo/cli/init.html#manyToManySpecific.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.bioinfo.cli.init.manyToManySpecific.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies multiple streams to multiple clis independently. Used in
+the “a + b” joining operator</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="k1lib.bioinfo.cli.init.manyToManySpecific.__ror__">
+<code class="sig-name descname"><span class="pre">__ror__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">its</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><a class="reference internal" href="../_modules/k1lib/bioinfo/cli/init.html#manyToManySpecific.__ror__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.bioinfo.cli.init.manyToManySpecific.__ror__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </div>
 <div class="section" id="module-k1lib.bioinfo.cli.input">
 <span id="input-module"></span><h3>input module<a class="headerlink" href="#module-k1lib.bioinfo.cli.input" title="Permalink to this headline">¶</a></h3>
 <dl class="py function">
 <dt id="k1lib.bioinfo.cli.input.cat">
-<code class="sig-prename descclassname"><span class="pre">k1lib.bioinfo.cli.input.</span></code><code class="sig-name descname"><span class="pre">cat</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fileName</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><a class="reference internal" href="../_modules/k1lib/bioinfo/cli/input.html#cat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.bioinfo.cli.input.cat" title="Permalink to this definition">¶</a></dt>
-<dd><p>Reads a file line by line</p>
+<code class="sig-prename descclassname"><span class="pre">k1lib.bioinfo.cli.input.</span></code><code class="sig-name descname"><span class="pre">cat</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fileName</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/bioinfo/cli/input.html#cat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.bioinfo.cli.input.cat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads a file line by line.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>fileName</strong> – if None, then return a <a class="reference internal" href="#k1lib.bioinfo.cli.init.BaseCli" title="k1lib.bioinfo.cli.init.BaseCli"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseCli</span></code></a>
+that accepts a file name and outputs Iterator[str]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py class">
@@ -1217,12 +1236,18 @@ found, then don’t search deeper</p>
 structure in a dramatic way. They’re the core transformations</p>
 <dl class="py class">
 <dt id="k1lib.bioinfo.cli.structural.joinColumns">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">k1lib.bioinfo.cli.structural.</span></code><code class="sig-name descname"><span class="pre">joinColumns</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">delim</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/bioinfo/cli/structural.html#joinColumns"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.bioinfo.cli.structural.joinColumns" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">k1lib.bioinfo.cli.structural.</span></code><code class="sig-name descname"><span class="pre">joinColumns</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">delim</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sep</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><span class="pre">bool</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/bioinfo/cli/structural.html#joinColumns"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.bioinfo.cli.structural.joinColumns" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#k1lib.bioinfo.cli.init.BaseCli" title="k1lib.bioinfo.cli.init.BaseCli"><code class="xref py py-class docutils literal notranslate"><span class="pre">k1lib.bioinfo.cli.init.BaseCli</span></code></a></p>
 <dl class="py method">
 <dt id="k1lib.bioinfo.cli.structural.joinColumns.__init__">
-<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">delim</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/bioinfo/cli/structural.html#joinColumns.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.bioinfo.cli.structural.joinColumns.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">delim</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sep</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><span class="pre">bool</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/bioinfo/cli/structural.html#joinColumns.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.bioinfo.cli.structural.joinColumns.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Join multiple columns and loop through all rows</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>sep</strong> – if True, don’t join row elements into a list, and keep them
+separate in a tuple</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -1394,6 +1419,66 @@ delim: specify delimiter between columns</p>
 
 </dd></dl>
 
+<dl class="py class">
+<dt id="k1lib.bioinfo.cli.structural.AA_">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">k1lib.bioinfo.cli.structural.</span></code><code class="sig-name descname"><span class="pre">AA_</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">idxs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wraps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/bioinfo/cli/structural.html#AA_"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.bioinfo.cli.structural.AA_" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#k1lib.bioinfo.cli.init.BaseCli" title="k1lib.bioinfo.cli.init.BaseCli"><code class="xref py py-class docutils literal notranslate"><span class="pre">k1lib.bioinfo.cli.init.BaseCli</span></code></a></p>
+<dl class="py method">
+<dt id="k1lib.bioinfo.cli.structural.AA_.__init__">
+<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">idxs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wraps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/bioinfo/cli/structural.html#AA_.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.bioinfo.cli.structural.AA_.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns 2 streams, one that has the selected element, and the other
+the rest. Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span> <span class="o">|</span> <span class="n">AA_</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># will return [5, [1, 6, 3, 7]]</span>
+</pre></div>
+</div>
+<p>You can also put multiple indexes through:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span> <span class="o">|</span> <span class="n">AA_</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="c1"># will return [[1, [5, 6]], [6, [1, 5]]]</span>
+</pre></div>
+</div>
+<p>If you put None in, then all indexes will be sliced:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span> <span class="o">|</span> <span class="n">AA_</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># will return:</span>
+<span class="c1"># [[1, [5, 6]],</span>
+<span class="c1">#  [5, [1, 6]],</span>
+<span class="c1">#  [6, [1, 5]]]</span>
+</pre></div>
+</div>
+<p>As for why the strange name, think of this operation as “AĀ”. In statistics,
+say you have a set “A”, then “not A” is commonly written as A with an overline
+“Ā”. So “AA_” represents “AĀ”, and that it first returns the selection A
+first.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>wraps</strong> – if True, then the first example will return [[5, [1, 6, 3, 7]]]
+instead, so that A has the same signature as Ā</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="k1lib.bioinfo.cli.structural.AA_.__ror__">
+<code class="sig-name descname"><span class="pre">__ror__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">it</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><a class="reference internal" href="../_modules/k1lib/bioinfo/cli/structural.html#AA_.__ror__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.bioinfo.cli.structural.AA_.__ror__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="k1lib.bioinfo.cli.structural.infinite">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">k1lib.bioinfo.cli.structural.</span></code><code class="sig-name descname"><span class="pre">infinite</span></code><a class="reference internal" href="../_modules/k1lib/bioinfo/cli/structural.html#infinite"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.bioinfo.cli.structural.infinite" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#k1lib.bioinfo.cli.init.BaseCli" title="k1lib.bioinfo.cli.init.BaseCli"><code class="xref py py-class docutils literal notranslate"><span class="pre">k1lib.bioinfo.cli.init.BaseCli</span></code></a></p>
+<p>Takes in a stream and yields an infinite amount of them. Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># returns [[1, 2, 3], [1, 2, 3], [1, 2, 3]]</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="o">|</span> <span class="n">infinite</span><span class="p">()</span> <span class="o">|</span> <span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">|</span> <span class="n">toList</span><span class="p">()</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt id="k1lib.bioinfo.cli.structural.infinite.__ror__">
+<code class="sig-name descname"><span class="pre">__ror__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">it</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><a class="reference internal" href="../_modules/k1lib/bioinfo/cli/structural.html#infinite.__ror__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.bioinfo.cli.structural.infinite.__ror__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </div>
 <div class="section" id="module-k1lib.bioinfo.cli.utils">
 <span id="utils-module"></span><h3>utils module<a class="headerlink" href="#module-k1lib.bioinfo.cli.utils" title="Permalink to this headline">¶</a></h3>
@@ -1455,8 +1540,8 @@ or columns</p>
 <dt id="k1lib.bioinfo.cli.utils.toInt">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">k1lib.bioinfo.cli.utils.</span></code><code class="sig-name descname"><span class="pre">toInt</span></code><a class="reference internal" href="../_modules/k1lib/bioinfo/cli/utils.html#toInt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.bioinfo.cli.utils.toInt" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#k1lib.bioinfo.cli.init.BaseCli" title="k1lib.bioinfo.cli.init.BaseCli"><code class="xref py py-class docutils literal notranslate"><span class="pre">k1lib.bioinfo.cli.init.BaseCli</span></code></a></p>
-<p>Converts every row into an integer. Excludes non numbers if not in strict
-mode (<a class="reference internal" href="#bioinfosettings">bioinfoSettings</a>).</p>
+<p>Converts every row into an integer. Excludes non numbers if not in
+<a class="reference internal" href="#bioinfosettings"><span class="std std-ref">strict mode</span></a>.</p>
 <dl class="py method">
 <dt id="k1lib.bioinfo.cli.utils.toInt.__ror__">
 <code class="sig-name descname"><span class="pre">__ror__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">it</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span><a class="reference internal" href="../_modules/k1lib/bioinfo/cli/utils.html#toInt.__ror__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.bioinfo.cli.utils.toInt.__ror__" title="Permalink to this definition">¶</a></dt>
@@ -1468,8 +1553,8 @@ mode (<a class="reference internal" href="#bioinfosettings">bioinfoSettings</a>)
 <dt id="k1lib.bioinfo.cli.utils.toFloat">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">k1lib.bioinfo.cli.utils.</span></code><code class="sig-name descname"><span class="pre">toFloat</span></code><a class="reference internal" href="../_modules/k1lib/bioinfo/cli/utils.html#toFloat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.bioinfo.cli.utils.toFloat" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#k1lib.bioinfo.cli.init.BaseCli" title="k1lib.bioinfo.cli.init.BaseCli"><code class="xref py py-class docutils literal notranslate"><span class="pre">k1lib.bioinfo.cli.init.BaseCli</span></code></a></p>
-<p>Converts every row into a float. Excludes non numbers if not in strict
-mode (<a class="reference internal" href="#bioinfosettings">bioinfoSettings</a>).</p>
+<p>Converts every row into a float. Excludes non numbers if not in
+<a class="reference internal" href="#bioinfosettings"><span class="std std-ref">strict mode</span></a>.</p>
 <dl class="py method">
 <dt id="k1lib.bioinfo.cli.utils.toFloat.__ror__">
 <code class="sig-name descname"><span class="pre">__ror__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">it</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><a class="reference internal" href="../_modules/k1lib/bioinfo/cli/utils.html#toFloat.__ror__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.bioinfo.cli.utils.toFloat.__ror__" title="Permalink to this definition">¶</a></dt>
@@ -1527,7 +1612,7 @@ mode (<a class="reference internal" href="#bioinfosettings">bioinfoSettings</a>)
 <dt id="k1lib.bioinfo.cli.utils.toList">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">k1lib.bioinfo.cli.utils.</span></code><code class="sig-name descname"><span class="pre">toList</span></code><a class="reference internal" href="../_modules/k1lib/bioinfo/cli/utils.html#toList"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.bioinfo.cli.utils.toList" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#k1lib.bioinfo.cli.init.BaseCli" title="k1lib.bioinfo.cli.init.BaseCli"><code class="xref py py-class docutils literal notranslate"><span class="pre">k1lib.bioinfo.cli.init.BaseCli</span></code></a></p>
-<p>Converts generator to list. <cite>list()</cite> would do the
+<p>Converts generator to list. <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a> would do the
 same, but this is just to maintain the style</p>
 <dl class="py method">
 <dt id="k1lib.bioinfo.cli.utils.toList.__ror__">
@@ -1544,6 +1629,19 @@ same, but this is just to maintain the style</p>
 <dl class="py method">
 <dt id="k1lib.bioinfo.cli.utils.wrapList.__ror__">
 <code class="sig-name descname"><span class="pre">__ror__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">it</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><a class="reference internal" href="../_modules/k1lib/bioinfo/cli/utils.html#wrapList.__ror__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.bioinfo.cli.utils.wrapList.__ror__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="k1lib.bioinfo.cli.utils.toSet">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">k1lib.bioinfo.cli.utils.</span></code><code class="sig-name descname"><span class="pre">toSet</span></code><a class="reference internal" href="../_modules/k1lib/bioinfo/cli/utils.html#toSet"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.bioinfo.cli.utils.toSet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#k1lib.bioinfo.cli.init.BaseCli" title="k1lib.bioinfo.cli.init.BaseCli"><code class="xref py py-class docutils literal notranslate"><span class="pre">k1lib.bioinfo.cli.init.BaseCli</span></code></a></p>
+<p>Converts generator to set. <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#set" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">set</span></code></a> would do the
+same, but this is just to maintain the style</p>
+<dl class="py method">
+<dt id="k1lib.bioinfo.cli.utils.toSet.__ror__">
+<code class="sig-name descname"><span class="pre">__ror__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">it</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Set</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><a class="reference internal" href="../_modules/k1lib/bioinfo/cli/utils.html#toSet.__ror__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.bioinfo.cli.utils.toSet.__ror__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -1624,7 +1722,25 @@ same, but this is just to maintain the style</p>
 <dl class="py function">
 <dt id="k1lib.bioinfo.cli.utils.headerIdx">
 <code class="sig-prename descclassname"><span class="pre">k1lib.bioinfo.cli.utils.</span></code><code class="sig-name descname"><span class="pre">headerIdx</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">delim</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/bioinfo/cli/utils.html#headerIdx"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.bioinfo.cli.utils.headerIdx" title="Permalink to this definition">¶</a></dt>
-<dd><p>Cuts out first line, put an index column next to it, and prints it out</p>
+<dd><p>Cuts out first line, put an index column next to it, and prints it
+out. Useful when you want to know what your column’s index is to cut it out.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="k1lib.bioinfo.cli.utils.dereference">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">k1lib.bioinfo.cli.utils.</span></code><code class="sig-name descname"><span class="pre">dereference</span></code><a class="reference internal" href="../_modules/k1lib/bioinfo/cli/utils.html#dereference"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.bioinfo.cli.utils.dereference" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#k1lib.bioinfo.cli.init.BaseCli" title="k1lib.bioinfo.cli.init.BaseCli"><code class="xref py py-class docutils literal notranslate"><span class="pre">k1lib.bioinfo.cli.init.BaseCli</span></code></a></p>
+<p>Recursively converts any iterator into a list. Only <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>,
+<a class="reference external" href="https://docs.python.org/3/library/numbers.html#numbers.Number" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numbers.Number</span></code></a> are not converted. Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">iter</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span> <span class="c1"># returns something like &quot;&lt;range_iterator at 0x7fa8c52ca870&gt;&quot;</span>
+<span class="nb">iter</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span> <span class="o">|</span> <span class="n">deference</span><span class="p">()</span> <span class="c1"># returns [0, 1, 2, 3, 4]</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt id="k1lib.bioinfo.cli.utils.dereference.__ror__">
+<code class="sig-name descname"><span class="pre">__ror__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">it</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><a class="reference internal" href="../_modules/k1lib/bioinfo/cli/utils.html#dereference.__ror__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.bioinfo.cli.utils.dereference.__ror__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 </div>

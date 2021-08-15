@@ -212,7 +212,11 @@ correct y <code class="docutils literal notranslate"><span class="pre">yb</span>
 <code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nll</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><span class="pre">bool</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">integrations</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><span class="pre">bool</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/callbacks/lossFunctions/shorts.html#LossNLLCross.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.callbacks.lossFunctions.shorts.LossNLLCross.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>integrations</strong> – Whether to integreate with <cite>Accuracy</cite> callback</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>nll</strong> – if True, then use <a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.NLLLoss.html#torch.nn.NLLLoss" title="(in PyTorch vmaster (1.10.0a0+gitfa0a4e5 ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.NLLLoss</span></code></a>, else use <a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.CrossEntropyLoss.html#torch.nn.CrossEntropyLoss" title="(in PyTorch vmaster (1.10.0a0+gitfa0a4e5 ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.CrossEntropyLoss</span></code></a></p></li>
+<li><p><strong>integrations</strong> – whether to integreate with
+<a class="reference internal" href="index.html#k1lib.callbacks.loss_accuracy.Accuracy" title="k1lib.callbacks.loss_accuracy.Accuracy"><code class="xref py py-class docutils literal notranslate"><span class="pre">Accuracy</span></code></a> callback</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
