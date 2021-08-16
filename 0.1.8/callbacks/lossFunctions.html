@@ -1,0 +1,283 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>lossFunctions package &mdash; k1lib 0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="profilers package" href="profilers.html" />
+    <link rel="prev" title="k1lib.callbacks package" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> k1lib
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../bioinfo/index.html">k1lib.bioinfo package</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">k1lib.callbacks package</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">lossFunctions package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-k1lib.callbacks.lossFunctions.shorts">shorts module</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="profilers.html">profilers package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#submodules">Submodules</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../data.html">k1lib.data module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eqn.html">k1lib.eqn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../format.html">k1lib.format module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../graphEqn.html">k1lib.graphEqn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../imports.html">k1lib.imports module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nn.html">k1lib.nn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../schedule.html">k1lib.schedule module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../selector.html">k1lib.selector module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../viz.html">k1lib.viz module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../website.html">k1lib.website module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../changelogs.html">Changelogs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../monkeyPatches.html">Monkey patched classes</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">k1lib</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">k1lib.callbacks package</a> &raquo;</li>
+        
+      <li>lossFunctions package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/callbacks/lossFunctions.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <span class="target" id="module-k1lib.callbacks.lossFunctions"></span><div class="section" id="lossfunctions-package">
+<h1>lossFunctions package<a class="headerlink" href="#lossfunctions-package" title="Permalink to this headline">¶</a></h1>
+<p>Package with a bunch of loss function callbacks. If you’re planning to write your
+own loss function classes, then you have to set l’s <code class="docutils literal notranslate"><span class="pre">loss</span></code> and <code class="docutils literal notranslate"><span class="pre">lossG</span></code> fields.
+<code class="docutils literal notranslate"><span class="pre">lossG</span></code> is the original loss, still attached to the graph (hence “G”). Then,
+<code class="docutils literal notranslate"><span class="pre">loss</span></code> is just <code class="docutils literal notranslate"><span class="pre">lossG.detach().item()</span></code>. This is so that other utilities can use
+a shared detached loss value, for performance reasons.</p>
+<div class="section" id="module-k1lib.callbacks.lossFunctions.shorts">
+<span id="shorts-module"></span><h2>shorts module<a class="headerlink" href="#module-k1lib.callbacks.lossFunctions.shorts" title="Permalink to this headline">¶</a></h2>
+<p>For not very complicated loss functions</p>
+<dl class="py class">
+<dt id="k1lib.callbacks.lossFunctions.shorts.LossLambda">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">k1lib.callbacks.lossFunctions.shorts.</span></code><code class="sig-name descname"><span class="pre">LossLambda</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lossF</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.10.0a0+gitb27b86a ))"><span class="pre">torch.Tensor</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.10.0a0+gitb27b86a ))"><span class="pre">torch.Tensor</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/callbacks/lossFunctions/shorts.html#LossLambda"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.callbacks.lossFunctions.shorts.LossLambda" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="index.html#k1lib.callbacks.callbacks.Callback" title="k1lib.callbacks.callbacks.Callback"><code class="xref py py-class docutils literal notranslate"><span class="pre">k1lib.callbacks.callbacks.Callback</span></code></a></p>
+<dl class="py method">
+<dt id="k1lib.callbacks.lossFunctions.shorts.LossLambda.__init__">
+<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lossF</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.10.0a0+gitb27b86a ))"><span class="pre">torch.Tensor</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.10.0a0+gitb27b86a ))"><span class="pre">torch.Tensor</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.9)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/callbacks/lossFunctions/shorts.html#LossLambda.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.callbacks.lossFunctions.shorts.LossLambda.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a generic loss function that takes in <code class="docutils literal notranslate"><span class="pre">y</span></code> and
+correct y <code class="docutils literal notranslate"><span class="pre">yb</span></code> and return a single loss float (still attached to graph).</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="k1lib.callbacks.lossFunctions.shorts.LossNLLCross">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">k1lib.callbacks.lossFunctions.shorts.</span></code><code class="sig-name descname"><span class="pre">LossNLLCross</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nll</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><span class="pre">bool</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">integrations</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><span class="pre">bool</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/callbacks/lossFunctions/shorts.html#LossNLLCross"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.callbacks.lossFunctions.shorts.LossNLLCross" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="index.html#k1lib.callbacks.callbacks.Callback" title="k1lib.callbacks.callbacks.Callback"><code class="xref py py-class docutils literal notranslate"><span class="pre">k1lib.callbacks.callbacks.Callback</span></code></a></p>
+<dl class="py method">
+<dt id="k1lib.callbacks.lossFunctions.shorts.LossNLLCross.__init__">
+<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nll</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><span class="pre">bool</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">integrations</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><span class="pre">bool</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/callbacks/lossFunctions/shorts.html#LossNLLCross.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.callbacks.lossFunctions.shorts.LossNLLCross.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>nll</strong> – if True, then use <a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.NLLLoss.html#torch.nn.NLLLoss" title="(in PyTorch vmaster (1.10.0a0+gitb27b86a ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.NLLLoss</span></code></a>, else use <a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.CrossEntropyLoss.html#torch.nn.CrossEntropyLoss" title="(in PyTorch vmaster (1.10.0a0+gitb27b86a ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.CrossEntropyLoss</span></code></a></p></li>
+<li><p><strong>integrations</strong> – whether to integrate with
+<a class="reference internal" href="index.html#k1lib.callbacks.loss_accuracy.Accuracy" title="k1lib.callbacks.loss_accuracy.Accuracy"><code class="xref py py-class docutils literal notranslate"><span class="pre">Accuracy</span></code></a> callback</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="k1lib.callbacks.lossFunctions.shorts.LossNLLCross.detach">
+<code class="sig-name descname"><span class="pre">detach</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/callbacks/lossFunctions/shorts.html#LossNLLCross.detach"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.callbacks.lossFunctions.shorts.LossNLLCross.detach" title="Permalink to this definition">¶</a></dt>
+<dd><p>Detaches from the parent <code class="xref py py-class docutils literal notranslate"><span class="pre">Callbacks</span></code></p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="profilers.html" class="btn btn-neutral float-right" title="profilers package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="k1lib.callbacks package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Quang Ho.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
