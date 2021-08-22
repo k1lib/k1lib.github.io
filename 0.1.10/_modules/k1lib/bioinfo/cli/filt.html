@@ -1,0 +1,415 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>k1lib.bioinfo.cli.filt &mdash; k1lib 0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> k1lib
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bioinfo/index.html">k1lib.bioinfo package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../callbacks/index.html">k1lib.callbacks package</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../data.html">k1lib.data module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../eqn.html">k1lib.eqn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../format.html">k1lib.format module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../graphEqn.html">k1lib.graphEqn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../imports.html">k1lib.imports module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../nn.html">k1lib.nn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../schedule.html">k1lib.schedule module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../selector.html">k1lib.selector module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../viz.html">k1lib.viz module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../website.html">k1lib.website module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../changelogs.html">Changelogs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../monkeyPatches.html">Monkey patched classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials.html">Tutorials</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">k1lib</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+        
+      <li>k1lib.bioinfo.cli.filt</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for k1lib.bioinfo.cli.filt</h1><div class="highlight"><pre>
+<span></span><span class="c1"># AUTOGENERATED FILE! PLEASE DON&#39;T EDIT</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">This is for functions that cuts out specific parts of the table</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">overload</span><span class="p">,</span> <span class="n">Iterator</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Set</span>
+<span class="kn">from</span> <span class="nn">k1lib.bioinfo.cli.init</span> <span class="kn">import</span> <span class="n">BaseCli</span><span class="p">,</span> <span class="n">settings</span><span class="p">,</span> <span class="n">Table</span><span class="p">,</span> <span class="n">T</span>
+<span class="kn">import</span> <span class="nn">k1lib.bioinfo.cli</span> <span class="k">as</span> <span class="nn">cli</span>
+<span class="kn">import</span> <span class="nn">k1lib</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">deque</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;filt&quot;</span><span class="p">,</span> <span class="s2">&quot;isValue&quot;</span><span class="p">,</span> <span class="s2">&quot;inSet&quot;</span><span class="p">,</span> <span class="s2">&quot;contains&quot;</span><span class="p">,</span> <span class="s2">&quot;nonEmptyStream&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;startswith&quot;</span><span class="p">,</span> <span class="s2">&quot;endswith&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;isNumeric&quot;</span><span class="p">,</span> <span class="s2">&quot;inRange&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;head&quot;</span><span class="p">,</span> <span class="s2">&quot;columns&quot;</span><span class="p">,</span> <span class="s2">&quot;cut&quot;</span><span class="p">,</span> <span class="s2">&quot;rows&quot;</span><span class="p">,</span> <span class="s2">&quot;intersection&quot;</span><span class="p">]</span>
+<div class="viewcode-block" id="filt"><a class="viewcode-back" href="../../../../bioinfo/cli.html#k1lib.bioinfo.cli.filt.filt">[docs]</a><span class="k">class</span> <span class="nc">filt</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
+<div class="viewcode-block" id="filt.__init__"><a class="viewcode-back" href="../../../../bioinfo/cli.html#k1lib.bioinfo.cli.filt.filt.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">predicate</span><span class="p">:</span><span class="n">Callable</span><span class="p">[[</span><span class="nb">str</span><span class="p">],</span> <span class="nb">bool</span><span class="p">],</span> <span class="n">column</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Filters out lines.</span>
+
+<span class="sd">:param column:</span>
+<span class="sd">    - if integer, then predicate(row[column])</span>
+<span class="sd">    - if None, then predicate(line)&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">predicate</span> <span class="o">=</span> <span class="n">predicate</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">column</span> <span class="o">=</span> <span class="n">column</span></div>
+<div class="viewcode-block" id="filt.__ror__"><a class="viewcode-back" href="../../../../bioinfo/cli.html#k1lib.bioinfo.cli.filt.filt.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">:</span><span class="n">Iterator</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">predicate</span><span class="p">;</span> <span class="n">c</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">column</span>
+        <span class="k">if</span> <span class="n">c</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="k">yield from</span> <span class="p">(</span><span class="n">l</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">it</span> <span class="k">if</span> <span class="n">p</span><span class="p">(</span><span class="n">l</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">es</span> <span class="ow">in</span> <span class="n">it</span><span class="p">:</span>
+                <span class="n">es</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">es</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">c</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">es</span><span class="p">)</span> <span class="ow">and</span> <span class="n">p</span><span class="p">(</span><span class="n">es</span><span class="p">[</span><span class="n">c</span><span class="p">]):</span> <span class="k">yield</span> <span class="n">es</span></div>
+<div class="viewcode-block" id="filt.__invert__"><a class="viewcode-back" href="../../../../bioinfo/cli.html#k1lib.bioinfo.cli.filt.filt.__invert__">[docs]</a>    <span class="k">def</span> <span class="fm">__invert__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Negate the condition&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">filt</span><span class="p">(</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">predicate</span><span class="p">(</span><span class="n">s</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">column</span><span class="p">)</span></div></div>
+<div class="viewcode-block" id="isValue"><a class="viewcode-back" href="../../../../bioinfo/cli.html#k1lib.bioinfo.cli.filt.isValue">[docs]</a><span class="k">def</span> <span class="nf">isValue</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">column</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Filters out lines that is different from the given value&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">filt</span><span class="p">(</span><span class="k">lambda</span> <span class="n">l</span><span class="p">:</span> <span class="n">l</span> <span class="o">==</span> <span class="n">value</span><span class="p">,</span> <span class="n">column</span><span class="p">)</span></div>
+<div class="viewcode-block" id="inSet"><a class="viewcode-back" href="../../../../bioinfo/cli.html#k1lib.bioinfo.cli.filt.inSet">[docs]</a><span class="k">def</span> <span class="nf">inSet</span><span class="p">(</span><span class="n">values</span><span class="p">:</span><span class="n">Set</span><span class="p">[</span><span class="n">Any</span><span class="p">],</span> <span class="n">column</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Filters out lines that is not in the specified set&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">filt</span><span class="p">(</span><span class="k">lambda</span> <span class="n">l</span><span class="p">:</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">values</span><span class="p">,</span> <span class="n">column</span><span class="p">)</span></div>
+<div class="viewcode-block" id="contains"><a class="viewcode-back" href="../../../../bioinfo/cli.html#k1lib.bioinfo.cli.filt.contains">[docs]</a><span class="k">def</span> <span class="nf">contains</span><span class="p">(</span><span class="n">s</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">column</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Filters out lines that don&#39;t contain the specified substring&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">filt</span><span class="p">(</span><span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">e</span><span class="p">,</span> <span class="n">column</span><span class="p">)</span></div>
+<div class="viewcode-block" id="nonEmptyStream"><a class="viewcode-back" href="../../../../bioinfo/cli.html#k1lib.bioinfo.cli.filt.nonEmptyStream">[docs]</a><span class="k">class</span> <span class="nc">nonEmptyStream</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Filters out streams that have no rows&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="nonEmptyStream.__ror__"><a class="viewcode-back" href="../../../../bioinfo/cli.html#k1lib.bioinfo.cli.filt.nonEmptyStream.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">streams</span><span class="p">:</span><span class="n">Iterator</span><span class="p">[</span><span class="n">Iterator</span><span class="p">[</span><span class="n">Any</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">Iterator</span><span class="p">[</span><span class="n">Any</span><span class="p">]]:</span>
+        <span class="k">for</span> <span class="n">stream</span> <span class="ow">in</span> <span class="n">streams</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">it</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">stream</span><span class="p">);</span> <span class="n">firstValue</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">it</span><span class="p">)</span>
+                <span class="k">def</span> <span class="nf">newGen</span><span class="p">():</span> <span class="k">yield</span> <span class="n">firstValue</span><span class="p">;</span> <span class="k">yield from</span> <span class="n">it</span>
+                <span class="k">yield</span> <span class="n">newGen</span><span class="p">()</span>
+            <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span> <span class="k">pass</span></div></div>
+<div class="viewcode-block" id="startswith"><a class="viewcode-back" href="../../../../bioinfo/cli.html#k1lib.bioinfo.cli.filt.startswith">[docs]</a><span class="k">def</span> <span class="nf">startswith</span><span class="p">(</span><span class="n">s</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">column</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Filters out lines that don&#39;t start with `s`&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">filt</span><span class="p">(</span><span class="k">lambda</span> <span class="n">l</span><span class="p">:</span> <span class="n">l</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">s</span><span class="p">),</span> <span class="n">column</span><span class="p">)</span></div>
+<div class="viewcode-block" id="endswith"><a class="viewcode-back" href="../../../../bioinfo/cli.html#k1lib.bioinfo.cli.filt.endswith">[docs]</a><span class="k">def</span> <span class="nf">endswith</span><span class="p">(</span><span class="n">s</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">column</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Filters out lines that don&#39;t end with `s`&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">filt</span><span class="p">(</span><span class="k">lambda</span> <span class="n">l</span><span class="p">:</span> <span class="n">l</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="n">s</span><span class="p">),</span> <span class="n">column</span><span class="p">)</span></div>
+<div class="viewcode-block" id="isNumeric"><a class="viewcode-back" href="../../../../bioinfo/cli.html#k1lib.bioinfo.cli.filt.isNumeric">[docs]</a><span class="k">def</span> <span class="nf">isNumeric</span><span class="p">(</span><span class="n">column</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Filters out a line if that column is not a number&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">v</span><span class="p">);</span> <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span> <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="n">filt</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">column</span><span class="p">)</span></div>
+<div class="viewcode-block" id="inRange"><a class="viewcode-back" href="../../../../bioinfo/cli.html#k1lib.bioinfo.cli.filt.inRange">[docs]</a><span class="k">def</span> <span class="nf">inRange</span><span class="p">(</span><span class="nb">min</span><span class="p">:</span><span class="nb">float</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="nb">max</span><span class="p">:</span><span class="nb">float</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">column</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Checks whether a column is in range or not&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">min</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">min</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s2">&quot;-inf&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">max</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="nb">max</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s2">&quot;inf&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">filt</span><span class="p">(</span><span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="n">e</span> <span class="o">&gt;=</span> <span class="nb">min</span> <span class="ow">and</span> <span class="n">e</span> <span class="o">&lt;</span> <span class="nb">max</span><span class="p">,</span> <span class="n">column</span><span class="p">)</span></div>
+<div class="viewcode-block" id="head"><a class="viewcode-back" href="../../../../bioinfo/cli.html#k1lib.bioinfo.cli.filt.head">[docs]</a><span class="k">class</span> <span class="nc">head</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
+<div class="viewcode-block" id="head.__init__"><a class="viewcode-back" href="../../../../bioinfo/cli.html#k1lib.bioinfo.cli.filt.head.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Only outputs first ``n`` lines. You can also negate it (like</span>
+<span class="sd">``~head(5)``), which then only outputs after first ``n`` lines. Examples::</span>
+
+<span class="sd">    &quot;abcde&quot; | head(2) | dereference() # returns [&quot;a&quot;, &quot;b&quot;]</span>
+<span class="sd">    &quot;abcde&quot; | ~head(2) | dereference() # returns [&quot;c&quot;, &quot;d&quot;, &quot;e&quot;]</span>
+<span class="sd">    &quot;0123456&quot; | head(-3) | dereference() # returns [&#39;0&#39;, &#39;1&#39;, &#39;2&#39;, &#39;3&#39;]</span>
+<span class="sd">    &quot;0123456&quot; | ~head(-3) | dereference() # returns [&#39;4&#39;, &#39;5&#39;, &#39;6&#39;]&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">=</span> <span class="n">n</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">inverted</span> <span class="o">=</span> <span class="kc">False</span></div>
+<div class="viewcode-block" id="head.__ror__"><a class="viewcode-back" href="../../../../bioinfo/cli.html#k1lib.bioinfo.cli.filt.head.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">:</span><span class="n">Iterator</span><span class="p">[</span><span class="n">T</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">T</span><span class="p">]:</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">n</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">inverted</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">it</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="n">n</span><span class="p">:</span> <span class="k">return</span>
+                    <span class="k">yield</span> <span class="n">line</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">it</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">:</span> <span class="k">continue</span>
+                    <span class="k">yield</span> <span class="n">line</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">n</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">n</span><span class="p">);</span> <span class="n">queue</span> <span class="o">=</span> <span class="n">deque</span><span class="p">()</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">inverted</span><span class="p">:</span> <span class="c1"># head to -3</span>
+                <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">it</span><span class="p">:</span>
+                    <span class="n">queue</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">queue</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">n</span><span class="p">:</span> <span class="k">yield</span> <span class="n">queue</span><span class="o">.</span><span class="n">popleft</span><span class="p">()</span>
+            <span class="k">else</span><span class="p">:</span> <span class="c1"># -3 to end</span>
+                <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">it</span><span class="p">:</span>
+                    <span class="n">queue</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">queue</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">n</span><span class="p">:</span> <span class="n">queue</span><span class="o">.</span><span class="n">popleft</span><span class="p">()</span>
+                <span class="k">yield from</span> <span class="n">queue</span></div>
+<div class="viewcode-block" id="head.__invert__"><a class="viewcode-back" href="../../../../bioinfo/cli.html#k1lib.bioinfo.cli.filt.head.__invert__">[docs]</a>    <span class="k">def</span> <span class="fm">__invert__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="n">inverted</span> <span class="o">=</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">inverted</span><span class="p">;</span> <span class="k">return</span> <span class="bp">self</span></div></div>
+<span class="k">class</span> <span class="nc">rowsList</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Space-expensive implementation for :class:`rows`, without a lot of</span>
+<span class="sd">flexibility. Just used for slices with negative start/stop really. Don&#39;t use</span>
+<span class="sd">this directly, use :class:`rows` instead&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_slice</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_slice</span> <span class="o">=</span> <span class="n">_slice</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">inverted</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">:</span><span class="n">Iterator</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
+        <span class="n">it</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">it</span><span class="p">);</span> <span class="n">full</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">it</span><span class="p">))</span>
+        <span class="n">rows</span> <span class="o">=</span> <span class="n">full</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_slice</span><span class="p">]</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">inverted</span><span class="p">:</span> <span class="n">rows</span> <span class="o">=</span> <span class="p">[</span><span class="n">e</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">full</span> <span class="k">if</span> <span class="n">e</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">:</span> <span class="k">yield</span> <span class="n">it</span><span class="p">[</span><span class="n">row</span><span class="p">]</span>
+    <span class="k">def</span> <span class="fm">__invert__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="n">inverted</span> <span class="o">=</span> <span class="kc">True</span><span class="p">;</span> <span class="k">return</span> <span class="bp">self</span>
+<div class="viewcode-block" id="rows"><a class="viewcode-back" href="../../../../bioinfo/cli.html#k1lib.bioinfo.cli.filt.rows">[docs]</a><span class="k">class</span> <span class="nc">rows</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
+<div class="viewcode-block" id="rows.__init__"><a class="viewcode-back" href="../../../../bioinfo/cli.html#k1lib.bioinfo.cli.filt.rows.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">rows</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]):</span>
+        <span class="sd">&quot;&quot;&quot;Cuts out specific rows. Space complexity O(1) as a list is not</span>
+<span class="sd">constructed (unless you&#39;re using some really weird slices).</span>
+
+<span class="sd">:param rows: ints for the row indices</span>
+
+<span class="sd">Example::</span>
+
+<span class="sd">    &quot;0123456789&quot; | rows(2) | dereference() # returns [&quot;2&quot;]</span>
+<span class="sd">    &quot;0123456789&quot; | rows(5, 8) | dereference() # returns [&quot;5&quot;, &quot;8&quot;]</span>
+<span class="sd">    &quot;0123456789&quot; | rows()[2:5] | dereference() # returns [&quot;2&quot;, &quot;3&quot;, &quot;4&quot;]</span>
+<span class="sd">    &quot;0123456789&quot; | ~rows()[2:5] | dereference() # returns [&quot;0&quot;, &quot;1&quot;, &quot;5&quot;, &quot;6&quot;, &quot;7&quot;, &quot;8&quot;, &quot;9&quot;]</span>
+<span class="sd">    &quot;0123456789&quot; | ~rows()[:7:2] | dereference() # returns [&#39;1&#39;, &#39;3&#39;, &#39;5&#39;, &#39;7&#39;, &#39;8&#39;, &#39;9&#39;]</span>
+<span class="sd">    &quot;0123456789&quot; | rows()[:-4] | dereference() # returns [&#39;0&#39;, &#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;4&#39;, &#39;5&#39;]</span>
+<span class="sd">    &quot;0123456789&quot; | ~rows()[:-4] | dereference() # returns [&#39;6&#39;, &#39;7&#39;, &#39;8&#39;, &#39;9&#39;]&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">rows</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">slice</span><span class="p">):</span>
+            <span class="n">s</span> <span class="o">=</span> <span class="n">rows</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">start</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">start</span> <span class="k">if</span> <span class="n">s</span><span class="o">.</span><span class="n">start</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="nb">float</span><span class="p">(</span><span class="s2">&quot;-inf&quot;</span><span class="p">)</span>
+            <span class="n">stop</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">stop</span> <span class="k">if</span> <span class="n">s</span><span class="o">.</span><span class="n">stop</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="nb">float</span><span class="p">(</span><span class="s2">&quot;inf&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">domain</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">Domain</span><span class="p">([</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">])</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">every</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">step</span> <span class="ow">or</span> <span class="mi">1</span> <span class="c1"># only used for slices really</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">domain</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">Domain</span><span class="o">.</span><span class="n">fromInts</span><span class="p">(</span><span class="o">*</span><span class="n">rows</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">every</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">inverted</span> <span class="o">=</span> <span class="kc">False</span></div>
+    <span class="k">def</span> <span class="nf">_every</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">every</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="n">every</span> <span class="o">=</span> <span class="n">every</span><span class="p">;</span> <span class="k">return</span> <span class="bp">self</span>
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_slice</span><span class="p">):</span>
+        <span class="n">s1</span><span class="p">,</span> <span class="n">s2</span> <span class="o">=</span> <span class="n">_slice</span><span class="o">.</span><span class="n">start</span><span class="p">,</span> <span class="n">_slice</span><span class="o">.</span><span class="n">stop</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="n">_slice</span><span class="o">.</span><span class="n">start</span> <span class="ow">or</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">;</span> <span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="n">_slice</span><span class="o">.</span><span class="n">stop</span> <span class="ow">or</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="p">(</span><span class="n">_slice</span><span class="o">.</span><span class="n">step</span> <span class="ow">or</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">a</span> <span class="ow">or</span> <span class="n">b</span><span class="p">:</span> <span class="c1"># at least 1 is negative</span>
+            <span class="k">if</span> <span class="n">c</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">b</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">s1</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="k">return</span> <span class="n">head</span><span class="p">(</span><span class="n">s2</span><span class="p">)</span> <span class="c1"># [None, -3]</span>
+                    <span class="k">else</span><span class="p">:</span> <span class="k">return</span> <span class="o">~</span><span class="n">head</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span> <span class="o">|</span> <span class="n">head</span><span class="p">(</span><span class="n">s2</span><span class="p">)</span> <span class="c1"># [5, -3]</span>
+                <span class="k">if</span> <span class="n">a</span> <span class="ow">and</span> <span class="n">s2</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="k">return</span> <span class="o">~</span><span class="n">head</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span> <span class="c1"># [-3, None]</span>
+                <span class="c1"># else case is [-10, 6], which is weird, so just stick to the long one</span>
+            <span class="k">return</span> <span class="n">rowsList</span><span class="p">(</span><span class="n">_slice</span><span class="p">)</span> <span class="c1"># worst case scenario</span>
+        <span class="n">answer</span> <span class="o">=</span> <span class="n">rows</span><span class="p">(</span><span class="n">_slice</span><span class="p">);</span> <span class="n">answer</span><span class="o">.</span><span class="n">inverted</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">inverted</span><span class="p">;</span> <span class="k">return</span> <span class="n">answer</span>
+<div class="viewcode-block" id="rows.__invert__"><a class="viewcode-back" href="../../../../bioinfo/cli.html#k1lib.bioinfo.cli.filt.rows.__invert__">[docs]</a>    <span class="k">def</span> <span class="fm">__invert__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="n">inverted</span> <span class="o">=</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">inverted</span><span class="p">;</span> <span class="k">return</span> <span class="bp">self</span></div>
+<div class="viewcode-block" id="rows.__ror__"><a class="viewcode-back" href="../../../../bioinfo/cli.html#k1lib.bioinfo.cli.filt.rows.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">:</span><span class="n">Iterator</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
+        <span class="n">true</span><span class="p">,</span> <span class="n">false</span> <span class="o">=</span> <span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">inverted</span> <span class="k">else</span> <span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+        <span class="k">def</span> <span class="nf">gates</span><span class="p">():</span>
+            <span class="n">gate</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">domain</span><span class="o">.</span><span class="n">intIter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">every</span><span class="p">);</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">gate</span><span class="p">:</span>
+                <span class="k">while</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">i</span><span class="p">:</span> <span class="k">yield</span> <span class="n">false</span><span class="p">;</span> <span class="n">x</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="k">yield</span> <span class="n">true</span><span class="p">;</span> <span class="n">x</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">while</span> <span class="kc">True</span><span class="p">:</span> <span class="k">yield</span> <span class="n">false</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">row</span> <span class="k">for</span> <span class="n">gate</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">gates</span><span class="p">(),</span> <span class="n">it</span><span class="p">)</span> <span class="k">if</span> <span class="n">gate</span><span class="p">)</span></div></div>
+<div class="viewcode-block" id="columns"><a class="viewcode-back" href="../../../../bioinfo/cli.html#k1lib.bioinfo.cli.filt.columns">[docs]</a><span class="k">class</span> <span class="nc">columns</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
+<div class="viewcode-block" id="columns.__init__"><a class="viewcode-back" href="../../../../bioinfo/cli.html#k1lib.bioinfo.cli.filt.columns.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">columns</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]):</span>
+        <span class="sd">&quot;&quot;&quot;Cuts out specific columns, sliceable. Examples::</span>
+
+<span class="sd">    [&quot;0123456789&quot;] | cut(5, 8) | dereference() # returns [[&#39;5&#39;, &#39;8&#39;]]</span>
+<span class="sd">    [&quot;0123456789&quot;] | cut(2) | dereference() # returns [&#39;2&#39;]</span>
+<span class="sd">    [&quot;0123456789&quot;] | cut(5, 8) | dereference() # returns [[&#39;5&#39;, &#39;8&#39;]]</span>
+<span class="sd">    [&quot;0123456789&quot;] | ~cut()[:7:2] | dereference() # returns [[&#39;1&#39;, &#39;3&#39;, &#39;5&#39;, &#39;7&#39;, &#39;8&#39;, &#39;9&#39;]]</span>
+
+<span class="sd">If you&#39;re selecting only 1 column, then Iterator[T] will be returned, not</span>
+<span class="sd">Table[T].&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">columns</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">columns</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">slice</span><span class="p">):</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">columns</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">columns</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">inverted</span> <span class="o">=</span> <span class="kc">False</span></div>
+<div class="viewcode-block" id="columns.__ror__"><a class="viewcode-back" href="../../../../bioinfo/cli.html#k1lib.bioinfo.cli.filt.columns.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">:</span><span class="n">Table</span><span class="p">[</span><span class="n">T</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Table</span><span class="p">[</span><span class="n">T</span><span class="p">]:</span>
+        <span class="n">columns</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">columns</span><span class="p">;</span> <span class="n">it</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">it</span><span class="p">);</span> <span class="n">row</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">row</span><span class="p">,</span> <span class="n">it</span> <span class="o">=</span> <span class="n">it</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">sample</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">row</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="k">return</span> <span class="nb">iter</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+        <span class="n">row</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">row</span><span class="p">);</span> <span class="n">rs</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">row</span><span class="p">))</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">columns</span><span class="p">,</span> <span class="nb">slice</span><span class="p">):</span> <span class="n">columns</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">rs</span><span class="p">[</span><span class="n">columns</span><span class="p">])</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">inverted</span><span class="p">:</span> <span class="n">columns</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">e</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">rs</span> <span class="k">if</span> <span class="n">e</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">columns</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">columns</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span> <span class="n">c</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">columns</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span> <span class="k">return</span> <span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">it</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span> <span class="k">return</span> <span class="p">((</span><span class="n">e</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">e</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="k">if</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">columns</span><span class="p">)</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">it</span><span class="p">)</span></div>
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
+        <span class="n">answer</span> <span class="o">=</span> <span class="n">columns</span><span class="p">(</span><span class="n">idx</span><span class="p">);</span> <span class="n">answer</span><span class="o">.</span><span class="n">inverted</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">inverted</span><span class="p">;</span> <span class="k">return</span> <span class="n">answer</span>
+<div class="viewcode-block" id="columns.__invert__"><a class="viewcode-back" href="../../../../bioinfo/cli.html#k1lib.bioinfo.cli.filt.columns.__invert__">[docs]</a>    <span class="k">def</span> <span class="fm">__invert__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="n">inverted</span> <span class="o">=</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">inverted</span><span class="p">;</span> <span class="k">return</span> <span class="bp">self</span></div></div>
+<span class="n">cut</span> <span class="o">=</span> <span class="n">columns</span>
+<div class="viewcode-block" id="intersection"><a class="viewcode-back" href="../../../../bioinfo/cli.html#k1lib.bioinfo.cli.filt.intersection">[docs]</a><span class="k">class</span> <span class="nc">intersection</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns the intersection of multiple streams. Example::</span>
+
+<span class="sd">    [[1, 2, 3, 4, 5], [7, 2, 4, 6, 5]] | intersection() # will return set([2, 4, 5])</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="intersection.__ror__"><a class="viewcode-back" href="../../../../bioinfo/cli.html#k1lib.bioinfo.cli.filt.intersection.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">its</span><span class="p">:</span><span class="n">Iterator</span><span class="p">[</span><span class="n">Iterator</span><span class="p">[</span><span class="n">Any</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="n">Set</span><span class="p">[</span><span class="n">Any</span><span class="p">]:</span>
+        <span class="n">answer</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">for</span> <span class="n">it</span> <span class="ow">in</span> <span class="n">its</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">answer</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="n">answer</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">it</span><span class="p">);</span> <span class="k">continue</span>
+            <span class="n">answer</span> <span class="o">=</span> <span class="n">answer</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">it</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">answer</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Quang Ho.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
