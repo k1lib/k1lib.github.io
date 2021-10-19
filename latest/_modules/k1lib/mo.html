@@ -1,0 +1,700 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>k1lib.mo &mdash; k1lib 0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> k1lib
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../bioinfo/index.html">k1lib.bioinfo package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../callbacks/index.html">k1lib.callbacks package</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../data.html">k1lib.data module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../eqn.html">k1lib.eqn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../format.html">k1lib.format module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../graphEqn.html">k1lib.graphEqn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../imports.html">k1lib.imports module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mo.html">k1lib.mo module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../nn.html">k1lib.nn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../schedule.html">k1lib.schedule module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../selector.html">k1lib.selector module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../viz.html">k1lib.viz module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../website.html">k1lib.website module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../changelogs.html">Changelogs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../monkeyPatches.html">Monkey patched classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials.html">Tutorials</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">k1lib</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>k1lib.mo</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for k1lib.mo</h1><div class="highlight"><pre>
+<span></span><span class="c1"># AUTOGENERATED FILE! PLEASE DON&#39;T EDIT</span>
+<span class="sd">&quot;&quot;&quot;This module is for all things related to atoms, molecules and their simulations&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">k1lib</span><span class="o">,</span> <span class="nn">torch</span><span class="o">,</span> <span class="nn">math</span><span class="o">,</span> <span class="nn">re</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Union</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span><span class="p">;</span> <span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+<span class="n">settings</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;overOctet&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">}</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Atom&quot;</span><span class="p">,</span> <span class="s2">&quot;System&quot;</span><span class="p">,</span> <span class="s2">&quot;substances&quot;</span><span class="p">,</span> <span class="s2">&quot;alkane&quot;</span><span class="p">,</span> <span class="s2">&quot;endChain&quot;</span><span class="p">,</span> <span class="s2">&quot;alcohol&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;parse&quot;</span><span class="p">,</span> <span class="s2">&quot;sameEmpirical&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;settings&quot;</span><span class="p">,</span> <span class="s2">&quot;NoFreeElectrons&quot;</span><span class="p">,</span> <span class="s2">&quot;OctetFull&quot;</span><span class="p">]</span>
+<div class="viewcode-block" id="NoFreeElectrons"><a class="viewcode-back" href="../../mo.html#k1lib.mo.NoFreeElectrons">[docs]</a><span class="k">class</span> <span class="nc">NoFreeElectrons</span><span class="p">(</span><span class="ne">RuntimeError</span><span class="p">):</span> <span class="k">pass</span></div>
+<div class="viewcode-block" id="OctetFull"><a class="viewcode-back" href="../../mo.html#k1lib.mo.OctetFull">[docs]</a><span class="k">class</span> <span class="nc">OctetFull</span><span class="p">(</span><span class="ne">RuntimeError</span><span class="p">):</span> <span class="k">pass</span></div>
+<span class="c1"># if Atom&#39;s gDepth is smaller than this, then it means that it has not been visited</span>
+<span class="n">_depthAuto</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">AutoIncrement</span><span class="p">()</span>
+<span class="n">_idxAuto</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">AutoIncrement</span><span class="p">()</span>
+<div class="viewcode-block" id="Atom"><a class="viewcode-back" href="../../mo.html#k1lib.mo.Atom">[docs]</a><span class="k">class</span> <span class="nc">Atom</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Just an atom really. Has properties, can bond to other atoms, and can</span>
+<span class="sd">generate a :class:`System` for simulation.&quot;&quot;&quot;</span>
+
+    <span class="n">bonds</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="s2">&quot;Atom&quot;</span><span class="p">]</span>
+    <span class="sd">&quot;&quot;&quot;List of Atoms bonded to this Atom&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="Atom.__init__"><a class="viewcode-back" href="../../mo.html#k1lib.mo.Atom.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">atomicN</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">massN</span><span class="p">:</span><span class="nb">float</span><span class="p">,</span> <span class="n">valenceE</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">radius</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span><span class="o">=</span><span class="p">[],</span> <span class="n">octetE</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">8</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Creates a new atom. Not intended to be used by the end user. If you</span>
+<span class="sd">wish to get a new atom, just do stuff like this::</span>
+
+<span class="sd">    c1 = mo.C</span>
+<span class="sd">    c2 = mo.C</span>
+<span class="sd">    c1 == c2 # returns False, demonstrating that these are different atoms</span>
+
+<span class="sd">If you wish to register new substances with the module, you can do this::</span>
+
+<span class="sd">    genF = lambda: Atom(...)</span>
+<span class="sd">    mo.registerSubstance(&quot;elementName&quot;, genF)</span>
+<span class="sd">    mo.elementName # should executes `genF` and returns</span>
+
+<span class="sd">:param name: element name (eg. &quot;C&quot;)</span>
+<span class="sd">:param atomicN: atomic number (eg. 6)</span>
+<span class="sd">:param massN: atomic mass in g/mol (eg. 12)</span>
+<span class="sd">:param valenceE: how many valence electrons initially?</span>
+<span class="sd">:param radius: covalent radiuses (in pm) for single, double and triple bonds</span>
+<span class="sd">:param octetE: how many electrons in a full octet? Default 8, but can be 2 for H and He&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">atomicN</span> <span class="o">=</span> <span class="n">atomicN</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">massN</span> <span class="o">=</span> <span class="n">massN</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ogValenceE</span> <span class="o">=</span> <span class="n">valenceE</span> <span class="c1"># original</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">valenceE</span> <span class="o">=</span> <span class="n">valenceE</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">octetE</span> <span class="o">=</span> <span class="n">octetE</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">radius</span> <span class="o">=</span> <span class="n">radius</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bonds</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># list of Atoms this Atom is bonded to</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gDepth</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="c1"># graph depth, for graph traversal stuff. Values will be updated from _depthAuto</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">idx</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;A</span><span class="si">{</span><span class="n">_idxAuto</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span> <span class="c1"># unique value for Atoms everywhere</span>
+        <span class="c1"># contracts:</span>
+        <span class="c1"># - valenceE = eClouds * 2 + freeE + len(bonds) * 2</span>
+        <span class="c1"># - valenceE &lt;= octetE. &quot;&lt;&quot; happens when octet not full</span>
+        <span class="c1"># can only form a new bond if freeE &gt;= 1. Can dec eClouds to inc freeE</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="o">!=</span> <span class="s2">&quot;_e&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">eClouds</span> <span class="o">=</span> <span class="p">[];</span> <span class="bp">self</span><span class="o">.</span><span class="n">freeE</span> <span class="o">=</span> <span class="n">valenceE</span> <span class="o">%</span> <span class="mi">2</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">valenceE</span><span class="o">//</span><span class="mi">2</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="n">eClouds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mo</span><span class="o">.</span><span class="n">_e</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">eClouds</span> <span class="o">=</span> <span class="p">[];</span> <span class="bp">self</span><span class="o">.</span><span class="n">freeE</span> <span class="o">=</span> <span class="mi">0</span></div>
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">nonHBonds</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="s2">&quot;Atom&quot;</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;All bonds this atom has, minus the Hydrogens.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">a</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">bonds</span> <span class="k">if</span> <span class="n">a</span><span class="o">.</span><span class="n">name</span> <span class="o">!=</span> <span class="s2">&quot;H&quot;</span><span class="p">]</span>
+<div class="viewcode-block" id="Atom.nBonds"><a class="viewcode-back" href="../../mo.html#k1lib.mo.Atom.nBonds">[docs]</a>    <span class="k">def</span> <span class="nf">nBonds</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">atom</span><span class="p">:</span><span class="s2">&quot;Atom&quot;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get number of bonds between this and another atom.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">([</span><span class="n">bond</span> <span class="k">for</span> <span class="n">bond</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">bonds</span> <span class="k">if</span> <span class="n">bond</span> <span class="o">==</span> <span class="n">atom</span><span class="p">])</span></div>
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">availableBonds</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Available bonds. This includes electron clouds, radical electrons, and</span>
+<span class="sd">Hydrogen bonds.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">eClouds</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">freeE</span> <span class="o">+</span> <span class="nb">len</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">bonds</span> <span class="k">if</span> <span class="n">a</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;H&quot;</span><span class="p">])</span>
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;&lt;Atom </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">atomicN</span><span class="si">}</span><span class="s2">), </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bonds</span><span class="p">)</span><span class="si">}</span><span class="s2"> bonds, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">valenceE</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">octetE</span><span class="si">}</span><span class="s2"> valence electrons, </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">eClouds</span><span class="p">)</span><span class="si">}</span><span class="s2"> electron clouds, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">freeE</span><span class="si">}</span><span class="s2"> free (radical) electrons&gt;&quot;&quot;&quot;</span></div>
+<span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">Atom</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">_show</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">g</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">gDepth</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">GVKwargs</span><span class="o">=</span><span class="p">{}):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">gDepth</span> <span class="o">=</span> <span class="n">gDepth</span><span class="p">;</span> <span class="n">g</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">idx</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="o">**</span><span class="n">GVKwargs</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">atom</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">bonds</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">atom</span><span class="o">.</span><span class="n">gDepth</span> <span class="o">&gt;=</span> <span class="n">gDepth</span><span class="p">:</span> <span class="k">continue</span>
+        <span class="n">d1</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nonHBonds</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">atom</span><span class="p">)</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nonHBonds</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="kc">False</span>
+        <span class="n">d2</span> <span class="o">=</span> <span class="p">(</span><span class="n">atom</span><span class="o">.</span><span class="n">nonHBonds</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="bp">self</span><span class="p">)</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">atom</span><span class="o">.</span><span class="n">nonHBonds</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="n">d1</span> <span class="ow">and</span> <span class="n">d2</span><span class="p">:</span> <span class="n">g</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">idx</span><span class="p">,</span> <span class="n">atom</span><span class="o">.</span><span class="n">idx</span><span class="p">,</span> <span class="nb">dir</span><span class="o">=</span><span class="s2">&quot;both&quot;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">d1</span><span class="p">:</span> <span class="n">g</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">idx</span><span class="p">,</span> <span class="n">atom</span><span class="o">.</span><span class="n">idx</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">d2</span><span class="p">:</span> <span class="n">g</span><span class="p">(</span><span class="n">atom</span><span class="o">.</span><span class="n">idx</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">idx</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span> <span class="n">g</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">idx</span><span class="p">,</span> <span class="n">atom</span><span class="o">.</span><span class="n">idx</span><span class="p">,</span> <span class="n">arrowhead</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">)</span>
+    <span class="p">[</span><span class="n">atom</span><span class="o">.</span><span class="n">_show</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">gDepth</span><span class="p">)</span> <span class="k">for</span> <span class="n">atom</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">bonds</span> <span class="k">if</span> <span class="n">atom</span><span class="o">.</span><span class="n">gDepth</span> <span class="o">&lt;</span> <span class="n">gDepth</span><span class="p">]</span>
+<span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">Atom</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">show</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Show the molecule graph this atom is a part of. Meant for debugging</span>
+<span class="sd">simple substances only, as graphs of big molecules look unwieldy. This also</span>
+<span class="sd">highlights the current :class:`Atom`, and each bond is an arrow, indicating</span>
+<span class="sd">where :meth:`next` will go next.&quot;&quot;&quot;</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">digraph</span><span class="p">();</span> <span class="bp">self</span><span class="o">.</span><span class="n">_show</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">_depthAuto</span><span class="p">(),</span> <span class="p">{</span><span class="s2">&quot;style&quot;</span><span class="p">:</span> <span class="s2">&quot;filled&quot;</span><span class="p">});</span> <span class="k">return</span> <span class="n">g</span>
+<span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">Atom</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">_addFreeE</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amt</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Adds free electron to atom.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">amt</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_addFreeE</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">amt</span><span class="p">)]</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">freeE</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">freeE</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">eClouds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mo</span><span class="o">.</span><span class="n">_e</span><span class="p">);</span> <span class="bp">self</span><span class="o">.</span><span class="n">freeE</span> <span class="o">-=</span> <span class="mi">2</span>
+<span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">Atom</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">_subFreeE</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amt</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Tries to use ``amt`` free electrons. Returns successful or not.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">amt</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_subFreeE</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">amt</span><span class="p">)]</span>
+    <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">freeE</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">freeE</span> <span class="o">-=</span> <span class="mi">1</span>
+    <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">eClouds</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">freeE</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">eClouds</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span> <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Can&#39;t give away any more free electrons on atom </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">!&quot;</span><span class="p">)</span>
+<span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">Atom</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">_makeRoom</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nBonds</span><span class="p">:</span><span class="nb">int</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Tries to remove bonds with Hydrogen to make room for ``nBonds`` more bonds.&quot;&quot;&quot;</span>
+    <span class="n">nBondsToRemove</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">valenceE</span> <span class="o">+</span> <span class="n">nBonds</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">octetE</span>
+    <span class="k">if</span> <span class="n">nBondsToRemove</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">Hs</span> <span class="o">=</span> <span class="p">[</span><span class="n">bond</span> <span class="k">for</span> <span class="n">bond</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">bonds</span> <span class="k">if</span> <span class="n">bond</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;H&quot;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">Hs</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">nBondsToRemove</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nBondsToRemove</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="n">removeBond</span><span class="p">(</span><span class="n">Hs</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="k">elif</span> <span class="ow">not</span> <span class="n">settings</span><span class="p">[</span><span class="s1">&#39;overOctet&#39;</span><span class="p">]:</span>
+            <span class="n">ans</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Can&#39;t remove Hydrogen bonds to make room for new bond! Do you want to do anyway (y/n): &quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Btw, you can auto accept this by doing `mo.settings[&#39;overOctet&#39;] = True`&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">ans</span><span class="o">.</span><span class="n">lower</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="k">raise</span> <span class="n">OctetFull</span><span class="p">(</span><span class="s2">&quot;Stopping...&quot;</span><span class="p">)</span>
+    <span class="n">availableE</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">eClouds</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">freeE</span>
+    <span class="k">if</span> <span class="n">availableE</span> <span class="o">&lt;</span> <span class="n">nBonds</span><span class="p">:</span> <span class="k">raise</span> <span class="n">NoFreeElectrons</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Can&#39;t make room for </span><span class="si">{</span><span class="n">nBonds</span><span class="si">}</span><span class="s2"> new bonds on </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">. Only </span><span class="si">{</span><span class="n">availableE</span><span class="si">}</span><span class="s2"> electrons left for bonds!&quot;</span><span class="p">)</span>
+<span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">Atom</span><span class="p">)</span>
+<span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">atom</span><span class="p">:</span><span class="n">Atom</span><span class="p">,</span> <span class="n">nBonds</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">main</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Atom</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Forms a bond with another atom. If valence electrons are full, will</span>
+<span class="sd">attempt to disconnect Hydrogens from self to make room.</span>
+
+<span class="sd">:param bond: number of bonds. 2 for double, 3 for triple</span>
+<span class="sd">:param main: whether to put this bond in front of existing bonds, to</span>
+<span class="sd">    signify the &quot;main&quot; chain, so that it works well with :meth:`next`</span>
+<span class="sd">:return: self&quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_makeRoom</span><span class="p">(</span><span class="n">nBonds</span><span class="p">);</span> <span class="n">atom</span><span class="o">.</span><span class="n">_makeRoom</span><span class="p">(</span><span class="n">nBonds</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">main</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">bonds</span> <span class="o">=</span> <span class="p">[</span><span class="n">atom</span><span class="p">]</span> <span class="o">*</span> <span class="n">nBonds</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">bonds</span>
+    <span class="k">else</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">bonds</span> <span class="o">+=</span> <span class="p">[</span><span class="n">atom</span><span class="p">]</span> <span class="o">*</span> <span class="n">nBonds</span>
+    <span class="n">atom</span><span class="o">.</span><span class="n">bonds</span> <span class="o">+=</span> <span class="p">[</span><span class="bp">self</span><span class="p">]</span> <span class="o">*</span> <span class="n">nBonds</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">valenceE</span> <span class="o">+=</span> <span class="n">nBonds</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_subFreeE</span><span class="p">(</span><span class="n">nBonds</span><span class="p">)</span>
+    <span class="n">atom</span><span class="o">.</span><span class="n">valenceE</span> <span class="o">+=</span> <span class="n">nBonds</span><span class="p">;</span> <span class="n">atom</span><span class="o">.</span><span class="n">_subFreeE</span><span class="p">(</span><span class="n">nBonds</span><span class="p">)</span>
+    <span class="k">return</span> <span class="bp">self</span>
+<span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">Atom</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">bond</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">atom</span><span class="p">:</span><span class="n">Atom</span><span class="p">,</span> <span class="n">nBonds</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">main</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Atom</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Like :meth:`__call__`, but returns the atom passed in instead, so you</span>
+<span class="sd">can form the main loop quickly.&quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="p">(</span><span class="n">atom</span><span class="p">,</span> <span class="n">nBonds</span><span class="p">,</span> <span class="n">main</span><span class="p">);</span> <span class="k">return</span> <span class="n">atom</span>
+<span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">Atom</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">atom</span><span class="p">:</span><span class="n">Atom</span><span class="p">,</span> <span class="n">nBonds</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Atom</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Like :meth:`bond`, but with ``main`` param defaulted to True.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">bond</span><span class="p">(</span><span class="n">atom</span><span class="p">,</span> <span class="n">nBonds</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+<span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">Atom</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">removeBond</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">atom</span><span class="p">:</span><span class="s2">&quot;Atom&quot;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Removes all bonds between this and another atom&quot;&quot;&quot;</span>
+    <span class="n">nBonds</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nBonds</span><span class="p">(</span><span class="n">atom</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">bonds</span> <span class="o">=</span> <span class="p">[</span><span class="n">bond</span> <span class="k">for</span> <span class="n">bond</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">bonds</span> <span class="k">if</span> <span class="n">bond</span> <span class="o">!=</span> <span class="n">atom</span><span class="p">]</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">valenceE</span> <span class="o">-=</span> <span class="n">nBonds</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_addFreeE</span><span class="p">(</span><span class="n">nBonds</span><span class="p">)</span>
+    <span class="n">atom</span><span class="o">.</span><span class="n">bonds</span> <span class="o">=</span> <span class="p">[</span><span class="n">bond</span> <span class="k">for</span> <span class="n">bond</span> <span class="ow">in</span> <span class="n">atom</span><span class="o">.</span><span class="n">bonds</span> <span class="k">if</span> <span class="n">bond</span> <span class="o">!=</span> <span class="bp">self</span><span class="p">]</span>
+    <span class="n">atom</span><span class="o">.</span><span class="n">valenceE</span> <span class="o">-=</span> <span class="n">nBonds</span><span class="p">;</span> <span class="n">atom</span><span class="o">.</span><span class="n">_addFreeE</span><span class="p">(</span><span class="n">nBonds</span><span class="p">)</span>
+<span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">Atom</span><span class="p">,</span> <span class="s2">&quot;next&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">_next</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">times</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Atom&quot;</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Returns the next atom bonded to this. Tries to avoid going into Hydrogens.</span>
+<span class="sd">This is the main way to navigate around the molecule.</span>
+
+<span class="sd">You kinda have to make sure that your molecule&#39;s bonding order is appropriate by</span>
+<span class="sd">choosing between :meth:`bond` and :meth:`main`. Check the bonding order with</span>
+<span class="sd">:meth:`show`.</span>
+
+<span class="sd">:param offset: if there are multiple non-Hydrogen atoms, which ones should I pick?</span>
+<span class="sd">:param times: how many times do you want to chain ``.next()``?&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">times</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span> <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Can&#39;t do .next() with negative `times`&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">times</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span>
+    <span class="n">atoms</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nonHBonds</span> <span class="o">+</span> <span class="p">[</span><span class="n">atom</span> <span class="k">for</span> <span class="n">atom</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">bonds</span> <span class="k">if</span> <span class="n">atom</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;H&quot;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">atoms</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="k">return</span> <span class="kc">None</span>
+    <span class="n">_next</span> <span class="o">=</span> <span class="n">atoms</span><span class="p">[</span><span class="n">offset</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">times</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span> <span class="k">return</span> <span class="n">_next</span>
+    <span class="k">else</span><span class="p">:</span> <span class="k">return</span> <span class="n">_next</span><span class="o">.</span><span class="n">next</span><span class="p">(</span><span class="n">offset</span><span class="p">,</span> <span class="n">times</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">Atom</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">nexts</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">atoms</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Atom</span><span class="p">]:</span>
+    <span class="sd">&quot;&quot;&quot;Kinda like :meth:`next`, but fetches multiple atoms on the backbone.</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    c1, c2 = mo.CH4(mo.CH4).nexts()&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">atoms</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span> <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Zero or negative (</span><span class="si">{</span><span class="n">atoms</span><span class="si">}</span><span class="s2">) number of atoms does not make sense!&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">atoms</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span> <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="p">]</span>
+    <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">next</span><span class="p">()</span><span class="o">.</span><span class="n">nexts</span><span class="p">(</span><span class="n">atoms</span><span class="o">-</span><span class="mi">1</span><span class="p">))]</span>
+<span class="n">empiricalOrder</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="s2">&quot;O&quot;</span><span class="p">,</span> <span class="s2">&quot;N&quot;</span><span class="p">]</span>
+<span class="k">def</span> <span class="nf">em1</span><span class="p">(</span><span class="n">e</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span><span class="nb">int</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span> <span class="k">return</span> <span class="n">e</span>
+    <span class="k">else</span><span class="p">:</span> <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">e</span><span class="si">}{</span><span class="n">n</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">Atom</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">_empirical</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">d</span><span class="p">:</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">],</span> <span class="n">gDepth</span><span class="p">:</span><span class="nb">int</span><span class="p">):</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">gDepth</span> <span class="o">&gt;=</span> <span class="n">gDepth</span><span class="p">:</span> <span class="k">return</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">gDepth</span> <span class="o">=</span> <span class="n">gDepth</span><span class="p">;</span> <span class="n">d</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">for</span> <span class="n">atom</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">bonds</span><span class="p">:</span> <span class="n">atom</span><span class="o">.</span><span class="n">_empirical</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">gDepth</span><span class="p">)</span>
+<span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">Atom</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">empirical</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Returns an empirical formula for the molecule this :class:`Atom` is attached to.&quot;&quot;&quot;</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">Object</span><span class="p">()</span><span class="o">.</span><span class="n">withAutoDeclare</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_empirical</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">_depthAuto</span><span class="p">());</span> <span class="n">answer</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">empiricalOrder</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">d</span><span class="p">:</span> <span class="n">answer</span> <span class="o">+=</span> <span class="n">em1</span><span class="p">(</span><span class="n">e</span><span class="p">,</span><span class="n">d</span><span class="p">[</span><span class="n">e</span><span class="p">]);</span> <span class="k">del</span> <span class="n">d</span><span class="p">[</span><span class="n">e</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span> <span class="n">answer</span> <span class="o">+=</span> <span class="n">em1</span><span class="p">(</span><span class="n">e</span><span class="p">,</span><span class="n">d</span><span class="p">[</span><span class="n">e</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">answer</span>
+<span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">Atom</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">_atoms</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">gDepth</span><span class="p">):</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">gDepth</span> <span class="o">&gt;=</span> <span class="n">gDepth</span><span class="p">:</span> <span class="k">return</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">gDepth</span> <span class="o">=</span> <span class="n">gDepth</span><span class="p">;</span> <span class="n">l</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">atom</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">bonds</span><span class="p">:</span> <span class="n">atom</span><span class="o">.</span><span class="n">_atoms</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">gDepth</span><span class="p">)</span>
+<span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">Atom</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">atoms</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Atom</span><span class="p">]:</span>
+    <span class="sd">&quot;&quot;&quot;Returns a list of Atoms in the molecule this specific Atom is attached to.&quot;&quot;&quot;</span>
+    <span class="n">l</span> <span class="o">=</span> <span class="p">[];</span> <span class="bp">self</span><span class="o">.</span><span class="n">_atoms</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">_depthAuto</span><span class="p">());</span> <span class="k">return</span> <span class="n">l</span>
+<span class="n">_a</span> <span class="o">=</span> <span class="p">{}</span> <span class="c1"># dict of atoms, which will be used to patch the entire module</span>
+<span class="k">class</span> <span class="nc">_Mo</span><span class="p">:</span> <span class="k">pass</span>
+<span class="n">mo</span> <span class="o">=</span> <span class="n">_Mo</span><span class="p">()</span> <span class="c1"># convenience object so that I can use the same style as the module</span>
+<span class="k">def</span> <span class="nf">_atom</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="n">_a</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span> <span class="o">=</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">Atom</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="nb">setattr</span><span class="p">(</span><span class="n">_Mo</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="nb">property</span><span class="p">(</span><span class="n">partial</span><span class="p">((</span><span class="k">lambda</span> <span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">:</span> <span class="n">f</span><span class="p">()),</span> <span class="n">f</span><span class="o">=</span><span class="n">f</span><span class="p">)))</span>
+<span class="c1"># covalent radius taken from (Pyykko &amp; Atsumi) https://chem.libretexts.org/@api/deki/pages/2182/pdf/A3%253A%2bCovalent%2bRadii.pdf?stylesheet=default</span>
+<span class="n">_atom</span><span class="p">(</span><span class="s2">&quot;_e&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>   <span class="mf">0.1</span><span class="p">,</span>    <span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="mi">15</span><span class="p">])</span> <span class="c1"># electron cloud, for internal use</span>
+<span class="n">_atom</span><span class="p">(</span><span class="s2">&quot;H&quot;</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>   <span class="mf">1.008</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="mi">32</span><span class="p">],</span> <span class="n">octetE</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">_atom</span><span class="p">(</span><span class="s2">&quot;Li&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span>   <span class="mf">6.94</span><span class="p">,</span>   <span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="mi">133</span><span class="p">,</span> <span class="mi">124</span><span class="p">])</span>
+<span class="n">_atom</span><span class="p">(</span><span class="s2">&quot;Be&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span>   <span class="mf">9.0122</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="mi">102</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">85</span><span class="p">])</span>
+<span class="n">_atom</span><span class="p">(</span><span class="s2">&quot;B&quot;</span><span class="p">,</span>  <span class="mi">5</span><span class="p">,</span>  <span class="mf">10.81</span><span class="p">,</span>   <span class="mi">3</span><span class="p">,</span> <span class="p">[</span><span class="mi">85</span><span class="p">,</span>  <span class="mi">78</span><span class="p">,</span> <span class="mi">73</span><span class="p">])</span>
+<span class="n">_atom</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">,</span>  <span class="mi">6</span><span class="p">,</span>  <span class="mf">12.011</span><span class="p">,</span>  <span class="mi">4</span><span class="p">,</span> <span class="p">[</span><span class="mi">75</span><span class="p">,</span>  <span class="mi">67</span><span class="p">,</span> <span class="mi">60</span><span class="p">])</span>
+<span class="n">_atom</span><span class="p">(</span><span class="s2">&quot;N&quot;</span><span class="p">,</span>  <span class="mi">7</span><span class="p">,</span>  <span class="mf">14.007</span><span class="p">,</span>  <span class="mi">5</span><span class="p">,</span> <span class="p">[</span><span class="mi">71</span><span class="p">,</span>  <span class="mi">60</span><span class="p">,</span> <span class="mi">54</span><span class="p">])</span>
+<span class="n">_atom</span><span class="p">(</span><span class="s2">&quot;O&quot;</span><span class="p">,</span>  <span class="mi">8</span><span class="p">,</span>  <span class="mf">15.999</span><span class="p">,</span>  <span class="mi">6</span><span class="p">,</span> <span class="p">[</span><span class="mi">63</span><span class="p">,</span>  <span class="mi">57</span><span class="p">,</span> <span class="mi">53</span><span class="p">])</span>
+<span class="n">_atom</span><span class="p">(</span><span class="s2">&quot;F&quot;</span><span class="p">,</span>  <span class="mi">9</span><span class="p">,</span>  <span class="mf">18.998</span><span class="p">,</span>  <span class="mi">7</span><span class="p">,</span> <span class="p">[</span><span class="mi">64</span><span class="p">,</span>  <span class="mi">59</span><span class="p">,</span> <span class="mi">53</span><span class="p">])</span>
+<span class="n">_atom</span><span class="p">(</span><span class="s2">&quot;Na&quot;</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mf">22.990</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="mi">155</span><span class="p">,</span> <span class="mi">160</span><span class="p">])</span>
+<span class="n">_atom</span><span class="p">(</span><span class="s2">&quot;Mg&quot;</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mf">24.305</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="mi">139</span><span class="p">,</span> <span class="mi">132</span><span class="p">,</span> <span class="mi">127</span><span class="p">])</span>
+<span class="n">_atom</span><span class="p">(</span><span class="s2">&quot;Al&quot;</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mf">26.982</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="p">[</span><span class="mi">126</span><span class="p">,</span> <span class="mi">113</span><span class="p">,</span> <span class="mi">111</span><span class="p">])</span>
+<span class="n">_atom</span><span class="p">(</span><span class="s2">&quot;Si&quot;</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mf">28.085</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="p">[</span><span class="mi">116</span><span class="p">,</span> <span class="mi">107</span><span class="p">,</span> <span class="mi">102</span><span class="p">])</span>
+<span class="n">_atom</span><span class="p">(</span><span class="s2">&quot;P&quot;</span><span class="p">,</span>  <span class="mi">15</span><span class="p">,</span> <span class="mf">30.974</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="p">[</span><span class="mi">111</span><span class="p">,</span> <span class="mi">102</span><span class="p">,</span> <span class="mi">94</span><span class="p">])</span>
+<span class="n">_atom</span><span class="p">(</span><span class="s2">&quot;S&quot;</span><span class="p">,</span>  <span class="mi">16</span><span class="p">,</span> <span class="mf">32.06</span><span class="p">,</span>  <span class="mi">6</span><span class="p">,</span> <span class="p">[</span><span class="mi">103</span><span class="p">,</span> <span class="mi">94</span><span class="p">,</span>  <span class="mi">95</span><span class="p">])</span>
+<span class="n">_atom</span><span class="p">(</span><span class="s2">&quot;Cl&quot;</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mf">35.45</span><span class="p">,</span>  <span class="mi">7</span><span class="p">,</span> <span class="p">[</span><span class="mi">99</span><span class="p">,</span>  <span class="mi">95</span><span class="p">,</span>  <span class="mi">93</span><span class="p">])</span>
+<span class="n">_atom</span><span class="p">(</span><span class="s2">&quot;K&quot;</span><span class="p">,</span>  <span class="mi">19</span><span class="p">,</span>  <span class="mf">39.098</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="mi">196</span><span class="p">,</span> <span class="mi">193</span><span class="p">])</span>
+<span class="n">_atom</span><span class="p">(</span><span class="s2">&quot;Ca&quot;</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span>  <span class="mf">40.078</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="mi">171</span><span class="p">,</span> <span class="mi">147</span><span class="p">,</span> <span class="mi">133</span><span class="p">])</span>
+<span class="n">_atom</span><span class="p">(</span><span class="s2">&quot;Ga&quot;</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span>  <span class="mf">69.723</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="p">[</span><span class="mi">124</span><span class="p">,</span> <span class="mi">117</span><span class="p">,</span> <span class="mi">121</span><span class="p">])</span>
+<span class="n">_atom</span><span class="p">(</span><span class="s2">&quot;Ge&quot;</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span>  <span class="mf">72.630</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="p">[</span><span class="mi">121</span><span class="p">,</span> <span class="mi">111</span><span class="p">,</span> <span class="mi">114</span><span class="p">])</span>
+<span class="n">_atom</span><span class="p">(</span><span class="s2">&quot;As&quot;</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span>  <span class="mf">74.922</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="p">[</span><span class="mi">121</span><span class="p">,</span> <span class="mi">114</span><span class="p">,</span> <span class="mi">106</span><span class="p">])</span>
+<span class="n">_atom</span><span class="p">(</span><span class="s2">&quot;Se&quot;</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span>  <span class="mf">78.971</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="p">[</span><span class="mi">116</span><span class="p">,</span> <span class="mi">107</span><span class="p">,</span> <span class="mi">107</span><span class="p">])</span>
+<span class="n">_atom</span><span class="p">(</span><span class="s2">&quot;Br&quot;</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span>  <span class="mf">79.904</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="p">[</span><span class="mi">114</span><span class="p">,</span> <span class="mi">109</span><span class="p">,</span> <span class="mi">110</span><span class="p">])</span>
+<span class="n">_atom</span><span class="p">(</span><span class="s2">&quot;I&quot;</span><span class="p">,</span>  <span class="mi">53</span><span class="p">,</span> <span class="mf">126.9</span><span class="p">,</span>   <span class="mi">7</span><span class="p">,</span> <span class="p">[</span><span class="mi">133</span><span class="p">,</span> <span class="mi">129</span><span class="p">,</span> <span class="mi">125</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">_mole</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
+    <span class="n">_a</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span>
+    <span class="nb">setattr</span><span class="p">(</span><span class="n">_Mo</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="nb">property</span><span class="p">(</span><span class="n">partial</span><span class="p">((</span><span class="k">lambda</span> <span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">:</span> <span class="n">f</span><span class="p">()),</span> <span class="n">f</span><span class="o">=</span><span class="n">f</span><span class="p">)))</span>
+<span class="n">_mole</span><span class="p">(</span><span class="s2">&quot;H2O&quot;</span><span class="p">,</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">mo</span><span class="o">.</span><span class="n">O</span><span class="p">(</span><span class="n">mo</span><span class="o">.</span><span class="n">H</span><span class="p">)(</span><span class="n">mo</span><span class="o">.</span><span class="n">H</span><span class="p">))</span>
+<span class="n">_mole</span><span class="p">(</span><span class="s2">&quot;CH4&quot;</span><span class="p">,</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">mo</span><span class="o">.</span><span class="n">C</span><span class="p">(</span><span class="n">mo</span><span class="o">.</span><span class="n">H</span><span class="p">)(</span><span class="n">mo</span><span class="o">.</span><span class="n">H</span><span class="p">)(</span><span class="n">mo</span><span class="o">.</span><span class="n">H</span><span class="p">)(</span><span class="n">mo</span><span class="o">.</span><span class="n">H</span><span class="p">))</span>
+<span class="n">_mole</span><span class="p">(</span><span class="s2">&quot;COOH&quot;</span><span class="p">,</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">mo</span><span class="o">.</span><span class="n">C</span><span class="p">(</span><span class="n">mo</span><span class="o">.</span><span class="n">O</span><span class="p">,</span> <span class="mi">2</span><span class="p">)(</span><span class="n">mo</span><span class="o">.</span><span class="n">O</span><span class="p">(</span><span class="n">mo</span><span class="o">.</span><span class="n">H</span><span class="p">))(</span><span class="n">mo</span><span class="o">.</span><span class="n">H</span><span class="p">))</span>
+<span class="n">_mole</span><span class="p">(</span><span class="s2">&quot;NH3&quot;</span><span class="p">,</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">mo</span><span class="o">.</span><span class="n">N</span><span class="p">(</span><span class="n">mo</span><span class="o">.</span><span class="n">H</span><span class="p">)(</span><span class="n">mo</span><span class="o">.</span><span class="n">H</span><span class="p">)(</span><span class="n">mo</span><span class="o">.</span><span class="n">H</span><span class="p">))</span>
+<span class="n">_mole</span><span class="p">(</span><span class="s2">&quot;CH3OH&quot;</span><span class="p">,</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">mo</span><span class="o">.</span><span class="n">CH4</span><span class="p">(</span><span class="n">mo</span><span class="o">.</span><span class="n">H2O</span><span class="p">))</span>
+<span class="k">def</span> <span class="nf">glucose</span><span class="p">():</span>
+    <span class="n">o</span> <span class="o">=</span> <span class="n">mo</span><span class="o">.</span><span class="n">O</span>
+    <span class="n">o</span><span class="o">.</span><span class="n">bond</span><span class="p">(</span><span class="n">mo</span><span class="o">.</span><span class="n">CH4</span><span class="p">)</span><span class="o">.</span><span class="n">bond</span><span class="p">(</span><span class="n">mo</span><span class="o">.</span><span class="n">CH3OH</span><span class="p">)</span><span class="o">.</span><span class="n">bond</span><span class="p">(</span><span class="n">mo</span><span class="o">.</span><span class="n">CH3OH</span><span class="p">)</span><span class="o">.</span><span class="n">bond</span><span class="p">(</span><span class="n">mo</span><span class="o">.</span><span class="n">CH3OH</span><span class="p">)</span><span class="o">.</span><span class="n">bond</span><span class="p">(</span><span class="n">mo</span><span class="o">.</span><span class="n">CH3OH</span><span class="p">)</span><span class="o">.</span><span class="n">bond</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>
+    <span class="n">o</span><span class="o">.</span><span class="n">next</span><span class="p">()</span><span class="o">.</span><span class="n">bond</span><span class="p">(</span><span class="n">mo</span><span class="o">.</span><span class="n">CH3OH</span><span class="p">);</span> <span class="k">return</span> <span class="n">o</span>
+<span class="n">_mole</span><span class="p">(</span><span class="s2">&quot;glucose&quot;</span><span class="p">,</span> <span class="n">glucose</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">cyclohexane</span><span class="p">():</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">mo</span><span class="o">.</span><span class="n">CH4</span>
+    <span class="k">return</span> <span class="n">c</span><span class="o">.</span><span class="n">bond</span><span class="p">(</span><span class="n">mo</span><span class="o">.</span><span class="n">CH4</span><span class="p">)</span><span class="o">.</span><span class="n">bond</span><span class="p">(</span><span class="n">mo</span><span class="o">.</span><span class="n">CH4</span><span class="p">)</span><span class="o">.</span><span class="n">bond</span><span class="p">(</span><span class="n">mo</span><span class="o">.</span><span class="n">CH4</span><span class="p">)</span><span class="o">.</span><span class="n">bond</span><span class="p">(</span><span class="n">mo</span><span class="o">.</span><span class="n">CH4</span><span class="p">)</span><span class="o">.</span><span class="n">bond</span><span class="p">(</span><span class="n">mo</span><span class="o">.</span><span class="n">CH4</span><span class="p">)</span><span class="o">.</span><span class="n">bond</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+<span class="n">_mole</span><span class="p">(</span><span class="s2">&quot;cyclohexane&quot;</span><span class="p">,</span> <span class="n">cyclohexane</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">benzene</span><span class="p">():</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">mo</span><span class="o">.</span><span class="n">CH4</span>
+    <span class="k">return</span> <span class="n">c</span><span class="o">.</span><span class="n">main</span><span class="p">(</span><span class="n">mo</span><span class="o">.</span><span class="n">CH4</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">main</span><span class="p">(</span><span class="n">mo</span><span class="o">.</span><span class="n">CH4</span><span class="p">)</span><span class="o">.</span><span class="n">main</span><span class="p">(</span><span class="n">mo</span><span class="o">.</span><span class="n">CH4</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">main</span><span class="p">(</span><span class="n">mo</span><span class="o">.</span><span class="n">CH4</span><span class="p">)</span><span class="o">.</span><span class="n">main</span><span class="p">(</span><span class="n">mo</span><span class="o">.</span><span class="n">CH4</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">main</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+<span class="n">_mole</span><span class="p">(</span><span class="s2">&quot;benzene&quot;</span><span class="p">,</span> <span class="n">benzene</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">adenine</span><span class="p">():</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">mo</span><span class="o">.</span><span class="n">NH3</span>
+    <span class="n">c1</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="n">bond</span><span class="p">(</span><span class="n">mo</span><span class="o">.</span><span class="n">CH4</span><span class="p">)</span><span class="o">.</span><span class="n">bond</span><span class="p">(</span><span class="n">mo</span><span class="o">.</span><span class="n">NH3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">bond</span><span class="p">(</span><span class="n">mo</span><span class="o">.</span><span class="n">CH4</span><span class="p">)</span>
+    <span class="n">c2</span> <span class="o">=</span> <span class="n">c1</span><span class="o">.</span><span class="n">bond</span><span class="p">(</span><span class="n">mo</span><span class="o">.</span><span class="n">CH4</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span> <span class="n">c2</span><span class="o">.</span><span class="n">bond</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">c1</span><span class="o">.</span><span class="n">bond</span><span class="p">(</span><span class="n">mo</span><span class="o">.</span><span class="n">CH4</span><span class="p">)(</span><span class="n">mo</span><span class="o">.</span><span class="n">NH3</span><span class="p">)</span><span class="o">.</span><span class="n">bond</span><span class="p">(</span><span class="n">mo</span><span class="o">.</span><span class="n">NH3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">bond</span><span class="p">(</span><span class="n">mo</span><span class="o">.</span><span class="n">CH4</span><span class="p">)</span><span class="o">.</span><span class="n">bond</span><span class="p">(</span><span class="n">mo</span><span class="o">.</span><span class="n">NH3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">bond</span><span class="p">(</span><span class="n">c2</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">n</span>
+<span class="n">_mole</span><span class="p">(</span><span class="s2">&quot;adenine&quot;</span><span class="p">,</span> <span class="n">adenine</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">ribose</span><span class="p">():</span>
+    <span class="n">o</span> <span class="o">=</span> <span class="n">mo</span><span class="o">.</span><span class="n">H2O</span>
+    <span class="k">return</span> <span class="n">o</span><span class="o">.</span><span class="n">bond</span><span class="p">(</span><span class="n">mo</span><span class="o">.</span><span class="n">CH4</span><span class="p">(</span><span class="n">mo</span><span class="o">.</span><span class="n">CH3OH</span><span class="p">))</span><span class="o">.</span><span class="n">main</span><span class="p">(</span><span class="n">mo</span><span class="o">.</span><span class="n">CH3OH</span><span class="p">)</span><span class="o">.</span><span class="n">main</span><span class="p">(</span><span class="n">mo</span><span class="o">.</span><span class="n">CH3OH</span><span class="p">)</span><span class="o">.</span><span class="n">main</span><span class="p">(</span><span class="n">mo</span><span class="o">.</span><span class="n">CH3OH</span><span class="p">)</span><span class="o">.</span><span class="n">main</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>
+<span class="n">_mole</span><span class="p">(</span><span class="s2">&quot;ribose&quot;</span><span class="p">,</span> <span class="n">ribose</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">adenosine</span><span class="p">():</span> <span class="n">ri</span> <span class="o">=</span> <span class="n">mo</span><span class="o">.</span><span class="n">ribose</span><span class="p">;</span> <span class="n">ri</span><span class="o">.</span><span class="n">next</span><span class="p">(</span><span class="mi">1</span><span class="p">)(</span><span class="n">mo</span><span class="o">.</span><span class="n">adenine</span><span class="p">);</span> <span class="k">return</span> <span class="n">ri</span>
+<span class="n">_mole</span><span class="p">(</span><span class="s2">&quot;adenosine&quot;</span><span class="p">,</span> <span class="n">adenosine</span><span class="p">)</span>
+<div class="viewcode-block" id="substances"><a class="viewcode-back" href="../../mo.html#k1lib.mo.substances">[docs]</a><span class="k">def</span> <span class="nf">substances</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+    <span class="sd">&quot;&quot;&quot;Get a list of builtin substances. To register new substances, check over</span>
+<span class="sd">:class:`Atom`.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">k</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">_a</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">k</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)]</span></div>
+<div class="viewcode-block" id="alkane"><a class="viewcode-back" href="../../mo.html#k1lib.mo.alkane">[docs]</a><span class="k">def</span> <span class="nf">alkane</span><span class="p">(</span><span class="n">n</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Atom</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Creates an alkane with ``n`` carbons.</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    # returns &quot;C3H8&quot;</span>
+<span class="sd">    mo.alkane(3).empirical()&quot;&quot;&quot;</span>
+    <span class="n">answer</span> <span class="o">=</span> <span class="n">mo</span><span class="o">.</span><span class="n">CH4</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span> <span class="n">answer</span> <span class="o">=</span> <span class="n">answer</span><span class="o">.</span><span class="n">bond</span><span class="p">(</span><span class="n">mo</span><span class="o">.</span><span class="n">CH4</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">answer</span></div>
+<span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">Atom</span><span class="p">,</span> <span class="s2">&quot;endChain&quot;</span><span class="p">)</span>
+<span class="nd">@property</span>
+<span class="k">def</span> <span class="nf">endChain</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Atom</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Do a bunch of .next() until reached the end of the carbon chain.</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    c1 = mo.alcohol(3, 1)</span>
+<span class="sd">    c3 = c1.endChain</span>
+<span class="sd">    c3(mo.NH3)</span>
+<span class="sd">    c1.show() # displays in cell&quot;&quot;&quot;</span>
+    <span class="n">lastA</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">200</span><span class="p">):</span> <span class="c1"># for loop to prevent infinite recursion</span>
+        <span class="n">nextA</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">next</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">nextA</span> <span class="o">==</span> <span class="n">lastA</span><span class="p">:</span> <span class="k">return</span> <span class="n">a</span>
+        <span class="n">lastA</span> <span class="o">=</span> <span class="n">a</span><span class="p">;</span> <span class="n">a</span> <span class="o">=</span> <span class="n">nextA</span>
+<div class="viewcode-block" id="alcohol"><a class="viewcode-back" href="../../mo.html#k1lib.mo.alcohol">[docs]</a><span class="k">def</span> <span class="nf">alcohol</span><span class="p">(</span><span class="n">n</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">loc</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Atom</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Creates an alcohol with ``n`` carbons and an OH group at carbon ``loc``.</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    # returns &quot;C3H8O&quot;</span>
+<span class="sd">    mo.alcohol(3, 1).empirical()&quot;&quot;&quot;</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">alkane</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">a</span><span class="o">.</span><span class="n">next</span><span class="p">(</span><span class="n">times</span><span class="o">=</span><span class="n">loc</span><span class="o">-</span><span class="mi">1</span><span class="p">)(</span><span class="n">mo</span><span class="o">.</span><span class="n">H2O</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">a</span></div>
+<span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">Atom</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">moveLastCTo2ndC</span><span class="p">(</span><span class="n">a</span><span class="p">:</span><span class="n">Atom</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Atom</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Move last carbon to 2nd carbon. Useful in constructing iso- and tert-.&quot;&quot;&quot;</span>
+    <span class="n">end</span> <span class="o">=</span> <span class="n">endChain</span><span class="p">(</span><span class="n">a</span><span class="p">);</span> <span class="n">nearEnd</span> <span class="o">=</span> <span class="n">end</span><span class="o">.</span><span class="n">next</span><span class="p">()</span>
+    <span class="n">end</span><span class="o">.</span><span class="n">removeBond</span><span class="p">(</span><span class="n">nearEnd</span><span class="p">);</span> <span class="n">nearEnd</span><span class="p">(</span><span class="n">mo</span><span class="o">.</span><span class="n">H</span><span class="p">);</span> <span class="n">a</span><span class="o">.</span><span class="n">next</span><span class="p">()(</span><span class="n">mo</span><span class="o">.</span><span class="n">CH4</span><span class="p">);</span> <span class="k">return</span> <span class="n">a</span>
+<span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">Atom</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">perfluoro_ize</span><span class="p">(</span><span class="n">mainA</span><span class="p">:</span><span class="n">Atom</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Atom</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Replaces all C-H bonds with C-F bonds&quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">mainA</span><span class="o">.</span><span class="n">atoms</span><span class="p">():</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">next</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">a</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;H&quot;</span> <span class="ow">and</span> <span class="n">b</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;C&quot;</span><span class="p">:</span>
+            <span class="n">a</span><span class="o">.</span><span class="n">removeBond</span><span class="p">(</span><span class="n">b</span><span class="p">);</span> <span class="n">b</span><span class="p">(</span><span class="n">mo</span><span class="o">.</span><span class="n">F</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">mainA</span>
+<span class="k">def</span> <span class="nf">distV</span><span class="p">(</span><span class="n">x</span><span class="p">:</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Distance vectors of points.</span>
+
+<span class="sd">:param x: location Tensor of shape (n, 3)</span>
+<span class="sd">:returns: vector Tensor of shape (n, n, 3)&quot;&quot;&quot;</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">-</span> <span class="n">x</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">Atom</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">_s_bondLength</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx_i</span><span class="p">:</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">],</span> <span class="n">bondLengths</span><span class="p">:</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Calculates bond length for all bonds in this atom and stores in</span>
+<span class="sd">``bondLengths``.&quot;&quot;&quot;</span>
+    <span class="n">bonds</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bonds</span><span class="p">))</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">eClouds</span>
+    <span class="k">for</span> <span class="n">atom</span> <span class="ow">in</span> <span class="n">bonds</span><span class="p">:</span>
+        <span class="n">nBonds</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nBonds</span><span class="p">(</span><span class="n">atom</span><span class="p">)</span>
+        <span class="n">bL</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">radius</span><span class="p">[</span><span class="n">nBonds</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">atom</span><span class="o">.</span><span class="n">radius</span><span class="p">[</span><span class="n">nBonds</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">bondLengths</span><span class="p">[</span><span class="n">idx_i</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">idx</span><span class="p">],</span> <span class="n">idx_i</span><span class="p">[</span><span class="n">atom</span><span class="o">.</span><span class="n">idx</span><span class="p">]]</span> <span class="o">=</span> <span class="n">bL</span>
+        <span class="n">bondLengths</span><span class="p">[</span><span class="n">idx_i</span><span class="p">[</span><span class="n">atom</span><span class="o">.</span><span class="n">idx</span><span class="p">],</span> <span class="n">idx_i</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">idx</span><span class="p">]]</span> <span class="o">=</span> <span class="n">bL</span>
+<div class="viewcode-block" id="System"><a class="viewcode-back" href="../../mo.html#k1lib.mo.System">[docs]</a><span class="k">class</span> <span class="nc">System</span><span class="p">:</span>
+<div class="viewcode-block" id="System.__init__"><a class="viewcode-back" href="../../mo.html#k1lib.mo.System.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mapping</span><span class="p">:</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Atom</span><span class="p">]):</span>
+        <span class="sd">&quot;&quot;&quot;Creates a new system that contains a molecule so that it can be</span>
+<span class="sd">simulated. Not intended to be used by the end user. Use :meth:`Atom.system`</span>
+<span class="sd">instead.</span>
+
+<span class="sd">:param mapping: maps from atom index to :class:`Atom` object&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mapping</span> <span class="o">=</span> <span class="n">mapping</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">atoms</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">mapping</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">i_idx</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">mapping</span><span class="o">.</span><span class="n">keys</span><span class="p">());</span> <span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">i_idx</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">idx_i</span> <span class="o">=</span> <span class="p">{</span><span class="n">idx</span><span class="p">:</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">i_idx</span><span class="p">)}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bondLengths</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">atom</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">atoms</span><span class="p">:</span> <span class="n">atom</span><span class="o">.</span><span class="n">_s_bondLength</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">idx_i</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">bondLengths</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bondMask</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bondLengths</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_x</span> <span class="o">=</span> <span class="mi">50</span><span class="o">*</span><span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_v</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_a</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">iMask</span> <span class="o">=</span> <span class="mi">1</span><span class="o">-</span><span class="n">torch</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">)</span> <span class="c1"># identity mask</span></div>
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Atom</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">mapping</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">mapping</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">i_idx</span><span class="p">[</span><span class="n">idx</span><span class="p">]]</span>
+<div class="viewcode-block" id="System.x"><a class="viewcode-back" href="../../mo.html#k1lib.mo.System.x">[docs]</a>    <span class="k">def</span> <span class="nf">x</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">:</span><span class="n">Atom</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Get current location vector of the specified :class:`Atom`.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_x</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">idx_i</span><span class="p">[</span><span class="n">a</span><span class="o">.</span><span class="n">idx</span><span class="p">]]</span></div>
+<div class="viewcode-block" id="System.v"><a class="viewcode-back" href="../../mo.html#k1lib.mo.System.v">[docs]</a>    <span class="k">def</span> <span class="nf">v</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">:</span><span class="n">Atom</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get current velocity vector of the specified :class:`Atom`.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_v</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">idx_i</span><span class="p">[</span><span class="n">a</span><span class="o">.</span><span class="n">idx</span><span class="p">]]</span></div></div>
+<span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">System</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">_calcForces</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">decay</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">:param decay: make this big to ignore distant atoms&quot;&quot;&quot;</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">;</span> <span class="n">dV</span> <span class="o">=</span> <span class="n">distV</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_x</span><span class="p">)</span> <span class="c1"># (n, n, 3)</span>
+    <span class="n">l</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">dV</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="mf">0.001</span>
+    <span class="n">dV</span> <span class="o">=</span> <span class="n">dV</span> <span class="o">/</span> <span class="n">l</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="c1"># normalized direction</span>
+    <span class="n">aBond</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">*</span> <span class="n">dV</span> <span class="o">*</span> <span class="n">torch</span><span class="o">.</span><span class="n">tanh</span><span class="p">((</span><span class="n">l</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">bondLengths</span><span class="p">)</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">bondMask</span><span class="o">/</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">vBond</span> <span class="o">=</span> <span class="n">aBond</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">aCou</span> <span class="o">=</span> <span class="n">dV</span> <span class="o">*</span> <span class="p">((</span><span class="mi">100</span><span class="o">/</span><span class="n">l</span><span class="p">)</span><span class="o">**</span><span class="n">decay</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">vCou</span> <span class="o">=</span> <span class="mf">.3</span> <span class="o">*</span> <span class="n">aCou</span><span class="o">.</span><span class="n">clearNan</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="c1">#vCou *= .2/math.sqrt((vCou**2).sum(dim=1).max())</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_a</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">*</span> <span class="p">(</span><span class="n">vBond</span> <span class="o">-</span> <span class="n">vCou</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">aBond</span><span class="p">,</span> <span class="n">aCou</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">dV</span><span class="p">,</span> <span class="n">vBond</span><span class="p">,</span> <span class="n">vCou</span>
+<span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">System</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">_update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dt</span><span class="p">:</span><span class="nb">float</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_v</span> <span class="o">+=</span> <span class="n">dt</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_a</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_v</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">clamp</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_v</span> <span class="o">*</span> <span class="mf">0.8</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="c1"># friction</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_x</span> <span class="o">+=</span> <span class="n">dt</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_v</span>
+    <span class="c1">#self._x *= 0.99 # universe wants to quish things down</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_a</span><span class="o">.</span><span class="n">zero_</span><span class="p">()</span>
+<span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">System</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">_changeDevice</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">device</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s2">&quot;cpu&quot;</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">bondLengths</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bondLengths</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">bondMask</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bondMask</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_x</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_v</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_v</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_a</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_a</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">iMask</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">iMask</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+<span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">System</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">simulate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">dt</span><span class="p">:</span><span class="nb">float</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">recordXs</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cuda</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]:</span>
+    <span class="sd">&quot;&quot;&quot;Simulate system for ``t`` steps.</span>
+
+<span class="sd">:param t: simulation total steps</span>
+<span class="sd">:param dt: simulation time between steps</span>
+<span class="sd">:param recordXs: whether to record locations while the simulation happens. Put</span>
+<span class="sd">    False to save memory/performance.</span>
+<span class="sd">:param cuda: if True, do the simulation on the graphics card</span>
+<span class="sd">:return: if ``recordXs`` is True, returns max 100 location Tensors. The Tensors</span>
+<span class="sd">    will have shape of (n, 3), where n is the number of atoms and electron clouds</span>
+<span class="sd">    your molecule has.&quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_changeDevice</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span> <span class="k">if</span> <span class="n">cuda</span> <span class="k">else</span> <span class="s2">&quot;cpu&quot;</span><span class="p">)</span>
+    <span class="n">every</span> <span class="o">=</span> <span class="p">(</span><span class="n">t</span> <span class="o">//</span> <span class="mi">100</span><span class="p">)</span> <span class="ow">or</span> <span class="mi">1</span><span class="p">;</span> <span class="n">xs</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">r1</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">Range</span><span class="p">(</span><span class="n">t</span><span class="p">);</span> <span class="n">r2</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">Range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_calcForces</span><span class="p">(</span><span class="n">decay</span><span class="o">=</span><span class="n">r1</span><span class="o">.</span><span class="n">toRange</span><span class="p">(</span><span class="n">r2</span><span class="p">,</span> <span class="n">i</span><span class="p">));</span> <span class="bp">self</span><span class="o">.</span><span class="n">_update</span><span class="p">(</span><span class="n">dt</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">recordXs</span> <span class="ow">and</span> <span class="n">i</span> <span class="o">%</span> <span class="n">every</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">xs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_x</span><span class="o">.</span><span class="n">clone</span><span class="p">())</span>
+    <span class="k">return</span> <span class="n">xs</span>
+<span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">Atom</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">_system</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mapping</span><span class="p">:</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Atom</span><span class="p">],</span> <span class="n">gDepth</span><span class="p">:</span><span class="nb">int</span><span class="p">):</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">gDepth</span> <span class="o">&gt;=</span> <span class="n">gDepth</span><span class="p">:</span> <span class="k">return</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">gDepth</span> <span class="o">=</span> <span class="n">gDepth</span>
+    <span class="n">mapping</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span>
+    <span class="k">for</span> <span class="n">atom</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">bonds</span><span class="p">:</span> <span class="n">atom</span><span class="o">.</span><span class="n">_system</span><span class="p">(</span><span class="n">mapping</span><span class="p">,</span> <span class="n">gDepth</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">eCloud</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">eClouds</span><span class="p">:</span> <span class="n">eCloud</span><span class="o">.</span><span class="n">_system</span><span class="p">(</span><span class="n">mapping</span><span class="p">,</span> <span class="n">gDepth</span><span class="p">)</span>
+<span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">Atom</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">system</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">System</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Creates a :class:`System` of the molecule this :class:`Atom` is attached</span>
+<span class="sd">to.&quot;&quot;&quot;</span>
+    <span class="n">mapping</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">();</span> <span class="bp">self</span><span class="o">.</span><span class="n">_system</span><span class="p">(</span><span class="n">mapping</span><span class="p">,</span> <span class="n">_depthAuto</span><span class="p">());</span> <span class="k">return</span> <span class="n">System</span><span class="p">(</span><span class="n">mapping</span><span class="p">)</span>
+<span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">Atom</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">_plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">idx_i</span><span class="p">:</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]):</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">idx_i</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">idx</span><span class="p">]]</span>
+    <span class="c1">#bonds = set([atom for atom in self.bonds if atom.name != &quot;_e&quot;])</span>
+    <span class="n">bonds</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="n">atom</span> <span class="k">for</span> <span class="n">atom</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">bonds</span><span class="p">])</span>
+    <span class="k">for</span> <span class="n">atom</span> <span class="ow">in</span> <span class="n">bonds</span><span class="p">:</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">idx_i</span><span class="p">[</span><span class="n">atom</span><span class="o">.</span><span class="n">idx</span><span class="p">]]</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="p">[</span><span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="p">[</span><span class="n">s</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">]])</span>
+<span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">System</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ax</span><span class="p">:</span><span class="s2">&quot;matplotlib.axes.Axes&quot;</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Plots the molecule.</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    %matplotlib widget</span>
+<span class="sd">    s = mo.CH4(mo.H2O).system()</span>
+<span class="sd">    s.simulate(); s.plot()</span>
+
+<span class="sd">The first line is so that you can rotate the molecule around in 3d interactively.</span>
+<span class="sd">The 3rd line includes a simulation step, to get the molecule into roughly the</span>
+<span class="sd">right position.</span>
+
+<span class="sd">:param x: location Tensor of shape (n, 3). If none provided, will use current locations</span>
+<span class="sd">:param ax: Axes object, in case you want to plot this on an existing plot&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_x</span>
+    <span class="k">if</span> <span class="n">ax</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">dpi</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s2">&quot;3d&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">clear</span><span class="p">();</span> <span class="n">com</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># center of mass</span>
+    <span class="n">box</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(((</span><span class="n">x</span> <span class="o">-</span> <span class="n">com</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">com</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">box</span><span class="p">,</span> <span class="n">com</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">box</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">com</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">box</span><span class="p">,</span> <span class="n">com</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">box</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_zlim</span><span class="p">(</span><span class="n">com</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">-</span><span class="n">box</span><span class="p">,</span> <span class="n">com</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">+</span><span class="n">box</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">atom</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">atoms</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">atom</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;_e&quot;</span><span class="p">:</span> <span class="k">continue</span>
+        <span class="n">atom</span><span class="o">.</span><span class="n">_plot</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">idx_i</span><span class="p">)</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">idx_i</span><span class="p">[</span><span class="n">atom</span><span class="o">.</span><span class="n">idx</span><span class="p">]]</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">atom</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ax</span>
+<span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">System</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">animate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xs</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">],</span> <span class="n">rotateSpeed</span><span class="o">=</span><span class="mf">0.5</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Animates the molecule. This requires location information from</span>
+<span class="sd">:meth:`simulate`. Example::</span>
+
+<span class="sd">    s = mo.CH4(mo.H2O).system()</span>
+<span class="sd">    s.animate(s.simulate())&quot;&quot;&quot;</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s2">&quot;3d&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="n">frame</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">[</span><span class="n">frame</span><span class="p">],</span> <span class="n">ax</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">view_init</span><span class="p">(</span><span class="n">azim</span><span class="o">=</span><span class="n">frame</span><span class="o">*</span><span class="n">rotateSpeed</span><span class="p">)</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">viz</span><span class="o">.</span><span class="n">FAnim</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">update</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">xs</span><span class="p">));</span> <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="n">fig</span><span class="p">);</span> <span class="k">return</span> <span class="n">a</span>
+<span class="n">empC</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;[A-Z][a-z]*[0-9]*&quot;</span><span class="p">)</span>
+<div class="viewcode-block" id="sameEmpirical"><a class="viewcode-back" href="../../mo.html#k1lib.mo.sameEmpirical">[docs]</a><span class="k">def</span> <span class="nf">sameEmpirical</span><span class="p">(</span><span class="n">a</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Checks whether 2 empirical formula are the same or not.</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    moparse.sameEmpirical(&quot;C2H4&quot;, &quot;H4C2&quot;) # returns True&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">empC</span><span class="p">,</span> <span class="n">a</span><span class="p">))</span> <span class="o">==</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">empC</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span></div>
+<div class="viewcode-block" id="parse"><a class="viewcode-back" href="../../mo.html#k1lib.mo.parse">[docs]</a><span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="n">s</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">quiet</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">Atom</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
+    <span class="sd">&quot;&quot;&quot;Tries to recognize molecule. Returns molecule :class:`~k1lib.mo.Atom`</span>
+<span class="sd">if recognized, else the molecule&#39;s string.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">_moparse</span><span class="o">.</span><span class="n">recognize</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">quiet</span><span class="p">)</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Quang Ho.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
