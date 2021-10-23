@@ -1,0 +1,646 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>k1lib.cli.structural &mdash; k1lib 0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> k1lib
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../cli/index.html">k1lib.cli package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../callbacks/index.html">k1lib.callbacks package</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../kdata.html">k1lib.kdata module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eqn.html">k1lib.eqn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../format.html">k1lib.format module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../graphEqn.html">k1lib.graphEqn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../imports.html">k1lib.imports module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mo.html">k1lib.mo module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../knn.html">k1lib.knn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../schedule.html">k1lib.schedule module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../selector.html">k1lib.selector module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../viz.html">k1lib.viz module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../website.html">k1lib.website module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../monkeyPatches.html">Monkey patched classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelogs.html">Changelogs</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">k1lib</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>k1lib.cli.structural</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for k1lib.cli.structural</h1><div class="highlight"><pre>
+<span></span><span class="c1"># AUTOGENERATED FILE! PLEASE DON&#39;T EDIT</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">This is for functions that sort of changes the table</span>
+<span class="sd">structure in a dramatic way. They&#39;re the core transformations</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">Iterator</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Dict</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span><span class="p">,</span> <span class="n">Counter</span>
+<span class="kn">from</span> <span class="nn">k1lib.cli.init</span> <span class="kn">import</span> <span class="n">patchDefaultDelim</span><span class="p">,</span> <span class="n">BaseCli</span><span class="p">,</span> <span class="n">oneToMany</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">Table</span>
+<span class="kn">import</span> <span class="nn">k1lib.cli</span> <span class="k">as</span> <span class="nn">cli</span>
+<span class="kn">import</span> <span class="nn">itertools</span><span class="o">,</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span><span class="o">,</span> <span class="nn">torch</span><span class="o">,</span> <span class="nn">k1lib</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;joinColumns&quot;</span><span class="p">,</span> <span class="s2">&quot;transpose&quot;</span><span class="p">,</span> <span class="s2">&quot;splitColumns&quot;</span><span class="p">,</span> <span class="s2">&quot;joinList&quot;</span><span class="p">,</span> <span class="s2">&quot;splitList&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;joinStreams&quot;</span><span class="p">,</span> <span class="s2">&quot;yieldSentinel&quot;</span><span class="p">,</span> <span class="s2">&quot;joinStreamsRandom&quot;</span><span class="p">,</span> <span class="s2">&quot;batched&quot;</span><span class="p">,</span> <span class="s2">&quot;collate&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;insertRow&quot;</span><span class="p">,</span> <span class="s2">&quot;insertColumn&quot;</span><span class="p">,</span> <span class="s2">&quot;insertIdColumn&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;toDict&quot;</span><span class="p">,</span> <span class="s2">&quot;toDictF&quot;</span><span class="p">,</span> <span class="s2">&quot;split&quot;</span><span class="p">,</span> <span class="s2">&quot;expandE&quot;</span><span class="p">,</span> <span class="s2">&quot;table&quot;</span><span class="p">,</span> <span class="s2">&quot;stitch&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;listToTable&quot;</span><span class="p">,</span> <span class="s2">&quot;tableFromList&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;count&quot;</span><span class="p">,</span> <span class="s2">&quot;permute&quot;</span><span class="p">,</span> <span class="s2">&quot;accumulate&quot;</span><span class="p">,</span> <span class="s2">&quot;AA_&quot;</span><span class="p">,</span> <span class="s2">&quot;peek&quot;</span><span class="p">,</span> <span class="s2">&quot;peekF&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;repeat&quot;</span><span class="p">,</span> <span class="s2">&quot;repeatF&quot;</span><span class="p">,</span> <span class="s2">&quot;repeatFrom&quot;</span><span class="p">]</span>
+<div class="viewcode-block" id="joinColumns"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.structural.joinColumns">[docs]</a><span class="k">class</span> <span class="nc">joinColumns</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
+<div class="viewcode-block" id="joinColumns.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.structural.joinColumns.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fillValue</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Join multiple columns and loop through all rows. Aka transpose.</span>
+
+<span class="sd">:param fillValue: if not None, then will try to zip longest with this fill value</span>
+
+<span class="sd">Example::</span>
+
+<span class="sd">    # returns [[1, 4], [2, 5], [3, 6]]</span>
+<span class="sd">    [[1, 2, 3], [4, 5, 6]] | joinColumns() | deref()</span>
+<span class="sd">    # returns [[1, 4], [2, 5], [3, 6], [0, 7]]</span>
+<span class="sd">    [[1, 2, 3], [4, 5, 6, 7]] | joinColumns(0) | deref()&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">();</span> <span class="bp">self</span><span class="o">.</span><span class="n">fillValue</span> <span class="o">=</span> <span class="n">fillValue</span></div>
+<div class="viewcode-block" id="joinColumns.__ror__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.structural.joinColumns.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">:</span><span class="n">Iterator</span><span class="p">[</span><span class="n">Iterator</span><span class="p">[</span><span class="n">T</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="n">Table</span><span class="p">[</span><span class="n">T</span><span class="p">]:</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__ror__</span><span class="p">(</span><span class="n">it</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">fillValue</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="k">yield from</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">it</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span> <span class="k">yield from</span> <span class="n">itertools</span><span class="o">.</span><span class="n">zip_longest</span><span class="p">(</span><span class="o">*</span><span class="n">it</span><span class="p">,</span> <span class="n">fillvalue</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">fillValue</span><span class="p">)</span></div></div>
+<span class="n">splitColumns</span> <span class="o">=</span> <span class="n">transpose</span> <span class="o">=</span> <span class="n">joinColumns</span>
+<div class="viewcode-block" id="joinList"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.structural.joinList">[docs]</a><span class="k">class</span> <span class="nc">joinList</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
+<div class="viewcode-block" id="joinList.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.structural.joinList.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">element</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">begin</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Join element into list.</span>
+
+<span class="sd">:param element: the element to insert. If None, then takes the input [e, [...]],</span>
+<span class="sd">    else takes the input [...] as usual</span>
+
+<span class="sd">Example::</span>
+
+<span class="sd">    # returns [5, 2, 6, 8]</span>
+<span class="sd">    [5, [2, 6, 8]] | joinList() | deref()</span>
+<span class="sd">    # also returns [5, 2, 6, 8]</span>
+<span class="sd">    [2, 6, 8] | joinList(5) | deref()&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">();</span> <span class="bp">self</span><span class="o">.</span><span class="n">element</span> <span class="o">=</span> <span class="n">element</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">begin</span> <span class="o">=</span> <span class="n">begin</span></div>
+<div class="viewcode-block" id="joinList.__ror__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.structural.joinList.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">:</span><span class="n">Tuple</span><span class="p">[</span><span class="n">T</span><span class="p">,</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">T</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">T</span><span class="p">]:</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__ror__</span><span class="p">(</span><span class="n">it</span><span class="p">);</span> <span class="n">it</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">it</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">element</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">begin</span><span class="p">:</span> <span class="k">yield</span> <span class="nb">next</span><span class="p">(</span><span class="n">it</span><span class="p">);</span> <span class="k">yield from</span> <span class="nb">next</span><span class="p">(</span><span class="n">it</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span> <span class="n">e</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">it</span><span class="p">);</span> <span class="k">yield from</span> <span class="nb">next</span><span class="p">(</span><span class="n">it</span><span class="p">);</span> <span class="k">yield</span> <span class="n">e</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">begin</span><span class="p">:</span> <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">element</span><span class="p">;</span> <span class="k">yield from</span> <span class="n">it</span>
+            <span class="k">else</span><span class="p">:</span> <span class="k">yield from</span> <span class="n">it</span><span class="p">;</span> <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">element</span></div></div>
+<div class="viewcode-block" id="splitList"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.structural.splitList">[docs]</a><span class="k">class</span> <span class="nc">splitList</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
+<div class="viewcode-block" id="splitList.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.structural.splitList.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">weights</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]):</span>
+        <span class="sd">&quot;&quot;&quot;Splits list of elements into multiple lists. If no weights are provided,</span>
+<span class="sd">then automatically defaults to [0.8, 0.2]. Example::</span>
+
+<span class="sd">    # returns [[0, 1, 2, 3, 4, 5, 6, 7], [8, 9]]</span>
+<span class="sd">    range(10) | splitList(0.8, 0.2) | deref()</span>
+<span class="sd">    # same as the above</span>
+<span class="sd">    range(10) | splitList() | deref()&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">();</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">weights</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="n">weights</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">weights</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">weights</span><span class="p">)</span></div>
+<div class="viewcode-block" id="splitList.__ror__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.structural.splitList.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__ror__</span><span class="p">(</span><span class="n">it</span><span class="p">);</span> <span class="n">it</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">it</span><span class="p">);</span> <span class="n">ws</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">weights</span><span class="p">;</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">ws</span> <span class="o">=</span> <span class="p">(</span><span class="n">ws</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">it</span><span class="p">)</span> <span class="o">/</span> <span class="n">ws</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">ws</span><span class="p">:</span> <span class="k">yield</span> <span class="n">it</span><span class="p">[</span><span class="n">c</span><span class="p">:</span><span class="n">c</span><span class="o">+</span><span class="n">w</span><span class="p">];</span> <span class="n">c</span> <span class="o">+=</span> <span class="n">w</span></div></div>
+<div class="viewcode-block" id="joinStreams"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.structural.joinStreams">[docs]</a><span class="k">class</span> <span class="nc">joinStreams</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Joins multiple streams.</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    # returns [1, 2, 3, 4, 5]</span>
+<span class="sd">    [[1, 2, 3], [4, 5]] | joinStreams() | deref()&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="joinStreams.__ror__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.structural.joinStreams.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">streams</span><span class="p">:</span><span class="n">Iterator</span><span class="p">[</span><span class="n">Iterator</span><span class="p">[</span><span class="n">T</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">T</span><span class="p">]:</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__ror__</span><span class="p">(</span><span class="n">streams</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">stream</span> <span class="ow">in</span> <span class="n">streams</span><span class="p">:</span> <span class="k">yield from</span> <span class="n">stream</span></div></div>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="k">def</span> <span class="nf">rand</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span> <span class="k">yield</span> <span class="n">random</span><span class="o">.</span><span class="n">randrange</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="n">yieldSentinel</span> <span class="o">=</span> <span class="nb">object</span><span class="p">()</span>
+<div class="viewcode-block" id="joinStreamsRandom"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.structural.joinStreamsRandom">[docs]</a><span class="k">class</span> <span class="nc">joinStreamsRandom</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Join multiple streams randomly. If any streams runs out, then quits. If</span>
+<span class="sd">any stream yields :data:`yieldSentinel`, then just ignores that result and</span>
+<span class="sd">continue. Could be useful in active learning. Example::</span>
+
+<span class="sd">    # could return [0, 1, 10, 2, 11, 12, 13, ...], with max length 20, typical length 18</span>
+<span class="sd">    [range(0, 10), range(10, 20)] | joinStreamsRandom() | deref()</span>
+<span class="sd">    </span>
+<span class="sd">    stream2 = [[-5, yieldSentinel, -4, -3], yieldSentinel | repeat()] | joinStreams()</span>
+<span class="sd">    # could return [-5, -4, 0, -3, 1, 2, 3, 4, 5, 6], demonstrating yieldSentinel</span>
+<span class="sd">    [range(7), stream2] | joinStreamsRandom() | deref()&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="joinStreamsRandom.__ror__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.structural.joinStreamsRandom.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">streams</span><span class="p">:</span><span class="n">Iterator</span><span class="p">[</span><span class="n">Iterator</span><span class="p">[</span><span class="n">T</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">T</span><span class="p">]:</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__ror__</span><span class="p">(</span><span class="n">streams</span><span class="p">)</span>
+        <span class="n">streams</span> <span class="o">=</span> <span class="p">[</span><span class="nb">iter</span><span class="p">(</span><span class="n">st</span><span class="p">)</span> <span class="k">for</span> <span class="n">st</span> <span class="ow">in</span> <span class="n">streams</span><span class="p">]</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">streamIdx</span> <span class="ow">in</span> <span class="n">rand</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">streams</span><span class="p">)):</span>
+                <span class="n">o</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">streams</span><span class="p">[</span><span class="n">streamIdx</span><span class="p">])</span>
+                <span class="k">if</span> <span class="n">o</span> <span class="o">!=</span> <span class="n">yieldSentinel</span><span class="p">:</span> <span class="k">yield</span> <span class="n">o</span>
+        <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span> <span class="k">pass</span></div></div>
+<div class="viewcode-block" id="batched"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.structural.batched">[docs]</a><span class="k">class</span> <span class="nc">batched</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
+<div class="viewcode-block" id="batched.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.structural.batched.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bs</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">includeLast</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Batches the input stream.</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    # returns [[0, 1, 2], [3, 4, 5], [6, 7, 8]]</span>
+<span class="sd">    range(11) | batched(3) | deref()</span>
+<span class="sd">    # returns [[0, 1, 2], [3, 4, 5], [6, 7, 8], [9, 10]]</span>
+<span class="sd">    range(11) | batched(3, True) | deref()</span>
+<span class="sd">    # returns [[0, 1, 2, 3, 4]]</span>
+<span class="sd">    range(5) | batched(float(&quot;inf&quot;), True) | deref()</span>
+<span class="sd">    # returns []</span>
+<span class="sd">    range(5) | batched(float(&quot;inf&quot;), False) | deref()&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">();</span> <span class="bp">self</span><span class="o">.</span><span class="n">bs</span> <span class="o">=</span> <span class="n">bs</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">includeLast</span> <span class="o">=</span> <span class="n">includeLast</span></div>
+<div class="viewcode-block" id="batched.__ror__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.structural.batched.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__ror__</span><span class="p">(</span><span class="n">it</span><span class="p">);</span> <span class="n">it</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">it</span><span class="p">);</span> <span class="n">l</span> <span class="o">=</span> <span class="p">[];</span> <span class="n">bs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bs</span>
+        <span class="k">if</span> <span class="n">bs</span> <span class="o">==</span> <span class="nb">float</span><span class="p">(</span><span class="s2">&quot;inf&quot;</span><span class="p">):</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">includeLast</span><span class="p">:</span> <span class="k">yield</span> <span class="n">it</span>
+            <span class="k">return</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">bs</span><span class="p">):</span> <span class="n">l</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">it</span><span class="p">))</span>
+                <span class="k">yield</span> <span class="n">l</span><span class="p">;</span> <span class="n">l</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">includeLast</span><span class="p">:</span> <span class="k">yield</span> <span class="n">l</span></div></div>
+<div class="viewcode-block" id="collate"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.structural.collate">[docs]</a><span class="k">def</span> <span class="nf">collate</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Puts individual columns into a tensor.</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    # returns [tensor([ 0, 10, 20]), tensor([ 1, 11, 21]), tensor([ 2, 12, 22])]</span>
+<span class="sd">    [range(0, 3), range(10, 13), range(20, 23)] | collate() | toList()&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">transpose</span><span class="p">()</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">row</span><span class="p">))</span></div>
+<div class="viewcode-block" id="insertRow"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.structural.insertRow">[docs]</a><span class="k">def</span> <span class="nf">insertRow</span><span class="p">(</span><span class="o">*</span><span class="n">row</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="n">T</span><span class="p">]):</span>
+    <span class="sd">&quot;&quot;&quot;Inserts a row right before every other rows. See also: :meth:`joinList`.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">joinList</span><span class="p">(</span><span class="n">row</span><span class="p">)</span></div>
+<div class="viewcode-block" id="insertColumn"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.structural.insertColumn">[docs]</a><span class="k">def</span> <span class="nf">insertColumn</span><span class="p">(</span><span class="o">*</span><span class="n">column</span><span class="p">,</span> <span class="n">begin</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fillValue</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Inserts a column at beginning or end.</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    # returns [[&#39;a&#39;, 1, 2], [&#39;b&#39;, 3, 4]]</span>
+<span class="sd">    [[1, 2], [3, 4]] | insertColumn(&quot;a&quot;, &quot;b&quot;) | deref()</span>
+<span class="sd">&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">transpose</span><span class="p">(</span><span class="n">fillValue</span><span class="p">)</span> <span class="o">|</span> <span class="n">joinList</span><span class="p">(</span><span class="n">column</span><span class="p">,</span> <span class="n">begin</span><span class="p">)</span> <span class="o">|</span> <span class="n">transpose</span><span class="p">(</span><span class="n">fillValue</span><span class="p">)</span></div>
+<div class="viewcode-block" id="insertIdColumn"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.structural.insertIdColumn">[docs]</a><span class="k">def</span> <span class="nf">insertIdColumn</span><span class="p">(</span><span class="n">table</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">begin</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fillValue</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Inserts an id column at the beginning (or end).</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    # returns [[0, &#39;a&#39;, 2], [1, &#39;b&#39;, 4]]</span>
+<span class="sd">    [[&quot;a&quot;, 2], [&quot;b&quot;, 4]] | insertIdColumn(True) | deref()</span>
+<span class="sd">    # returns [[0, &#39;a&#39;], [1, &#39;b&#39;]]</span>
+<span class="sd">    &quot;ab&quot; | insertIdColumn()</span>
+
+<span class="sd">:param table: if False, then insert column to an Iterator[str], else treat</span>
+<span class="sd">    input as a full fledged table&quot;&quot;&quot;</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="p">(</span><span class="n">cli</span><span class="o">.</span><span class="n">toRange</span><span class="p">()</span> <span class="o">&amp;</span> <span class="n">transpose</span><span class="p">(</span><span class="n">fillValue</span><span class="p">))</span> <span class="o">|</span> <span class="n">joinList</span><span class="p">(</span><span class="n">begin</span><span class="o">=</span><span class="n">begin</span><span class="p">)</span> <span class="o">|</span> <span class="n">transpose</span><span class="p">(</span><span class="n">fillValue</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">table</span><span class="p">:</span> <span class="k">return</span> <span class="n">f</span>
+    <span class="k">else</span><span class="p">:</span> <span class="k">return</span> <span class="n">cli</span><span class="o">.</span><span class="n">wrapList</span><span class="p">()</span> <span class="o">|</span> <span class="n">transpose</span><span class="p">()</span> <span class="o">|</span> <span class="n">f</span></div>
+<div class="viewcode-block" id="toDict"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.structural.toDict">[docs]</a><span class="k">class</span> <span class="nc">toDict</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
+<div class="viewcode-block" id="toDict.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.structural.toDict.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Converts 2 Iterators, 1 key, 1 value into a dictionary.</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    # returns {1: 3, 2: 4}</span>
+<span class="sd">    [[1, 2], [3, 4]] | toDict()&quot;&quot;&quot;</span>
+        <span class="k">pass</span></div>
+<div class="viewcode-block" id="toDict.__ror__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.structural.toDict.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">:</span><span class="n">Tuple</span><span class="p">[</span><span class="n">Iterator</span><span class="p">[</span><span class="n">T</span><span class="p">],</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">T</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">{</span><span class="n">_k</span><span class="p">:</span><span class="n">_v</span> <span class="k">for</span> <span class="n">_k</span><span class="p">,</span> <span class="n">_v</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">it</span><span class="p">)}</span></div></div>
+<div class="viewcode-block" id="toDictF"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.structural.toDictF">[docs]</a><span class="k">class</span> <span class="nc">toDictF</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
+<div class="viewcode-block" id="toDictF.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.structural.toDictF.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">keyF</span><span class="p">:</span><span class="n">Callable</span><span class="p">[[</span><span class="n">Any</span><span class="p">],</span> <span class="nb">str</span><span class="p">]</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">valueF</span><span class="p">:</span><span class="n">Callable</span><span class="p">[[</span><span class="n">Any</span><span class="p">],</span> <span class="n">Any</span><span class="p">]</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Transform an incoming stream into a dict using a function for</span>
+<span class="sd">values. Example::</span>
+
+<span class="sd">    names = [&quot;wanda&quot;, &quot;vision&quot;, &quot;loki&quot;, &quot;mobius&quot;]</span>
+<span class="sd">    names | toDictF(valueF=lambda s: len(s)) # will return {&quot;wanda&quot;: 5, &quot;vision&quot;: 6, ...}</span>
+<span class="sd">    names | toDictF(lambda s: s.title(), lambda s: len(s)) # will return {&quot;Wanda&quot;: 5, &quot;Vision&quot;: 6, ...}</span>
+<span class="sd">&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">();</span> <span class="bp">self</span><span class="o">.</span><span class="n">keyF</span> <span class="o">=</span> <span class="n">keyF</span> <span class="ow">or</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">s</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">valueF</span> <span class="o">=</span> <span class="n">valueF</span> <span class="ow">or</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">s</span><span class="p">)</span></div>
+<div class="viewcode-block" id="toDictF.__ror__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.structural.toDictF.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">keys</span><span class="p">:</span><span class="n">Iterator</span><span class="p">[</span><span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__ror__</span><span class="p">(</span><span class="n">keys</span><span class="p">);</span> <span class="n">keyF</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">keyF</span><span class="p">;</span> <span class="n">valueF</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">valueF</span>
+        <span class="k">return</span> <span class="p">{</span><span class="n">keyF</span><span class="p">(</span><span class="n">key</span><span class="p">):</span><span class="n">valueF</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">}</span></div></div>
+<div class="viewcode-block" id="split"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.structural.split">[docs]</a><span class="k">class</span> <span class="nc">split</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
+<div class="viewcode-block" id="split.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.structural.split.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">delim</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">idx</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Splits each line using a delimiter, and outputs the</span>
+<span class="sd">parts as a separate line. Example::</span>
+
+<span class="sd">    # returns [&quot;a&quot;, &quot;b&quot;, &quot;d&quot;, &quot;e&quot;]</span>
+<span class="sd">    [&quot;a,b&quot;, &quot;d,e&quot;] | split(&quot;,&quot;) | deref()</span>
+<span class="sd">    # returns [&#39;b&#39;, &#39;e&#39;]</span>
+<span class="sd">    [&quot;a,b&quot;, &quot;d,e&quot;] | split(&quot;,&quot;, 1) | deref()</span>
+
+<span class="sd">:param idx: if available, only outputs the element at that index&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">delim</span> <span class="o">=</span> <span class="n">patchDefaultDelim</span><span class="p">(</span><span class="n">delim</span><span class="p">);</span> <span class="bp">self</span><span class="o">.</span><span class="n">idx</span> <span class="o">=</span> <span class="n">idx</span></div>
+<div class="viewcode-block" id="split.__ror__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.structural.split.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">:</span><span class="n">Iterator</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__ror__</span><span class="p">(</span><span class="n">it</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">idx</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">it</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">delim</span><span class="p">):</span> <span class="k">yield</span> <span class="n">elem</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">it</span><span class="p">:</span>
+                <span class="n">elems</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">delim</span><span class="p">)</span>
+                <span class="k">yield</span> <span class="n">elems</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">idx</span><span class="p">]</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">idx</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">elems</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span></div></div>
+<div class="viewcode-block" id="expandE"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.structural.expandE">[docs]</a><span class="k">class</span> <span class="nc">expandE</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
+<div class="viewcode-block" id="expandE.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.structural.expandE.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">:</span><span class="n">Callable</span><span class="p">[[</span><span class="n">T</span><span class="p">],</span> <span class="n">List</span><span class="p">[</span><span class="n">T</span><span class="p">]],</span> <span class="n">column</span><span class="p">:</span><span class="nb">int</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Expands table element to multiple columns.</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    # returns [[&#39;abc&#39;, 3, -2], [&#39;de&#39;, 2, -5]]</span>
+<span class="sd">    [[&quot;abc&quot;, -2], [&quot;de&quot;, -5]] | expandE(lambda e: (e, len(e)), 0) | deref()</span>
+
+<span class="sd">:param f: Function that transforms 1 row element to multiple elements&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">f</span> <span class="o">=</span> <span class="n">f</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">column</span> <span class="o">=</span> <span class="n">column</span></div>
+<div class="viewcode-block" id="expandE.__ror__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.structural.expandE.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">):</span>
+        <span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">;</span> <span class="n">c</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">column</span>
+        <span class="k">def</span> <span class="nf">gen</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">e</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="n">c</span><span class="p">:</span> <span class="k">yield from</span> <span class="n">f</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span> <span class="k">yield</span> <span class="n">e</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">gen</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">it</span><span class="p">)</span></div></div>
+<div class="viewcode-block" id="table"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.structural.table">[docs]</a><span class="k">class</span> <span class="nc">table</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
+<div class="viewcode-block" id="table.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.structural.table.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">delim</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Splits lines to rows (List[str]) using a delimiter.</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    # returns [[&#39;a&#39;, &#39;bd&#39;], [&#39;1&#39;, &#39;2&#39;, &#39;3&#39;]]</span>
+<span class="sd">    [&quot;a|bd&quot;, &quot;1|2|3&quot;] | table(&quot;|&quot;) | deref()&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">();</span> <span class="bp">self</span><span class="o">.</span><span class="n">delim</span> <span class="o">=</span> <span class="n">patchDefaultDelim</span><span class="p">(</span><span class="n">delim</span><span class="p">)</span></div>
+<div class="viewcode-block" id="table.__ror__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.structural.table.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">:</span><span class="n">Iterator</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Table</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__ror__</span><span class="p">(</span><span class="n">it</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">delim</span><span class="p">)</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">it</span><span class="p">)</span></div></div>
+<div class="viewcode-block" id="stitch"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.structural.stitch">[docs]</a><span class="k">class</span> <span class="nc">stitch</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
+<div class="viewcode-block" id="stitch.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.structural.stitch.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">delim</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Stitches elements in a row together, so they become a simple string.</span>
+<span class="sd">See also: :class:`~k1lib.cli.output.pretty`. Preferable to</span>
+<span class="sd">:class:`~k1lib.cli.utils.to1Str` ``.all()``, as there&#39;s a lot of overhead in</span>
+<span class="sd">splitting streams. Example::</span>
+
+<span class="sd">    # returns [&#39;1|2&#39;, &#39;3|4&#39;, &#39;5|6&#39;]</span>
+<span class="sd">    [[1, 2], [3, 4], [5, 6]] | stitch(&quot;|&quot;) | deref()&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">();</span> <span class="bp">self</span><span class="o">.</span><span class="n">delim</span> <span class="o">=</span> <span class="n">patchDefaultDelim</span><span class="p">(</span><span class="n">delim</span><span class="p">)</span></div>
+<div class="viewcode-block" id="stitch.__ror__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.structural.stitch.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">:</span><span class="n">Table</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__ror__</span><span class="p">(</span><span class="n">it</span><span class="p">);</span> <span class="n">d</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">delim</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">it</span><span class="p">:</span> <span class="k">yield</span> <span class="n">d</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">row</span><span class="p">])</span></div></div>
+<div class="viewcode-block" id="listToTable"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.structural.listToTable">[docs]</a><span class="k">def</span> <span class="nf">listToTable</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Turns Iterator[T] into Table[T]&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">cli</span><span class="o">.</span><span class="n">wrapList</span><span class="p">()</span> <span class="o">|</span> <span class="n">transpose</span><span class="p">()</span></div>
+<span class="n">tableFromList</span> <span class="o">=</span> <span class="n">listToTable</span>
+<div class="viewcode-block" id="count"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.structural.count">[docs]</a><span class="k">class</span> <span class="nc">count</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Finds unique elements and returns a table with [frequency, value, percent]</span>
+<span class="sd">columns. Example::</span>
+
+<span class="sd">    # returns [[1, &#39;a&#39;, &#39;33%&#39;], [2, &#39;b&#39;, &#39;67%&#39;]]</span>
+<span class="sd">    [&#39;a&#39;, &#39;b&#39;, &#39;b&#39;] | count() | deref()&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="count.__ror__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.structural.count.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">:</span><span class="n">Iterator</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
+        <span class="n">it</span> <span class="o">=</span> <span class="n">it</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="p">(</span><span class="nb">tuple</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span> <span class="k">else</span> <span class="n">row</span><span class="p">))</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">it</span><span class="p">);</span> <span class="n">s</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">c</span><span class="o">.</span><span class="n">items</span><span class="p">():</span> <span class="k">yield</span> <span class="p">[</span><span class="n">v</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="mi">100</span><span class="o">*</span><span class="n">v</span><span class="o">/</span><span class="n">s</span><span class="p">)</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">]</span></div></div>
+<div class="viewcode-block" id="permute"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.structural.permute">[docs]</a><span class="k">class</span> <span class="nc">permute</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
+<div class="viewcode-block" id="permute.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.structural.permute.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">permutations</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]):</span>
+        <span class="sd">&quot;&quot;&quot;Permutes the columns. Acts kinda like :meth:`torch.Tensor.permute`.</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    # returns [[&#39;b&#39;, &#39;a&#39;], [&#39;d&#39;, &#39;c&#39;]]</span>
+<span class="sd">    [&quot;ab&quot;, &quot;cd&quot;] | permute(1, 0) | deref()&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">();</span> <span class="bp">self</span><span class="o">.</span><span class="n">permutations</span> <span class="o">=</span> <span class="n">permutations</span></div>
+<div class="viewcode-block" id="permute.__ror__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.structural.permute.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">:</span><span class="n">Iterator</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__ror__</span><span class="p">(</span><span class="n">it</span><span class="p">);</span> <span class="n">p</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">permutations</span>
+        <span class="k">def</span> <span class="nf">gen</span><span class="p">(</span><span class="n">row</span><span class="p">):</span> <span class="n">row</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">row</span><span class="p">);</span> <span class="k">return</span> <span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">p</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">it</span><span class="p">:</span> <span class="k">yield</span> <span class="n">gen</span><span class="p">(</span><span class="n">row</span><span class="p">)</span></div></div>
+<div class="viewcode-block" id="accumulate"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.structural.accumulate">[docs]</a><span class="k">class</span> <span class="nc">accumulate</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
+<div class="viewcode-block" id="accumulate.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.structural.accumulate.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">columnIdx</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">avg</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Groups lines that have the same row[columnIdx], and</span>
+<span class="sd">add together all other columns, assuming they&#39;re numbers</span>
+
+<span class="sd">:param columnIdx: common column index to accumulate</span>
+<span class="sd">:param avg: calculate average values instead of sum&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">();</span> <span class="bp">self</span><span class="o">.</span><span class="n">columnIdx</span> <span class="o">=</span> <span class="n">columnIdx</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">avg</span> <span class="o">=</span> <span class="n">avg</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dict</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="n">defaultdict</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="mi">0</span><span class="p">))</span></div>
+<div class="viewcode-block" id="accumulate.__ror__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.structural.accumulate.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">:</span><span class="n">Iterator</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__ror__</span><span class="p">(</span><span class="n">it</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">it</span><span class="p">:</span>
+            <span class="n">row</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">row</span><span class="p">);</span> <span class="n">key</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">columnIdx</span><span class="p">]</span>
+            <span class="n">row</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">columnIdx</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">e</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
+                <span class="k">try</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">dict</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="nb">float</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+                <span class="k">except</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">dict</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">e</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">values</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">avg</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dict</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="n">i</span><span class="p">],</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">)):</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">dict</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">/=</span> <span class="n">n</span>
+            <span class="n">elems</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dict</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span>
+            <span class="n">elems</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">columnIdx</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+            <span class="k">yield</span> <span class="n">elems</span></div></div>
+<div class="viewcode-block" id="AA_"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.structural.AA_">[docs]</a><span class="k">class</span> <span class="nc">AA_</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
+<div class="viewcode-block" id="AA_.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.structural.AA_.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">idxs</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">wraps</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Returns 2 streams, one that has the selected element, and the other</span>
+<span class="sd">the rest. Example::</span>
+
+<span class="sd">    # returns [5, [1, 6, 3, 7]]</span>
+<span class="sd">    [1, 5, 6, 3, 7] | AA_(1)</span>
+<span class="sd">    # returns [[5, [1, 6, 3, 7]]]</span>
+<span class="sd">    [1, 5, 6, 3, 7] | AA_(1, wraps=True)</span>
+
+<span class="sd">You can also put multiple indexes through::</span>
+
+<span class="sd">    # returns [[1, [5, 6]], [6, [1, 5]]]</span>
+<span class="sd">    [1, 5, 6] | AA_(0, 2)</span>
+
+<span class="sd">If you don&#39;t specify anything, then all indexes will be sliced::</span>
+
+<span class="sd">    # returns [[1, [5, 6]], [5, [1, 6]], [6, [1, 5]]]</span>
+<span class="sd">    [1, 5, 6] | AA_()</span>
+
+<span class="sd">As for why the strange name, think of this operation as &quot;AĀ&quot;. In statistics,</span>
+<span class="sd">say you have a set &quot;A&quot;, then &quot;not A&quot; is commonly written as A with an overline</span>
+<span class="sd">&quot;Ā&quot;. So &quot;AA\_&quot; represents &quot;AĀ&quot;, and that it first returns the selection A.</span>
+
+<span class="sd">:param wraps: if True, then the first example will return [[5, [1, 6, 3, 7]]]</span>
+<span class="sd">    instead, so that A has the same signature as Ā&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">();</span> <span class="bp">self</span><span class="o">.</span><span class="n">idxs</span> <span class="o">=</span> <span class="n">idxs</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">wraps</span> <span class="o">=</span> <span class="n">wraps</span></div>
+<div class="viewcode-block" id="AA_.__ror__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.structural.AA_.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">]]]:</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__ror__</span><span class="p">(</span><span class="n">it</span><span class="p">);</span> <span class="n">idxs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">idxs</span><span class="p">;</span> <span class="n">it</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">it</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">idxs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="n">idxs</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">it</span><span class="p">))</span>
+        <span class="k">def</span> <span class="nf">gen</span><span class="p">(</span><span class="n">idx</span><span class="p">):</span>
+            <span class="k">return</span> <span class="p">[</span><span class="n">it</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="p">[</span><span class="n">v</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">it</span><span class="p">)</span> <span class="k">if</span> <span class="n">i</span> <span class="o">!=</span> <span class="n">idx</span><span class="p">]]</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">wraps</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">idxs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span> <span class="k">return</span> <span class="n">gen</span><span class="p">(</span><span class="n">idxs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">gen</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span> <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="n">idxs</span><span class="p">]</span></div></div>
+<div class="viewcode-block" id="peek"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.structural.peek">[docs]</a><span class="k">class</span> <span class="nc">peek</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns (firstRow, iterator). This sort of peaks at the first row, to</span>
+<span class="sd">potentially gain some insights about the internal formats. The returned iterator</span>
+<span class="sd">is not tampered. Example::</span>
+
+<span class="sd">    e, it = iter([[1, 2, 3], [1, 2]]) | peek()</span>
+<span class="sd">    print(e) # prints &quot;[1, 2, 3]&quot;</span>
+<span class="sd">    s = 0</span>
+<span class="sd">    for e in it: s += len(e)</span>
+<span class="sd">    print(s) # prints &quot;5&quot;, or length of 2 lists</span>
+
+<span class="sd">You kinda have to be careful about handling the ``firstRow``, because you might</span>
+<span class="sd">inadvertently alter the iterator::</span>
+
+<span class="sd">    e, it = iter([iter(range(3)), range(4), range(2)]) | peek()</span>
+<span class="sd">    e = list(e) # e is [0, 1, 2]</span>
+<span class="sd">    list(next(it)) # supposed to be the same as `e`, but is [] instead</span>
+
+<span class="sd">The example happens because you have already consumed all elements of the first</span>
+<span class="sd">row, and thus there aren&#39;t any left when you try to call ``next(it)``.&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="peek.__ror__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.structural.peek.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">:</span><span class="n">Iterator</span><span class="p">[</span><span class="n">T</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">T</span><span class="p">,</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">T</span><span class="p">]]:</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__ror__</span><span class="p">(</span><span class="n">it</span><span class="p">);</span> <span class="n">it</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">it</span><span class="p">)</span>
+        <span class="n">sentinel</span> <span class="o">=</span> <span class="nb">object</span><span class="p">();</span> <span class="n">row</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">it</span><span class="p">,</span> <span class="n">sentinel</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">row</span> <span class="o">==</span> <span class="n">sentinel</span><span class="p">:</span> <span class="k">return</span> <span class="kc">None</span><span class="p">,</span> <span class="p">[]</span>
+        <span class="k">def</span> <span class="nf">gen</span><span class="p">():</span> <span class="k">yield</span> <span class="n">row</span><span class="p">;</span> <span class="k">yield from</span> <span class="n">it</span>
+        <span class="k">return</span> <span class="n">row</span><span class="p">,</span> <span class="n">gen</span><span class="p">()</span></div></div>
+<div class="viewcode-block" id="peekF"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.structural.peekF">[docs]</a><span class="k">class</span> <span class="nc">peekF</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
+<div class="viewcode-block" id="peekF.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.structural.peekF.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">:</span><span class="n">Union</span><span class="p">[</span><span class="n">BaseCli</span><span class="p">,</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">T</span><span class="p">],</span> <span class="n">T</span><span class="p">]]):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Similar to :class:`peek`, but will execute ``f(row)`` and</span>
+<span class="sd">return the input Iterator, which is not tampered. Example::</span>
+
+<span class="sd">    it = lambda: iter([[1, 2, 3], [1, 2]])</span>
+<span class="sd">    # prints &quot;[1, 2, 3]&quot; and returns [[1, 2, 3], [1, 2]]</span>
+<span class="sd">    it() | peekF(lambda x: print(x)) | deref()</span>
+<span class="sd">    # prints &quot;1\n2\n3&quot;</span>
+<span class="sd">    it() | peekF(headOut()) | deref()&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">();</span> <span class="bp">self</span><span class="o">.</span><span class="n">f</span> <span class="o">=</span> <span class="n">f</span></div>
+<div class="viewcode-block" id="peekF.__ror__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.structural.peekF.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">:</span><span class="n">Iterator</span><span class="p">[</span><span class="n">T</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">T</span><span class="p">]:</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__ror__</span><span class="p">(</span><span class="n">it</span><span class="p">);</span> <span class="n">it</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">it</span><span class="p">)</span>
+        <span class="n">sentinel</span> <span class="o">=</span> <span class="nb">object</span><span class="p">();</span> <span class="n">row</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">it</span><span class="p">,</span> <span class="n">sentinel</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">row</span> <span class="o">==</span> <span class="n">sentinel</span><span class="p">:</span> <span class="k">return</span> <span class="p">[]</span>
+        <span class="k">def</span> <span class="nf">gen</span><span class="p">():</span> <span class="k">yield</span> <span class="n">row</span><span class="p">;</span> <span class="k">yield from</span> <span class="n">it</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">(</span><span class="n">row</span><span class="p">);</span> <span class="k">return</span> <span class="n">gen</span><span class="p">()</span></div></div>
+<div class="viewcode-block" id="repeat"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.structural.repeat">[docs]</a><span class="k">class</span> <span class="nc">repeat</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Yields a specified amount of the passed in object. If you intend to pass in</span>
+<span class="sd">an iterator, then make a list out of it first, as second copy of iterator probably</span>
+<span class="sd">won&#39;t work as you will have used it the first time. Example::</span>
+
+<span class="sd">    # returns [[1, 2, 3], [1, 2, 3], [1, 2, 3]]</span>
+<span class="sd">    [1, 2, 3] | repeat(3) | toList()</span>
+
+<span class="sd">:param repeat: if None, then repeats indefinitely&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">limit</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">();</span> <span class="bp">self</span><span class="o">.</span><span class="n">limit</span> <span class="o">=</span> <span class="n">limit</span>
+<div class="viewcode-block" id="repeat.__ror__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.structural.repeat.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">o</span><span class="p">:</span><span class="n">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">T</span><span class="p">]:</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__ror__</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">limit</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">while</span> <span class="kc">True</span><span class="p">:</span> <span class="k">yield</span> <span class="n">o</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">limit</span><span class="p">):</span> <span class="k">yield</span> <span class="n">o</span></div></div>
+<div class="viewcode-block" id="repeatF"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.structural.repeatF">[docs]</a><span class="k">def</span> <span class="nf">repeatF</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">limit</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Yields a specified amount generated by a specified function.</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    # returns [4, 4, 4]</span>
+<span class="sd">    repeatF(lambda: 4, 3) | toList()</span>
+<span class="sd">    # returns 10</span>
+<span class="sd">    repeatF(lambda: 4) | head() | shape(0)</span>
+
+<span class="sd">:param limit: if None, then repeats indefinitely</span>
+
+<span class="sd">See also: :class:`repeatFrom`&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">limit</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span> <span class="k">yield</span> <span class="n">f</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">limit</span><span class="p">):</span> <span class="k">yield</span> <span class="n">f</span><span class="p">()</span></div>
+<div class="viewcode-block" id="repeatFrom"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.structural.repeatFrom">[docs]</a><span class="k">class</span> <span class="nc">repeatFrom</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
+<div class="viewcode-block" id="repeatFrom.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.structural.repeatFrom.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">limit</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Yields from a list. If runs out of elements, then do it again for</span>
+<span class="sd">``limit`` times. Example::</span>
+
+<span class="sd">    # returns [1, 2, 3, 1, 2]</span>
+<span class="sd">    [1, 2, 3] | repeatFrom() | head(5) | deref()</span>
+<span class="sd">    # returns [1, 2, 3, 1, 2, 3]</span>
+<span class="sd">    [1, 2, 3] | repeatFrom(2) | deref()</span>
+
+<span class="sd">:param limit: if None, then repeats indefinitely&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">();</span> <span class="bp">self</span><span class="o">.</span><span class="n">limit</span> <span class="o">=</span> <span class="n">limit</span></div>
+<div class="viewcode-block" id="repeatFrom.__ror__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.structural.repeatFrom.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">:</span><span class="n">Iterator</span><span class="p">[</span><span class="n">T</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">T</span><span class="p">]:</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__ror__</span><span class="p">(</span><span class="n">it</span><span class="p">);</span> <span class="n">it</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">it</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">limit</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">while</span> <span class="kc">True</span><span class="p">:</span> <span class="k">yield from</span> <span class="n">it</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">limit</span><span class="p">):</span> <span class="k">yield from</span> <span class="n">it</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Quang Ho.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
