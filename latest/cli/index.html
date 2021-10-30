@@ -125,7 +125,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../viz.html">k1lib.viz module</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../monkeyPatches.html">Monkey patched classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../monkey.html">Monkey patched classes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../changelogs.html">Changelogs</a></li>
 </ul>
@@ -973,8 +973,16 @@ you can omit it.</p>
 
 <dl class="py method">
 <dt id="k1lib.cli.init.BaseCli.__call__">
-<code class="sig-name descname"><span class="pre">__call__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">it</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/init.html#BaseCli.__call__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli.init.BaseCli.__call__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Another way to do <code class="docutils literal notranslate"><span class="pre">it</span> <span class="pre">|</span> <span class="pre">cli</span></code></p>
+<code class="sig-name descname"><span class="pre">__call__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">it</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/init.html#BaseCli.__call__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli.init.BaseCli.__call__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Another way to do <code class="docutils literal notranslate"><span class="pre">it</span> <span class="pre">|</span> <span class="pre">cli</span></code>. If multiple arguments are fed, then the
+argument list is passed to cli instead of just the first element. Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@applyS</span>
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">it</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">it</span>
+<span class="n">f</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># returns 2</span>
+<span class="n">f</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="c1"># returns [2, 3]</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </dd></dl>
@@ -1788,6 +1796,42 @@ mention this in case it’s not clear to you.</p>
 
 </dd></dl>
 
+<dl class="py class">
+<dt id="k1lib.cli.modifier.op">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">k1lib.cli.modifier.</span></code><code class="sig-name descname"><span class="pre">op</span></code><a class="reference internal" href="../_modules/k1lib/cli/modifier.html#op"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli.modifier.op" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">k1lib._baseClasses.Absorber</span></code>, <a class="reference internal" href="#k1lib.cli.init.BaseCli" title="k1lib.cli.init.BaseCli"><code class="xref py py-class docutils literal notranslate"><span class="pre">k1lib.cli.init.BaseCli</span></code></a></p>
+<p>Absorbs operations done on it and applies it on the stream. Based
+on <a class="reference internal" href="../base.html#k1lib.Absorber" title="k1lib.Absorber"><code class="xref py py-class docutils literal notranslate"><span class="pre">Absorber</span></code></a>. Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mf">6.0</span><span class="p">]])</span>
+<span class="c1"># returns [torch.tensor([[4., 5., 6., 7., 8., 9.]])]</span>
+<span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">|</span> <span class="p">(</span><span class="n">op</span><span class="p">()</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span> <span class="o">|</span> <span class="n">deref</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Basically, you can treat <code class="docutils literal notranslate"><span class="pre">op()</span></code> as the input tensor. Tbh, you
+can do the same thing with this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">|</span> <span class="n">applyS</span><span class="p">(</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="p">(</span><span class="n">t</span><span class="o">+</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">all</span><span class="p">()</span> <span class="o">|</span> <span class="n">deref</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>But that’s kinda long and may not be obvious. This can be surprisingly resilient, as
+you can still combine with other cli tools as usual, for example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># returns [2, 3], demonstrating &quot;&amp;&quot; operator</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">op</span><span class="p">()</span><span class="o">.</span><span class="n">shape</span> <span class="o">&amp;</span> <span class="n">identity</span><span class="p">())</span> <span class="o">|</span> <span class="n">deref</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span> <span class="o">|</span> <span class="n">item</span><span class="p">()</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]])</span>
+<span class="c1"># returns torch.tensor([4, 5, 6]), demonstrating &quot;+&quot; operator for clis and not clis</span>
+<span class="p">(</span><span class="n">a</span> <span class="o">|</span> <span class="n">op</span><span class="p">()</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">+</span> <span class="n">identity</span><span class="p">()</span> <span class="o">|</span> <span class="n">item</span><span class="p">()</span> <span class="o">==</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]))</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+
+<span class="c1"># returns [[3], [3]], demonstrating .all() and &quot;|&quot; serial chaining</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">op</span><span class="p">()</span><span class="o">.</span><span class="n">shape</span><span class="o">.</span><span class="n">all</span><span class="p">()</span> <span class="o">|</span> <span class="n">deref</span><span class="p">())</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt id="k1lib.cli.modifier.op.__ror__">
+<code class="sig-name descname"><span class="pre">__ror__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">it</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/modifier.html#op.__ror__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli.modifier.op.__ror__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </div>
 <div class="section" id="module-k1lib.cli.output">
 <span id="output-module"></span><h2>output module<a class="headerlink" href="#module-k1lib.cli.output" title="Permalink to this headline">¶</a></h2>
@@ -1853,13 +1897,23 @@ new line. Else accepts bytes and write in 1 go.</p>
 
 <dl class="py class">
 <dt id="k1lib.cli.output.intercept">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">k1lib.cli.output.</span></code><code class="sig-name descname"><span class="pre">intercept</span></code><a class="reference internal" href="../_modules/k1lib/cli/output.html#intercept"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli.output.intercept" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">k1lib.cli.output.</span></code><code class="sig-name descname"><span class="pre">intercept</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">raiseError</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><span class="pre">bool</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/output.html#intercept"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli.output.intercept" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#k1lib.cli.init.BaseCli" title="k1lib.cli.init.BaseCli"><code class="xref py py-class docutils literal notranslate"><span class="pre">k1lib.cli.init.BaseCli</span></code></a></p>
-<p>Intercept flow at a particular point, analyze the object piped in, and
-throw exception to stop flow. Example:</p>
+<dl class="py method">
+<dt id="k1lib.cli.output.intercept.__init__">
+<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">raiseError</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><span class="pre">bool</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/output.html#intercept.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli.output.intercept.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Intercept flow at a particular point, analyze the object piped in, and
+raises error to stop flow. Example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span> <span class="o">|</span> <span class="n">intercept</span><span class="p">()</span>
 </pre></div>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>raiseError</strong> – whether to raise error when executed or not.</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py method">
 <dt id="k1lib.cli.output.intercept.__ror__">
 <code class="sig-name descname"><span class="pre">__ror__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/output.html#intercept.__ror__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli.output.intercept.__ror__" title="Permalink to this definition">¶</a></dt>
@@ -2326,7 +2380,7 @@ columns. Example:</p>
 <dl class="py method">
 <dt id="k1lib.cli.structural.permute.__init__">
 <code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">permutations</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/structural.html#permute.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli.structural.permute.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Permutes the columns. Acts kinda like <a class="reference external" href="https://pytorch.org/docs/master/generated/torch.Tensor.permute.html#torch.Tensor.permute" title="(in PyTorch vmaster (1.11.0a0+git4a04d2b ))"><code class="xref py py-meth docutils literal notranslate"><span class="pre">torch.Tensor.permute()</span></code></a>.
+<dd><p>Permutes the columns. Acts kinda like <a class="reference external" href="https://pytorch.org/docs/master/generated/torch.Tensor.permute.html#torch.Tensor.permute" title="(in PyTorch vmaster (1.11.0a0+git1a13e43 ))"><code class="xref py py-meth docutils literal notranslate"><span class="pre">torch.Tensor.permute()</span></code></a>.
 Example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># returns [[&#39;b&#39;, &#39;a&#39;], [&#39;d&#39;, &#39;c&#39;]]</span>
 <span class="p">[</span><span class="s2">&quot;ab&quot;</span><span class="p">,</span> <span class="s2">&quot;cd&quot;</span><span class="p">]</span> <span class="o">|</span> <span class="n">permute</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">|</span> <span class="n">deref</span><span class="p">()</span>
@@ -2563,7 +2617,7 @@ Example:</p>
 <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span> <span class="o">|</span> <span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>You can also pipe in a <a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.11.0a0+git4a04d2b ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a>, and it will just return its shape:</p>
+<p>You can also pipe in a <a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.11.0a0+git1a13e43 ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a>, and it will just return its shape:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># returns torch.Size([3, 4])</span>
 <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="o">|</span> <span class="n">size</span><span class="p">()</span>
 </pre></div>
@@ -2700,15 +2754,15 @@ Example:</p>
 <dl class="py method">
 <dt id="k1lib.cli.utils.toTensor.__init__">
 <code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">torch.float32</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/utils.html#toTensor.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli.utils.toTensor.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Converts generator to <a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.11.0a0+git4a04d2b ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a>. Essentially
+<dd><p>Converts generator to <a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.11.0a0+git1a13e43 ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a>. Essentially
 <code class="docutils literal notranslate"><span class="pre">torch.tensor(list(it))</span></code>.</p>
-<p>Also checks if input is a PIL Image. If yes, turn it into a <a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.11.0a0+git4a04d2b ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a>
+<p>Also checks if input is a PIL Image. If yes, turn it into a <a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.11.0a0+git1a13e43 ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a>
 and return.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="k1lib.cli.utils.toTensor.__ror__">
-<code class="sig-name descname"><span class="pre">__ror__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">it</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.11.0a0+git4a04d2b ))"><span class="pre">torch.Tensor</span></a><a class="reference internal" href="../_modules/k1lib/cli/utils.html#toTensor.__ror__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli.utils.toTensor.__ror__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">__ror__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">it</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.11.0a0+git1a13e43 ))"><span class="pre">torch.Tensor</span></a><a class="reference internal" href="../_modules/k1lib/cli/utils.html#toTensor.__ror__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli.utils.toTensor.__ror__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -2828,7 +2882,7 @@ Example:</p>
 <dt id="k1lib.cli.utils.toSum">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">k1lib.cli.utils.</span></code><code class="sig-name descname"><span class="pre">toSum</span></code><a class="reference internal" href="../_modules/k1lib/cli/utils.html#toSum"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli.utils.toSum" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#k1lib.cli.init.BaseCli" title="k1lib.cli.init.BaseCli"><code class="xref py py-class docutils literal notranslate"><span class="pre">k1lib.cli.init.BaseCli</span></code></a></p>
-<p>Calculates the sum of list of numbers. Can pipe in <a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.11.0a0+git4a04d2b ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a>.
+<p>Calculates the sum of list of numbers. Can pipe in <a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.11.0a0+git1a13e43 ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a>.
 Example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># returns 45</span>
 <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">|</span> <span class="n">toSum</span><span class="p">()</span>
@@ -2845,7 +2899,7 @@ Example:</p>
 <dt id="k1lib.cli.utils.toAvg">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">k1lib.cli.utils.</span></code><code class="sig-name descname"><span class="pre">toAvg</span></code><a class="reference internal" href="../_modules/k1lib/cli/utils.html#toAvg"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli.utils.toAvg" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#k1lib.cli.init.BaseCli" title="k1lib.cli.init.BaseCli"><code class="xref py py-class docutils literal notranslate"><span class="pre">k1lib.cli.init.BaseCli</span></code></a></p>
-<p>Calculates average of list of numbers. Can pipe in <a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.11.0a0+git4a04d2b ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a>.
+<p>Calculates average of list of numbers. Can pipe in <a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.11.0a0+git1a13e43 ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a>.
 Example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># returns 4.5</span>
 <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">|</span> <span class="n">toAvg</span><span class="p">()</span>
@@ -2870,7 +2924,7 @@ Example:</p>
 <dt id="k1lib.cli.utils.toMax">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">k1lib.cli.utils.</span></code><code class="sig-name descname"><span class="pre">toMax</span></code><a class="reference internal" href="../_modules/k1lib/cli/utils.html#toMax"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli.utils.toMax" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#k1lib.cli.init.BaseCli" title="k1lib.cli.init.BaseCli"><code class="xref py py-class docutils literal notranslate"><span class="pre">k1lib.cli.init.BaseCli</span></code></a></p>
-<p>Calculates the max of a bunch of numbers. Can pipe in <a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.11.0a0+git4a04d2b ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a>.
+<p>Calculates the max of a bunch of numbers. Can pipe in <a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.11.0a0+git1a13e43 ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a>.
 Example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># returns 6</span>
 <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">|</span> <span class="n">toMax</span><span class="p">()</span>
@@ -2887,7 +2941,7 @@ Example:</p>
 <dt id="k1lib.cli.utils.toMin">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">k1lib.cli.utils.</span></code><code class="sig-name descname"><span class="pre">toMin</span></code><a class="reference internal" href="../_modules/k1lib/cli/utils.html#toMin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli.utils.toMin" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#k1lib.cli.init.BaseCli" title="k1lib.cli.init.BaseCli"><code class="xref py py-class docutils literal notranslate"><span class="pre">k1lib.cli.init.BaseCli</span></code></a></p>
-<p>Calculates the min of a bunch of numbers. Can pipe in <a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.11.0a0+git4a04d2b ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a>.
+<p>Calculates the min of a bunch of numbers. Can pipe in <a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.11.0a0+git1a13e43 ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a>.
 Example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># returns 1</span>
 <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">|</span> <span class="n">toMin</span><span class="p">()</span>
@@ -2933,13 +2987,13 @@ Example:</p>
 
 <dl class="py class">
 <dt id="k1lib.cli.utils.deref">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">k1lib.cli.utils.</span></code><code class="sig-name descname"><span class="pre">deref</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ignoreTensors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxDepth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">inf</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/utils.html#deref"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli.utils.deref" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">k1lib.cli.utils.</span></code><code class="sig-name descname"><span class="pre">deref</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ignoreTensors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxDepth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">inf</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/utils.html#deref"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli.utils.deref" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#k1lib.cli.init.BaseCli" title="k1lib.cli.init.BaseCli"><code class="xref py py-class docutils literal notranslate"><span class="pre">k1lib.cli.init.BaseCli</span></code></a></p>
 <dl class="py method">
 <dt id="k1lib.cli.utils.deref.__init__">
-<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ignoreTensors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxDepth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">inf</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/utils.html#deref.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli.utils.deref.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ignoreTensors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxDepth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">inf</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/utils.html#deref.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli.utils.deref.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Recursively converts any iterator into a list. Only <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>,
-<a class="reference external" href="https://docs.python.org/3/library/numbers.html#numbers.Number" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numbers.Number</span></code></a> are not converted. Example:</p>
+<a class="reference external" href="https://docs.python.org/3/library/numbers.html#numbers.Number" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numbers.Number</span></code></a> and <a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch vmaster (1.11.0a0+git1a13e43 ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></a> are not converted. Example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># returns something like &quot;&lt;range_iterator at 0x7fa8c52ca870&gt;&quot;</span>
 <span class="nb">iter</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
 <span class="c1"># returns [0, 1, 2, 3, 4]</span>
@@ -2958,7 +3012,7 @@ Example:</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>ignoreTensors</strong> – if True, then don’t loop over <a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.11.0a0+git4a04d2b ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a>
+<li><p><strong>ignoreTensors</strong> – if True, then don’t loop over <a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.11.0a0+git1a13e43 ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a>
 internals</p></li>
 <li><p><strong>maxDepth</strong> – maximum depth to dereference. Starts at 0 for not doing anything
 at all</p></li>
@@ -3000,6 +3054,13 @@ Example:</p>
 <span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span> <span class="o">|</span> <span class="n">crissCross</span><span class="p">()</span>
 </pre></div>
 </div>
+</dd></dl>
+
+<p>There are a couple monkey-patched clis:</p>
+<dl class="py method">
+<dt id="k1lib.cli.others.torch.stack">
+<code class="sig-prename descclassname"><span class="pre">torch.</span></code><code class="sig-name descname"><span class="pre">stack</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#k1lib.cli.others.torch.stack" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stacks tensors together</p>
 </dd></dl>
 
 </div>

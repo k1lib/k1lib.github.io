@@ -104,7 +104,7 @@
 <li class="toctree-l1"><a class="reference internal" href="viz.html">k1lib.viz module</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="monkeyPatches.html">Monkey patched classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="monkey.html">Monkey patched classes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="changelogs.html">Changelogs</a></li>
 </ul>
@@ -222,6 +222,37 @@ registered hooks while the latter silently ignores them.</p>
 <dl class="py attribute">
 <dt id="k1lib.knn.Identity.training">
 <code class="sig-name descname"><span class="pre">training</span></code><em class="property"><span class="pre">:</span> <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><span class="pre">bool</span></a></em><a class="headerlink" href="#k1lib.knn.Identity.training" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="k1lib.knn.LinBlock">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">k1lib.knn.</span></code><code class="sig-name descname"><span class="pre">LinBlock</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inC</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outC</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/knn.html#LinBlock"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.knn.LinBlock" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<dl class="py method">
+<dt id="k1lib.knn.LinBlock.__init__">
+<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inC</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outC</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/knn.html#LinBlock.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.knn.LinBlock.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Linear layer with relu behind it</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="k1lib.knn.LinBlock.forward">
+<code class="sig-name descname"><span class="pre">forward</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/knn.html#LinBlock.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.knn.LinBlock.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="k1lib.knn.LinBlock.training">
+<code class="sig-name descname"><span class="pre">training</span></code><em class="property"><span class="pre">:</span> <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><span class="pre">bool</span></a></em><a class="headerlink" href="#k1lib.knn.LinBlock.training" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>

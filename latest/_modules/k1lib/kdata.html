@@ -102,7 +102,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../viz.html">k1lib.viz module</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../monkeyPatches.html">Monkey patched classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../monkey.html">Monkey patched classes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../changelogs.html">Changelogs</a></li>
 </ul>
@@ -245,7 +245,7 @@
 <span class="sd">Example::</span>
 
 <span class="sd">    torch.linspace(-2, 2, 50) | kdata.analyzeFloat&quot;&quot;&quot;</span>
-    <span class="n">l</span> <span class="o">=</span> <span class="n">l</span> <span class="o">|</span> <span class="n">deref</span><span class="p">();</span> <span class="n">lf</span> <span class="o">=</span> <span class="n">l</span> <span class="o">|</span> <span class="n">toFloat</span><span class="p">()</span> <span class="o">|</span> <span class="n">toTensor</span><span class="p">()</span>
+    <span class="n">l</span> <span class="o">=</span> <span class="n">l</span> <span class="o">|</span> <span class="n">deref</span><span class="p">(</span><span class="kc">False</span><span class="p">);</span> <span class="n">lf</span> <span class="o">=</span> <span class="n">l</span> <span class="o">|</span> <span class="n">toFloat</span><span class="p">()</span> <span class="o">|</span> <span class="n">toTensor</span><span class="p">()</span>
     <span class="n">nl</span> <span class="o">=</span> <span class="n">l</span> <span class="o">|</span> <span class="n">shape</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> <span class="n">nlf</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">lf</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Percent of useful data: </span><span class="si">{</span><span class="n">nlf</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">nl</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="mi">100</span><span class="o">*</span><span class="n">nlf</span><span class="o">/</span><span class="n">nl</span><span class="p">)</span><span class="si">}</span><span class="s2">%)&quot;</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- Mean: </span><span class="si">{</span><span class="n">lf</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- Std: </span><span class="si">{</span><span class="n">lf</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>

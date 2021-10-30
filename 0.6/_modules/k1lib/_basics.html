@@ -1,0 +1,561 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>k1lib._basics &mdash; k1lib  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> k1lib
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../base.html">Base module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../cli/index.html">k1lib.cli module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../callbacks/index.html">k1lib.callbacks module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../kdata.html">k1lib.kdata module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../eqn.html">k1lib.eqn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fmt.html">k1lib.fmt module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../graphEqn.html">k1lib.graphEqn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../imports.html">k1lib.imports module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mo.html">k1lib.mo module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../knn.html">k1lib.knn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../schedule.html">k1lib.schedule module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../selector.html">k1lib.selector module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../viz.html">k1lib.viz module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../monkey.html">Monkey patched classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../changelogs.html">Changelogs</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">k1lib</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>k1lib._basics</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for k1lib._basics</h1><div class="highlight"><pre>
+<span></span><span class="c1"># AUTOGENERATED FILE! PLEASE DON&#39;T EDIT</span>
+<span class="kn">import</span> <span class="nn">torch</span><span class="o">,</span> <span class="nn">logging</span><span class="o">,</span> <span class="nn">warnings</span><span class="o">,</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">io</span><span class="o">,</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span><span class="o">,</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span><span class="o">,</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">Tuple</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;_docsUrl&quot;</span><span class="p">,</span> <span class="s2">&quot;CaptureStdout&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;textToHtml&quot;</span><span class="p">,</span> <span class="s2">&quot;clearLine&quot;</span><span class="p">,</span> <span class="s2">&quot;tab&quot;</span><span class="p">,</span> <span class="s2">&quot;isNumeric&quot;</span><span class="p">,</span> <span class="s2">&quot;close&quot;</span><span class="p">,</span> <span class="s2">&quot;stats&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;patch&quot;</span><span class="p">,</span> <span class="s2">&quot;wrapMod&quot;</span><span class="p">,</span> <span class="s2">&quot;wraps&quot;</span><span class="p">,</span> <span class="s2">&quot;squeeze&quot;</span><span class="p">,</span> <span class="s2">&quot;raiseEx&quot;</span><span class="p">,</span> <span class="s2">&quot;smooth&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;numDigits&quot;</span><span class="p">,</span> <span class="s2">&quot;limitLines&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;limitChars&quot;</span><span class="p">,</span> <span class="s2">&quot;showLog&quot;</span><span class="p">,</span> <span class="s2">&quot;cleanDiv&quot;</span><span class="p">,</span> <span class="s2">&quot;graph&quot;</span><span class="p">,</span> <span class="s2">&quot;digraph&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;beep&quot;</span><span class="p">,</span> <span class="s2">&quot;beepOnAvailable&quot;</span><span class="p">,</span> <span class="s2">&quot;executeNb&quot;</span><span class="p">,</span> <span class="s2">&quot;dontWrap&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;ignoreWarnings&quot;</span><span class="p">,</span> <span class="s2">&quot;positionalEncode&quot;</span><span class="p">,</span> <span class="s2">&quot;debounce&quot;</span><span class="p">]</span>
+<span class="n">_docsUrl</span> <span class="o">=</span> <span class="s2">&quot;https://k1lib.github.io&quot;</span>
+<div class="viewcode-block" id="textToHtml"><a class="viewcode-back" href="../../base.html#k1lib.textToHtml">[docs]</a><span class="k">def</span> <span class="nf">textToHtml</span><span class="p">(</span><span class="n">text</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Transform a string so that it looks the same on browsers</span>
+<span class="sd">as in `print()`&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;&amp;nbsp;&quot;</span><span class="p">)</span></div>
+<div class="viewcode-block" id="clearLine"><a class="viewcode-back" href="../../base.html#k1lib.clearLine">[docs]</a><span class="k">def</span> <span class="nf">clearLine</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Prints a character that clears the current line&quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\r</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span><span class="o">*</span><span class="mi">80</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\r</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span></div>
+<div class="viewcode-block" id="tab"><a class="viewcode-back" href="../../base.html#k1lib.tab">[docs]</a><span class="k">def</span> <span class="nf">tab</span><span class="p">(</span><span class="n">text</span><span class="p">:</span><span class="n">Union</span><span class="p">[</span><span class="nb">list</span><span class="p">,</span> <span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="nb">list</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
+    <span class="sd">&quot;&quot;&quot;Adds a tab before each line. str in, str out. List in, list out&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s2">&quot;    &quot;</span> <span class="o">+</span> <span class="n">line</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)])</span>
+    <span class="k">else</span><span class="p">:</span> <span class="k">return</span> <span class="p">[</span><span class="s2">&quot;    &quot;</span> <span class="o">+</span> <span class="n">line</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">text</span><span class="p">]</span></div>
+<div class="viewcode-block" id="isNumeric"><a class="viewcode-back" href="../../base.html#k1lib.isNumeric">[docs]</a><span class="k">def</span> <span class="nf">isNumeric</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Returns whether object is actually a number&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">number</span><span class="p">))</span></div>
+<div class="viewcode-block" id="close"><a class="viewcode-back" href="../../base.html#k1lib.close">[docs]</a><span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns whether 2 values are really close to each other&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">isNumeric</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="ow">and</span> <span class="n">isNumeric</span><span class="p">(</span><span class="n">b</span><span class="p">):</span> <span class="k">return</span> <span class="nb">abs</span><span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1e-6</span>
+    <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">b</span><span class="p">))</span></div>
+<div class="viewcode-block" id="stats"><a class="viewcode-back" href="../../base.html#k1lib.stats">[docs]</a><span class="k">def</span> <span class="nf">stats</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
+    <span class="sd">&quot;&quot;&quot;Returns the mean and standard deviation of the input&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">x</span><span class="o">.</span><span class="n">std</span><span class="p">()</span></div>
+<div class="viewcode-block" id="patch"><a class="viewcode-back" href="../../base.html#k1lib.patch">[docs]</a><span class="k">def</span> <span class="nf">patch</span><span class="p">(</span><span class="n">_class</span><span class="p">:</span><span class="nb">type</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">docs</span><span class="p">:</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">static</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Patches a function to a class/object.</span>
+
+<span class="sd">:param _class: object to patch function. Can also be a type</span>
+<span class="sd">:param name: name of patched function, if different from current</span>
+<span class="sd">:param docs: docs of patched function. Can be object with defined __doc__ attr</span>
+<span class="sd">:param static: whether to wrap this inside :class:`staticmethod` or not</span>
+<span class="sd">:return: modified function just before patching</span>
+
+<span class="sd">Intended to be used like this::</span>
+
+<span class="sd">    class A:</span>
+<span class="sd">        def methA(self):</span>
+<span class="sd">            return &quot;inside methA&quot;</span>
+
+<span class="sd">    @k1lib.patch(A)</span>
+<span class="sd">    def methB(self):</span>
+<span class="sd">        return &quot;inside methB&quot;</span>
+<span class="sd">        </span>
+<span class="sd">    a = A()</span>
+<span class="sd">    a.methB() # returns &quot;inside methB&quot;</span>
+
+<span class="sd">You can do ``@property`` attributes like this::</span>
+
+<span class="sd">    class A: pass</span>
+<span class="sd">    </span>
+<span class="sd">    @k1lib.patch(A, &quot;propC&quot;)</span>
+<span class="sd">    @property</span>
+<span class="sd">    def propC(self): return self._propC</span>
+
+<span class="sd">    @k1lib.patch(A, &quot;propC&quot;)</span>
+<span class="sd">    @propC.setter</span>
+<span class="sd">    def propC(self, value): self._propC = value</span>
+<span class="sd">    </span>
+<span class="sd">    a = A(); a.propC = &quot;abc&quot;</span>
+<span class="sd">    a.propC # returns &quot;abc&quot;</span>
+
+<span class="sd">The attribute name unfortunately has to be explicitly declared, as I can&#39;t</span>
+<span class="sd">really find a way to extract the original name. You can also do static</span>
+<span class="sd">methods like this::</span>
+
+<span class="sd">    class A: pass</span>
+<span class="sd">    </span>
+<span class="sd">    @k1lib.patch(A, static=True)</span>
+<span class="sd">    def staticD(arg1): return arg1</span>
+<span class="sd">    </span>
+<span class="sd">    A.staticD(&quot;def&quot;) # returns &quot;def&quot;</span>
+<span class="sd">&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="n">function</span><span class="p">):</span>
+        <span class="n">_docs</span> <span class="o">=</span> <span class="n">docs</span>
+        <span class="k">if</span> <span class="n">_docs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">_docs</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span> <span class="n">_docs</span> <span class="o">=</span> <span class="n">_docs</span><span class="o">.</span><span class="vm">__doc__</span>
+        <span class="n">_docs</span> <span class="o">=</span> <span class="n">_docs</span> <span class="ow">or</span> <span class="n">function</span><span class="o">.</span><span class="vm">__doc__</span> <span class="ow">or</span> <span class="n">_class</span><span class="o">.</span><span class="vm">__doc__</span>
+        <span class="n">_name</span> <span class="o">=</span> <span class="n">name</span> <span class="ow">or</span> <span class="n">function</span><span class="o">.</span><span class="vm">__qualname__</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        
+        <span class="n">_function</span> <span class="o">=</span> <span class="nb">staticmethod</span><span class="p">(</span><span class="n">function</span><span class="p">)</span> <span class="k">if</span> <span class="n">static</span> <span class="k">else</span> <span class="n">function</span>
+        <span class="n">_function</span><span class="o">.</span><span class="vm">__doc__</span> <span class="o">=</span> <span class="n">_docs</span><span class="p">;</span> <span class="nb">setattr</span><span class="p">(</span><span class="n">_class</span><span class="p">,</span> <span class="n">_name</span><span class="p">,</span> <span class="n">_function</span><span class="p">);</span> <span class="k">return</span> <span class="n">_function</span>
+    <span class="k">return</span> <span class="n">inner</span></div>
+<div class="viewcode-block" id="wrapMod"><a class="viewcode-back" href="../../base.html#k1lib.wrapMod">[docs]</a><span class="k">class</span> <span class="nc">wrapMod</span><span class="p">:</span>
+<div class="viewcode-block" id="wrapMod.__init__"><a class="viewcode-back" href="../../base.html#k1lib.wrapMod.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">moduleName</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Wraps around a module, and only suggest symbols in __all__ list</span>
+<span class="sd">defined inside the module. Example::</span>
+
+<span class="sd">    from . import randomModule</span>
+<span class="sd">    randomModule = wrapMod(randomModule)</span>
+
+<span class="sd">:param m: the imported module</span>
+<span class="sd">:param moduleName: optional new module name for elements (their __module__ attr)&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">moduleName</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+                <span class="n">v</span><span class="o">.</span><span class="vm">__module__</span> <span class="o">=</span> <span class="n">moduleName</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_wrapMod_m</span> <span class="o">=</span> <span class="n">m</span>
+        <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_wrapMod_extraDirs</span> <span class="o">=</span> <span class="p">[]</span></div>
+    <span class="k">def</span> <span class="fm">__dir__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_wrapMod_m</span><span class="o">.</span><span class="n">__all__</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_wrapMod_extraDirs</span>
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_wrapMod_m</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+<div class="viewcode-block" id="wraps"><a class="viewcode-back" href="../../base.html#k1lib.wraps">[docs]</a><span class="k">def</span> <span class="nf">wraps</span><span class="p">(</span><span class="n">ogF</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Kinda like :meth:`functools.wraps`, but don&#39;t update __annotations__.&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+        <span class="n">f</span><span class="o">.</span><span class="vm">__doc__</span> <span class="o">=</span> <span class="n">ogF</span><span class="o">.</span><span class="vm">__doc__</span>
+        <span class="n">f</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">=</span> <span class="n">ogF</span><span class="o">.</span><span class="vm">__name__</span>
+        <span class="n">f</span><span class="o">.</span><span class="vm">__qualname__</span> <span class="o">=</span> <span class="n">ogF</span><span class="o">.</span><span class="vm">__qualname__</span>
+        <span class="n">f</span><span class="o">.</span><span class="vm">__module__</span> <span class="o">=</span> <span class="n">ogF</span><span class="o">.</span><span class="vm">__module__</span>
+        <span class="k">return</span> <span class="n">f</span>
+    <span class="k">return</span> <span class="n">inner</span></div>
+<div class="viewcode-block" id="squeeze"><a class="viewcode-back" href="../../base.html#k1lib.squeeze">[docs]</a><span class="k">def</span> <span class="nf">squeeze</span><span class="p">(</span><span class="n">_list</span><span class="p">:</span><span class="n">Union</span><span class="p">[</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">hard</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;If list only has 1 element, rethrn that element, else return original list</span>
+
+<span class="sd">:param hard: If True, then if list/tuple, filters out None, and takes the first</span>
+<span class="sd">    element out even if that list/tuple has more than 1 element&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">_list</span><span class="p">,</span> <span class="p">(</span><span class="nb">tuple</span><span class="p">,</span> <span class="nb">list</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="n">hard</span><span class="p">:</span> <span class="k">return</span> <span class="p">[</span><span class="n">e</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">_list</span> <span class="k">if</span> <span class="n">e</span> <span class="o">!=</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">e</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">_list</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span> <span class="k">return</span> <span class="n">_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">_list</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span> <span class="k">return</span> <span class="n">_list</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">_list</span></div>
+<div class="viewcode-block" id="raiseEx"><a class="viewcode-back" href="../../base.html#k1lib.raiseEx">[docs]</a><span class="k">def</span> <span class="nf">raiseEx</span><span class="p">(</span><span class="n">ex</span><span class="p">:</span><span class="ne">Exception</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Raises a specific exception. May be useful in lambdas&quot;&quot;&quot;</span>
+    <span class="k">raise</span> <span class="n">ex</span></div>
+<div class="viewcode-block" id="smooth"><a class="viewcode-back" href="../../base.html#k1lib.smooth">[docs]</a><span class="k">def</span> <span class="nf">smooth</span><span class="p">(</span><span class="n">arr</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="n">consecutives</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+    <span class="sd">&quot;&quot;&quot;Smoothes out array, so that y values are averages of the neighbors&quot;&quot;&quot;</span>
+    <span class="n">answer</span> <span class="o">=</span> <span class="p">[];</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">elem</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">arr</span><span class="p">):</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="n">elem</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">consecutives</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">answer</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">s</span> <span class="o">/</span> <span class="n">consecutives</span><span class="p">);</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">return</span> <span class="n">answer</span></div>
+<div class="viewcode-block" id="numDigits"><a class="viewcode-back" href="../../base.html#k1lib.numDigits">[docs]</a><span class="k">def</span> <span class="nf">numDigits</span><span class="p">(</span><span class="n">num</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Get the number of digits/characters of this number/object&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">num</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+<div class="viewcode-block" id="limitLines"><a class="viewcode-back" href="../../base.html#k1lib.limitLines">[docs]</a><span class="k">def</span> <span class="nf">limitLines</span><span class="p">(</span><span class="n">s</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">limit</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;If input string is too long, truncates it and adds ellipsis&quot;&quot;&quot;</span>
+    <span class="n">splits</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">splits</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">limit</span><span class="p">:</span> <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">splits</span><span class="p">[:</span><span class="n">limit</span><span class="p">])</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">.....&quot;</span>
+    <span class="k">else</span><span class="p">:</span> <span class="k">return</span> <span class="n">s</span></div>
+<div class="viewcode-block" id="limitChars"><a class="viewcode-back" href="../../base.html#k1lib.limitChars">[docs]</a><span class="k">def</span> <span class="nf">limitChars</span><span class="p">(</span><span class="n">s</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">limit</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">50</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;If input string is too long, truncates to first `limit` characters of the first line&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">s</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="k">return</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">s</span><span class="si">}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">s</span><span class="p">[:</span><span class="n">limit</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;...&quot;</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">limit</span><span class="o">-</span><span class="mi">3</span> <span class="k">else</span> <span class="n">s</span></div>
+<div class="viewcode-block" id="showLog"><a class="viewcode-back" href="../../base.html#k1lib.showLog">[docs]</a><span class="k">def</span> <span class="nf">showLog</span><span class="p">(</span><span class="n">loggerName</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">level</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Prints out logs of a particular logger at a particular level&quot;&quot;&quot;</span>
+    <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">loggerName</span><span class="p">);</span> <span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">level</span><span class="p">)</span>
+    <span class="n">sh</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">StreamHandler</span><span class="p">();</span> <span class="n">sh</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">);</span> <span class="n">logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">sh</span><span class="p">)</span></div>
+<span class="k">def</span> <span class="nf">cleanDiv</span><span class="p">(</span><span class="n">_list</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="n">total</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+    <span class="sd">&quot;&quot;&quot;Cleanly divides :total: into int segments with weights specified by</span>
+<span class="sd">:_list:. Looks like this: ``(_list / _list.sum()) * total``, but</span>
+<span class="sd">everything is an ``int``&quot;&quot;&quot;</span>
+    <span class="n">_list</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">_list</span><span class="p">)</span>
+    <span class="n">_list</span> <span class="o">=</span> <span class="p">(</span><span class="n">_list</span><span class="o">*</span><span class="n">total</span><span class="o">/</span><span class="n">_list</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">_list</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">total</span> <span class="o">-</span> <span class="n">_list</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">_list</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">graphviz</span>
+<div class="viewcode-block" id="digraph"><a class="viewcode-back" href="../../base.html#k1lib.digraph">[docs]</a>    <span class="k">def</span> <span class="nf">digraph</span><span class="p">():</span>
+        <span class="sd">&quot;&quot;&quot;Convenience method for creating a new graphviz Digraph.</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    g = k1lib.graph()</span>
+<span class="sd">    g(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;)</span>
+<span class="sd">    g # displays arrows from &quot;a&quot; to &quot;b&quot; and &quot;a&quot; to &quot;c&quot;</span>
+<span class="sd">&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">graphviz</span><span class="o">.</span><span class="n">Digraph</span><span class="p">(</span><span class="n">graph_attr</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;rankdir&quot;</span><span class="p">:</span><span class="s2">&quot;TB&quot;</span><span class="p">})</span></div>
+<div class="viewcode-block" id="graph"><a class="viewcode-back" href="../../base.html#k1lib.graph">[docs]</a>    <span class="k">def</span> <span class="nf">graph</span><span class="p">():</span>
+        <span class="sd">&quot;&quot;&quot;Convenience method for creating a new graphviz Graph. See also: :meth:`digraph`&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">graphviz</span><span class="o">.</span><span class="n">Graph</span><span class="p">(</span><span class="n">graph_attr</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;rankdir&quot;</span><span class="p">:</span><span class="s2">&quot;TB&quot;</span><span class="p">})</span></div>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="n">digraph</span> <span class="o">=</span> <span class="n">graph</span> <span class="o">=</span> <span class="k">lambda</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Module `graphviz` not found! Please install it first, something like `pip install graphviz`&quot;</span><span class="p">)</span>
+<div class="viewcode-block" id="beep"><a class="viewcode-back" href="../../base.html#k1lib.beep">[docs]</a><span class="k">def</span> <span class="nf">beep</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Plays a beeping sound, may be useful as notification for long-running tasks&quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span> <span class="kn">import</span> <span class="nn">IPython</span><span class="p">;</span> <span class="n">IPython</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">display_html</span><span class="p">(</span><span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">HTML</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;&lt;script&gt;(new Audio(&#39;data:audio/wav;base64,UklGRl9vT19XQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YU&#39;+Array(1e3).join(123))).play();&lt;/script&gt;&quot;&quot;&quot;</span><span class="p">));</span>
+    <span class="k">except</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;printf &#39;</span><span class="se">\a</span><span class="s2">&#39;&quot;</span><span class="p">)</span></div>
+<span class="k">def</span> <span class="nf">beepOnAvailable</span><span class="p">(</span><span class="n">url</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Tries to connect with a url repeatedly, and if successful, plays</span>
+<span class="sd">a beep sound&quot;&quot;&quot;</span>
+    <span class="kn">import</span> <span class="nn">requests</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span> <span class="n">successful</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span><span class="o">.</span><span class="n">ok</span><span class="p">:</span>
+                    <span class="n">successful</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">except</span><span class="p">:</span> <span class="k">pass</span>
+            <span class="k">if</span> <span class="n">successful</span><span class="p">:</span>
+                <span class="n">beep</span><span class="p">();</span> <span class="k">break</span>
+    <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Still not available&quot;</span><span class="p">)</span>
+<div class="viewcode-block" id="executeNb"><a class="viewcode-back" href="../../base.html#k1lib.executeNb">[docs]</a><span class="k">def</span> <span class="nf">executeNb</span><span class="p">(</span><span class="n">fileName</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">_globals</span><span class="p">:</span><span class="nb">dict</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">preserveDir</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Executes a specified IPython notebook. Can make all variables</span>
+<span class="sd">defined in the notebook appear in the __main__ context by passing `globals()` in</span>
+
+<span class="sd">:param preserveDir: if True, don&#39;t change working directory to that of the notebook&#39;s&quot;&quot;&quot;</span>
+    <span class="kn">import</span> <span class="nn">json</span><span class="o">,</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">traceback</span>
+    <span class="k">if</span> <span class="n">_globals</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="n">_globals</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">preserveDir</span><span class="p">:</span>
+        <span class="n">oldPath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">fileName</span><span class="p">))</span>
+    <span class="k">def</span> <span class="nf">execute</span><span class="p">():</span>
+        <span class="n">allLines</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">cell</span> <span class="ow">in</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">fileName</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())[</span><span class="s2">&quot;cells&quot;</span><span class="p">]:</span>
+            <span class="k">if</span> <span class="n">cell</span><span class="p">[</span><span class="s2">&quot;cell_type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;code&quot;</span><span class="p">:</span>
+                <span class="n">lines</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">cell</span><span class="p">[</span><span class="s2">&quot;source&quot;</span><span class="p">]:</span>
+                    <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">rstrip</span><span class="p">()</span>
+                    <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;!&quot;</span><span class="p">):</span> <span class="k">continue</span>
+                    <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%%</span><span class="s2">&quot;</span><span class="p">):</span> <span class="k">continue</span>
+                    <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+                    <span class="n">allLines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+                <span class="n">lines</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span>
+                <span class="k">try</span><span class="p">:</span> <span class="n">exec</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span> <span class="n">_globals</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> <span class="c1"># clears plots</span>
+                <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Problematic code block:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="n">lines</span><span class="p">);</span> <span class="n">traceback</span><span class="o">.</span><span class="n">print_exc</span><span class="p">();</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All lines:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">allLines</span><span class="p">));</span> <span class="k">raise</span> <span class="n">e</span>
+    <span class="n">execute</span><span class="p">()</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">preserveDir</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">oldPath</span><span class="p">)</span></div>
+<div class="viewcode-block" id="dontWrap"><a class="viewcode-back" href="../../base.html#k1lib.dontWrap">[docs]</a><span class="k">def</span> <span class="nf">dontWrap</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Don&#39;t wrap horizontally when in a notebook&quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">HTML</span>
+        <span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;&lt;style&gt;</span>
+<span class="s2">    div.jp-OutputArea-output pre {white-space: pre;}</span>
+<span class="s2">    div.output_area pre {white-space: pre;}</span>
+<span class="s2">    div.CodeMirror &gt; div.highlight {overflow-y: auto;}</span>
+<span class="s2">&lt;/style&gt;&quot;&quot;&quot;</span><span class="p">))</span>
+    <span class="k">except</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Can&#39;t run dontWrap()&quot;</span><span class="p">)</span></div>
+<div class="viewcode-block" id="ignoreWarnings"><a class="viewcode-back" href="../../base.html#k1lib.ignoreWarnings">[docs]</a><span class="k">class</span> <span class="nc">ignoreWarnings</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Context manager to ignore every warning.</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    import warnings</span>
+<span class="sd">    with k1lib.ignoreWarnings():</span>
+<span class="sd">        warnings.warn(&quot;some random stuff&quot;) # will not show anything</span>
+<span class="sd">&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ctx</span> <span class="o">=</span> <span class="n">warnings</span><span class="o">.</span><span class="n">catch_warnings</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ctx</span><span class="o">.</span><span class="fm">__enter__</span><span class="p">()</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">ignored</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ctx</span><span class="o">.</span><span class="fm">__exit__</span><span class="p">(</span><span class="o">*</span><span class="n">ignored</span><span class="p">)</span></div>
+<div class="viewcode-block" id="positionalEncode"><a class="viewcode-back" href="../../base.html#k1lib.positionalEncode">[docs]</a><span class="k">def</span> <span class="nf">positionalEncode</span><span class="p">(</span><span class="n">t</span><span class="p">:</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">richFactor</span><span class="p">:</span><span class="nb">float</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Position encode a tensor of shape :math:`(L, F)`, where :math:`L`</span>
+<span class="sd">is the sequence length, :math:`F` is the encoded features. Will add the</span>
+<span class="sd">encodings directly to the input tensor and return it.</span>
+
+<span class="sd">This is a bit different from the standard implementations that ppl use.</span>
+<span class="sd">This is exactly:</span>
+
+<span class="sd">.. math:: p = \frac{i}{F\cdot richFactor}</span>
+<span class="sd">.. math:: w = 1/10000^p</span>
+<span class="sd">.. math:: pe = sin(w * L)</span>
+
+<span class="sd">With ``i`` from range [0, F), and ``p`` the &quot;progress&quot;. If ``richFactor`` is 1</span>
+<span class="sd">(original algo), then ``p`` goes from 0% to 100% of the features. Example::</span>
+
+<span class="sd">    import matplotlib.pyplot as plt, torch, k1lib</span>
+<span class="sd">    plt.figure(dpi=150)</span>
+<span class="sd">    plt.imshow(k1lib.positionalEncode(torch.zeros(100, 10)).T)</span>
+
+<span class="sd">.. image:: images/positionalEncoding.png</span>
+
+<span class="sd">:param richFactor: the bigger, the richer the features are. A lot of</span>
+<span class="sd">    times, I observe that the features that are meant to cover huge scales</span>
+<span class="sd">    are pretty empty and don&#39;t really contribute anything useful. So this</span>
+<span class="sd">    is to bump up the usefulness of those features&quot;&quot;&quot;</span>
+    <span class="n">seqN</span><span class="p">,</span> <span class="n">featsN</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">feats</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">featsN</span><span class="p">));</span> <span class="n">w</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">10000</span><span class="o">**</span><span class="p">(</span><span class="n">feats</span><span class="o">/</span><span class="n">featsN</span><span class="o">/</span><span class="n">richFactor</span><span class="p">))[</span><span class="kc">None</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">expand</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    <span class="n">times</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">seqN</span><span class="p">))[:,</span> <span class="kc">None</span><span class="p">]</span><span class="o">.</span><span class="n">expand</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    <span class="n">t</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">w</span> <span class="o">*</span> <span class="n">times</span><span class="p">);</span> <span class="k">return</span> <span class="n">t</span></div>
+<span class="kn">import</span> <span class="nn">asyncio</span><span class="o">,</span> <span class="nn">functools</span>
+<span class="kn">from</span> <span class="nn">threading</span> <span class="kn">import</span> <span class="n">Timer</span> <span class="k">as</span> <span class="n">ThreadingTimer</span>
+<span class="k">class</span> <span class="nc">AsyncTimer</span><span class="p">:</span> <span class="c1"># rename if want to use</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeout</span><span class="p">,</span> <span class="n">callback</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_timeout</span> <span class="o">=</span> <span class="n">timeout</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_callback</span> <span class="o">=</span> <span class="n">callback</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">_job</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_timeout</span><span class="p">);</span> <span class="bp">self</span><span class="o">.</span><span class="n">_callback</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="n">_task</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">ensure_future</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_job</span><span class="p">())</span>
+    <span class="k">def</span> <span class="nf">cancel</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="n">_task</span><span class="o">.</span><span class="n">cancel</span><span class="p">()</span>
+<div class="viewcode-block" id="debounce"><a class="viewcode-back" href="../../base.html#k1lib.debounce">[docs]</a><span class="k">def</span> <span class="nf">debounce</span><span class="p">(</span><span class="n">wait</span><span class="p">,</span> <span class="n">threading</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Decorator that will postpone a function&#39;s execution until after</span>
+<span class="sd">``wait`` seconds have elapsed since the last time it was invoked. Taken</span>
+<span class="sd">from `ipywidgets &lt;https://ipywidgets.readthedocs.io/en/latest/examples/Widget%20Events.html&gt;`_.</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    import k1lib, time; value = 0</span>
+
+<span class="sd">    @k1lib.debounce(0.5, True)</span>
+<span class="sd">    def f(x): global value; value = x**2</span>
+
+<span class="sd">    f(2); time.sleep(0.3); f(3)</span>
+<span class="sd">    print(value) # prints &quot;0&quot;</span>
+<span class="sd">    time.sleep(0.7)</span>
+<span class="sd">    print(value) # prints &quot;9&quot;</span>
+
+<span class="sd">:param wait: wait time in seconds</span>
+<span class="sd">:param threading: if True, use multiple threads, else just use async stuff&quot;&quot;&quot;</span>
+    <span class="n">Timer</span> <span class="o">=</span> <span class="n">ThreadingTimer</span> <span class="k">if</span> <span class="n">threading</span> <span class="k">else</span> <span class="n">AsyncTimer</span>
+    <span class="k">def</span> <span class="nf">decorator</span><span class="p">(</span><span class="n">fn</span><span class="p">):</span>
+        <span class="n">timer</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">def</span> <span class="nf">debounced</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+            <span class="k">nonlocal</span> <span class="n">timer</span>
+            <span class="k">if</span> <span class="n">timer</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="n">timer</span><span class="o">.</span><span class="n">cancel</span><span class="p">()</span>
+            <span class="n">timer</span> <span class="o">=</span> <span class="n">Timer</span><span class="p">(</span><span class="n">wait</span><span class="p">,</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">fn</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">))</span>
+            <span class="n">timer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+        <span class="n">functools</span><span class="o">.</span><span class="n">update_wrapper</span><span class="p">(</span><span class="n">debounced</span><span class="p">,</span> <span class="n">fn</span><span class="p">);</span> <span class="k">return</span> <span class="n">debounced</span>
+    <span class="k">return</span> <span class="n">decorator</span></div>
+<div class="viewcode-block" id="CaptureStdout"><a class="viewcode-back" href="../../base.html#k1lib.CaptureStdout">[docs]</a><span class="k">class</span> <span class="nc">CaptureStdout</span><span class="p">(</span><span class="nb">list</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Captures every print() statement. Taken from https://stackoverflow.com/questions/16571150/how-to-capture-stdout-output-from-a-python-function-call.</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    with CaptureStdout() as outer:</span>
+<span class="sd">        print(&quot;something&quot;)</span>
+<span class="sd">        with CaptureStdout() as inner:</span>
+<span class="sd">            print(&quot;inside inner&quot;)</span>
+<span class="sd">        print(&quot;else&quot;)</span>
+<span class="sd">    # prints &quot;[&#39;something&#39;, &#39;else&#39;]&quot;</span>
+<span class="sd">    print(outer)</span>
+<span class="sd">    # prints &quot;[&#39;inside inner&#39;]&quot;</span>
+<span class="sd">    print(inner)</span>
+
+<span class="sd">Note that internally, this replaces :data:`sys.stdout` as :class:`io.StringIO`, so</span>
+<span class="sd">might not work property if you have fancy :class:`bytes` stuff going on.&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_stdout</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stringio</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">StringIO</span><span class="p">();</span> <span class="k">return</span> <span class="bp">self</span>
+    <span class="k">def</span> <span class="fm">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_stringio</span><span class="o">.</span><span class="n">getvalue</span><span class="p">()</span><span class="o">.</span><span class="n">splitlines</span><span class="p">())</span>
+        <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stringio</span><span class="p">;</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stdout</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Quang Ho.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

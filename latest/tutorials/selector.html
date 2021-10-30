@@ -14519,10 +14519,10 @@ a.anchor-link {
 <p>Let's say you have a network architecture like this:</p>
 
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[6]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">k1lib.imports</span> <span class="kn">import</span> <span class="o">*</span>
@@ -14560,6 +14560,32 @@ a.anchor-link {
 </div>
 </div>
 
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<style>
+    div.jp-OutputArea-output pre {white-space: pre;}
+    div.output_area pre {white-space: pre;}
+    div.CodeMirror > div.highlight {overflow-y: auto;}
+</style>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
@@ -14569,7 +14595,7 @@ a.anchor-link {
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="n">Network</span><span class="p">();</span> <span class="n">n</span>
@@ -14588,7 +14614,7 @@ a.anchor-link {
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[3]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[2]:</div>
 
 
 
@@ -14632,7 +14658,7 @@ a.anchor-link {
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[5]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">sel</span> <span class="o">=</span> <span class="n">selector</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="s2">&quot;&quot;&quot;</span>
@@ -14655,7 +14681,7 @@ a.anchor-link {
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[5]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[3]:</div>
 
 
 
@@ -14664,7 +14690,7 @@ a.anchor-link {
 <pre>ModuleSelector:
 root: Network                       
     bulk: Sequential                
-        0: Linear                   all    
+        0: Linear                   *    
         1: LeakyReLU                    
         2: SkipBlock                
             seq: Sequential         propB, propA
@@ -14680,19 +14706,13 @@ root: Network
         3: Linear                       
 
 Can...
-- mS.displayF = ...: sets a display function (mS -&gt; str) for self and all descendants. Defaults to displaying all props
 - mS.deepestDepth: get deepest depth possible
 - mS.nnModule: get the underlying nn.Module object
 - mS.apply(f): apply to self and all descendants
-- mS.copy(): copy everything, including descendants
-- mS.selected(&#34;HookModule&#34;): whether this module has a specified prop
+- &#34;HookModule&#34; in mS: whether this module has a specified prop
 - mS.highlight(prop): highlights all modules with specified prop
 - mS.parse([..., ...]): parses extra css
-- mS.clearProps(): to clear all selected props, including descendants
-- mS.directParams(): get Dict[str, nn.Parameter] that are directly under this module
-- mS.named_children(), mS.children(): like PyTorch
-- mS.named_modules([prop]), mS.modules([prop]): like PyTorch. Optional filter prop
-- mS.parameters(): like PyTorch</pre>
+- mS.directParams: get Dict[str, nn.Parameter] that are directly under this module</pre>
 </div>
 
 </div>
@@ -14716,13 +14736,13 @@ Can...
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>For each selection sentences, you can attach specific properties to it. If no properties are specified, then the property "all" will be used. You can then get a list of selected modules:</p>
+<p>For each selection sentences, you can attach specific properties to it. If no properties are specified, then the property "*" will be used. You can then get a list of selected modules:</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[7]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">sel</span><span class="o">.</span><span class="n">modules</span><span class="p">(</span><span class="s2">&quot;propA&quot;</span><span class="p">):</span>
@@ -14759,7 +14779,7 @@ Can...
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Here, it selects any modules with properties “propA” or “all”.</p>
+<p>Here, it selects any modules with properties “propA” or “*”.</p>
 
 </div>
 </div>

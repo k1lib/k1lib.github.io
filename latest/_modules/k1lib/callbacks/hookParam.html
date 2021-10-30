@@ -102,7 +102,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../viz.html">k1lib.viz module</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../monkeyPatches.html">Monkey patched classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../monkey.html">Monkey patched classes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../tutorials.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../changelogs.html">Changelogs</a></li>
 </ul>
@@ -221,7 +221,7 @@
         <span class="k">try</span><span class="p">:</span>
             <span class="n">mS</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="o">.</span><span class="n">selector</span>
             <span class="k">for</span> <span class="n">split</span> <span class="ow">in</span> <span class="n">splits</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span> <span class="n">mS</span> <span class="o">=</span> <span class="n">mS</span><span class="p">[</span><span class="n">split</span><span class="p">]</span>
-            <span class="k">return</span> <span class="n">mS</span><span class="o">.</span><span class="n">selected</span><span class="p">(</span><span class="s2">&quot;HookParam&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">mS</span><span class="p">,</span> <span class="n">splits</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+            <span class="k">return</span> <span class="s2">&quot;HookParam&quot;</span> <span class="ow">in</span> <span class="n">mS</span> <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">mS</span><span class="p">,</span> <span class="n">splits</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
         <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span> <span class="k">return</span> <span class="kc">False</span>
     <span class="k">def</span> <span class="nf">startRun</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="c1"># set things up first time only</span>

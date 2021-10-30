@@ -102,7 +102,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../viz.html">k1lib.viz module</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../monkeyPatches.html">Monkey patched classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../monkey.html">Monkey patched classes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../tutorials.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../changelogs.html">Changelogs</a></li>
 </ul>
@@ -420,6 +420,7 @@
 <span class="sd">    ctx[&quot;header&quot;]()&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">item</span><span class="p">()</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">ctx</span><span class="o">.</span><span class="n">consume</span><span class="p">(</span><span class="s2">&quot;header&quot;</span><span class="p">)</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">tableFromList</span><span class="p">()</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">insertIdColumn</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span></div>
 <span class="n">Number</span> <span class="o">=</span> <span class="n">numbers</span><span class="o">.</span><span class="n">Number</span><span class="p">;</span> <span class="n">Tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">;</span> <span class="n">NpNumber</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">number</span>
+<span class="n">Module</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span>
 <span class="k">class</span> <span class="nc">inv_dereference</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ignoreTensors</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Kinda the inverse to :class:`dereference`&quot;&quot;&quot;</span>
@@ -436,9 +437,9 @@
                 <span class="k">try</span><span class="p">:</span> <span class="k">yield</span> <span class="n">e</span> <span class="o">|</span> <span class="bp">self</span>
                 <span class="k">except</span><span class="p">:</span> <span class="k">yield</span> <span class="n">e</span>
 <div class="viewcode-block" id="deref"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.utils.deref">[docs]</a><span class="k">class</span> <span class="nc">deref</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
-<div class="viewcode-block" id="deref.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.utils.deref.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ignoreTensors</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">maxDepth</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="s2">&quot;inf&quot;</span><span class="p">)):</span>
+<div class="viewcode-block" id="deref.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.utils.deref.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ignoreTensors</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">maxDepth</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="s2">&quot;inf&quot;</span><span class="p">)):</span>
         <span class="sd">&quot;&quot;&quot;Recursively converts any iterator into a list. Only :class:`str`,</span>
-<span class="sd">:class:`numbers.Number` are not converted. Example::</span>
+<span class="sd">:class:`numbers.Number` and :class:`~torch.nn.Module` are not converted. Example::</span>
 
 <span class="sd">    # returns something like &quot;&lt;range_iterator at 0x7fa8c52ca870&gt;&quot;</span>
 <span class="sd">    iter(range(5))</span>
@@ -473,7 +474,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">depth</span> <span class="o">+=</span> <span class="mi">1</span>
         <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">it</span><span class="p">:</span>
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">cli</span><span class="o">.</span><span class="n">ctx</span><span class="o">.</span><span class="n">Promise</span><span class="p">):</span> <span class="n">e</span> <span class="o">=</span> <span class="n">e</span><span class="p">()</span>
-            <span class="k">if</span> <span class="n">e</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="p">(</span><span class="n">Number</span><span class="p">,</span> <span class="n">NpNumber</span><span class="p">,</span> <span class="nb">str</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="n">e</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="p">(</span><span class="n">Number</span><span class="p">,</span> <span class="n">NpNumber</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="n">Module</span><span class="p">)):</span>
                 <span class="n">answer</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
             <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">):</span>
                 <span class="k">if</span> <span class="ow">not</span> <span class="n">ignoreTensors</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>

@@ -102,7 +102,7 @@
 <li class="toctree-l1"><a class="reference internal" href="viz.html">k1lib.viz module</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="monkeyPatches.html">Monkey patched classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="monkey.html">Monkey patched classes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="changelogs.html">Changelogs</a></li>
 </ul>
@@ -209,10 +209,10 @@
 </li>
       <li><a href="cli/index.html#k1lib.cli.init.BaseCli.__and__">__and__() (k1lib.cli.init.BaseCli method)</a>
 </li>
-      <li><a href="monkeyPatches.html#graphviz.dot.Digraph.__call__">__call__() (graphviz.dot.Digraph method)</a>
+      <li><a href="monkey.html#graphviz.dot.Digraph.__call__">__call__() (graphviz.dot.Digraph method)</a>
 
       <ul>
-        <li><a href="monkeyPatches.html#graphviz.dot.Graph.__call__">(graphviz.dot.Graph method)</a>
+        <li><a href="monkey.html#graphviz.dot.Graph.__call__">(graphviz.dot.Graph method)</a>
 </li>
         <li><a href="base.html#k1lib.AutoIncrement.__call__">(k1lib.AutoIncrement method)</a>
 </li>
@@ -228,11 +228,15 @@
 </li>
         <li><a href="mo.html#k1lib.mo.Atom.__call__">(k1lib.mo.Atom method)</a>
 </li>
+        <li><a href="selector.html#k1lib.selector.ModuleSelector.__call__">(k1lib.selector.ModuleSelector method)</a>
+</li>
       </ul></li>
       <li><a href="callbacks/index.html#k1lib.callbacks.callbacks.Callbacks.__contains__">__contains__() (k1lib.callbacks.callbacks.Callbacks method)</a>
 
       <ul>
         <li><a href="eqn.html#k1lib.eqn.Eqn.__contains__">(k1lib.eqn.Eqn method)</a>
+</li>
+        <li><a href="selector.html#k1lib.selector.ModuleSelector.__contains__">(k1lib.selector.ModuleSelector method)</a>
 </li>
       </ul></li>
       <li><a href="eqn.html#k1lib.eqn.Eqns.__dir__">__dir__() (k1lib.eqn.Eqns method)</a>
@@ -268,8 +272,6 @@
       <ul>
         <li><a href="callbacks/index.html#k1lib.callbacks.confusionMatrix.ConfusionMatrix.__init__">(k1lib.callbacks.confusionMatrix.ConfusionMatrix method)</a>
 </li>
-        <li><a href="callbacks/index.html#k1lib.callbacks.frozen.Frozen.__init__">(k1lib.callbacks.frozen.Frozen method)</a>
-</li>
         <li><a href="callbacks/index.html#k1lib.callbacks.hookModule.HookModule.__init__">(k1lib.callbacks.hookModule.HookModule method)</a>
 </li>
         <li><a href="callbacks/index.html#k1lib.callbacks.landscape.Landscape.__init__">(k1lib.callbacks.landscape.Landscape method)</a>
@@ -280,7 +282,7 @@
 </li>
         <li><a href="callbacks/lossFunctions.html#k1lib.callbacks.lossFunctions.accuracy.AccF.__init__">(k1lib.callbacks.lossFunctions.accuracy.AccF method)</a>
 </li>
-        <li><a href="callbacks/lossFunctions.html#k1lib.callbacks.lossFunctions.shorts.LossLambda.__init__">(k1lib.callbacks.lossFunctions.shorts.LossLambda method)</a>
+        <li><a href="callbacks/lossFunctions.html#k1lib.callbacks.lossFunctions.shorts.LossF.__init__">(k1lib.callbacks.lossFunctions.shorts.LossF method)</a>
 </li>
         <li><a href="callbacks/lossFunctions.html#k1lib.callbacks.lossFunctions.shorts.LossNLLCross.__init__">(k1lib.callbacks.lossFunctions.shorts.LossNLLCross method)</a>
 </li>
@@ -346,6 +348,8 @@
 </li>
         <li><a href="cli/index.html#k1lib.cli.output.file.__init__">(k1lib.cli.output.file method)</a>
 </li>
+        <li><a href="cli/index.html#k1lib.cli.output.intercept.__init__">(k1lib.cli.output.intercept method)</a>
+</li>
         <li><a href="cli/index.html#k1lib.cli.sam.header.__init__">(k1lib.cli.sam.header method)</a>
 </li>
         <li><a href="cli/index.html#k1lib.cli.sam.quality.__init__">(k1lib.cli.sam.quality method)</a>
@@ -404,6 +408,8 @@
 </li>
         <li><a href="knn.html#k1lib.knn.Lambda.__init__">(k1lib.knn.Lambda method)</a>
 </li>
+        <li><a href="knn.html#k1lib.knn.LinBlock.__init__">(k1lib.knn.LinBlock method)</a>
+</li>
         <li><a href="mo.html#k1lib.mo.Atom.__init__">(k1lib.mo.Atom method)</a>
 </li>
         <li><a href="mo.html#k1lib.mo.System.__init__">(k1lib.mo.System method)</a>
@@ -414,12 +420,16 @@
 </li>
         <li><a href="viz.html#k1lib.viz.Carousel.__init__">(k1lib.viz.Carousel method)</a>
 </li>
+        <li><a href="base.html#k1lib.wrapMod.__init__">(k1lib.wrapMod method)</a>
+</li>
         <li><a href="base.html#k1lib.Wrapper.__init__">(k1lib.Wrapper method)</a>
 </li>
       </ul></li>
-      <li><a href="cli/index.html#k1lib.cli.filt.columns.__invert__">__invert__() (k1lib.cli.filt.columns method)</a>
+      <li><a href="base.html#k1lib.Absorber.__invert__">__invert__() (k1lib.Absorber method)</a>
 
       <ul>
+        <li><a href="cli/index.html#k1lib.cli.filt.columns.__invert__">(k1lib.cli.filt.columns method)</a>
+</li>
         <li><a href="cli/index.html#k1lib.cli.filt.empty.__invert__">(k1lib.cli.filt.empty method)</a>
 </li>
         <li><a href="cli/index.html#k1lib.cli.filt.filt.__invert__">(k1lib.cli.filt.filt method)</a>
@@ -459,9 +469,11 @@
 </li>
       <li><a href="cli/index.html#k1lib.cli.init.BaseCli.__or__">__or__() (k1lib.cli.init.BaseCli method)</a>
 </li>
-      <li><a href="cli/index.html#k1lib.cli.bio.complement.__ror__">__ror__() (k1lib.cli.bio.complement method)</a>
+      <li><a href="base.html#k1lib.Absorber.__ror__">__ror__() (k1lib.Absorber method)</a>
 
       <ul>
+        <li><a href="cli/index.html#k1lib.cli.bio.complement.__ror__">(k1lib.cli.bio.complement method)</a>
+</li>
         <li><a href="cli/index.html#k1lib.cli.bio.longAa.__ror__">(k1lib.cli.bio.longAa method)</a>
 </li>
         <li><a href="cli/index.html#k1lib.cli.bio.medAa.__ror__">(k1lib.cli.bio.medAa method)</a>
@@ -533,6 +545,8 @@
         <li><a href="cli/index.html#k1lib.cli.modifier.applyS.__ror__">(k1lib.cli.modifier.applyS method)</a>
 </li>
         <li><a href="cli/index.html#k1lib.cli.modifier.consume.__ror__">(k1lib.cli.modifier.consume method)</a>
+</li>
+        <li><a href="cli/index.html#k1lib.cli.modifier.op.__ror__">(k1lib.cli.modifier.op method)</a>
 </li>
         <li><a href="cli/index.html#k1lib.cli.modifier.randomize.__ror__">(k1lib.cli.modifier.randomize method)</a>
 </li>
@@ -634,7 +648,7 @@
 </li>
         <li><a href="cli/index.html#k1lib.cli.utils.wrapList.__ror__">(k1lib.cli.utils.wrapList method)</a>
 </li>
-        <li><a href="monkeyPatches.html#torch.nn.modules.Module.__ror__">(torch.nn.modules.Module method)</a>
+        <li><a href="monkey.html#torch.nn.modules.Module.__ror__">(torch.nn.modules.Module method)</a>
 </li>
       </ul></li>
       <li><a href="eqn.html#k1lib.eqn.Eqn.__round__">__round__() (k1lib.eqn.Eqn method)</a>
@@ -646,6 +660,10 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="cli/index.html#k1lib.cli.structural.AA_">AA_ (class in k1lib.cli.structural)</a>
+</li>
+      <li><a href="base.html#k1lib.Absorber.ab_operate">ab_operate() (k1lib.Absorber method)</a>
+</li>
+      <li><a href="base.html#k1lib.Absorber">Absorber (class in k1lib)</a>
 </li>
       <li><a href="callbacks/lossFunctions.html#k1lib.callbacks.lossFunctions.accuracy.AccF">AccF (class in k1lib.callbacks.lossFunctions.accuracy)</a>
 </li>
@@ -667,10 +685,10 @@
       </ul></li>
       <li><a href="kdata.html#k1lib.kdata.analyzeFloat">analyzeFloat() (in module k1lib.kdata)</a>
 </li>
-      <li><a href="mo.html#k1lib.mo.System.animate">animate() (k1lib.mo.System method)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="mo.html#k1lib.mo.System.animate">animate() (k1lib.mo.System method)</a>
+</li>
       <li><a href="callbacks/index.html#k1lib.callbacks.callbacks.Callbacks.append">append() (k1lib.callbacks.callbacks.Callbacks method)</a>
 
       <ul>
@@ -789,7 +807,7 @@
 </li>
       <li><a href="base.html#k1lib.clearLine">clearLine() (in module k1lib)</a>
 </li>
-      <li><a href="monkeyPatches.html#torch.Tensor.clearNan">clearNan() (torch.Tensor method)</a>
+      <li><a href="monkey.html#torch.Tensor.clearNan">clearNan() (torch.Tensor method)</a>
 </li>
       <li><a href="cli/index.html#k1lib.cli.modifier.applyMp.clearPools">clearPools() (k1lib.cli.modifier.applyMp static method)</a>
 </li>
@@ -834,8 +852,6 @@
 </li>
         <li><a href="base.html#k1lib.Range.copy">(k1lib.Range method)</a>
 </li>
-        <li><a href="selector.html#k1lib.selector.ModuleSelector.copy">(k1lib.selector.ModuleSelector method)</a>
-</li>
       </ul></li>
       <li><a href="callbacks/index.html#k1lib.callbacks.core.CoreNormal">CoreNormal (class in k1lib.callbacks.core)</a>
 </li>
@@ -848,7 +864,7 @@
       <li><a href="cli/index.html#k1lib.cli.others.crissCross">crissCross() (in module k1lib.cli.others)</a>
 
       <ul>
-        <li><a href="monkeyPatches.html#torch.Tensor.crissCross">(torch.Tensor method)</a>
+        <li><a href="monkey.html#torch.Tensor.crissCross">(torch.Tensor method)</a>
 </li>
       </ul></li>
       <li><a href="callbacks/index.html#k1lib.callbacks.hookModule.HookModule.css">css() (k1lib.callbacks.hookModule.HookModule method)</a>
@@ -905,6 +921,8 @@
         <li><a href="callbacks/lossFunctions.html#k1lib.callbacks.lossFunctions.shorts.LossNLLCross.detach">(k1lib.callbacks.lossFunctions.shorts.LossNLLCross method)</a>
 </li>
       </ul></li>
+      <li><a href="monkey.html#torch.nn.modules.Module.deviceContext">deviceContext() (torch.nn.modules.Module method)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="base.html#k1lib.digraph">digraph() (in module k1lib)</a>
@@ -927,8 +945,12 @@
 </li>
       <li><a href="callbacks/index.html#k1lib.callbacks.shorts.DType">DType (class in k1lib.callbacks.shorts)</a>
 </li>
-      <li><a href="imports.html#k1lib.imports.dummy">dummy() (in module k1lib.imports)</a>
+      <li><a href="monkey.html#k1lib._monkey.dummy">dummy() (in module k1lib._monkey)</a>
+
+      <ul>
+        <li><a href="imports.html#k1lib.imports.dummy">(in module k1lib.imports)</a>
 </li>
+      </ul></li>
   </ul></td>
 </tr></table>
 
@@ -973,7 +995,7 @@
       </ul></li>
       <li><a href="cli/index.html#k1lib.cli.structural.expandE">expandE (class in k1lib.cli.structural)</a>
 </li>
-      <li><a href="monkeyPatches.html#torch.nn.modules.Module.exportParams">exportParams() (torch.nn.modules.Module method)</a>
+      <li><a href="monkey.html#torch.nn.modules.Module.exportParams">exportParams() (torch.nn.modules.Module method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -993,15 +1015,19 @@
 </li>
       <li><a href="cli/index.html#k1lib.cli.gb.feats.filt">filt() (k1lib.cli.gb.feats static method)</a>
 </li>
-      <li><a href="selector.html#k1lib.selector.filter">filter() (in module k1lib.selector)</a>
-</li>
       <li><a href="base.html#k1lib.Range.fixOrder">fixOrder() (k1lib.Range method)</a>
+</li>
+      <li><a href="schedule.html#k1lib.schedule.Fn">Fn (class in k1lib.schedule)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="schedule.html#k1lib.schedule.Fn">Fn (class in k1lib.schedule)</a>
-</li>
       <li><a href="knn.html#k1lib.knn.Lambda.forward">forward() (k1lib.knn.Lambda method)</a>
+
+      <ul>
+        <li><a href="knn.html#k1lib.knn.LinBlock.forward">(k1lib.knn.LinBlock method)</a>
+</li>
+      </ul></li>
+      <li><a href="selector.html#k1lib.selector.ModuleSelector.freeze">freeze() (k1lib.selector.ModuleSelector method)</a>
 </li>
       <li><a href="base.html#k1lib.Object.fromDict">fromDict() (k1lib.Object static method)</a>
 </li>
@@ -1011,8 +1037,6 @@
 </li>
       <li><a href="base.html#k1lib.Range.fromUnit">fromUnit() (k1lib.Range method)</a>
 </li>
-      <li><a href="callbacks/index.html#k1lib.callbacks.frozen.Frozen">Frozen (class in k1lib.callbacks.frozen)</a>
-</li>
       <li><a href="kdata.html#k1lib.kdata.FunctionData">FunctionData (class in k1lib.kdata)</a>
 </li>
   </ul></td>
@@ -1021,18 +1045,22 @@
 <h2 id="G">G</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="monkeyPatches.html#torch.nn.modules.Module.getParamsVector">getParamsVector() (torch.nn.modules.Module method)</a>
+      <li><a href="base.html#k1lib.Absorber.getdoc">getdoc() (k1lib.Absorber method)</a>
+</li>
+      <li><a href="monkey.html#torch.nn.modules.Module.getParamsVector">getParamsVector() (torch.nn.modules.Module method)</a>
 </li>
       <li><a href="cli/index.html#k1lib.cli.bio.go">go() (in module k1lib.cli.bio)</a>
+</li>
+      <li><a href="monkey.html#torch.nn.modules.Module.gradContext">gradContext() (torch.nn.modules.Module method)</a>
 </li>
       <li><a href="callbacks/index.html#k1lib.callbacks.limits.GradientClipping">GradientClipping (class in k1lib.callbacks.limits)</a>
 </li>
       <li><a href="callbacks/index.html#k1lib.callbacks.limits.GradientClippingNorm">GradientClippingNorm (class in k1lib.callbacks.limits)</a>
 </li>
-      <li><a href="base.html#k1lib.graph">graph() (in module k1lib)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="base.html#k1lib.graph">graph() (in module k1lib)</a>
+</li>
       <li><a href="fmt.html#k1lib.fmt.txt.green">green() (k1lib.fmt.txt static method)</a>
 </li>
       <li><a href="cli/index.html#k1lib.cli.grep.grep">grep (class in k1lib.cli.grep)</a>
@@ -1049,7 +1077,7 @@
 <h2 id="H">H</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="monkeyPatches.html#torch.Tensor.hasNan">hasNan() (torch.Tensor method)</a>
+      <li><a href="monkey.html#torch.Tensor.hasNan">hasNan() (torch.Tensor method)</a>
 </li>
       <li><a href="mo.html#k1lib.mo.Atom.HBonds">HBonds() (k1lib.mo.Atom property)</a>
 </li>
@@ -1061,13 +1089,19 @@
 </li>
       <li><a href="cli/index.html#k1lib.cli.output.headOut">headOut() (in module k1lib.cli.output)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="selector.html#k1lib.selector.ModuleSelector.highlight">highlight() (k1lib.selector.ModuleSelector method)</a>
 </li>
-      <li><a href="monkeyPatches.html#torch.Tensor.histBounds">histBounds() (torch.Tensor method)</a>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="monkey.html#torch.Tensor.histBounds">histBounds() (torch.Tensor method)</a>
 </li>
-      <li><a href="monkeyPatches.html#torch.Tensor.histScaled">histScaled() (torch.Tensor method)</a>
+      <li><a href="monkey.html#torch.Tensor.histScaled">histScaled() (torch.Tensor method)</a>
+</li>
+      <li><a href="selector.html#k1lib.selector.ModuleSelector.hookB">hookB() (k1lib.selector.ModuleSelector method)</a>
+</li>
+      <li><a href="selector.html#k1lib.selector.ModuleSelector.hookF">hookF() (k1lib.selector.ModuleSelector method)</a>
+</li>
+      <li><a href="selector.html#k1lib.selector.ModuleSelector.hookFp">hookFp() (k1lib.selector.ModuleSelector method)</a>
 </li>
       <li><a href="callbacks/index.html#k1lib.callbacks.hookModule.HookModule">HookModule (class in k1lib.callbacks.hookModule)</a>
 </li>
@@ -1087,11 +1121,13 @@
 </li>
       <li><a href="fmt.html#k1lib.fmt.txt.identity">identity() (k1lib.fmt.txt static method)</a>
 </li>
+      <li><a href="selector.html#k1lib.selector.ModuleSelector.idx">idx (k1lib.selector.ModuleSelector attribute)</a>
+</li>
       <li><a href="cli/index.html#k1lib.cli.utils.ignore">ignore (class in k1lib.cli.utils)</a>
 </li>
       <li><a href="base.html#k1lib.ignoreWarnings">ignoreWarnings (class in k1lib)</a>
 </li>
-      <li><a href="monkeyPatches.html#torch.nn.modules.Module.importParams">importParams() (torch.nn.modules.Module method)</a>
+      <li><a href="monkey.html#torch.nn.modules.Module.importParams">importParams() (torch.nn.modules.Module method)</a>
 </li>
       <li><a href="cli/index.html#k1lib.cli.filt.inRange">inRange() (in module k1lib.cli.filt)</a>
 </li>
@@ -1181,6 +1217,13 @@
 </li>
       </ul></li>
       <li>
+    k1lib._monkey
+
+      <ul>
+        <li><a href="monkey.html#module-k1lib._monkey">module</a>
+</li>
+      </ul></li>
+      <li>
     k1lib.callbacks
 
       <ul>
@@ -1206,13 +1249,6 @@
 
       <ul>
         <li><a href="callbacks/index.html#module-k1lib.callbacks.core">module</a>
-</li>
-      </ul></li>
-      <li>
-    k1lib.callbacks.frozen
-
-      <ul>
-        <li><a href="callbacks/index.html#module-k1lib.callbacks.frozen">module</a>
 </li>
       </ul></li>
       <li>
@@ -1560,6 +1596,8 @@
 </li>
       <li><a href="base.html#k1lib.limitLines">limitLines() (in module k1lib)</a>
 </li>
+      <li><a href="knn.html#k1lib.knn.LinBlock">LinBlock (class in k1lib.knn)</a>
+</li>
       <li><a href="schedule.html#k1lib.schedule.linear">linear() (in module k1lib.schedule)</a>
 
       <ul>
@@ -1578,9 +1616,9 @@
 </li>
       <li><a href="callbacks/index.html#k1lib.callbacks.loss_accuracy.Loss">Loss (class in k1lib.callbacks.loss_accuracy)</a>
 </li>
-      <li><a href="base.html#k1lib.Learner.lossF">lossF() (k1lib.Learner property)</a>
+      <li><a href="callbacks/lossFunctions.html#k1lib.callbacks.lossFunctions.shorts.LossF">LossF (class in k1lib.callbacks.lossFunctions.shorts)</a>
 </li>
-      <li><a href="callbacks/lossFunctions.html#k1lib.callbacks.lossFunctions.shorts.LossLambda">LossLambda (class in k1lib.callbacks.lossFunctions.shorts)</a>
+      <li><a href="base.html#k1lib.Learner.lossF">lossF() (k1lib.Learner property)</a>
 </li>
       <li><a href="callbacks/lossFunctions.html#k1lib.callbacks.lossFunctions.shorts.LossNLLCross">LossNLLCross (class in k1lib.callbacks.lossFunctions.shorts)</a>
 </li>
@@ -1630,6 +1668,8 @@
       <ul>
         <li><a href="index.html#module-k1lib">k1lib</a>
 </li>
+        <li><a href="monkey.html#module-k1lib._monkey">k1lib._monkey</a>
+</li>
         <li><a href="callbacks/index.html#module-k1lib.callbacks">k1lib.callbacks</a>
 </li>
         <li><a href="callbacks/index.html#module-k1lib.callbacks.callbacks">k1lib.callbacks.callbacks</a>
@@ -1637,8 +1677,6 @@
         <li><a href="callbacks/index.html#module-k1lib.callbacks.confusionMatrix">k1lib.callbacks.confusionMatrix</a>
 </li>
         <li><a href="callbacks/index.html#module-k1lib.callbacks.core">k1lib.callbacks.core</a>
-</li>
-        <li><a href="callbacks/index.html#module-k1lib.callbacks.frozen">k1lib.callbacks.frozen</a>
 </li>
         <li><a href="callbacks/index.html#module-k1lib.callbacks.hookModule">k1lib.callbacks.hookModule</a>
 </li>
@@ -1757,13 +1795,15 @@
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="selector.html#k1lib.selector.ModuleSelector.nn">nn (k1lib.selector.ModuleSelector attribute)</a>
+</li>
       <li><a href="cli/index.html#k1lib.cli.kxml.node">node (class in k1lib.cli.kxml)</a>
 </li>
       <li><a href="mo.html#k1lib.mo.NoFreeElectrons">NoFreeElectrons</a>
 </li>
       <li><a href="mo.html#k1lib.mo.Atom.nonHBonds">nonHBonds() (k1lib.mo.Atom property)</a>
 </li>
-      <li><a href="monkeyPatches.html#torch.nn.modules.Module.nParams">nParams (torch.nn.modules.Module attribute)</a>
+      <li><a href="monkey.html#torch.nn.modules.Module.nParams">nParams (torch.nn.modules.Module attribute)</a>
 </li>
       <li><a href="base.html#k1lib.numDigits">numDigits() (in module k1lib)</a>
 </li>
@@ -1781,6 +1821,8 @@
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="cli/index.html#k1lib.cli.modifier.op">op (class in k1lib.cli.modifier)</a>
+</li>
       <li><a href="base.html#k1lib.Learner.opt">opt() (k1lib.Learner property)</a>
 </li>
       <li><a href="base.html#k1lib.optimize">optimize() (in module k1lib)</a>
@@ -1793,13 +1835,11 @@
 <h2 id="P">P</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="selector.html#k1lib.selector.ModuleSelector.parameters">parameters() (k1lib.selector.ModuleSelector method)</a>
-</li>
       <li><a href="callbacks/index.html#k1lib.callbacks.paramFinder.ParamFinder">ParamFinder (class in k1lib.callbacks.paramFinder)</a>
 </li>
       <li><a href="schedule.html#k1lib.schedule.ParamScheduler">ParamScheduler (class in k1lib.schedule)</a>
 </li>
-      <li><a href="monkeyPatches.html#torch.nn.modules.Module.paramsContext">paramsContext() (torch.nn.modules.Module method)</a>
+      <li><a href="monkey.html#torch.nn.modules.Module.paramsContext">paramsContext() (torch.nn.modules.Module method)</a>
 </li>
       <li><a href="mo.html#k1lib.mo.parse">parse() (in module k1lib.mo)</a>
 
@@ -1849,7 +1889,7 @@
 </li>
       <li><a href="base.html#k1lib.positionalEncode">positionalEncode() (in module k1lib)</a>
 </li>
-      <li><a href="monkeyPatches.html#torch.nn.modules.Module.preserveDevice">preserveDevice() (torch.nn.modules.Module method)</a>
+      <li><a href="selector.html#k1lib.selector.preprocess">preprocess() (in module k1lib.selector)</a>
 </li>
       <li><a href="cli/index.html#k1lib.cli.kxml.pretty">pretty (class in k1lib.cli.kxml)</a>
 
@@ -1862,6 +1902,8 @@
       <li><a href="callbacks/index.html#k1lib.callbacks.progress.ProgressBar">ProgressBar (class in k1lib.callbacks.progress)</a>
 </li>
       <li><a href="base.html#k1lib.Range.proportionalSlice">proportionalSlice() (k1lib.Range static method)</a>
+</li>
+      <li><a href="selector.html#k1lib.selector.ModuleSelector.props">props (k1lib.selector.ModuleSelector attribute)</a>
 </li>
       <li><a href="fmt.html#k1lib.fmt.txt.purple">purple() (k1lib.fmt.txt static method)</a>
 </li>
@@ -1958,7 +2000,11 @@
       <li><a href="mo.html#k1lib.mo.sameEmpirical">sameEmpirical() (in module k1lib.mo)</a>
 </li>
       <li><a href="base.html#k1lib.Learner.sample">sample() (k1lib.Learner static method)</a>
+
+      <ul>
+        <li><a href="selector.html#k1lib.selector.ModuleSelector.sample">(k1lib.selector.ModuleSelector static method)</a>
 </li>
+      </ul></li>
       <li><a href="eqn.html#k1lib.eqn.Eqn.save">save() (k1lib.eqn.Eqn method)</a>
 
       <ul>
@@ -1978,11 +2024,11 @@
       <li><a href="viz.html#k1lib.viz.Carousel.savePlt">savePlt() (k1lib.viz.Carousel method)</a>
 </li>
       <li><a href="selector.html#k1lib.selector.select">select() (in module k1lib.selector)</a>
+
+      <ul>
+        <li><a href="monkey.html#torch.nn.modules.Module.select">(torch.nn.modules.Module method)</a>
 </li>
-      <li><a href="selector.html#k1lib.selector.ModuleSelector.selected">selected() (k1lib.selector.ModuleSelector method)</a>
-</li>
-      <li><a href="selector.html#k1lib.selector.ModuleSelector.selectedProps">selectedProps (k1lib.selector.ModuleSelector attribute)</a>
-</li>
+      </ul></li>
       <li><a href="cli/index.html#k1lib.cli.init.serial">serial (class in k1lib.cli.init)</a>
 </li>
       <li><a href="cli/index.html#k1lib.cli.utils.shape">shape (in module k1lib.cli.utils)</a>
@@ -2026,6 +2072,8 @@
       <li><a href="cli/index.html#k1lib.cli.structural.splitList">splitList (class in k1lib.cli.structural)</a>
 </li>
       <li><a href="base.html#k1lib.squeeze">squeeze() (in module k1lib)</a>
+</li>
+      <li><a href="cli/index.html#k1lib.cli.others.torch.stack">stack() (k1lib.cli.others.torch method)</a>
 </li>
       <li><a href="cli/index.html#k1lib.cli.modifier.stagger">stagger (class in k1lib.cli.modifier)</a>
 </li>
@@ -2158,6 +2206,8 @@
       <ul>
         <li><a href="knn.html#k1lib.knn.Lambda.training">(k1lib.knn.Lambda attribute)</a>
 </li>
+        <li><a href="knn.html#k1lib.knn.LinBlock.training">(k1lib.knn.LinBlock attribute)</a>
+</li>
       </ul></li>
       <li><a href="cli/index.html#k1lib.cli.bio.transcribe">transcribe (class in k1lib.cli.bio)</a>
 </li>
@@ -2175,12 +2225,14 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="fmt.html#k1lib.fmt.txt.underline">underline() (k1lib.fmt.txt static method)</a>
 </li>
-      <li><a href="cli/index.html#k1lib.cli.filt.union">union (class in k1lib.cli.filt)</a>
+      <li><a href="selector.html#k1lib.selector.ModuleSelector.unfreeze">unfreeze() (k1lib.selector.ModuleSelector method)</a>
 </li>
-      <li><a href="cli/index.html#k1lib.cli.filt.unique">unique (class in k1lib.cli.filt)</a>
+      <li><a href="cli/index.html#k1lib.cli.filt.union">union (class in k1lib.cli.filt)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="cli/index.html#k1lib.cli.filt.unique">unique (class in k1lib.cli.filt)</a>
+</li>
       <li><a href="mo.html#k1lib.mo.Atom.uniqueBonds">uniqueBonds() (k1lib.mo.Atom property)</a>
 </li>
       <li><a href="mo.html#k1lib.mo.Atom.uniqueNonHBonds">uniqueNonHBonds() (k1lib.mo.Atom property)</a>
@@ -2261,18 +2313,16 @@
 </li>
       <li><a href="callbacks/index.html#k1lib.callbacks.hookModule.HookModule.withForwardHook">withForwardHook() (k1lib.callbacks.hookModule.HookModule method)</a>
 </li>
-      <li><a href="callbacks/index.html#k1lib.callbacks.callbacks.Callbacks.withFrozen">withFrozen() (k1lib.callbacks.callbacks.Callbacks method)</a>
-</li>
       <li><a href="callbacks/index.html#k1lib.callbacks.callbacks.Callbacks.withGradientClipping">withGradientClipping() (k1lib.callbacks.callbacks.Callbacks method)</a>
 </li>
       <li><a href="callbacks/index.html#k1lib.callbacks.callbacks.Callbacks.withGradientClippingNorm">withGradientClippingNorm() (k1lib.callbacks.callbacks.Callbacks method)</a>
 </li>
       <li><a href="callbacks/index.html#k1lib.callbacks.hookModule.HookModule.withHook">withHook() (k1lib.callbacks.hookModule.HookModule method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="callbacks/index.html#k1lib.callbacks.callbacks.Callbacks.withHookModule">withHookModule() (k1lib.callbacks.callbacks.Callbacks method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="callbacks/index.html#k1lib.callbacks.callbacks.Callbacks.withHookParam">withHookParam() (k1lib.callbacks.callbacks.Callbacks method)</a>
 </li>
       <li><a href="callbacks/index.html#k1lib.callbacks.callbacks.Callbacks.withInspectBatch">withInspectBatch() (k1lib.callbacks.callbacks.Callbacks method)</a>
@@ -2287,7 +2337,7 @@
 </li>
       <li><a href="callbacks/index.html#k1lib.callbacks.callbacks.Callbacks.withLossCrossEntropy">withLossCrossEntropy() (k1lib.callbacks.callbacks.Callbacks method)</a>
 </li>
-      <li><a href="callbacks/index.html#k1lib.callbacks.callbacks.Callbacks.withLossLambda">withLossLambda() (k1lib.callbacks.callbacks.Callbacks method)</a>
+      <li><a href="callbacks/index.html#k1lib.callbacks.callbacks.Callbacks.withLossF">withLossF() (k1lib.callbacks.callbacks.Callbacks method)</a>
 </li>
       <li><a href="callbacks/index.html#k1lib.callbacks.callbacks.Callbacks.withLossNLL">withLossNLL() (k1lib.callbacks.callbacks.Callbacks method)</a>
 </li>
@@ -2324,6 +2374,8 @@
       <li><a href="callbacks/index.html#k1lib.callbacks.callbacks.Callbacks.withTimeLimit">withTimeLimit() (k1lib.callbacks.callbacks.Callbacks method)</a>
 </li>
       <li><a href="cli/index.html#k1lib.cli.utils.wrapList">wrapList (class in k1lib.cli.utils)</a>
+</li>
+      <li><a href="base.html#k1lib.wrapMod">wrapMod (class in k1lib)</a>
 </li>
       <li><a href="base.html#k1lib.Wrapper">Wrapper (class in k1lib)</a>
 </li>

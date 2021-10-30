@@ -102,7 +102,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../viz.html">k1lib.viz module</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../monkeyPatches.html">Monkey patched classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../monkey.html">Monkey patched classes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../tutorials.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../changelogs.html">Changelogs</a></li>
 </ul>
@@ -178,7 +178,7 @@
 <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Iterator</span><span class="p">,</span> <span class="n">Any</span>
 <span class="kn">from</span> <span class="nn">k1lib.cli.init</span> <span class="kn">import</span> <span class="n">BaseCli</span><span class="p">,</span> <span class="n">Table</span>
-<span class="kn">import</span> <span class="nn">torch</span><span class="o">,</span> <span class="nn">numbers</span><span class="o">,</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span><span class="p">;</span> <span class="kn">from</span> <span class="nn">k1lib</span> <span class="kn">import</span> <span class="n">cli</span>
+<span class="kn">import</span> <span class="nn">torch</span><span class="o">,</span> <span class="nn">numbers</span><span class="o">,</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span><span class="o">,</span> <span class="nn">k1lib</span><span class="p">;</span> <span class="kn">from</span> <span class="nn">k1lib</span> <span class="kn">import</span> <span class="n">cli</span>
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;stdout&quot;</span><span class="p">,</span> <span class="s2">&quot;file&quot;</span><span class="p">,</span> <span class="s2">&quot;pretty&quot;</span><span class="p">,</span> <span class="s2">&quot;display&quot;</span><span class="p">,</span> <span class="s2">&quot;headOut&quot;</span><span class="p">,</span> <span class="s2">&quot;intercept&quot;</span><span class="p">]</span>
 <div class="viewcode-block" id="stdout"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.output.stdout">[docs]</a><span class="k">class</span> <span class="nc">stdout</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Prints out all lines. If not iterable, then print out the input raw&quot;&quot;&quot;</span>
@@ -226,21 +226,27 @@
     <span class="k">if</span> <span class="n">lines</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="k">return</span> <span class="n">stdout</span><span class="p">()</span>
     <span class="k">else</span><span class="p">:</span> <span class="k">return</span> <span class="n">cli</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span> <span class="o">|</span> <span class="n">stdout</span><span class="p">()</span></div>
 <div class="viewcode-block" id="intercept"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.output.intercept">[docs]</a><span class="k">class</span> <span class="nc">intercept</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Intercept flow at a particular point, analyze the object piped in, and</span>
-<span class="sd">throw exception to stop flow. Example::</span>
+<div class="viewcode-block" id="intercept.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.output.intercept.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">raiseError</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Intercept flow at a particular point, analyze the object piped in, and</span>
+<span class="sd">raises error to stop flow. Example::</span>
 
 <span class="sd">    3 | intercept()</span>
-<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">:param raiseError: whether to raise error when executed or not.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">raiseError</span> <span class="o">=</span> <span class="n">raiseError</span></div>
 <div class="viewcode-block" id="intercept.__ror__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.output.intercept.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="p">(</span><span class="n">numbers</span><span class="o">.</span><span class="n">Number</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">bool</span><span class="p">)):</span>
-            <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">k1lib</span><span class="o">.</span><span class="n">tab</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">s</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">))</span>
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="p">(</span><span class="nb">tuple</span><span class="p">,</span> <span class="nb">list</span><span class="p">)):</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Length: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-            <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">k1lib</span><span class="o">.</span><span class="n">tab</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Length: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">))</span>
+            <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">k1lib</span><span class="o">.</span><span class="n">tab</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">))</span>
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)):</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Shape: </span><span class="si">{</span><span class="n">s</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;intercepted&quot;</span><span class="p">)</span></div></div>
+            <span class="nb">print</span><span class="p">(</span><span class="n">k1lib</span><span class="o">.</span><span class="n">tab</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Shape: </span><span class="si">{</span><span class="n">s</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">))</span>
+            <span class="k">if</span> <span class="n">s</span><span class="o">.</span><span class="n">numel</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mi">1000</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="n">k1lib</span><span class="o">.</span><span class="n">tab</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">s</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">))</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">raiseError</span><span class="p">:</span> <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;intercepted&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">s</span></div></div>
 </pre></div>
 
            </div>

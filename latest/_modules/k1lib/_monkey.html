@@ -102,7 +102,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../viz.html">k1lib.viz module</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../monkeyPatches.html">Monkey patched classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../monkey.html">Monkey patched classes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../changelogs.html">Changelogs</a></li>
 </ul>
@@ -176,6 +176,12 @@
 <span class="kn">from</span> <span class="nn">torch</span> <span class="kn">import</span> <span class="n">nn</span><span class="p">;</span> <span class="kn">from</span> <span class="nn">k1lib</span> <span class="kn">import</span> <span class="n">cli</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">ContextManager</span>
 <span class="kn">from</span> <span class="nn">contextlib</span> <span class="kn">import</span> <span class="n">contextmanager</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;dummy&quot;</span><span class="p">]</span>
+<div class="viewcode-block" id="dummy"><a class="viewcode-back" href="../../monkey.html#k1lib._monkey.dummy">[docs]</a><span class="k">def</span> <span class="nf">dummy</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Does nothing. Only here so that you can read source code of this file and</span>
+<span class="sd">see what’s up.&quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+<span class="n">torch</span><span class="o">.</span><span class="n">stack</span> <span class="o">=</span> <span class="n">cli</span><span class="o">.</span><span class="n">applyS</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">)</span>
 <span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">importParams</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">]):</span>
     <span class="sd">&quot;&quot;&quot;Given a list of :class:`torch.nn.parameter.Parameter`/:class:`torch.Tensor`,</span>
@@ -217,26 +223,61 @@
         <span class="n">b</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">std</span><span class="p">()</span> <span class="k">if</span> <span class="n">param</span><span class="o">.</span><span class="n">numel</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="k">else</span> <span class="mi">1</span>
         <span class="n">answer</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span> <span class="o">*</span> <span class="n">b</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">answer</span>
-<span class="k">class</span> <span class="nc">_NnModuleDeviceContext</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nnModule</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">nnModule</span> <span class="o">=</span> <span class="n">nnModule</span>
-    <span class="k">def</span> <span class="fm">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">devices</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span><span class="o">.</span><span class="n">device</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">nnModule</span><span class="o">.</span><span class="n">parameters</span><span class="p">()]</span>
-    <span class="k">def</span> <span class="fm">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">ignored</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">p</span><span class="p">,</span> <span class="n">device</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nnModule</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">devices</span><span class="p">):</span>
-            <span class="n">p</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">k1lib.cli</span> <span class="kn">import</span> <span class="n">apply</span><span class="p">,</span> <span class="n">deref</span>
 <span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">preserveDevice</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ContextManager</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Preserves the device of whatever operation is inside this. Example::</span>
+<span class="nd">@contextmanager</span>
+<span class="k">def</span> <span class="nf">deviceContext</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">,</span> <span class="n">buffers</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ContextManager</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Preserves the device of whatever operation is inside this.</span>
+<span class="sd">Example::</span>
 
 <span class="sd">    import torch.nn as nn</span>
 <span class="sd">    m = nn.Linear(3, 4)</span>
-<span class="sd">    with m.preserveDevice():</span>
+<span class="sd">    with m.deviceContext():</span>
 <span class="sd">        m.cuda() # moves whole model to cuda</span>
 <span class="sd">    # automatically moves model to cpu</span>
 
-<span class="sd">This will work even if the model has many tensors that live on 10 different devices.&quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">_NnModuleDeviceContext</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+<span class="sd">This is capable of preserving buffers&#39; devices too. But it might be unstable.</span>
+<span class="sd">:class:`~torch.nn.parameter.Parameter` are often updated inline, and they keep</span>
+<span class="sd">their old identity, which makes it easy to keep track of which device the parameters</span>
+<span class="sd">are on. However, buffers are rarely updated inline, so their identities change all</span>
+<span class="sd">the time. To deal with this, this does something like this::</span>
+
+<span class="sd">    devices = [buf.device for buf in self.buffers()]</span>
+<span class="sd">    yield # entering context manager</span>
+<span class="sd">    for buffer, device in zip(self.buffers(), devices):</span>
+<span class="sd">        buffer.data = buffer.data.to(device=device)</span>
+
+<span class="sd">This means that while inside the context, if you add a buffer anywhere to the</span>
+<span class="sd">network, buffer-device alignment will be shifted and wrong. So, register all</span>
+<span class="sd">your buffers (aka Tensors attached to :class:`~torch.nn.Module`) outside this context</span>
+<span class="sd">to avoid headaches, or set ``buffers`` option to False.</span>
+
+<span class="sd">If you don&#39;t know what I&#39;m talking about, don&#39;t worry and just leave as default.</span>
+
+<span class="sd">:param buffers: whether to preserve device of buffers (regular Tensors attached</span>
+<span class="sd">    to :class:`~torch.nn.Module`) or not.&quot;&quot;&quot;</span>
+    <span class="n">pDevs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">()</span> <span class="o">|</span> <span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">device</span><span class="p">))</span> <span class="o">|</span> <span class="n">deref</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">buffers</span><span class="p">:</span> <span class="n">bDevs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">buffers</span><span class="p">()</span> <span class="o">|</span> <span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">device</span><span class="p">)</span> <span class="o">|</span> <span class="n">deref</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span> <span class="k">yield</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">p</span><span class="p">,</span> <span class="n">dev</span> <span class="ow">in</span> <span class="n">pDevs</span><span class="p">:</span> <span class="n">p</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">dev</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">buffers</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">buf</span><span class="p">,</span> <span class="n">dev</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">buffers</span><span class="p">(),</span> <span class="n">bDevs</span><span class="p">):</span> <span class="n">buf</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">buf</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">dev</span><span class="p">)</span>
+<span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">)</span>
+<span class="nd">@contextmanager</span>
+<span class="k">def</span> <span class="nf">gradContext</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Preserves the requires_grad attribute.</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    m = nn.Linear(2, 3)</span>
+<span class="sd">    with m.gradContext():</span>
+<span class="sd">        m.weight.requires_grad = False</span>
+<span class="sd">    # returns True</span>
+<span class="sd">    m.weight.requires_grad&quot;&quot;&quot;</span>
+    <span class="n">grads</span> <span class="o">=</span> <span class="p">[(</span><span class="n">p</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">requires_grad</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">()]</span>
+    <span class="k">try</span><span class="p">:</span> <span class="k">yield</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">p</span><span class="p">,</span> <span class="n">grad</span> <span class="ow">in</span> <span class="n">grads</span><span class="p">:</span> <span class="n">p</span><span class="o">.</span><span class="n">requires_grad_</span><span class="p">(</span><span class="n">grad</span><span class="p">)</span>
 <span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">)</span>
 <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Allows piping input to :class:`torch.nn.Module`, to match same style as</span>
@@ -351,7 +392,7 @@
 <span class="sd">    g # displays arrows from &quot;a&quot; to &quot;b&quot; and &quot;a&quot; to &quot;c&quot;</span>
 <span class="sd">&quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">to</span> <span class="ow">in</span> <span class="n">tos</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">edge</span><span class="p">(</span><span class="n">_from</span><span class="p">,</span> <span class="n">to</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<div class="viewcode-block" id="digraph"><a class="viewcode-back" href="../../base.html#k1lib.digraph">[docs]</a>    <span class="k">def</span> <span class="nf">digraph</span><span class="p">():</span>
+    <span class="k">def</span> <span class="nf">digraph</span><span class="p">():</span>
         <span class="sd">&quot;&quot;&quot;Convenience method for creating a new graphviz Digraph.</span>
 <span class="sd">Example::</span>
 
@@ -359,10 +400,10 @@
 <span class="sd">    g(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;)</span>
 <span class="sd">    g # displays arrows from &quot;a&quot; to &quot;b&quot; and &quot;a&quot; to &quot;c&quot;</span>
 <span class="sd">&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">graphviz</span><span class="o">.</span><span class="n">Digraph</span><span class="p">(</span><span class="n">graph_attr</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;rankdir&quot;</span><span class="p">:</span><span class="s2">&quot;TB&quot;</span><span class="p">})</span></div>
-<div class="viewcode-block" id="graph"><a class="viewcode-back" href="../../base.html#k1lib.graph">[docs]</a>    <span class="k">def</span> <span class="nf">graph</span><span class="p">():</span>
+        <span class="k">return</span> <span class="n">graphviz</span><span class="o">.</span><span class="n">Digraph</span><span class="p">(</span><span class="n">graph_attr</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;rankdir&quot;</span><span class="p">:</span><span class="s2">&quot;TB&quot;</span><span class="p">})</span>
+    <span class="k">def</span> <span class="nf">graph</span><span class="p">():</span>
         <span class="sd">&quot;&quot;&quot;Convenience method for creating a new graphviz Graph. See also: :meth:`digraph`&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">graphviz</span><span class="o">.</span><span class="n">Graph</span><span class="p">(</span><span class="n">graph_attr</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;rankdir&quot;</span><span class="p">:</span><span class="s2">&quot;TB&quot;</span><span class="p">})</span></div>
+        <span class="k">return</span> <span class="n">graphviz</span><span class="o">.</span><span class="n">Graph</span><span class="p">(</span><span class="n">graph_attr</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;rankdir&quot;</span><span class="p">:</span><span class="s2">&quot;TB&quot;</span><span class="p">})</span>
 <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
     <span class="n">digraph</span> <span class="o">=</span> <span class="n">graph</span> <span class="o">=</span> <span class="k">lambda</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Module `graphviz` not found! Please install it first, something like `pip install graphviz`&quot;</span><span class="p">)</span>
 </pre></div>

@@ -102,7 +102,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../viz.html">k1lib.viz module</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../monkeyPatches.html">Monkey patched classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../monkey.html">Monkey patched classes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../tutorials.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../changelogs.html">Changelogs</a></li>
 </ul>
@@ -286,9 +286,17 @@
 <div class="viewcode-block" id="BaseCli.__lt__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.init.BaseCli.__lt__">[docs]</a>    <span class="k">def</span> <span class="fm">__lt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Default backup join symbol `&gt;`, in case `it` implements __ror__()&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__ror__</span><span class="p">(</span><span class="n">it</span><span class="p">)</span></div>
-<div class="viewcode-block" id="BaseCli.__call__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.init.BaseCli.__call__">[docs]</a>    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Another way to do ``it | cli``&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__ror__</span><span class="p">(</span><span class="n">it</span><span class="p">)</span></div></div>
+<div class="viewcode-block" id="BaseCli.__call__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.init.BaseCli.__call__">[docs]</a>    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Another way to do ``it | cli``. If multiple arguments are fed, then the</span>
+<span class="sd">argument list is passed to cli instead of just the first element. Example::</span>
+
+<span class="sd">    @applyS</span>
+<span class="sd">    def f(it):</span>
+<span class="sd">        return it</span>
+<span class="sd">    f(2) # returns 2</span>
+<span class="sd">    f(2, 3) # returns [2, 3]&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__ror__</span><span class="p">(</span><span class="n">it</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__ror__</span><span class="p">([</span><span class="n">it</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">])</span></div></div>
 <div class="viewcode-block" id="serial"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.init.serial">[docs]</a><span class="k">class</span> <span class="nc">serial</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
 <div class="viewcode-block" id="serial.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.init.serial.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">clis</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="n">BaseCli</span><span class="p">]):</span>
         <span class="sd">&quot;&quot;&quot;Merges clis into 1, feeding end to end. Used in chaining clis</span>

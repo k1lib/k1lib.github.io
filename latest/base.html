@@ -111,7 +111,7 @@
 <li class="toctree-l1"><a class="reference internal" href="viz.html">k1lib.viz module</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="monkeyPatches.html">Monkey patched classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="monkey.html">Monkey patched classes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="changelogs.html">Changelogs</a></li>
 </ul>
@@ -193,6 +193,7 @@
 <li><p><a class="reference internal" href="#k1lib.AutoIncrement" title="k1lib.AutoIncrement"><code class="xref py py-class docutils literal notranslate"><span class="pre">k1lib.AutoIncrement</span></code></a></p></li>
 <li><p><a class="reference internal" href="#k1lib.Wrapper" title="k1lib.Wrapper"><code class="xref py py-class docutils literal notranslate"><span class="pre">k1lib.Wrapper</span></code></a></p></li>
 <li><p><a class="reference internal" href="#k1lib.Every" title="k1lib.Every"><code class="xref py py-class docutils literal notranslate"><span class="pre">k1lib.Every</span></code></a></p></li>
+<li><p><a class="reference internal" href="#k1lib.Absorber" title="k1lib.Absorber"><code class="xref py py-class docutils literal notranslate"><span class="pre">k1lib.Absorber</span></code></a></p></li>
 <li><p><a class="reference internal" href="#k1lib.CaptureStdout" title="k1lib.CaptureStdout"><code class="xref py py-class docutils literal notranslate"><span class="pre">k1lib.CaptureStdout</span></code></a></p></li>
 <li><p><a class="reference internal" href="#k1lib.ignoreWarnings" title="k1lib.ignoreWarnings"><code class="xref py py-class docutils literal notranslate"><span class="pre">k1lib.ignoreWarnings</span></code></a></p></li>
 </ul>
@@ -697,6 +698,57 @@ Example:</p>
 </dd></dl>
 
 <dl class="py class">
+<dt id="k1lib.Absorber">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">k1lib.</span></code><code class="sig-name descname"><span class="pre">Absorber</span></code><a class="reference internal" href="_modules/k1lib/_baseClasses.html#Absorber"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.Absorber" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Creates an object that absorbes every operation done on it. Could be
+useful in some scenarios:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ab</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">Absorber</span><span class="p">()</span>
+<span class="c1"># absorbs all operations done on the object</span>
+<span class="nb">abs</span><span class="p">(</span><span class="n">ab</span><span class="p">[::</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="c1"># returns transformed tensor of size [2, 3]</span>
+<span class="n">ab</span><span class="o">.</span><span class="n">ab_operate</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Another:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ab</span> <span class="o">=</span> <span class="n">Absorber</span><span class="p">()</span>
+<span class="n">ab</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">50</span>
+<span class="c1"># returns [0, 1, -50, 3, 4]</span>
+<span class="n">ab</span><span class="o">.</span><span class="n">ab_operate</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)))</span>
+</pre></div>
+</div>
+<p>Because this object absorbs every operation done on it, you have to be gentle with
+it, as any unplanned disturbances might throw your code off. Best to create a new
+one on the fly, and pass them immediately to functions, because if you’re in a
+notebook environment like Jupyter, it might poke at variables.</p>
+<p>For extended code example that utilizes this, check over <a class="reference internal" href="cli/index.html#k1lib.cli.modifier.op" title="k1lib.cli.modifier.op"><code class="xref py py-class docutils literal notranslate"><span class="pre">k1lib.cli.modifier.op</span></code></a>
+source code.</p>
+<dl class="py method">
+<dt id="k1lib.Absorber.ab_operate">
+<code class="sig-name descname"><span class="pre">ab_operate</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/_baseClasses.html#Absorber.ab_operate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.Absorber.ab_operate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="k1lib.Absorber.__ror__">
+<code class="sig-name descname"><span class="pre">__ror__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">o</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/_baseClasses.html#Absorber.__ror__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.Absorber.__ror__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="k1lib.Absorber.__invert__">
+<code class="sig-name descname"><span class="pre">__invert__</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/_baseClasses.html#Absorber.__invert__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.Absorber.__invert__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="k1lib.Absorber.getdoc">
+<code class="sig-name descname"><span class="pre">getdoc</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/_baseClasses.html#Absorber.getdoc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.Absorber.getdoc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Here so that JupyterLab’s contextual help won’t go in and mess things up.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt id="k1lib.CaptureStdout">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">k1lib.</span></code><code class="sig-name descname"><span class="pre">CaptureStdout</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">iterable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/_basics.html#CaptureStdout"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.CaptureStdout" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a></p>
@@ -728,6 +780,31 @@ Example:</p>
     <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;some random stuff&quot;</span><span class="p">)</span> <span class="c1"># will not show anything</span>
 </pre></div>
 </div>
+</dd></dl>
+
+<dl class="py class">
+<dt id="k1lib.wrapMod">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">k1lib.</span></code><code class="sig-name descname"><span class="pre">wrapMod</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">moduleName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/_basics.html#wrapMod"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.wrapMod" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dl class="py method">
+<dt id="k1lib.wrapMod.__init__">
+<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">moduleName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/_basics.html#wrapMod.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.wrapMod.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wraps around a module, and only suggest symbols in __all__ list
+defined inside the module. Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">randomModule</span>
+<span class="n">randomModule</span> <span class="o">=</span> <span class="n">wrapMod</span><span class="p">(</span><span class="n">randomModule</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>m</strong> – the imported module</p></li>
+<li><p><strong>moduleName</strong> – optional new module name for elements (their __module__ attr)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 </div>
@@ -857,7 +934,7 @@ methods like this:</p>
 
 <dl class="py function">
 <dt id="k1lib.squeeze">
-<code class="sig-prename descclassname"><span class="pre">k1lib.</span></code><code class="sig-name descname"><span class="pre">squeeze</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_list</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><span class="pre">list</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)"><span class="pre">tuple</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.11.0a0+git4a04d2b ))"><span class="pre">torch.Tensor</span></a><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hard</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/_basics.html#squeeze"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.squeeze" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">k1lib.</span></code><code class="sig-name descname"><span class="pre">squeeze</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_list</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><span class="pre">list</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)"><span class="pre">tuple</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.11.0a0+git1a13e43 ))"><span class="pre">torch.Tensor</span></a><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hard</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/_basics.html#squeeze"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.squeeze" title="Permalink to this definition">¶</a></dt>
 <dd><p>If list only has 1 element, rethrn that element, else return original list</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -929,7 +1006,7 @@ defined in the notebook appear in the __main__ context by passing <cite>globals(
 
 <dl class="py function">
 <dt id="k1lib.positionalEncode">
-<code class="sig-prename descclassname"><span class="pre">k1lib.</span></code><code class="sig-name descname"><span class="pre">positionalEncode</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.11.0a0+git4a04d2b ))"><span class="pre">torch.Tensor</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">richFactor</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><span class="pre">float</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.11.0a0+git4a04d2b ))"><span class="pre">torch.Tensor</span></a><a class="reference internal" href="_modules/k1lib/_basics.html#positionalEncode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.positionalEncode" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">k1lib.</span></code><code class="sig-name descname"><span class="pre">positionalEncode</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.11.0a0+git1a13e43 ))"><span class="pre">torch.Tensor</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">richFactor</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><span class="pre">float</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.11.0a0+git1a13e43 ))"><span class="pre">torch.Tensor</span></a><a class="reference internal" href="_modules/k1lib/_basics.html#positionalEncode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.positionalEncode" title="Permalink to this definition">¶</a></dt>
 <dd><p>Position encode a tensor of shape <span class="math notranslate nohighlight">\((L, F)\)</span>, where <span class="math notranslate nohighlight">\(L\)</span>
 is the sequence length, <span class="math notranslate nohighlight">\(F\)</span> is the encoded features. Will add the
 encodings directly to the input tensor and return it.</p>
@@ -989,13 +1066,13 @@ Example:</p>
 
 <dl class="py function">
 <dt id="k1lib.graph">
-<code class="sig-prename descclassname"><span class="pre">k1lib.</span></code><code class="sig-name descname"><span class="pre">graph</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/_monkey.html#graph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.graph" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">k1lib.</span></code><code class="sig-name descname"><span class="pre">graph</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/_basics.html#graph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.graph" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convenience method for creating a new graphviz Graph. See also: <a class="reference internal" href="#k1lib.digraph" title="k1lib.digraph"><code class="xref py py-meth docutils literal notranslate"><span class="pre">digraph()</span></code></a></p>
 </dd></dl>
 
 <dl class="py function">
 <dt id="k1lib.digraph">
-<code class="sig-prename descclassname"><span class="pre">k1lib.</span></code><code class="sig-name descname"><span class="pre">digraph</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/_monkey.html#digraph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.digraph" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">k1lib.</span></code><code class="sig-name descname"><span class="pre">digraph</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/_basics.html#digraph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.digraph" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convenience method for creating a new graphviz Digraph.
 Example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">graph</span><span class="p">()</span>
