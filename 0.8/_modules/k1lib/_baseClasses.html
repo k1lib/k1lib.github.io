@@ -1,0 +1,769 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>k1lib._baseClasses &mdash; k1lib  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> k1lib
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../base.html">Base module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../cli/index.html">k1lib.cli module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../callbacks/index.html">k1lib.callbacks module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../kdata.html">k1lib.kdata module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../eqn.html">k1lib.eqn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fmt.html">k1lib.fmt module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../graphEqn.html">k1lib.graphEqn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../imports.html">k1lib.imports module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mo.html">k1lib.mo module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../knn.html">k1lib.knn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../schedule.html">k1lib.schedule module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../selector.html">k1lib.selector module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../viz.html">k1lib.viz module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../monkey.html">Monkey patched classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../changelogs.html">Changelogs</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">k1lib</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>k1lib._baseClasses</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for k1lib._baseClasses</h1><div class="highlight"><pre>
+<span></span><span class="c1"># AUTOGENERATED FILE! PLEASE DON&#39;T EDIT</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">.. module:: k1lib</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Iterator</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">List</span>
+<span class="kn">from</span> <span class="nn">k1lib</span> <span class="kn">import</span> <span class="n">isNumeric</span>
+<span class="kn">import</span> <span class="nn">random</span><span class="o">,</span> <span class="nn">torch</span><span class="o">,</span> <span class="nn">math</span><span class="o">,</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Object&quot;</span><span class="p">,</span> <span class="s2">&quot;Range&quot;</span><span class="p">,</span> <span class="s2">&quot;Domain&quot;</span><span class="p">,</span> <span class="s2">&quot;AutoIncrement&quot;</span><span class="p">,</span> <span class="s2">&quot;Wrapper&quot;</span><span class="p">,</span> <span class="s2">&quot;Every&quot;</span><span class="p">,</span> <span class="s2">&quot;Absorber&quot;</span><span class="p">]</span>
+<div class="viewcode-block" id="Object"><a class="viewcode-back" href="../../base.html#k1lib.Object">[docs]</a><span class="k">class</span> <span class="nc">Object</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Convenience class that acts like :class:`~collections.defaultdict`. You</span>
+<span class="sd">can use it like a normal object::</span>
+
+<span class="sd">    a = Object()</span>
+<span class="sd">    a.b = 3</span>
+<span class="sd">    print(a.b) # outputs &quot;3&quot;</span>
+
+<span class="sd">``__repr__()`` output is pretty nice too:</span>
+
+<span class="sd">.. code-block:: text</span>
+
+<span class="sd">    &lt;class &#39;__main__.Object&#39;&gt;, with attrs:</span>
+<span class="sd">    - b</span>
+
+<span class="sd">You can instantiate it from a dict::</span>
+
+<span class="sd">    a = Object.fromDict({&quot;b&quot;: 3, &quot;c&quot;: 4})</span>
+<span class="sd">    print(a.c) # outputs &quot;4&quot;</span>
+
+<span class="sd">And you can specify a default value, just like defaultdict::</span>
+
+<span class="sd">    a = Object().withAutoDeclare(lambda: [])</span>
+<span class="sd">    a.texts.extend([&quot;factorio&quot;, &quot;world of warcraft&quot;])</span>
+<span class="sd">    print(a.texts[0]) # outputs &quot;factorio&quot;</span>
+<span class="sd">    </span>
+<span class="sd">.. warning::</span>
+
+<span class="sd">    Default values only work with variables that don&#39;t start with an</span>
+<span class="sd">    underscore &quot;_&quot;.</span>
+
+<span class="sd">Treating it like defaultdict is okay too::</span>
+
+<span class="sd">    a = Object().withAutoDeclare(lambda: [])</span>
+<span class="sd">    a[&quot;movies&quot;].append(&quot;dune&quot;)</span>
+<span class="sd">    print(a.movies[0]) # outputs &quot;dune&quot;</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="n">_defaultValueGenerator</span> <span class="o">=</span> <span class="kc">None</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">repr</span> <span class="o">=</span> <span class="kc">None</span>
+<div class="viewcode-block" id="Object.fromDict"><a class="viewcode-back" href="../../base.html#k1lib.Object.fromDict">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">fromDict</span><span class="p">(</span><span class="n">_dict</span><span class="p">:</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]):</span>
+        <span class="sd">&quot;&quot;&quot;Creates an object with attributes from a dictionary&quot;&quot;&quot;</span>
+        <span class="n">answer</span> <span class="o">=</span> <span class="n">Object</span><span class="p">();</span> <span class="n">answer</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">_dict</span><span class="p">);</span> <span class="k">return</span> <span class="n">answer</span></div>
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">state</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Essentially ``__dict__``, but only outputs the fields you</span>
+<span class="sd">defined. If your framework intentionally set some attributes, those</span>
+<span class="sd">will be reported too, so beware&quot;&quot;&quot;</span>
+        <span class="n">answer</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">);</span> <span class="k">del</span> <span class="n">answer</span><span class="p">[</span><span class="s2">&quot;_defaultValueGenerator&quot;</span><span class="p">]</span>
+        <span class="k">del</span> <span class="n">answer</span><span class="p">[</span><span class="s2">&quot;repr&quot;</span><span class="p">];</span> <span class="k">return</span> <span class="n">answer</span>
+<div class="viewcode-block" id="Object.withAutoDeclare"><a class="viewcode-back" href="../../base.html#k1lib.Object.withAutoDeclare">[docs]</a>    <span class="k">def</span> <span class="nf">withAutoDeclare</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">defaultValueGenerator</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Sets this Object up so that if a field doesn&#39;t</span>
+<span class="sd">        exist, it will automatically create it with a</span>
+<span class="sd">        default value.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_defaultValueGenerator</span> <span class="o">=</span> <span class="n">defaultValueGenerator</span><span class="p">;</span> <span class="k">return</span> <span class="bp">self</span></div>
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span> <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span> <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">yield from</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+    <span class="k">def</span> <span class="fm">__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span> <span class="k">return</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span>
+    <span class="k">def</span> <span class="fm">__getattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attr</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">attr</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">):</span> <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">attr</span> <span class="o">==</span> <span class="s2">&quot;getdoc&quot;</span><span class="p">:</span> <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s2">&quot;This param is used internally in module `IPython.core.oinspect`, so you kinda have to set it specifically yourself instead of relying on auto declare&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_defaultValueGenerator</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">[</span><span class="n">attr</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_defaultValueGenerator</span><span class="p">()</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">[</span><span class="n">attr</span><span class="p">]</span>
+        <span class="k">raise</span> <span class="ne">AttributeError</span>
+    <span class="k">def</span> <span class="fm">__delitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span> <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+<div class="viewcode-block" id="Object.withRepr"><a class="viewcode-back" href="../../base.html#k1lib.Object.withRepr">[docs]</a>    <span class="k">def</span> <span class="nf">withRepr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_repr</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Specify output of ``__repr__()``. Legacy code. You can just</span>
+<span class="sd">monkey patch it instead.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">repr</span> <span class="o">=</span> <span class="n">_repr</span><span class="p">;</span> <span class="k">return</span> <span class="bp">self</span></div>
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">_dict</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="sa">f</span><span class="s2">&quot;- </span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">keys</span><span class="p">()])</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">repr</span> <span class="ow">or</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="si">}</span><span class="s2">, with attrs:</span><span class="se">\n</span><span class="si">{</span><span class="n">_dict</span><span class="si">}</span><span class="s2">&quot;</span></div>
+<span class="n">ninf</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s2">&quot;-inf&quot;</span><span class="p">);</span> <span class="n">inf</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s2">&quot;inf&quot;</span><span class="p">)</span>
+<div class="viewcode-block" id="Range"><a class="viewcode-back" href="../../base.html#k1lib.Range">[docs]</a><span class="k">class</span> <span class="nc">Range</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;A range of numbers. It&#39;s just 2 numbers really: start and stop</span>
+
+<span class="sd">This is essentially a convenience class to provide a nice, clean</span>
+<span class="sd">abstraction and to eliminate errors. You can transform values::</span>
+
+<span class="sd">    Range(10, 20).toUnit(13) # returns 0.3</span>
+<span class="sd">    Range(10, 20).fromUnit(0.3) # returns 13</span>
+<span class="sd">    Range(10, 20).toRange(Range(20, 10), 13) # returns 17</span>
+
+<span class="sd">You can also do random math operations on it::</span>
+
+<span class="sd">    (Range(10, 20) * 2 + 3) == Range(23, 43) # returns True</span>
+<span class="sd">    Range(10, 20) == ~Range(20, 10) # returns True&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="Range.__init__"><a class="viewcode-back" href="../../base.html#k1lib.Range.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Creates a new Range.</span>
+
+<span class="sd">There are different ``__init__`` functions for many situations:</span>
+
+<span class="sd">- Range(2, 11.1): create range [2, 11.1]</span>
+<span class="sd">- Range(15.2): creates range [0, 15.2]</span>
+<span class="sd">- Range(Range(2, 3)): create range [2, 3]. This serves as sort of a catch-all</span>
+<span class="sd">- Range(slice(2, 5, 2)): creates range [2, 5]. Can also be a :class:`range`</span>
+<span class="sd">- Range(slice(2, -1), 10): creates range [2, 9]</span>
+<span class="sd">- Range([1, 2, 7, 5]): creates range [1, 5]. Can also be a tuple</span>
+<span class="sd">&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">isNumeric</span><span class="p">(</span><span class="n">start</span><span class="p">)</span> <span class="ow">and</span> <span class="n">isNumeric</span><span class="p">(</span><span class="n">stop</span><span class="p">)):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">stop</span> <span class="o">=</span> <span class="n">start</span><span class="p">,</span> <span class="n">stop</span>
+        <span class="k">elif</span> <span class="n">isNumeric</span><span class="p">(</span><span class="n">start</span><span class="p">)</span> <span class="ow">and</span> <span class="n">stop</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">stop</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">start</span>
+        <span class="k">elif</span> <span class="n">stop</span> <span class="o">==</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="p">(</span><span class="nb">range</span><span class="p">,</span> <span class="nb">slice</span><span class="p">,</span> <span class="n">Range</span><span class="p">)):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">stop</span> <span class="o">=</span> <span class="n">start</span><span class="o">.</span><span class="n">start</span><span class="p">,</span> <span class="n">start</span><span class="o">.</span><span class="n">stop</span>
+        <span class="k">elif</span> <span class="n">isNumeric</span><span class="p">(</span><span class="n">stop</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="nb">slice</span><span class="p">):</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="n">stop</span><span class="p">)[</span><span class="n">start</span><span class="p">];</span> <span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">stop</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">start</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">stop</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">stop</span> <span class="o">=</span> <span class="n">start</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">start</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span> <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Don&#39;t understand </span><span class="si">{</span><span class="n">start</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">stop</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">delta</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">stop</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">start</span></div>
+<div class="viewcode-block" id="Range.__getitem__"><a class="viewcode-back" href="../../base.html#k1lib.Range.__getitem__">[docs]</a>    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;0 for start, 1 for stop</span>
+
+<span class="sd">You can also pass in a :class:`slice` object, in which case, a range subset</span>
+<span class="sd">will be returned. Code kinda looks like this::</span>
+
+<span class="sd">    range(start, stop)[index]</span>
+<span class="sd">&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">index</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">start</span>
+        <span class="k">if</span> <span class="n">index</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">stop</span>
+        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">index</span><span class="p">)</span> <span class="o">==</span> <span class="nb">slice</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">Range</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">stop</span><span class="p">)[</span><span class="n">index</span><span class="p">])</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Can&#39;t get index </span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s2"> of range [</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">stop</span><span class="si">}</span><span class="s2">]&quot;</span><span class="p">)</span></div>
+<div class="viewcode-block" id="Range.fixOrder"><a class="viewcode-back" href="../../base.html#k1lib.Range.fixOrder">[docs]</a>    <span class="k">def</span> <span class="nf">fixOrder</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Range&quot;</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;If start greater than stop, switch the 2, else do nothing&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">start</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">stop</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">stop</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">stop</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">start</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+    <span class="k">def</span> <span class="nf">_common</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="p">:</span><span class="n">Callable</span><span class="p">[[</span><span class="nb">float</span><span class="p">],</span> <span class="nb">float</span><span class="p">]):</span>
+        <span class="k">if</span> <span class="n">isNumeric</span><span class="p">(</span><span class="n">x</span><span class="p">):</span> <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)):</span>
+            <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_common</span><span class="p">(</span><span class="n">elem</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">x</span><span class="p">]</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">(</span><span class="nb">range</span><span class="p">,</span> <span class="nb">slice</span><span class="p">,</span> <span class="n">Range</span><span class="p">)):</span>
+            <span class="k">return</span> <span class="n">Range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_common</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">start</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">start</span> <span class="o">!=</span> <span class="kc">None</span> <span class="k">else</span> <span class="mi">0</span><span class="p">,</span> <span class="n">f</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_common</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">stop</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">stop</span> <span class="o">!=</span> <span class="kc">None</span> <span class="k">else</span> <span class="mi">1</span><span class="p">,</span> <span class="n">f</span><span class="p">))</span>
+        <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Doesn&#39;t understand </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">;</span> <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">stop</span>
+<div class="viewcode-block" id="Range.intIter"><a class="viewcode-back" href="../../base.html#k1lib.Range.intIter">[docs]</a>    <span class="k">def</span> <span class="nf">intIter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">step</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;Returns integers within this Range&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stop</span><span class="p">),</span> <span class="n">step</span><span class="p">)</span></div>
+<div class="viewcode-block" id="Range.toUnit"><a class="viewcode-back" href="../../base.html#k1lib.Range.toUnit">[docs]</a>    <span class="k">def</span> <span class="nf">toUnit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Converts x from current range to [0, 1] range. Example::</span>
+
+<span class="sd">    r = Range(2, 10)</span>
+<span class="sd">    r.toUnit(5) # will return 0.375, as that is (5-2)/(10-2)</span>
+
+<span class="sd">You can actually pass in a lot in place of x::</span>
+
+<span class="sd">    r = Range(0, 10)</span>
+<span class="sd">    r.toUnit([5, 3, 6]) # will be [0.5, 0.3, 0.6]. Can also be a tuple</span>
+<span class="sd">    r.toUnit(slice(5, 6)) # will be slice(0.5, 0.6). Can also be a range, or Range</span>
+
+<span class="sd">.. note::</span>
+
+<span class="sd">    In the last case, if ``start`` is None, it gets defaulted to 0, and</span>
+<span class="sd">    if ``end`` is None, it gets defaulted to 1</span>
+<span class="sd">&quot;&quot;&quot;</span>
+        <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">delta</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="s2">&quot;nan&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">delta</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_common</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="s2">&quot;nan&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">delta</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">delta</span><span class="p">)</span></div>
+<div class="viewcode-block" id="Range.fromUnit"><a class="viewcode-back" href="../../base.html#k1lib.Range.fromUnit">[docs]</a>    <span class="k">def</span> <span class="nf">fromUnit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Converts x from [0, 1] range to this range. Example::</span>
+
+<span class="sd">    r = Range(0, 10)</span>
+<span class="sd">    r.fromUnit(0.3) # will return 3</span>
+
+<span class="sd">x can be a lot of things, see :meth:`toUnit` for more&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_common</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">delta</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">)</span></div>
+<div class="viewcode-block" id="Range.toRange"><a class="viewcode-back" href="../../base.html#k1lib.Range.toRange">[docs]</a>    <span class="k">def</span> <span class="nf">toRange</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_range</span><span class="p">:</span><span class="s2">&quot;Range&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Converts x from current range to another range. Example::</span>
+
+<span class="sd">    r = Range(0, 10)</span>
+<span class="sd">    r.toRange(Range(0, 100), 6) # will return 60</span>
+
+<span class="sd">x can be a lot of things, see :meth:`toUnit` for more.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_common</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">Range</span><span class="p">(</span><span class="n">_range</span><span class="p">)</span><span class="o">.</span><span class="n">fromUnit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">toUnit</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span></div>
+<div class="viewcode-block" id="Range.fromRange"><a class="viewcode-back" href="../../base.html#k1lib.Range.fromRange">[docs]</a>    <span class="k">def</span> <span class="nf">fromRange</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_range</span><span class="p">:</span><span class="s2">&quot;Range&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Reverse of :meth:`toRange`, effectively.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">_range</span><span class="o">.</span><span class="n">toRange</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span></div>
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">range_</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Returns a :class:`range` object with start and stop values</span>
+<span class="sd">rounded off&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">range</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="o">+</span><span class="mf">0.001</span><span class="p">),</span> <span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stop</span><span class="o">+</span><span class="mf">0.001</span><span class="p">))</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">slice_</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Returns a :class:`slice` object with start and stop values</span>
+<span class="sd">rounded off&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">slice</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="o">+</span><span class="mf">0.001</span><span class="p">),</span> <span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stop</span><span class="o">+</span><span class="mf">0.001</span><span class="p">))</span>
+<div class="viewcode-block" id="Range.proportionalSlice"><a class="viewcode-back" href="../../base.html#k1lib.Range.proportionalSlice">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">proportionalSlice</span><span class="p">(</span><span class="n">r1</span><span class="p">,</span> <span class="n">r2</span><span class="p">,</span> <span class="n">r1Slice</span><span class="p">:</span><span class="nb">slice</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="s2">&quot;Range&quot;</span><span class="p">,</span> <span class="s2">&quot;Range&quot;</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;Slices r1 and r2 proportionally. Best to explain using an</span>
+<span class="sd">example. Let&#39;s say you have 2 arrays created from a time-dependent</span>
+<span class="sd">procedure like this::</span>
+
+<span class="sd">    a = []; b = []</span>
+<span class="sd">    for t in range(100):</span>
+<span class="sd">        if t % 3 == 0: a.append(t)</span>
+<span class="sd">        if t % 5 == 0: b.append(1 - t)</span>
+<span class="sd">    len(a), len(b) # returns (34, 20)</span>
+
+<span class="sd">a and b are of different lengths, but you want to plot both from 30%</span>
+<span class="sd">mark to 50% mark (for a, it&#39;s elements 10 -&gt; 17, for b it&#39;s 6 -&gt; 10),</span>
+<span class="sd">as they are time-dependent. As you can probably tell, to get the indicies</span>
+<span class="sd">10, 17, 6, 10 is messy. So, you can do something like this instead::</span>
+
+<span class="sd">    r1, r2 = Range.proportionalSlice(Range(len(a)), Range(len(b)), slice(10, 17))</span>
+
+<span class="sd">This will return the Ranges [10, 17] and [5.88, 10]</span>
+
+<span class="sd">Then, you can plot both of them side by side like this::</span>
+
+<span class="sd">    fig, axes = plt.subplots(ncols=2)</span>
+<span class="sd">    axes[0].plot(r1.range_, a[r1.slice_])</span>
+<span class="sd">    axes[1].plot(r2.range_, a[r2.slice_])</span>
+<span class="sd">&quot;&quot;&quot;</span>
+        <span class="n">r1</span><span class="p">,</span> <span class="n">r2</span> <span class="o">=</span> <span class="n">Range</span><span class="p">(</span><span class="n">r1</span><span class="p">),</span> <span class="n">Range</span><span class="p">(</span><span class="n">r2</span><span class="p">)</span>
+        <span class="n">ar1</span> <span class="o">=</span> <span class="n">r1</span><span class="p">[</span><span class="n">r1Slice</span><span class="p">];</span> <span class="n">ar2</span> <span class="o">=</span> <span class="n">r1</span><span class="o">.</span><span class="n">toRange</span><span class="p">(</span><span class="n">r2</span><span class="p">,</span> <span class="n">ar1</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">ar1</span><span class="p">,</span> <span class="n">ar2</span></div>
+<div class="viewcode-block" id="Range.bound"><a class="viewcode-back" href="../../base.html#k1lib.Range.bound">[docs]</a>    <span class="k">def</span> <span class="nf">bound</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rs</span><span class="p">:</span><span class="n">Union</span><span class="p">[</span><span class="nb">range</span><span class="p">,</span> <span class="nb">slice</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="nb">range</span><span class="p">,</span> <span class="nb">slice</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;If input range|slice&#39;s stop and start is missing, then use this</span>
+<span class="sd">range&#39;s start and stop instead.&quot;&quot;&quot;</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="n">rs</span><span class="o">.</span><span class="n">start</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">start</span>
+        <span class="n">stop</span> <span class="o">=</span> <span class="n">rs</span><span class="o">.</span><span class="n">stop</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">stop</span>
+        <span class="k">return</span> <span class="nb">type</span><span class="p">(</span><span class="n">rs</span><span class="p">)(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">)</span></div>
+<div class="viewcode-block" id="Range.copy"><a class="viewcode-back" href="../../base.html#k1lib.Range.copy">[docs]</a>    <span class="k">def</span> <span class="nf">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="n">Range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">stop</span><span class="p">)</span></div>
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;[</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">stop</span><span class="si">}</span><span class="s2">]&quot;</span>
+    <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_range</span><span class="p">):</span>
+        <span class="n">_range</span> <span class="o">=</span> <span class="n">Range</span><span class="p">(</span><span class="n">_range</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">_range</span><span class="o">.</span><span class="n">start</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">start</span> <span class="ow">or</span> <span class="nb">abs</span><span class="p">(</span><span class="n">_range</span><span class="o">.</span><span class="n">start</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1e-9</span><span class="p">)</span> <span class="ow">and</span>\
+            <span class="p">(</span><span class="n">_range</span><span class="o">.</span><span class="n">stop</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">stop</span> <span class="ow">or</span> <span class="nb">abs</span><span class="p">(</span><span class="n">_range</span><span class="o">.</span><span class="n">stop</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">stop</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1e-9</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span><span class="nb">float</span><span class="p">):</span> <span class="k">return</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">start</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">stop</span>
+    <span class="k">def</span> <span class="fm">__neg__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="n">Range</span><span class="p">(</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">,</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">stop</span><span class="p">)</span>
+<div class="viewcode-block" id="Range.__invert__"><a class="viewcode-back" href="../../base.html#k1lib.Range.__invert__">[docs]</a>    <span class="k">def</span> <span class="fm">__invert__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="n">Range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stop</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">)</span></div>
+    <span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num</span><span class="p">):</span> <span class="k">return</span> <span class="n">Range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">start</span> <span class="o">+</span> <span class="n">num</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">stop</span> <span class="o">+</span> <span class="n">num</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__radd__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span> <span class="o">+</span> <span class="n">num</span>
+    <span class="k">def</span> <span class="fm">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num</span><span class="p">):</span> <span class="k">return</span> <span class="n">Range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">start</span> <span class="o">*</span> <span class="n">num</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">stop</span> <span class="o">*</span> <span class="n">num</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__rmul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span> <span class="o">*</span> <span class="n">num</span>
+    <span class="k">def</span> <span class="fm">__truediv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num</span><span class="p">):</span> <span class="k">return</span> <span class="n">num</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">num</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__rtruediv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num</span><span class="p">):</span> <span class="k">raise</span> <span class="s2">&quot;Doesn&#39;t make sense to do this!&quot;</span>
+    <span class="k">def</span> <span class="fm">__round__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="n">Range</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">),</span> <span class="nb">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stop</span><span class="p">))</span>
+    <span class="k">def</span> <span class="nf">__ceil__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="n">Range</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">),</span> <span class="n">math</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stop</span><span class="p">))</span>
+    <span class="k">def</span> <span class="nf">__floor__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="n">Range</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">),</span> <span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stop</span><span class="p">))</span>
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;A range of numbers: [</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">stop</span><span class="si">}</span><span class="s2">]. Can do:</span>
+<span class="s2">- r.toUnit(x): will convert x from range [</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">stop</span><span class="si">}</span><span class="s2">] to [0, 1]</span>
+<span class="s2">- r.fromUnit(x): will convert x from range [0, 1] to range [</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">stop</span><span class="si">}</span><span class="s2">]</span>
+<span class="s2">- r.toRange([a, b], x): will convert x from range [</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">stop</span><span class="si">}</span><span class="s2">] to range [a, b]</span>
+<span class="s2">- r[0], r[1], r.start, r.stop: get start and stop values of range</span>
+
+<span class="s2">Note: for conversion methods, you can pass in&quot;&quot;&quot;</span></div>
+<span class="k">def</span> <span class="nf">yieldLowest</span><span class="p">(</span><span class="n">r1s</span><span class="p">:</span><span class="n">Iterator</span><span class="p">[</span><span class="n">Range</span><span class="p">],</span> <span class="n">r2s</span><span class="p">:</span><span class="n">Iterator</span><span class="p">[</span><span class="n">Range</span><span class="p">]):</span>
+    <span class="sd">&quot;&quot;&quot;Given 2 :class:`Range` generators with lengths a and b, yield every</span>
+<span class="sd">object (a + b) so that :class:`Range`s with smaller start point gets yielded</span>
+<span class="sd">first. Assumes that each generator:</span>
+
+<span class="sd">- Does not intersect with itself</span>
+<span class="sd">- Is sorted by start point already</span>
+
+<span class="sd">.. warning::</span>
+
+<span class="sd">    This method will sometimes yield the same objects given by the Iterators.</span>
+<span class="sd">    Make sure you copy each :class:`Range` if your use case requires&quot;&quot;&quot;</span>
+    <span class="n">r1s</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">r1s</span><span class="p">);</span> <span class="n">r2s</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">r2s</span><span class="p">)</span>
+    <span class="n">r1</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">r1s</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">r1</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="k">yield from</span> <span class="n">r2s</span><span class="p">;</span> <span class="k">return</span>
+    <span class="n">r2</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">r2s</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">r2</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="k">yield</span> <span class="n">r1</span><span class="p">;</span> <span class="k">yield from</span> <span class="n">r1s</span><span class="p">;</span> <span class="k">return</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="k">while</span> <span class="n">r1</span><span class="o">.</span><span class="n">start</span> <span class="o">&lt;=</span> <span class="n">r2</span><span class="o">.</span><span class="n">start</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="n">r1</span>
+            <span class="n">r1</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">r1s</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">r1</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="k">yield</span> <span class="n">r2</span><span class="p">;</span> <span class="k">yield from</span> <span class="n">r2s</span><span class="p">;</span> <span class="k">return</span>
+        <span class="k">while</span> <span class="n">r2</span><span class="o">.</span><span class="n">start</span> <span class="o">&lt;=</span> <span class="n">r1</span><span class="o">.</span><span class="n">start</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="n">r2</span>
+            <span class="n">r2</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">r2s</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">r2</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="k">yield</span> <span class="n">r1</span><span class="p">;</span> <span class="k">yield from</span> <span class="n">r1s</span><span class="p">;</span> <span class="k">return</span>
+<span class="k">def</span> <span class="nf">join</span><span class="p">(</span><span class="n">r1s</span><span class="p">:</span><span class="n">Iterator</span><span class="p">[</span><span class="n">Range</span><span class="p">],</span> <span class="n">r2s</span><span class="p">:</span><span class="n">Iterator</span><span class="p">[</span><span class="n">Range</span><span class="p">]):</span>
+    <span class="sd">&quot;&quot;&quot;Joins 2 :class:`Range` generators, so that overlaps gets merged</span>
+<span class="sd">together.</span>
+
+<span class="sd">.. warning::</span>
+
+<span class="sd">    This method will sometimes yield the same objects given by the Iterators.</span>
+<span class="sd">    Make sure you copy each :class:`Range` if your use case requires&quot;&quot;&quot;</span>
+    <span class="n">it</span> <span class="o">=</span> <span class="n">yieldLowest</span><span class="p">(</span><span class="n">r1s</span><span class="p">,</span> <span class="n">r2s</span><span class="p">);</span> <span class="n">r</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">it</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">r</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="k">return</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">nr</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">it</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">nr</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="k">yield</span> <span class="n">r</span><span class="p">;</span> <span class="k">return</span>
+        <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">stop</span> <span class="o">&gt;=</span> <span class="n">nr</span><span class="o">.</span><span class="n">start</span><span class="p">:</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">copy</span><span class="p">();</span> <span class="n">r</span><span class="o">.</span><span class="n">stop</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">stop</span><span class="p">,</span> <span class="n">nr</span><span class="o">.</span><span class="n">stop</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span> <span class="k">yield</span> <span class="n">r</span><span class="p">;</span> <span class="n">r</span> <span class="o">=</span> <span class="n">nr</span>
+<span class="k">def</span> <span class="nf">neg</span><span class="p">(</span><span class="n">rs</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="n">Range</span><span class="p">]):</span>
+    <span class="sd">&quot;&quot;&quot;Returns R - rs, where R is the set of real numbers.&quot;&quot;&quot;</span>
+    <span class="n">rs</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">rs</span><span class="p">);</span> <span class="n">r</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">rs</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">r</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="k">yield</span> <span class="n">Range</span><span class="p">(</span><span class="n">ninf</span><span class="p">,</span> <span class="n">inf</span><span class="p">);</span> <span class="k">return</span>
+    <span class="k">if</span> <span class="n">ninf</span> <span class="o">&lt;</span> <span class="n">r</span><span class="o">.</span><span class="n">start</span><span class="p">:</span> <span class="k">yield</span> <span class="n">Range</span><span class="p">(</span><span class="n">ninf</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">start</span><span class="p">)</span> <span class="c1"># check -inf case</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">stop</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">rs</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">r</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">start</span> <span class="o">&lt;</span> <span class="n">inf</span><span class="p">:</span> <span class="k">yield</span> <span class="n">Range</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">inf</span><span class="p">)</span>
+            <span class="k">return</span>
+        <span class="k">yield</span> <span class="n">Range</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">start</span><span class="p">)</span>
+<div class="viewcode-block" id="Domain"><a class="viewcode-back" href="../../base.html#k1lib.Domain">[docs]</a><span class="k">class</span> <span class="nc">Domain</span><span class="p">:</span>
+<div class="viewcode-block" id="Domain.__init__"><a class="viewcode-back" href="../../base.html#k1lib.Domain.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">ranges</span><span class="p">,</span> <span class="n">dontCheck</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Creates a new domain.</span>
+
+<span class="sd">:param ranges: each element is a :class:`Range`, although any format will be fine as this selects for that</span>
+<span class="sd">:param dontCheck: don&#39;t sanitize inputs, intended to boost perf internally only</span>
+
+<span class="sd">A domain is just an array of :class:`Range` that represents what intervals on</span>
+<span class="sd">the real number line is chosen. Some examples::</span>
+
+<span class="sd">    inf = float(&quot;inf&quot;) # shorthand for infinity</span>
+<span class="sd">    Domain([5, 7.5], [2, 3]) # represents &quot;[2, 3) U [5, 7.5)&quot;</span>
+<span class="sd">    Domain([2, 3.2], [3, 8]) # represents &quot;[2, 8)&quot; as overlaps are merged</span>
+<span class="sd">    -Domain([2, 3]) # represents &quot;(-inf, 2) U [3, inf)&quot;, so essentially R - d, with R being the set of real numbers</span>
+<span class="sd">    -Domain([-inf, 3]) # represents &quot;[3, inf)&quot;</span>
+<span class="sd">    Domain.fromInts(2, 3, 6) # represents &quot;[2, 4) U [6, 7)&quot;</span>
+
+<span class="sd">You can also do arithmetic on them, and check &quot;in&quot; oeprator::</span>
+
+<span class="sd">    Domain([2, 3]) + Domain([4, 5]) # represents &quot;[2, 3) U [4, 5)&quot;</span>
+<span class="sd">    Domain([2, 3]) + Domain([2.9, 5]) # represents &quot;[2, 5)&quot;, also merges overlaps</span>
+<span class="sd">    3 in Domain([2, 3]) # returns False</span>
+<span class="sd">    2 in Domain([2, 3]) # returns True&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">dontCheck</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">ranges</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">ranges</span><span class="p">);</span> <span class="k">return</span>
+        <span class="c1"># convert all to Range type, fix its order, and sort based on .start</span>
+        <span class="n">ranges</span> <span class="o">=</span> <span class="p">[(</span><span class="n">r</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">Range</span><span class="p">)</span> <span class="k">else</span> <span class="n">Range</span><span class="p">(</span><span class="n">r</span><span class="p">))</span><span class="o">.</span><span class="n">fixOrder</span><span class="p">()</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">ranges</span><span class="p">]</span>
+        <span class="n">ranges</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">ranges</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">r</span><span class="p">:</span> <span class="n">r</span><span class="o">.</span><span class="n">start</span><span class="p">)</span>
+        <span class="c1"># merges overlapping segments</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ranges</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">join</span><span class="p">(</span><span class="n">ranges</span><span class="p">,</span> <span class="p">[]))</span></div>
+<div class="viewcode-block" id="Domain.fromInts"><a class="viewcode-back" href="../../base.html#k1lib.Domain.fromInts">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">fromInts</span><span class="p">(</span><span class="o">*</span><span class="n">ints</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]):</span>
+        <span class="sd">&quot;&quot;&quot;Returns a new :class:`Domain` which has ranges [i, i+1] for each</span>
+<span class="sd">int given.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">Domain</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">Range</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">ints</span><span class="p">))</span></div>
+<div class="viewcode-block" id="Domain.copy"><a class="viewcode-back" href="../../base.html#k1lib.Domain.copy">[docs]</a>    <span class="k">def</span> <span class="nf">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="n">Domain</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">ranges</span><span class="p">))</span></div>
+<div class="viewcode-block" id="Domain.intIter"><a class="viewcode-back" href="../../base.html#k1lib.Domain.intIter">[docs]</a>    <span class="k">def</span> <span class="nf">intIter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">step</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">start</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Yields ints in all ranges of this domain. If first range&#39;s domain</span>
+<span class="sd">is :math:`(-\inf, a)`, then starts at the specified integer&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ranges</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="k">return</span>
+        <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">ranges</span><span class="p">:</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">start</span><span class="p">)</span> <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">start</span> <span class="o">==</span> <span class="o">-</span><span class="n">inf</span> <span class="k">else</span> <span class="nb">int</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">start</span><span class="p">)</span>
+            <span class="k">while</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">r</span><span class="o">.</span><span class="n">stop</span><span class="p">:</span> <span class="k">yield</span> <span class="n">x</span><span class="p">;</span> <span class="n">x</span> <span class="o">+=</span> <span class="n">step</span></div>
+    <span class="k">def</span> <span class="fm">__neg__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="n">Domain</span><span class="p">(</span><span class="o">*</span><span class="n">neg</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ranges</span><span class="p">),</span> <span class="n">dontCheck</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">domain</span><span class="p">):</span> <span class="k">return</span> <span class="n">Domain</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ranges</span><span class="p">,</span> <span class="n">domain</span><span class="o">.</span><span class="n">ranges</span><span class="p">)),</span> <span class="n">dontCheck</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">domain</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span> <span class="o">+</span> <span class="p">(</span><span class="o">-</span><span class="n">domain</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">domain</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">ranges</span> <span class="o">==</span> <span class="n">domain</span><span class="o">.</span><span class="n">ranges</span>
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Domain: </span><span class="si">{</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">r</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">ranges</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="k">def</span> <span class="fm">__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span> <span class="k">return</span> <span class="nb">any</span><span class="p">(</span><span class="n">x</span> <span class="ow">in</span> <span class="n">r</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">ranges</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">rs</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- </span><span class="si">{</span><span class="n">r</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">ranges</span><span class="p">)</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;Domain:</span><span class="se">\n</span><span class="si">{</span><span class="n">rs</span><span class="si">}</span><span class="se">\n\n</span><span class="s2">Can:</span>
+<span class="s2">- 3 in d: check whether a number is in this domain or not</span>
+<span class="s2">- d1 + d2: joins 2 domain</span>
+<span class="s2">- -d: excludes the domain from R</span>
+<span class="s2">- d1 - d2: same as d1 + (-d2)&quot;&quot;&quot;</span></div>
+<div class="viewcode-block" id="AutoIncrement"><a class="viewcode-back" href="../../base.html#k1lib.AutoIncrement">[docs]</a><span class="k">class</span> <span class="nc">AutoIncrement</span><span class="p">:</span>
+<div class="viewcode-block" id="AutoIncrement.__init__"><a class="viewcode-back" href="../../base.html#k1lib.AutoIncrement.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">initialValue</span><span class="p">:</span><span class="nb">int</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="s2">&quot;inf&quot;</span><span class="p">)):</span>
+        <span class="sd">&quot;&quot;&quot;Creates a new AutoIncrement object. Every time the object is called</span>
+<span class="sd">it gets incremented by 1 automatically. Example::</span>
+
+<span class="sd">    a = k1lib.AutoIncrement()</span>
+<span class="sd">    a() # returns 0</span>
+<span class="sd">    a() # returns 1</span>
+<span class="sd">    a() # returns 2</span>
+<span class="sd">    a.value # returns 2</span>
+<span class="sd">    a.value # returns 2</span>
+<span class="sd">    a() # returns 3</span>
+
+<span class="sd">    a = AutoIncrement(n=3)</span>
+<span class="sd">    a() # returns 0</span>
+<span class="sd">    a() # returns 1</span>
+<span class="sd">    a() # returns 2</span>
+<span class="sd">    a() # returns 0</span>
+
+<span class="sd">:param n: if specified, then will wrap around to 0 when hit this number.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">initialValue</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">=</span> <span class="n">n</span></div>
+<div class="viewcode-block" id="AutoIncrement.random"><a class="viewcode-back" href="../../base.html#k1lib.AutoIncrement.random">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">random</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="s2">&quot;AutoIncrement&quot;</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Creates a new AutoIncrement object that has a random integer initial value&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">AutoIncrement</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1e9</span><span class="p">))</span></div>
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">value</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get the value as-is, without auto incrementing it&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value</span>
+    <span class="nd">@value</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">=</span> <span class="n">value</span>
+<div class="viewcode-block" id="AutoIncrement.__call__"><a class="viewcode-back" href="../../base.html#k1lib.AutoIncrement.__call__">[docs]</a>    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Increments internal counter, and return it.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value</span></div></div>
+<div class="viewcode-block" id="Wrapper"><a class="viewcode-back" href="../../base.html#k1lib.Wrapper">[docs]</a><span class="k">class</span> <span class="nc">Wrapper</span><span class="p">:</span>
+<div class="viewcode-block" id="Wrapper.__init__"><a class="viewcode-back" href="../../base.html#k1lib.Wrapper.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Creates a wrapper for some value and get it by calling it.</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    a = k1lib.Wrapper(list(range(int(1e7))))</span>
+<span class="sd">    # returns [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</span>
+<span class="sd">    a()[:10]</span>
+
+<span class="sd">This exists just so that Jupyter Lab&#39;s contextual help won&#39;t automatically</span>
+<span class="sd">display the (possibly humongous) value.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">value</span></div>
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span></div>
+<div class="viewcode-block" id="Every"><a class="viewcode-back" href="../../base.html#k1lib.Every">[docs]</a><span class="k">class</span> <span class="nc">Every</span><span class="p">:</span>
+<div class="viewcode-block" id="Every.__init__"><a class="viewcode-back" href="../../base.html#k1lib.Every.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Returns True every interval.</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    e = Every(4)</span>
+<span class="sd">    e() # returns True</span>
+<span class="sd">    e() # returns False</span>
+<span class="sd">    e() # returns False</span>
+<span class="sd">    e() # returns False</span>
+<span class="sd">    e() # returns True&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">=</span> <span class="n">n</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">i</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span></div>
+<div class="viewcode-block" id="Every.__call__"><a class="viewcode-back" href="../../base.html#k1lib.Every.__call__">[docs]</a>    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Returns True or False based on internal count.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span></div>
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">value</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">i</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">:</span> <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">else</span><span class="p">:</span> <span class="k">return</span> <span class="kc">True</span></div>
+<span class="n">sen</span> <span class="o">=</span> <span class="s2">&quot;_ab_sentinel&quot;</span>
+<div class="viewcode-block" id="Absorber"><a class="viewcode-back" href="../../base.html#k1lib.Absorber">[docs]</a><span class="k">class</span> <span class="nc">Absorber</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Creates an object that absorbes every operation done on it. Could be</span>
+<span class="sd">useful in some scenarios::</span>
+
+<span class="sd">    ab = k1lib.Absorber()</span>
+<span class="sd">    # absorbs all operations done on the object</span>
+<span class="sd">    abs(ab[::3].sum(dim=1))</span>
+
+<span class="sd">    t = torch.randn(5, 3, 3)</span>
+<span class="sd">    # returns transformed tensor of size [2, 3]</span>
+<span class="sd">    ab.ab_operate(t)</span>
+
+<span class="sd">Another::</span>
+
+<span class="sd">    ab = Absorber()</span>
+<span class="sd">    ab[2] = -50</span>
+<span class="sd">    # returns [0, 1, -50, 3, 4]</span>
+<span class="sd">    ab.ab_operate(list(range(5)))</span>
+
+<span class="sd">Because this object absorbs every operation done on it, you have to be gentle with</span>
+<span class="sd">it, as any unplanned disturbances might throw your code off. Best to create a new</span>
+<span class="sd">one on the fly, and pass them immediately to functions, because if you&#39;re in a</span>
+<span class="sd">notebook environment like Jupyter, it might poke at variables.</span>
+
+<span class="sd">For extended code example that utilizes this, check over :class:`k1lib.cli.modifier.op`</span>
+<span class="sd">source code.&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="Absorber.__init__"><a class="viewcode-back" href="../../base.html#k1lib.Absorber.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">initDict</span><span class="p">:</span><span class="nb">dict</span><span class="o">=</span><span class="nb">dict</span><span class="p">()):</span>
+        <span class="sd">&quot;&quot;&quot;Creates a new Absorber.</span>
+
+<span class="sd">:param initDict: initial variables to set, as setattr operation is normally absorbed&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ab_sentinel</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ab_steps</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">initDict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span> <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ab_sentinel</span> <span class="o">=</span> <span class="kc">False</span></div>
+<div class="viewcode-block" id="Absorber.ab_operate"><a class="viewcode-back" href="../../base.html#k1lib.Absorber.ab_operate">[docs]</a>    <span class="k">def</span> <span class="nf">ab_operate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Special method to actually operate on an object and get the result. Not</span>
+<span class="sd">absorbed.&quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">desc</span><span class="p">,</span> <span class="n">step</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ab_steps</span><span class="p">:</span> <span class="n">x</span> <span class="o">=</span> <span class="n">step</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">x</span></div>
+    <span class="k">def</span> <span class="fm">__getattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="n">idx</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">):</span> <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ab_steps</span><span class="o">.</span><span class="n">append</span><span class="p">([[</span><span class="s2">&quot;__getattr__&quot;</span><span class="p">,</span> <span class="n">idx</span><span class="p">],</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">idx</span><span class="p">)]);</span> <span class="k">return</span> <span class="bp">self</span>
+    <span class="k">def</span> <span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Only allows legit variable setting when &#39;_ab_sentinel&#39; is True. Absorbs</span>
+<span class="sd">operations if it&#39;s False.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="n">sen</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">[</span><span class="n">sen</span><span class="p">]:</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span> <span class="nb">setattr</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">);</span> <span class="k">return</span> <span class="n">x</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_ab_steps</span><span class="o">.</span><span class="n">append</span><span class="p">([[</span><span class="s2">&quot;__setattr__&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">]],</span> <span class="n">f</span><span class="p">])</span>
+                <span class="k">return</span> <span class="bp">self</span>
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ab_steps</span><span class="o">.</span><span class="n">append</span><span class="p">([[</span><span class="s2">&quot;__getitem__&quot;</span><span class="p">,</span> <span class="n">idx</span><span class="p">],</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="n">idx</span><span class="p">]]);</span> <span class="k">return</span> <span class="bp">self</span>
+    <span class="k">def</span> <span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+        <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span> <span class="n">x</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span><span class="p">;</span> <span class="k">return</span> <span class="n">x</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ab_steps</span><span class="o">.</span><span class="n">append</span><span class="p">([[</span><span class="s2">&quot;__setitem__&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">]],</span> <span class="n">f</span><span class="p">]);</span> <span class="k">return</span> <span class="bp">self</span>
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ab_steps</span><span class="o">.</span><span class="n">append</span><span class="p">([[</span><span class="s2">&quot;__call__&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">]],</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)]);</span> <span class="k">return</span> <span class="bp">self</span>
+    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>          <span class="bp">self</span><span class="o">.</span><span class="n">_ab_steps</span><span class="o">.</span><span class="n">append</span><span class="p">([[</span><span class="s2">&quot;__len__&quot;</span>         <span class="p">],</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)]);</span> <span class="k">return</span> <span class="bp">self</span>
+    <span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">o</span><span class="p">):</span>       <span class="bp">self</span><span class="o">.</span><span class="n">_ab_steps</span><span class="o">.</span><span class="n">append</span><span class="p">([[</span><span class="s2">&quot;__add__&quot;</span><span class="p">,</span>       <span class="n">o</span><span class="p">],</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">+</span><span class="n">o</span> <span class="p">]);</span> <span class="k">return</span> <span class="bp">self</span>
+    <span class="k">def</span> <span class="fm">__radd__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">o</span><span class="p">):</span>      <span class="bp">self</span><span class="o">.</span><span class="n">_ab_steps</span><span class="o">.</span><span class="n">append</span><span class="p">([[</span><span class="s2">&quot;__radd__&quot;</span><span class="p">,</span>      <span class="n">o</span><span class="p">],</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">o</span><span class="o">+</span><span class="n">x</span> <span class="p">]);</span> <span class="k">return</span> <span class="bp">self</span>
+    <span class="k">def</span> <span class="fm">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">o</span><span class="p">):</span>       <span class="bp">self</span><span class="o">.</span><span class="n">_ab_steps</span><span class="o">.</span><span class="n">append</span><span class="p">([[</span><span class="s2">&quot;__sub__&quot;</span><span class="p">,</span>       <span class="n">o</span><span class="p">],</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">-</span><span class="n">o</span> <span class="p">]);</span> <span class="k">return</span> <span class="bp">self</span>
+    <span class="k">def</span> <span class="fm">__rsub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">o</span><span class="p">):</span>      <span class="bp">self</span><span class="o">.</span><span class="n">_ab_steps</span><span class="o">.</span><span class="n">append</span><span class="p">([[</span><span class="s2">&quot;__rsub__&quot;</span><span class="p">,</span>      <span class="n">o</span><span class="p">],</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">o</span><span class="o">-</span><span class="n">x</span> <span class="p">]);</span> <span class="k">return</span> <span class="bp">self</span>
+    <span class="k">def</span> <span class="fm">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">o</span><span class="p">):</span>       <span class="bp">self</span><span class="o">.</span><span class="n">_ab_steps</span><span class="o">.</span><span class="n">append</span><span class="p">([[</span><span class="s2">&quot;__mul__&quot;</span><span class="p">,</span>       <span class="n">o</span><span class="p">],</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">*</span><span class="n">o</span> <span class="p">]);</span> <span class="k">return</span> <span class="bp">self</span>
+    <span class="k">def</span> <span class="fm">__rmul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">o</span><span class="p">):</span>      <span class="bp">self</span><span class="o">.</span><span class="n">_ab_steps</span><span class="o">.</span><span class="n">append</span><span class="p">([[</span><span class="s2">&quot;__rmul__&quot;</span><span class="p">,</span>      <span class="n">o</span><span class="p">],</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">o</span><span class="o">*</span><span class="n">x</span> <span class="p">]);</span> <span class="k">return</span> <span class="bp">self</span>
+    <span class="k">def</span> <span class="fm">__matmul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">o</span><span class="p">):</span>    <span class="bp">self</span><span class="o">.</span><span class="n">_ab_steps</span><span class="o">.</span><span class="n">append</span><span class="p">([[</span><span class="s2">&quot;__matmul__&quot;</span><span class="p">,</span>    <span class="n">o</span><span class="p">],</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="nd">@o</span> <span class="p">]);</span> <span class="k">return</span> <span class="bp">self</span>
+    <span class="k">def</span> <span class="fm">__rmatmul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">o</span><span class="p">):</span>   <span class="bp">self</span><span class="o">.</span><span class="n">_ab_steps</span><span class="o">.</span><span class="n">append</span><span class="p">([[</span><span class="s2">&quot;__rmatmul__&quot;</span><span class="p">,</span>   <span class="n">o</span><span class="p">],</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">o</span><span class="nd">@x</span> <span class="p">]);</span> <span class="k">return</span> <span class="bp">self</span>
+    <span class="k">def</span> <span class="fm">__truediv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">o</span><span class="p">):</span>   <span class="bp">self</span><span class="o">.</span><span class="n">_ab_steps</span><span class="o">.</span><span class="n">append</span><span class="p">([[</span><span class="s2">&quot;__truediv__&quot;</span><span class="p">,</span>   <span class="n">o</span><span class="p">],</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">/</span><span class="n">o</span> <span class="p">]);</span> <span class="k">return</span> <span class="bp">self</span>
+    <span class="k">def</span> <span class="fm">__rtruediv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">o</span><span class="p">):</span>  <span class="bp">self</span><span class="o">.</span><span class="n">_ab_steps</span><span class="o">.</span><span class="n">append</span><span class="p">([[</span><span class="s2">&quot;__rtruediv__&quot;</span><span class="p">,</span>  <span class="n">o</span><span class="p">],</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">o</span><span class="o">/</span><span class="n">x</span> <span class="p">]);</span> <span class="k">return</span> <span class="bp">self</span>
+    <span class="k">def</span> <span class="fm">__floordiv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">o</span><span class="p">):</span>  <span class="bp">self</span><span class="o">.</span><span class="n">_ab_steps</span><span class="o">.</span><span class="n">append</span><span class="p">([[</span><span class="s2">&quot;__floordiv__&quot;</span><span class="p">,</span>  <span class="n">o</span><span class="p">],</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">//</span><span class="n">o</span><span class="p">]);</span> <span class="k">return</span> <span class="bp">self</span>
+    <span class="k">def</span> <span class="fm">__rfloordiv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">o</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ab_steps</span><span class="o">.</span><span class="n">append</span><span class="p">([[</span><span class="s2">&quot;__rfloordiv__&quot;</span><span class="p">,</span> <span class="n">o</span><span class="p">],</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">o</span><span class="o">//</span><span class="n">x</span><span class="p">]);</span> <span class="k">return</span> <span class="bp">self</span>
+    <span class="k">def</span> <span class="fm">__mod__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">o</span><span class="p">):</span>       <span class="bp">self</span><span class="o">.</span><span class="n">_ab_steps</span><span class="o">.</span><span class="n">append</span><span class="p">([[</span><span class="s2">&quot;__mod__&quot;</span><span class="p">,</span>       <span class="n">o</span><span class="p">],</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">%</span><span class="n">o</span> <span class="p">]);</span> <span class="k">return</span> <span class="bp">self</span>
+    <span class="k">def</span> <span class="fm">__rmod__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">o</span><span class="p">):</span>      <span class="bp">self</span><span class="o">.</span><span class="n">_ab_steps</span><span class="o">.</span><span class="n">append</span><span class="p">([[</span><span class="s2">&quot;__rmod__&quot;</span><span class="p">,</span>      <span class="n">o</span><span class="p">],</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">o</span><span class="o">%</span><span class="n">x</span> <span class="p">]);</span> <span class="k">return</span> <span class="bp">self</span>
+    <span class="k">def</span> <span class="fm">__pow__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">o</span><span class="p">):</span>       <span class="bp">self</span><span class="o">.</span><span class="n">_ab_steps</span><span class="o">.</span><span class="n">append</span><span class="p">([[</span><span class="s2">&quot;__pow__&quot;</span><span class="p">,</span>       <span class="n">o</span><span class="p">],</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">**</span><span class="n">o</span><span class="p">]);</span> <span class="k">return</span> <span class="bp">self</span>
+    <span class="k">def</span> <span class="fm">__rpow__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">o</span><span class="p">):</span>      <span class="bp">self</span><span class="o">.</span><span class="n">_ab_steps</span><span class="o">.</span><span class="n">append</span><span class="p">([[</span><span class="s2">&quot;__rpow__&quot;</span><span class="p">,</span>      <span class="n">o</span><span class="p">],</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">o</span><span class="o">**</span><span class="n">x</span><span class="p">]);</span> <span class="k">return</span> <span class="bp">self</span>
+    <span class="k">def</span> <span class="fm">__lshift__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">o</span><span class="p">):</span>    <span class="bp">self</span><span class="o">.</span><span class="n">_ab_steps</span><span class="o">.</span><span class="n">append</span><span class="p">([[</span><span class="s2">&quot;__lshift__&quot;</span><span class="p">,</span>    <span class="n">o</span><span class="p">],</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">&lt;&lt;</span><span class="n">o</span><span class="p">]);</span> <span class="k">return</span> <span class="bp">self</span>
+    <span class="k">def</span> <span class="fm">__rlshift__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">o</span><span class="p">):</span>   <span class="bp">self</span><span class="o">.</span><span class="n">_ab_steps</span><span class="o">.</span><span class="n">append</span><span class="p">([[</span><span class="s2">&quot;__rlshift__&quot;</span><span class="p">,</span>   <span class="n">o</span><span class="p">],</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">o</span><span class="o">&lt;&lt;</span><span class="n">x</span><span class="p">]);</span> <span class="k">return</span> <span class="bp">self</span>
+    <span class="k">def</span> <span class="fm">__rshift__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">o</span><span class="p">):</span>    <span class="bp">self</span><span class="o">.</span><span class="n">_ab_steps</span><span class="o">.</span><span class="n">append</span><span class="p">([[</span><span class="s2">&quot;__rshift__&quot;</span><span class="p">,</span>    <span class="n">o</span><span class="p">],</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">&gt;&gt;</span><span class="n">o</span><span class="p">]);</span> <span class="k">return</span> <span class="bp">self</span>
+    <span class="k">def</span> <span class="fm">__rrshift__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">o</span><span class="p">):</span>   <span class="bp">self</span><span class="o">.</span><span class="n">_ab_steps</span><span class="o">.</span><span class="n">append</span><span class="p">([[</span><span class="s2">&quot;__rrshift__&quot;</span><span class="p">,</span>   <span class="n">o</span><span class="p">],</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">o</span><span class="o">&gt;&gt;</span><span class="n">x</span><span class="p">]);</span> <span class="k">return</span> <span class="bp">self</span>
+    <span class="k">def</span> <span class="fm">__and__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">o</span><span class="p">):</span>       <span class="bp">self</span><span class="o">.</span><span class="n">_ab_steps</span><span class="o">.</span><span class="n">append</span><span class="p">([[</span><span class="s2">&quot;__and__&quot;</span><span class="p">,</span>       <span class="n">o</span><span class="p">],</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">&amp;</span><span class="n">o</span> <span class="p">]);</span> <span class="k">return</span> <span class="bp">self</span>
+    <span class="k">def</span> <span class="fm">__rand__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">o</span><span class="p">):</span>      <span class="bp">self</span><span class="o">.</span><span class="n">_ab_steps</span><span class="o">.</span><span class="n">append</span><span class="p">([[</span><span class="s2">&quot;__rand__&quot;</span><span class="p">,</span>      <span class="n">o</span><span class="p">],</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">o</span><span class="o">&amp;</span><span class="n">x</span> <span class="p">]);</span> <span class="k">return</span> <span class="bp">self</span>
+    <span class="k">def</span> <span class="fm">__xor__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">o</span><span class="p">):</span>       <span class="bp">self</span><span class="o">.</span><span class="n">_ab_steps</span><span class="o">.</span><span class="n">append</span><span class="p">([[</span><span class="s2">&quot;__xor__&quot;</span><span class="p">,</span>       <span class="n">o</span><span class="p">],</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">^</span><span class="n">o</span> <span class="p">]);</span> <span class="k">return</span> <span class="bp">self</span>
+    <span class="k">def</span> <span class="fm">__rxor__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">o</span><span class="p">):</span>      <span class="bp">self</span><span class="o">.</span><span class="n">_ab_steps</span><span class="o">.</span><span class="n">append</span><span class="p">([[</span><span class="s2">&quot;__rxor__&quot;</span><span class="p">,</span>      <span class="n">o</span><span class="p">],</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">o</span><span class="o">^</span><span class="n">x</span> <span class="p">]);</span> <span class="k">return</span> <span class="bp">self</span>
+    <span class="k">def</span> <span class="fm">__or__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">o</span><span class="p">):</span>        <span class="bp">self</span><span class="o">.</span><span class="n">_ab_steps</span><span class="o">.</span><span class="n">append</span><span class="p">([[</span><span class="s2">&quot;__or__&quot;</span><span class="p">,</span>        <span class="n">o</span><span class="p">],</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">|</span><span class="n">o</span> <span class="p">]);</span> <span class="k">return</span> <span class="bp">self</span>
+<div class="viewcode-block" id="Absorber.__ror__"><a class="viewcode-back" href="../../base.html#k1lib.Absorber.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">o</span><span class="p">):</span>       <span class="bp">self</span><span class="o">.</span><span class="n">_ab_steps</span><span class="o">.</span><span class="n">append</span><span class="p">([[</span><span class="s2">&quot;__ror__&quot;</span><span class="p">,</span>       <span class="n">o</span><span class="p">],</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">o</span><span class="o">|</span><span class="n">x</span> <span class="p">]);</span> <span class="k">return</span> <span class="bp">self</span></div>
+    <span class="k">def</span> <span class="fm">__lt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">o</span><span class="p">):</span>        <span class="bp">self</span><span class="o">.</span><span class="n">_ab_steps</span><span class="o">.</span><span class="n">append</span><span class="p">([[</span><span class="s2">&quot;__lt__&quot;</span><span class="p">,</span>        <span class="n">o</span><span class="p">],</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">&lt;</span><span class="n">o</span> <span class="p">]);</span> <span class="k">return</span> <span class="bp">self</span>
+    <span class="k">def</span> <span class="fm">__le__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">o</span><span class="p">):</span>        <span class="bp">self</span><span class="o">.</span><span class="n">_ab_steps</span><span class="o">.</span><span class="n">append</span><span class="p">([[</span><span class="s2">&quot;__le__&quot;</span><span class="p">,</span>        <span class="n">o</span><span class="p">],</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">&lt;=</span><span class="n">o</span><span class="p">]);</span> <span class="k">return</span> <span class="bp">self</span>
+    <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">o</span><span class="p">):</span>        <span class="bp">self</span><span class="o">.</span><span class="n">_ab_steps</span><span class="o">.</span><span class="n">append</span><span class="p">([[</span><span class="s2">&quot;__eq__&quot;</span><span class="p">,</span>        <span class="n">o</span><span class="p">],</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">==</span><span class="n">o</span><span class="p">]);</span> <span class="k">return</span> <span class="bp">self</span>
+    <span class="k">def</span> <span class="fm">__ne__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">o</span><span class="p">):</span>        <span class="bp">self</span><span class="o">.</span><span class="n">_ab_steps</span><span class="o">.</span><span class="n">append</span><span class="p">([[</span><span class="s2">&quot;__ne__&quot;</span><span class="p">,</span>        <span class="n">o</span><span class="p">],</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">!=</span><span class="n">o</span><span class="p">]);</span> <span class="k">return</span> <span class="bp">self</span>
+    <span class="k">def</span> <span class="fm">__gt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">o</span><span class="p">):</span>        <span class="bp">self</span><span class="o">.</span><span class="n">_ab_steps</span><span class="o">.</span><span class="n">append</span><span class="p">([[</span><span class="s2">&quot;__gt__&quot;</span><span class="p">,</span>        <span class="n">o</span><span class="p">],</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">&gt;</span><span class="n">o</span> <span class="p">]);</span> <span class="k">return</span> <span class="bp">self</span>
+    <span class="k">def</span> <span class="fm">__ge__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">o</span><span class="p">):</span>        <span class="bp">self</span><span class="o">.</span><span class="n">_ab_steps</span><span class="o">.</span><span class="n">append</span><span class="p">([[</span><span class="s2">&quot;__ge__&quot;</span><span class="p">,</span>        <span class="n">o</span><span class="p">],</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">&gt;=</span><span class="n">o</span><span class="p">]);</span> <span class="k">return</span> <span class="bp">self</span>
+    <span class="k">def</span> <span class="fm">__neg__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>    <span class="bp">self</span><span class="o">.</span><span class="n">_ab_steps</span><span class="o">.</span><span class="n">append</span><span class="p">([[</span><span class="s2">&quot;__neg__&quot;</span><span class="p">],</span>    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="o">-</span><span class="n">x</span>      <span class="p">]);</span> <span class="k">return</span> <span class="bp">self</span>
+    <span class="k">def</span> <span class="fm">__pos__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>    <span class="bp">self</span><span class="o">.</span><span class="n">_ab_steps</span><span class="o">.</span><span class="n">append</span><span class="p">([[</span><span class="s2">&quot;__pos__&quot;</span><span class="p">],</span>    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="o">+</span><span class="n">x</span>      <span class="p">]);</span> <span class="k">return</span> <span class="bp">self</span>
+    <span class="k">def</span> <span class="fm">__abs__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>    <span class="bp">self</span><span class="o">.</span><span class="n">_ab_steps</span><span class="o">.</span><span class="n">append</span><span class="p">([[</span><span class="s2">&quot;__abs__&quot;</span><span class="p">],</span>    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">abs</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="p">]);</span> <span class="k">return</span> <span class="bp">self</span>
+<div class="viewcode-block" id="Absorber.__invert__"><a class="viewcode-back" href="../../base.html#k1lib.Absorber.__invert__">[docs]</a>    <span class="k">def</span> <span class="fm">__invert__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ab_steps</span><span class="o">.</span><span class="n">append</span><span class="p">([[</span><span class="s2">&quot;__invert__&quot;</span><span class="p">],</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="o">~</span><span class="n">x</span>      <span class="p">]);</span> <span class="k">return</span> <span class="bp">self</span></div>
+<div class="viewcode-block" id="Absorber.int"><a class="viewcode-back" href="../../base.html#k1lib.Absorber.int">[docs]</a>    <span class="k">def</span> <span class="nf">int</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Replacement for ``int(ab)``, as that requires returning an actual :class:`int`.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ab_steps</span><span class="o">.</span><span class="n">append</span><span class="p">([[</span><span class="s2">&quot;__int__&quot;</span><span class="p">],</span>    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="p">]);</span> <span class="k">return</span> <span class="bp">self</span></div>
+    <span class="k">def</span> <span class="fm">__int__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">int</span><span class="p">()</span>
+<div class="viewcode-block" id="Absorber.float"><a class="viewcode-back" href="../../base.html#k1lib.Absorber.float">[docs]</a>    <span class="k">def</span> <span class="nf">float</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Replacement for ``float(ab)``, as that requires returning an actual :class:`float`.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ab_steps</span><span class="o">.</span><span class="n">append</span><span class="p">([[</span><span class="s2">&quot;__float__&quot;</span><span class="p">],</span>  <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">)]);</span> <span class="k">return</span> <span class="bp">self</span></div>
+    <span class="k">def</span> <span class="fm">__float__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">float</span><span class="p">()</span>
+<div class="viewcode-block" id="Absorber.str"><a class="viewcode-back" href="../../base.html#k1lib.Absorber.str">[docs]</a>    <span class="k">def</span> <span class="nf">str</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Replacement for ``str(ab)``, as that requires returning an actual :class:`str`.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ab_steps</span><span class="o">.</span><span class="n">append</span><span class="p">([[</span><span class="s2">&quot;__str__&quot;</span><span class="p">],</span>    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="p">]);</span> <span class="k">return</span> <span class="bp">self</span></div>
+<div class="viewcode-block" id="Absorber.len"><a class="viewcode-back" href="../../base.html#k1lib.Absorber.len">[docs]</a>    <span class="k">def</span> <span class="nf">len</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Replacement for ``len(ab)``, as that requires returning an actual :class:`int`.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ab_steps</span><span class="o">.</span><span class="n">append</span><span class="p">([[</span><span class="s2">&quot;__len__&quot;</span><span class="p">],</span>    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="p">]);</span> <span class="k">return</span> <span class="bp">self</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Quang Ho.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

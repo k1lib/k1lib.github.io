@@ -1,0 +1,337 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>k1lib.fmt &mdash; k1lib  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> k1lib
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../base.html">Base module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../cli/index.html">k1lib.cli module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../callbacks/index.html">k1lib.callbacks module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../kdata.html">k1lib.kdata module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../eqn.html">k1lib.eqn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fmt.html">k1lib.fmt module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../graphEqn.html">k1lib.graphEqn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../imports.html">k1lib.imports module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mo.html">k1lib.mo module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../knn.html">k1lib.knn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../schedule.html">k1lib.schedule module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../selector.html">k1lib.selector module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../viz.html">k1lib.viz module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../monkey.html">Monkey patched classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../changelogs.html">Changelogs</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">k1lib</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>k1lib.fmt</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for k1lib.fmt</h1><div class="highlight"><pre>
+<span></span><span class="c1"># AUTOGENERATED FILE! PLEASE DON&#39;T EDIT</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">This module is for color formats, units and whatnot. This is exposed</span>
+<span class="sd">automatically with::</span>
+
+<span class="sd">   from k1lib.imports import *</span>
+<span class="sd">   fmt.txt # exposed</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">k1lib</span><span class="o">,</span> <span class="nn">math</span><span class="p">;</span> <span class="kn">from</span> <span class="nn">k1lib</span> <span class="kn">import</span> <span class="n">cli</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Iterator</span><span class="p">,</span> <span class="n">Tuple</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;size&quot;</span><span class="p">,</span> <span class="s2">&quot;sizeOf&quot;</span><span class="p">,</span> <span class="s2">&quot;comp&quot;</span><span class="p">,</span> <span class="s2">&quot;compRate&quot;</span><span class="p">,</span> <span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="s2">&quot;item&quot;</span><span class="p">,</span> <span class="s2">&quot;txt&quot;</span><span class="p">]</span>
+<span class="n">metricPrefixes</span> <span class="o">=</span> <span class="p">{</span><span class="o">-</span><span class="mi">8</span><span class="p">:</span><span class="s2">&quot;y&quot;</span><span class="p">,</span><span class="o">-</span><span class="mi">7</span><span class="p">:</span><span class="s2">&quot;z&quot;</span><span class="p">,</span><span class="o">-</span><span class="mi">6</span><span class="p">:</span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="o">-</span><span class="mi">5</span><span class="p">:</span><span class="s2">&quot;f&quot;</span><span class="p">,</span><span class="o">-</span><span class="mi">4</span><span class="p">:</span><span class="s2">&quot;p&quot;</span><span class="p">,</span><span class="o">-</span><span class="mi">3</span><span class="p">:</span><span class="s2">&quot;n&quot;</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">:</span><span class="s2">&quot;u&quot;</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span><span class="s2">&quot;m&quot;</span><span class="p">,</span><span class="mi">0</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="mi">1</span><span class="p">:</span><span class="s2">&quot;k&quot;</span><span class="p">,</span><span class="mi">2</span><span class="p">:</span><span class="s2">&quot;M&quot;</span><span class="p">,</span><span class="mi">3</span><span class="p">:</span><span class="s2">&quot;G&quot;</span><span class="p">,</span><span class="mi">4</span><span class="p">:</span><span class="s2">&quot;T&quot;</span><span class="p">,</span><span class="mi">5</span><span class="p">:</span><span class="s2">&quot;P&quot;</span><span class="p">,</span><span class="mi">6</span><span class="p">:</span><span class="s2">&quot;E&quot;</span><span class="p">,</span><span class="mi">7</span><span class="p">:</span><span class="s2">&quot;Z&quot;</span><span class="p">,</span><span class="mi">8</span><span class="p">:</span><span class="s2">&quot;Y&quot;</span><span class="p">}</span>
+<span class="c1">#metricPrefixes = [&quot;&quot;, &quot;k&quot;, &quot;M&quot;, &quot;G&quot;, &quot;T&quot;, &quot;P&quot;, &quot;E&quot;, &quot;Z&quot;, &quot;Y&quot;]</span>
+<span class="k">def</span> <span class="nf">_formatScale</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">units</span><span class="p">:</span><span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">]):</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">unit</span> <span class="ow">in</span> <span class="n">units</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">upperBound</span> <span class="o">=</span> <span class="mi">1000</span> <span class="o">*</span> <span class="mi">1000</span><span class="o">**</span><span class="n">i</span>
+        <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">upperBound</span><span class="p">:</span>
+            <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="mf">1e3</span><span class="o">*</span><span class="n">x</span><span class="o">/</span><span class="n">upperBound</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">unit</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="k">return</span> <span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="mf">1e3</span><span class="o">*</span><span class="n">x</span><span class="o">/</span><span class="n">upperBound</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">unit</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+<span class="n">sizes</span> <span class="o">=</span> <span class="p">{</span><span class="n">i</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s2">B&quot;</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">metricPrefixes</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">};</span> <span class="n">sizes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;bytes&quot;</span>
+<div class="viewcode-block" id="size"><a class="viewcode-back" href="../../fmt.html#k1lib.fmt.size">[docs]</a><span class="k">def</span> <span class="nf">size</span><span class="p">(</span><span class="n">_bytes</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Formats disk size.</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    # returns &quot;50.0 bytes&quot;</span>
+<span class="sd">    fmt.size(50)</span>
+<span class="sd">    # returns &quot;12.0 MB&quot;</span>
+<span class="sd">    fmt.size(1.2e7)</span>
+<span class="sd">&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">_formatScale</span><span class="p">(</span><span class="n">_bytes</span><span class="p">,</span> <span class="n">sizes</span><span class="p">)</span></div>
+<div class="viewcode-block" id="sizeOf"><a class="viewcode-back" href="../../fmt.html#k1lib.fmt.sizeOf">[docs]</a><span class="k">def</span> <span class="nf">sizeOf</span><span class="p">(</span><span class="n">l</span><span class="p">:</span><span class="n">Iterator</span><span class="p">[</span><span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Iterator</span><span class="p">[</span><span class="nb">float</span><span class="p">]]:</span>
+    <span class="sd">&quot;&quot;&quot;Figures out appropriate scale, scales back the Iterator, and return both.</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    x = torch.abs(torch.randn(2)) * 1e4 + 1e5</span>
+<span class="sd">    label, t = fmt.sizeOf(x) # label is &quot;kB&quot;</span>
+<span class="sd">    (t | toTensor()).min() # min value should be close to 100</span>
+<span class="sd">&quot;&quot;&quot;</span>
+    <span class="n">l</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+    <span class="n">idx</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">l</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">toMax</span><span class="p">())</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">coef</span> <span class="o">=</span> <span class="mf">1.0</span><span class="o">/</span><span class="mi">1000</span><span class="o">**</span><span class="n">idx</span>
+    <span class="k">return</span> <span class="n">sizes</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">l</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">*</span> <span class="n">coef</span><span class="p">)</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">deref</span><span class="p">()</span></div>
+<span class="n">computations</span> <span class="o">=</span> <span class="p">{</span><span class="n">i</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s2">FLOPs&quot;</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">metricPrefixes</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">}</span>
+<div class="viewcode-block" id="comp"><a class="viewcode-back" href="../../fmt.html#k1lib.fmt.comp">[docs]</a><span class="k">def</span> <span class="nf">comp</span><span class="p">(</span><span class="n">flop</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Formats computation amount.</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    # returns &quot;50.0 FLOPs&quot;</span>
+<span class="sd">    fmt.computation(50)</span>
+<span class="sd">    # returns &quot;50.0 MFLOPs&quot;</span>
+<span class="sd">    fmt.computation(5e7)</span>
+<span class="sd">&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">_formatScale</span><span class="p">(</span><span class="n">flop</span><span class="p">,</span> <span class="n">computations</span><span class="p">)</span></div>
+<span class="n">computationRates</span> <span class="o">=</span> <span class="p">{</span><span class="n">i</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s2">FLOPS&quot;</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">metricPrefixes</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">}</span>
+<div class="viewcode-block" id="compRate"><a class="viewcode-back" href="../../fmt.html#k1lib.fmt.compRate">[docs]</a><span class="k">def</span> <span class="nf">compRate</span><span class="p">(</span><span class="n">flops</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Formats computation rate.</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    # returns &quot;50.0 FLOPS&quot;</span>
+<span class="sd">    fmt.computationRate(50)</span>
+<span class="sd">    # returns &quot;50.0 MFLOPS&quot;</span>
+<span class="sd">    fmt.computationRate(5e7)</span>
+<span class="sd">&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">_formatScale</span><span class="p">(</span><span class="n">flops</span><span class="p">,</span> <span class="n">computationRates</span><span class="p">)</span></div>
+<span class="n">times</span> <span class="o">=</span> <span class="p">{</span><span class="n">i</span><span class="p">:</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s2">s&quot;</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">metricPrefixes</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">}</span>
+<div class="viewcode-block" id="time"><a class="viewcode-back" href="../../fmt.html#k1lib.fmt.time">[docs]</a><span class="k">def</span> <span class="nf">time</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Formats small times.</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    fmt.time(50) # returns &quot;50.0 s&quot;</span>
+<span class="sd">    fmt.time(4000) # returns &quot;4000.0 s&quot;</span>
+<span class="sd">    fmt.time(0.02) # returns &quot;20.0 ms&quot;</span>
+<span class="sd">    fmt.time(1e-5) # returns &quot;10.0 us&quot;</span>
+<span class="sd">&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">_formatScale</span><span class="p">(</span><span class="n">seconds</span><span class="p">,</span> <span class="n">times</span><span class="p">)</span></div>
+<span class="n">items</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s2">&quot;M&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span> <span class="s2">&quot;T&quot;</span><span class="p">}</span>
+<div class="viewcode-block" id="item"><a class="viewcode-back" href="../../fmt.html#k1lib.fmt.item">[docs]</a><span class="k">def</span> <span class="nf">item</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Formats generic item.</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    # returns &quot;50.0&quot;</span>
+<span class="sd">    fmt.item(50)</span>
+<span class="sd">    # returns &quot;500.0 k&quot;</span>
+<span class="sd">    fmt.item(5e5)</span>
+<span class="sd">&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">_formatScale</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">items</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span></div>
+<span class="n">_esc</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\033</span><span class="s1">[&#39;</span>
+<span class="n">_end</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">_esc</span><span class="si">}</span><span class="s1">0m&#39;</span>
+<div class="viewcode-block" id="txt"><a class="viewcode-back" href="../../fmt.html#k1lib.fmt.txt">[docs]</a><span class="k">class</span> <span class="nc">txt</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Text formatting.</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    # will print out red text</span>
+<span class="sd">    print(fmt.txt.red(&quot;some text&quot;))&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="txt.darkcyan"><a class="viewcode-back" href="../../fmt.html#k1lib.fmt.txt.darkcyan">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">darkcyan</span><span class="p">(</span><span class="n">s</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>  <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">_esc</span><span class="si">}</span><span class="s2">36m</span><span class="si">{</span><span class="n">s</span><span class="si">}{</span><span class="n">_end</span><span class="si">}</span><span class="s2">&quot;</span></div>
+<div class="viewcode-block" id="txt.red"><a class="viewcode-back" href="../../fmt.html#k1lib.fmt.txt.red">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">red</span><span class="p">(</span><span class="n">s</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>       <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">_esc</span><span class="si">}</span><span class="s2">91m</span><span class="si">{</span><span class="n">s</span><span class="si">}{</span><span class="n">_end</span><span class="si">}</span><span class="s2">&quot;</span></div>
+<div class="viewcode-block" id="txt.green"><a class="viewcode-back" href="../../fmt.html#k1lib.fmt.txt.green">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">green</span><span class="p">(</span><span class="n">s</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>     <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">_esc</span><span class="si">}</span><span class="s2">92m</span><span class="si">{</span><span class="n">s</span><span class="si">}{</span><span class="n">_end</span><span class="si">}</span><span class="s2">&quot;</span></div>
+<div class="viewcode-block" id="txt.yellow"><a class="viewcode-back" href="../../fmt.html#k1lib.fmt.txt.yellow">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">yellow</span><span class="p">(</span><span class="n">s</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">_esc</span><span class="si">}</span><span class="s2">93m</span><span class="si">{</span><span class="n">s</span><span class="si">}{</span><span class="n">_end</span><span class="si">}</span><span class="s2">&quot;</span></div>
+<div class="viewcode-block" id="txt.blue"><a class="viewcode-back" href="../../fmt.html#k1lib.fmt.txt.blue">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">blue</span><span class="p">(</span><span class="n">s</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>      <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">_esc</span><span class="si">}</span><span class="s2">94m</span><span class="si">{</span><span class="n">s</span><span class="si">}{</span><span class="n">_end</span><span class="si">}</span><span class="s2">&quot;</span></div>
+<div class="viewcode-block" id="txt.purple"><a class="viewcode-back" href="../../fmt.html#k1lib.fmt.txt.purple">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">purple</span><span class="p">(</span><span class="n">s</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">_esc</span><span class="si">}</span><span class="s2">95m</span><span class="si">{</span><span class="n">s</span><span class="si">}{</span><span class="n">_end</span><span class="si">}</span><span class="s2">&quot;</span></div>
+<div class="viewcode-block" id="txt.cyan"><a class="viewcode-back" href="../../fmt.html#k1lib.fmt.txt.cyan">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">cyan</span><span class="p">(</span><span class="n">s</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>      <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">_esc</span><span class="si">}</span><span class="s2">96m</span><span class="si">{</span><span class="n">s</span><span class="si">}{</span><span class="n">_end</span><span class="si">}</span><span class="s2">&quot;</span></div>
+<div class="viewcode-block" id="txt.bold"><a class="viewcode-back" href="../../fmt.html#k1lib.fmt.txt.bold">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">bold</span><span class="p">(</span><span class="n">s</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>      <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">_esc</span><span class="si">}</span><span class="s2">1m</span><span class="si">{</span><span class="n">s</span><span class="si">}{</span><span class="n">_end</span><span class="si">}</span><span class="s2">&quot;</span></div>
+<div class="viewcode-block" id="txt.grey"><a class="viewcode-back" href="../../fmt.html#k1lib.fmt.txt.grey">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">grey</span><span class="p">(</span><span class="n">s</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>      <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">_esc</span><span class="si">}</span><span class="s2">38;2;150;150;150m</span><span class="si">{</span><span class="n">s</span><span class="si">}{</span><span class="n">_end</span><span class="si">}</span><span class="s2">&quot;</span></div>
+<div class="viewcode-block" id="txt.darkgrey"><a class="viewcode-back" href="../../fmt.html#k1lib.fmt.txt.darkgrey">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">darkgrey</span><span class="p">(</span><span class="n">s</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>  <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">_esc</span><span class="si">}</span><span class="s2">38;2;100;100;100m</span><span class="si">{</span><span class="n">s</span><span class="si">}{</span><span class="n">_end</span><span class="si">}</span><span class="s2">&quot;</span></div>
+<div class="viewcode-block" id="txt.underline"><a class="viewcode-back" href="../../fmt.html#k1lib.fmt.txt.underline">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">underline</span><span class="p">(</span><span class="n">s</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span> <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">_esc</span><span class="si">}</span><span class="s2">4m</span><span class="si">{</span><span class="n">s</span><span class="si">}{</span><span class="n">_end</span><span class="si">}</span><span class="s2">&quot;</span></div>
+<div class="viewcode-block" id="txt.identity"><a class="viewcode-back" href="../../fmt.html#k1lib.fmt.txt.identity">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">identity</span><span class="p">(</span><span class="n">s</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>  <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">s</span><span class="si">}</span><span class="s2">&quot;</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Quang Ho.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
