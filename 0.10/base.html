@@ -979,6 +979,14 @@ None. The correct time will be deposited into it after the code block ends.</p>
 </div>
 <div class="section" id="exceptions">
 <h2>Exceptions<a class="headerlink" href="#exceptions" title="Permalink to this headline">¶</a></h2>
+<p>These exceptions are used within <a class="reference internal" href="#k1lib.Learner" title="k1lib.Learner"><code class="xref py py-class docutils literal notranslate"><span class="pre">Learner</span></code></a> to cancel things early on.
+If you raise <a class="reference internal" href="#k1lib.CancelBatchException" title="k1lib.CancelBatchException"><code class="xref py py-class docutils literal notranslate"><span class="pre">CancelBatchException</span></code></a> while passing through the model,
+the <a class="reference internal" href="#k1lib.Learner" title="k1lib.Learner"><code class="xref py py-class docutils literal notranslate"><span class="pre">Learner</span></code></a> will catch it, run cleanup code (including checkpoint
+<code class="docutils literal notranslate"><span class="pre">endBatch</span></code> ), then proceeds as usual.</p>
+<p>If you raise something more major, like <a class="reference internal" href="#k1lib.CancelRunException" title="k1lib.CancelRunException"><code class="xref py py-class docutils literal notranslate"><span class="pre">k1lib.CancelRunException</span></code></a>,
+<a class="reference internal" href="#k1lib.Learner" title="k1lib.Learner"><code class="xref py py-class docutils literal notranslate"><span class="pre">Learner</span></code></a> will first catch it at batch level, run clean up code, then
+rethrow it. <a class="reference internal" href="#k1lib.Learner" title="k1lib.Learner"><code class="xref py py-class docutils literal notranslate"><span class="pre">Learner</span></code></a> will then recatch it at the epoch level, run
+clean up code, then rethrow again. Same deal at the run level.</p>
 <dl class="py exception">
 <dt id="k1lib.CancelRunException">
 <em class="property"><span class="pre">exception</span> </em><code class="sig-prename descclassname"><span class="pre">k1lib.</span></code><code class="sig-name descname"><span class="pre">CancelRunException</span></code><a class="reference internal" href="_modules/k1lib/_learner.html#CancelRunException"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.CancelRunException" title="Permalink to this definition">¶</a></dt>

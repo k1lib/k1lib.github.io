@@ -36,12 +36,12 @@ Module :mod:`torch`
 
 .. automethod:: torch.loglinspace
 
-Class :class:`graphviz.dot.Digraph`
+Class :class:`graphviz.Digraph`
 -------------------------------------
 
 .. automethod:: graphviz.dot.Digraph.__call__
 
-Class :class:`graphviz.dot.Graph`
+Class :class:`graphviz.Graph`
 -------------------------------------
 
 .. automethod:: graphviz.dot.Graph.__call__
