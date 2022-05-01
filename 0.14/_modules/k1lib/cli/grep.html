@@ -1,0 +1,316 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>k1lib.cli.grep &mdash; k1lib  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> k1lib
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../base.html">Base module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../cli/index.html">k1lib.cli module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../callbacks/index.html">k1lib.callbacks module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../kdata.html">k1lib.kdata module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eqn.html">k1lib.eqn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fmt.html">k1lib.fmt module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../graphEqn.html">k1lib.graphEqn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../imports.html">k1lib.imports module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mo.html">k1lib.mo module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../knn.html">k1lib.knn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../schedule.html">k1lib.schedule module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../selector.html">k1lib.selector module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../viz.html">k1lib.viz module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../monkey.html">Monkey patched classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelogs.html">Changelogs</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">k1lib</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>k1lib.cli.grep</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for k1lib.cli.grep</h1><div class="highlight"><pre>
+<span></span><span class="c1"># AUTOGENERATED FILE! PLEASE DON&#39;T EDIT</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;grep&quot;</span><span class="p">,</span> <span class="s2">&quot;grepTemplate&quot;</span><span class="p">]</span>
+<span class="kn">import</span> <span class="nn">re</span><span class="o">,</span> <span class="nn">k1lib</span>
+<span class="kn">from</span> <span class="nn">k1lib.cli.init</span> <span class="kn">import</span> <span class="n">BaseCli</span><span class="p">,</span> <span class="n">Table</span><span class="p">,</span> <span class="n">Row</span><span class="p">;</span> <span class="kn">import</span> <span class="nn">k1lib.cli</span> <span class="k">as</span> <span class="nn">cli</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">deque</span><span class="p">;</span> <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Iterator</span>
+<span class="n">inf</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s2">&quot;inf&quot;</span><span class="p">)</span>
+<div class="viewcode-block" id="grep"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.grep.grep">[docs]</a><span class="k">class</span> <span class="nc">grep</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
+<div class="viewcode-block" id="grep.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.grep.grep.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pattern</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">before</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">after</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">N</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="s2">&quot;inf&quot;</span><span class="p">),</span> <span class="n">sep</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Find lines that has the specified pattern.</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    # returns [&#39;d&#39;, &#39;d&#39;]</span>
+<span class="sd">    &quot;abcde12d34&quot; | grep(&quot;d&quot;) | deref()</span>
+<span class="sd">    # returns [&#39;c&#39;, &#39;d&#39;, &#39;2&#39;, &#39;d&#39;], 2 sections of [&#39;c&#39;, &#39;d&#39;] and [&#39;2&#39;, &#39;d&#39;]</span>
+<span class="sd">    &quot;abcde12d34&quot; | grep(&quot;d&quot;, 1) | deref()</span>
+<span class="sd">    # returns [&#39;c&#39;, &#39;d&#39;]</span>
+<span class="sd">    &quot;abcde12d34&quot; | grep(&quot;d&quot;, 1, N=1) | deref()</span>
+<span class="sd">    # returns [&#39;d&#39;, &#39;e&#39;, &#39;d&#39;, &#39;3&#39;, &#39;4&#39;], 2 sections of [&#39;d&#39;, &#39;e&#39;] and [&#39;d&#39;, &#39;3&#39;, &#39;4&#39;]</span>
+<span class="sd">    &quot;abcde12d34&quot; | grep(&quot;d&quot;, 0, 3).till(&quot;e&quot;) | deref()</span>
+<span class="sd">    # returns [[&#39;0&#39;, &#39;1&#39;, &#39;2&#39;], [&#39;3&#39;, &#39;1&#39;, &#39;4&#39;]]</span>
+<span class="sd">    &quot;0123145&quot; | grep(&quot;1&quot;, 2, 1, sep=True) | deref()</span>
+
+<span class="sd">You can also separate out the sections::</span>
+
+<span class="sd">    # returns [[&#39;c&#39;, &#39;d&#39;], [&#39;2&#39;, &#39;d&#39;]]</span>
+<span class="sd">    &quot;abcde12d34&quot; | grep(&quot;d&quot;, 1, sep=True) | deref()</span>
+<span class="sd">    # returns [[&#39;c&#39;, &#39;d&#39;]]</span>
+<span class="sd">    &quot;abcde12d34&quot; | grep(&quot;d&quot;, 1, N=1, sep=True) | deref()</span>
+<span class="sd">    # returns [[&#39;1&#39;, &#39;2&#39;, &#39;3&#39;], [&#39;1&#39;, &#39;4&#39;, &#39;5&#39;]]</span>
+<span class="sd">    &quot;0123145&quot; | grep(&quot;1&quot;, sep=True).till() | deref()</span>
+
+<span class="sd">:param pattern: regex pattern to search for in a line</span>
+<span class="sd">:param before: lines before the hit. Outputs independent lines</span>
+<span class="sd">:param after: lines after the hit. Outputs independent lines</span>
+<span class="sd">:param N: max sections to output</span>
+<span class="sd">:param sep: whether to separate out the sections as lists&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">pattern</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">before</span> <span class="o">=</span> <span class="n">before</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">after</span> <span class="o">=</span> <span class="n">after</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">N</span> <span class="o">=</span> <span class="n">N</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">sep</span> <span class="o">=</span> <span class="n">sep</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">tillPattern</span> <span class="o">=</span> <span class="kc">None</span></div>
+<div class="viewcode-block" id="grep.till"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.grep.grep.till">[docs]</a>    <span class="k">def</span> <span class="nf">till</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pattern</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Greps until some other pattern appear. Inclusive, so you might want to</span>
+<span class="sd">trim the last line. Example::</span>
+
+<span class="sd">    # returns [&#39;5&#39;, &#39;6&#39;, &#39;7&#39;, &#39;8&#39;], includes last item</span>
+<span class="sd">    range(10) | join(&quot;&quot;) | grep(&quot;5&quot;).till(&quot;8&quot;) | deref()</span>
+<span class="sd">    # returns [&#39;d&#39;, &#39;e&#39;, &#39;d&#39;, &#39;3&#39;, &#39;4&#39;]</span>
+<span class="sd">    &quot;abcde12d34&quot; | grep(&quot;d&quot;).till(&quot;e&quot;) | deref()</span>
+<span class="sd">    # returns [&#39;d&#39;, &#39;e&#39;]</span>
+<span class="sd">    &quot;abcde12d34&quot; | grep(&quot;d&quot;, N=1).till(&quot;e&quot;) | deref()</span>
+
+<span class="sd">If initial pattern and till pattern are the same, then you don&#39;t have use this method at</span>
+<span class="sd">all. Instead, do something like this::</span>
+
+<span class="sd">    # returns [&#39;1&#39;, &#39;2&#39;, &#39;3&#39;]</span>
+<span class="sd">    &quot;0123145&quot; | grep(&quot;1&quot;, after=1e9, N=1) | deref()&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">pattern</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">pattern</span><span class="o">.</span><span class="n">pattern</span><span class="p">:</span> <span class="n">pattern</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1"># &quot;\ue000&quot; is in unicode&#39;s private use area, so extremely unlikely that we</span>
+        <span class="c1"># will actually run into it in normal text processing, because it&#39;s not text</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tillPattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">pattern</span> <span class="ow">or</span> <span class="s2">&quot;</span><span class="se">\ue000</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tillAfter</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">after</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">after</span> <span class="o">=</span> <span class="n">inf</span><span class="p">;</span> <span class="k">return</span> <span class="bp">self</span></div>
+<div class="viewcode-block" id="grep.__ror__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.grep.grep.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">:</span><span class="n">Iterator</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sectionIdx</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">tillPattern</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tillPattern</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">sep</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sep</span> <span class="o">=</span> <span class="kc">False</span><span class="p">;</span> <span class="n">elems</span> <span class="o">=</span> <span class="p">[];</span> <span class="n">idx</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="p">(</span><span class="n">it</span> <span class="o">|</span> <span class="bp">self</span><span class="p">):</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">sectionIdx</span> <span class="o">&gt;</span> <span class="n">idx</span><span class="p">:</span> <span class="c1"># outputs whatever remaining</span>
+                    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">elems</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span> <span class="k">yield</span> <span class="nb">list</span><span class="p">(</span><span class="n">elems</span><span class="p">)</span>
+                    <span class="n">idx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sectionIdx</span><span class="p">;</span> <span class="n">elems</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="n">elems</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+            <span class="k">yield</span> <span class="nb">list</span><span class="p">(</span><span class="n">elems</span><span class="p">);</span> <span class="k">return</span>
+        <span class="n">queue</span> <span class="o">=</span> <span class="n">deque</span><span class="p">([],</span> <span class="bp">self</span><span class="o">.</span><span class="n">before</span><span class="p">);</span> <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># remaining lines after to display</span>
+        <span class="n">cRO</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">RunOnce</span><span class="p">();</span> <span class="n">cRO</span><span class="o">.</span><span class="n">done</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">it</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">pattern</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">line</span><span class="p">):</span> <span class="c1"># new section</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">sectionIdx</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">counter</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">after</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span> <span class="n">cRO</span><span class="o">.</span><span class="n">revert</span><span class="p">()</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">sectionIdx</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">N</span><span class="p">:</span> <span class="k">return</span>
+                <span class="k">yield from</span> <span class="n">queue</span><span class="p">;</span> <span class="n">queue</span><span class="o">.</span><span class="n">clear</span><span class="p">();</span> <span class="k">yield</span> <span class="n">line</span>
+            <span class="k">elif</span> <span class="n">tillPattern</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">tillPattern</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="ow">and</span> <span class="n">counter</span> <span class="o">==</span> <span class="n">inf</span><span class="p">:</span> <span class="c1"># closing section</span>
+                <span class="n">counter</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tillAfter</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> <span class="n">cRO</span><span class="o">.</span><span class="n">revert</span><span class="p">();</span> <span class="k">yield</span> <span class="n">line</span>
+            <span class="k">if</span> <span class="n">counter</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">queue</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="c1"># saves recent past lines</span>
+            <span class="k">elif</span> <span class="n">counter</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span> <span class="c1"># yielding &quot;after&quot; section</span>
+                <span class="k">if</span> <span class="n">cRO</span><span class="o">.</span><span class="n">done</span><span class="p">():</span> <span class="k">yield</span> <span class="n">line</span>
+                <span class="n">counter</span> <span class="o">-=</span> <span class="mi">1</span></div></div>
+<div class="viewcode-block" id="grepTemplate"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.grep.grepTemplate">[docs]</a><span class="k">class</span> <span class="nc">grepTemplate</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
+<div class="viewcode-block" id="grepTemplate.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.grep.grepTemplate.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pattern</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">template</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Searches over all lines, pick out the match, and expands</span>
+<span class="sd">it to the templateand yields&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">pattern</span><span class="p">);</span> <span class="bp">self</span><span class="o">.</span><span class="n">template</span> <span class="o">=</span> <span class="n">template</span></div>
+<div class="viewcode-block" id="grepTemplate.__ror__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.grep.grepTemplate.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">:</span><span class="n">Iterator</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__ror__</span><span class="p">(</span><span class="n">it</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">it</span><span class="p">:</span>
+            <span class="n">matchObj</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pattern</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">matchObj</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="k">continue</span>
+            <span class="k">yield</span> <span class="n">matchObj</span><span class="o">.</span><span class="n">expand</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">template</span><span class="p">)</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Quang Ho.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
