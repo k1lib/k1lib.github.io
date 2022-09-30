@@ -82,7 +82,11 @@ cli tools more pleasant to use. However, if you're those diehard programmers
 who sworn to never import all, then you can just do `import k1lib` instead.
 Still, look over the `k1lib.imports` module to know what you should import.
 
-This library has very few dependencies, and all of them are very commonly used
+This library has very few dependencies, and all of them are very commonly used.
+The library has a soft dependency on PyTorch. It will run fine without PyTorch, but
+a lot of functionalities related to deep learning will not work. While tests are
+rigorously run in an environment where PyTorch is installed, they're not run for
+environments that don't, so strange bugs may appear.
 
 Repo is at https://github.com/157239n/k1lib/ btw. Also, the search bar is your
 friend, as there're lots of stuff here.

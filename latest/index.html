@@ -250,7 +250,11 @@ optional extra dependencies for some reason then do this:</p>
 cli tools more pleasant to use. However, if you’re those diehard programmers
 who sworn to never import all, then you can just do <cite>import k1lib</cite> instead.
 Still, look over the <cite>k1lib.imports</cite> module to know what you should import.</p>
-<p>This library has very few dependencies, and all of them are very commonly used</p>
+<p>This library has very few dependencies, and all of them are very commonly used.
+The library has a soft dependency on PyTorch. It will run fine without PyTorch, but
+a lot of functionalities related to deep learning will not work. While tests are
+rigorously run in an environment where PyTorch is installed, they’re not run for
+environments that don’t, so strange bugs may appear.</p>
 <p>Repo is at <a class="reference external" href="https://github.com/157239n/k1lib/">https://github.com/157239n/k1lib/</a> btw. Also, the search bar is your
 friend, as there’re lots of stuff here.</p>
 <div class="toctree-wrapper compound">
