@@ -1,0 +1,320 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>k1lib.callbacks.shorts &mdash; k1lib  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> k1lib
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../base.html">Base module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../cli/index.html">k1lib.cli module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../callbacks/index.html">k1lib.callbacks module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../k1a.html">k1lib._k1a module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../k1ui.html">k1lib.k1ui module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eqn.html">k1lib.eqn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fmt.html">k1lib.fmt module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../graphEqn.html">k1lib.graphEqn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../imports.html">k1lib.imports module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mo.html">k1lib.mo module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../knn.html">k1lib.knn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../schedule.html">k1lib.schedule module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../selector.html">k1lib.selector module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../serve.html">k1lib.serve module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../viz.html">k1lib.viz module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../monkey.html">Monkey patched classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelogs.html">Changelogs</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">k1lib</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>k1lib.callbacks.shorts</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for k1lib.callbacks.shorts</h1><div class="highlight"><pre>
+<span></span><span class="c1"># AUTOGENERATED FILE! PLEASE DON&#39;T EDIT</span>
+<span class="kn">from</span> <span class="nn">.callbacks</span> <span class="kn">import</span> <span class="n">Callback</span><span class="p">,</span> <span class="n">Callbacks</span><span class="p">,</span> <span class="n">Cbs</span>
+<span class="kn">import</span> <span class="nn">k1lib</span><span class="o">,</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">warnings</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Callable</span>
+<span class="k">try</span><span class="p">:</span> <span class="kn">import</span> <span class="nn">torch</span><span class="p">;</span> <span class="n">hasTorch</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="k">except</span><span class="p">:</span> <span class="n">hasTorch</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Autosave&quot;</span><span class="p">,</span> <span class="s2">&quot;DontTrainValid&quot;</span><span class="p">,</span> <span class="s2">&quot;InspectLoss&quot;</span><span class="p">,</span> <span class="s2">&quot;ModifyLoss&quot;</span><span class="p">,</span> <span class="s2">&quot;Cpu&quot;</span><span class="p">,</span> <span class="s2">&quot;Cuda&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;DType&quot;</span><span class="p">,</span> <span class="s2">&quot;InspectBatch&quot;</span><span class="p">,</span> <span class="s2">&quot;ModifyBatch&quot;</span><span class="p">,</span> <span class="s2">&quot;InspectOutput&quot;</span><span class="p">,</span> <span class="s2">&quot;ModifyOutput&quot;</span><span class="p">,</span> 
+           <span class="s2">&quot;Beep&quot;</span><span class="p">,</span> <span class="s2">&quot;OnProgress&quot;</span><span class="p">]</span>
+<div class="viewcode-block" id="Autosave"><a class="viewcode-back" href="../../../callbacks/index.html#k1lib.callbacks.shorts.Autosave">[docs]</a><span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">Cbs</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">Autosave</span><span class="p">(</span><span class="n">Callback</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Autosaves 3 versions of the network to disk&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">();</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span> <span class="o">=</span> <span class="mi">23</span>
+    <span class="k">def</span> <span class="nf">endRun</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;mv autosave-1.pth autosave-0.pth&quot;</span><span class="p">)</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;mv autosave-2.pth autosave-1.pth&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;autosave-2.pth&quot;</span><span class="p">)</span></div>
+<div class="viewcode-block" id="DontTrainValid"><a class="viewcode-back" href="../../../callbacks/index.html#k1lib.callbacks.shorts.DontTrainValid">[docs]</a><span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">Cbs</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">DontTrainValid</span><span class="p">(</span><span class="n">Callback</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;If is not training, then don&#39;t run m.backward() and opt.step().</span>
+<span class="sd">The core training loop in k1lib.Learner don&#39;t specifically do this,</span>
+<span class="sd">cause there may be some weird cases where you want to also train valid.&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">_common</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">training</span><span class="p">:</span> <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">def</span> <span class="nf">startBackward</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_common</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">startStep</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_common</span><span class="p">()</span></div>
+<div class="viewcode-block" id="InspectLoss"><a class="viewcode-back" href="../../../callbacks/index.html#k1lib.callbacks.shorts.InspectLoss">[docs]</a><span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">Cbs</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">InspectLoss</span><span class="p">(</span><span class="n">Callback</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Expected `f` to take in 1 float.&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">();</span> <span class="bp">self</span><span class="o">.</span><span class="n">f</span> <span class="o">=</span> <span class="n">f</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span> <span class="o">=</span> <span class="mi">15</span>
+    <span class="k">def</span> <span class="nf">endLoss</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">loss</span><span class="o">.</span><span class="n">detach</span><span class="p">())</span></div>
+<div class="viewcode-block" id="ModifyLoss"><a class="viewcode-back" href="../../../callbacks/index.html#k1lib.callbacks.shorts.ModifyLoss">[docs]</a><span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">Cbs</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">ModifyLoss</span><span class="p">(</span><span class="n">Callback</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Expected `f` to take in 1 float and return 1 float.&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">();</span> <span class="bp">self</span><span class="o">.</span><span class="n">f</span> <span class="o">=</span> <span class="n">f</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span> <span class="o">=</span> <span class="mi">13</span>
+    <span class="k">def</span> <span class="nf">endLoss</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="o">.</span><span class="n">loss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">loss</span><span class="p">)</span></div>
+<div class="viewcode-block" id="Cuda"><a class="viewcode-back" href="../../../callbacks/index.html#k1lib.callbacks.shorts.Cuda">[docs]</a><span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">Cbs</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">Cuda</span><span class="p">(</span><span class="n">Callback</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Moves batch and model to the default GPU&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">startRun</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">startBatch</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="o">.</span><span class="n">xb</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="o">.</span><span class="n">xb</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span> <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;xb can&#39;t be moved to the GPU: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="o">.</span><span class="n">yb</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="o">.</span><span class="n">yb</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span> <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;yb can&#39;t be moved to the GPU: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+<div class="viewcode-block" id="Cpu"><a class="viewcode-back" href="../../../callbacks/index.html#k1lib.callbacks.shorts.Cpu">[docs]</a><span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">Cbs</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">Cpu</span><span class="p">(</span><span class="n">Callback</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Moves batch and model to CPU&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">startRun</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">startBatch</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="o">.</span><span class="n">xb</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="o">.</span><span class="n">xb</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="o">.</span><span class="n">yb</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="o">.</span><span class="n">yb</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span></div>
+<div class="viewcode-block" id="DType"><a class="viewcode-back" href="../../../callbacks/index.html#k1lib.callbacks.shorts.DType">[docs]</a><span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">Cbs</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">DType</span><span class="p">(</span><span class="n">Callback</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Moves batch and model to a specified data type&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dtype</span><span class="p">):</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">();</span> <span class="bp">self</span><span class="o">.</span><span class="n">dtype</span> <span class="o">=</span> <span class="n">dtype</span>
+    <span class="k">def</span> <span class="nf">startRun</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">startBatch</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="o">.</span><span class="n">xb</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="o">.</span><span class="n">xb</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="o">.</span><span class="n">yb</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="o">.</span><span class="n">yb</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span></div>
+<div class="viewcode-block" id="InspectBatch"><a class="viewcode-back" href="../../../callbacks/index.html#k1lib.callbacks.shorts.InspectBatch">[docs]</a><span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">Cbs</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">InspectBatch</span><span class="p">(</span><span class="n">Callback</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Expected `f` to take in 2 tensors.&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">:</span><span class="n">callable</span><span class="p">):</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">();</span> <span class="bp">self</span><span class="o">.</span><span class="n">f</span> <span class="o">=</span> <span class="n">f</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span> <span class="o">=</span> <span class="mi">15</span>
+    <span class="k">def</span> <span class="nf">startBatch</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="o">.</span><span class="n">xb</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="o">.</span><span class="n">yb</span><span class="p">)</span></div>
+<div class="viewcode-block" id="ModifyBatch"><a class="viewcode-back" href="../../../callbacks/index.html#k1lib.callbacks.shorts.ModifyBatch">[docs]</a><span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">Cbs</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">ModifyBatch</span><span class="p">(</span><span class="n">Callback</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Modifies xb and yb on the fly. Expected `f`</span>
+<span class="sd">    to take in 2 tensors and return 2 tensors.&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">();</span> <span class="bp">self</span><span class="o">.</span><span class="n">f</span> <span class="o">=</span> <span class="n">f</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span> <span class="o">=</span> <span class="mi">13</span>
+    <span class="k">def</span> <span class="nf">startBatch</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="o">.</span><span class="n">xb</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="o">.</span><span class="n">yb</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="o">.</span><span class="n">xb</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="o">.</span><span class="n">yb</span><span class="p">)</span></div>
+<div class="viewcode-block" id="InspectOutput"><a class="viewcode-back" href="../../../callbacks/index.html#k1lib.callbacks.shorts.InspectOutput">[docs]</a><span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">Cbs</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">InspectOutput</span><span class="p">(</span><span class="n">Callback</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Expected `f` to take in 1 tensor.&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">();</span> <span class="bp">self</span><span class="o">.</span><span class="n">f</span> <span class="o">=</span> <span class="n">f</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span> <span class="o">=</span> <span class="mi">15</span>
+    <span class="k">def</span> <span class="nf">endPass</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">)</span></div>
+<div class="viewcode-block" id="ModifyOutput"><a class="viewcode-back" href="../../../callbacks/index.html#k1lib.callbacks.shorts.ModifyOutput">[docs]</a><span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">Cbs</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">ModifyOutput</span><span class="p">(</span><span class="n">Callback</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Modifies output on the fly. Expected `f` to take</span>
+<span class="sd">in 1 tensor and return 1 tensor&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">();</span> <span class="bp">self</span><span class="o">.</span><span class="n">f</span> <span class="o">=</span> <span class="n">f</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span> <span class="o">=</span> <span class="mi">13</span>
+    <span class="k">def</span> <span class="nf">endPass</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">)</span></div>
+<div class="viewcode-block" id="Beep"><a class="viewcode-back" href="../../../callbacks/index.html#k1lib.callbacks.shorts.Beep">[docs]</a><span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">Cbs</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">Beep</span><span class="p">(</span><span class="n">Callback</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Plays a beep sound when the run is over&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">endRun</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">beep</span><span class="p">()</span></div>
+<div class="viewcode-block" id="OnProgress"><a class="viewcode-back" href="../../../callbacks/index.html#k1lib.callbacks.shorts.OnProgress">[docs]</a><span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">Cbs</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">OnProgress</span><span class="p">(</span><span class="n">Callback</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Triggers a specific function once when reached a certain</span>
+<span class="sd">progress.</span>
+
+<span class="sd">:param f: function that takes in a :class:`~k1lib.Learner` object</span>
+<span class="sd">:param progress: progress to trigger the function, from 0 to 1&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">:</span><span class="n">Callable</span><span class="p">[[</span><span class="s2">&quot;k1lib.Learner&quot;</span><span class="p">],</span> <span class="kc">None</span><span class="p">],</span> <span class="n">progress</span><span class="p">:</span><span class="nb">float</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">();</span> <span class="bp">self</span><span class="o">.</span><span class="n">f</span> <span class="o">=</span> <span class="n">f</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">progress</span> <span class="o">=</span> <span class="n">progress</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">ran</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">def</span> <span class="nf">startRun</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="n">ran</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">def</span> <span class="nf">startBatch</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">ran</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="o">.</span><span class="n">progress</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">progress</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ran</span> <span class="o">=</span> <span class="kc">True</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="p">)</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2022, Quang Ho.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

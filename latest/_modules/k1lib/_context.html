@@ -92,7 +92,6 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../k1a.html">k1lib._k1a module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../k1ui.html">k1lib.k1ui module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../kdata.html">k1lib.kdata module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../eqn.html">k1lib.eqn module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../fmt.html">k1lib.fmt module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../graphEqn.html">k1lib.graphEqn module</a></li>
@@ -101,6 +100,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../knn.html">k1lib.knn module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../schedule.html">k1lib.schedule module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../selector.html">k1lib.selector module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../serve.html">k1lib.serve module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../viz.html">k1lib.viz module</a></li>
 </ul>
 <ul>
@@ -204,10 +204,13 @@
 <span class="sd">    with k1lib.captureStdout() as out:</span>
 <span class="sd">        print(&quot;abc&quot;) # gets captured</span>
 <span class="sd">        out.print(&quot;def&quot;) # not captured, will actually print out</span>
+<span class="sd">        # you can also access the stream like this</span>
+<span class="sd">        print(&quot;something&quot;, file=out.old)</span>
 <span class="sd">&quot;&quot;&quot;</span>
     <span class="n">_stdout</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">;</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span> <span class="o">=</span> <span class="n">_stringio</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">StringIO</span><span class="p">()</span>
     <span class="n">w</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">Wrapper</span><span class="p">([])</span>
     <span class="n">w</span><span class="o">.</span><span class="n">print</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="nb">print</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">_stdout</span><span class="p">)</span>
+    <span class="n">w</span><span class="o">.</span><span class="n">old</span> <span class="o">=</span> <span class="n">_stdout</span>
     <span class="k">try</span><span class="p">:</span> <span class="k">yield</span> <span class="n">w</span>
     <span class="k">finally</span><span class="p">:</span>
         <span class="n">w</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="p">[</span><span class="n">l</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\r</span><span class="s2">&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">_stringio</span><span class="o">.</span><span class="n">getvalue</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)]</span>
@@ -271,7 +274,7 @@
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2021, Quang Ho.
+        &#169; Copyright 2022, Quang Ho.
 
     </p>
   </div>

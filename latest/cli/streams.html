@@ -93,6 +93,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#symmetric">Symmetric</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#asymmetric">Asymmetric</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#more-procedural">More procedural?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#vanilla-alternatives">Vanilla alternatives</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="llvm.html">LLVM optimizer tutorial</a></li>
@@ -118,7 +119,6 @@
 <li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.cli.utils">utils module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.cli.typehint">typehint module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.cli.optimizations">optimizations module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.cli.others">others module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#elsewhere-in-the-library">Elsewhere in the library</a></li>
 </ul>
 </li>
@@ -127,7 +127,6 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../k1a.html">k1lib._k1a module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../k1ui.html">k1lib.k1ui module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../kdata.html">k1lib.kdata module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../eqn.html">k1lib.eqn module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../fmt.html">k1lib.fmt module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../graphEqn.html">k1lib.graphEqn module</a></li>
@@ -136,6 +135,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../knn.html">k1lib.knn module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../schedule.html">k1lib.schedule module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../selector.html">k1lib.selector module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../serve.html">k1lib.serve module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../viz.html">k1lib.viz module</a></li>
 </ul>
 <ul>
@@ -311,6 +311,31 @@ stacking floors of cli operators on top of another:</p>
 (<code class="docutils literal notranslate"><span class="pre">|</span></code>, <code class="docutils literal notranslate"><span class="pre">&amp;</span></code>, <code class="docutils literal notranslate"><span class="pre">.all()</span></code>, <code class="docutils literal notranslate"><span class="pre">+</span></code>) are exposed, in case your streams have varying
 lengths.</p>
 </div>
+<div class="section" id="vanilla-alternatives">
+<h2>Vanilla alternatives<a class="headerlink" href="#vanilla-alternatives" title="Permalink to this headline">¶</a></h2>
+<p>These operations are not actually strictly necessary, they’re just convenience functions
+so that writing code is simpler and more straightforward. They can be implemented using
+normal clis like so:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">iden</span><span class="p">()</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">shape</span><span class="p">()</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]]</span>
+<span class="c1"># returns [[1, 2], [9, 16], [2]]</span>
+<span class="n">x</span> <span class="o">|</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="o">+</span> <span class="n">c</span> <span class="o">|</span> <span class="n">deref</span><span class="p">()</span>
+<span class="c1"># returns [[1, 2], [9, 16], [2]]</span>
+<span class="n">x</span> <span class="o">|</span> <span class="o">~</span><span class="n">aS</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">:</span> <span class="p">[</span><span class="n">x</span> <span class="o">|</span> <span class="n">a</span><span class="p">,</span> <span class="n">y</span> <span class="o">|</span> <span class="n">b</span><span class="p">,</span> <span class="n">z</span> <span class="o">|</span> <span class="n">c</span><span class="p">])</span> <span class="o">|</span> <span class="n">deref</span><span class="p">()</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="c1"># returns [[0, 1, 2, 3, 4], [0, 1, 4, 9, 16], [5]]</span>
+<span class="n">x</span> <span class="o">|</span> <span class="n">a</span> <span class="o">&amp;</span> <span class="n">b</span> <span class="o">&amp;</span> <span class="n">c</span> <span class="o">|</span> <span class="n">deref</span><span class="p">()</span>
+<span class="c1"># returns [[0, 1, 2, 3, 4], [0, 1, 4, 9, 16], [5]]</span>
+<span class="n">x</span> <span class="o">|</span> <span class="n">aS</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">[</span><span class="n">x</span> <span class="o">|</span> <span class="n">a</span><span class="p">,</span> <span class="n">x</span> <span class="o">|</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span> <span class="o">|</span> <span class="n">c</span><span class="p">])</span> <span class="o">|</span> <span class="n">deref</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>So you might want to use these vanilla versions initially if you are unsure what exactly
+these higher operations mean.</p>
+</div>
 </div>
 
 
@@ -327,7 +352,7 @@ lengths.</p>
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2021, Quang Ho.
+        &#169; Copyright 2022, Quang Ho.
 
     </p>
   </div>

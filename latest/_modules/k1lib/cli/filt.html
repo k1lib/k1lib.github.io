@@ -92,7 +92,6 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../k1a.html">k1lib._k1a module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../k1ui.html">k1lib.k1ui module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../kdata.html">k1lib.kdata module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../eqn.html">k1lib.eqn module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../fmt.html">k1lib.fmt module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../graphEqn.html">k1lib.graphEqn module</a></li>
@@ -101,6 +100,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../knn.html">k1lib.knn module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../schedule.html">k1lib.schedule module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../selector.html">k1lib.selector module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../serve.html">k1lib.serve module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../viz.html">k1lib.viz module</a></li>
 </ul>
 <ul>
@@ -179,9 +179,11 @@
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">overload</span><span class="p">,</span> <span class="n">Iterator</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Set</span><span class="p">,</span> <span class="n">Tuple</span>
 <span class="kn">from</span> <span class="nn">k1lib.cli.init</span> <span class="kn">import</span> <span class="n">BaseCli</span><span class="p">,</span> <span class="n">Table</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">fastF</span>
-<span class="kn">import</span> <span class="nn">k1lib.cli</span> <span class="k">as</span> <span class="nn">cli</span><span class="p">;</span> <span class="kn">import</span> <span class="nn">k1lib</span><span class="o">,</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">k1lib.cli</span> <span class="k">as</span> <span class="nn">cli</span><span class="p">;</span> <span class="kn">import</span> <span class="nn">k1lib</span><span class="o">,</span> <span class="nn">os</span>
 <span class="kn">from</span> <span class="nn">k1lib.cli.typehint</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span><span class="p">;</span> <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">deque</span>
+<span class="k">try</span><span class="p">:</span> <span class="kn">import</span> <span class="nn">torch</span><span class="p">;</span> <span class="n">hasTorch</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="k">except</span><span class="p">:</span> <span class="n">hasTorch</span> <span class="o">=</span> <span class="kc">False</span>
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;filt&quot;</span><span class="p">,</span> <span class="s2">&quot;inSet&quot;</span><span class="p">,</span> <span class="s2">&quot;contains&quot;</span><span class="p">,</span> <span class="s2">&quot;empty&quot;</span><span class="p">,</span>
            <span class="s2">&quot;isNumeric&quot;</span><span class="p">,</span> <span class="s2">&quot;instanceOf&quot;</span><span class="p">,</span>
            <span class="s2">&quot;head&quot;</span><span class="p">,</span> <span class="s2">&quot;tail&quot;</span><span class="p">,</span> <span class="s2">&quot;columns&quot;</span><span class="p">,</span> <span class="s2">&quot;cut&quot;</span><span class="p">,</span> <span class="s2">&quot;rows&quot;</span><span class="p">,</span>
@@ -235,17 +237,7 @@
 <span class="sd">    # returns [2, 3]</span>
 <span class="sd">    range(5) | inSet([2, 8, 3]) | deref()</span>
 <span class="sd">    # returns [0, 1, 4]</span>
-<span class="sd">    range(5) | ~inSet([2, 8, 3]) | deref()</span>
-
-<span class="sd">You can also use :class:`~k1lib.cli.modifier.op` like this, so you don&#39;t</span>
-<span class="sd">have to remember this cli::</span>
-<span class="sd">    </span>
-<span class="sd">    # returns [2, 3]</span>
-<span class="sd">    range(5) | filt(op() in [2, 8, 3]) | deref()</span>
-<span class="sd">    # returns [0, 1, 4]</span>
-<span class="sd">    range(5) | ~filt(op() in [2, 8, 3]) | deref()</span>
-
-<span class="sd">However, this feature is very experimental&quot;&quot;&quot;</span>
+<span class="sd">    range(5) | ~inSet([2, 8, 3]) | deref()&quot;&quot;&quot;</span>
     <span class="n">values</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">filt</span><span class="p">(</span><span class="k">lambda</span> <span class="n">l</span><span class="p">:</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">values</span><span class="p">,</span> <span class="n">column</span><span class="p">)</span></div>
 <div class="viewcode-block" id="contains"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.filt.contains">[docs]</a><span class="k">def</span> <span class="nf">contains</span><span class="p">(</span><span class="n">s</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">column</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">filt</span><span class="p">:</span>
@@ -254,12 +246,7 @@
 <span class="sd">Example::</span>
 
 <span class="sd">    # returns [&#39;abcd&#39;, &#39;2bcr&#39;]</span>
-<span class="sd">    [&quot;abcd&quot;, &quot;0123&quot;, &quot;2bcr&quot;] | contains(&quot;bc&quot;) | deref()</span>
-
-<span class="sd">You can also use :class:`~k1lib.cli.modifier.op` like this::</span>
-
-<span class="sd">    # returns [&#39;abcd&#39;, &#39;2bcr&#39;]</span>
-<span class="sd">    [&quot;abcd&quot;, &quot;0123&quot;, &quot;2bcr&quot;] | filt(&quot;bc&quot; in op()) | deref()&quot;&quot;&quot;</span>
+<span class="sd">    [&quot;abcd&quot;, &quot;0123&quot;, &quot;2bcr&quot;] | contains(&quot;bc&quot;) | deref()&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">filt</span><span class="p">(</span><span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">e</span><span class="p">,</span> <span class="n">column</span><span class="p">)</span></div>
 <div class="viewcode-block" id="empty"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.filt.empty">[docs]</a><span class="k">class</span> <span class="nc">empty</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
 <div class="viewcode-block" id="empty.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.filt.empty.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
@@ -432,7 +419,7 @@
 <div class="viewcode-block" id="columns.__ror__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.filt.columns.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">:</span><span class="n">Table</span><span class="p">[</span><span class="n">T</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Table</span><span class="p">[</span><span class="n">T</span><span class="p">]:</span>
         <span class="n">columns</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">columns</span><span class="p">;</span> <span class="n">it</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">it</span><span class="p">)</span>
         <span class="n">sentinel</span> <span class="o">=</span> <span class="nb">object</span><span class="p">();</span> <span class="n">row</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">it</span><span class="p">,</span> <span class="n">sentinel</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">row</span> <span class="o">==</span> <span class="n">sentinel</span><span class="p">:</span> <span class="k">return</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="n">row</span> <span class="ow">is</span> <span class="n">sentinel</span><span class="p">:</span> <span class="k">return</span> <span class="p">[]</span>
         <span class="n">row</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">row</span><span class="p">);</span> <span class="n">rs</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">row</span><span class="p">)</span><span class="o">+</span><span class="mi">1000</span><span class="p">)</span> <span class="c1"># 1000 for longer rows below</span>
         <span class="n">it</span> <span class="o">=</span> <span class="n">it</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">columns</span><span class="p">,</span> <span class="nb">slice</span><span class="p">):</span> <span class="n">columns</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">rs</span><span class="p">[</span><span class="n">columns</span><span class="p">])</span>
@@ -471,7 +458,7 @@
         <span class="k">for</span> <span class="n">it</span> <span class="ow">in</span> <span class="n">its</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">answer</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="n">answer</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">it</span><span class="p">);</span> <span class="k">continue</span>
             <span class="n">answer</span> <span class="o">=</span> <span class="n">answer</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">it</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">answer</span></div></div>
+        <span class="k">return</span> <span class="nb">set</span><span class="p">()</span> <span class="k">if</span> <span class="n">answer</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">answer</span></div></div>
 <div class="viewcode-block" id="union"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.filt.union">[docs]</a><span class="k">class</span> <span class="nc">union</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
 <div class="viewcode-block" id="union.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.filt.union.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Returns the union of multiple streams.</span>
@@ -495,8 +482,8 @@
 <span class="sd">    # returns [[1, &quot;a&quot;], [2, &quot;a&quot;]]</span>
 <span class="sd">    [[1, &quot;a&quot;], [2, &quot;a&quot;], [1, &quot;b&quot;]] | unique(0) | deref()</span>
 
-<span class="sd">:param column: doesn&#39;t have the default case of None, because you can always use</span>
-<span class="sd">    :class:`k1lib.cli.conv.toSet`&quot;&quot;&quot;</span>
+<span class="sd">:param column: doesn&#39;t have the default case of None, because</span>
+<span class="sd">    you can always convert the entire thing to a set&quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">();</span> <span class="bp">self</span><span class="o">.</span><span class="n">column</span> <span class="o">=</span> <span class="n">column</span></div>
 <div class="viewcode-block" id="unique.__ror__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.filt.unique.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">:</span><span class="n">Table</span><span class="p">[</span><span class="n">T</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Table</span><span class="p">[</span><span class="n">T</span><span class="p">]:</span>
         <span class="n">terms</span> <span class="o">=</span> <span class="nb">set</span><span class="p">();</span> <span class="n">c</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">column</span>
@@ -545,7 +532,7 @@
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2021, Quang Ho.
+        &#169; Copyright 2022, Quang Ho.
 
     </p>
   </div>

@@ -92,7 +92,6 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../k1a.html">k1lib._k1a module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../k1ui.html">k1lib.k1ui module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../kdata.html">k1lib.kdata module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../eqn.html">k1lib.eqn module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../fmt.html">k1lib.fmt module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../graphEqn.html">k1lib.graphEqn module</a></li>
@@ -101,6 +100,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../../knn.html">k1lib.knn module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../schedule.html">k1lib.schedule module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../selector.html">k1lib.selector module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../serve.html">k1lib.serve module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../viz.html">k1lib.viz module</a></li>
 </ul>
 <ul>
@@ -177,7 +177,9 @@
 <span class="sd">&quot;&quot;&quot;For not very complicated accuracies functions&quot;&quot;&quot;</span>
 <span class="kn">from</span> <span class="nn">..callbacks</span> <span class="kn">import</span> <span class="n">Callback</span><span class="p">,</span> <span class="n">Callbacks</span><span class="p">,</span> <span class="n">Cbs</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Tuple</span>
-<span class="kn">import</span> <span class="nn">torch</span><span class="o">,</span> <span class="nn">k1lib</span>
+<span class="kn">import</span> <span class="nn">k1lib</span>
+<span class="k">try</span><span class="p">:</span> <span class="kn">import</span> <span class="nn">torch</span><span class="p">;</span> <span class="n">hasTorch</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="k">except</span><span class="p">:</span> <span class="n">torch</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">Object</span><span class="p">()</span><span class="o">.</span><span class="n">withAutoDeclare</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="nb">type</span><span class="p">(</span><span class="s2">&quot;RandomClass&quot;</span><span class="p">,</span> <span class="p">(</span><span class="nb">object</span><span class="p">,</span> <span class="p">),</span> <span class="p">{}));</span> <span class="n">hasTorch</span> <span class="o">=</span> <span class="kc">False</span>
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;AccF&quot;</span><span class="p">]</span>
 <span class="n">AccFSig</span> <span class="o">=</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]],</span> <span class="nb">float</span><span class="p">]</span>
 <span class="n">PredFSig</span> <span class="o">=</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">],</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span>
@@ -236,7 +238,7 @@
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2021, Quang Ho.
+        &#169; Copyright 2022, Quang Ho.
 
     </p>
   </div>

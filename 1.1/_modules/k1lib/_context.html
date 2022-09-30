@@ -1,0 +1,311 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>k1lib._context &mdash; k1lib  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> k1lib
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../base.html">Base module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../cli/index.html">k1lib.cli module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../callbacks/index.html">k1lib.callbacks module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../k1a.html">k1lib._k1a module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../k1ui.html">k1lib.k1ui module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../eqn.html">k1lib.eqn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fmt.html">k1lib.fmt module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../graphEqn.html">k1lib.graphEqn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../imports.html">k1lib.imports module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mo.html">k1lib.mo module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../knn.html">k1lib.knn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../schedule.html">k1lib.schedule module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../selector.html">k1lib.selector module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../serve.html">k1lib.serve module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../viz.html">k1lib.viz module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../monkey.html">Monkey patched classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../changelogs.html">Changelogs</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">k1lib</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>k1lib._context</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for k1lib._context</h1><div class="highlight"><pre>
+<span></span><span class="c1"># AUTOGENERATED FILE! PLEASE DON&#39;T EDIT</span>
+<span class="kn">import</span> <span class="nn">io</span><span class="o">,</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">warnings</span><span class="o">,</span> <span class="nn">time</span><span class="o">,</span> <span class="nn">k1lib</span>
+<span class="kn">from</span> <span class="nn">contextlib</span> <span class="kn">import</span> <span class="n">contextmanager</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;captureStdout&quot;</span><span class="p">,</span> <span class="s2">&quot;ignoreWarnings&quot;</span><span class="p">,</span> <span class="s2">&quot;timer&quot;</span><span class="p">,</span> <span class="s2">&quot;attrContext&quot;</span><span class="p">]</span>
+<div class="viewcode-block" id="captureStdout"><a class="viewcode-back" href="../../base.html#k1lib.captureStdout">[docs]</a><span class="nd">@contextmanager</span>
+<span class="k">def</span> <span class="nf">captureStdout</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">Wrapper</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Captures every print() statement. Taken from https://stackoverflow.com/questions/16571150/how-to-capture-stdout-output-from-a-python-function-call.</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    with k1lib.captureStdout() as outer:</span>
+<span class="sd">        print(&quot;something&quot;)</span>
+<span class="sd">        with k1lib.captureStdout() as inner:</span>
+<span class="sd">            print(&quot;inside inner&quot;)</span>
+<span class="sd">        print(&quot;else&quot;)</span>
+<span class="sd">    # prints &quot;[&#39;something&#39;, &#39;else&#39;]&quot;</span>
+<span class="sd">    print(outer.value)</span>
+<span class="sd">    # prints &quot;[&#39;inside inner&#39;]&quot;</span>
+<span class="sd">    print(inner.value)</span>
+
+<span class="sd">Note that internally, this replaces :data:`sys.stdout` as :class:`io.StringIO`, so</span>
+<span class="sd">might not work property if you have fancy :class:`bytes` stuff going on. Also,</span>
+<span class="sd">carriage return (``\\r``) will erase the line, so multi-line overlaps might not</span>
+<span class="sd">show up correctly.</span>
+
+<span class="sd">If you wish to still print stuff out, you can do something</span>
+<span class="sd">like this::</span>
+
+<span class="sd">    with k1lib.captureStdout() as out:</span>
+<span class="sd">        print(&quot;abc&quot;) # gets captured</span>
+<span class="sd">        out.print(&quot;def&quot;) # not captured, will actually print out</span>
+<span class="sd">        # you can also access the stream like this</span>
+<span class="sd">        print(&quot;something&quot;, file=out.old)</span>
+<span class="sd">&quot;&quot;&quot;</span>
+    <span class="n">_stdout</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">;</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span> <span class="o">=</span> <span class="n">_stringio</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">StringIO</span><span class="p">()</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">Wrapper</span><span class="p">([])</span>
+    <span class="n">w</span><span class="o">.</span><span class="n">print</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="nb">print</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">_stdout</span><span class="p">)</span>
+    <span class="n">w</span><span class="o">.</span><span class="n">old</span> <span class="o">=</span> <span class="n">_stdout</span>
+    <span class="k">try</span><span class="p">:</span> <span class="k">yield</span> <span class="n">w</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="n">w</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="p">[</span><span class="n">l</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\r</span><span class="s2">&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">_stringio</span><span class="o">.</span><span class="n">getvalue</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)]</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span> <span class="o">=</span> <span class="n">_stdout</span></div>
+<div class="viewcode-block" id="ignoreWarnings"><a class="viewcode-back" href="../../base.html#k1lib.ignoreWarnings">[docs]</a><span class="nd">@contextmanager</span>
+<span class="k">def</span> <span class="nf">ignoreWarnings</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Context manager to ignore every warning.</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    import warnings</span>
+<span class="sd">    with k1lib.ignoreWarnings():</span>
+<span class="sd">        warnings.warn(&quot;some random stuff&quot;) # will not show anything&quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="n">warnings</span><span class="o">.</span><span class="n">catch_warnings</span><span class="p">():</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+        <span class="k">yield</span></div>
+<div class="viewcode-block" id="timer"><a class="viewcode-back" href="../../base.html#k1lib.timer">[docs]</a><span class="nd">@contextmanager</span>
+<span class="k">def</span> <span class="nf">timer</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Times generic code.</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    with k1lib.timer() as t:</span>
+<span class="sd">        time.sleep(1.1)</span>
+<span class="sd">    # prints out float close to 1.1</span>
+<span class="sd">    print(t())</span>
+
+<span class="sd">The with- statement will actually return a :class:`~k1lib.Wrapper` with value</span>
+<span class="sd">None. The correct time will be deposited into it after the code block ends.&quot;&quot;&quot;</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">Wrapper</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+    <span class="n">beginTime</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="k">try</span><span class="p">:</span> <span class="k">yield</span> <span class="n">w</span>
+    <span class="k">finally</span><span class="p">:</span> <span class="n">w</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">beginTime</span></div>
+<div class="viewcode-block" id="attrContext"><a class="viewcode-back" href="../../base.html#k1lib.attrContext">[docs]</a><span class="nd">@contextmanager</span>
+<span class="k">def</span> <span class="nf">attrContext</span><span class="p">(</span><span class="n">var</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Temporarily sets variable&#39;s attribute to something else.</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    class A: pass</span>
+<span class="sd">    a = A()</span>
+<span class="sd">    a.b = 3</span>
+<span class="sd">    print(a.b) # prints &quot;3&quot;</span>
+<span class="sd">    with k1lib.attrContext(a, b=4, c=5):</span>
+<span class="sd">        print(a.b, a.c) # prints &quot;4 5&quot;</span>
+<span class="sd">    print(a.b, a.c) # prints &quot;3 None&quot;</span>
+<span class="sd">&quot;&quot;&quot;</span>
+    <span class="n">oldValues</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">oldValues</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">var</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="nb">setattr</span><span class="p">(</span><span class="n">var</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span> <span class="k">yield</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">oldValues</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="nb">setattr</span><span class="p">(</span><span class="n">var</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2022, Quang Ho.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

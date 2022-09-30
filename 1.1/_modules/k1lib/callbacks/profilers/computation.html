@@ -1,0 +1,325 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>k1lib.callbacks.profilers.computation &mdash; k1lib  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> k1lib
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../base.html">Base module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../cli/index.html">k1lib.cli module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../callbacks/index.html">k1lib.callbacks module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../k1a.html">k1lib._k1a module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../k1ui.html">k1lib.k1ui module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../eqn.html">k1lib.eqn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../fmt.html">k1lib.fmt module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../graphEqn.html">k1lib.graphEqn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../imports.html">k1lib.imports module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../mo.html">k1lib.mo module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../knn.html">k1lib.knn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../schedule.html">k1lib.schedule module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../selector.html">k1lib.selector module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../serve.html">k1lib.serve module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../viz.html">k1lib.viz module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../monkey.html">Monkey patched classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../changelogs.html">Changelogs</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">k1lib</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+        
+      <li>k1lib.callbacks.profilers.computation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for k1lib.callbacks.profilers.computation</h1><div class="highlight"><pre>
+<span></span><span class="c1"># AUTOGENERATED FILE! PLEASE DON&#39;T EDIT</span>
+<span class="kn">from</span> <span class="nn">k1lib.callbacks</span> <span class="kn">import</span> <span class="n">Callback</span><span class="p">,</span> <span class="n">Cbs</span>
+<span class="kn">import</span> <span class="nn">k1lib</span><span class="o">,</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span><span class="p">;</span> <span class="kn">from</span> <span class="nn">torch</span> <span class="kn">import</span> <span class="n">nn</span>
+<span class="kn">from</span> <span class="nn">k1lib</span> <span class="kn">import</span> <span class="n">cli</span>
+<span class="n">_spacing</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">s</span><span class="si">}</span><span class="s2">   &quot;</span><span class="p">;</span> <span class="c1"># inserted at end of everything, if that element existed</span>
+<span class="n">_lcomp</span> <span class="o">=</span> <span class="mi">14</span><span class="p">;</span> <span class="n">_lp1</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span> <span class="n">_lp2</span> <span class="o">=</span> <span class="mi">15</span><span class="p">;</span> <span class="n">_lp3</span> <span class="o">=</span> <span class="mi">14</span>
+<span class="k">class</span> <span class="nc">ComputationData</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cProfiler</span><span class="p">,</span> <span class="n">mS</span><span class="p">:</span><span class="n">k1lib</span><span class="o">.</span><span class="n">selector</span><span class="o">.</span><span class="n">ModuleSelector</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cProfiler</span> <span class="o">=</span> <span class="n">cProfiler</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">mS</span> <span class="o">=</span> <span class="n">mS</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">flop</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">handle</span> <span class="o">=</span> <span class="kc">None</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">hook</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">flops</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">tS</span> <span class="o">=</span> <span class="kc">None</span> <span class="c1"># corresponding time selector</span>
+    <span class="k">def</span> <span class="nf">hook</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">def</span> <span class="nf">hk</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">o</span><span class="p">):</span>
+            <span class="n">i</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="n">flop</span> <span class="o">+=</span> <span class="n">i</span><span class="o">.</span><span class="n">numel</span><span class="p">()</span> <span class="o">*</span> <span class="n">m</span><span class="o">.</span><span class="n">out_features</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">flop</span> <span class="o">+=</span> <span class="n">m</span><span class="o">.</span><span class="n">out_channels</span> <span class="o">*</span> <span class="n">i</span><span class="o">.</span><span class="n">shape</span><span class="o">.</span><span class="n">numel</span><span class="p">()</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">kernel_size</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">LeakyReLU</span><span class="p">,</span> <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">,</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sigmoid</span><span class="p">)):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">flop</span> <span class="o">+=</span> <span class="n">i</span><span class="o">.</span><span class="n">numel</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">handle</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mS</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">register_forward_hook</span><span class="p">(</span><span class="n">hk</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">unhook</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cProfiler</span><span class="o">.</span><span class="n">totalFlop</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">flop</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">handle</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">__getstate__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">answer</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">)</span>
+        <span class="k">del</span> <span class="n">answer</span><span class="p">[</span><span class="s2">&quot;mS&quot;</span><span class="p">];</span> <span class="k">del</span> <span class="n">answer</span><span class="p">[</span><span class="s2">&quot;cProfiler&quot;</span><span class="p">];</span> <span class="k">return</span> <span class="n">answer</span>
+    <span class="k">def</span> <span class="nf">__setstate__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">state</span><span class="p">))</span>
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">flop</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span> <span class="k">return</span> <span class="s2">&quot;&quot;</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="n">_spacing</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">k1lib</span><span class="o">.</span><span class="n">fmt</span><span class="o">.</span><span class="n">comp</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">flop</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="n">_lcomp</span><span class="p">))</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="n">_spacing</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="mi">100</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">flop</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">cProfiler</span><span class="o">.</span><span class="n">totalFlop</span><span class="p">)</span><span class="si">}</span><span class="s2">%&quot;</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="n">_lp1</span><span class="p">))</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">cProfiler</span><span class="o">.</span><span class="n">_tpAvailable</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">flops</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">flop</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">tS</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">time</span>
+            <span class="n">c</span> <span class="o">=</span> <span class="n">_spacing</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">k1lib</span><span class="o">.</span><span class="n">fmt</span><span class="o">.</span><span class="n">compRate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">flops</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="n">_lp2</span><span class="p">))</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">cProfiler</span><span class="o">.</span><span class="n">selected</span><span class="p">:</span>
+            <span class="k">if</span> <span class="s2">&quot;_compProf_&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">mS</span><span class="p">:</span>
+                <span class="n">d</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="mi">100</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">flop</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">cProfiler</span><span class="o">.</span><span class="n">selectedTotalFlop</span><span class="p">)</span><span class="si">}</span><span class="s2">%&quot;</span>
+            <span class="n">d</span> <span class="o">=</span> <span class="n">_spacing</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="n">_lp3</span><span class="p">))</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">a</span><span class="si">}{</span><span class="n">b</span><span class="si">}{</span><span class="n">c</span><span class="si">}{</span><span class="n">d</span><span class="si">}</span><span class="s2">&quot;</span>
+<div class="viewcode-block" id="ComputationProfiler"><a class="viewcode-back" href="../../../../callbacks/profilers.html#k1lib.callbacks.profilers.computation.ComputationProfiler">[docs]</a><span class="k">class</span> <span class="nc">ComputationProfiler</span><span class="p">(</span><span class="n">Callback</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Profiles computation. Only provide reports on well known</span>
+<span class="sd">layers only, and thus can&#39;t really be universal. Example::</span>
+
+<span class="sd">    l = k1lib.Learner.sample()</span>
+<span class="sd">    l.cbs.add(Cbs.Profiler())</span>
+<span class="sd">    # views table</span>
+<span class="sd">    l.Profiler.computation</span>
+<span class="sd">    # views table highlighted</span>
+<span class="sd">    l.Profiler.computation.css(&quot;#lin1 &gt; #lin&quot;)</span>
+<span class="sd">&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">profiler</span><span class="p">:</span><span class="s2">&quot;Profiler&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">();</span> <span class="bp">self</span><span class="o">.</span><span class="n">profiler</span> <span class="o">=</span> <span class="n">profiler</span>
+    <span class="k">def</span> <span class="nf">startRun</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;selector&quot;</span><span class="p">):</span> <span class="c1"># if no selectors found</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">selector</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">selector</span><span class="o">.</span><span class="n">modules</span><span class="p">():</span> <span class="n">m</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">ComputationData</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">selector</span><span class="o">.</span><span class="n">displayF</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">m</span><span class="p">:</span> <span class="p">(</span><span class="n">k1lib</span><span class="o">.</span><span class="n">fmt</span><span class="o">.</span><span class="n">txt</span><span class="o">.</span><span class="n">red</span> <span class="k">if</span> <span class="s2">&quot;_compProf_&quot;</span> <span class="ow">in</span> <span class="n">m</span> <span class="k">else</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">fmt</span><span class="o">.</span><span class="n">txt</span><span class="o">.</span><span class="n">identity</span><span class="p">)(</span><span class="n">m</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">totalFlop</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">selectedTotalFlop</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">selected</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">selectedTotalFlop</span> <span class="o">!=</span> <span class="kc">None</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">_tpAvailable</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Whether TimeProfiler&#39;s results are available&quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">profiler</span><span class="o">.</span><span class="n">_time</span><span class="p">();</span> <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span> <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">def</span> <span class="nf">startStep</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">def</span> <span class="nf">_run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Runs everything&quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">cbs</span><span class="o">.</span><span class="n">context</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">cbs</span><span class="o">.</span><span class="n">suspendEval</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cbs</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Cbs</span><span class="o">.</span><span class="n">Cpu</span><span class="p">());</span> <span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">selector</span><span class="o">.</span><span class="n">modules</span><span class="p">():</span> <span class="n">m</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">unhook</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">detached</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="c1"># time profiler integration, so that flops can be displayed</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tpAvailable</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">cS</span><span class="p">,</span> <span class="n">tS</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">selector</span><span class="o">.</span><span class="n">modules</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">profiler</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">selector</span><span class="o">.</span><span class="n">modules</span><span class="p">()):</span>
+                <span class="n">cS</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">tS</span> <span class="o">=</span> <span class="n">tS</span> <span class="c1"># injecting dependency</span>
+<div class="viewcode-block" id="ComputationProfiler.css"><a class="viewcode-back" href="../../../../callbacks/profilers.html#k1lib.callbacks.profilers.computation.ComputationProfiler.css">[docs]</a>    <span class="k">def</span> <span class="nf">css</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">css</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Selects a small part of the network to highlight. See also: :mod:`k1lib.selector`.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">selector</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">k1lib</span><span class="o">.</span><span class="n">selector</span><span class="o">.</span><span class="n">preprocess</span><span class="p">(</span><span class="n">css</span><span class="p">,</span> <span class="s2">&quot;_compProf_&quot;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">selectedTotalFlop</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">selector</span><span class="o">.</span><span class="n">modules</span><span class="p">():</span>
+            <span class="k">if</span> <span class="s2">&quot;_compProf_&quot;</span> <span class="ow">in</span> <span class="n">m</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">selectedTotalFlop</span> <span class="o">+=</span> <span class="n">m</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">flop</span>
+        <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="fm">__repr__</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">selector</span><span class="o">.</span><span class="n">clearProps</span><span class="p">();</span> <span class="bp">self</span><span class="o">.</span><span class="n">selectedTotalFlop</span> <span class="o">=</span> <span class="kc">None</span></div>
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">header</span> <span class="o">=</span> <span class="n">_spacing</span><span class="p">(</span><span class="s2">&quot;computation&quot;</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="n">_lcomp</span><span class="p">))</span>
+        <span class="n">header</span> <span class="o">+=</span> <span class="n">_spacing</span><span class="p">(</span><span class="s2">&quot;% total&quot;</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="n">_lp1</span><span class="p">))</span>
+        <span class="n">header</span> <span class="o">+=</span> <span class="n">_spacing</span><span class="p">(</span><span class="s2">&quot;rate&quot;</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="n">_lp2</span><span class="p">))</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tpAvailable</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span>
+        <span class="n">header</span> <span class="o">+=</span> <span class="n">_spacing</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">% s</span><span class="s2">elected&quot;</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="n">_lp3</span><span class="p">))</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">selected</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span>
+        <span class="n">footer</span> <span class="o">=</span> <span class="n">_spacing</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">k1lib</span><span class="o">.</span><span class="n">fmt</span><span class="o">.</span><span class="n">comp</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">totalFlop</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="n">_lcomp</span><span class="p">))</span>
+        <span class="n">footer</span> <span class="o">+=</span> <span class="n">_spacing</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="n">_lp1</span><span class="p">))</span>
+        <span class="n">footer</span> <span class="o">+=</span> <span class="n">_spacing</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="n">_lp2</span><span class="p">))</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tpAvailable</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span>
+        <span class="n">footer</span> <span class="o">+=</span> <span class="n">_spacing</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">k1lib</span><span class="o">.</span><span class="n">fmt</span><span class="o">.</span><span class="n">comp</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">selectedTotalFlop</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="n">_lp3</span><span class="p">))</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">selected</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span>
+        <span class="n">footer</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;Total&quot;</span><span class="p">,</span> <span class="n">footer</span><span class="p">)</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">selector</span><span class="o">.</span><span class="fm">__repr__</span><span class="p">(</span><span class="n">intro</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="n">header</span><span class="p">,</span> <span class="n">footer</span><span class="o">=</span><span class="n">footer</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">tab</span><span class="p">()</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;ComputationProfiler:</span><span class="se">\n</span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s2"></span>
+
+<span class="s2">The &quot;rate&quot; column will appear if integration with Profiler.time is</span>
+<span class="s2">possible, showing actual ops/s</span>
+
+<span class="s2">Can...</span>
+<span class="s2">- cp.css(&quot;...&quot;): highlights a particular part of the network</span>
+<span class="s2">- cp.selector: to get internal k1lib.ModuleSelector object&quot;&quot;&quot;</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2022, Quang Ho.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

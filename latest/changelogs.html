@@ -93,7 +93,6 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="k1a.html">k1lib._k1a module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="k1ui.html">k1lib.k1ui module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="kdata.html">k1lib.kdata module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="eqn.html">k1lib.eqn module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="fmt.html">k1lib.fmt module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="graphEqn.html">k1lib.graphEqn module</a></li>
@@ -102,37 +101,39 @@
 <li class="toctree-l1"><a class="reference internal" href="knn.html">k1lib.knn module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="schedule.html">k1lib.schedule module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="selector.html">k1lib.selector module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="serve.html">k1lib.serve module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="viz.html">k1lib.viz module</a></li>
 </ul>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="monkey.html">Monkey patched classes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Changelogs</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id2">1.0</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id4">0.17</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id6">0.16</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id8">0.15</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id10">0.14</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id12">0.13</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id14">0.12</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id16">0.11</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id18">0.10</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id20">0.9</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id22">0.8</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id24">0.7</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id26">0.6</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id28">0.5</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id30">0.4</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id32">0.3</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id34">0.2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id36">0.1.13</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id38">0.1.12</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id40">0.1.11</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id42">0.1.10</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id44">0.1.9</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id46">0.1.8</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id48">0.1.7</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id49">0.1.6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">0.17</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">0.16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id10">0.15</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id12">0.14</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id14">0.13</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id16">0.12</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id18">0.11</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id20">0.10</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id22">0.9</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id24">0.8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id26">0.7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id28">0.6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id30">0.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id32">0.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id34">0.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id36">0.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id38">0.1.13</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id40">0.1.12</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id42">0.1.11</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id44">0.1.10</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id46">0.1.9</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id48">0.1.8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id50">0.1.7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id51">0.1.6</a></li>
 </ul>
 </li>
 </ul>
@@ -205,7 +206,43 @@
   <div class="section" id="changelogs">
 <h1>Changelogs<a class="headerlink" href="#changelogs" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id2">
-<h2><a class="reference external" href="/1.0">1.0</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2><a class="reference external" href="/1.1">1.1</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>Cli:</p>
+<ul class="simple">
+<li><p>Added dictionary mode, with table name to <a class="reference internal" href="cli/index.html#k1lib.cli.cif.tables" title="k1lib.cli.cif.tables"><code class="xref py py-meth docutils literal notranslate"><span class="pre">tables()</span></code></a></p></li>
+<li><p>Added <a class="reference internal" href="cli/index.html#k1lib.cli.cif.records" title="k1lib.cli.cif.records"><code class="xref py py-meth docutils literal notranslate"><span class="pre">records()</span></code></a>, <a class="reference internal" href="cli/index.html#k1lib.cli.conv.toGray" title="k1lib.cli.conv.toGray"><code class="xref py py-class docutils literal notranslate"><span class="pre">toGray</span></code></a>, <a class="reference internal" href="cli/index.html#k1lib.cli.output.plotImgs" title="k1lib.cli.output.plotImgs"><code class="xref py py-class docutils literal notranslate"><span class="pre">plotImgs</span></code></a>,
+<a class="reference internal" href="cli/index.html#k1lib.cli.conv.toBytes" title="k1lib.cli.conv.toBytes"><code class="xref py py-class docutils literal notranslate"><span class="pre">toBytes</span></code></a>, <a class="reference internal" href="cli/index.html#k1lib.cli.structural.indexTable" title="k1lib.cli.structural.indexTable"><code class="xref py py-class docutils literal notranslate"><span class="pre">indexTable</span></code></a>, <a class="reference internal" href="cli/index.html#k1lib.cli.structural.splitC" title="k1lib.cli.structural.splitC"><code class="xref py py-class docutils literal notranslate"><span class="pre">splitC</span></code></a></p></li>
+<li><p>k1a speedups: <a class="reference internal" href="cli/index.html#k1lib.cli.inp.cat" title="k1lib.cli.inp.cat"><code class="xref py py-class docutils literal notranslate"><span class="pre">cat</span></code></a></p></li>
+<li><p>Fixed strange bug in <a class="reference internal" href="cli/index.html#k1lib.cli.modifier.applyMp" title="k1lib.cli.modifier.applyMp"><code class="xref py py-class docutils literal notranslate"><span class="pre">applyMp</span></code></a> that happens between PyTorch and multiprocessing</p></li>
+<li><p>Added tensor/bytes/figure to image feature to <a class="reference internal" href="cli/index.html#k1lib.cli.conv.toPIL" title="k1lib.cli.conv.toPIL"><code class="xref py py-meth docutils literal notranslate"><span class="pre">toPIL()</span></code></a></p></li>
+<li><p>Added image saving mode to <a class="reference internal" href="cli/index.html#k1lib.cli.output.file" title="k1lib.cli.output.file"><code class="xref py py-meth docutils literal notranslate"><span class="pre">file()</span></code></a></p></li>
+<li><p>Added separator mode to <a class="reference internal" href="cli/index.html#k1lib.cli.structural.oneHot" title="k1lib.cli.structural.oneHot"><code class="xref py py-class docutils literal notranslate"><span class="pre">oneHot</span></code></a></p></li>
+<li><p>Removed <code class="xref py py-class docutils literal notranslate"><span class="pre">conv.toStr</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">conv.toSet</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">conv.toIter</span></code>,
+<code class="xref py py-class docutils literal notranslate"><span class="pre">conv.toBin</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">conv.toIdx</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">conv.toDictF</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">modifier.applySerial</span></code>
+because they’re kinda meaningless and redundant.</p></li>
+<li><p>Added bytes mode chunking to <a class="reference internal" href="cli/index.html#k1lib.cli.inp.cat" title="k1lib.cli.inp.cat"><code class="xref py py-class docutils literal notranslate"><span class="pre">cat</span></code></a></p></li>
+<li><p>Removed module <code class="xref py py-mod docutils literal notranslate"><span class="pre">k1lib.cli.others</span></code> as it’s pretty useless</p></li>
+</ul>
+<p>Generic:</p>
+<ul class="simple">
+<li><p>Added <a class="reference internal" href="base.html#k1lib.pushNotification" title="k1lib.pushNotification"><code class="xref py py-meth docutils literal notranslate"><span class="pre">pushNotification()</span></code></a>, <code class="xref py py-meth docutils literal notranslate"><span class="pre">fmt.throughput()</span></code></p></li>
+<li><p>Removed <code class="xref py py-meth docutils literal notranslate"><span class="pre">clearLine()</span></code>, <code class="xref py py-meth docutils literal notranslate"><span class="pre">close()</span></code>, <code class="xref py py-meth docutils literal notranslate"><span class="pre">textToHtml()</span></code>
+as they are quite niche</p></li>
+<li><p>Moved <code class="xref py py-meth docutils literal notranslate"><span class="pre">k1lib.sameStorage()</span></code> to <code class="xref py py-meth docutils literal notranslate"><span class="pre">torch.sameStorage()</span></code></p></li>
+<li><p>Monkey patched <code class="xref py py-meth docutils literal notranslate"><span class="pre">pandas.core.frame.DataFrame.table()</span></code>, <a class="reference internal" href="monkey.html#builtins.str.splitCamel" title="builtins.str.splitCamel"><code class="xref py py-class docutils literal notranslate"><span class="pre">builtins.str.splitCamel</span></code></a></p></li>
+<li><p>Added intersection operation to <a class="reference internal" href="base.html#k1lib.Domain" title="k1lib.Domain"><code class="xref py py-class docutils literal notranslate"><span class="pre">Domain</span></code></a></p></li>
+<li><p>Removed library’s PyTorch dependency, so that it can be lightweight enough to be used
+inside containers</p></li>
+</ul>
+<p>Deep learning:</p>
+<ul class="simple">
+<li><p>Added <a class="reference internal" href="selector.html#k1lib.selector.ModuleSelector.intercept" title="k1lib.selector.ModuleSelector.intercept"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ModuleSelector.intercept()</span></code></a></p></li>
+<li><p>Added estimated time remaining and throughput estimations to <a class="reference internal" href="callbacks/index.html#k1lib.callbacks.progress.ProgressBar" title="k1lib.callbacks.progress.ProgressBar"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProgressBar</span></code></a></p></li>
+<li><p>Removed module <code class="xref py py-mod docutils literal notranslate"><span class="pre">k1lib.kdata</span></code>, as that provides no value</p></li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h2><a class="reference external" href="/1.0">1.0</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <p>Cli:</p>
 <ul class="simple">
 <li><p>Removed <code class="xref py py-class docutils literal notranslate"><span class="pre">conv.toNumpy</span></code>, as <code class="docutils literal notranslate"><span class="pre">toList()</span> <span class="pre">|</span> <span class="pre">aS(np.array)</span></code> does the same thing</p></li>
@@ -218,7 +255,7 @@
 <li><p>Added <code class="docutils literal notranslate"><span class="pre">every</span></code> mode to <a class="reference internal" href="cli/index.html#k1lib.cli.output.tee" title="k1lib.cli.output.tee"><code class="xref py py-class docutils literal notranslate"><span class="pre">tee</span></code></a>.</p></li>
 <li><p>Simplified <a class="reference internal" href="cli/index.html#k1lib.cli.structural.insertColumn" title="k1lib.cli.structural.insertColumn"><code class="xref py py-class docutils literal notranslate"><span class="pre">insertColumn</span></code></a></p></li>
 <li><p>Added <a class="reference internal" href="cli/index.html#k1lib.cli.structural.oneHot" title="k1lib.cli.structural.oneHot"><code class="xref py py-class docutils literal notranslate"><span class="pre">oneHot</span></code></a>.</p></li>
-<li><p>Restructured expand argument feature in <a class="reference internal" href="cli/index.html#k1lib.cli.modifier.applySerial" title="k1lib.cli.modifier.applySerial"><code class="xref py py-class docutils literal notranslate"><span class="pre">applySerial</span></code></a></p></li>
+<li><p>Restructured expand argument feature in <code class="xref py py-class docutils literal notranslate"><span class="pre">applySerial</span></code></p></li>
 <li><p>Added <a class="reference internal" href="cli/index.html#module-k1lib.cli.cif" title="k1lib.cli.cif"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cif</span></code></a> module</p></li>
 <li><p>Removed <code class="xref py py-mod docutils literal notranslate"><span class="pre">entrez</span></code> module, as it doesn’t add much value</p></li>
 <li><p>Simplified <a class="reference internal" href="cli/index.html#k1lib.cli.output.file" title="k1lib.cli.output.file"><code class="xref py py-class docutils literal notranslate"><span class="pre">file</span></code></a> by removing explicit text/byte mode param</p></li>
@@ -242,8 +279,8 @@ manipulate mouse/keyboard and screens.</p></li>
 <li><p>Added callback <a class="reference internal" href="callbacks/index.html#k1lib.callbacks.limits.CancelOnOverfit" title="k1lib.callbacks.limits.CancelOnOverfit"><code class="xref py py-class docutils literal notranslate"><span class="pre">limits.CancelOnOverfit</span></code></a></p></li>
 </ul>
 </div>
-<div class="section" id="id4">
-<h2><a class="reference external" href="/0.17">0.17</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id6">
+<h2><a class="reference external" href="/0.17">0.17</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <p>Cli:</p>
 <ul class="simple">
 <li><p>Accelerated <a class="reference internal" href="cli/index.html#k1lib.cli.filt.head" title="k1lib.cli.filt.head"><code class="xref py py-class docutils literal notranslate"><span class="pre">head</span></code></a> for all sliceable types</p></li>
@@ -260,11 +297,11 @@ manipulate mouse/keyboard and screens.</p></li>
 <code class="xref py py-class docutils literal notranslate"><span class="pre">conv.toLens</span></code> as <code class="docutils literal notranslate"><span class="pre">shape(0).all()</span></code> is just as good</p></li>
 </ul>
 </div>
-<div class="section" id="id6">
-<h2><a class="reference external" href="/0.16">0.16</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id8">
+<h2><a class="reference external" href="/0.16">0.16</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
 <p>Cli:</p>
 <ul class="simple">
-<li><p>Accelerated <a class="reference internal" href="cli/index.html#k1lib.cli.filt.head" title="k1lib.cli.filt.head"><code class="xref py py-class docutils literal notranslate"><span class="pre">head</span></code></a> if input’s a <a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.13.0a0+gitb721ea9 ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a> or <code class="xref py py-class docutils literal notranslate"><span class="pre">np.ndarray</span></code>.</p></li>
+<li><p>Accelerated <a class="reference internal" href="cli/index.html#k1lib.cli.filt.head" title="k1lib.cli.filt.head"><code class="xref py py-class docutils literal notranslate"><span class="pre">head</span></code></a> if input’s a <a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.13.0a0+gitd542aab ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a> or <code class="xref py py-class docutils literal notranslate"><span class="pre">np.ndarray</span></code>.</p></li>
 <li><p>Added <a class="reference internal" href="cli/index.html#k1lib.cli.utils.tree" title="k1lib.cli.utils.tree"><code class="xref py py-meth docutils literal notranslate"><span class="pre">tree()</span></code></a>, <a class="reference internal" href="cli/index.html#k1lib.cli.utils.timeLimit" title="k1lib.cli.utils.timeLimit"><code class="xref py py-class docutils literal notranslate"><span class="pre">timeLimit</span></code></a>, <a class="reference internal" href="cli/index.html#k1lib.cli.output.split" title="k1lib.cli.output.split"><code class="xref py py-class docutils literal notranslate"><span class="pre">split</span></code></a>,
 <a class="reference internal" href="cli/index.html#k1lib.cli.utils.lookup" title="k1lib.cli.utils.lookup"><code class="xref py py-class docutils literal notranslate"><span class="pre">lookup</span></code></a>.</p></li>
 <li><p>Renamed <code class="xref py py-class docutils literal notranslate"><span class="pre">joinList</span></code> to <a class="reference internal" href="cli/index.html#k1lib.cli.structural.insert" title="k1lib.cli.structural.insert"><code class="xref py py-class docutils literal notranslate"><span class="pre">insert</span></code></a>, cause that’s more intuitive</p></li>
@@ -279,8 +316,8 @@ manipulate mouse/keyboard and screens.</p></li>
 <li><p>Removed redundant <code class="xref py py-class docutils literal notranslate"><span class="pre">toType</span></code> and <code class="xref py py-class docutils literal notranslate"><span class="pre">identity</span></code></p></li>
 </ul>
 </div>
-<div class="section" id="id8">
-<h2><a class="reference external" href="/0.15">0.15</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id10">
+<h2><a class="reference external" href="/0.15">0.15</a><a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
 <p>Generic:</p>
 <ul class="simple">
 <li><p>Added <a class="reference internal" href="base.html#k1lib.UValue" title="k1lib.UValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">UValue</span></code></a>, <a class="reference internal" href="base.html#k1lib.now" title="k1lib.now"><code class="xref py py-meth docutils literal notranslate"><span class="pre">now()</span></code></a></p></li>
@@ -288,7 +325,7 @@ manipulate mouse/keyboard and screens.</p></li>
 <li><p>Added a few mathematical and physics constants in <a class="reference internal" href="imports.html#module-k1lib.imports" title="k1lib.imports"><code class="xref py py-mod docutils literal notranslate"><span class="pre">k1lib.imports</span></code></a></p></li>
 <li><p>Added <code class="xref py py-meth docutils literal notranslate"><span class="pre">selector.ModuleSelector.cutOff()</span></code></p></li>
 <li><p>Renamed <code class="xref py py-meth docutils literal notranslate"><span class="pre">k1lib.integrate()</span></code> to <a class="reference internal" href="base.html#k1lib.integral" title="k1lib.integral"><code class="xref py py-meth docutils literal notranslate"><span class="pre">k1lib.integral()</span></code></a>, to avoid conflict with existing cli</p></li>
-<li><p>Added <a class="reference internal" href="base.html#k1lib.sameStorage" title="k1lib.sameStorage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">sameStorage()</span></code></a></p></li>
+<li><p>Added <code class="xref py py-meth docutils literal notranslate"><span class="pre">sameStorage()</span></code></p></li>
 </ul>
 <p>Cli:</p>
 <ul class="simple">
@@ -298,11 +335,11 @@ manipulate mouse/keyboard and screens.</p></li>
 <li><p>Added <code class="docutils literal notranslate"><span class="pre">mode</span></code> option to <code class="xref py py-class docutils literal notranslate"><span class="pre">toFloat</span></code> and <code class="xref py py-class docutils literal notranslate"><span class="pre">toInt</span></code></p></li>
 <li><p>Accelerated <code class="xref py py-class docutils literal notranslate"><span class="pre">toFloat</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">toInt</span></code>,
 <a class="reference internal" href="cli/index.html#k1lib.cli.structural.batched" title="k1lib.cli.structural.batched"><code class="xref py py-class docutils literal notranslate"><span class="pre">batched</span></code></a> and <a class="reference internal" href="cli/index.html#k1lib.cli.utils.smooth" title="k1lib.cli.utils.smooth"><code class="xref py py-class docutils literal notranslate"><span class="pre">smooth</span></code></a> if it’s a
-<a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.13.0a0+gitb721ea9 ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a> or <code class="xref py py-class docutils literal notranslate"><span class="pre">np.ndarray</span></code></p></li>
+<a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.13.0a0+gitd542aab ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a> or <code class="xref py py-class docutils literal notranslate"><span class="pre">np.ndarray</span></code></p></li>
 </ul>
 </div>
-<div class="section" id="id10">
-<h2><a class="reference external" href="/0.14">0.14</a><a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id12">
+<h2><a class="reference external" href="/0.14">0.14</a><a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
 <p>Generic:</p>
 <ul class="simple">
 <li><p>Added <a class="reference internal" href="callbacks/index.html#k1lib.callbacks.shorts.OnProgress" title="k1lib.callbacks.shorts.OnProgress"><code class="xref py py-class docutils literal notranslate"><span class="pre">OnProgress</span></code></a> callback</p></li>
@@ -325,8 +362,8 @@ perdictable than the last version</p></li>
 <li><p>Added <a class="reference internal" href="cli/index.html#k1lib.cli.structural.window" title="k1lib.cli.structural.window"><code class="xref py py-class docutils literal notranslate"><span class="pre">window</span></code></a>.</p></li>
 </ul>
 </div>
-<div class="section" id="id12">
-<h2><a class="reference external" href="/0.13">0.13</a><a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id14">
+<h2><a class="reference external" href="/0.13">0.13</a><a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h2>
 <p>Generic:</p>
 <ul class="simple">
 <li><p>Added <a class="reference internal" href="base.html#k1lib.pValue" title="k1lib.pValue"><code class="xref py py-meth docutils literal notranslate"><span class="pre">pValue()</span></code></a>.</p></li>
@@ -346,14 +383,14 @@ perdictable than the last version</p></li>
 <li><p>Added multidimensional option to <a class="reference internal" href="cli/index.html#k1lib.cli.structural.joinStreams" title="k1lib.cli.structural.joinStreams"><code class="xref py py-class docutils literal notranslate"><span class="pre">joinStreams</span></code></a>.</p></li>
 <li><p>Added pipe input mode to <a class="reference internal" href="cli/index.html#k1lib.cli.sam.cat" title="k1lib.cli.sam.cat"><code class="xref py py-meth docutils literal notranslate"><span class="pre">sam.cat()</span></code></a>.</p></li>
 <li><p>Added control flow blocking option to <a class="reference internal" href="cli/index.html#k1lib.cli.inp.cmd" title="k1lib.cli.inp.cmd"><code class="xref py py-class docutils literal notranslate"><span class="pre">inp.cmd</span></code></a>.</p></li>
-<li><p>Added <code class="docutils literal notranslate"><span class="pre">unpack</span></code> param to <a class="reference internal" href="cli/index.html#k1lib.cli.modifier.applySerial" title="k1lib.cli.modifier.applySerial"><code class="xref py py-class docutils literal notranslate"><span class="pre">applySerial</span></code></a>.</p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">unpack</span></code> param to <code class="xref py py-class docutils literal notranslate"><span class="pre">applySerial</span></code>.</p></li>
 <li><p>Renamed <code class="xref py py-meth docutils literal notranslate"><span class="pre">structural.splitList()</span></code> to <a class="reference internal" href="cli/index.html#k1lib.cli.structural.splitW" title="k1lib.cli.structural.splitW"><code class="xref py py-meth docutils literal notranslate"><span class="pre">splitW()</span></code></a></p></li>
 <li><p>Added <a class="reference internal" href="cli/index.html#k1lib.cli.modifier.stagger.tv" title="k1lib.cli.modifier.stagger.tv"><code class="xref py py-meth docutils literal notranslate"><span class="pre">modifier.stagger.tv()</span></code></a></p></li>
 <li><p>Replaced <code class="xref py py-meth docutils literal notranslate"><span class="pre">k1lib.smooth()</span></code> with <a class="reference internal" href="cli/index.html#k1lib.cli.utils.smooth" title="k1lib.cli.utils.smooth"><code class="xref py py-meth docutils literal notranslate"><span class="pre">utils.smooth()</span></code></a> with a simpler impl</p></li>
 </ul>
 </div>
-<div class="section" id="id14">
-<h2><a class="reference external" href="/0.12">0.12</a><a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id16">
+<h2><a class="reference external" href="/0.12">0.12</a><a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h2>
 <p>Generic:</p>
 <ul class="simple">
 <li><p>Disallow adding new settings accidentally when using <a class="reference internal" href="base.html#k1lib.Settings.context" title="k1lib.Settings.context"><code class="xref py py-meth docutils literal notranslate"><span class="pre">context()</span></code></a>.</p></li>
@@ -381,8 +418,8 @@ and longer rows below.</p></li>
 bytes mode and option on how to return stdout and stderr.</p></li>
 </ul>
 </div>
-<div class="section" id="id16">
-<h2><a class="reference external" href="/0.11">0.11</a><a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id18">
+<h2><a class="reference external" href="/0.11">0.11</a><a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h2>
 <p>DL:</p>
 <ul class="simple">
 <li><p>Added <a class="reference internal" href="base.html#k1lib.Settings" title="k1lib.Settings"><code class="xref py py-class docutils literal notranslate"><span class="pre">Settings</span></code></a>, and the centralized <a class="reference internal" href="base.html#k1lib.settings" title="k1lib.settings"><code class="xref py py-attr docutils literal notranslate"><span class="pre">settings</span></code></a> for the
@@ -410,8 +447,8 @@ in <a class="reference internal" href="cli/index.html#k1lib.cli.grep.grep" title
 <a class="reference internal" href="cli/index.html#k1lib.cli.inp.ls" title="k1lib.cli.inp.ls"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ls()</span></code></a>.</p></li>
 </ul>
 </div>
-<div class="section" id="id18">
-<h2><a class="reference external" href="/0.10">0.10</a><a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id20">
+<h2><a class="reference external" href="/0.10">0.10</a><a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h2>
 <p>DL:</p>
 <ul class="simple">
 <li><p>Added <code class="xref py py-meth docutils literal notranslate"><span class="pre">nbCells()</span></code>, <a class="reference internal" href="base.html#k1lib.timer" title="k1lib.timer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">timer()</span></code></a></p></li>
@@ -437,8 +474,8 @@ removed <code class="xref py py-class docutils literal notranslate"><span class=
 <code class="xref py py-meth docutils literal notranslate"><span class="pre">applyMpBatched()</span></code>.</p></li>
 </ul>
 </div>
-<div class="section" id="id20">
-<h2><a class="reference external" href="/0.9">0.9</a><a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id22">
+<h2><a class="reference external" href="/0.9">0.9</a><a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h2>
 <p>DL:</p>
 <ul class="simple">
 <li><p>Added <a class="reference internal" href="base.html#k1lib.scaleSvg" title="k1lib.scaleSvg"><code class="xref py py-meth docutils literal notranslate"><span class="pre">scaleSvg()</span></code></a>.</p></li>
@@ -451,7 +488,7 @@ removed <code class="xref py py-class docutils literal notranslate"><span class=
 <li><p>Added alias <a class="reference internal" href="cli/index.html#k1lib.cli.utils.iden" title="k1lib.cli.utils.iden"><code class="xref py py-class docutils literal notranslate"><span class="pre">iden</span></code></a>.</p></li>
 <li><p>Added <a class="reference internal" href="cli/index.html#k1lib.cli.trace.trace" title="k1lib.cli.trace.trace"><code class="xref py py-meth docutils literal notranslate"><span class="pre">trace()</span></code></a> mechanism, with accompanying tutorial.</p></li>
 <li><p>Remove <a class="reference internal" href="cli/index.html#k1lib.cli.utils.shape" title="k1lib.cli.utils.shape"><code class="xref py py-class docutils literal notranslate"><span class="pre">shape</span></code></a>’s tensor special case</p></li>
-<li><p>Added <a class="reference internal" href="cli/index.html#k1lib.cli.modifier.applySerial" title="k1lib.cli.modifier.applySerial"><code class="xref py py-class docutils literal notranslate"><span class="pre">applySerial</span></code></a>.</p></li>
+<li><p>Added <code class="xref py py-class docutils literal notranslate"><span class="pre">applySerial</span></code>.</p></li>
 <li><p>Added <code class="docutils literal notranslate"><span class="pre">inf</span></code> and <code class="docutils literal notranslate"><span class="pre">context</span></code> to <code class="xref py py-attr docutils literal notranslate"><span class="pre">cliSettings</span></code>.</p></li>
 <li><p>Fixed bug where <code class="docutils literal notranslate"><span class="pre">&quot;abc&quot;</span> <span class="pre">|</span> <span class="pre">deref()</span></code> will actually split the string into characters.</p></li>
 <li><p>Terminates pool in <a class="reference internal" href="cli/index.html#k1lib.cli.modifier.applyMp" title="k1lib.cli.modifier.applyMp"><code class="xref py py-class docutils literal notranslate"><span class="pre">applyMp</span></code></a> if is keyboard interrupted, and in
@@ -461,8 +498,8 @@ general made it much more robust.</p></li>
 as <code class="docutils literal notranslate"><span class="pre">filt(op()</span> <span class="pre">==</span> <span class="pre">value)</span></code> does the same thing.</p></li>
 </ul>
 </div>
-<div class="section" id="id22">
-<h2><a class="reference external" href="/0.8">0.8</a><a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id24">
+<h2><a class="reference external" href="/0.8">0.8</a><a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h2>
 <p>DL:</p>
 <ul class="simple">
 <li><p>Exposed <a class="reference internal" href="viz.html#module-k1lib.viz" title="k1lib.viz"><code class="xref py py-mod docutils literal notranslate"><span class="pre">k1lib.viz</span></code></a> automatically, and improve <a class="reference internal" href="viz.html#k1lib.viz.mask" title="k1lib.viz.mask"><code class="xref py py-meth docutils literal notranslate"><span class="pre">mask()</span></code></a> so
@@ -489,8 +526,8 @@ just 2.</p></li>
 does the same thing.</p></li>
 </ul>
 </div>
-<div class="section" id="id24">
-<h2><a class="reference external" href="/0.7">0.7</a><a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id26">
+<h2><a class="reference external" href="/0.7">0.7</a><a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h2>
 <p>DL:</p>
 <ul class="simple">
 <li><p>Added <code class="docutils literal notranslate"><span class="pre">metab</span></code> as extra metadata from dataloaders to <a class="reference internal" href="base.html#k1lib.Learner" title="k1lib.Learner"><code class="xref py py-class docutils literal notranslate"><span class="pre">Learner</span></code></a> in
@@ -531,8 +568,8 @@ too much, and it doesn’t add a lot of useful features.</p></li>
 <li><p>Removed <a class="reference internal" href="cli/index.html#k1lib.cli.structural.table" title="k1lib.cli.structural.table"><code class="xref py py-class docutils literal notranslate"><span class="pre">structural.table</span></code></a>, as <code class="docutils literal notranslate"><span class="pre">op().split().all()</span></code> does the same thing</p></li>
 </ul>
 </div>
-<div class="section" id="id26">
-<h2><a class="reference external" href="/0.6">0.6</a><a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id28">
+<h2><a class="reference external" href="/0.6">0.6</a><a class="headerlink" href="#id28" title="Permalink to this headline">¶</a></h2>
 <p>DL:</p>
 <ul class="simple">
 <li><p>Added <a class="reference internal" href="knn.html#k1lib.knn.LinBlock" title="k1lib.knn.LinBlock"><code class="xref py py-class docutils literal notranslate"><span class="pre">LinBlock</span></code></a>, <a class="reference internal" href="base.html#k1lib.Absorber" title="k1lib.Absorber"><code class="xref py py-class docutils literal notranslate"><span class="pre">Absorber</span></code></a>.</p></li>
@@ -558,7 +595,7 @@ and is much more robust.</p></li>
 <li><p>Removed <code class="xref py py-meth docutils literal notranslate"><span class="pre">copy()</span></code>, as you can just grab another selector
 straight from the model real quick.</p></li>
 <li><p>Removed <code class="xref py py-meth docutils literal notranslate"><span class="pre">parameters()</span></code>, as you can always access the
-associated <a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch vmaster (1.13.0a0+gitb721ea9 ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></a> inside and get params from there.</p></li>
+associated <a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch vmaster (1.13.0a0+gitd542aab ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></a> inside and get params from there.</p></li>
 </ul>
 <p>Cli:</p>
 <ul class="simple">
@@ -566,11 +603,11 @@ associated <a class="reference external" href="https://pytorch.org/docs/master/g
 <li><p>Added multi argument capabilities to <a class="reference internal" href="cli/index.html#k1lib.cli.init.BaseCli.__call__" title="k1lib.cli.init.BaseCli.__call__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__call__()</span></code></a>.</p></li>
 <li><p>Added <a class="reference internal" href="cli/index.html#k1lib.cli.modifier.op" title="k1lib.cli.modifier.op"><code class="xref py py-class docutils literal notranslate"><span class="pre">op</span></code></a>.</p></li>
 <li><p>Changed default param <code class="docutils literal notranslate"><span class="pre">ignoreTensors</span></code> of <a class="reference internal" href="cli/index.html#k1lib.cli.utils.deref" title="k1lib.cli.utils.deref"><code class="xref py py-class docutils literal notranslate"><span class="pre">deref</span></code></a> to True.</p></li>
-<li><p>Ignores <a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch vmaster (1.13.0a0+gitb721ea9 ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></a> by default in <a class="reference internal" href="cli/index.html#k1lib.cli.utils.deref" title="k1lib.cli.utils.deref"><code class="xref py py-class docutils literal notranslate"><span class="pre">deref</span></code></a>.</p></li>
+<li><p>Ignores <a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch vmaster (1.13.0a0+gitd542aab ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></a> by default in <a class="reference internal" href="cli/index.html#k1lib.cli.utils.deref" title="k1lib.cli.utils.deref"><code class="xref py py-class docutils literal notranslate"><span class="pre">deref</span></code></a>.</p></li>
 </ul>
 </div>
-<div class="section" id="id28">
-<h2><a class="reference external" href="/0.5">0.5</a><a class="headerlink" href="#id28" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id30">
+<h2><a class="reference external" href="/0.5">0.5</a><a class="headerlink" href="#id30" title="Permalink to this headline">¶</a></h2>
 <p>DL:</p>
 <ul class="simple">
 <li><p>Renamed <code class="xref py py-mod docutils literal notranslate"><span class="pre">k1lib.format</span></code> to <a class="reference internal" href="fmt.html#module-k1lib.fmt" title="k1lib.fmt"><code class="xref py py-mod docutils literal notranslate"><span class="pre">k1lib.fmt</span></code></a>, and exposed it automatically.</p></li>
@@ -597,8 +634,8 @@ a single job.</p></li>
 <li><p>Removed <code class="xref py py-class docutils literal notranslate"><span class="pre">stitch</span></code>, as <code class="docutils literal notranslate"><span class="pre">to1Str().all()</span></code> does the same thing.</p></li>
 </ul>
 </div>
-<div class="section" id="id30">
-<h2><a class="reference external" href="/0.4">0.4</a><a class="headerlink" href="#id30" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id32">
+<h2><a class="reference external" href="/0.4">0.4</a><a class="headerlink" href="#id32" title="Permalink to this headline">¶</a></h2>
 <p>This update moves things around a lot. The actual coding experience stays the same,
 but a lot of links &lt; 0.4 will be broken in 0.4 docs. Go to 0.3 docs if you wish to
 follow links.</p>
@@ -617,13 +654,13 @@ internal value.</p></li>
 <li><p>Removed <code class="xref py py-class docutils literal notranslate"><span class="pre">CyclicRandomSampler</span></code>, as <code class="docutils literal notranslate"><span class="pre">range(n)</span> <span class="pre">|</span> <span class="pre">repeatFrom()</span> <span class="pre">|</span> <span class="pre">randomize(n)`</span></code>
 does the same thing.</p></li>
 <li><p>Removed <code class="xref py py-class docutils literal notranslate"><span class="pre">FunctionDataset</span></code>, added simpler
-<a class="reference internal" href="kdata.html#k1lib.kdata.FunctionData" title="k1lib.kdata.FunctionData"><code class="xref py py-class docutils literal notranslate"><span class="pre">FunctionData</span></code></a> as replacement.</p></li>
+<code class="xref py py-class docutils literal notranslate"><span class="pre">FunctionData</span></code> as replacement.</p></li>
 <li><p>Removed <code class="xref py py-class docutils literal notranslate"><span class="pre">DataLoader</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Data</span></code> and
 <code class="xref py py-class docutils literal notranslate"><span class="pre">DatasetWithSampler</span></code>, as they’re complex and obsolete.</p></li>
-<li><p>Added <a class="reference internal" href="kdata.html#k1lib.kdata.tfImg" title="k1lib.kdata.tfImg"><code class="xref py py-meth docutils literal notranslate"><span class="pre">tfImg()</span></code></a>, <a class="reference internal" href="kdata.html#k1lib.kdata.tfFloat" title="k1lib.kdata.tfFloat"><code class="xref py py-meth docutils literal notranslate"><span class="pre">tfFloat()</span></code></a>,
-<a class="reference internal" href="kdata.html#k1lib.kdata.analyzeFloat" title="k1lib.kdata.analyzeFloat"><code class="xref py py-meth docutils literal notranslate"><span class="pre">analyzeFloat()</span></code></a></p></li>
-<li><p>Monkey-patched <a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch vmaster (1.13.0a0+gitb721ea9 ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></a> to have piping capabilities.</p></li>
-<li><p>Renamed <code class="xref py py-mod docutils literal notranslate"><span class="pre">k1lib.data</span></code> to <a class="reference internal" href="kdata.html#module-k1lib.kdata" title="k1lib.kdata"><code class="xref py py-mod docutils literal notranslate"><span class="pre">k1lib.kdata</span></code></a>, and exposed it automatically in
+<li><p>Added <code class="xref py py-meth docutils literal notranslate"><span class="pre">tfImg()</span></code>, <code class="xref py py-meth docutils literal notranslate"><span class="pre">tfFloat()</span></code>,
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">analyzeFloat()</span></code></p></li>
+<li><p>Monkey-patched <a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch vmaster (1.13.0a0+gitd542aab ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></a> to have piping capabilities.</p></li>
+<li><p>Renamed <code class="xref py py-mod docutils literal notranslate"><span class="pre">k1lib.data</span></code> to <code class="xref py py-mod docutils literal notranslate"><span class="pre">k1lib.kdata</span></code>, and exposed it automatically in
 <a class="reference internal" href="imports.html#module-k1lib.imports" title="k1lib.imports"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imports</span></code></a>.</p></li>
 <li><p>Renamed <code class="xref py py-mod docutils literal notranslate"><span class="pre">k1lib.nn</span></code> to <a class="reference internal" href="knn.html#module-k1lib.knn" title="k1lib.knn"><code class="xref py py-mod docutils literal notranslate"><span class="pre">k1lib.knn</span></code></a>, and exposed it automatically.</p></li>
 </ul>
@@ -634,15 +671,15 @@ does the same thing.</p></li>
 <li><p>Added <a class="reference internal" href="cli/index.html#k1lib.cli.output.intercept" title="k1lib.cli.output.intercept"><code class="xref py py-class docutils literal notranslate"><span class="pre">intercept</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">toPIL</span></code>.</p></li>
 <li><p>Added PIL conversion mode to <code class="xref py py-class docutils literal notranslate"><span class="pre">utils.toTensor</span></code></p></li>
 <li><p>Added Tensor shape mode in <a class="reference internal" href="cli/index.html#k1lib.cli.utils.shape" title="k1lib.cli.utils.shape"><code class="xref py py-class docutils literal notranslate"><span class="pre">utils.shape</span></code></a>.</p></li>
-<li><p>Added <a class="reference internal" href="cli/index.html#module-k1lib.cli.others" title="k1lib.cli.others"><code class="xref py py-mod docutils literal notranslate"><span class="pre">others</span></code></a> module, with <a class="reference internal" href="cli/index.html#k1lib.cli.others.crissCross" title="k1lib.cli.others.crissCross"><code class="xref py py-meth docutils literal notranslate"><span class="pre">crissCross()</span></code></a></p></li>
+<li><p>Added <code class="xref py py-mod docutils literal notranslate"><span class="pre">others</span></code> module, with <code class="xref py py-meth docutils literal notranslate"><span class="pre">crissCross()</span></code></p></li>
 <li><p>Added Tensor mode to <code class="xref py py-class docutils literal notranslate"><span class="pre">toSum</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">toAvg</span></code>,
 <code class="xref py py-class docutils literal notranslate"><span class="pre">toMin</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">toMax</span></code> and <a class="reference internal" href="cli/index.html#k1lib.cli.init.oneToMany" title="k1lib.cli.init.oneToMany"><code class="xref py py-class docutils literal notranslate"><span class="pre">oneToMany</span></code></a>.</p></li>
 <li><p>Added alias <code class="xref py py-class docutils literal notranslate"><span class="pre">toMean</span></code>.</p></li>
 <li><p>Added dtype choice to <code class="xref py py-class docutils literal notranslate"><span class="pre">toTensor</span></code>.</p></li>
 </ul>
 </div>
-<div class="section" id="id32">
-<h2><a class="reference external" href="/0.3">0.3</a><a class="headerlink" href="#id32" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id34">
+<h2><a class="reference external" href="/0.3">0.3</a><a class="headerlink" href="#id34" title="Permalink to this headline">¶</a></h2>
 <p>Background stuff:</p>
 <ul class="simple">
 <li><p>Added mo tutorial</p></li>
@@ -667,8 +704,8 @@ weird values to 0.</p></li>
 created a new <code class="xref py py-class docutils literal notranslate"><span class="pre">toDict</span></code>.</p></li>
 </ul>
 </div>
-<div class="section" id="id34">
-<h2><a class="reference external" href="/0.2">0.2</a><a class="headerlink" href="#id34" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id36">
+<h2><a class="reference external" href="/0.2">0.2</a><a class="headerlink" href="#id36" title="Permalink to this headline">¶</a></h2>
 <p>Pretty minor update. I just want to push this out as soon as possible</p>
 <p>Background stuff:</p>
 <ul class="simple">
@@ -683,8 +720,8 @@ created a new <code class="xref py py-class docutils literal notranslate"><span 
 <li><p>Replaced <code class="xref py py-class docutils literal notranslate"><span class="pre">nonEmptyStream</span></code> to <code class="xref py py-class docutils literal notranslate"><span class="pre">empty</span></code></p></li>
 </ul>
 </div>
-<div class="section" id="id36">
-<h2><a class="reference external" href="/0.1.13">0.1.13</a><a class="headerlink" href="#id36" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id38">
+<h2><a class="reference external" href="/0.1.13">0.1.13</a><a class="headerlink" href="#id38" title="Permalink to this headline">¶</a></h2>
 <p>Background stuff:</p>
 <ul class="simple">
 <li><p>Removed walrus operator library-wide, so that it can be used with Python &lt; 3.8</p></li>
@@ -705,12 +742,12 @@ created a new <code class="xref py py-class docutils literal notranslate"><span 
 <p>DL:</p>
 <ul class="simple">
 <li><p>Added class <code class="xref py py-class docutils literal notranslate"><span class="pre">CaptureStdout</span></code></p></li>
-<li><p>Patched <a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.13.0a0+gitb721ea9 ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a> with <a class="reference internal" href="monkey.html#torch.Tensor.crissCross" title="torch.Tensor.crissCross"><code class="xref py py-meth docutils literal notranslate"><span class="pre">crissCross()</span></code></a>,
+<li><p>Patched <a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.13.0a0+gitd542aab ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a> with <a class="reference internal" href="monkey.html#torch.Tensor.crissCross" title="torch.Tensor.crissCross"><code class="xref py py-meth docutils literal notranslate"><span class="pre">crissCross()</span></code></a>,
 <a class="reference internal" href="monkey.html#torch.Tensor.histBounds" title="torch.Tensor.histBounds"><code class="xref py py-meth docutils literal notranslate"><span class="pre">histBounds()</span></code></a> and <a class="reference internal" href="monkey.html#torch.Tensor.histScaled" title="torch.Tensor.histScaled"><code class="xref py py-meth docutils literal notranslate"><span class="pre">histScaled()</span></code></a></p></li>
 </ul>
 </div>
-<div class="section" id="id38">
-<h2><a class="reference external" href="/0.1.12">0.1.12</a><a class="headerlink" href="#id38" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id40">
+<h2><a class="reference external" href="/0.1.12">0.1.12</a><a class="headerlink" href="#id40" title="Permalink to this headline">¶</a></h2>
 <p>Background stuff:</p>
 <ul class="simple">
 <li><p>Removed docs’s generated <code class="docutils literal notranslate"><span class="pre">fonts</span></code> folder, as it takes 8MB and isn’t even used. Should now be sustainable for 100 versions on github pages.</p></li>
@@ -742,8 +779,8 @@ created a new <code class="xref py py-class docutils literal notranslate"><span 
 <li><p>Fixed <code class="xref py py-class docutils literal notranslate"><span class="pre">executeNb</span></code>’s <code class="docutils literal notranslate"><span class="pre">_globals</span></code> doc-backref problem. Also clears plot automatically after executing a cell now.</p></li>
 </ul>
 </div>
-<div class="section" id="id40">
-<h2><a class="reference external" href="/0.1.11">0.1.11</a><a class="headerlink" href="#id40" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id42">
+<h2><a class="reference external" href="/0.1.11">0.1.11</a><a class="headerlink" href="#id42" title="Permalink to this headline">¶</a></h2>
 <p>Background stuff:</p>
 <ul class="simple">
 <li><p>Added testing section for unit tests (simple assert statements inside the notebooks)</p></li>
@@ -773,8 +810,8 @@ removed parameter <code class="docutils literal notranslate"><span class="pre">c
 <li><p>Added <a class="reference internal" href="base.html#k1lib.Object" title="k1lib.Object"><code class="xref py py-meth docutils literal notranslate"><span class="pre">k1lib.Object()</span></code></a></p></li>
 </ul>
 </div>
-<div class="section" id="id42">
-<h2><a class="reference external" href="/0.1.10">0.1.10</a><a class="headerlink" href="#id42" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id44">
+<h2><a class="reference external" href="/0.1.10">0.1.10</a><a class="headerlink" href="#id44" title="Permalink to this headline">¶</a></h2>
 <p>Background stuff:</p>
 <ul class="simple">
 <li><p>Added notebook regression tests</p></li>
@@ -801,8 +838,8 @@ and <code class="xref py py-class docutils literal notranslate"><span class="pre
 better now</p></li>
 </ul>
 </div>
-<div class="section" id="id44">
-<h2><a class="reference external" href="/0.1.9">0.1.9</a><a class="headerlink" href="#id44" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id46">
+<h2><a class="reference external" href="/0.1.9">0.1.9</a><a class="headerlink" href="#id46" title="Permalink to this headline">¶</a></h2>
 <p>Bioinfo cli:</p>
 <ul class="simple">
 <li><p>Added <a class="reference internal" href="base.html#k1lib.Domain" title="k1lib.Domain"><code class="xref py py-class docutils literal notranslate"><span class="pre">k1lib.Domain</span></code></a> class</p></li>
@@ -828,8 +865,8 @@ and <a class="reference internal" href="callbacks/index.html#k1lib.callbacks.los
 <a class="reference internal" href="callbacks/index.html#k1lib.callbacks.landscape.Landscape" title="k1lib.callbacks.landscape.Landscape"><code class="xref py py-class docutils literal notranslate"><span class="pre">Landscape</span></code></a></p></li>
 </ul>
 </div>
-<div class="section" id="id46">
-<h2><a class="reference external" href="/0.1.8">0.1.8</a><a class="headerlink" href="#id46" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id48">
+<h2><a class="reference external" href="/0.1.8">0.1.8</a><a class="headerlink" href="#id48" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Fixed installation bug where readme.md would be absent, and setup.py won’t work
 at all.</p></li>
@@ -848,11 +885,11 @@ as “joinRows” is not really obvious</p></li>
 <li><p>Cut out nested functionality from <code class="xref py py-class docutils literal notranslate"><span class="pre">grep</span></code> to <code class="xref py py-class docutils literal notranslate"><span class="pre">grepToTable</span></code></p></li>
 </ul>
 </div>
-<div class="section" id="id48">
-<h2><a class="reference external" href="/0.1.7">0.1.7</a><a class="headerlink" href="#id48" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id50">
+<h2><a class="reference external" href="/0.1.7">0.1.7</a><a class="headerlink" href="#id50" title="Permalink to this headline">¶</a></h2>
 <p>Interface with external modules:</p>
 <ul class="simple">
-<li><p>Swapped out <code class="docutils literal notranslate"><span class="pre">register_backward_hook</span></code> with <a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.Module.html#torch.nn.Module.register_full_backward_hook" title="(in PyTorch vmaster (1.13.0a0+gitb721ea9 ))"><code class="xref py py-meth docutils literal notranslate"><span class="pre">register_full_backward_hook()</span></code></a>
+<li><p>Swapped out <code class="docutils literal notranslate"><span class="pre">register_backward_hook</span></code> with <a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.Module.html#torch.nn.Module.register_full_backward_hook" title="(in PyTorch vmaster (1.13.0a0+gitd542aab ))"><code class="xref py py-meth docutils literal notranslate"><span class="pre">register_full_backward_hook()</span></code></a>
 in <a class="reference internal" href="callbacks/index.html#k1lib.callbacks.hookModule.HookModule" title="k1lib.callbacks.hookModule.HookModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">HookModule</span></code></a> callback</p></li>
 <li><p>Added <code class="docutils literal notranslate"><span class="pre">torch.nn.Module.preserveDevice()</span></code> context manager</p></li>
 </ul>
@@ -898,8 +935,8 @@ to an external callback, so that adapting multiple loss functions are possible</
 <li><p>Removed <a class="reference internal" href="eqn.html#module-k1lib.eqn" title="k1lib.eqn"><code class="xref py py-mod docutils literal notranslate"><span class="pre">k1lib.eqn</span></code></a> from <a class="reference internal" href="imports.html#module-k1lib.imports" title="k1lib.imports"><code class="xref py py-mod docutils literal notranslate"><span class="pre">k1lib.imports</span></code></a>’s namespace</p></li>
 </ul>
 </div>
-<div class="section" id="id49">
-<h2>0.1.6<a class="headerlink" href="#id49" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id51">
+<h2>0.1.6<a class="headerlink" href="#id51" title="Permalink to this headline">¶</a></h2>
 <p>I don’t really keep track of things 0.1.6 and before, so nothing here really.</p>
 </div>
 </div>
@@ -917,7 +954,7 @@ to an external callback, so that adapting multiple loss functions are possible</
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2021, Quang Ho.
+        &#169; Copyright 2022, Quang Ho.
 
     </p>
   </div>

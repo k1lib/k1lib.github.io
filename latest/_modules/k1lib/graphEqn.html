@@ -92,7 +92,6 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../k1a.html">k1lib._k1a module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../k1ui.html">k1lib.k1ui module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../kdata.html">k1lib.kdata module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../eqn.html">k1lib.eqn module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../fmt.html">k1lib.fmt module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../graphEqn.html">k1lib.graphEqn module</a></li>
@@ -101,6 +100,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../knn.html">k1lib.knn module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../schedule.html">k1lib.schedule module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../selector.html">k1lib.selector module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../serve.html">k1lib.serve module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../viz.html">k1lib.viz module</a></li>
 </ul>
 <ul>
@@ -234,7 +234,7 @@
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">_idx</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">variableName</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;V</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">_idx</span><span class="si">}</span><span class="s2">&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">expr</span><span class="p">:</span><span class="n">Expression</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_value</span><span class="p">:</span><span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span> <span class="c1"># not None, then already resolved</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_value</span><span class="p">:</span><span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span> <span class="c1"># if not None, then already resolved</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">isConstant</span> <span class="o">=</span> <span class="kc">False</span> <span class="c1"># to know if the value above is resolved, or is truely a literal number</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">trial</span><span class="p">:</span><span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># current resolve trial number</span>
     <span class="nd">@property</span>
@@ -330,7 +330,7 @@
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2021, Quang Ho.
+        &#169; Copyright 2022, Quang Ho.
 
     </p>
   </div>

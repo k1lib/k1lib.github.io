@@ -92,7 +92,6 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../k1a.html">k1lib._k1a module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../k1ui.html">k1lib.k1ui module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../kdata.html">k1lib.kdata module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../eqn.html">k1lib.eqn module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../fmt.html">k1lib.fmt module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../graphEqn.html">k1lib.graphEqn module</a></li>
@@ -101,6 +100,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../knn.html">k1lib.knn module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../schedule.html">k1lib.schedule module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../selector.html">k1lib.selector module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../serve.html">k1lib.serve module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../viz.html">k1lib.viz module</a></li>
 </ul>
 <ul>
@@ -196,12 +196,14 @@
 <div class="viewcode-block" id="Loss"><a class="viewcode-back" href="../../../callbacks/index.html#k1lib.callbacks.loss_accuracy.Loss">[docs]</a><span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">Cbs</span><span class="p">)</span>
 <span class="k">class</span> <span class="nc">Loss</span><span class="p">(</span><span class="n">Callback</span><span class="p">):</span>
     <span class="s2">&quot; &quot;</span>
-<div class="viewcode-block" id="Loss.__init__"><a class="viewcode-back" href="../../../callbacks/index.html#k1lib.callbacks.loss_accuracy.Loss.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Loss.__init__"><a class="viewcode-back" href="../../../callbacks/index.html#k1lib.callbacks.loss_accuracy.Loss.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="o">=</span><span class="k">lambda</span> <span class="n">l</span><span class="p">:</span> <span class="n">l</span><span class="o">.</span><span class="n">loss</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Records losses after each batch.</span>
 <span class="sd">Expected variables in :class:`~k1lib.Learner`:</span>
 
-<span class="sd">- loss: single float value&quot;&quot;&quot;</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">();</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="sd">- loss: single float value</span>
+
+<span class="sd">:param f: optional function to get the loss from :class:`~k1lib.Learner` object&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">();</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">f</span> <span class="o">=</span> <span class="n">f</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">train</span> <span class="o">=</span> <span class="p">[];</span> <span class="bp">self</span><span class="o">.</span><span class="n">valid</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># all stats all times</span>
         <span class="c1"># average stats for each epoch</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">epoch</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">Object</span><span class="o">.</span><span class="n">fromDict</span><span class="p">({</span><span class="s2">&quot;train&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;valid&quot;</span><span class="p">:</span> <span class="p">[]})</span>\
@@ -214,8 +216,9 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_trainLosses</span> <span class="o">=</span> <span class="p">[];</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validLosses</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_landscape</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">Landscape</span><span class="p">(</span><span class="k">lambda</span> <span class="n">l</span><span class="p">:</span> <span class="n">l</span><span class="o">.</span><span class="n">loss</span><span class="p">,</span> <span class="s2">&quot;_LossLandscape&quot;</span><span class="p">)</span></div>
     <span class="k">def</span> <span class="nf">endLoss</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">training</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_trainLosses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="o">.</span><span class="n">loss</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validLosses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="o">.</span><span class="n">loss</span><span class="p">)</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">training</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_trainLosses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validLosses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">endEpoch</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_trainLosses</span><span class="p">);</span> <span class="bp">self</span><span class="o">.</span><span class="n">epoch</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">nonEmptyList</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_trainLosses</span><span class="p">)))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">valid</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_validLosses</span><span class="p">);</span> <span class="bp">self</span><span class="o">.</span><span class="n">epoch</span><span class="o">.</span><span class="n">valid</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">nonEmptyList</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_validLosses</span><span class="p">)))</span>
@@ -317,7 +320,7 @@
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2021, Quang Ho.
+        &#169; Copyright 2022, Quang Ho.
 
     </p>
   </div>

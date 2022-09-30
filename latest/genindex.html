@@ -92,7 +92,6 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="k1a.html">k1lib._k1a module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="k1ui.html">k1lib.k1ui module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="kdata.html">k1lib.kdata module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="eqn.html">k1lib.eqn module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="fmt.html">k1lib.fmt module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="graphEqn.html">k1lib.graphEqn module</a></li>
@@ -101,6 +100,7 @@
 <li class="toctree-l1"><a class="reference internal" href="knn.html">k1lib.knn module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="schedule.html">k1lib.schedule module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="selector.html">k1lib.selector module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="serve.html">k1lib.serve module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="viz.html">k1lib.viz module</a></li>
 </ul>
 <ul>
@@ -304,19 +304,15 @@
 </li>
         <li><a href="cli/index.html#k1lib.cli.conv.toAvg.__init__">(k1lib.cli.conv.toAvg method)</a>
 </li>
-        <li><a href="cli/index.html#k1lib.cli.conv.toBin.__init__">(k1lib.cli.conv.toBin method)</a>
+        <li><a href="cli/index.html#k1lib.cli.conv.toBytes.__init__">(k1lib.cli.conv.toBytes method)</a>
 </li>
         <li><a href="cli/index.html#k1lib.cli.conv.toDict.__init__">(k1lib.cli.conv.toDict method)</a>
 </li>
-        <li><a href="cli/index.html#k1lib.cli.conv.toDictF.__init__">(k1lib.cli.conv.toDictF method)</a>
-</li>
         <li><a href="cli/index.html#k1lib.cli.conv.toFloat.__init__">(k1lib.cli.conv.toFloat method)</a>
 </li>
-        <li><a href="cli/index.html#k1lib.cli.conv.toIdx.__init__">(k1lib.cli.conv.toIdx method)</a>
+        <li><a href="cli/index.html#k1lib.cli.conv.toGray.__init__">(k1lib.cli.conv.toGray method)</a>
 </li>
         <li><a href="cli/index.html#k1lib.cli.conv.toInt.__init__">(k1lib.cli.conv.toInt method)</a>
-</li>
-        <li><a href="cli/index.html#k1lib.cli.conv.toIter.__init__">(k1lib.cli.conv.toIter method)</a>
 </li>
         <li><a href="cli/index.html#k1lib.cli.conv.toList.__init__">(k1lib.cli.conv.toList method)</a>
 </li>
@@ -333,10 +329,6 @@
         <li><a href="cli/index.html#k1lib.cli.conv.toRgb.__init__">(k1lib.cli.conv.toRgb method)</a>
 </li>
         <li><a href="cli/index.html#k1lib.cli.conv.toRgba.__init__">(k1lib.cli.conv.toRgba method)</a>
-</li>
-        <li><a href="cli/index.html#k1lib.cli.conv.toSet.__init__">(k1lib.cli.conv.toSet method)</a>
-</li>
-        <li><a href="cli/index.html#k1lib.cli.conv.toStr.__init__">(k1lib.cli.conv.toStr method)</a>
 </li>
         <li><a href="cli/index.html#k1lib.cli.conv.toSum.__init__">(k1lib.cli.conv.toSum method)</a>
 </li>
@@ -392,8 +384,6 @@
 </li>
         <li><a href="cli/index.html#k1lib.cli.modifier.applyS.__init__">(k1lib.cli.modifier.applyS method)</a>
 </li>
-        <li><a href="cli/index.html#k1lib.cli.modifier.applySerial.__init__">(k1lib.cli.modifier.applySerial method)</a>
-</li>
         <li><a href="cli/index.html#k1lib.cli.modifier.applyTh.__init__">(k1lib.cli.modifier.applyTh method)</a>
 </li>
         <li><a href="cli/index.html#k1lib.cli.modifier.consume.__init__">(k1lib.cli.modifier.consume method)</a>
@@ -417,6 +407,8 @@
         <li><a href="cli/index.html#k1lib.cli.output.file.__init__">(k1lib.cli.output.file method)</a>
 </li>
         <li><a href="cli/index.html#k1lib.cli.output.intercept.__init__">(k1lib.cli.output.intercept method)</a>
+</li>
+        <li><a href="cli/index.html#k1lib.cli.output.plotImgs.__init__">(k1lib.cli.output.plotImgs method)</a>
 </li>
         <li><a href="cli/index.html#k1lib.cli.output.pretty.__init__">(k1lib.cli.output.pretty method)</a>
 </li>
@@ -444,6 +436,8 @@
 </li>
         <li><a href="cli/index.html#k1lib.cli.structural.groupBy.__init__">(k1lib.cli.structural.groupBy method)</a>
 </li>
+        <li><a href="cli/index.html#k1lib.cli.structural.indexTable.__init__">(k1lib.cli.structural.indexTable method)</a>
+</li>
         <li><a href="cli/index.html#k1lib.cli.structural.insert.__init__">(k1lib.cli.structural.insert method)</a>
 </li>
         <li><a href="cli/index.html#k1lib.cli.structural.insertColumn.__init__">(k1lib.cli.structural.insertColumn method)</a>
@@ -465,6 +459,8 @@
         <li><a href="cli/index.html#k1lib.cli.structural.repeatFrom.__init__">(k1lib.cli.structural.repeatFrom method)</a>
 </li>
         <li><a href="cli/index.html#k1lib.cli.structural.reshape.__init__">(k1lib.cli.structural.reshape method)</a>
+</li>
+        <li><a href="cli/index.html#k1lib.cli.structural.splitC.__init__">(k1lib.cli.structural.splitC method)</a>
 </li>
         <li><a href="cli/index.html#k1lib.cli.structural.splitW.__init__">(k1lib.cli.structural.splitW method)</a>
 </li>
@@ -548,6 +544,16 @@
 </li>
         <li><a href="schedule.html#k1lib.schedule.Fn.__init__">(k1lib.schedule.Fn method)</a>
 </li>
+        <li><a href="serve.html#k1lib.serve.main.BuildPythonFile.__init__">(k1lib.serve.main.BuildPythonFile method)</a>
+</li>
+        <li><a href="serve.html#k1lib.serve.main.FromNotebook.__init__">(k1lib.serve.main.FromNotebook method)</a>
+</li>
+        <li><a href="serve.html#k1lib.serve.main.FromPythonFile.__init__">(k1lib.serve.main.FromPythonFile method)</a>
+</li>
+        <li><a href="serve.html#k1lib.serve.main.GenerateHtml.__init__">(k1lib.serve.main.GenerateHtml method)</a>
+</li>
+        <li><a href="serve.html#k1lib.serve.main.StartServer.__init__">(k1lib.serve.main.StartServer method)</a>
+</li>
         <li><a href="base.html#k1lib.Settings.__init__">(k1lib.Settings method)</a>
 </li>
         <li><a href="base.html#k1lib.UValue.__init__">(k1lib.UValue method)</a>
@@ -577,8 +583,6 @@
         <li><a href="cli/index.html#k1lib.cli.modifier.apply.__invert__">(k1lib.cli.modifier.apply method)</a>
 </li>
         <li><a href="cli/index.html#k1lib.cli.modifier.applyS.__invert__">(k1lib.cli.modifier.applyS method)</a>
-</li>
-        <li><a href="cli/index.html#k1lib.cli.modifier.applySerial.__invert__">(k1lib.cli.modifier.applySerial method)</a>
 </li>
         <li><a href="cli/index.html#k1lib.cli.modifier.sort.__invert__">(k1lib.cli.modifier.sort method)</a>
 </li>
@@ -626,19 +630,15 @@
 </li>
         <li><a href="cli/index.html#k1lib.cli.conv.toAvg.__ror__">(k1lib.cli.conv.toAvg method)</a>
 </li>
-        <li><a href="cli/index.html#k1lib.cli.conv.toBin.__ror__">(k1lib.cli.conv.toBin method)</a>
+        <li><a href="cli/index.html#k1lib.cli.conv.toBytes.__ror__">(k1lib.cli.conv.toBytes method)</a>
 </li>
         <li><a href="cli/index.html#k1lib.cli.conv.toDict.__ror__">(k1lib.cli.conv.toDict method)</a>
 </li>
-        <li><a href="cli/index.html#k1lib.cli.conv.toDictF.__ror__">(k1lib.cli.conv.toDictF method)</a>
-</li>
         <li><a href="cli/index.html#k1lib.cli.conv.toFloat.__ror__">(k1lib.cli.conv.toFloat method)</a>
 </li>
-        <li><a href="cli/index.html#k1lib.cli.conv.toIdx.__ror__">(k1lib.cli.conv.toIdx method)</a>
+        <li><a href="cli/index.html#k1lib.cli.conv.toGray.__ror__">(k1lib.cli.conv.toGray method)</a>
 </li>
         <li><a href="cli/index.html#k1lib.cli.conv.toInt.__ror__">(k1lib.cli.conv.toInt method)</a>
-</li>
-        <li><a href="cli/index.html#k1lib.cli.conv.toIter.__ror__">(k1lib.cli.conv.toIter method)</a>
 </li>
         <li><a href="cli/index.html#k1lib.cli.conv.toList.__ror__">(k1lib.cli.conv.toList method)</a>
 </li>
@@ -655,10 +655,6 @@
         <li><a href="cli/index.html#k1lib.cli.conv.toRgb.__ror__">(k1lib.cli.conv.toRgb method)</a>
 </li>
         <li><a href="cli/index.html#k1lib.cli.conv.toRgba.__ror__">(k1lib.cli.conv.toRgba method)</a>
-</li>
-        <li><a href="cli/index.html#k1lib.cli.conv.toSet.__ror__">(k1lib.cli.conv.toSet method)</a>
-</li>
-        <li><a href="cli/index.html#k1lib.cli.conv.toStr.__ror__">(k1lib.cli.conv.toStr method)</a>
 </li>
         <li><a href="cli/index.html#k1lib.cli.conv.toSum.__ror__">(k1lib.cli.conv.toSum method)</a>
 </li>
@@ -720,8 +716,6 @@
 </li>
         <li><a href="cli/index.html#k1lib.cli.modifier.applyS.__ror__">(k1lib.cli.modifier.applyS method)</a>
 </li>
-        <li><a href="cli/index.html#k1lib.cli.modifier.applySerial.__ror__">(k1lib.cli.modifier.applySerial method)</a>
-</li>
         <li><a href="cli/index.html#k1lib.cli.modifier.applyTh.__ror__">(k1lib.cli.modifier.applyTh method)</a>
 </li>
         <li><a href="cli/index.html#k1lib.cli.modifier.consume.__ror__">(k1lib.cli.modifier.consume method)</a>
@@ -746,6 +740,8 @@
 </li>
         <li><a href="cli/index.html#k1lib.cli.output.intercept.__ror__">(k1lib.cli.output.intercept method)</a>
 </li>
+        <li><a href="cli/index.html#k1lib.cli.output.plotImgs.__ror__">(k1lib.cli.output.plotImgs method)</a>
+</li>
         <li><a href="cli/index.html#k1lib.cli.output.pretty.__ror__">(k1lib.cli.output.pretty method)</a>
 </li>
         <li><a href="cli/index.html#k1lib.cli.output.split.__ror__">(k1lib.cli.output.split method)</a>
@@ -768,6 +764,8 @@
 </li>
         <li><a href="cli/index.html#k1lib.cli.structural.groupBy.__ror__">(k1lib.cli.structural.groupBy method)</a>
 </li>
+        <li><a href="cli/index.html#k1lib.cli.structural.indexTable.__ror__">(k1lib.cli.structural.indexTable method)</a>
+</li>
         <li><a href="cli/index.html#k1lib.cli.structural.insert.__ror__">(k1lib.cli.structural.insert method)</a>
 </li>
         <li><a href="cli/index.html#k1lib.cli.structural.insertColumn.__ror__">(k1lib.cli.structural.insertColumn method)</a>
@@ -789,6 +787,8 @@
         <li><a href="cli/index.html#k1lib.cli.structural.repeatFrom.__ror__">(k1lib.cli.structural.repeatFrom method)</a>
 </li>
         <li><a href="cli/index.html#k1lib.cli.structural.reshape.__ror__">(k1lib.cli.structural.reshape method)</a>
+</li>
+        <li><a href="cli/index.html#k1lib.cli.structural.splitC.__ror__">(k1lib.cli.structural.splitC method)</a>
 </li>
         <li><a href="cli/index.html#k1lib.cli.structural.splitW.__ror__">(k1lib.cli.structural.splitW method)</a>
 </li>
@@ -883,11 +883,9 @@
 </li>
       <li><a href="mo.html#k1lib.mo.alkane">alkane() (in module k1lib.mo)</a>
 </li>
-      <li><a href="cli/index.html#k1lib.cli.init.BaseCli.all">all() (k1lib.cli.init.BaseCli method)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="kdata.html#k1lib.kdata.analyzeFloat">analyzeFloat() (in module k1lib.kdata)</a>
+      <li><a href="cli/index.html#k1lib.cli.init.BaseCli.all">all() (k1lib.cli.init.BaseCli method)</a>
 </li>
       <li><a href="mo.html#k1lib.mo.System.animate">animate() (k1lib.mo.System method)</a>
 
@@ -904,8 +902,6 @@
       <li><a href="cli/index.html#k1lib.cli.modifier.applyMp">applyMp (class in k1lib.cli.modifier)</a>
 </li>
       <li><a href="cli/index.html#k1lib.cli.modifier.applyS">applyS (class in k1lib.cli.modifier)</a>
-</li>
-      <li><a href="cli/index.html#k1lib.cli.modifier.applySerial">applySerial (class in k1lib.cli.modifier)</a>
 </li>
       <li><a href="cli/index.html#k1lib.cli.modifier.applyTh">applyTh (class in k1lib.cli.modifier)</a>
 </li>
@@ -953,10 +949,10 @@
 </li>
       <li><a href="cli/index.html#k1lib.cli.utils.bindec">bindec (class in k1lib.cli.utils)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="cli/index.html#k1lib.cli.bio.idx.blast">blast() (k1lib.cli.bio.idx static method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="fmt.html#k1lib.fmt.txt.blue">blue() (k1lib.fmt.txt static method)</a>
 </li>
       <li><a href="fmt.html#k1lib.fmt.txt.bold">bold() (k1lib.fmt.txt static method)</a>
@@ -970,6 +966,10 @@
       <li><a href="base.html#k1lib.UValue.bounds">bounds() (k1lib.UValue method)</a>
 </li>
       <li><a href="cli/index.html#k1lib.cli.filt.breakIf">breakIf (class in k1lib.cli.filt)</a>
+</li>
+      <li><a href="serve.html#k1lib.serve.main.BuildPythonFile">BuildPythonFile (class in k1lib.serve.main)</a>
+</li>
+      <li><a href="serve.html#k1lib.serve.main.BuildPythonFile.buildPythonFile">buildPythonFile() (k1lib.serve.main.BuildPythonFile method)</a>
 </li>
       <li><a href="cli/index.html#k1lib.cli.bio.idx.bwa">bwa() (k1lib.cli.bio.idx static method)</a>
 </li>
@@ -1061,8 +1061,6 @@
       </ul></li>
       <li><a href="callbacks/index.html#k1lib.callbacks.hookModule.HookModule.clearHooks">clearHooks() (k1lib.callbacks.hookModule.HookModule method)</a>
 </li>
-      <li><a href="base.html#k1lib.clearLine">clearLine() (in module k1lib)</a>
-</li>
       <li><a href="monkey.html#torch.Tensor.clearNan">clearNan() (torch.Tensor method)</a>
 </li>
       <li><a href="cli/index.html#k1lib.cli.typehint.tOpt.clearPasses">clearPasses() (k1lib.cli.typehint.tOpt static method)</a>
@@ -1075,13 +1073,13 @@
 </li>
       <li><a href="cli/index.html#k1lib.cli.utils.clipboard">clipboard (class in k1lib.cli.utils)</a>
 </li>
-      <li><a href="base.html#k1lib.close">close() (in module k1lib)</a>
-</li>
       <li><a href="cli/index.html#k1lib.cli.inp.cmd">cmd (class in k1lib.cli.inp)</a>
 </li>
       <li><a href="cli/index.html#k1lib.cli.filt.columns">columns (class in k1lib.cli.filt)</a>
 </li>
       <li><a href="base.html#k1lib.UValue.combine">combine() (k1lib.UValue static method)</a>
+</li>
+      <li><a href="serve.html#k1lib.serve.main.commonCbs">commonCbs() (in module k1lib.serve.main)</a>
 </li>
       <li><a href="fmt.html#k1lib.fmt.comp">comp() (in module k1lib.fmt)</a>
 </li>
@@ -1127,12 +1125,8 @@
 </li>
       <li><a href="cli/index.html#k1lib.cli.output.tee.cr">cr() (k1lib.cli.output.tee method)</a>
 </li>
-      <li><a href="cli/index.html#k1lib.cli.others.crissCross">crissCross() (in module k1lib.cli.others)</a>
-
-      <ul>
-        <li><a href="monkey.html#torch.Tensor.crissCross">(torch.Tensor method)</a>
+      <li><a href="monkey.html#torch.Tensor.crissCross">crissCross() (torch.Tensor method)</a>
 </li>
-      </ul></li>
       <li><a href="cli/index.html#k1lib.cli.output.tee.crt">crt() (k1lib.cli.output.tee method)</a>
 </li>
       <li><a href="callbacks/index.html#k1lib.callbacks.hookModule.HookModule.css">css() (k1lib.callbacks.hookModule.HookModule method)</a>
@@ -1266,11 +1260,7 @@
       <li><a href="cli/index.html#k1lib.cli.nb.execute">execute (class in k1lib.cli.nb)</a>
 </li>
       <li><a href="schedule.html#k1lib.schedule.exp">exp() (in module k1lib.schedule)</a>
-
-      <ul>
-        <li><a href="kdata.html#k1lib.kdata.FunctionData.exp">(k1lib.kdata.FunctionData static method)</a>
 </li>
-      </ul></li>
       <li><a href="cli/index.html#k1lib.cli.typehint.tBase.expand">expand() (k1lib.cli.typehint.tBase method)</a>
 
       <ul>
@@ -1307,6 +1297,12 @@
 </li>
       <li><a href="cli/index.html#k1lib.cli.gb.feats">feats (class in k1lib.cli.gb)</a>
 </li>
+      <li><a href="serve.html#k1lib.serve.main.FromNotebook.fetchSource">fetchSource() (k1lib.serve.main.FromNotebook method)</a>
+
+      <ul>
+        <li><a href="serve.html#k1lib.serve.main.FromPythonFile.fetchSource">(k1lib.serve.main.FromPythonFile method)</a>
+</li>
+      </ul></li>
       <li><a href="cli/index.html#k1lib.cli.output.file">file (class in k1lib.cli.output)</a>
 </li>
       <li><a href="cli/index.html#k1lib.cli.structural.transpose.fill">fill() (k1lib.cli.structural.transpose static method)</a>
@@ -1317,10 +1313,10 @@
 </li>
       <li><a href="base.html#k1lib.Range.fixOrder">fixOrder() (k1lib.Range method)</a>
 </li>
-      <li><a href="cli/index.html#k1lib.cli.sam.flag">flag (class in k1lib.cli.sam)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="cli/index.html#k1lib.cli.sam.flag">flag (class in k1lib.cli.sam)</a>
+</li>
       <li><a href="schedule.html#k1lib.schedule.Fn">Fn (class in k1lib.schedule)</a>
 </li>
       <li><a href="knn.html#k1lib.knn.Lambda.forward">forward() (k1lib.knn.Lambda method)</a>
@@ -1339,13 +1335,15 @@
 </li>
       <li><a href="base.html#k1lib.Domain.fromInts">fromInts() (k1lib.Domain static method)</a>
 </li>
+      <li><a href="serve.html#k1lib.serve.main.FromNotebook">FromNotebook (class in k1lib.serve.main)</a>
+</li>
+      <li><a href="serve.html#k1lib.serve.main.FromPythonFile">FromPythonFile (class in k1lib.serve.main)</a>
+</li>
       <li><a href="base.html#k1lib.Range.fromRange">fromRange() (k1lib.Range method)</a>
 </li>
       <li><a href="base.html#k1lib.UValue.fromSeries">fromSeries() (k1lib.UValue static method)</a>
 </li>
       <li><a href="base.html#k1lib.Range.fromUnit">fromUnit() (k1lib.Range method)</a>
-</li>
-      <li><a href="kdata.html#k1lib.kdata.FunctionData">FunctionData (class in k1lib.kdata)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -1353,6 +1351,10 @@
 <h2 id="G">G</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="serve.html#k1lib.serve.main.GenerateHtml">GenerateHtml (class in k1lib.serve.main)</a>
+</li>
+      <li><a href="serve.html#k1lib.serve.main.GenerateHtml.generateHtml">generateHtml() (k1lib.serve.main.GenerateHtml method)</a>
+</li>
       <li><a href="fmt.html#k1lib.fmt.generic">generic() (in module k1lib.fmt)</a>
 </li>
       <li><a href="monkey.html#torch.nn.modules.Module.getParamsVector">getParamsVector() (torch.nn.modules.Module method)</a>
@@ -1363,10 +1365,10 @@
 </li>
       <li><a href="monkey.html#torch.nn.modules.Module.gradContext">gradContext() (torch.nn.modules.Module method)</a>
 </li>
-      <li><a href="callbacks/index.html#k1lib.callbacks.limits.GradientClipping">GradientClipping (class in k1lib.callbacks.limits)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="callbacks/index.html#k1lib.callbacks.limits.GradientClipping">GradientClipping (class in k1lib.callbacks.limits)</a>
+</li>
       <li><a href="callbacks/index.html#k1lib.callbacks.limits.GradientClippingNorm">GradientClippingNorm (class in k1lib.callbacks.limits)</a>
 </li>
       <li><a href="base.html#k1lib.graph">graph() (in module k1lib)</a>
@@ -1449,6 +1451,8 @@
 </li>
       <li><a href="cli/index.html#k1lib.cli.utils.indent">indent() (in module k1lib.cli.utils)</a>
 </li>
+      <li><a href="cli/index.html#k1lib.cli.structural.indexTable">indexTable (class in k1lib.cli.structural)</a>
+</li>
       <li><a href="cli/index.html#k1lib.cli.typehint.inferType">inferType() (in module k1lib.cli.typehint)</a>
 </li>
       <li><a href="cli/index.html#k1lib.cli.structural.insert">insert (class in k1lib.cli.structural)</a>
@@ -1467,13 +1471,15 @@
 </li>
       <li><a href="cli/index.html#k1lib.cli.filt.instanceOf">instanceOf() (in module k1lib.cli.filt)</a>
 </li>
-      <li><a href="base.html#k1lib.integral">integral() (in module k1lib)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="base.html#k1lib.integral">integral() (in module k1lib)</a>
+</li>
       <li><a href="cli/index.html#k1lib.cli.modifier.integrate">integrate (class in k1lib.cli.modifier)</a>
 </li>
       <li><a href="cli/index.html#k1lib.cli.output.intercept">intercept (class in k1lib.cli.output)</a>
+</li>
+      <li><a href="selector.html#k1lib.selector.ModuleSelector.intercept">intercept() (k1lib.selector.ModuleSelector method)</a>
 </li>
       <li><a href="cli/index.html#k1lib.cli.filt.intersection">intersection (class in k1lib.cli.filt)</a>
 </li>
@@ -1484,11 +1490,7 @@
 </li>
       </ul></li>
       <li><a href="base.html#k1lib.inverse">inverse() (in module k1lib)</a>
-
-      <ul>
-        <li><a href="kdata.html#k1lib.kdata.FunctionData.inverse">(k1lib.kdata.FunctionData static method)</a>
 </li>
-      </ul></li>
       <li><a href="callbacks/index.html#k1lib.callbacks.profiler.Profiler.io">io() (k1lib.callbacks.profiler.Profiler property)</a>
 </li>
       <li><a href="callbacks/profilers.html#k1lib.callbacks.profilers.io.IOProfiler">IOProfiler (class in k1lib.callbacks.profilers.io)</a>
@@ -1826,13 +1828,6 @@
 </li>
       </ul></li>
       <li>
-    k1lib.cli.others
-
-      <ul>
-        <li><a href="cli/index.html#module-k1lib.cli.others">module</a>
-</li>
-      </ul></li>
-      <li>
     k1lib.cli.output
 
       <ul>
@@ -1910,13 +1905,6 @@
 </li>
       </ul></li>
       <li>
-    k1lib.kdata
-
-      <ul>
-        <li><a href="kdata.html#module-k1lib.kdata">module</a>
-</li>
-      </ul></li>
-      <li>
     k1lib.knn
 
       <ul>
@@ -1942,6 +1930,13 @@
 
       <ul>
         <li><a href="selector.html#module-k1lib.selector">module</a>
+</li>
+      </ul></li>
+      <li>
+    k1lib.serve.main
+
+      <ul>
+        <li><a href="serve.html#module-k1lib.serve.main">module</a>
 </li>
       </ul></li>
       <li>
@@ -1983,19 +1978,13 @@
 </li>
       <li><a href="knn.html#k1lib.knn.LinBlock">LinBlock (class in k1lib.knn)</a>
 </li>
-      <li><a href="monkey.html#mpl_toolkits.mplot3d.axes3d.Axes3D.line">line() (mpl_toolkits.mplot3d.axes3d.Axes3D method)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="monkey.html#mpl_toolkits.mplot3d.axes3d.Axes3D.line">line() (mpl_toolkits.mplot3d.axes3d.Axes3D method)</a>
+</li>
       <li><a href="schedule.html#k1lib.schedule.linear">linear() (in module k1lib.schedule)</a>
-
-      <ul>
-        <li><a href="kdata.html#k1lib.kdata.FunctionData.linear">(k1lib.kdata.FunctionData static method)</a>
 </li>
-      </ul></li>
       <li><a href="base.html#k1lib.Learner.load">load() (k1lib.Learner static method)</a>
-</li>
-      <li><a href="kdata.html#k1lib.kdata.FunctionData.log">log() (k1lib.kdata.FunctionData static method)</a>
 </li>
       <li><a href="monkey.html#k1lib._monkey.torch.loglinspace">loglinspace() (k1lib._monkey.torch method)</a>
 </li>
@@ -2021,12 +2010,8 @@
 <h2 id="M">M</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="kdata.html#k1lib.kdata.FunctionData.main">main() (k1lib.kdata.FunctionData static method)</a>
-
-      <ul>
-        <li><a href="mo.html#k1lib.mo.Atom.main">(k1lib.mo.Atom method)</a>
+      <li><a href="mo.html#k1lib.mo.Atom.main">main() (k1lib.mo.Atom method)</a>
 </li>
-      </ul></li>
       <li><a href="monkey.html#mpl_toolkits.mplot3d.axes3d.Axes3D.march">march() (mpl_toolkits.mplot3d.axes3d.Axes3D method)</a>
 </li>
       <li><a href="cli/index.html#k1lib.cli.filt.mask">mask (class in k1lib.cli.filt)</a>
@@ -2139,8 +2124,6 @@
 </li>
         <li><a href="cli/index.html#module-k1lib.cli.optimizations">k1lib.cli.optimizations</a>
 </li>
-        <li><a href="cli/index.html#module-k1lib.cli.others">k1lib.cli.others</a>
-</li>
         <li><a href="cli/index.html#module-k1lib.cli.output">k1lib.cli.output</a>
 </li>
         <li><a href="cli/index.html#module-k1lib.cli.sam">k1lib.cli.sam</a>
@@ -2163,8 +2146,6 @@
 </li>
         <li><a href="k1ui.html#module-k1lib.k1ui">k1lib.k1ui</a>
 </li>
-        <li><a href="kdata.html#module-k1lib.kdata">k1lib.kdata</a>
-</li>
         <li><a href="knn.html#module-k1lib.knn">k1lib.knn</a>
 </li>
         <li><a href="mo.html#module-k1lib.mo">k1lib.mo</a>
@@ -2172,6 +2153,8 @@
         <li><a href="schedule.html#module-k1lib.schedule">k1lib.schedule</a>
 </li>
         <li><a href="selector.html#module-k1lib.selector">k1lib.selector</a>
+</li>
+        <li><a href="serve.html#module-k1lib.serve.main">k1lib.serve.main</a>
 </li>
         <li><a href="viz.html#module-k1lib.viz">k1lib.viz</a>
 </li>
@@ -2236,18 +2219,16 @@
 </li>
       <li><a href="mo.html#k1lib.mo.OctetFull">OctetFull</a>
 </li>
-      <li><a href="imports.html#k1lib.imports.oldOr">oldOr() (in module k1lib.imports)</a>
-</li>
       <li><a href="cli/index.html#k1lib.cli.structural.oneHot">oneHot (class in k1lib.cli.structural)</a>
 </li>
       <li><a href="cli/index.html#k1lib.cli.init.oneToMany">oneToMany (class in k1lib.cli.init)</a>
 </li>
       <li><a href="callbacks/index.html#k1lib.callbacks.shorts.OnProgress">OnProgress (class in k1lib.callbacks.shorts)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="cli/index.html#k1lib.cli.modifier.op">op (class in k1lib.cli.modifier)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="cli/index.html#k1lib.cli.modifier.op.op_hint">op_hint() (k1lib.cli.modifier.op method)</a>
 </li>
       <li><a href="base.html#k1lib.Learner.opt">opt() (k1lib.Learner property)</a>
@@ -2320,6 +2301,8 @@
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="cli/index.html#k1lib.cli.output.plotImgs">plotImgs (class in k1lib.cli.output)</a>
+</li>
       <li><a href="viz.html#k1lib.viz.plotSegments">plotSegments() (in module k1lib.viz)</a>
 </li>
       <li><a href="monkey.html#mpl_toolkits.mplot3d.axes3d.Axes3D.point">point() (mpl_toolkits.mplot3d.axes3d.Axes3D method)</a>
@@ -2351,6 +2334,8 @@
       <li><a href="selector.html#k1lib.selector.ModuleSelector.props">props (k1lib.selector.ModuleSelector attribute)</a>
 </li>
       <li><a href="fmt.html#k1lib.fmt.txt.purple">purple() (k1lib.fmt.txt static method)</a>
+</li>
+      <li><a href="base.html#k1lib.pushNotification">pushNotification() (in module k1lib)</a>
 </li>
       <li><a href="base.html#k1lib.pValue">pValue() (in module k1lib)</a>
 </li>
@@ -2384,6 +2369,8 @@
 </li>
       <li><a href="callbacks/index.html#k1lib.callbacks.recorder.Recorder">Recorder (class in k1lib.callbacks.recorder)</a>
 </li>
+      <li><a href="cli/index.html#k1lib.cli.cif.records">records() (in module k1lib.cli.cif)</a>
+</li>
       <li><a href="fmt.html#k1lib.fmt.txt.red">red() (k1lib.fmt.txt static method)</a>
 </li>
       <li><a href="cli/index.html#k1lib.cli.typehint.tCollection.reduce">reduce() (k1lib.cli.typehint.tCollection method)</a>
@@ -2396,10 +2383,10 @@
 </li>
       <li><a href="cli/index.html#k1lib.cli.structural.repeat">repeat (class in k1lib.cli.structural)</a>
 </li>
-      <li><a href="cli/index.html#k1lib.cli.structural.repeatF">repeatF() (in module k1lib.cli.structural)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="cli/index.html#k1lib.cli.structural.repeatF">repeatF() (in module k1lib.cli.structural)</a>
+</li>
       <li><a href="cli/index.html#k1lib.cli.structural.repeatFrom">repeatFrom (class in k1lib.cli.structural)</a>
 </li>
       <li><a href="cli/index.html#k1lib.cli.inp.requireCli">requireCli() (in module k1lib.cli.inp)</a>
@@ -2442,7 +2429,7 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="mo.html#k1lib.mo.sameEmpirical">sameEmpirical() (in module k1lib.mo)</a>
 </li>
-      <li><a href="base.html#k1lib.sameStorage">sameStorage() (in module k1lib)</a>
+      <li><a href="monkey.html#k1lib._monkey.torch.sameStorage">sameStorage() (k1lib._monkey.torch method)</a>
 </li>
       <li><a href="base.html#k1lib.Learner.sample">sample() (k1lib.Learner static method)</a>
 
@@ -2480,6 +2467,8 @@
       </ul></li>
       <li><a href="cli/index.html#k1lib.cli.init.serial">serial (class in k1lib.cli.init)</a>
 </li>
+      <li><a href="serve.html#k1lib.serve.main.serve">serve() (in module k1lib.serve.main)</a>
+</li>
       <li><a href="base.html#k1lib.Settings">Settings (class in k1lib)</a>
 </li>
       <li><a href="base.html#k1lib.settings">settings (k1lib attribute)</a>
@@ -2494,20 +2483,18 @@
 </li>
       <li><a href="mo.html#k1lib.mo.System.simulate">simulate() (k1lib.mo.System method)</a>
 </li>
-      <li><a href="kdata.html#k1lib.kdata.FunctionData.sin">sin() (k1lib.kdata.FunctionData static method)</a>
-</li>
       <li><a href="cli/index.html#k1lib.cli.utils.size">size (class in k1lib.cli.utils)</a>
 </li>
       <li><a href="fmt.html#k1lib.fmt.size">size() (in module k1lib.fmt)</a>
 </li>
       <li><a href="fmt.html#k1lib.fmt.sizeOf">sizeOf() (in module k1lib.fmt)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="base.html#k1lib.Range.slice_">slice_() (k1lib.Range property)</a>
 </li>
       <li><a href="viz.html#k1lib.viz.SliceablePlot">SliceablePlot (class in k1lib.viz)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="cli/index.html#k1lib.cli.utils.smooth">smooth (class in k1lib.cli.utils)</a>
 </li>
       <li><a href="schedule.html#k1lib.schedule.smooth">smooth() (in module k1lib.schedule)</a>
@@ -2522,6 +2509,10 @@
 </li>
       <li><a href="cli/index.html#k1lib.cli.output.split">split (class in k1lib.cli.output)</a>
 </li>
+      <li><a href="cli/index.html#k1lib.cli.structural.splitC">splitC (class in k1lib.cli.structural)</a>
+</li>
+      <li><a href="monkey.html#builtins.str.splitCamel">splitCamel() (builtins.str method)</a>
+</li>
       <li><a href="cli/index.html#k1lib.cli.structural.splitW">splitW (class in k1lib.cli.structural)</a>
 </li>
       <li><a href="base.html#k1lib.squeeze">squeeze() (in module k1lib)</a>
@@ -2531,6 +2522,10 @@
       <li><a href="schedule.html#k1lib.schedule.ParamScheduler.startBatch">startBatch() (k1lib.schedule.ParamScheduler method)</a>
 </li>
       <li><a href="schedule.html#k1lib.schedule.ParamScheduler.startRun">startRun() (k1lib.schedule.ParamScheduler method)</a>
+</li>
+      <li><a href="serve.html#k1lib.serve.main.StartServer">StartServer (class in k1lib.serve.main)</a>
+</li>
+      <li><a href="serve.html#k1lib.serve.main.StartServer.startServer">startServer() (k1lib.serve.main.StartServer method)</a>
 </li>
       <li><a href="callbacks/index.html#k1lib.callbacks.callbacks.Timings.state">state() (k1lib.callbacks.callbacks.Timings property)</a>
 
@@ -2600,11 +2595,7 @@
 </li>
       <li><a href="cli/index.html#k1lib.cli.typehint.tExpand">tExpand (class in k1lib.cli.typehint)</a>
 </li>
-      <li><a href="base.html#k1lib.textToHtml">textToHtml() (in module k1lib)</a>
-</li>
-      <li><a href="kdata.html#k1lib.kdata.tfFloat">tfFloat() (in module k1lib.kdata)</a>
-</li>
-      <li><a href="kdata.html#k1lib.kdata.tfImg">tfImg() (in module k1lib.kdata)</a>
+      <li><a href="fmt.html#k1lib.fmt.throughput">throughput() (in module k1lib.fmt)</a>
 </li>
       <li><a href="cli/index.html#k1lib.cli.grep.grep.till">till() (k1lib.cli.grep.grep method)</a>
 </li>
@@ -2636,23 +2627,19 @@
 </li>
       <li><a href="cli/index.html#k1lib.cli.conv.toAvg">toAvg (class in k1lib.cli.conv)</a>
 </li>
-      <li><a href="cli/index.html#k1lib.cli.conv.toBin">toBin (class in k1lib.cli.conv)</a>
+      <li><a href="cli/index.html#k1lib.cli.conv.toBytes">toBytes (class in k1lib.cli.conv)</a>
 </li>
       <li><a href="cli/index.html#k1lib.cli.conv.toDict">toDict (class in k1lib.cli.conv)</a>
-</li>
-      <li><a href="cli/index.html#k1lib.cli.conv.toDictF">toDictF (class in k1lib.cli.conv)</a>
 </li>
       <li><a href="cli/index.html#k1lib.cli.conv.toFloat">toFloat (class in k1lib.cli.conv)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="cli/index.html#k1lib.cli.conv.toIdx">toIdx (class in k1lib.cli.conv)</a>
+      <li><a href="cli/index.html#k1lib.cli.conv.toGray">toGray (class in k1lib.cli.conv)</a>
 </li>
       <li><a href="cli/index.html#k1lib.cli.conv.toImg">toImg (in module k1lib.cli.conv)</a>
 </li>
       <li><a href="cli/index.html#k1lib.cli.conv.toInt">toInt (class in k1lib.cli.conv)</a>
-</li>
-      <li><a href="cli/index.html#k1lib.cli.conv.toIter">toIter (class in k1lib.cli.conv)</a>
 </li>
       <li><a href="cli/index.html#k1lib.cli.conv.toList">toList (class in k1lib.cli.conv)</a>
 </li>
@@ -2675,10 +2662,6 @@
       <li><a href="cli/index.html#k1lib.cli.conv.toRgb">toRgb (class in k1lib.cli.conv)</a>
 </li>
       <li><a href="cli/index.html#k1lib.cli.conv.toRgba">toRgba (class in k1lib.cli.conv)</a>
-</li>
-      <li><a href="cli/index.html#k1lib.cli.conv.toSet">toSet (class in k1lib.cli.conv)</a>
-</li>
-      <li><a href="cli/index.html#k1lib.cli.conv.toStr">toStr (class in k1lib.cli.conv)</a>
 </li>
       <li><a href="cli/index.html#k1lib.cli.conv.toSum">toSum (class in k1lib.cli.conv)</a>
 </li>
@@ -2850,7 +2833,7 @@
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2021, Quang Ho.
+        &#169; Copyright 2022, Quang Ho.
 
     </p>
   </div>

@@ -102,7 +102,6 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="k1a.html">k1lib._k1a module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="k1ui.html">k1lib.k1ui module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="kdata.html">k1lib.kdata module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="eqn.html">k1lib.eqn module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="fmt.html">k1lib.fmt module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="graphEqn.html">k1lib.graphEqn module</a></li>
@@ -111,6 +110,7 @@
 <li class="toctree-l1"><a class="reference internal" href="knn.html">k1lib.knn module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="schedule.html">k1lib.schedule module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="selector.html">k1lib.selector module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="serve.html">k1lib.serve module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="viz.html">k1lib.viz module</a></li>
 </ul>
 <ul>
@@ -193,19 +193,24 @@
 
 <p>This is actually an object of type <a class="reference internal" href="#k1lib.Settings" title="k1lib.Settings"><code class="xref py py-class docutils literal notranslate"><span class="pre">Settings</span></code></a>:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Settings:
-- displayCutoff     = 50                                                      ​cutoff length when displaying a Settings object
-- svgScale          = 0.7                                                     ​default svg scales for clis that displays graphviz graphs
-- wd                = /home/kelvin/repos/labs/k1lib/docs                      ​default working directory, will get from `os.getcwd()`. Will update using `os.chdir()` automatically when changed
-- cancelRun_newLine = True                                                    ​whether to add a new line character at the end of the cancel run/epoch/batch message
-- startup           = &lt;Settings&gt;                                              ​these settings have to be applied like this: `import k1lib; k1lib.settings.startup.or_patch = False; from k1lib.imports import *` to ensure that the values are set
-  - or_patch = True                                                           ​whether to patch __or__() method from numpy array and pandas data frame and series. This would make cli operations with them a lot more pleasant, but might cause strange bugs. Haven&#39;t met them myself though
-- cli               = &lt;Settings&gt;                                              ​from k1lib.cli module
+- displayCutoff       = 50                                                    ​cutoff length when displaying a Settings object
+- svgScale            = 0.7                                                   ​default svg scales for clis that displays graphviz graphs
+- wd                  = /home/kelvin/repos/labs/k1lib/docs                    ​default working directory, will get from `os.getcwd()`. Will update using `os.chdir()` automatically when changed
+- cancelRun_newLine   = True                                                  ​whether to add a new line character at the end of the cancel run/epoch/batch message
+- pushNotificationKey = k-968979f2a1e9                                        ​API key for `k1lib.pushNotification()`. See docs of that for more info
+- startup             = &lt;Settings&gt;                                            ​these settings have to be applied like this: `import k1lib; k1lib.settings.startup.or_patch = False; from k1lib.imports import *` to ensure that the values are set
+  - or_patch = &lt;Settings&gt;                                                     ​whether to patch __or__() method for several C-extension datatypes (numpy array, pandas data frame/series, etc). This would make cli operations with them a lot more pleasant, but might cause strange bugs. Haven&#39;t met them myself though
+    - numpy  = True                                                           ​whether to patch numpy arrays
+    - dict   = True                                                           ​whether to patch Python dict keys and items
+    - pandas = True                                                           ​whether to patch pandas series
+- cli                 = &lt;Settings&gt;                                            ​from k1lib.cli module
   - defaultDelim  =                                                           ​default delimiter used in-between columns when creating tables. Defaulted to tab character.
   - defaultIndent =                                                           ​default indent used for displaying nested structures
   - strict        = False                                                     ​turning it on can help you debug stuff, but could also be a pain to work with
   - inf           = inf                                                       ​infinity definition for many clis. Here because you might want to temporarily not loop things infinitely
   - quiet         = False                                                     ​whether to mute extra outputs from clis or not
   - arrayTypes    = (&lt;class &#39;torch.Tensor&#39;&gt;, &lt;class &#39;numpy.ndarray&#39;&gt;)         ​default array types used to accelerate clis
+  - font          = /home/kelvin/ssd/data/fonts/Courier_Prime/Couri...        ​default font file. Best to use .ttf files
   - smooth        = 10                                                        ​default smooth amount, used in utils.smooth
   - atomic        = &lt;Settings&gt;                                                ​classes/types that are considered atomic and specified cli tools should never try to iterate over them
     - baseAnd  = (&lt;class &#39;numbers.Number&#39;&gt;, &lt;class &#39;numpy.number...           ​used by BaseCli.__and__
@@ -224,10 +229,12 @@
     - header = &lt;Settings&gt;                                                     ​sam headers
       - short = [&#39;qname&#39;, &#39;flag&#39;, &#39;rname&#39;, &#39;pos&#39;, &#39;mapq&#39;, &#39;ciga...            ​
       - long  = [&#39;Query template name&#39;, &#39;Flags&#39;, &#39;Reference seq...            ​
-- eqn               = &lt;Settings&gt;                                              ​from k1lib.eqn module
+- fmt                 = &lt;Settings&gt;                                            ​from k1lib.fmt module
+  - separator = True                                                          ​whether to have a space between the number and the unit
+- eqn                 = &lt;Settings&gt;                                            ​from k1lib.eqn module
   - spaceBetweenValueSymbol = True                                            ​
   - eqnPrintExtras          = True                                            ​
-- mo                = &lt;Settings&gt;                                              ​from k1lib.mo module
+- mo                  = &lt;Settings&gt;                                            ​from k1lib.mo module
   - overOctet = False                                                         ​whether to allow making bonds that exceeds the octet rule
 </pre></div>
 </div>
@@ -330,7 +337,12 @@ doing.</p>
 <dl class="py method">
 <dt id="k1lib.Learner.load">
 <em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">load</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fileName</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#k1lib.Learner.load" title="Permalink to this definition">¶</a></dt>
-<dd><p>Loads a <a class="reference internal" href="#k1lib.Learner" title="k1lib.Learner"><code class="xref py py-class docutils literal notranslate"><span class="pre">Learner</span></code></a> from a file. See also: <a class="reference internal" href="#k1lib.Learner.save" title="k1lib.Learner.save"><code class="xref py py-meth docutils literal notranslate"><span class="pre">save()</span></code></a></p>
+<dd><p>Loads a <a class="reference internal" href="#k1lib.Learner" title="k1lib.Learner"><code class="xref py py-class docutils literal notranslate"><span class="pre">Learner</span></code></a> from a file. See also: <a class="reference internal" href="#k1lib.Learner.save" title="k1lib.Learner.save"><code class="xref py py-meth docutils literal notranslate"><span class="pre">save()</span></code></a>.
+Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># this will load up learner in file &quot;skip1_128bs.pth&quot;</span>
+<span class="n">l</span> <span class="o">=</span> <span class="n">k1</span><span class="o">.</span><span class="n">Learner</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;skip1_128bs&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>fileName</strong> – if empty, then will prompt for file name</p>
@@ -363,12 +375,15 @@ network tries to learn the function y=x. Only bare minimum callbacks are include
 <dt id="k1lib.Learner.save">
 <code class="sig-name descname"><span class="pre">save</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fileName</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#k1lib.Learner.save" title="Permalink to this definition">¶</a></dt>
 <dd><p>Saves this <a class="reference internal" href="#k1lib.Learner" title="k1lib.Learner"><code class="xref py py-class docutils literal notranslate"><span class="pre">Learner</span></code></a> to file. See also: <a class="reference internal" href="#k1lib.Learner.load" title="k1lib.Learner.load"><code class="xref py py-meth docutils literal notranslate"><span class="pre">load()</span></code></a>. Does not
-save the <code class="docutils literal notranslate"><span class="pre">data</span></code> object, because that’s potentially very big.</p>
+save the <code class="docutils literal notranslate"><span class="pre">data</span></code> object, because that’s potentially very big. Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">l</span> <span class="o">=</span> <span class="n">k1</span><span class="o">.</span><span class="n">Learner</span><span class="p">()</span>
+<span class="c1"># saves learner to &quot;skip1_128bs.pth&quot; and model to &quot;skip1_128bs.model.pth&quot;</span>
+<span class="n">l</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;skip1_128bs&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>fileName</strong> – if empty, then will save as “learner-0.pth”, with 0
-changeable to avoid conflicts. If resave this exact <a class="reference internal" href="#k1lib.Learner" title="k1lib.Learner"><code class="xref py py-class docutils literal notranslate"><span class="pre">Learner</span></code></a>, then
-use the old name generated before</p>
+<dd class="field-odd"><p><strong>fileName</strong> – name to save file into</p>
 </dd>
 </dl>
 </dd></dl>
@@ -639,6 +654,7 @@ the real number line is chosen. Some examples:</p>
 <p>You can also do arithmetic on them, and check “in” oeprator:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Domain</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span> <span class="o">+</span> <span class="n">Domain</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span> <span class="c1"># represents &quot;[2, 3) U [4, 5)&quot;</span>
 <span class="n">Domain</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span> <span class="o">+</span> <span class="n">Domain</span><span class="p">([</span><span class="mf">2.9</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span> <span class="c1"># represents &quot;[2, 5)&quot;, also merges overlaps</span>
+<span class="n">Domain</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span> <span class="o">&amp;</span> <span class="n">Domain</span><span class="p">([</span><span class="mf">2.5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span> <span class="c1"># represents &quot;[2, 3) A [2.5, 5)&quot;, or &quot;[2.5, 3)&quot;</span>
 <span class="mi">3</span> <span class="ow">in</span> <span class="n">Domain</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span> <span class="c1"># returns False</span>
 <span class="mi">2</span> <span class="ow">in</span> <span class="n">Domain</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span> <span class="c1"># returns True</span>
 </pre></div>
@@ -1075,6 +1091,95 @@ documentation for the variable. Example:</p>
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">k1lib.</span></code><code class="sig-name descname"><span class="pre">UValue</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mean</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">std</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/_baseClasses.html#UValue"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.UValue" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <dl class="py method">
+<dt id="k1lib.UValue.sample">
+<code class="sig-name descname"><span class="pre">sample</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_class</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/_baseClasses.html#UValue.sample"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.UValue.sample" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets a sample <code class="xref py py-class docutils literal notranslate"><span class="pre">np.ndarray</span></code> representative of this
+uncertain value. Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># returns tensor([-5.1095,  3.3117, -2.5759,  ..., -2.5810, -1.8131,  1.8339])</span>
+<span class="p">(</span><span class="n">k1lib</span><span class="o">.</span><span class="n">UValue</span><span class="p">()</span> <span class="o">*</span> <span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">sample</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="k1lib.UValue.fromSeries">
+<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">fromSeries</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unbiased</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/_baseClasses.html#UValue.fromSeries"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.UValue.fromSeries" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a <a class="reference internal" href="#k1lib.UValue" title="k1lib.UValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">UValue</span></code></a> from a bunch of numbers</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>series</strong> – can be a list of numbers, numpy array or PyTorch tensor</p></li>
+<li><p><strong>unbiased</strong> – if True, Bessel’s correction will be used</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="k1lib.UValue.fromBounds">
+<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">fromBounds</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">min_</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/_baseClasses.html#UValue.fromBounds"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.UValue.fromBounds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a <a class="reference internal" href="#k1lib.UValue" title="k1lib.UValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">UValue</span></code></a> from min and max values.
+Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># returns UValue(mean=2.5, std=0.5)</span>
+<span class="n">k1lib</span><span class="o">.</span><span class="n">UValue</span><span class="o">.</span><span class="n">fromBounds</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="k1lib.UValue.exact">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">exact</span></code><a class="headerlink" href="#k1lib.UValue.exact" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether this UValue is exact or not</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="k1lib.UValue.test">
+<code class="sig-name descname"><span class="pre">test</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/_baseClasses.html#UValue.test"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.UValue.test" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns how many sigma a particular value is.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="k1lib.UValue.f">
+<code class="sig-name descname"><span class="pre">f</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/_baseClasses.html#UValue.f"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.UValue.f" title="Permalink to this definition">¶</a></dt>
+<dd><p>Covered in <a class="reference internal" href="#k1lib.UValue.__init__" title="k1lib.UValue.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__()</span></code></a> docs</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="k1lib.UValue.bounds">
+<code class="sig-name descname"><span class="pre">bounds</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/_baseClasses.html#UValue.bounds"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.UValue.bounds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns (mean-std, mean+std)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="k1lib.UValue.combine">
+<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">combine</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">samples</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/_baseClasses.html#UValue.combine"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.UValue.combine" title="Permalink to this definition">¶</a></dt>
+<dd><p>Combines multiple UValues into 1.
+Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">UValue</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">UValue</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="c1"># both returns 6.0 ± 1.4</span>
+<span class="n">k1lib</span><span class="o">.</span><span class="n">UValue</span><span class="o">.</span><span class="n">combine</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="p">[</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">]</span> <span class="o">|</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">UValue</span><span class="o">.</span><span class="n">combine</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This will sample each UValue by default 1000 times, put them into a
+single series and get a UValue from that. Why not just take the
+average instead? Because the standard deviation will be less, and
+will not actually reflect the action of combining UValues together:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># returns 6.0 ± 0.7, which is narrower than expected</span>
+<span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="k1lib.UValue.plot">
+<code class="sig-name descname"><span class="pre">plot</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/_baseClasses.html#UValue.plot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.UValue.plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Quickly plots a histogram of the distribution.
+Possible to plot multiple histograms in 1 plot.</p>
+</dd></dl>
+
+<dl class="py method">
 <dt id="k1lib.UValue.__init__">
 <code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mean</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">std</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/_baseClasses.html#UValue.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.UValue.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates a new “uncertain value”, which has a mean and a standard
@@ -1170,95 +1275,6 @@ an expression:</p>
 </div>
 </dd></dl>
 
-<dl class="py method">
-<dt id="k1lib.UValue.sample">
-<code class="sig-name descname"><span class="pre">sample</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_class</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/_baseClasses.html#UValue.sample"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.UValue.sample" title="Permalink to this definition">¶</a></dt>
-<dd><p>Gets a sample <a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.13.0a0+gitb721ea9 ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a> representative of this
-uncertain value. Example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># returns tensor([-5.1095,  3.3117, -2.5759,  ..., -2.5810, -1.8131,  1.8339])</span>
-<span class="p">(</span><span class="n">k1lib</span><span class="o">.</span><span class="n">UValue</span><span class="p">()</span> <span class="o">*</span> <span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">sample</span><span class="p">()</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="py method">
-<dt id="k1lib.UValue.fromSeries">
-<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">fromSeries</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unbiased</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/_baseClasses.html#UValue.fromSeries"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.UValue.fromSeries" title="Permalink to this definition">¶</a></dt>
-<dd><p>Creates a <a class="reference internal" href="#k1lib.UValue" title="k1lib.UValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">UValue</span></code></a> from a bunch of numbers</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>series</strong> – can be a list of numbers, numpy array or PyTorch tensor</p></li>
-<li><p><strong>unbiased</strong> – if True, Bessel’s correction will be used</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="k1lib.UValue.fromBounds">
-<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">fromBounds</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">min_</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/_baseClasses.html#UValue.fromBounds"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.UValue.fromBounds" title="Permalink to this definition">¶</a></dt>
-<dd><p>Creates a <a class="reference internal" href="#k1lib.UValue" title="k1lib.UValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">UValue</span></code></a> from min and max values.
-Example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># returns UValue(mean=2.5, std=0.5)</span>
-<span class="n">k1lib</span><span class="o">.</span><span class="n">UValue</span><span class="o">.</span><span class="n">fromBounds</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="py method">
-<dt id="k1lib.UValue.exact">
-<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">exact</span></code><a class="headerlink" href="#k1lib.UValue.exact" title="Permalink to this definition">¶</a></dt>
-<dd><p>Whether this UValue is exact or not</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="k1lib.UValue.test">
-<code class="sig-name descname"><span class="pre">test</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/_baseClasses.html#UValue.test"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.UValue.test" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns how many sigma a particular value is.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="k1lib.UValue.f">
-<code class="sig-name descname"><span class="pre">f</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/_baseClasses.html#UValue.f"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.UValue.f" title="Permalink to this definition">¶</a></dt>
-<dd><p>Covered in <a class="reference internal" href="#k1lib.UValue.__init__" title="k1lib.UValue.__init__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__()</span></code></a> docs</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="k1lib.UValue.bounds">
-<code class="sig-name descname"><span class="pre">bounds</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/_baseClasses.html#UValue.bounds"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.UValue.bounds" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns (mean-std, mean+std)</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="k1lib.UValue.combine">
-<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">combine</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">samples</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/_baseClasses.html#UValue.combine"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.UValue.combine" title="Permalink to this definition">¶</a></dt>
-<dd><p>Combines multiple UValues into 1.
-Example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">UValue</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">b</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">UValue</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="c1"># both returns 6.0 ± 1.4</span>
-<span class="n">k1lib</span><span class="o">.</span><span class="n">UValue</span><span class="o">.</span><span class="n">combine</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
-<span class="p">[</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">]</span> <span class="o">|</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">UValue</span><span class="o">.</span><span class="n">combine</span><span class="p">()</span>
-</pre></div>
-</div>
-<p>This will sample each UValue by default 1000 times, put them into a
-single series and get a UValue from that. Why not just take the
-average instead? Because the standard deviation will be less, and
-will not actually reflect the action of combining UValues together:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># returns 6.0 ± 0.7, which is narrower than expected</span>
-<span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="py method">
-<dt id="k1lib.UValue.plot">
-<code class="sig-name descname"><span class="pre">plot</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/_baseClasses.html#UValue.plot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.UValue.plot" title="Permalink to this definition">¶</a></dt>
-<dd><p>Quickly plots a histogram of the distribution.
-Possible to plot multiple histograms in 1 plot.</p>
-</dd></dl>
-
 </dd></dl>
 
 <dl class="py class">
@@ -1320,6 +1336,8 @@ like this:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">captureStdout</span><span class="p">()</span> <span class="k">as</span> <span class="n">out</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;abc&quot;</span><span class="p">)</span> <span class="c1"># gets captured</span>
     <span class="n">out</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="s2">&quot;def&quot;</span><span class="p">)</span> <span class="c1"># not captured, will actually print out</span>
+    <span class="c1"># you can also access the stream like this</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;something&quot;</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">out</span><span class="o">.</span><span class="n">old</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -1400,28 +1418,9 @@ clean up code, then rethrow again. Same deal at the run level.</p>
 <div class="section" id="functions">
 <h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
-<dt id="k1lib.textToHtml">
-<code class="sig-prename descclassname"><span class="pre">k1lib.</span></code><code class="sig-name descname"><span class="pre">textToHtml</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a><a class="reference internal" href="_modules/k1lib/_basics.html#textToHtml"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.textToHtml" title="Permalink to this definition">¶</a></dt>
-<dd><p>Transform a string so that it looks the same on browsers
-as in <cite>print()</cite></p>
-</dd></dl>
-
-<dl class="py function">
-<dt id="k1lib.clearLine">
-<code class="sig-prename descclassname"><span class="pre">k1lib.</span></code><code class="sig-name descname"><span class="pre">clearLine</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/_basics.html#clearLine"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.clearLine" title="Permalink to this definition">¶</a></dt>
-<dd><p>Prints a character that clears the current line</p>
-</dd></dl>
-
-<dl class="py function">
 <dt id="k1lib.isNumeric">
 <code class="sig-prename descclassname"><span class="pre">k1lib.</span></code><code class="sig-name descname"><span class="pre">isNumeric</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><span class="pre">bool</span></a><a class="reference internal" href="_modules/k1lib/_basics.html#isNumeric"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.isNumeric" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns whether object is actually a number</p>
-</dd></dl>
-
-<dl class="py function">
-<dt id="k1lib.close">
-<code class="sig-prename descclassname"><span class="pre">k1lib.</span></code><code class="sig-name descname"><span class="pre">close</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/_basics.html#close"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.close" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns whether 2 values are really close to each other</p>
 </dd></dl>
 
 <dl class="py function">
@@ -1490,7 +1489,7 @@ methods like this:</p>
 
 <dl class="py function">
 <dt id="k1lib.squeeze">
-<code class="sig-prename descclassname"><span class="pre">k1lib.</span></code><code class="sig-name descname"><span class="pre">squeeze</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_list</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><span class="pre">list</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)"><span class="pre">tuple</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.13.0a0+gitb721ea9 ))"><span class="pre">torch.Tensor</span></a><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hard</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/_basics.html#squeeze"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.squeeze" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">k1lib.</span></code><code class="sig-name descname"><span class="pre">squeeze</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_list</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><span class="pre">list</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)"><span class="pre">tuple</span></a><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hard</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/_basics.html#squeeze"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.squeeze" title="Permalink to this definition">¶</a></dt>
 <dd><p>If list only has 1 element, returns that element, else returns original
 list.</p>
 <dl class="field-list simple">
@@ -1583,7 +1582,7 @@ Example:</p>
 <dl class="py function">
 <dt id="k1lib.pValue">
 <code class="sig-prename descclassname"><span class="pre">k1lib.</span></code><code class="sig-name descname"><span class="pre">pValue</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">zScore</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/_basics.html#pValue"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.pValue" title="Permalink to this definition">¶</a></dt>
-<dd><p>2-sided p value of a particular z score. Requires <a class="reference external" href="https://docs.scipy.org/doc/scipy/index.html#module-scipy" title="(in SciPy v1.9.0)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scipy</span></code></a>.</p>
+<dd><p>2-sided p value of a particular z score. Requires <a class="reference external" href="https://docs.scipy.org/doc/scipy/index.html#module-scipy" title="(in SciPy v1.9.1)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scipy</span></code></a>.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -1594,20 +1593,14 @@ string, with timezone and whatnot.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="k1lib.sameStorage">
-<code class="sig-prename descclassname"><span class="pre">k1lib.</span></code><code class="sig-name descname"><span class="pre">sameStorage</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/_basics.html#sameStorage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.sameStorage" title="Permalink to this definition">¶</a></dt>
-<dd><p>Check whether 2 (<code class="xref py py-class docutils literal notranslate"><span class="pre">np.ndarray</span></code> or <a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.13.0a0+gitb721ea9 ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a>)
-has the same storage or not. Example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
-<span class="c1"># returns True</span>
-<span class="n">k1lib</span><span class="o">.</span><span class="n">sameStorage</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">a</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
-<span class="c1"># returns True</span>
-<span class="n">k1lib</span><span class="o">.</span><span class="n">sameStorage</span><span class="p">(</span><span class="n">a</span><span class="p">[:</span><span class="mi">10</span><span class="p">],</span> <span class="n">a</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
-<span class="n">returns</span> <span class="n">false</span>
-<span class="n">k1lib</span><span class="o">.</span><span class="n">sameStorage</span><span class="p">(</span><span class="n">a</span><span class="p">[:</span><span class="mi">10</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
-</pre></div>
-</div>
-<p>All examples above should work with PyTorch tensors as well.</p>
+<dt id="k1lib.pushNotification">
+<code class="sig-prename descclassname"><span class="pre">k1lib.</span></code><code class="sig-name descname"><span class="pre">pushNotification</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Some</span> <span class="pre">title'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">content</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Some</span> <span class="pre">content'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">url</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'https://k1lib.com'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/_basics.html#pushNotification"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.pushNotification" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sends push notification to your device.</p>
+<p>Setting things up:
+- Download this app: <a class="reference external" href="https://play.google.com/store/apps/details?id=net.xdroid.pn">https://play.google.com/store/apps/details?id=net.xdroid.pn</a>
+- Set the <cite>settings.pushNotificationKey</cite> key obtained from the app. Example key: <cite>k-967fe9…</cite>
+- Alternatively, set the environment variable <cite>k1lib_pushNotificationKey</cite> instead
+- Run the function as usual</p>
 </dd></dl>
 
 <dl class="py function">
@@ -1764,7 +1757,7 @@ which has a slightly different api.</p>
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2021, Quang Ho.
+        &#169; Copyright 2022, Quang Ho.
 
     </p>
   </div>
