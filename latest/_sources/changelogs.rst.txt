@@ -9,7 +9,7 @@ Changelogs
 
 Cli:
 
-- a
+- Added newPoolEvery mode to :class:`~modifier.applyMp`
 
 `1.1 </1.1>`_
 ---------------
