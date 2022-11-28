@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Streams tutorial &mdash; k1lib  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="LLVM optimizer tutorial" href="llvm.html" />
+    <link rel="prev" title="k1lib.cli module" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> k1lib
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../base.html">Base module</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">k1lib.cli module</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Streams tutorial</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#symmetric">Symmetric</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#asymmetric">Asymmetric</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#more-procedural">More procedural?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#vanilla-alternatives">Vanilla alternatives</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="llvm.html">LLVM optimizer tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#where-to-start">Where to start?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#summary">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.cli.bio">bio module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.cli.cif">cif module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.cli.conv">conv module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.cli.mgi">mgi module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.cli.filt">filt module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.cli.gb">gb module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.cli.grep">grep module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#init-module">init module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.cli.inp">inp module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.cli.kcsv">kcsv module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.cli.kxml">kxml module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.cli.modifier">modifier module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.cli.nb">nb module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.cli.output">output module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.cli.sam">sam module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.cli.structural">structural module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.cli.trace">trace module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.cli.utils">utils module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.cli.typehint">typehint module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.cli.optimizations">optimizations module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#elsewhere-in-the-library">Elsewhere in the library</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../callbacks/index.html">k1lib.callbacks module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../k1a.html">k1lib._k1a module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../k1ui.html">k1lib.k1ui module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eqn.html">k1lib.eqn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fmt.html">k1lib.fmt module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../graphEqn.html">k1lib.graphEqn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../imports.html">k1lib.imports module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mo.html">k1lib.mo module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../knn.html">k1lib.knn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../schedule.html">k1lib.schedule module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../selector.html">k1lib.selector module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../serve.html">k1lib.serve module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../viz.html">k1lib.viz module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../monkey.html">Monkey patched classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelogs.html">Changelogs</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">k1lib</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">k1lib.cli module</a></li>
+      <li class="breadcrumb-item active">Streams tutorial</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/cli/streams.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="streams-tutorial">
+<h1>Streams tutorial<a class="headerlink" href="#streams-tutorial" title="Permalink to this heading"></a></h1>
+<section id="symmetric">
+<h2>Symmetric<a class="headerlink" href="#symmetric" title="Permalink to this heading"></a></h2>
+<p>So let’s say you have a list of files:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fileNames</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;a.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;b.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;c.txt&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Let’s say you now want to read every line from every file quickly, using cli tools,
+and get the number of rows in each file. Instead of something like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sizes</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">fileName</span> <span class="ow">in</span> <span class="n">fileNames</span><span class="p">:</span>
+    <span class="n">sizes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cat</span><span class="p">(</span><span class="n">fileName</span><span class="p">)</span> <span class="o">|</span> <span class="n">shape</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>…which really defeats the purpose of the elegant cli tool workflow, you can do:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sizes</span> <span class="o">=</span> <span class="n">fileNames</span> <span class="o">|</span> <span class="n">apply</span><span class="p">(</span><span class="n">cat</span><span class="p">())</span> <span class="o">|</span> <span class="n">shape</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span> <span class="o">|</span> <span class="n">toList</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Let’s analyze this in detail. <code class="docutils literal notranslate"><span class="pre">fileNames</span></code> is <code class="docutils literal notranslate"><span class="pre">Iterator[str]</span></code>. It gets passed to
+<code class="docutils literal notranslate"><span class="pre">apply(cat(s))</span></code>, so now, the output is <code class="docutils literal notranslate"><span class="pre">Iterator[Iterator[str]]</span></code>. We want to
+get the #rows of every file, but we can’t pipe the input directly to
+<a class="reference internal" href="index.html#k1lib.cli.utils.shape" title="k1lib.cli.utils.shape"><code class="xref py py-class docutils literal notranslate"><span class="pre">shape</span></code></a>, as it will count how many files are there instead. So, the
+operator <a class="reference internal" href="index.html#k1lib.cli.init.BaseCli.all" title="k1lib.cli.init.BaseCli.all"><code class="xref py py-meth docutils literal notranslate"><span class="pre">all()</span></code></a> will return a new cli object that will apply
+<a class="reference internal" href="index.html#k1lib.cli.utils.shape" title="k1lib.cli.utils.shape"><code class="xref py py-class docutils literal notranslate"><span class="pre">shape</span></code></a> to every stream. The output of that will be <code class="docutils literal notranslate"><span class="pre">Iterator[int]</span></code>,
+which we can convert to a list easily with <a class="reference internal" href="index.html#k1lib.cli.conv.toList" title="k1lib.cli.conv.toList"><code class="xref py py-class docutils literal notranslate"><span class="pre">toList</span></code></a>. <code class="docutils literal notranslate"><span class="pre">.all()</span></code> is
+pretty much the same as <a class="reference internal" href="index.html#k1lib.cli.modifier.apply" title="k1lib.cli.modifier.apply"><code class="xref py py-class docutils literal notranslate"><span class="pre">apply</span></code></a>, but is more intuitive.</p>
+<p>This is pretty powerful, as you can be as meta as you’d like. Something crazy like
+this works:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># assume a, b, c has 10, 20, 30 lines</span>
+<span class="n">fileNames</span> <span class="o">=</span> <span class="p">[[</span><span class="s2">&quot;a.txt&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;b.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;c.txt&quot;</span><span class="p">]]</span>
+<span class="c1"># returns [[10], [20, 30]]</span>
+<span class="n">sizes</span> <span class="o">=</span> <span class="n">fileNames</span> <span class="o">|</span> <span class="p">(</span><span class="n">cat</span><span class="p">()</span><span class="o">.</span><span class="n">all</span><span class="p">()</span> <span class="o">|</span> <span class="n">shape</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span> <span class="o">|</span> <span class="n">toList</span><span class="p">())</span><span class="o">.</span><span class="n">all</span><span class="p">()</span> <span class="o">|</span> <span class="n">toList</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Here, the inner block <code class="docutils literal notranslate"><span class="pre">cat().all()</span> <span class="pre">|</span> <span class="pre">shape(0).all()</span> <span class="pre">|</span> <span class="pre">toList()</span></code> is just like last
+time. This time, it’s applied on all <code class="docutils literal notranslate"><span class="pre">List[str]</span></code> elements in <code class="docutils literal notranslate"><span class="pre">fileNames</span></code>, and
+<a class="reference internal" href="index.html#k1lib.cli.conv.toList" title="k1lib.cli.conv.toList"><code class="xref py py-class docutils literal notranslate"><span class="pre">toList</span></code></a> just dereferences the iterator. The maximum meta level is
+actually <code class="docutils literal notranslate"><span class="pre">Iterator[Iterator[Iterator[str]]]</span></code> here.</p>
+<p>You can also join different streams into just 1, by doing something like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fileNames</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;a.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;b.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;c.txt&quot;</span><span class="p">]</span>
+<span class="c1"># returns number of lines of all files</span>
+<span class="n">fileNames</span> <span class="o">|</span> <span class="n">cat</span><span class="p">()</span><span class="o">.</span><span class="n">all</span><span class="p">()</span> <span class="o">|</span> <span class="n">joinStreams</span><span class="p">()</span> <span class="o">|</span> <span class="n">shape</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="asymmetric">
+<h2>Asymmetric<a class="headerlink" href="#asymmetric" title="Permalink to this heading"></a></h2>
+<p>The streams need not be symmetrical (derived from <a class="reference internal" href="index.html#k1lib.cli.init.BaseCli.all" title="k1lib.cli.init.BaseCli.all"><code class="xref py py-meth docutils literal notranslate"><span class="pre">all()</span></code></a> operation)
+like the examples above:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># returns [0, 1, 2, &#39;a&#39;, &#39;b&#39;, &#39;c&#39;]</span>
+<span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">]</span> <span class="o">|</span> <span class="p">(</span><span class="n">toRange</span><span class="p">()</span> <span class="o">&amp;</span> <span class="n">iden</span><span class="p">())</span> <span class="o">|</span> <span class="n">joinStreams</span><span class="p">()</span> <span class="o">|</span> <span class="n">toList</span><span class="p">()</span>
+<span class="c1"># displays a table with first column [0, 1, 2] and second column [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]</span>
+<span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">]</span> <span class="o">|</span> <span class="p">(</span><span class="n">toRange</span><span class="p">()</span> <span class="o">&amp;</span> <span class="n">iden</span><span class="p">())</span> <span class="o">|</span> <span class="n">joinColumns</span><span class="p">()</span> <span class="o">|</span> <span class="n">display</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Here, a list of strings is piped into <code class="docutils literal notranslate"><span class="pre">(toRange()</span> <span class="pre">&amp;</span> <span class="pre">iden())</span></code> operator. This will
+effectively split the input into 2 streams. 1 gets passed through <a class="reference internal" href="index.html#k1lib.cli.conv.toRange" title="k1lib.cli.conv.toRange"><code class="xref py py-class docutils literal notranslate"><span class="pre">toRange</span></code></a>,
+and 1 through <a class="reference internal" href="index.html#k1lib.cli.utils.iden" title="k1lib.cli.utils.iden"><code class="xref py py-class docutils literal notranslate"><span class="pre">iden</span></code></a>. So, the output is effectively
+<code class="docutils literal notranslate"><span class="pre">[Iterator[int],</span> <span class="pre">Iterator[str]]</span></code>, which we can join together just like before.</p>
+<p>When combining streams asymmetrically (using the <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> operator, and all cli
+operators are the same), the input to the streams need not be a list. Internally,
+k1lib uses the <code class="xref py py-meth docutils literal notranslate"><span class="pre">itertools.tee()</span></code> method to get multiple iterators from a single
+iterator, so as to avoid creating an entire list which would waste resources. Of
+course, whether this wastes resources or not depends a lot on how you structure
+things. If there is an operation that blows through the entire iterator before
+others use any elements, then that would slow things down.</p>
+<p>Also, there’s another way to join cli operators together. Let’s check over an
+example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">even</span> <span class="o">=</span> <span class="n">filt</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="n">odd</span> <span class="o">=</span> <span class="n">filt</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="c1"># returns [[10, 12, 14, 16, 18], [31, 33, 35, 37, 39]]</span>
+<span class="p">[</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="nb">range</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">)]</span> <span class="o">|</span> <span class="p">(</span><span class="n">even</span> <span class="o">+</span> <span class="n">odd</span><span class="p">)</span> <span class="o">|</span> <span class="n">deref</span><span class="p">()</span>
+<span class="c1"># pretty much identical to:</span>
+<span class="p">[</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span> <span class="o">|</span> <span class="n">even</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span> <span class="o">|</span> <span class="n">odd</span><span class="p">]</span> <span class="o">|</span> <span class="n">deref</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This time, we’re using the <code class="docutils literal notranslate"><span class="pre">+</span></code> operator. What this does is pass different streams
+to their corresponding cli operator.</p>
+<p>It can be hard to remember what <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> and <code class="docutils literal notranslate"><span class="pre">+</span></code> do right away, so the strategy is to
+think of <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> as “I’m going to pass the (single) input stream to a() <strong>and</strong> b()
+<strong>and</strong> c(), so I should get 3 streams out in total”. For <code class="docutils literal notranslate"><span class="pre">+</span></code>, think of them as
+stacking floors of cli operators on top of another:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>+----------------+
+| stream1 -&gt; a() |
++----------------+
+| stream2 -&gt; b() |
++----------------+
+| stream3 -&gt; c() |
++----------------+
+</pre></div>
+</div>
+</section>
+<section id="more-procedural">
+<h2>More procedural?<a class="headerlink" href="#more-procedural" title="Permalink to this heading"></a></h2>
+<p>Underlying operations <a class="reference internal" href="index.html#k1lib.cli.init.serial" title="k1lib.cli.init.serial"><code class="xref py py-class docutils literal notranslate"><span class="pre">serial</span></code></a>, <a class="reference internal" href="index.html#k1lib.cli.init.oneToMany" title="k1lib.cli.init.oneToMany"><code class="xref py py-class docutils literal notranslate"><span class="pre">oneToMany</span></code></a>,
+<a class="reference internal" href="index.html#k1lib.cli.modifier.apply" title="k1lib.cli.modifier.apply"><code class="xref py py-class docutils literal notranslate"><span class="pre">apply</span></code></a>, <a class="reference internal" href="index.html#k1lib.cli.init.mtmS" title="k1lib.cli.init.mtmS"><code class="xref py py-class docutils literal notranslate"><span class="pre">mtmS</span></code></a> that stands for operations
+(<code class="docutils literal notranslate"><span class="pre">|</span></code>, <code class="docutils literal notranslate"><span class="pre">&amp;</span></code>, <code class="docutils literal notranslate"><span class="pre">.all()</span></code>, <code class="docutils literal notranslate"><span class="pre">+</span></code>) are exposed, in case your streams have varying
+lengths.</p>
+</section>
+<section id="vanilla-alternatives">
+<h2>Vanilla alternatives<a class="headerlink" href="#vanilla-alternatives" title="Permalink to this heading"></a></h2>
+<p>These operations are not actually strictly necessary, they’re just convenience functions
+so that writing code is simpler and more straightforward. They can be implemented using
+normal clis like so:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">iden</span><span class="p">()</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">shape</span><span class="p">()</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]]</span>
+<span class="c1"># returns [[1, 2], [9, 16], [2]]</span>
+<span class="n">x</span> <span class="o">|</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="o">+</span> <span class="n">c</span> <span class="o">|</span> <span class="n">deref</span><span class="p">()</span>
+<span class="c1"># returns [[1, 2], [9, 16], [2]]</span>
+<span class="n">x</span> <span class="o">|</span> <span class="o">~</span><span class="n">aS</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">:</span> <span class="p">[</span><span class="n">x</span> <span class="o">|</span> <span class="n">a</span><span class="p">,</span> <span class="n">y</span> <span class="o">|</span> <span class="n">b</span><span class="p">,</span> <span class="n">z</span> <span class="o">|</span> <span class="n">c</span><span class="p">])</span> <span class="o">|</span> <span class="n">deref</span><span class="p">()</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="c1"># returns [[0, 1, 2, 3, 4], [0, 1, 4, 9, 16], [5]]</span>
+<span class="n">x</span> <span class="o">|</span> <span class="n">a</span> <span class="o">&amp;</span> <span class="n">b</span> <span class="o">&amp;</span> <span class="n">c</span> <span class="o">|</span> <span class="n">deref</span><span class="p">()</span>
+<span class="c1"># returns [[0, 1, 2, 3, 4], [0, 1, 4, 9, 16], [5]]</span>
+<span class="n">x</span> <span class="o">|</span> <span class="n">aS</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">[</span><span class="n">x</span> <span class="o">|</span> <span class="n">a</span><span class="p">,</span> <span class="n">x</span> <span class="o">|</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span> <span class="o">|</span> <span class="n">c</span><span class="p">])</span> <span class="o">|</span> <span class="n">deref</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>So you might want to use these vanilla versions initially if you are unsure what exactly
+these higher operations mean.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="k1lib.cli module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="llvm.html" class="btn btn-neutral float-right" title="LLVM optimizer tutorial" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Quang Ho.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

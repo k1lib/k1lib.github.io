@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>k1lib.callbacks.progress &mdash; k1lib  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> k1lib
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../base.html">Base module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../cli/index.html">k1lib.cli module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../callbacks/index.html">k1lib.callbacks module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../k1a.html">k1lib._k1a module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../k1ui.html">k1lib.k1ui module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eqn.html">k1lib.eqn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fmt.html">k1lib.fmt module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../graphEqn.html">k1lib.graphEqn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../imports.html">k1lib.imports module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mo.html">k1lib.mo module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../knn.html">k1lib.knn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../schedule.html">k1lib.schedule module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../selector.html">k1lib.selector module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../serve.html">k1lib.serve module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../viz.html">k1lib.viz module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../monkey.html">Monkey patched classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelogs.html">Changelogs</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">k1lib</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">k1lib.callbacks.progress</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for k1lib.callbacks.progress</h1><div class="highlight"><pre>
+<span></span><span class="c1"># AUTOGENERATED FILE! PLEASE DON&#39;T EDIT</span>
+<span class="kn">import</span> <span class="nn">k1lib</span><span class="o">,</span> <span class="nn">time</span><span class="p">;</span> <span class="kn">from</span> <span class="nn">k1lib</span> <span class="kn">import</span> <span class="n">fmt</span>
+<span class="kn">from</span> <span class="nn">.callbacks</span> <span class="kn">import</span> <span class="n">Callback</span><span class="p">,</span> <span class="n">Callbacks</span><span class="p">,</span> <span class="n">Cbs</span>
+<span class="kn">import</span> <span class="nn">k1lib.cli</span> <span class="k">as</span> <span class="nn">cli</span><span class="p">;</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;ProgressBar&quot;</span><span class="p">]</span>
+<div class="viewcode-block" id="ProgressBar"><a class="viewcode-back" href="../../../callbacks/index.html#k1lib.callbacks.progress.ProgressBar">[docs]</a><span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">Cbs</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">ProgressBar</span><span class="p">(</span><span class="n">Callback</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Displays the current progress, epoch and batch while running.</span>
+<span class="sd">Deposits variables into :class:`~k1lib.Learner` at checkpoint ``startBatch``:</span>
+
+<span class="sd">- progress: single float from 0 to 1, guaranteed to increase monotonically</span>
+<span class="sd">- epochThroughput</span>
+<span class="sd">- remaining: estimated remaining time. Does not take into account callbacks that can potentially cancel the run prematurely&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">startRun</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">startTime</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">();</span> <span class="bp">self</span><span class="o">.</span><span class="n">step</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="o">.</span><span class="n">progress</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="o">.</span><span class="n">loss</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s2">&quot;inf&quot;</span><span class="p">)</span> <span class="c1"># to make sure this variable exist</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">aL</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bL</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cL</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dL</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">eL</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">def</span> <span class="nf">startBatch</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">batch</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="o">.</span><span class="n">batch</span><span class="p">;</span> <span class="n">batches</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="o">.</span><span class="n">batches</span><span class="p">;</span> <span class="n">epoch</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="o">.</span><span class="n">epoch</span><span class="p">;</span> <span class="n">epochs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="o">.</span><span class="n">epochs</span>
+        <span class="n">elapsedTime</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">elapsedTime</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">startTime</span>
+        <span class="k">if</span> <span class="n">batches</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="n">progress</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="o">.</span><span class="n">progress</span> <span class="o">=</span> <span class="n">epoch</span> <span class="o">/</span> <span class="n">epochs</span><span class="p">;</span> <span class="n">batchTh</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">progress</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="o">.</span><span class="n">progress</span> <span class="o">=</span> <span class="p">(</span><span class="n">batch</span> <span class="o">/</span> <span class="n">batches</span> <span class="o">+</span> <span class="n">epoch</span><span class="p">)</span> <span class="o">/</span> <span class="n">epochs</span>
+            <span class="n">batchTh</span> <span class="o">=</span> <span class="n">batches</span> <span class="o">*</span> <span class="n">epochs</span> <span class="o">*</span> <span class="n">progress</span> <span class="o">/</span> <span class="n">elapsedTime</span>
+        <span class="n">epochTh</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="o">.</span><span class="n">epochThroughput</span> <span class="o">=</span> <span class="n">epochs</span> <span class="o">*</span> <span class="n">progress</span> <span class="o">/</span> <span class="n">elapsedTime</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="o">.</span><span class="n">batchThroughput</span> <span class="o">=</span> <span class="n">batchTh</span>
+        <span class="n">remaining</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="o">.</span><span class="n">remaining</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">elapsedTime</span> <span class="o">/</span> <span class="p">(</span><span class="n">progress</span><span class="o">+</span><span class="mf">1e-7</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">progress</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span> <span class="k">if</span> <span class="n">progress</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">)</span>
+        
+        <span class="n">a</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="mi">100</span> <span class="o">*</span> <span class="n">progress</span><span class="p">));</span> <span class="bp">self</span><span class="o">.</span><span class="n">aL</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">aL</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">));</span> <span class="n">a</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">aL</span><span class="p">)</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">epoch</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">epochs</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">fmt</span><span class="o">.</span><span class="n">throughput</span><span class="p">(</span><span class="n">epochTh</span><span class="p">,</span> <span class="s1">&#39; epochs&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">bL</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bL</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">));</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bL</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">batches</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">c</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">batch</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">batches</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">fmt</span><span class="o">.</span><span class="n">throughput</span><span class="p">(</span><span class="n">batchTh</span><span class="p">,</span> <span class="s1">&#39; batches&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">cL</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cL</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">c</span><span class="p">));</span> <span class="n">c</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cL</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span> <span class="n">c</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">batch</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">batches</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">cL</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cL</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">c</span><span class="p">));</span> <span class="n">c</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cL</span><span class="p">)</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">elapsedTime</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="mi">6</span><span class="p">);</span> <span class="bp">self</span><span class="o">.</span><span class="n">dL</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dL</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">d</span><span class="p">));</span> <span class="n">d</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dL</span><span class="p">)</span>
+        <span class="n">e</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">remaining</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">eL</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">eL</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">e</span><span class="p">));</span> <span class="n">e</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">eL</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">epoch</span><span class="p">,</span> <span class="n">batch</span><span class="p">,</span> <span class="n">elapsedTime</span><span class="p">,</span> <span class="n">progress</span><span class="p">,</span> <span class="n">epochTh</span><span class="p">,</span> <span class="n">batchTh</span><span class="p">,</span> <span class="n">remaining</span><span class="p">])</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\r</span><span class="s2">Progress: </span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s2">%, epoch: </span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="s2">, batch: </span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s2">, elapsed: </span><span class="si">{</span><span class="n">d</span><span class="si">}</span><span class="s2">s, remaining: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">s, loss: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="o">.</span><span class="n">loss</span><span class="si">}</span><span class="s2">             &quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<div class="viewcode-block" id="ProgressBar.plot"><a class="viewcode-back" href="../../../callbacks/index.html#k1lib.callbacks.progress.ProgressBar.plot">[docs]</a>    <span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="o">=</span><span class="n">cli</span><span class="o">.</span><span class="n">iden</span><span class="p">(),</span> <span class="n">perEpoch</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">_window</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Plots detailed partial execution time profile.</span>
+
+<span class="sd">:param f: optional post processing step</span>
+<span class="sd">:param perEpoch: if True, normalize time per epoch, else keep it at time per run</span>
+<span class="sd">:param _window: number of batches to calculate the processing rate over. Put low</span>
+<span class="sd">    values (min 2) to make it crisp (and inaccurate), put high values to make it</span>
+<span class="sd">    smooth (and accurate)&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">perEpoch</span><span class="p">:</span> <span class="n">f</span> <span class="o">=</span> <span class="n">cli</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">cli</span><span class="o">.</span><span class="n">op</span><span class="p">()</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="o">.</span><span class="n">epochs</span><span class="p">)</span> <span class="o">|</span> <span class="n">f</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">deref</span><span class="p">()</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">window</span><span class="p">(</span><span class="n">_window</span><span class="p">)</span>\
+        <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">cli</span><span class="o">.</span><span class="n">rows</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span> <span class="o">|</span> <span class="o">~</span><span class="n">cli</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">y</span><span class="o">-</span><span class="n">x</span><span class="p">)</span> <span class="o">|</span> <span class="o">~</span><span class="n">cli</span><span class="o">.</span><span class="n">aS</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">x</span><span class="o">/</span><span class="n">y</span><span class="p">))</span>\
+        <span class="o">|</span> <span class="n">f</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">deref</span><span class="p">()</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">aS</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Time/epoch (seconds)&quot;</span> <span class="k">if</span> <span class="n">perEpoch</span> <span class="k">else</span> <span class="s2">&quot;Time/run (seconds)&quot;</span><span class="p">);</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Quang Ho.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

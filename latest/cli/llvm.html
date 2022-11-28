@@ -1,70 +1,36 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
-  
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
   <title>LLVM optimizer tutorial &mdash; k1lib  documentation</title>
-  
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-
-  
-  
-
-  
-  
-
-  
-
-  
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-    
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="k1lib.callbacks module" href="../callbacks/index.html" />
     <link rel="prev" title="Streams tutorial" href="streams.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
-
-          
             <a href="../index.html" class="icon icon-home"> k1lib
-          
-
-          
           </a>
-
-          
-            
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -72,18 +38,7 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../base.html">Base module</a></li>
 </ul>
@@ -143,75 +98,33 @@
 <li class="toctree-l1"><a class="reference internal" href="../changelogs.html">Changelogs</a></li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">k1lib</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-        
-          <li><a href="index.html">k1lib.cli module</a> &raquo;</li>
-        
-      <li>LLVM optimizer tutorial</li>
-    
-    
+      <li><a href="../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">k1lib.cli module</a></li>
+      <li class="breadcrumb-item active">LLVM optimizer tutorial</li>
       <li class="wy-breadcrumbs-aside">
-        
-          
             <a href="../_sources/cli/llvm.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
-  <div class="section" id="llvm-optimizer-tutorial">
-<h1>LLVM optimizer tutorial<a class="headerlink" href="#llvm-optimizer-tutorial" title="Permalink to this headline">¶</a></h1>
+             
+  <section id="llvm-optimizer-tutorial">
+<h1>LLVM optimizer tutorial<a class="headerlink" href="#llvm-optimizer-tutorial" title="Permalink to this heading"></a></h1>
 <p>Since version 1.0, k1lib has an awesome compiler and optimizer that looks
 a lot like LLVM, a compiler infrastructure project created by Chris Lattner
 to unify all compilers. The idea is to define an intermediate representation
@@ -247,8 +160,8 @@ check these links out:</p>
 <li><p><a class="reference external" href="https://blog.gopheracademy.com/advent-2018/llvm-ir-and-go/">https://blog.gopheracademy.com/advent-2018/llvm-ir-and-go/</a></p></li>
 </ul>
 </div>
-<div class="section" id="basic-usage">
-<h2>Basic usage<a class="headerlink" href="#basic-usage" title="Permalink to this headline">¶</a></h2>
+<section id="basic-usage">
+<h2>Basic usage<a class="headerlink" href="#basic-usage" title="Permalink to this heading"></a></h2>
 <p>Same idea here. Let’s say you have code to count the number of lines in a text file:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;file.txt&quot;</span> <span class="o">|</span> <span class="n">cat</span><span class="p">()</span> <span class="o">|</span> <span class="n">shape</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
@@ -294,9 +207,9 @@ passes that takes in clis, analyze what the user really wants and outputs a more
 optimized clis.</p>
 <p>In the following section, you’ll be learning how the type hint system works,
 how exactly do you create these passes and a few examples of them</p>
-</div>
-<div class="section" id="type-hint-system">
-<h2>Type hint system<a class="headerlink" href="#type-hint-system" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="type-hint-system">
+<h2>Type hint system<a class="headerlink" href="#type-hint-system" title="Permalink to this heading"></a></h2>
 <p>So, there’s a quite strict type hint system across all clis located at
 <a class="reference internal" href="index.html#module-k1lib.cli.typehint" title="k1lib.cli.typehint"><code class="xref py py-mod docutils literal notranslate"><span class="pre">k1lib.cli.typehint</span></code></a>. The idea is to deduce type hint info after a cli if
 given the input’s type hint, like this:</p>
@@ -338,9 +251,9 @@ like <code class="docutils literal notranslate"><span class="pre">[2,</span> <sp
 </ul>
 <p>This type hint system is almost mandatory because you just wouldn’t be able to do
 lots of optimizations without knowing some specifics on how your data looks like.</p>
-</div>
-<div class="section" id="creating-optimization-pass">
-<h2>Creating optimization pass<a class="headerlink" href="#creating-optimization-pass" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="creating-optimization-pass">
+<h2>Creating optimization pass<a class="headerlink" href="#creating-optimization-pass" title="Permalink to this heading"></a></h2>
 <p>Full code for this example pass looks like this:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">o1</span><span class="p">(</span><span class="n">cs</span><span class="p">,</span> <span class="n">ts</span><span class="p">,</span> <span class="n">metadata</span><span class="p">):</span>
   <span class="k">return</span> <span class="p">[</span><span class="n">cs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">cs</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
@@ -367,55 +280,38 @@ new clis if you’re able to optimize it, or <code class="docutils literal notra
 <p>This detects whether the input is a Numpy array or PyTorch tensor, and apply the
 respective unsqueeze operation instead of the normal <code class="docutils literal notranslate"><span class="pre">wrapList().all(dim)</span></code> that
 breaks the array/tensor up.</p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
-           
           </div>
-          <footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="../callbacks/index.html" class="btn btn-neutral float-right" title="k1lib.callbacks module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="streams.html" class="btn btn-neutral float-left" title="Streams tutorial" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../callbacks/index.html" class="btn btn-neutral float-right" title="k1lib.callbacks module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &#169; Copyright 2022, Quang Ho.
-
-    </p>
+    <p>&#169; Copyright 2022, Quang Ho.</p>
   </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>k1lib.cli.modifier &mdash; k1lib  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> k1lib
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../base.html">Base module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../cli/index.html">k1lib.cli module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../callbacks/index.html">k1lib.callbacks module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../k1a.html">k1lib._k1a module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../k1ui.html">k1lib.k1ui module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eqn.html">k1lib.eqn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fmt.html">k1lib.fmt module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../graphEqn.html">k1lib.graphEqn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../imports.html">k1lib.imports module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mo.html">k1lib.mo module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../knn.html">k1lib.knn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../schedule.html">k1lib.schedule module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../selector.html">k1lib.selector module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../serve.html">k1lib.serve module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../viz.html">k1lib.viz module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../monkey.html">Monkey patched classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelogs.html">Changelogs</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">k1lib</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">k1lib.cli.modifier</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for k1lib.cli.modifier</h1><div class="highlight"><pre>
+<span></span><span class="c1"># AUTOGENERATED FILE! PLEASE DON&#39;T EDIT</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">This is for quick modifiers, think of them as changing formats</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;applyS&quot;</span><span class="p">,</span> <span class="s2">&quot;aS&quot;</span><span class="p">,</span> <span class="s2">&quot;apply&quot;</span><span class="p">,</span> <span class="s2">&quot;applyMp&quot;</span><span class="p">,</span> <span class="s2">&quot;parallel&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;applyTh&quot;</span><span class="p">,</span> <span class="s2">&quot;applySerial&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;sort&quot;</span><span class="p">,</span> <span class="s2">&quot;sortF&quot;</span><span class="p">,</span> <span class="s2">&quot;consume&quot;</span><span class="p">,</span> <span class="s2">&quot;randomize&quot;</span><span class="p">,</span> <span class="s2">&quot;stagger&quot;</span><span class="p">,</span> <span class="s2">&quot;op&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;integrate&quot;</span><span class="p">]</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Iterator</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">List</span>
+<span class="kn">from</span> <span class="nn">k1lib.cli.init</span> <span class="kn">import</span> <span class="n">patchDefaultDelim</span><span class="p">,</span> <span class="n">BaseCli</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">fastF</span>
+<span class="kn">import</span> <span class="nn">k1lib.cli</span> <span class="k">as</span> <span class="nn">cli</span><span class="o">,</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span><span class="o">,</span> <span class="nn">threading</span><span class="o">,</span> <span class="nn">gc</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">deque</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span><span class="p">,</span> <span class="n">update_wrapper</span><span class="p">,</span> <span class="n">lru_cache</span>
+<span class="kn">from</span> <span class="nn">k1lib.cli.typehint</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">dill</span><span class="o">,</span> <span class="nn">pickle</span><span class="o">,</span> <span class="nn">k1lib</span><span class="o">,</span> <span class="nn">warnings</span><span class="o">,</span> <span class="nn">atexit</span><span class="o">,</span> <span class="nn">signal</span><span class="o">,</span> <span class="nn">time</span><span class="o">,</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">random</span>
+<span class="k">try</span><span class="p">:</span> <span class="kn">import</span> <span class="nn">torch</span><span class="p">;</span> <span class="kn">import</span> <span class="nn">torch.multiprocessing</span> <span class="k">as</span> <span class="nn">mp</span><span class="p">;</span> <span class="n">hasTorch</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="k">except</span><span class="p">:</span> <span class="kn">import</span> <span class="nn">multiprocessing</span> <span class="k">as</span> <span class="nn">mp</span><span class="p">;</span> <span class="n">hasTorch</span> <span class="o">=</span> <span class="kc">False</span>
+<div class="viewcode-block" id="applyS"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.modifier.applyS">[docs]</a><span class="k">class</span> <span class="nc">applyS</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
+<div class="viewcode-block" id="applyS.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.modifier.applyS.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">:</span><span class="n">Callable</span><span class="p">[[</span><span class="n">T</span><span class="p">],</span> <span class="n">T</span><span class="p">],</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Like :class:`apply`, but much simpler, just operating on the entire input</span>
+<span class="sd">object, essentially. The &quot;S&quot; stands for &quot;single&quot;. There&#39;s</span>
+<span class="sd">also an alias shorthand for this called :class:`aS`. Example::</span>
+
+<span class="sd">    # returns 5</span>
+<span class="sd">    3 | aS(lambda x: x+2)</span>
+
+<span class="sd">Like :class:`apply`, you can also use this as a decorator like this::</span>
+
+<span class="sd">    @aS</span>
+<span class="sd">    def f(x):</span>
+<span class="sd">        return x+2</span>
+<span class="sd">    # returns 5</span>
+<span class="sd">    3 | f</span>
+
+<span class="sd">This also decorates the returned object so that it has same qualname, docstring</span>
+<span class="sd">and whatnot.</span>
+
+<span class="sd">:param f: the function to be executed</span>
+<span class="sd">:param kwargs: other keyword arguments to pass to the function, together with ``args``&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">fs</span><span class="o">=</span><span class="p">[</span><span class="n">f</span><span class="p">]);</span> <span class="bp">self</span><span class="o">.</span><span class="n">args</span> <span class="o">=</span> <span class="n">args</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span> <span class="o">=</span> <span class="n">kwargs</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">f</span> <span class="o">=</span> <span class="n">f</span><span class="p">;</span> <span class="n">update_wrapper</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">updated</span><span class="o">=</span><span class="p">())</span></div>
+    <span class="k">def</span> <span class="nf">_typehint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inp</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">hasHint</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hint</span>
+        <span class="k">try</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="o">.</span><span class="n">_typehint</span><span class="p">(</span><span class="n">inp</span><span class="p">)</span>
+        <span class="k">except</span><span class="p">:</span> <span class="k">return</span> <span class="n">tAny</span><span class="p">()</span>
+<div class="viewcode-block" id="applyS.__ror__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.modifier.applyS.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">:</span><span class="n">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">(</span><span class="n">it</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span><span class="p">)</span></div>
+<div class="viewcode-block" id="applyS.__invert__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.modifier.applyS.__invert__">[docs]</a>    <span class="k">def</span> <span class="fm">__invert__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Configures it so that it expand the arguments out.</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    # returns 5</span>
+<span class="sd">    [2, 3] | ~aS(lambda x, y: x + y)</span>
+
+<span class="sd">    def f(x, y, a=4):</span>
+<span class="sd">        return x*y + a</span>
+<span class="sd">    # returns 10</span>
+<span class="sd">    [2, 3] | ~aS(f)</span>
+<span class="sd">    # returns 11</span>
+<span class="sd">    [2, 3] | ~aS(f, a=5)&quot;&quot;&quot;</span>
+        <span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">;</span> <span class="n">a</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">;</span> <span class="n">kw</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span><span class="p">;</span> <span class="k">return</span> <span class="n">applyS</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">x</span><span class="p">,</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">));</span></div></div>
+<span class="n">aS</span> <span class="o">=</span> <span class="n">applyS</span>
+<div class="viewcode-block" id="apply"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.modifier.apply">[docs]</a><span class="k">class</span> <span class="nc">apply</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
+<div class="viewcode-block" id="apply.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.modifier.apply.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">:</span><span class="n">Callable</span><span class="p">[[</span><span class="n">T</span><span class="p">],</span> <span class="n">T</span><span class="p">],</span> <span class="n">column</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cache</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Applies a function f to every line.</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    # returns [0, 1, 4, 9, 16]</span>
+<span class="sd">    range(5) | apply(lambda x: x**2) | deref()</span>
+<span class="sd">    # returns [[3.0, 1.0, 1.0], [3.0, 1.0, 1.0]]</span>
+<span class="sd">    torch.ones(2, 3) | apply(lambda x: x+2, 0) | deref()</span>
+
+<span class="sd">You can also use this as a decorator, like this::</span>
+
+<span class="sd">    @apply</span>
+<span class="sd">    def f(x):</span>
+<span class="sd">        return x**2</span>
+<span class="sd">    # returns [0, 1, 4, 9, 16]</span>
+<span class="sd">    range(5) | f | deref()</span>
+
+<span class="sd">You can also add a cache, like this::</span>
+
+<span class="sd">    def calc(i): time.sleep(0.5); return i**2</span>
+<span class="sd">    # takes 2.5s</span>
+<span class="sd">    range(5) | repeatFrom(2) | apply(calc, cache=10) | deref()</span>
+<span class="sd">    # takes 5s</span>
+<span class="sd">    range(5) | repeatFrom(2) | apply(calc) | deref()</span>
+
+<span class="sd">You can add custom keyword arguments into the function::</span>
+
+<span class="sd">    def f(x, y, z=3):</span>
+<span class="sd">        return x + y + z</span>
+<span class="sd">    # returns [15, 17, 19, 21, 23]</span>
+<span class="sd">    [range(5), range(10, 15)] | transpose() | ~apply(f, z=5) | deref()</span>
+
+<span class="sd">:param column: if not None, then applies the function to that column only</span>
+<span class="sd">:param cache: if specified, then caches this much number of values</span>
+<span class="sd">:param kwargs: extra keyword arguments to pass in the function&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">fs</span><span class="o">=</span><span class="p">[</span><span class="n">f</span><span class="p">]);</span> <span class="bp">self</span><span class="o">.</span><span class="n">f</span> <span class="o">=</span> <span class="n">f</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span> <span class="o">=</span> <span class="n">kwargs</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">column</span> <span class="o">=</span> <span class="n">column</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span> <span class="o">=</span> <span class="n">cache</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fC</span> <span class="o">=</span> <span class="n">fastF</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">cache</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fC</span> <span class="o">=</span> <span class="n">lru_cache</span><span class="p">(</span><span class="n">cache</span><span class="p">)(</span><span class="bp">self</span><span class="o">.</span><span class="n">_fC</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">normal</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">column</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span> <span class="o">==</span> <span class="mi">0</span> <span class="c1"># cached value to say that this apply is just being used as a wrapper, nothing out of the ordinary</span></div>
+    <span class="k">def</span> <span class="nf">_typehint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inp</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">column</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">inp</span><span class="p">,</span> <span class="n">tListIterSet</span><span class="p">):</span>
+                <span class="k">try</span><span class="p">:</span> <span class="k">return</span> <span class="n">tIter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="o">.</span><span class="n">_typehint</span><span class="p">(</span><span class="n">inp</span><span class="o">.</span><span class="n">child</span><span class="p">))</span>
+                <span class="k">except</span><span class="p">:</span> <span class="k">return</span> <span class="n">tIter</span><span class="p">(</span><span class="n">tAny</span><span class="p">())</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">_typehint</span><span class="p">(</span><span class="n">inp</span><span class="p">)</span>
+<div class="viewcode-block" id="apply.__ror__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.modifier.apply.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">:</span><span class="n">Iterator</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">column</span><span class="p">;</span> <span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fC</span><span class="p">;</span> <span class="n">kwargs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span>
+        <span class="k">if</span> <span class="n">c</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="k">return</span> <span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">it</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span> <span class="k">return</span> <span class="p">([(</span><span class="n">e</span> <span class="k">if</span> <span class="n">i</span> <span class="o">!=</span> <span class="n">c</span> <span class="k">else</span> <span class="n">f</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">))</span> 
+                       <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">e</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">row</span><span class="p">)]</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">it</span><span class="p">)</span></div>
+<div class="viewcode-block" id="apply.__invert__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.modifier.apply.__invert__">[docs]</a>    <span class="k">def</span> <span class="fm">__invert__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Same mechanism as in :class:`applyS`, it expands the</span>
+<span class="sd">arguments out. Just for convenience really. Example::</span>
+
+<span class="sd">    # returns [10, 12, 14, 16, 18]</span>
+<span class="sd">    [range(5), range(10, 15)] | transpose() | ~apply(lambda x, y: x+y) | deref()&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">x</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">column</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">)</span></div></div>
+<span class="k">def</span> <span class="nf">executeFunc</span><span class="p">(</span><span class="n">common</span><span class="p">,</span> <span class="n">line</span><span class="p">):</span>
+    <span class="kn">import</span> <span class="nn">dill</span>
+    <span class="n">f</span><span class="p">,</span> <span class="n">kwargs</span> <span class="o">=</span> <span class="n">dill</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">common</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="n">dill</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">line</span><span class="p">),</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">terminateGraceful</span><span class="p">():</span> <span class="n">signal</span><span class="o">.</span><span class="n">signal</span><span class="p">(</span><span class="n">signal</span><span class="o">.</span><span class="n">SIGINT</span><span class="p">,</span> <span class="n">signal</span><span class="o">.</span><span class="n">SIG_IGN</span><span class="p">)</span>
+<div class="viewcode-block" id="applyMp"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.modifier.applyMp">[docs]</a><span class="k">class</span> <span class="nc">applyMp</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
+    <span class="n">_pools</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="n">_torchNumThreads</span> <span class="o">=</span> <span class="kc">None</span>
+<div class="viewcode-block" id="applyMp.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.modifier.applyMp.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">:</span><span class="n">Callable</span><span class="p">[[</span><span class="n">T</span><span class="p">],</span> <span class="n">T</span><span class="p">],</span> <span class="n">prefetch</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">timeout</span><span class="p">:</span><span class="nb">float</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">utilization</span><span class="p">:</span><span class="nb">float</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">bs</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">newPoolEvery</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Like :class:`apply`, but execute ``f(row)`` of each row in</span>
+<span class="sd">multiple processes. Example::</span>
+
+<span class="sd">    # returns [3, 2]</span>
+<span class="sd">    [&quot;abc&quot;, &quot;de&quot;] | applyMp(lambda s: len(s)) | deref()</span>
+<span class="sd">    # returns [5, 6, 9]</span>
+<span class="sd">    range(3) | applyMp(lambda x, bias: x**2+bias, bias=5) | deref()</span>
+<span class="sd">    </span>
+<span class="sd">    # returns [[1, 2, 3], [1, 2, 3]], demonstrating outside vars work</span>
+<span class="sd">    someList = [1, 2, 3]</span>
+<span class="sd">    [&quot;abc&quot;, &quot;de&quot;] | applyMp(lambda s: someList) | deref()</span>
+
+<span class="sd">Internally, this will continuously spawn new jobs up until 80% of all CPU</span>
+<span class="sd">cores are utilized. On posix systems, the default multiprocessing start method is</span>
+<span class="sd">``fork()``. This sort of means that all the variables in memory will be copied</span>
+<span class="sd">over. This might be expensive (might also not, with copy-on-write), so you might</span>
+<span class="sd">have to think about that. On windows and macos, the default start method is</span>
+<span class="sd">``spawn``, meaning each child process is a completely new interpreter, so you have</span>
+<span class="sd">to pass in all required variables and reimport every dependencies. Read more at</span>
+<span class="sd">https://docs.python.org/3/library/multiprocessing.html#contexts-and-start-methods</span>
+
+<span class="sd">If you don&#39;t wish to schedule all jobs at once, you can specify a ``prefetch``</span>
+<span class="sd">amount, and it will only schedule that much jobs ahead of time. Example::</span>
+
+<span class="sd">    range(10000) | applyMp(lambda x: x**2)    | head() | deref() # 700ms</span>
+<span class="sd">    range(10000) | applyMp(lambda x: x**2, 5) | head() | deref() # 300ms</span>
+
+<span class="sd">    # demonstrating there&#39;re no huge penalties even if we want all results at the same time</span>
+<span class="sd">    range(10000) | applyMp(lambda x: x**2)    | deref() # 900ms</span>
+<span class="sd">    range(10000) | applyMp(lambda x: x**2, 5) | deref() # 1000ms</span>
+
+<span class="sd">The first line will schedule all jobs at once, and thus will require more RAM and</span>
+<span class="sd">compute power, even though we discard most of the results anyway (the</span>
+<span class="sd">:class:`~k1lib.cli.filt.head` cli). The second line only schedules 5 jobs ahead of</span>
+<span class="sd">time, and thus will be extremely more efficient if you don&#39;t need all results right</span>
+<span class="sd">away.</span>
+
+<span class="sd">.. note::</span>
+
+<span class="sd">    Remember that every :class:`~k1lib.cli.init.BaseCli` is also a</span>
+<span class="sd">    function, meaning that you can do stuff like::</span>
+
+<span class="sd">        # returns [[&#39;ab&#39;, &#39;ac&#39;]]</span>
+<span class="sd">        [[&quot;ab&quot;, &quot;cd&quot;, &quot;ac&quot;]] | applyMp(filt(op().startswith(&quot;a&quot;)) | deref()) | deref()</span>
+
+<span class="sd">    Also remember that the return result of ``f`` should be serializable, meaning it</span>
+<span class="sd">    should not be a generator. That&#39;s why in the example above, there&#39;s a ``deref()``</span>
+<span class="sd">    inside f. You should also convert PyTorch tensors into Numpy arrays</span>
+
+<span class="sd">Most of the time, you would probably want to specify ``bs`` to something bigger than 1</span>
+<span class="sd">(may be 32 or sth like that). This will executes ``f`` multiple times in a single job,</span>
+<span class="sd">instead of executing ``f`` only once per job. Should reduce overhead of process</span>
+<span class="sd">creation dramatically.</span>
+
+<span class="sd">If you encounter strange errors not seen on :class:`apply`, you can try to clear all</span>
+<span class="sd">pools (using :meth:`clearPools`), to terminate all child processes and thus free</span>
+<span class="sd">resources. On earlier versions, you have to do this manually before exiting, but now</span>
+<span class="sd">:class:`applyMp` is much more robust.</span>
+
+<span class="sd">Also, you should not immediately assume that :class:`applyMp` will always be faster</span>
+<span class="sd">than :class:`apply`. Remember that :class:`applyMp` will create new processes,</span>
+<span class="sd">serialize and transfer data to them, execute it, then transfer data back. If your code</span>
+<span class="sd">transfers a lot of data back and forth (compared to the amount of computation done), or</span>
+<span class="sd">the child processes don&#39;t have a lot of stuff to do before returning, it may very well</span>
+<span class="sd">be a lot slower than :class:`apply`.</span>
+
+<span class="sd">There&#39;s a potential loophole here that can make your code faster. Because the main</span>
+<span class="sd">process is forked (at least on linux), every variable is still there, even the big</span>
+<span class="sd">ones. So, you can potentially do something like this::</span>
+
+<span class="sd">    bigData = [] # 1B items in the list</span>
+<span class="sd">    # summing up all items together. No input data transfers (because it&#39;s forked instead)</span>
+<span class="sd">    range(1_000_000_000) | batched(100) | applyMp(lambda r: r | apply(lambda i: bigData[i]) | toSum()) | toSum()</span>
+
+<span class="sd">:param prefetch: if not specified, schedules all jobs at the same time. If</span>
+<span class="sd">    specified, schedules jobs so that there&#39;ll only be a specified amount of</span>
+<span class="sd">    jobs, and will only schedule more if results are actually being used.</span>
+<span class="sd">:param timeout: seconds to wait for job before raising an error</span>
+<span class="sd">:param utilization: how many percent cores are we running? 0 for no cores, 1 for</span>
+<span class="sd">    all the cores. Defaulted to 0.8</span>
+<span class="sd">:param bs: if specified, groups ``bs`` number of transforms into 1 job to be more</span>
+<span class="sd">    efficient.</span>
+<span class="sd">:param kwargs: extra arguments to be passed to the function. ``args`` not</span>
+<span class="sd">    included as there&#39;re a couple of options you can pass for this cli.</span>
+<span class="sd">:param newPoolEvery: creates a new processing pool for every specific amount of input</span>
+<span class="sd">    fed. 0 for not refreshing any pools at all. Turn this on in case your process consumes</span>
+<span class="sd">    lots of memory and you have to kill them eventually to free up some memory&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">fs</span><span class="o">=</span><span class="p">[</span><span class="n">f</span><span class="p">]);</span> <span class="bp">self</span><span class="o">.</span><span class="n">f</span> <span class="o">=</span> <span class="n">fastF</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">prefetch</span> <span class="o">=</span> <span class="n">prefetch</span> <span class="ow">or</span> <span class="mi">1_000_000</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span> <span class="o">=</span> <span class="n">timeout</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">utilization</span> <span class="o">=</span> <span class="n">utilization</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bs</span> <span class="o">=</span> <span class="n">bs</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">p</span> <span class="o">=</span> <span class="kc">None</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">newPoolEvery</span> <span class="o">=</span> <span class="n">newPoolEvery</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">ps</span> <span class="o">=</span> <span class="p">[]</span></div>
+<div class="viewcode-block" id="applyMp.__ror__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.modifier.applyMp.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">:</span><span class="n">Iterator</span><span class="p">[</span><span class="n">T</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">T</span><span class="p">]:</span>
+        <span class="n">timeout</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span><span class="p">;</span> <span class="n">it</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">it</span><span class="p">)</span> <span class="c1"># really make sure it&#39;s an iterator, for prefetch</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">bs</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span> <span class="k">return</span> <span class="n">it</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">batched</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bs</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span> <span class="o">|</span> <span class="n">applyMp</span><span class="p">(</span><span class="n">apply</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">)</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">toList</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">prefetch</span><span class="p">,</span> <span class="n">timeout</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">joinStreams</span><span class="p">()</span>
+        <span class="k">def</span> <span class="nf">newPool</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">hasTorch</span><span class="p">:</span>
+                <span class="k">try</span><span class="p">:</span> <span class="n">applyMp</span><span class="o">.</span><span class="n">_torchNumThreads</span> <span class="o">=</span> <span class="n">applyMp</span><span class="o">.</span><span class="n">_torchNumThreads</span> <span class="ow">or</span> <span class="n">torch</span><span class="o">.</span><span class="n">get_num_threads</span><span class="p">();</span> <span class="n">torch</span><span class="o">.</span><span class="n">set_num_threads</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+                <span class="k">except</span><span class="p">:</span> <span class="k">pass</span> <span class="c1"># why do all of this? Because some strange interaction between PyTorch and multiprocessing, outlined here: https://github.com/pytorch/pytorch/issues/82843</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;py_k1lib_in_applyMp&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;True&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">p</span> <span class="o">=</span> <span class="n">mp</span><span class="o">.</span><span class="n">Pool</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">mp</span><span class="o">.</span><span class="n">cpu_count</span><span class="p">()</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">utilization</span><span class="p">),</span> <span class="n">terminateGraceful</span><span class="p">);</span> <span class="bp">self</span><span class="o">.</span><span class="n">ps</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">p</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">hasTorch</span> <span class="ow">and</span> <span class="n">applyMp</span><span class="o">.</span><span class="n">_torchNumThreads</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">set_num_threads</span><span class="p">(</span><span class="n">applyMp</span><span class="o">.</span><span class="n">_torchNumThreads</span><span class="p">)</span>
+        <span class="k">def</span> <span class="nf">intercept</span><span class="p">(</span><span class="n">it</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">e</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">it</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">p</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">p</span><span class="o">.</span><span class="n">close</span><span class="p">();</span> <span class="bp">self</span><span class="o">.</span><span class="n">ps</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">p</span><span class="p">)</span>
+                    <span class="n">gc</span><span class="o">.</span><span class="n">collect</span><span class="p">();</span> <span class="n">newPool</span><span class="p">()</span>
+                <span class="k">yield</span> <span class="n">e</span>
+        <span class="n">common</span> <span class="o">=</span> <span class="n">dill</span><span class="o">.</span><span class="n">dumps</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span><span class="p">])</span>
+        <span class="k">def</span> <span class="nf">gen</span><span class="p">(</span><span class="n">it</span><span class="p">):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">newPoolEvery</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span> <span class="n">it</span> <span class="o">=</span> <span class="n">intercept</span><span class="p">(</span><span class="n">it</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">newPoolEvery</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span> <span class="n">newPool</span><span class="p">()</span>
+                <span class="n">fs</span> <span class="o">=</span> <span class="n">deque</span><span class="p">()</span>
+                <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">prefetch</span><span class="p">),</span> <span class="n">it</span><span class="p">):</span>
+                    <span class="n">fs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">p</span><span class="o">.</span><span class="n">apply_async</span><span class="p">(</span><span class="n">executeFunc</span><span class="p">,</span> <span class="p">[</span><span class="n">common</span><span class="p">,</span> <span class="n">dill</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">line</span><span class="p">)]))</span>
+                <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">it</span><span class="p">:</span>
+                    <span class="k">yield</span> <span class="n">fs</span><span class="o">.</span><span class="n">popleft</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">timeout</span><span class="p">)</span>
+                    <span class="n">fs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">p</span><span class="o">.</span><span class="n">apply_async</span><span class="p">(</span><span class="n">executeFunc</span><span class="p">,</span> <span class="p">[</span><span class="n">common</span><span class="p">,</span> <span class="n">dill</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">line</span><span class="p">)]))</span>
+                <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">fs</span><span class="p">:</span> <span class="k">yield</span> <span class="n">f</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">timeout</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">KeyboardInterrupt</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;applyMp interrupted. Terminating pool now&quot;</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">ps</span><span class="p">:</span> <span class="n">p</span><span class="o">.</span><span class="n">terminate</span><span class="p">();</span>
+                <span class="k">raise</span> <span class="n">e</span>
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;applyMp encounter errors. Terminating pool now&quot;</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">ps</span><span class="p">:</span> <span class="n">p</span><span class="o">.</span><span class="n">terminate</span><span class="p">();</span>
+                <span class="k">raise</span> <span class="n">e</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">ps</span><span class="p">:</span> <span class="n">p</span><span class="o">.</span><span class="n">terminate</span><span class="p">();</span>
+        <span class="k">return</span> <span class="n">gen</span><span class="p">(</span><span class="n">it</span><span class="p">)</span></div>
+<div class="viewcode-block" id="applyMp.clearPools"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.modifier.applyMp.clearPools">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">clearPools</span><span class="p">():</span>
+        <span class="sd">&quot;&quot;&quot;Terminate all existing pools. Do this before restarting/quitting the</span>
+<span class="sd">script/notebook to make sure all resources (like GPU) are freed. **Update**:</span>
+<span class="sd">you probably won&#39;t have to call this manually anymore since version 0.9, but</span>
+<span class="sd">if you run into problems, try doing this.&quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">applyMp</span><span class="o">.</span><span class="n">_pools</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span> <span class="n">p</span><span class="o">.</span><span class="n">terminate</span><span class="p">()</span>
+            <span class="k">except</span><span class="p">:</span> <span class="k">pass</span>
+        <span class="n">applyMp</span><span class="o">.</span><span class="n">_pools</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span></div>
+<div class="viewcode-block" id="applyMp.pools"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.modifier.applyMp.pools">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">pools</span><span class="p">():</span>
+        <span class="sd">&quot;&quot;&quot;Get set of all pools. Meant for debugging purposes only.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">applyMp</span><span class="o">.</span><span class="n">_pools</span></div>
+    <span class="k">def</span> <span class="fm">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;p&quot;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">p</span><span class="o">.</span><span class="n">terminate</span><span class="p">();</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">p</span> <span class="ow">in</span> <span class="n">applyMp</span><span class="o">.</span><span class="n">_pools</span><span class="p">:</span> <span class="n">applyMp</span><span class="o">.</span><span class="n">_pools</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">p</span><span class="p">)</span></div>
+<span class="c1"># apparently, this doesn&#39;t do anything, at least in jupyter environment</span>
+<span class="n">atexit</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="n">applyMp</span><span class="o">.</span><span class="n">clearPools</span><span class="p">())</span>
+<span class="n">parallel</span> <span class="o">=</span> <span class="n">applyMp</span>
+<span class="n">thEmptySentinel</span> <span class="o">=</span> <span class="nb">object</span><span class="p">()</span>
+<div class="viewcode-block" id="applyTh"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.modifier.applyTh">[docs]</a><span class="k">class</span> <span class="nc">applyTh</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
+<div class="viewcode-block" id="applyTh.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.modifier.applyTh.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">prefetch</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">timeout</span><span class="p">:</span><span class="nb">float</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">bs</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Kinda like the same as :class:`applyMp`, but executes ``f`` on multiple</span>
+<span class="sd">threads, instead of on multiple processes. Advantages:</span>
+
+<span class="sd">- Relatively low overhead for thread creation</span>
+<span class="sd">- Fast, if ``f`` is io-bound</span>
+<span class="sd">- Does not have to serialize and deserialize the result, meaning iterators can be</span>
+<span class="sd">  exchanged</span>
+
+<span class="sd">Disadvantages:</span>
+
+<span class="sd">- Still has thread creation overhead, so it&#39;s still recommended to specify ``bs``</span>
+<span class="sd">- Is slow if ``f`` has to obtain the GIL to be able to do anything</span>
+
+<span class="sd">All examples from :class:`applyMp` should work perfectly here.&quot;&quot;&quot;</span>
+        <span class="n">fs</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span><span class="p">];</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">fs</span><span class="o">=</span><span class="n">fs</span><span class="p">);</span> <span class="bp">self</span><span class="o">.</span><span class="n">f</span> <span class="o">=</span> <span class="n">fs</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span> <span class="bp">self</span><span class="o">.</span><span class="n">bs</span> <span class="o">=</span> <span class="n">bs</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">prefetch</span> <span class="o">=</span> <span class="n">prefetch</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span> <span class="o">=</span> <span class="n">timeout</span></div>
+<div class="viewcode-block" id="applyTh.__ror__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.modifier.applyTh.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">bs</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">yield from</span> <span class="p">(</span><span class="n">it</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">batched</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bs</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span> <span class="o">|</span> <span class="n">applyTh</span><span class="p">(</span><span class="n">apply</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">prefetch</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span><span class="p">)</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">joinStreams</span><span class="p">());</span> <span class="k">return</span>
+        <span class="n">datas</span> <span class="o">=</span> <span class="n">deque</span><span class="p">();</span> <span class="n">it</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">it</span><span class="p">)</span>
+        <span class="n">innerF</span> <span class="o">=</span> <span class="n">fastF</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">);</span> <span class="n">timeout</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span>
+        <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">wrapper</span><span class="p">):</span> <span class="n">wrapper</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">innerF</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">prefetch</span><span class="p">),</span> <span class="n">it</span><span class="p">):</span>
+            <span class="n">w</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">Wrapper</span><span class="p">(</span><span class="n">thEmptySentinel</span><span class="p">)</span>
+            <span class="n">t</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">f</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">line</span><span class="p">,</span><span class="n">w</span><span class="p">))</span>
+            <span class="n">t</span><span class="o">.</span><span class="n">start</span><span class="p">();</span> <span class="n">datas</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">t</span><span class="p">,</span> <span class="n">w</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">it</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">datas</span><span class="o">.</span><span class="n">popleft</span><span class="p">();</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">timeout</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">value</span> <span class="ow">is</span> <span class="n">thEmptySentinel</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">datas</span><span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="mf">0.01</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Thread timed out!&quot;</span><span class="p">)</span>
+            <span class="k">yield</span> <span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="p">;</span> <span class="n">w</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">Wrapper</span><span class="p">(</span><span class="n">thEmptySentinel</span><span class="p">)</span>
+            <span class="n">t</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">f</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">line</span><span class="p">,</span><span class="n">w</span><span class="p">))</span>
+            <span class="n">t</span><span class="o">.</span><span class="n">start</span><span class="p">();</span> <span class="n">datas</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">t</span><span class="p">,</span> <span class="n">w</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">datas</span><span class="p">)):</span> <span class="c1"># do it this way so that python can remove threads early, due to ref counting</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">datas</span><span class="o">.</span><span class="n">popleft</span><span class="p">();</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">timeout</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">value</span> <span class="ow">is</span> <span class="n">thEmptySentinel</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">datas</span><span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="mf">0.01</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Thread timed out!&quot;</span><span class="p">)</span>
+            <span class="k">yield</span> <span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">value</span></div></div>
+<div class="viewcode-block" id="applySerial"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.modifier.applySerial">[docs]</a><span class="k">class</span> <span class="nc">applySerial</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
+<div class="viewcode-block" id="applySerial.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.modifier.applySerial.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Applies a function repeatedly. First yields input iterator ``x``. Then</span>
+<span class="sd">yields ``f(x)``, then ``f(f(x))``, then ``f(f(f(x)))`` and so on. Example::</span>
+
+<span class="sd">    # returns [2, 4, 8, 16, 32]</span>
+<span class="sd">    2 | applySerial(op()*2) | head(5) | deref()</span>
+
+<span class="sd">If the result of your operation is an iterator, you might want to</span>
+<span class="sd">:class:`~k1lib.cli.utils.deref` it, like this::</span>
+
+<span class="sd">    rs = iter(range(8)) | applySerial(rows()[::2])</span>
+<span class="sd">    # returns [0, 2, 4, 6]</span>
+<span class="sd">    rs | rows(1) | item() | deref()</span>
+<span class="sd">    # returns []. This is because all the elements are taken by the previous deref()</span>
+<span class="sd">    rs | item() | deref()</span>
+<span class="sd">    # returns [[2, 8], [10, -6], [4, 16], [20, -12]]</span>
+<span class="sd">    [2, 8] | ~applySerial(lambda a, b: (a + b, a - b)) | head(4) | deref()</span>
+
+<span class="sd">    rs = iter(range(8)) | applySerial(rows()[::2] | deref())</span>
+<span class="sd">    # returns [0, 2, 4, 6]</span>
+<span class="sd">    rs | rows(1) | item()</span>
+<span class="sd">    # returns [0, 4]</span>
+<span class="sd">    rs | item() # or `next(rs)`</span>
+<span class="sd">    # returns [0]</span>
+<span class="sd">    rs | item() # or `next(rs)`</span>
+
+<span class="sd">:param f: function to apply repeatedly</span>
+<span class="sd">:param includeFirst: whether to include the raw input value or not&quot;&quot;&quot;</span>
+        <span class="n">fs</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span><span class="p">];</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">fs</span><span class="o">=</span><span class="n">fs</span><span class="p">);</span> <span class="bp">self</span><span class="o">.</span><span class="n">f</span> <span class="o">=</span> <span class="n">fs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">unpack</span> <span class="o">=</span> <span class="kc">False</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">args</span> <span class="o">=</span> <span class="n">args</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span> <span class="o">=</span> <span class="n">kwargs</span></div>
+<div class="viewcode-block" id="applySerial.__ror__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.modifier.applySerial.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">):</span>
+        <span class="n">f</span> <span class="o">=</span> <span class="n">fastF</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">unpack</span><span class="p">:</span>
+            <span class="k">while</span> <span class="kc">True</span><span class="p">:</span> <span class="k">yield</span> <span class="n">it</span><span class="p">;</span> <span class="n">it</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">it</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">while</span> <span class="kc">True</span><span class="p">:</span> <span class="k">yield</span> <span class="n">it</span><span class="p">;</span> <span class="n">it</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">it</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span><span class="p">)</span></div>
+<div class="viewcode-block" id="applySerial.__invert__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.modifier.applySerial.__invert__">[docs]</a>    <span class="k">def</span> <span class="fm">__invert__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">ans</span> <span class="o">=</span> <span class="n">applySerial</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">ans</span><span class="o">.</span><span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span><span class="p">;</span> <span class="k">return</span> <span class="n">ans</span></div></div>
+<div class="viewcode-block" id="sort"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.modifier.sort">[docs]</a><span class="k">class</span> <span class="nc">sort</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
+<div class="viewcode-block" id="sort.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.modifier.sort.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">column</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">numeric</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Sorts all lines based on a specific `column`.</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    # returns [[5, &#39;a&#39;], [1, &#39;b&#39;]]</span>
+<span class="sd">    [[1, &quot;b&quot;], [5, &quot;a&quot;]] | ~sort(0) | deref()</span>
+<span class="sd">    # returns [[2, 3]]</span>
+<span class="sd">    [[1, &quot;b&quot;], [5, &quot;a&quot;], [2, 3]] | ~sort(1) | deref()</span>
+<span class="sd">    # errors out, as you can&#39;t really compare str with int</span>
+<span class="sd">    [[1, &quot;b&quot;], [2, 3], [5, &quot;a&quot;]] | sort(1, False) | deref()</span>
+<span class="sd">    # returns [-1, 2, 3, 5, 8]</span>
+<span class="sd">    [2, 5, 3, -1, 8] | sort(None) | deref()</span>
+
+<span class="sd">:param column: if None, sort rows based on themselves and not an element</span>
+<span class="sd">:param numeric: whether to convert column to float</span>
+<span class="sd">:param reverse: False for smaller to bigger, True for bigger to smaller. Use</span>
+<span class="sd">    :meth:`__invert__` to quickly reverse the order instead of using this param&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">column</span> <span class="o">=</span> <span class="n">column</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">reverse</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">numeric</span> <span class="o">=</span> <span class="n">numeric</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">filterF</span> <span class="o">=</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="k">if</span> <span class="n">numeric</span> <span class="k">else</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">)</span></div>
+<div class="viewcode-block" id="sort.__ror__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.modifier.sort.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">:</span><span class="n">Iterator</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">column</span>
+        <span class="k">if</span> <span class="n">c</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">it</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">wrapList</span><span class="p">()</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span> <span class="o">|</span> <span class="n">sort</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">numeric</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">reverse</span><span class="p">)</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">op</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+        <span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">filterF</span>
+        <span class="n">rows</span> <span class="o">=</span> <span class="p">(</span><span class="n">it</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">isNumeric</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">numeric</span> <span class="k">else</span> <span class="n">it</span><span class="p">)</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">deref</span><span class="p">(</span><span class="n">maxDepth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="k">def</span> <span class="nf">sortF</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">c</span><span class="p">:</span> <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="n">c</span><span class="p">])</span>
+            <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="s2">&quot;inf&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">sortF</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">reverse</span><span class="p">)</span></div>
+<div class="viewcode-block" id="sort.__invert__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.modifier.sort.__invert__">[docs]</a>    <span class="k">def</span> <span class="fm">__invert__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Creates a clone that has the opposite sort order&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">sort</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">column</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">numeric</span><span class="p">,</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">reverse</span><span class="p">)</span></div></div>
+<div class="viewcode-block" id="sortF"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.modifier.sortF">[docs]</a><span class="k">class</span> <span class="nc">sortF</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
+<div class="viewcode-block" id="sortF.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.modifier.sortF.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">:</span><span class="n">Callable</span><span class="p">[[</span><span class="n">T</span><span class="p">],</span> <span class="nb">float</span><span class="p">],</span> <span class="n">column</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Sorts rows using a function.</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    # returns [&#39;a&#39;, &#39;aa&#39;, &#39;aaa&#39;, &#39;aaaa&#39;, &#39;aaaaa&#39;]</span>
+<span class="sd">    [&quot;a&quot;, &quot;aaa&quot;, &quot;aaaaa&quot;, &quot;aa&quot;, &quot;aaaa&quot;] | sortF(lambda r: len(r)) | deref()</span>
+<span class="sd">    # returns [&#39;aaaaa&#39;, &#39;aaaa&#39;, &#39;aaa&#39;, &#39;aa&#39;, &#39;a&#39;]</span>
+<span class="sd">    [&quot;a&quot;, &quot;aaa&quot;, &quot;aaaaa&quot;, &quot;aa&quot;, &quot;aaaa&quot;] | ~sortF(lambda r: len(r)) | deref()&quot;&quot;&quot;</span>
+        <span class="n">fs</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span><span class="p">];</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">fs</span><span class="o">=</span><span class="n">fs</span><span class="p">);</span> <span class="bp">self</span><span class="o">.</span><span class="n">f</span> <span class="o">=</span> <span class="n">fs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">column</span> <span class="o">=</span> <span class="n">column</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">reverse</span> <span class="o">=</span> <span class="n">reverse</span></div>
+<div class="viewcode-block" id="sortF.__ror__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.modifier.sortF.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">:</span><span class="n">Iterator</span><span class="p">[</span><span class="n">T</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">T</span><span class="p">]:</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">column</span><span class="p">;</span> <span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">f</span>
+        <span class="k">if</span> <span class="n">c</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="k">return</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">it</span><span class="p">),</span> <span class="n">key</span><span class="o">=</span><span class="n">f</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">reverse</span><span class="p">)</span>
+        <span class="k">def</span> <span class="nf">sortF</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">c</span><span class="p">:</span> <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="n">c</span><span class="p">])</span>
+            <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="s2">&quot;inf&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">it</span><span class="p">),</span> <span class="n">key</span><span class="o">=</span><span class="n">sortF</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">reverse</span><span class="p">)</span></div>
+<div class="viewcode-block" id="sortF.__invert__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.modifier.sortF.__invert__">[docs]</a>    <span class="k">def</span> <span class="fm">__invert__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;sortF&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">sortF</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">column</span><span class="p">,</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">reverse</span><span class="p">)</span></div></div>
+<div class="viewcode-block" id="consume"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.modifier.consume">[docs]</a><span class="k">class</span> <span class="nc">consume</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
+<div class="viewcode-block" id="consume.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.modifier.consume.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">:</span><span class="n">Union</span><span class="p">[</span><span class="n">BaseCli</span><span class="p">,</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">T</span><span class="p">],</span> <span class="kc">None</span><span class="p">]]):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Consumes the iterator in a side stream. Returns the iterator.</span>
+<span class="sd">Kinda like the bash command ``tee``. Example::</span>
+
+<span class="sd">    # prints &quot;0\n1\n2&quot; and returns [0, 1, 2]</span>
+<span class="sd">    range(3) | consume(headOut()) | toList()</span>
+<span class="sd">    # prints &quot;range(0, 3)&quot; and returns [0, 1, 2]</span>
+<span class="sd">    range(3) | consume(lambda it: print(it)) | toList()</span>
+
+<span class="sd">This is useful whenever you want to mutate something, but don&#39;t want to</span>
+<span class="sd">include the function result into the main stream.</span>
+
+<span class="sd">See also: :class:`~k1lib.cli.output.tee`&quot;&quot;&quot;</span>
+        <span class="n">fs</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span><span class="p">];</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">fs</span><span class="o">=</span><span class="n">fs</span><span class="p">);</span> <span class="bp">self</span><span class="o">.</span><span class="n">f</span> <span class="o">=</span> <span class="n">fs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
+<div class="viewcode-block" id="consume.__ror__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.modifier.consume.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">:</span><span class="n">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">(</span><span class="n">it</span><span class="p">);</span> <span class="k">return</span> <span class="n">it</span></div></div>
+<div class="viewcode-block" id="randomize"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.modifier.randomize">[docs]</a><span class="k">class</span> <span class="nc">randomize</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
+<div class="viewcode-block" id="randomize.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.modifier.randomize.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bs</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Randomize input stream. In order to be efficient, this does not</span>
+<span class="sd">convert the input iterator to a giant list and yield random values from that.</span>
+<span class="sd">Instead, this fetches ``bs`` items at a time, randomizes them, returns and</span>
+<span class="sd">fetch another ``bs`` items. If you want to do the giant list, then just pass</span>
+<span class="sd">in ``float(&quot;inf&quot;)``, or ``None``. Example::</span>
+
+<span class="sd">    # returns [0, 1, 2, 3, 4], effectively no randomize at all</span>
+<span class="sd">    range(5) | randomize(1) | deref()</span>
+<span class="sd">    # returns something like this: [1, 0, 2, 3, 5, 4, 6, 8, 7, 9]. You can clearly see the batches</span>
+<span class="sd">    range(10) | randomize(3) | deref()</span>
+<span class="sd">    # returns something like this: [7, 0, 5, 2, 4, 9, 6, 3, 1, 8]</span>
+<span class="sd">    range(10) | randomize(float(&quot;inf&quot;)) | deref()</span>
+<span class="sd">    # same as above</span>
+<span class="sd">    range(10) | randomize(None) | deref()</span>
+<span class="sd">    # returns True, as the seed is the same</span>
+<span class="sd">    range(10) | randomize(seed=4) | deref() == range(10) | randomize(seed=4) | deref()&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bs</span> <span class="o">=</span> <span class="n">bs</span> <span class="k">if</span> <span class="n">bs</span> <span class="o">!=</span> <span class="kc">None</span> <span class="k">else</span> <span class="nb">float</span><span class="p">(</span><span class="s2">&quot;inf&quot;</span><span class="p">);</span> <span class="bp">self</span><span class="o">.</span><span class="n">seed</span> <span class="o">=</span> <span class="n">seed</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_initGenn</span><span class="p">()</span></div>
+    <span class="k">def</span> <span class="nf">_initGenn</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">hasTorch</span><span class="p">:</span>
+            <span class="n">gen</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Generator</span><span class="p">()</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">Random</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">seed</span><span class="p">)</span><span class="o">.</span><span class="n">getrandbits</span><span class="p">(</span><span class="mi">63</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">genn</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">randperm</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">generator</span><span class="o">=</span><span class="n">gen</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">genn</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">permutation</span>
+    <span class="k">def</span> <span class="nf">__getstate__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">genn</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">genn</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">genn</span> <span class="o">=</span> <span class="kc">None</span><span class="p">;</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span>
+    <span class="k">def</span> <span class="nf">__setstate__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">d</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">d</span><span class="p">);</span> <span class="bp">self</span><span class="o">.</span><span class="n">_initGenn</span><span class="p">()</span>
+<div class="viewcode-block" id="randomize.__ror__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.modifier.randomize.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">:</span><span class="n">Iterator</span><span class="p">[</span><span class="n">T</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">T</span><span class="p">]:</span>
+        <span class="k">for</span> <span class="n">batch</span> <span class="ow">in</span> <span class="n">it</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">batched</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bs</span><span class="p">,</span> <span class="kc">True</span><span class="p">):</span>
+            <span class="n">batch</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">batch</span><span class="p">);</span> <span class="n">perms</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">genn</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">batch</span><span class="p">))</span>
+            <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="n">perms</span><span class="p">:</span> <span class="k">yield</span> <span class="n">batch</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span></div></div>
+<span class="k">class</span> <span class="nc">StaggeredStream</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stream</span><span class="p">:</span><span class="n">Iterator</span><span class="p">[</span><span class="n">T</span><span class="p">],</span> <span class="n">every</span><span class="p">:</span><span class="nb">int</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Not intended to be instantiated by the end user. Use :class:`stagger`</span>
+<span class="sd">instead.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stream</span> <span class="o">=</span> <span class="n">stream</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">every</span> <span class="o">=</span> <span class="n">every</span>
+    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">every</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">stream</span><span class="p">):</span> <span class="k">yield</span> <span class="n">v</span>
+    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Length of window (length of result if you were to deref it).&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">every</span>
+<div class="viewcode-block" id="stagger"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.modifier.stagger">[docs]</a><span class="k">class</span> <span class="nc">stagger</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
+<div class="viewcode-block" id="stagger.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.modifier.stagger.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">every</span><span class="p">:</span><span class="nb">int</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Staggers input stream into multiple stream &quot;windows&quot; placed serially. Best</span>
+<span class="sd">explained with an example::</span>
+
+<span class="sd">    o = range(10) | stagger(3)</span>
+<span class="sd">    o | deref() # returns [0, 1, 2], 1st &quot;window&quot;</span>
+<span class="sd">    o | deref() # returns [3, 4, 5], 2nd &quot;window&quot;</span>
+<span class="sd">    o | deref() # returns [6, 7, 8]</span>
+<span class="sd">    o | deref() # returns [9]</span>
+<span class="sd">    o | deref() # returns []</span>
+
+<span class="sd">This might be useful when you&#39;re constructing a data loader::</span>
+
+<span class="sd">    dataset = [range(20), range(30, 50)] | transpose()</span>
+<span class="sd">    dl = dataset | batched(3) | (transpose() | toTensor()).all() | stagger(4)</span>
+<span class="sd">    for epoch in range(3):</span>
+<span class="sd">        for xb, yb in dl: # looping over a window</span>
+<span class="sd">            print(epoch)</span>
+<span class="sd">            # then something like: model(xb)</span>
+
+<span class="sd">The above code will print 6 lines. 4 of them is &quot;0&quot; (because we stagger every 4</span>
+<span class="sd">batches), and xb&#39;s shape&#39; will be (3,) (because we batched every 3 samples).</span>
+
+<span class="sd">You should also keep in mind that this doesn&#39;t really change the property of the</span>
+<span class="sd">stream itself. Essentially, treat these pairs of statement as being the same thing::</span>
+
+<span class="sd">    o = range(11, 100)</span>
+<span class="sd">    </span>
+<span class="sd">    # both returns 11</span>
+<span class="sd">    o | stagger(20) | item()</span>
+<span class="sd">    o | item()</span>
+
+<span class="sd">    # both returns [11, 12, ..., 20]</span>
+<span class="sd">    o | head(10) | deref()</span>
+<span class="sd">    o | stagger(20) | head(10) | deref()</span>
+
+<span class="sd">Lastly, multiple iterators might be getting values from the same stream window,</span>
+<span class="sd">meaning::</span>
+
+<span class="sd">    o = range(11, 100) | stagger(10)</span>
+<span class="sd">    it1 = iter(o); it2 = iter(o)</span>
+<span class="sd">    next(it1) # returns 11</span>
+<span class="sd">    next(it2) # returns 12</span>
+
+<span class="sd">This may or may not be desirable. Also this should be obvious, but I want to</span>
+<span class="sd">mention this in case it&#39;s not clear to you.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">every</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">every</span><span class="p">)</span></div>
+<div class="viewcode-block" id="stagger.__ror__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.modifier.stagger.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">:</span><span class="n">Iterator</span><span class="p">[</span><span class="n">T</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">StaggeredStream</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">StaggeredStream</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">it</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">every</span><span class="p">)</span></div>
+<div class="viewcode-block" id="stagger.tv"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.modifier.stagger.tv">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">tv</span><span class="p">(</span><span class="n">every</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">ratio</span><span class="p">:</span><span class="nb">float</span><span class="o">=</span><span class="mf">0.8</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Convenience method to quickly stagger train and valid datasets.</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    # returns [[16], [4]]</span>
+<span class="sd">    [range(100)]*2 | stagger.tv(20) | shape().all() | deref()&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">stagger</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">every</span><span class="o">*</span><span class="n">ratio</span><span class="p">))</span> <span class="o">+</span> <span class="n">stagger</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">every</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">ratio</span><span class="p">)))</span></div></div>
+<span class="n">compareOps</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;__lt__&quot;</span><span class="p">,</span> <span class="s2">&quot;__le__&quot;</span><span class="p">,</span> <span class="s2">&quot;__eq__&quot;</span><span class="p">,</span> <span class="s2">&quot;__ne__&quot;</span><span class="p">,</span> <span class="s2">&quot;__gt__&quot;</span><span class="p">,</span> <span class="s2">&quot;__ge__&quot;</span><span class="p">}</span>
+<div class="viewcode-block" id="op"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.modifier.op">[docs]</a><span class="k">class</span> <span class="nc">op</span><span class="p">(</span><span class="n">k1lib</span><span class="o">.</span><span class="n">Absorber</span><span class="p">,</span> <span class="n">BaseCli</span><span class="p">):</span>
+<div class="viewcode-block" id="op.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.modifier.op.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Absorbs operations done on it and applies it on the stream. Based</span>
+<span class="sd">on :class:`~k1lib.Absorber`. Example::</span>
+
+<span class="sd">    t = torch.tensor([[1, 2, 3], [4, 5, 6.0]])</span>
+<span class="sd">    # returns [torch.tensor([[4., 5., 6., 7., 8., 9.]])]</span>
+<span class="sd">    [t] | (op() + 3).view(1, -1).all() | deref()</span>
+
+<span class="sd">Basically, you can treat ``op()`` as the input tensor. Tbh, you</span>
+<span class="sd">can do the same thing with this::</span>
+
+<span class="sd">    [t] | applyS(lambda t: (t+3).view(-1, 1)).all() | deref()</span>
+
+<span class="sd">But that&#39;s kinda long and may not be obvious. This can be surprisingly resilient, as</span>
+<span class="sd">you can still combine with other cli tools as usual, for example::</span>
+
+<span class="sd">    # returns [2, 3], demonstrating &quot;&amp;&quot; operator</span>
+<span class="sd">    torch.randn(2, 3) | (op().shape &amp; iden()) | deref() | item()</span>
+
+<span class="sd">    a = torch.tensor([[1, 2, 3], [7, 8, 9]])</span>
+<span class="sd">    # returns torch.tensor([4, 5, 6]), demonstrating &quot;+&quot; operator for clis and not clis</span>
+<span class="sd">    (a | op() + 3 + iden() | item() == torch.tensor([4, 5, 6])).all()</span>
+
+<span class="sd">    # returns [[3], [3]], demonstrating .all() and &quot;|&quot; serial chaining</span>
+<span class="sd">    torch.randn(2, 3) | (op().shape.all() | deref())</span>
+<span class="sd">    </span>
+<span class="sd">    # returns [[8, 18], [9, 19]], demonstrating you can treat `op()` as a regular function</span>
+<span class="sd">    [range(10), range(10, 20)] | transpose() | filt(op() &gt; 7, 0) | deref()</span>
+<span class="sd">    </span>
+<span class="sd">    # returns [3, 4, 5, 6, 7, 8, 9], demonstrating bounds comparison</span>
+<span class="sd">    range(100) | filt(3 &lt;= op() &lt; 10) | deref()</span>
+
+<span class="sd">This can only deal with simple operations only. For complex operations, resort</span>
+<span class="sd">to the longer version ``applyS(lambda x: ...)`` instead!</span>
+
+<span class="sd">There are also operations that are difficult to achieve, like</span>
+<span class="sd">``len(op())``, as Python is expecting an integer output, so</span>
+<span class="sd">``op()`` can&#39;t exactly take over. Instead, you have to use ``applyS``,</span>
+<span class="sd">or do ``op().ab_len()``. Get a list of all of these special operations</span>
+<span class="sd">in the source of :class:`~k1lib.Absorber`.</span>
+
+<span class="sd">Performance-wise, in most cases, there are no degradation, so don&#39;t worry</span>
+<span class="sd">about it. Everything is pretty much on par with native lambdas::</span>
+
+<span class="sd">    n = 10_000_000</span>
+<span class="sd">    # takes 1.48s</span>
+<span class="sd">    for i in range(n): i**2</span>
+<span class="sd">    # takes 1.89s, 1.28x worse than for loop</span>
+<span class="sd">    range(n) | apply(lambda x: x**2) | ignore()</span>
+<span class="sd">    # takes 1.86s, 1.26x worse than for loop</span>
+<span class="sd">    range(n) | apply(op()**2) | ignore()</span>
+<span class="sd">    # takes 1.86s</span>
+<span class="sd">    range(n) | (op()**2).all() | ignore()</span>
+
+<span class="sd">More complex operations still retains the same speeds, as there&#39;s a JIT compiler embedded in::</span>
+
+<span class="sd">    # takes 2.15s</span>
+<span class="sd">    for i in range(n): (i**2-3)*0.1</span>
+<span class="sd">    # takes 2.53s, 1.18x worse than for loop</span>
+<span class="sd">    range(n) | apply(lambda x: (x**2-3)*0.1) | ignore()</span>
+<span class="sd">    # takes 2.46s, 1.14x worse than for loop</span>
+<span class="sd">    range(n) | apply((op()**2-3)*0.1) | ignore()</span>
+
+<span class="sd">Reserved operations that are not absorbed are:</span>
+
+<span class="sd">- all</span>
+<span class="sd">- __ror__ (__or__ still works!)</span>
+<span class="sd">- ab_solidify</span>
+<span class="sd">- op_hint&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">({</span><span class="s2">&quot;_hint&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">})</span></div>
+<div class="viewcode-block" id="op.solidify"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.modifier.op.solidify">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">solidify</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Static equivalent of ``a.ab_solidify()``.</span>
+<span class="sd">Example::</span>
+<span class="sd">        </span>
+<span class="sd">    f = op()**2</span>
+<span class="sd">    f = op.solidify(f)</span>
+
+<span class="sd">If ``f`` is not an ``op``, then just return it without doing anything to it&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;op&quot;</span><span class="p">:</span> <span class="n">f</span><span class="o">.</span><span class="n">ab_solidify</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">f</span></div>
+<div class="viewcode-block" id="op.__ror__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.modifier.op.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">ab_operate</span><span class="p">(</span><span class="n">it</span><span class="p">)</span></div>
+    <span class="k">def</span> <span class="fm">__or__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">o</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">BaseCli</span><span class="p">):</span> <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">k1lib</span><span class="o">.</span><span class="n">Absorber</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__or__</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__add__</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">o</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">BaseCli</span><span class="p">):</span> <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">k1lib</span><span class="o">.</span><span class="n">Absorber</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__add__</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__add__</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__and__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">o</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">BaseCli</span><span class="p">):</span> <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">k1lib</span><span class="o">.</span><span class="n">Absorber</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__and__</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__and__</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ab_solidified</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">ab_operate</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__call__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">_typehint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inp</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hint</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hint</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">tAny</span><span class="p">()</span>
+<div class="viewcode-block" id="op.op_hint"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.modifier.op.op_hint">[docs]</a>    <span class="k">def</span> <span class="nf">op_hint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_hint</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Specify output type hint&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ab_sentinel</span> <span class="o">=</span> <span class="kc">True</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hint</span> <span class="o">=</span> <span class="n">_hint</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ab_sentinel</span> <span class="o">=</span> <span class="kc">False</span><span class="p">;</span> <span class="k">return</span> <span class="bp">self</span></div></div>
+<span class="n">cli</span><span class="o">.</span><span class="n">op</span> <span class="o">=</span> <span class="n">op</span>
+<div class="viewcode-block" id="integrate"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.modifier.integrate">[docs]</a><span class="k">class</span> <span class="nc">integrate</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
+<div class="viewcode-block" id="integrate.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.modifier.integrate.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dt</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Integrates the input.</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    # returns [0, 1, 3, 6, 10, 15, 21, 28, 36, 45]</span>
+<span class="sd">    range(10) | integrate() | deref()</span>
+<span class="sd">    # returns [0, 2, 6, 12, 20, 30, 42, 56, 72, 90]</span>
+<span class="sd">    range(10) | integrate(2) | deref()</span>
+
+<span class="sd">:param dt: Optional small step&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dt</span> <span class="o">=</span> <span class="n">dt</span></div>
+<div class="viewcode-block" id="integrate.__ror__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.modifier.integrate.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dt</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">s</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">it</span><span class="p">:</span> <span class="n">s</span> <span class="o">+=</span> <span class="n">e</span><span class="p">;</span> <span class="k">yield</span> <span class="n">s</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">dt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dt</span><span class="p">;</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">it</span><span class="p">:</span> <span class="n">s</span> <span class="o">+=</span> <span class="n">e</span><span class="o">*</span><span class="n">dt</span><span class="p">;</span> <span class="k">yield</span> <span class="n">s</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Quang Ho.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

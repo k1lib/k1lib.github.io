@@ -14465,10 +14465,6 @@ a.anchor-link {
   display: none;
 }
 
-.highlight  {
-  margin: 0.4em;
-}
-
 /* Input area styling */
 .jp-InputArea {
   overflow: hidden;
@@ -14478,9 +14474,26 @@ a.anchor-link {
   overflow: hidden;
 }
 
-.CodeMirror pre {
+.CodeMirror.cm-s-jupyter .highlight pre {
+/* weird, but --jp-code-padding defined to be 5px but 4px horizontal padding is hardcoded for pre.CodeMirror-line */
+  padding: var(--jp-code-padding) 4px;
   margin: 0;
-  padding: 0;
+
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+
+}
+
+.jp-OutputArea-output pre {
+  line-height: inherit;
+  font-family: inherit;
+}
+
+.jp-RenderedText pre {
+  color: var(--jp-content-font-color1);
+  font-size: var(--jp-code-font-size);
 }
 
 /* Using table instead of flexbox so that we can use break-inside property */
@@ -14618,9 +14631,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
-
 <div class="jp-OutputArea-child">
-
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -14674,9 +14685,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
-
 <div class="jp-OutputArea-child">
-
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -14699,7 +14708,7 @@ drwxr-xr-x 3 kelvin kelvin     4096 Mar 12  2017 cli_name_languages
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>This lists all files and folders inside the current directory, and searches for the term "cli". So, you can do pretty much the same here:</p>
+<p>This lists all files and folders inside the current directory, and searches for the term &quot;cli&quot;. So, you can do pretty much the same here:</p>
 
 </div>
 </div>
@@ -14726,9 +14735,7 @@ drwxr-xr-x 3 kelvin kelvin     4096 Mar 12  2017 cli_name_languages
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[3]:</div>
 
@@ -14786,9 +14793,7 @@ drwxr-xr-x 3 kelvin kelvin     4096 Mar 12  2017 cli_name_languages
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[4]:</div>
 
@@ -14839,9 +14844,7 @@ drwxr-xr-x 3 kelvin kelvin     4096 Mar 12  2017 cli_name_languages
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[5]:</div>
 
@@ -14874,7 +14877,7 @@ drwxr-xr-x 3 kelvin kelvin     4096 Mar 12  2017 cli_name_languages
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>And now you want to find a specific option, say "-G", you can look for it like this:</p>
+<p>And now you want to find a specific option, say &quot;-G&quot;, you can look for it like this:</p>
 
 </div>
 </div>
@@ -14901,9 +14904,7 @@ drwxr-xr-x 3 kelvin kelvin     4096 Mar 12  2017 cli_name_languages
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[6]:</div>
 
@@ -14954,9 +14955,7 @@ drwxr-xr-x 3 kelvin kelvin     4096 Mar 12  2017 cli_name_languages
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[7]:</div>
 
@@ -15012,9 +15011,7 @@ drwxr-xr-x 3 kelvin kelvin     4096 Mar 12  2017 cli_name_languages
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[8]:</div>
 
@@ -15074,9 +15071,7 @@ drwxr-xr-x 3 kelvin kelvin     4096 Mar 12  2017 cli_name_languages
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[9]:</div>
 
@@ -15134,9 +15129,7 @@ drwxr-xr-x 3 kelvin kelvin     4096 Mar 12  2017 cli_name_languages
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[10]:</div>
 
@@ -15203,9 +15196,7 @@ drwxr-xr-x 3 kelvin kelvin     4096 Mar 12  2017 cli_name_languages
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[11]:</div>
 
@@ -15243,7 +15234,7 @@ drwxr-xr-x 3 kelvin kelvin     4096 Mar 12  2017 cli_name_languages
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Basically, this grabs 5 lines after every hit and collects all 6 lines into a separate block. If there's a hit any line in the next 5 lines, then the block is cut short. So the "-4" block only has 2 elements (instead of 6) because there's a "-6" hit before all 5 lines can be analyzed.</p>
+<p>Basically, this grabs 5 lines after every hit and collects all 6 lines into a separate block. If there's a hit any line in the next 5 lines, then the block is cut short. So the &quot;-4&quot; block only has 2 elements (instead of 6) because there's a &quot;-6&quot; hit before all 5 lines can be analyzed.</p>
 
 </div>
 </div>
@@ -15282,9 +15273,7 @@ drwxr-xr-x 3 kelvin kelvin     4096 Mar 12  2017 cli_name_languages
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[12]:</div>
 
@@ -15335,9 +15324,7 @@ drwxr-xr-x 3 kelvin kelvin     4096 Mar 12  2017 cli_name_languages
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[13]:</div>
 
@@ -15409,9 +15396,7 @@ drwxr-xr-x 3 kelvin kelvin     4096 Mar 12  2017 cli_name_languages
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[14]:</div>
 
@@ -15601,9 +15586,7 @@ drwxr-xr-x 3 kelvin kelvin     4096 Mar 12  2017 cli_name_languages
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[16]:</div>
 
@@ -15647,7 +15630,7 @@ drwxr-xr-x 3 kelvin kelvin     4096 Mar 12  2017 cli_name_languages
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>But you also know that before every mRNA feature, there's usually an associated "gene" feature and you would like to grab it and place them in a separate block:</p>
+<p>But you also know that before every mRNA feature, there's usually an associated &quot;gene&quot; feature and you would like to grab it and place them in a separate block:</p>
 
 </div>
 </div>
@@ -15674,9 +15657,7 @@ drwxr-xr-x 3 kelvin kelvin     4096 Mar 12  2017 cli_name_languages
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[17]:</div>
 

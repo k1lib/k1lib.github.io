@@ -1,70 +1,36 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
-  
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
   <title>k1lib.selector module &mdash; k1lib  documentation</title>
-  
-
-  
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-
-  
-  
-
-  
-  
-
-  
-
-  
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
-    
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-
-    
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="k1lib.serve module" href="serve.html" />
     <link rel="prev" title="k1lib.schedule module" href="schedule.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
-
-          
             <a href="index.html" class="icon icon-home"> k1lib
-          
-
-          
           </a>
-
-          
-            
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -72,18 +38,7 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="base.html">Base module</a></li>
 </ul>
@@ -101,7 +56,38 @@
 <li class="toctree-l1"><a class="reference internal" href="mo.html">k1lib.mo module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="knn.html">k1lib.knn module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="schedule.html">k1lib.schedule module</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">k1lib.selector module</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">k1lib.selector module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.selector.ModuleSelector"><code class="docutils literal notranslate"><span class="pre">ModuleSelector</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.selector.ModuleSelector.nn"><code class="docutils literal notranslate"><span class="pre">ModuleSelector.nn</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.selector.ModuleSelector.props"><code class="docutils literal notranslate"><span class="pre">ModuleSelector.props</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.selector.ModuleSelector.idx"><code class="docutils literal notranslate"><span class="pre">ModuleSelector.idx</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.selector.ModuleSelector.deepestDepth"><code class="docutils literal notranslate"><span class="pre">ModuleSelector.deepestDepth</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.selector.ModuleSelector.highlight"><code class="docutils literal notranslate"><span class="pre">ModuleSelector.highlight()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.selector.ModuleSelector.__call__"><code class="docutils literal notranslate"><span class="pre">ModuleSelector.__call__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.selector.ModuleSelector.__contains__"><code class="docutils literal notranslate"><span class="pre">ModuleSelector.__contains__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.selector.ModuleSelector.named_children"><code class="docutils literal notranslate"><span class="pre">ModuleSelector.named_children()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.selector.ModuleSelector.children"><code class="docutils literal notranslate"><span class="pre">ModuleSelector.children()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.selector.ModuleSelector.named_modules"><code class="docutils literal notranslate"><span class="pre">ModuleSelector.named_modules()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.selector.ModuleSelector.modules"><code class="docutils literal notranslate"><span class="pre">ModuleSelector.modules()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.selector.ModuleSelector.directParams"><code class="docutils literal notranslate"><span class="pre">ModuleSelector.directParams</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.selector.ModuleSelector.parse"><code class="docutils literal notranslate"><span class="pre">ModuleSelector.parse()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.selector.ModuleSelector.apply"><code class="docutils literal notranslate"><span class="pre">ModuleSelector.apply()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.selector.ModuleSelector.clearProps"><code class="docutils literal notranslate"><span class="pre">ModuleSelector.clearProps()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.selector.ModuleSelector.displayF"><code class="docutils literal notranslate"><span class="pre">ModuleSelector.displayF</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.selector.ModuleSelector.sample"><code class="docutils literal notranslate"><span class="pre">ModuleSelector.sample()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.selector.ModuleSelector.hookF"><code class="docutils literal notranslate"><span class="pre">ModuleSelector.hookF()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.selector.ModuleSelector.hookFp"><code class="docutils literal notranslate"><span class="pre">ModuleSelector.hookFp()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.selector.ModuleSelector.hookB"><code class="docutils literal notranslate"><span class="pre">ModuleSelector.hookB()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.selector.ModuleSelector.freeze"><code class="docutils literal notranslate"><span class="pre">ModuleSelector.freeze()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.selector.ModuleSelector.unfreeze"><code class="docutils literal notranslate"><span class="pre">ModuleSelector.unfreeze()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.selector.ModuleSelector.cutOff"><code class="docutils literal notranslate"><span class="pre">ModuleSelector.cutOff()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.selector.ModuleSelector.intercept"><code class="docutils literal notranslate"><span class="pre">ModuleSelector.intercept()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.selector.preprocess"><code class="docutils literal notranslate"><span class="pre">preprocess()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.selector.select"><code class="docutils literal notranslate"><span class="pre">select()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="serve.html">k1lib.serve module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="viz.html">k1lib.viz module</a></li>
 </ul>
@@ -111,73 +97,32 @@
 <li class="toctree-l1"><a class="reference internal" href="changelogs.html">Changelogs</a></li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">k1lib</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-        
-      <li>k1lib.selector module</li>
-    
-    
+      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">k1lib.selector module</li>
       <li class="wy-breadcrumbs-aside">
-        
-          
             <a href="_sources/selector.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
-  <div class="section" id="module-k1lib.selector">
-<span id="k1lib-selector-module"></span><h1>k1lib.selector module<a class="headerlink" href="#module-k1lib.selector" title="Permalink to this headline">¶</a></h1>
+             
+  <section id="module-k1lib.selector">
+<span id="k1lib-selector-module"></span><h1>k1lib.selector module<a class="headerlink" href="#module-k1lib.selector" title="Permalink to this heading"></a></h1>
 <p>This module is for selecting a subnetwork using CSS so that you can do special
 things to them. Checkout the tutorial section for a walkthrough. This is exposed
 automatically with:</p>
@@ -186,50 +131,50 @@ automatically with:</p>
 </pre></div>
 </div>
 <dl class="py class">
-<dt id="k1lib.selector.ModuleSelector">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">k1lib.selector.</span></code><code class="sig-name descname"><span class="pre">ModuleSelector</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#k1lib.selector.ModuleSelector" title="k1lib.selector.ModuleSelector"><span class="pre">k1lib.selector.ModuleSelector</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">nn</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch vmaster (1.13.0a0+git833edeb ))"><span class="pre">torch.nn.modules.module.Module</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/selector.html#ModuleSelector"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.selector.ModuleSelector" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dt class="sig sig-object py" id="k1lib.selector.ModuleSelector">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.selector.</span></span><span class="sig-name descname"><span class="pre">ModuleSelector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#k1lib.selector.ModuleSelector" title="k1lib.selector.ModuleSelector"><span class="pre">ModuleSelector</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">nn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch vmaster (1.14.0a0+gitbb77acc ))"><span class="pre">Module</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/selector.html#ModuleSelector"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.selector.ModuleSelector" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <dl class="py attribute">
-<dt id="k1lib.selector.ModuleSelector.nn">
-<code class="sig-name descname"><span class="pre">nn</span></code><em class="property"><span class="pre">:</span> <a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch vmaster (1.13.0a0+git833edeb ))"><span class="pre">torch.nn.Module</span></a></em><a class="headerlink" href="#k1lib.selector.ModuleSelector.nn" title="Permalink to this definition">¶</a></dt>
-<dd><p>The associated <a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch vmaster (1.13.0a0+git833edeb ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></a> of this <a class="reference internal" href="#k1lib.selector.ModuleSelector" title="k1lib.selector.ModuleSelector"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModuleSelector</span></code></a></p>
+<dt class="sig sig-object py" id="k1lib.selector.ModuleSelector.nn">
+<span class="sig-name descname"><span class="pre">nn</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch vmaster (1.14.0a0+gitbb77acc ))"><span class="pre">torch.nn.Module</span></a></em><a class="headerlink" href="#k1lib.selector.ModuleSelector.nn" title="Permalink to this definition"></a></dt>
+<dd><p>The associated <a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch vmaster (1.14.0a0+gitbb77acc ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></a> of this <a class="reference internal" href="#k1lib.selector.ModuleSelector" title="k1lib.selector.ModuleSelector"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModuleSelector</span></code></a></p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="k1lib.selector.ModuleSelector.props">
-<code class="sig-name descname"><span class="pre">props</span></code><em class="property"><span class="pre">:</span> <span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#k1lib.selector.ModuleSelector.props" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="k1lib.selector.ModuleSelector.props">
+<span class="sig-name descname"><span class="pre">props</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#k1lib.selector.ModuleSelector.props" title="Permalink to this definition"></a></dt>
 <dd><p>Properties of this <a class="reference internal" href="#k1lib.selector.ModuleSelector" title="k1lib.selector.ModuleSelector"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModuleSelector</span></code></a></p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="k1lib.selector.ModuleSelector.idx">
-<code class="sig-name descname"><span class="pre">idx</span></code><em class="property"><span class="pre">:</span> <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></em><a class="headerlink" href="#k1lib.selector.ModuleSelector.idx" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="k1lib.selector.ModuleSelector.idx">
+<span class="sig-name descname"><span class="pre">idx</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></em><a class="headerlink" href="#k1lib.selector.ModuleSelector.idx" title="Permalink to this definition"></a></dt>
 <dd><p>Unique id of this <a class="reference internal" href="#k1lib.selector.ModuleSelector" title="k1lib.selector.ModuleSelector"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModuleSelector</span></code></a> in the entire script. May be useful
 for module recognition</p>
 </dd></dl>
 
-<dl class="py method">
-<dt id="k1lib.selector.ModuleSelector.deepestDepth">
-<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">deepestDepth</span></code><a class="headerlink" href="#k1lib.selector.ModuleSelector.deepestDepth" title="Permalink to this definition">¶</a></dt>
+<dl class="py property">
+<dt class="sig sig-object py" id="k1lib.selector.ModuleSelector.deepestDepth">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">deepestDepth</span></span><a class="headerlink" href="#k1lib.selector.ModuleSelector.deepestDepth" title="Permalink to this definition"></a></dt>
 <dd><p>Deepest depth of the tree. If self doesn’t
 have any child, then depth is 0</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="k1lib.selector.ModuleSelector.highlight">
-<code class="sig-name descname"><span class="pre">highlight</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prop</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/selector.html#ModuleSelector.highlight"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.selector.ModuleSelector.highlight" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="k1lib.selector.ModuleSelector.highlight">
+<span class="sig-name descname"><span class="pre">highlight</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prop</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/selector.html#ModuleSelector.highlight"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.selector.ModuleSelector.highlight" title="Permalink to this definition"></a></dt>
 <dd><p>Highlights the specified prop when displaying the object.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="k1lib.selector.ModuleSelector.__call__">
-<code class="sig-name descname"><span class="pre">__call__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/selector.html#ModuleSelector.__call__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.selector.ModuleSelector.__call__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls the internal <a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch vmaster (1.13.0a0+git833edeb ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></a></p>
+<dt class="sig sig-object py" id="k1lib.selector.ModuleSelector.__call__">
+<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/selector.html#ModuleSelector.__call__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.selector.ModuleSelector.__call__" title="Permalink to this definition"></a></dt>
+<dd><p>Calls the internal <a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch vmaster (1.14.0a0+gitbb77acc ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></a></p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="k1lib.selector.ModuleSelector.__contains__">
-<code class="sig-name descname"><span class="pre">__contains__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prop</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><span class="pre">bool</span></a><a class="reference internal" href="_modules/k1lib/selector.html#ModuleSelector.__contains__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.selector.ModuleSelector.__contains__" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="k1lib.selector.ModuleSelector.__contains__">
+<span class="sig-name descname"><span class="pre">__contains__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prop</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="reference internal" href="_modules/k1lib/selector.html#ModuleSelector.__contains__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.selector.ModuleSelector.__contains__" title="Permalink to this definition"></a></dt>
 <dd><p>Whether this <a class="reference internal" href="#k1lib.selector.ModuleSelector" title="k1lib.selector.ModuleSelector"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModuleSelector</span></code></a> has a specific prop.
 Example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># returns True</span>
@@ -243,8 +188,8 @@ Example:</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="k1lib.selector.ModuleSelector.named_children">
-<code class="sig-name descname"><span class="pre">named_children</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prop</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span> </span><a class="reference internal" href="#k1lib.selector.ModuleSelector" title="k1lib.selector.ModuleSelector"><span class="pre">k1lib.selector.ModuleSelector</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><a class="reference internal" href="_modules/k1lib/selector.html#ModuleSelector.named_children"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.selector.ModuleSelector.named_children" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="k1lib.selector.ModuleSelector.named_children">
+<span class="sig-name descname"><span class="pre">named_children</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prop</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Iterator" title="(in Python v3.11)"><span class="pre">Iterator</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.11)"><span class="pre">Tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#k1lib.selector.ModuleSelector" title="k1lib.selector.ModuleSelector"><span class="pre">ModuleSelector</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/k1lib/selector.html#ModuleSelector.named_children"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.selector.ModuleSelector.named_children" title="Permalink to this definition"></a></dt>
 <dd><p>Get all named direct childs.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -254,8 +199,8 @@ Example:</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="k1lib.selector.ModuleSelector.children">
-<code class="sig-name descname"><span class="pre">children</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prop</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#k1lib.selector.ModuleSelector" title="k1lib.selector.ModuleSelector"><span class="pre">k1lib.selector.ModuleSelector</span></a><span class="p"><span class="pre">]</span></span><a class="reference internal" href="_modules/k1lib/selector.html#ModuleSelector.children"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.selector.ModuleSelector.children" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="k1lib.selector.ModuleSelector.children">
+<span class="sig-name descname"><span class="pre">children</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prop</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Iterator" title="(in Python v3.11)"><span class="pre">Iterator</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#k1lib.selector.ModuleSelector" title="k1lib.selector.ModuleSelector"><span class="pre">ModuleSelector</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/k1lib/selector.html#ModuleSelector.children"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.selector.ModuleSelector.children" title="Permalink to this definition"></a></dt>
 <dd><p>Get all direct childs.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -265,8 +210,8 @@ Example:</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="k1lib.selector.ModuleSelector.named_modules">
-<code class="sig-name descname"><span class="pre">named_modules</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prop</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span> </span><a class="reference internal" href="#k1lib.selector.ModuleSelector" title="k1lib.selector.ModuleSelector"><span class="pre">k1lib.selector.ModuleSelector</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><a class="reference internal" href="_modules/k1lib/selector.html#ModuleSelector.named_modules"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.selector.ModuleSelector.named_modules" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="k1lib.selector.ModuleSelector.named_modules">
+<span class="sig-name descname"><span class="pre">named_modules</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prop</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Iterator" title="(in Python v3.11)"><span class="pre">Iterator</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.11)"><span class="pre">Tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#k1lib.selector.ModuleSelector" title="k1lib.selector.ModuleSelector"><span class="pre">ModuleSelector</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/k1lib/selector.html#ModuleSelector.named_modules"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.selector.ModuleSelector.named_modules" title="Permalink to this definition"></a></dt>
 <dd><p>Get all named child recursively.
 Example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">modules</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">())</span><span class="o">.</span><span class="n">select</span><span class="p">()</span><span class="o">.</span><span class="n">named_modules</span><span class="p">())</span>
@@ -284,8 +229,8 @@ Example:</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="k1lib.selector.ModuleSelector.modules">
-<code class="sig-name descname"><span class="pre">modules</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prop</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#k1lib.selector.ModuleSelector" title="k1lib.selector.ModuleSelector"><span class="pre">k1lib.selector.ModuleSelector</span></a><span class="p"><span class="pre">]</span></span><a class="reference internal" href="_modules/k1lib/selector.html#ModuleSelector.modules"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.selector.ModuleSelector.modules" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="k1lib.selector.ModuleSelector.modules">
+<span class="sig-name descname"><span class="pre">modules</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prop</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Iterator" title="(in Python v3.11)"><span class="pre">Iterator</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#k1lib.selector.ModuleSelector" title="k1lib.selector.ModuleSelector"><span class="pre">ModuleSelector</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/k1lib/selector.html#ModuleSelector.modules"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.selector.ModuleSelector.modules" title="Permalink to this definition"></a></dt>
 <dd><p>Get all child recursively.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -294,15 +239,15 @@ Example:</p>
 </dl>
 </dd></dl>
 
-<dl class="py method">
-<dt id="k1lib.selector.ModuleSelector.directParams">
-<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">directParams</span></code><a class="headerlink" href="#k1lib.selector.ModuleSelector.directParams" title="Permalink to this definition">¶</a></dt>
+<dl class="py property">
+<dt class="sig sig-object py" id="k1lib.selector.ModuleSelector.directParams">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">directParams</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.11)"><span class="pre">Dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.parameter.Parameter.html#torch.nn.parameter.Parameter" title="(in PyTorch vmaster (1.14.0a0+gitbb77acc ))"><span class="pre">Parameter</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#k1lib.selector.ModuleSelector.directParams" title="Permalink to this definition"></a></dt>
 <dd><p>Dict params directly under this module</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="k1lib.selector.ModuleSelector.parse">
-<code class="sig-name descname"><span class="pre">parse</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">selectors</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#k1lib.selector.ModuleSelector" title="k1lib.selector.ModuleSelector"><span class="pre">k1lib.selector.ModuleSelector</span></a><a class="reference internal" href="_modules/k1lib/selector.html#ModuleSelector.parse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.selector.ModuleSelector.parse" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="k1lib.selector.ModuleSelector.parse">
+<span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">selectors</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.11)"><span class="pre">Union</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#k1lib.selector.ModuleSelector" title="k1lib.selector.ModuleSelector"><span class="pre">ModuleSelector</span></a></span></span><a class="reference internal" href="_modules/k1lib/selector.html#ModuleSelector.parse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.selector.ModuleSelector.parse" title="Permalink to this definition"></a></dt>
 <dd><p>Parses extra selectors. Clears all old selectors, but retain
 the props. Returns self. Example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mS</span> <span class="o">=</span> <span class="n">selector</span><span class="o">.</span><span class="n">ModuleSelector</span><span class="o">.</span><span class="n">sample</span><span class="p">()</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s2">&quot;Conv2d:propA&quot;</span><span class="p">)</span>
@@ -318,14 +263,14 @@ the props. Returns self. Example:</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="k1lib.selector.ModuleSelector.apply">
-<code class="sig-name descname"><span class="pre">apply</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#k1lib.selector.ModuleSelector" title="k1lib.selector.ModuleSelector"><span class="pre">k1lib.selector.ModuleSelector</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><span class="pre">None</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/selector.html#ModuleSelector.apply"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.selector.ModuleSelector.apply" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="k1lib.selector.ModuleSelector.apply">
+<span class="sig-name descname"><span class="pre">apply</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.11)"><span class="pre">Callable</span></a><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#k1lib.selector.ModuleSelector" title="k1lib.selector.ModuleSelector"><span class="pre">ModuleSelector</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/selector.html#ModuleSelector.apply"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.selector.ModuleSelector.apply" title="Permalink to this definition"></a></dt>
 <dd><p>Applies a function to self and all child <a class="reference internal" href="#k1lib.selector.ModuleSelector" title="k1lib.selector.ModuleSelector"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModuleSelector</span></code></a></p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="k1lib.selector.ModuleSelector.clearProps">
-<code class="sig-name descname"><span class="pre">clearProps</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#k1lib.selector.ModuleSelector" title="k1lib.selector.ModuleSelector"><span class="pre">k1lib.selector.ModuleSelector</span></a><a class="reference internal" href="_modules/k1lib/selector.html#ModuleSelector.clearProps"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.selector.ModuleSelector.clearProps" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="k1lib.selector.ModuleSelector.clearProps">
+<span class="sig-name descname"><span class="pre">clearProps</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#k1lib.selector.ModuleSelector" title="k1lib.selector.ModuleSelector"><span class="pre">ModuleSelector</span></a></span></span><a class="reference internal" href="_modules/k1lib/selector.html#ModuleSelector.clearProps"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.selector.ModuleSelector.clearProps" title="Permalink to this definition"></a></dt>
 <dd><p>Clears all existing props of this and all descendants
 <a class="reference internal" href="#k1lib.selector.ModuleSelector" title="k1lib.selector.ModuleSelector"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModuleSelector</span></code></a>. Example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># returns False</span>
@@ -334,9 +279,9 @@ the props. Returns self. Example:</p>
 </div>
 </dd></dl>
 
-<dl class="py method">
-<dt id="k1lib.selector.ModuleSelector.displayF">
-<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">displayF</span></code><a class="headerlink" href="#k1lib.selector.ModuleSelector.displayF" title="Permalink to this definition">¶</a></dt>
+<dl class="py property">
+<dt class="sig sig-object py" id="k1lib.selector.ModuleSelector.displayF">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">displayF</span></span><a class="headerlink" href="#k1lib.selector.ModuleSelector.displayF" title="Permalink to this definition"></a></dt>
 <dd><p>Function to display each ModuleSelector’s lines.
 Default is just:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">lambda</span> <span class="n">mS</span><span class="p">:</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">mS</span><span class="o">.</span><span class="n">props</span><span class="p">)</span> 
@@ -345,15 +290,15 @@ Default is just:</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="k1lib.selector.ModuleSelector.sample">
-<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">sample</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#k1lib.selector.ModuleSelector" title="k1lib.selector.ModuleSelector"><span class="pre">k1lib.selector.ModuleSelector</span></a><a class="reference internal" href="_modules/k1lib/selector.html#ModuleSelector.sample"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.selector.ModuleSelector.sample" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="k1lib.selector.ModuleSelector.sample">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">sample</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#k1lib.selector.ModuleSelector" title="k1lib.selector.ModuleSelector"><span class="pre">ModuleSelector</span></a></span></span><a class="reference internal" href="_modules/k1lib/selector.html#ModuleSelector.sample"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.selector.ModuleSelector.sample" title="Permalink to this definition"></a></dt>
 <dd><p>Create a new example <a class="reference internal" href="#k1lib.selector.ModuleSelector" title="k1lib.selector.ModuleSelector"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModuleSelector</span></code></a> that has a bit of
 hierarchy to them, with no css.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="k1lib.selector.ModuleSelector.hookF">
-<code class="sig-name descname"><span class="pre">hookF</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#k1lib.selector.ModuleSelector" title="k1lib.selector.ModuleSelector"><span class="pre">k1lib.selector.ModuleSelector</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch vmaster (1.13.0a0+git833edeb ))"><span class="pre">torch.nn.modules.module.Module</span></a><span class="p"><span class="pre">,</span> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.13.0a0+git833edeb ))"><span class="pre">torch.Tensor</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.13.0a0+git833edeb ))"><span class="pre">torch.Tensor</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><span class="pre">None</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prop</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'*'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/selector.html#ModuleSelector.hookF"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.selector.ModuleSelector.hookF" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="k1lib.selector.ModuleSelector.hookF">
+<span class="sig-name descname"><span class="pre">hookF</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.11)"><span class="pre">Callable</span></a><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#k1lib.selector.ModuleSelector" title="k1lib.selector.ModuleSelector"><span class="pre">ModuleSelector</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch vmaster (1.14.0a0+gitbb77acc ))"><span class="pre">Module</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.11)"><span class="pre">Tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.14.0a0+gitbb77acc ))"><span class="pre">Tensor</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.14.0a0+gitbb77acc ))"><span class="pre">Tensor</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prop</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'*'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/selector.html#ModuleSelector.hookF"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.selector.ModuleSelector.hookF" title="Permalink to this definition"></a></dt>
 <dd><p>Context manager for applying forward hooks.
 Example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">mS</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">o</span><span class="p">):</span>
@@ -375,8 +320,8 @@ Example:</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="k1lib.selector.ModuleSelector.hookFp">
-<code class="sig-name descname"><span class="pre">hookFp</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prop</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'*'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/selector.html#ModuleSelector.hookFp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.selector.ModuleSelector.hookFp" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="k1lib.selector.ModuleSelector.hookFp">
+<span class="sig-name descname"><span class="pre">hookFp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prop</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'*'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/selector.html#ModuleSelector.hookFp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.selector.ModuleSelector.hookFp" title="Permalink to this definition"></a></dt>
 <dd><p>Context manager for applying forward pre hooks.
 Example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">mS</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
@@ -398,8 +343,8 @@ Example:</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="k1lib.selector.ModuleSelector.hookB">
-<code class="sig-name descname"><span class="pre">hookB</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prop</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'*'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/selector.html#ModuleSelector.hookB"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.selector.ModuleSelector.hookB" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="k1lib.selector.ModuleSelector.hookB">
+<span class="sig-name descname"><span class="pre">hookB</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prop</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'*'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/selector.html#ModuleSelector.hookB"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.selector.ModuleSelector.hookB" title="Permalink to this definition"></a></dt>
 <dd><p>Context manager for applying backward hooks.
 Example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">mS</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">o</span><span class="p">):</span>
@@ -421,8 +366,8 @@ Example:</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="k1lib.selector.ModuleSelector.freeze">
-<code class="sig-name descname"><span class="pre">freeze</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prop</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'*'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/selector.html#ModuleSelector.freeze"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.selector.ModuleSelector.freeze" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="k1lib.selector.ModuleSelector.freeze">
+<span class="sig-name descname"><span class="pre">freeze</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prop</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'*'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/selector.html#ModuleSelector.freeze"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.selector.ModuleSelector.freeze" title="Permalink to this definition"></a></dt>
 <dd><p>Returns a context manager that freezes (set requires_grad to False) parts of
 the network. Example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">l</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">Learner</span><span class="o">.</span><span class="n">sample</span><span class="p">()</span>
@@ -436,8 +381,8 @@ the network. Example:</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="k1lib.selector.ModuleSelector.unfreeze">
-<code class="sig-name descname"><span class="pre">unfreeze</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prop</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'*'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/selector.html#ModuleSelector.unfreeze"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.selector.ModuleSelector.unfreeze" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="k1lib.selector.ModuleSelector.unfreeze">
+<span class="sig-name descname"><span class="pre">unfreeze</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prop</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'*'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/selector.html#ModuleSelector.unfreeze"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.selector.ModuleSelector.unfreeze" title="Permalink to this definition"></a></dt>
 <dd><p>Returns a context manager that unfreezes (set requires_grad to True) parts of
 the network. Example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">l</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">Learner</span><span class="o">.</span><span class="n">sample</span><span class="p">()</span>
@@ -452,8 +397,8 @@ the network. Example:</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="k1lib.selector.ModuleSelector.cutOff">
-<code class="sig-name descname"><span class="pre">cutOff</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch vmaster (1.13.0a0+git833edeb ))"><span class="pre">torch.nn.modules.module.Module</span></a><a class="headerlink" href="#k1lib.selector.ModuleSelector.cutOff" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="k1lib.selector.ModuleSelector.cutOff">
+<span class="sig-name descname"><span class="pre">cutOff</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch vmaster (1.14.0a0+gitbb77acc ))"><span class="pre">Module</span></a></span></span><a class="headerlink" href="#k1lib.selector.ModuleSelector.cutOff" title="Permalink to this definition"></a></dt>
 <dd><p>Creates a new network that returns the selected layer’s output.
 Example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xb</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
@@ -470,8 +415,8 @@ Example:</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="k1lib.selector.ModuleSelector.intercept">
-<code class="sig-name descname"><span class="pre">intercept</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#k1lib.selector.ModuleSelector.intercept" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="k1lib.selector.ModuleSelector.intercept">
+<span class="sig-name descname"><span class="pre">intercept</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#k1lib.selector.ModuleSelector.intercept" title="Permalink to this definition"></a></dt>
 <dd><p>Returns a context manager that intercept forward and backward signals
 to parts of the network. Example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">l</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">Learner</span><span class="o">.</span><span class="n">sample</span><span class="p">()</span>
@@ -487,8 +432,8 @@ to parts of the network. Example:</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="k1lib.selector.preprocess">
-<code class="sig-prename descclassname"><span class="pre">k1lib.selector.</span></code><code class="sig-name descname"><span class="pre">preprocess</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">selectors</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">defaultProp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'*'</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><a class="reference internal" href="_modules/k1lib/selector.html#preprocess"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.selector.preprocess" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="k1lib.selector.preprocess">
+<span class="sig-prename descclassname"><span class="pre">k1lib.selector.</span></span><span class="sig-name descname"><span class="pre">preprocess</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">selectors</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">defaultProp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'*'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/k1lib/selector.html#preprocess"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.selector.preprocess" title="Permalink to this definition"></a></dt>
 <dd><p>Removes all quirkly features allowed by the css
 language, and outputs nice lines. Example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># returns [&quot;a:f&quot;, &quot;a:g,h&quot;, &quot;b:g,h&quot;, &quot;t:*&quot;]</span>
@@ -507,8 +452,8 @@ by “\n” or “;”</p></li>
 </dd></dl>
 
 <dl class="py function">
-<dt id="k1lib.selector.select">
-<code class="sig-prename descclassname"><span class="pre">k1lib.selector.</span></code><code class="sig-name descname"><span class="pre">select</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch vmaster (1.13.0a0+git833edeb ))"><span class="pre">torch.nn.modules.module.Module</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">css</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'*'</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#k1lib.selector.ModuleSelector" title="k1lib.selector.ModuleSelector"><span class="pre">k1lib.selector.ModuleSelector</span></a><a class="reference internal" href="_modules/k1lib/selector.html#select"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.selector.select" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="k1lib.selector.select">
+<span class="sig-prename descclassname"><span class="pre">k1lib.selector.</span></span><span class="sig-name descname"><span class="pre">select</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch vmaster (1.14.0a0+gitbb77acc ))"><span class="pre">Module</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">css</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'*'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#k1lib.selector.ModuleSelector" title="k1lib.selector.ModuleSelector"><span class="pre">ModuleSelector</span></a></span></span><a class="reference internal" href="_modules/k1lib/selector.html#select"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.selector.select" title="Permalink to this definition"></a></dt>
 <dd><p>Creates a new ModuleSelector, in sync with a model.
 Example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mS</span> <span class="o">=</span> <span class="n">selector</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="s2">&quot;#root:propA&quot;</span><span class="p">)</span>
@@ -521,61 +466,44 @@ Example:</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>model</strong> – the <a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch vmaster (1.13.0a0+git833edeb ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></a> object to select from</p></li>
+<li><p><strong>model</strong> – the <a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch vmaster (1.14.0a0+gitbb77acc ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></a> object to select from</p></li>
 <li><p><strong>css</strong> – the css selectors</p></li>
 </ul>
 </dd>
 </dl>
 </dd></dl>
 
-</div>
+</section>
 
 
            </div>
-           
           </div>
-          <footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="serve.html" class="btn btn-neutral float-right" title="k1lib.serve module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="schedule.html" class="btn btn-neutral float-left" title="k1lib.schedule module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="serve.html" class="btn btn-neutral float-right" title="k1lib.serve module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &#169; Copyright 2022, Quang Ho.
-
-    </p>
+    <p>&#169; Copyright 2022, Quang Ho.</p>
   </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

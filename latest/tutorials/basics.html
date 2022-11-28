@@ -14465,10 +14465,6 @@ a.anchor-link {
   display: none;
 }
 
-.highlight  {
-  margin: 0.4em;
-}
-
 /* Input area styling */
 .jp-InputArea {
   overflow: hidden;
@@ -14478,9 +14474,26 @@ a.anchor-link {
   overflow: hidden;
 }
 
-.CodeMirror pre {
+.CodeMirror.cm-s-jupyter .highlight pre {
+/* weird, but --jp-code-padding defined to be 5px but 4px horizontal padding is hardcoded for pre.CodeMirror-line */
+  padding: var(--jp-code-padding) 4px;
   margin: 0;
-  padding: 0;
+
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+
+}
+
+.jp-OutputArea-output pre {
+  line-height: inherit;
+  font-family: inherit;
+}
+
+.jp-RenderedText pre {
+  color: var(--jp-content-font-color1);
+  font-size: var(--jp-code-font-size);
 }
 
 /* Using table instead of flexbox so that we can use break-inside property */
@@ -14633,9 +14646,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
-
 <div class="jp-OutputArea-child">
-
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -14772,9 +14783,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
-
 <div class="jp-OutputArea-child">
-
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -14797,7 +14806,8 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>Here is where things get a little more interesting. <code>k1lib.Learner</code> is the main wrapper where training will take place. It has 4 basic parameters that must be set before training: model, data loader, optimizer, and loss function.</p>
-<blockquote><p><strong>Tip</strong>: docs are tailored for each object so you can do <code>print(obj)</code> or just <code>obj</code> in a code cell</p>
+<blockquote>
+<p><strong>Tip</strong>: docs are tailored for each object so you can do <code>print(obj)</code> or just <code>obj</code> in a code cell</p>
 </blockquote>
 
 </div>
@@ -14825,9 +14835,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[5]:</div>
 
@@ -14914,9 +14922,7 @@ Use...
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
-
 <div class="jp-OutputArea-child">
-
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -14927,9 +14933,7 @@ Suggested param: 4.100944749601106e-05
 </pre>
 </div>
 </div>
-
 <div class="jp-OutputArea-child">
-
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -14946,9 +14950,7 @@ jp-needs-light-background
 </div>
 
 </div>
-
-<div class="jp-OutputArea-child">
-
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[6]:</div>
 
@@ -15014,9 +15016,7 @@ Reminder: slice range here is actually [0, 1], because it&#39;s kinda hard to sl
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
-
 <div class="jp-OutputArea-child">
-
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -15026,9 +15026,7 @@ Reminder: slice range here is actually [0, 1], because it&#39;s kinda hard to sl
 </pre>
 </div>
 </div>
-
-<div class="jp-OutputArea-child">
-
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[7]:</div>
 
@@ -15075,9 +15073,7 @@ Reminder: slice range here is actually [0, 1], because it&#39;s kinda hard to sl
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
-
 <div class="jp-OutputArea-child">
-
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -15094,9 +15090,7 @@ jp-needs-light-background
 </div>
 
 </div>
-
-<div class="jp-OutputArea-child">
-
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[8]:</div>
 
@@ -15151,9 +15145,7 @@ Reminder: the actual slice you put in is for the training plot. The valid loss&#
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
-
 <div class="jp-OutputArea-child">
-
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -15170,9 +15162,7 @@ jp-needs-light-background
 </div>
 
 </div>
-
-<div class="jp-OutputArea-child">
-
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[9]:</div>
 
@@ -15227,9 +15217,7 @@ Reminder: the actual slice you put in is for the training plot. The valid loss&#
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
-
 <div class="jp-OutputArea-child">
-
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -15239,9 +15227,7 @@ Reminder: the actual slice you put in is for the training plot. The valid loss&#
 </pre>
 </div>
 </div>
-
 <div class="jp-OutputArea-child">
-
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -15285,9 +15271,7 @@ jp-needs-light-background
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
-
 <div class="jp-OutputArea-child">
-
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -15297,9 +15281,7 @@ jp-needs-light-background
 </pre>
 </div>
 </div>
-
 <div class="jp-OutputArea-child">
-
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -15366,9 +15348,7 @@ jp-needs-light-background
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[12]:</div>
 
@@ -15422,9 +15402,7 @@ Use...
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
-
 <div class="jp-OutputArea-child">
-
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -15441,9 +15419,7 @@ jp-needs-light-background
 </div>
 
 </div>
-
-<div class="jp-OutputArea-child">
-
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[13]:</div>
 
@@ -15496,9 +15472,7 @@ jp-needs-light-background
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
-
 <div class="jp-OutputArea-child">
-
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -15515,9 +15489,7 @@ jp-needs-light-background
 </div>
 
 </div>
-
-<div class="jp-OutputArea-child">
-
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[14]:</div>
 
@@ -15569,9 +15541,7 @@ jp-needs-light-background
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
-
 <div class="jp-OutputArea-child">
-
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -15588,9 +15558,7 @@ jp-needs-light-background
 </div>
 
 </div>
-
-<div class="jp-OutputArea-child">
-
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[15]:</div>
 
@@ -15643,9 +15611,7 @@ jp-needs-light-background
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[16]:</div>
 
@@ -15741,9 +15707,7 @@ Can...
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[17]:</div>
 
@@ -15807,13 +15771,13 @@ Can...
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>Essentially, you can:</p>
 <ul>
-<li>#a: to select modules with name "a"</li>
-<li>b: to select modules with class name "b"</li>
-<li>a #b: to select modules with name "b" under modules with class "a"</li>
-<li>a &gt; #b: to select modules with name "b" directly under modules with class "a"</li>
-<li>"#a: infinity war": to assign selected module with properties "infinity" and "war"</li>
+<li><h1 id="a:-to-select-modules-with-name-%22a%22">a: to select modules with name "a"<a class="anchor-link" href="#a:-to-select-modules-with-name-%22a%22">&#182;</a></h1></li>
+<li>b: to select modules with class name &quot;b&quot;</li>
+<li>a #b: to select modules with name &quot;b&quot; under modules with class &quot;a&quot;</li>
+<li>a &gt; #b: to select modules with name &quot;b&quot; directly under modules with class &quot;a&quot;</li>
+<li>&quot;#a: infinity war&quot;: to assign selected module with properties &quot;infinity&quot; and &quot;war&quot;</li>
 </ul>
-<p>Different callbacks will recognize certain props. <code>HookModule</code> will hook all modules with props "all" or "HookModule". Likewise, <code>HookParam</code> will hook all parameters with props "all" or "HookParam".</p>
+<p>Different callbacks will recognize certain props. <code>HookModule</code> will hook all modules with props &quot;all&quot; or &quot;HookModule&quot;. Likewise, <code>HookParam</code> will hook all parameters with props &quot;all&quot; or &quot;HookParam&quot;.</p>
 
 </div>
 </div>
@@ -15851,9 +15815,7 @@ Can...
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[18]:</div>
 
@@ -15895,9 +15857,7 @@ Can...
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
-
 <div class="jp-OutputArea-child">
-
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -15919,7 +15879,7 @@ Can...
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>It's simple, really! <code>l.data</code> contains a <code>train</code> and <code>valid</code> data loader, and each "dispenses" a batch as usual.</p>
+<p>It's simple, really! <code>l.data</code> contains a <code>train</code> and <code>valid</code> data loader, and each &quot;dispenses&quot; a batch as usual.</p>
 
 </div>
 </div>
@@ -15958,9 +15918,7 @@ Can...
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[20]:</div>
 
@@ -16027,7 +15985,7 @@ Use...
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><code>l.model</code> and <code>l.opt</code> is simple enough. It's just PyTorch's primitives. The part where most of the magic lies is in <code>l.cbs</code>, an object of type <code>k1lib.Callbacks</code>, a container object of <code>k1lib.Callback</code>. Notice the final "s" in the name.</p>
+<p><code>l.model</code> and <code>l.opt</code> is simple enough. It's just PyTorch's primitives. The part where most of the magic lies is in <code>l.cbs</code>, an object of type <code>k1lib.Callbacks</code>, a container object of <code>k1lib.Callback</code>. Notice the final &quot;s&quot; in the name.</p>
 <p>A callback is pretty simple. While training, you may want to sort of insert functionality here and there. Let's say you want the program to print out a progress bar after each epoch. You can edit the learning loop directly, with some internal variables to keep track of the current epoch and batch, like this:</p>
 <div class="highlight"><pre><span></span><span class="n">startTime</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="n">epochs</span><span class="p">:</span>
@@ -16097,7 +16055,7 @@ Use...
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>This is a stripped down version of <code>k1lib.Learner</code>, to get the idea across. Point is, whenever you do <code>self.cbs("startRun")</code>, it will run through all <code>k1lib.Callback</code> that it has (<code>ProgressBar</code> in this example), check if it implements <code>startRun</code>, and if yes, executes it.</p>
+<p>This is a stripped down version of <code>k1lib.Learner</code>, to get the idea across. Point is, whenever you do <code>self.cbs(&quot;startRun&quot;)</code>, it will run through all <code>k1lib.Callback</code> that it has (<code>ProgressBar</code> in this example), check if it implements <code>startRun</code>, and if yes, executes it.</p>
 <p>Inside <code>ProgressBar</code>'s <code>startBatch</code>, you can access learner's current epoch by doing <code>self.learner.epoch</code>. But you can also do <code>self.epoch</code> alone. If the attribute is not defined, then it will automatically be searched inside <code>self.learner</code>.</p>
 <p>As you can see, if you want to get rid of the progress bar without using <code>k1lib.Callbacks</code>, you have to delete the <code>startTime</code> line and the actual calculate progress lines. This requires you to remember which lines belongs to which functionality. If you use the <code>k1lib.Callbacks</code> mechanism instead, then you can just uncomment <code>self.cbs.append(ProgressBar())</code>, and that's it. This makes swapping out components extremely easy, repeatable, and beautiful.</p>
 <p>Other use cases include intercepting at <code>startBatch</code>, and push all the training data to the GPU. You can also reshape the data however you want. You can insert different loss mechanisms (<code>endLoss</code>) in addition to <code>lossF</code>, or quickly inspect the model output. You can also change learning rates while training (<code>startEpoch</code>) according to some schedules. The possibility are literally endless.</p>

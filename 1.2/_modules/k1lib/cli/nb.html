@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>k1lib.cli.nb &mdash; k1lib  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> k1lib
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../base.html">Base module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../cli/index.html">k1lib.cli module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../callbacks/index.html">k1lib.callbacks module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../k1a.html">k1lib._k1a module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../k1ui.html">k1lib.k1ui module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eqn.html">k1lib.eqn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fmt.html">k1lib.fmt module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../graphEqn.html">k1lib.graphEqn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../imports.html">k1lib.imports module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mo.html">k1lib.mo module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../knn.html">k1lib.knn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../schedule.html">k1lib.schedule module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../selector.html">k1lib.selector module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../serve.html">k1lib.serve module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../viz.html">k1lib.viz module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../monkey.html">Monkey patched classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelogs.html">Changelogs</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">k1lib</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">k1lib.cli.nb</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for k1lib.cli.nb</h1><div class="highlight"><pre>
+<span></span><span class="c1"># AUTOGENERATED FILE! PLEASE DON&#39;T EDIT</span>
+<span class="sd">&quot;&quot;&quot;This is for everything related to ipython notebooks. Expected to use behind the</span>
+<span class="sd">&quot;nb&quot; module name, like this::</span>
+
+<span class="sd">    from k1lib.imports import *</span>
+<span class="sd">    nb.execute(&quot;file.ipynb&quot;)&quot;&quot;&quot;</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;cells&quot;</span><span class="p">,</span> <span class="s2">&quot;pretty&quot;</span><span class="p">,</span> <span class="s2">&quot;execute&quot;</span><span class="p">]</span>
+<span class="kn">from</span> <span class="nn">k1lib.cli</span> <span class="kn">import</span> <span class="n">BaseCli</span><span class="p">;</span> <span class="kn">import</span> <span class="nn">k1lib.cli</span> <span class="k">as</span> <span class="nn">cli</span>
+<span class="kn">import</span> <span class="nn">json</span><span class="o">,</span> <span class="nn">k1lib</span><span class="o">,</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">traceback</span><span class="p">;</span> <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="viewcode-block" id="cells"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.nb.cells">[docs]</a><span class="k">def</span> <span class="nf">cells</span><span class="p">(</span><span class="n">fileName</span><span class="p">,</span> <span class="n">outputs</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Gets simplified notebook cells from file source, including fields</span>
+<span class="sd">``cell_type`` and ``source`` only. Example::</span>
+
+<span class="sd">    nb.cells(&quot;file.ipynb&quot;)&quot;&quot;&quot;</span>
+    <span class="n">js</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">cli</span><span class="o">.</span><span class="n">cat</span><span class="p">(</span><span class="n">fileName</span><span class="p">)</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">))</span>
+    <span class="n">cells</span> <span class="o">=</span> <span class="p">[];</span> <span class="n">fields</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="s2">&quot;cell_type&quot;</span><span class="p">,</span> <span class="s2">&quot;source&quot;</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">outputs</span><span class="p">:</span> <span class="n">fields</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;outputs&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">[{</span><span class="n">k</span><span class="p">:</span><span class="n">cell</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">cell</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">fields</span><span class="p">}</span> <span class="k">for</span> <span class="n">cell</span> <span class="ow">in</span> <span class="n">js</span><span class="p">[</span><span class="s2">&quot;cells&quot;</span><span class="p">]]</span></div>
+<div class="viewcode-block" id="pretty"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.nb.pretty">[docs]</a><span class="k">class</span> <span class="nc">pretty</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
+<div class="viewcode-block" id="pretty.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.nb.pretty.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">magics</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">whitelist</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span><span class="o">=</span><span class="p">[],</span> <span class="n">blacklist</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span><span class="o">=</span><span class="p">[]):</span>
+        <span class="sd">&quot;&quot;&quot;Makes the cells prettier.</span>
+<span class="sd">Cell 1 in file.ipynb::</span>
+
+<span class="sd">    #notest, export</span>
+<span class="sd">    a = 3</span>
+
+<span class="sd">Cell 2 in file.ipynb::</span>
+
+<span class="sd">    b = 6</span>
+
+<span class="sd">Code::</span>
+
+<span class="sd">    # only cell 2 gets chosen</span>
+<span class="sd">    nb.cells(&quot;file.ipynb&quot;) | nb.pretty(blacklist=[&quot;notest&quot;])</span>
+<span class="sd">    # only cell 1 gets chosen</span>
+<span class="sd">    nb.cells(&quot;file.ipynb&quot;) | nb.pretty(whitelist=[&quot;export&quot;])</span>
+
+<span class="sd">:param magics: if False, then if detected magics (&#39;!&#39;, &#39;%%&#39; symbols), then remove that</span>
+<span class="sd">    line in cell&#39;s source</span>
+<span class="sd">:param whitelist: every cell that doesn&#39;t have any of these properties will be</span>
+<span class="sd">    filtered out</span>
+<span class="sd">:param blacklist: every cell that has any of these properties will be filtered out&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">magics</span> <span class="o">=</span> <span class="n">magics</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">wl</span> <span class="o">=</span> <span class="n">whitelist</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">bl</span> <span class="o">=</span> <span class="n">blacklist</span></div>
+<div class="viewcode-block" id="pretty.__ror__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.nb.pretty.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cells</span><span class="p">):</span>
+        <span class="n">magics</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">magics</span><span class="p">;</span> <span class="n">wl</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">wl</span><span class="p">;</span> <span class="n">bl</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bl</span>
+        <span class="k">for</span> <span class="n">cell</span> <span class="ow">in</span> <span class="n">cells</span><span class="p">:</span>
+            <span class="n">lines</span> <span class="o">=</span> <span class="n">cell</span><span class="p">[</span><span class="s2">&quot;source&quot;</span><span class="p">]</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">magics</span><span class="p">:</span> <span class="n">lines</span> <span class="o">=</span> <span class="p">[</span><span class="n">line</span><span class="o">.</span><span class="n">rstrip</span><span class="p">()</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;!&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%%</span><span class="s2">&quot;</span><span class="p">)]</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="k">continue</span>
+            <span class="k">if</span> <span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;#&quot;</span><span class="p">):</span> <span class="n">props</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="n">e</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s2">&quot;#&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)])</span>
+            <span class="k">else</span><span class="p">:</span> <span class="n">props</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">wl</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">any</span><span class="p">([</span><span class="n">e</span> <span class="ow">in</span> <span class="n">props</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">wl</span><span class="p">]):</span> <span class="k">continue</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">bl</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="nb">any</span><span class="p">([</span><span class="n">e</span> <span class="ow">in</span> <span class="n">props</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">bl</span><span class="p">]):</span> <span class="k">continue</span>
+            <span class="n">cell</span><span class="p">[</span><span class="s2">&quot;source&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">lines</span><span class="p">;</span> <span class="k">yield</span> <span class="n">cell</span></div></div>
+<div class="viewcode-block" id="execute"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.nb.execute">[docs]</a><span class="k">class</span> <span class="nc">execute</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
+<div class="viewcode-block" id="execute.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.nb.execute.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fileName</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">_globals</span><span class="p">:</span><span class="nb">dict</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Executes cells.</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    nb.cells(&quot;file.ipynb&quot;) | nb.execute(&quot;nb.ipynb&quot;)</span>
+
+<span class="sd">Most of the time, you&#39;d want to pass cells through :class:`pretty` first, to make sure</span>
+<span class="sd">everything is nice and clean</span>
+
+<span class="sd">:param fileName: not actually used to read the file. If specified, then changes the</span>
+<span class="sd">    current working directory to that of the file</span>
+<span class="sd">:param _globals: optional dict of global variables&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fileName</span> <span class="o">=</span> <span class="n">fileName</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_globals</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span> <span class="k">if</span> <span class="n">_globals</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">_globals</span></div>
+<div class="viewcode-block" id="execute.__ror__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.nb.execute.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cells</span><span class="p">):</span>
+        <span class="k">with</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">context</span><span class="p">():</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">fileName</span><span class="p">:</span>
+                <span class="n">k1lib</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">wd</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fileName</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">&quot;.&quot;</span>
+            <span class="k">for</span> <span class="n">cell</span> <span class="ow">in</span> <span class="n">cells</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">cell</span><span class="p">[</span><span class="s2">&quot;cell_type&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;code&quot;</span><span class="p">:</span> <span class="k">continue</span>
+                <span class="n">source</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cell</span><span class="p">[</span><span class="s2">&quot;source&quot;</span><span class="p">])</span>
+                <span class="k">try</span><span class="p">:</span> <span class="n">exec</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_globals</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+                <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Problematic cell:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="n">source</span><span class="p">);</span> <span class="n">traceback</span><span class="o">.</span><span class="n">print_exc</span><span class="p">();</span> <span class="k">raise</span> <span class="n">e</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Quang Ho.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

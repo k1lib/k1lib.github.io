@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>k1lib.cli.inp &mdash; k1lib  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> k1lib
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../base.html">Base module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../cli/index.html">k1lib.cli module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../callbacks/index.html">k1lib.callbacks module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../k1a.html">k1lib._k1a module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../k1ui.html">k1lib.k1ui module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eqn.html">k1lib.eqn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fmt.html">k1lib.fmt module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../graphEqn.html">k1lib.graphEqn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../imports.html">k1lib.imports module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mo.html">k1lib.mo module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../knn.html">k1lib.knn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../schedule.html">k1lib.schedule module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../selector.html">k1lib.selector module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../serve.html">k1lib.serve module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../viz.html">k1lib.viz module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../monkey.html">Monkey patched classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelogs.html">Changelogs</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">k1lib</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">k1lib.cli.inp</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for k1lib.cli.inp</h1><div class="highlight"><pre>
+<span></span><span class="c1"># AUTOGENERATED FILE! PLEASE DON&#39;T EDIT</span>
+<span class="sd">&quot;&quot;&quot;This module for tools that will likely start the processing stream.&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Iterator</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">Any</span>
+<span class="kn">import</span> <span class="nn">k1lib</span><span class="o">,</span> <span class="nn">urllib</span><span class="o">,</span> <span class="nn">subprocess</span><span class="o">,</span> <span class="nn">warnings</span><span class="o">,</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">k1lib</span><span class="o">,</span> <span class="nn">threading</span><span class="o">,</span> <span class="nn">time</span><span class="o">,</span> <span class="nn">warnings</span><span class="o">,</span> <span class="nn">math</span><span class="o">,</span> <span class="nn">io</span><span class="o">,</span> <span class="nn">dill</span>
+<span class="kn">from</span> <span class="nn">k1lib.cli</span> <span class="kn">import</span> <span class="n">BaseCli</span><span class="p">;</span> <span class="kn">import</span> <span class="nn">k1lib.cli</span> <span class="k">as</span> <span class="nn">cli</span>
+<span class="kn">from</span> <span class="nn">k1lib.cli.typehint</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;cat&quot;</span><span class="p">,</span> <span class="s2">&quot;splitSeek&quot;</span><span class="p">,</span> <span class="s2">&quot;curl&quot;</span><span class="p">,</span> <span class="s2">&quot;wget&quot;</span><span class="p">,</span> <span class="s2">&quot;ls&quot;</span><span class="p">,</span> <span class="s2">&quot;cmd&quot;</span><span class="p">,</span> <span class="s2">&quot;walk&quot;</span><span class="p">,</span> <span class="s2">&quot;requireCli&quot;</span><span class="p">]</span>
+<span class="n">settings</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">cli</span>
+<span class="n">catSettings</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">Settings</span><span class="p">()</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;chunkSize&quot;</span><span class="p">,</span> <span class="mi">100000</span><span class="p">,</span> <span class="s2">&quot;file reading chunk size for binary+chunk mode. Decrease it to avoid wasting memory and increase it to avoid disk latency&quot;</span><span class="p">)</span>
+<span class="n">catSettings</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;every&quot;</span><span class="p">,</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">Settings</span><span class="p">()</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;text&quot;</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="s2">&quot;for text mode, will print every n lines&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;binary&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;for binary mode, will print every n 100000-byte blocks&quot;</span><span class="p">),</span> <span class="s2">&quot;profiler print frequency&quot;</span><span class="p">)</span>
+<span class="n">settings</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;cat&quot;</span><span class="p">,</span> <span class="n">catSettings</span><span class="p">,</span> <span class="s2">&quot;inp.cat() settings&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">_catGenText</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="n">sB</span><span class="p">,</span> <span class="n">eB</span><span class="p">):</span> <span class="c1"># fn for &quot;file name&quot;</span>
+    <span class="k">if</span> <span class="n">sB</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">eB</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span> <span class="c1"># fast path without bounds (90-160 MB/s expected)</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="n">line</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">line</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span> <span class="k">return</span>
+                <span class="k">yield</span> <span class="n">line</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="n">line</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="k">else</span> <span class="n">line</span>
+    <span class="k">else</span><span class="p">:</span> <span class="c1"># slow path with bounds (15 MB/s expected)</span>
+        <span class="n">sB</span> <span class="o">=</span> <span class="n">wrap</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="n">sB</span><span class="p">);</span> <span class="n">eB</span> <span class="o">=</span> <span class="n">wrap</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="n">eB</span><span class="p">)</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="n">sB</span><span class="p">);</span> <span class="n">b</span> <span class="o">=</span> <span class="n">sB</span> <span class="c1"># current byte</span>
+            <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="n">line</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">line</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span> <span class="k">return</span>
+                <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">tell</span><span class="p">()</span> <span class="o">&gt;</span> <span class="n">eB</span><span class="p">:</span> <span class="k">yield</span> <span class="n">line</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">tell</span><span class="p">()</span><span class="o">-</span><span class="n">eB</span><span class="p">)];</span> <span class="k">return</span>
+                <span class="k">if</span> <span class="n">line</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">:</span> <span class="k">yield</span> <span class="n">line</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                <span class="k">else</span><span class="p">:</span> <span class="k">yield</span> <span class="n">line</span>
+<span class="k">def</span> <span class="nf">_catGenBin</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="n">sB</span><span class="p">,</span> <span class="n">eB</span><span class="p">):</span>
+    <span class="n">chunkSize</span> <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">cat</span><span class="o">.</span><span class="n">chunkSize</span><span class="p">;</span> <span class="n">sB</span> <span class="o">=</span> <span class="n">wrap</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="n">sB</span><span class="p">);</span> <span class="n">eB</span> <span class="o">=</span> <span class="n">wrap</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="n">eB</span><span class="p">);</span> <span class="n">nB</span> <span class="o">=</span> <span class="n">eB</span> <span class="o">-</span> <span class="n">sB</span> <span class="c1"># number of bytes to read total</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="n">sB</span><span class="p">);</span> <span class="n">nChunks</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">nB</span> <span class="o">/</span> <span class="n">chunkSize</span><span class="p">);</span> <span class="n">lastChunkSize</span> <span class="o">=</span> <span class="n">nB</span> <span class="o">-</span> <span class="n">chunkSize</span><span class="o">*</span><span class="p">(</span><span class="n">nChunks</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">yield from</span> <span class="nb">range</span><span class="p">(</span><span class="n">nChunks</span><span class="p">)</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">applyTh</span><span class="p">(</span><span class="k">lambda</span> <span class="n">i</span><span class="p">:</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">chunkSize</span><span class="p">)</span> <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">nChunks</span><span class="o">-</span><span class="mi">1</span> <span class="k">else</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">chunkSize</span><span class="p">)[:</span><span class="n">lastChunkSize</span><span class="p">],</span> <span class="n">prefetch</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">fileLength</span><span class="p">(</span><span class="n">fn</span><span class="p">):</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span> <span class="k">return</span> <span class="n">f</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">SEEK_END</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">wrap</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span> <span class="k">return</span> <span class="n">b</span> <span class="k">if</span> <span class="n">b</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">b</span> <span class="o">+</span> <span class="n">fileLength</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="k">class</span> <span class="nc">_cat</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">chunks</span><span class="p">,</span> <span class="n">sB</span><span class="p">,</span> <span class="n">eB</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">chunks</span> <span class="o">=</span> <span class="n">chunks</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">sB</span> <span class="o">=</span> <span class="n">sB</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">eB</span> <span class="o">=</span> <span class="n">eB</span>
+    <span class="k">def</span> <span class="nf">_typehint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ignored</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">text</span><span class="p">:</span> <span class="k">return</span> <span class="n">tIter</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">chunks</span> <span class="k">else</span> <span class="n">tList</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span> <span class="k">return</span> <span class="n">tIter</span><span class="p">(</span><span class="nb">bytes</span><span class="p">)</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">chunks</span> <span class="k">else</span> <span class="nb">bytes</span>
+    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fn</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">Iterator</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="nb">bytes</span><span class="p">]:</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">text</span><span class="p">;</span> <span class="n">chunks</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">chunks</span><span class="p">;</span> <span class="n">sB</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sB</span><span class="p">;</span> <span class="n">eB</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">eB</span>
+        <span class="n">fn</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">text</span> <span class="ow">and</span> <span class="n">chunks</span> <span class="ow">and</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">_settings</span><span class="o">.</span><span class="n">packages</span><span class="o">.</span><span class="n">k1a</span> <span class="ow">and</span> <span class="n">sB</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">eB</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">_k1a</span><span class="o">.</span><span class="n">k1a</span><span class="o">.</span><span class="n">StrIterCat</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span> <span class="c1"># if there&#39;s a need to accelerate this if bounds are specified then I&#39;ll add it to k1a. Right now doesn&#39;t seem to be worth it</span>
+        <span class="k">if</span> <span class="n">chunks</span><span class="p">:</span> <span class="k">return</span> <span class="n">_catGenText</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="n">sB</span><span class="p">,</span> <span class="n">eB</span><span class="p">)</span> <span class="k">if</span> <span class="n">text</span> <span class="k">else</span> <span class="n">_catGenBin</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="n">sB</span><span class="p">,</span> <span class="n">eB</span><span class="p">)</span>
+        <span class="n">sB</span> <span class="o">=</span> <span class="n">wrap</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="n">sB</span><span class="p">);</span> <span class="n">eB</span> <span class="o">=</span> <span class="n">wrap</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="n">eB</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">text</span><span class="p">:</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span> <span class="n">f</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="n">sB</span><span class="p">);</span> <span class="k">return</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">eB</span><span class="o">-</span><span class="n">sB</span><span class="p">)</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span> <span class="n">f</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="n">sB</span><span class="p">);</span> <span class="k">return</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">eB</span><span class="o">-</span><span class="n">sB</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">Profile</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="p">[];</span> <span class="bp">self</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">text</span>
+    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">):</span>
+        <span class="n">fmt</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">fmt</span><span class="p">;</span> <span class="n">chars</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">beginTime</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">text</span><span class="p">:</span>
+            <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">f</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">ConstantPad</span><span class="o">.</span><span class="n">multi</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span> <span class="n">every</span> <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">cat</span><span class="o">.</span><span class="n">every</span><span class="o">.</span><span class="n">text</span>
+            <span class="k">for</span> <span class="n">lines</span><span class="p">,</span> <span class="n">e</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">it</span><span class="p">):</span>
+                <span class="n">chars</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">lines</span> <span class="o">%</span> <span class="n">every</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="c1"># every 1000 lines, print stuff out</span>
+                    <span class="n">elapsed</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">beginTime</span><span class="c1">#; self.data.append([lines, chars, elapsed])</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Current line: </span><span class="si">{</span><span class="n">fmt</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span> <span class="o">|</span> <span class="n">a</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">fmt</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="n">lines</span><span class="o">/</span><span class="n">elapsed</span><span class="p">)</span> <span class="o">|</span> <span class="n">b</span><span class="si">}</span><span class="s2"> lines/s), current byte/chars: </span><span class="si">{</span><span class="n">fmt</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">chars</span><span class="p">)</span> <span class="o">|</span> <span class="n">c</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">fmt</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">chars</span><span class="o">/</span><span class="n">elapsed</span><span class="p">)</span> <span class="o">|</span> <span class="n">d</span><span class="si">}</span><span class="s2">/s), elapsed: </span><span class="si">{</span><span class="n">fmt</span><span class="o">.</span><span class="n">time</span><span class="p">(</span><span class="n">elapsed</span><span class="p">)</span> <span class="o">|</span> <span class="n">f</span><span class="si">}</span><span class="s2">                                 &quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\r</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="k">yield</span> <span class="n">e</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">ConstantPad</span><span class="o">.</span><span class="n">multi</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span> <span class="n">every</span> <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">cat</span><span class="o">.</span><span class="n">every</span><span class="o">.</span><span class="n">binary</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">e</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">it</span><span class="p">):</span>
+                <span class="n">chars</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="n">every</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="c1"># every 10 100000-byte chunks, print stuff out</span>
+                    <span class="n">elapsed</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">beginTime</span><span class="c1">#; self.data.append([chars, elapsed])</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Current size/chars: </span><span class="si">{</span><span class="n">fmt</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">chars</span><span class="p">)</span> <span class="o">|</span> <span class="n">a</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">fmt</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">chars</span><span class="o">/</span><span class="n">elapsed</span><span class="p">)</span> <span class="o">|</span> <span class="n">b</span><span class="si">}</span><span class="s2">/s), elapsed: </span><span class="si">{</span><span class="n">fmt</span><span class="o">.</span><span class="n">time</span><span class="p">(</span><span class="n">elapsed</span><span class="p">)</span> <span class="o">|</span> <span class="n">c</span><span class="si">}</span><span class="s2">                                 &quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\r</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="k">yield</span> <span class="n">e</span>
+<div class="viewcode-block" id="cat"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.inp.cat">[docs]</a><span class="k">def</span> <span class="nf">cat</span><span class="p">(</span><span class="n">fileName</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">chunks</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">profile</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">sB</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">eB</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Reads a file line by line.</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    # display first 10 lines of file</span>
+<span class="sd">    cat(&quot;file.txt&quot;) | headOut()</span>
+<span class="sd">    # piping in also works</span>
+<span class="sd">    &quot;file.txt&quot; | cat() | headOut()</span>
+<span class="sd">    </span>
+<span class="sd">    # read bytes from an image file and dumps it to another file</span>
+<span class="sd">    cat(&quot;img.png&quot;, False) | file(&quot;img2.png&quot;)</span>
+
+<span class="sd">If you want to read only specific sections of the file, you can specify the</span>
+<span class="sd">start (``sB``) and end byte (``eB``) like this::</span>
+
+<span class="sd">    &quot;123456\\n89&quot; | file(&quot;test/catTest.pth&quot;)</span>
+<span class="sd">    # returns [&#39;3456&#39;, &#39;8&#39;]</span>
+<span class="sd">    cat(&quot;test/catTest.pth&quot;, sB=2, eB=8) | deref()</span>
+<span class="sd">    </span>
+<span class="sd">    settings.cat.context.chunkSize=3 # just for demonstration, don&#39;t do it normally</span>
+<span class="sd">    # returns [b&#39;123&#39;, b&#39;456&#39;, b&#39;\\n8&#39;]</span>
+<span class="sd">    cat(&quot;test/catTest.pth&quot;, text=False, chunks=True, eB=8) | deref()</span>
+
+<span class="sd">If you are working with large files and would like to read 1 file from multiple</span>
+<span class="sd">threads/processes, then you can use this cli in conjunction with :class:`splitSeek`.</span>
+
+<span class="sd">If you are dumping multiple pickled objects into a single file, you can read all</span>
+<span class="sd">of them using :meth:`cat.pickle`.</span>
+
+<span class="sd">This cli has lots of settings at :data:`~k1lib.settings`.cli.cat</span>
+
+<span class="sd">:param fileName: if None, then return a :class:`~k1lib.cli.init.BaseCli`</span>
+<span class="sd">    that accepts a file name and outputs Iterator[str]</span>
+<span class="sd">:param text: if True, read text file, else read binary file</span>
+<span class="sd">:param chunks: if True then reads the file chunk by chunk, else reads the</span>
+<span class="sd">    entire file. Defaults to True in text mode and False in binary mode</span>
+<span class="sd">:param profile: whether to profile the file reading rate or not. Can adjust</span>
+<span class="sd">    printing frequency using `settings.cli.cat.every`</span>
+<span class="sd">:param sB: &quot;start byte&quot;. Specify this if you want to start reading from this byte</span>
+<span class="sd">:param eB: &quot;end byte&quot;, inclusive. Default -1 means end of file&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">chunks</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="n">chunks</span> <span class="o">=</span> <span class="kc">True</span> <span class="k">if</span> <span class="n">text</span> <span class="k">else</span> <span class="kc">False</span>
+    <span class="k">if</span> <span class="n">profile</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">chunks</span><span class="p">:</span> <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Can&#39;t profile reading rate when you&#39;re trying to read everything at once&quot;</span><span class="p">);</span> <span class="n">profile</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="n">_cat</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">chunks</span><span class="p">,</span> <span class="n">sB</span><span class="p">,</span> <span class="n">eB</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">profile</span><span class="p">:</span> <span class="n">f</span> <span class="o">=</span> <span class="n">f</span> <span class="o">|</span> <span class="n">Profile</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">f</span> <span class="k">if</span> <span class="n">fileName</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">fileName</span> <span class="o">|</span> <span class="n">f</span></div>
+<span class="k">def</span> <span class="nf">_catPickle</span><span class="p">(</span><span class="n">fileName</span><span class="p">,</span> <span class="n">pickleModule</span><span class="o">=</span><span class="n">dill</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Reads a file as a series of pickled objects.</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    &quot;ab&quot; | aS(dill.dumps) | file(&quot;test/catTest.pth&quot;)</span>
+<span class="sd">    &quot;cd&quot; | aS(dill.dumps) &gt;&gt; file(&quot;test/catTest.pth&quot;) # append to the file</span>
+<span class="sd">    # returns [&quot;ab&quot;, &quot;cd&quot;]</span>
+<span class="sd">    cat.pickle(&quot;test/catTest.pth&quot;) | deref()</span>
+
+<span class="sd">:param fileName: name of the pickled file</span>
+<span class="sd">:param pickleModule: pickle module to use. Python&#39;s default is &quot;pickle&quot;, but</span>
+<span class="sd">    I usually use &quot;dill&quot; because it&#39;s more robust&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">cat</span><span class="p">(</span><span class="n">fileName</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">aS</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">)</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">repeat</span><span class="p">()</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">cli</span><span class="o">.</span><span class="n">tryout</span><span class="p">()</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">aS</span><span class="p">(</span><span class="n">pickleModule</span><span class="o">.</span><span class="n">load</span><span class="p">))</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">breakIf</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">)</span>
+<span class="n">cat</span><span class="o">.</span><span class="n">pickle</span> <span class="o">=</span> <span class="n">_catPickle</span>
+<div class="viewcode-block" id="splitSeek"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.inp.splitSeek">[docs]</a><span class="k">class</span> <span class="nc">splitSeek</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
+<div class="viewcode-block" id="splitSeek.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.inp.splitSeek.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="sa">b</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Splits a file up into n fragments aligned to the closest character and return the seek points.</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    # preparing the large file</span>
+<span class="sd">    range(120) | apply(lambda x: f&quot;{x:3}_56789&quot;) | file(&quot;test/largeFile.txt&quot;)</span>
+<span class="sd">    # returns [0, 30, 70, 110, 150, 190, 230, 270, 300, 340]</span>
+<span class="sd">    &quot;test/largeFile.txt&quot; | splitSeek(31) | head()</span>
+<span class="sd">    # returns 32</span>
+<span class="sd">    &quot;test/largeFile.txt&quot; | splitSeek(31) | shape(0)</span>
+<span class="sd">    # returns 32, demonstrating you can also pipe file objects in, if that&#39;s what you want</span>
+<span class="sd">    open(&quot;test/largeFile.txt&quot;) | splitSeek(31) | shape(0)</span>
+<span class="sd">    # returns [0, 0, 10, 10, 20, 30, 30, 40, 40, 50], notice some segments have zero length</span>
+<span class="sd">    &quot;test/largeFile.txt&quot; | splitSeek(200) | head()</span>
+
+<span class="sd">So, the generated file has 120 lines in total. Each line is 10 bytes (9 for</span>
+<span class="sd">the string, and 1 for the new line character). Splitting the file into 31</span>
+<span class="sd">fragments will result in 32 seek points (:math:`p_i\quad i\in[1, n+1]`). You</span>
+<span class="sd">can then use these seek points to read the file in multiple threads/processes</span>
+<span class="sd">using :meth:`cat`, like this::</span>
+
+<span class="sd">    # returns [[&#39;  0_56789&#39;, &#39;  1_56789&#39;, &#39;  2_56789&#39;], [&#39;  3_56789&#39;, &#39;  4_56789&#39;, &#39;  5_56789&#39;, &#39;  6_56789&#39;]]</span>
+<span class="sd">    &quot;test/largeFile.txt&quot; | splitSeek(31) | window(2) | ~apply(lambda sB, eB: cat(&quot;test/largeFile.txt&quot;, sB=sB, eB=eB-1)) | head(2) | deref()</span>
+
+<span class="sd">Because :math:`120/31\\approx4`, most of cat&#39;s reads contain 4 lines, but some</span>
+<span class="sd">has 3 lines. Also notice that the lines smoothly transitions between cat&#39;s</span>
+<span class="sd">reads (``2_56789`` to ``3_56789``), so that&#39;s pretty nice.</span>
+
+<span class="sd">.. warning::</span>
+
+<span class="sd">    You have to really test whether reading the same file from multiple processes is</span>
+<span class="sd">    going to be really faster or not. If your data is stored in a HDD (aka hard drive,</span>
+<span class="sd">    with spinning disks), then it will actually slow you down (10x-100x), because the</span>
+<span class="sd">    disk will have to context switch all the time, and each switch has a 10ms cost.</span>
+<span class="sd">    </span>
+<span class="sd">    You also have to take into account collecting together the results of all processes,</span>
+<span class="sd">    which can bottleneck the cpu. Read more about concurrency pitfalls at :class:`~k1lib.cli.modifier.applyMp`.</span>
+
+<span class="sd">In some scenarios where you want to adjust the seek points even more, like when</span>
+<span class="sd">you want to parse FASTA genome files, which has blocks of 2/4 lines each like this:</span>
+
+<span class="sd">.. code-block:: text</span>
+
+<span class="sd">    @FP200005993L1C001R00100000061/2</span>
+<span class="sd">    TTTTAAACTTGCATTCTTTGGAGATTTGCTGAGTGTTGCTAGAGCTGGGAAACTTTTTTAATGAGATACGTGCATATTTTTCAAATTTACAGATCTTTTTTCACAAAAATAGAAAGTCATAAATGTGAAATGGAAACCTAAACAAGGCAA</span>
+<span class="sd">    +</span>
+<span class="sd">    GFEEEDEFGFFFFEFFFFFIFCEEEFFFGFFDFEGEDGFFFGDGFFGDGCE@GGGEEFDFGFGCFDFGGHCHFFFGFFFFFGEFDFFGHGFGEEHGFGEGFGFHFFEGFFFE;GEGEFGGHFFEI=GDAEDIFDDFGHFGEFGFEGGGGF</span>
+<span class="sd">    @FP200005993L1C001R00100000167/2</span>
+<span class="sd">    CTGGAATTTGGTATCTTATTGCCAAAGAATCTGTTTTGTGAAACTTGGGATCTCTATTTTAATGTTAATTCTGGTCAGTTGTGCCTAAACTCCATAAAGCAGGGACTATACTGAGGCGTATTCAATCTTCCTTCTTACCAAGGCCAGGAA</span>
+<span class="sd">    +</span>
+<span class="sd">    EEFECEDEFFCGFFFFFEEEGEGFEDECCEFEFDFEEFDFEDDFEFEEFDDFFEEFFEEFEFFHEEFEEFEFFDEFFFECF&gt;FFFEFEDFCFFFEGFEDEEGDDFEEFEFGEEBD@EG&gt;EEFFECEEGFEEEFFEDGEEEDE5EBDG:CC</span>
+
+<span class="sd">Here, each 4 lines are (title, read, blank, quality). Because by default, this will</span>
+<span class="sd">only split neatly along new lines, you will have to write extra functions to detect</span>
+<span class="sd">if a particular seek point is desirable, and if not, either jump forward or backward</span>
+<span class="sd">using :meth:`splitSeek.forward` and :meth:`splitSeek.backward`.</span>
+
+<span class="sd">:param n: how many splits do you want?</span>
+<span class="sd">:param c: block-boundary character, usually just the new line character&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">=</span> <span class="n">n</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">c</span> <span class="o">=</span> <span class="n">c</span></div>
+<div class="viewcode-block" id="splitSeek.forward"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.inp.splitSeek.forward">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">i</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="sa">b</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Returns char location after the search char, going forward.</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    f = io.BytesIO(b&quot;123\\n456\\n789\\nabc&quot;)</span>
+<span class="sd">    f | splitSeek(2) # returns [0, 4, 15]</span>
+<span class="sd">    splitSeek.forward(f, 2) # returns 4</span>
+<span class="sd">    splitSeek.forward(f, 3) # returns 4</span>
+<span class="sd">    splitSeek.forward(f, 4) # returns 8</span>
+
+<span class="sd">:param f: file handle</span>
+<span class="sd">:param i: current seek point</span>
+<span class="sd">:param c: block-boundary character&quot;&quot;&quot;</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">b</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">tell</span><span class="p">();</span> <span class="n">s</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span> <span class="n">di</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">di</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span> <span class="k">return</span> <span class="n">b</span> <span class="o">+</span> <span class="n">di</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="n">s</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span> <span class="k">return</span> <span class="o">-</span><span class="mi">1</span></div>
+<div class="viewcode-block" id="splitSeek.backward"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.inp.splitSeek.backward">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">backward</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">i</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="sa">b</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Returns char location after the search char, going backward.</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    f = io.BytesIO(b&quot;123\\n456\\n789\\nabc&quot;)</span>
+<span class="sd">    f | splitSeek(2) # returns [0, 4, 15]</span>
+<span class="sd">    splitSeek.backward(f, 5) # returns 4</span>
+<span class="sd">    splitSeek.backward(f, 4) # returns 4</span>
+<span class="sd">    splitSeek.backward(f, 3) # returns 0</span>
+
+<span class="sd">:param f: file handle</span>
+<span class="sd">:param i: current seek point</span>
+<span class="sd">:param c: block-boundary character&quot;&quot;&quot;</span>
+        <span class="n">mul</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">begin</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1000</span><span class="o">*</span><span class="n">mul</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span> <span class="n">end</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1000</span><span class="o">*</span><span class="p">(</span><span class="n">mul</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="mi">0</span><span class="p">);</span> <span class="n">mul</span> <span class="o">+=</span> <span class="mi">1</span> <span class="c1"># search range</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="n">begin</span><span class="p">);</span> <span class="n">b</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">tell</span><span class="p">()</span>
+            <span class="n">s</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">end</span><span class="o">-</span><span class="n">begin</span><span class="p">);</span> <span class="n">di</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">rfind</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">di</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span> <span class="k">return</span> <span class="n">b</span> <span class="o">+</span> <span class="n">di</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="n">b</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="k">return</span> <span class="mi">0</span></div>
+<div class="viewcode-block" id="splitSeek.__ror__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.inp.splitSeek.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fn</span><span class="p">):</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">;</span> <span class="n">c</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">c</span>
+        <span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">f</span><span class="p">):</span> <span class="n">f</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">SEEK_END</span><span class="p">);</span> <span class="n">end</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">tell</span><span class="p">();</span> <span class="k">return</span> <span class="p">[</span><span class="o">*</span><span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">end</span><span class="o">/</span><span class="n">n</span><span class="p">))</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">splitSeek</span><span class="o">.</span><span class="n">backward</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">c</span><span class="p">)),</span> <span class="n">end</span><span class="p">]</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="n">fn</span><span class="p">),</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span> <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span> <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span></div></div>
+<div class="viewcode-block" id="curl"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.inp.curl">[docs]</a><span class="k">def</span> <span class="nf">curl</span><span class="p">(</span><span class="n">url</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+    <span class="sd">&quot;&quot;&quot;Gets file from url. File can&#39;t be a binary blob.</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    # prints out first 10 lines of the website</span>
+<span class="sd">    curl(&quot;https://k1lib.github.io/&quot;) | headOut()&quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+        <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">line</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">:</span> <span class="k">yield</span> <span class="n">line</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span> <span class="k">yield</span> <span class="n">line</span></div>
+<div class="viewcode-block" id="wget"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.inp.wget">[docs]</a><span class="k">def</span> <span class="nf">wget</span><span class="p">(</span><span class="n">url</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">fileName</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Downloads a file. Also returns the file name, in case you want to pipe it</span>
+<span class="sd">to something else.</span>
+
+<span class="sd">:param url: The url of the file</span>
+<span class="sd">:param fileName: if None, then tries to infer it from the url&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">fileName</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="n">fileName</span> <span class="o">=</span> <span class="n">url</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">fileName</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">fileName</span></div>
+<div class="viewcode-block" id="ls"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.inp.ls">[docs]</a><span class="k">def</span> <span class="nf">ls</span><span class="p">(</span><span class="n">folder</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;List every file and folder inside the specified folder.</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    # returns List[str]</span>
+<span class="sd">    ls(&quot;/home&quot;)</span>
+<span class="sd">    # same as above</span>
+<span class="sd">    &quot;/home&quot; | ls()</span>
+<span class="sd">    # only outputs files, not folders</span>
+<span class="sd">    ls(&quot;/home&quot;) | filt(os.path.isfile)&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">folder</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="k">return</span> <span class="n">_ls</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span> <span class="k">return</span> <span class="n">folder</span> <span class="o">|</span> <span class="n">_ls</span><span class="p">()</span></div>
+<span class="k">class</span> <span class="nc">_ls</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_typehint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ignored</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span> <span class="k">return</span> <span class="n">tList</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">folder</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
+        <span class="n">folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="n">folder</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="p">))</span>
+        <span class="k">return</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">folder</span><span class="si">}{</span><span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="si">}{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">folder</span><span class="p">)]</span>
+<span class="n">k1lib</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">cli</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;quiet&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;whether to mute extra outputs from clis or not&quot;</span><span class="p">)</span>
+<span class="n">newline</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="k">class</span> <span class="nc">lazySt</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">st</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span><span class="nb">bool</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Converts byte stream into lazy text/byte stream, with nice __repr__.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">st</span> <span class="o">=</span> <span class="n">st</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="p">;</span>
+    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">text</span><span class="p">:</span>
+            <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="n">line</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">st</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="k">break</span>
+                <span class="k">yield</span> <span class="n">line</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="n">line</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">st</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="k">break</span>
+                <span class="k">yield</span> <span class="n">line</span>
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="bp">self</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">stdout</span><span class="p">();</span> <span class="k">return</span> <span class="s2">&quot;&quot;</span>
+<span class="k">def</span> <span class="nf">executeCmd</span><span class="p">(</span><span class="n">cmd</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">inp</span><span class="p">:</span><span class="nb">bytes</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Runs a command, and returns stdout and stderr streams&quot;&quot;&quot;</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">shell</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">stdin</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="n">k1lib</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">wd</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">inp</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">inp</span><span class="p">,</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">)):</span> <span class="n">p</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">inp</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">inp</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">)</span> <span class="k">else</span> <span class="n">inp</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">inp</span><span class="p">:</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">)):</span> <span class="n">e</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">):</span> <span class="n">e</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="n">encode</span><span class="p">()</span>
+                <span class="n">p</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">close</span><span class="p">();</span> <span class="k">return</span> <span class="n">lazySt</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">stdout</span><span class="p">,</span> <span class="n">text</span><span class="p">),</span> <span class="n">lazySt</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">stderr</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">printStderr</span><span class="p">(</span><span class="n">err</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">cli</span><span class="o">.</span><span class="n">quiet</span><span class="p">:</span>
+        <span class="n">e</span><span class="p">,</span> <span class="n">it</span> <span class="o">=</span> <span class="n">err</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">peek</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">it</span> <span class="o">!=</span> <span class="p">[]:</span> <span class="n">it</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Error encountered:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">k1lib</span><span class="o">.</span><span class="n">fmt</span><span class="o">.</span><span class="n">txt</span><span class="o">.</span><span class="n">red</span><span class="p">)</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">stdout</span><span class="p">()</span>
+<div class="viewcode-block" id="requireCli"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.inp.requireCli">[docs]</a><span class="k">def</span> <span class="nf">requireCli</span><span class="p">(</span><span class="n">cliTool</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Searches for a particular cli tool (eg. &quot;ls&quot;), throws ImportError if not</span>
+<span class="sd">found, else do nothing&quot;&quot;&quot;</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">cmd</span><span class="p">(</span><span class="n">cliTool</span><span class="p">);</span> <span class="kc">None</span> <span class="o">|</span> <span class="n">a</span><span class="p">;</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">err</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span> <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&quot;&quot;Can&#39;t find cli tool </span><span class="si">{</span><span class="n">cliTool</span><span class="si">}</span><span class="s2">. Please install it first.&quot;&quot;&quot;</span><span class="p">)</span></div>
+<div class="viewcode-block" id="cmd"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.inp.cmd">[docs]</a><span class="k">class</span> <span class="nc">cmd</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
+<div class="viewcode-block" id="cmd.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.inp.cmd.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cmd</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">block</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span> <span class="c1"># 0: return (stdout, stderr). 1: return stdout, 2: return stderr</span>
+        <span class="sd">&quot;&quot;&quot;Runs a command, and returns the output line by line. Can pipe in some</span>
+<span class="sd">inputs. If no inputs then have to pipe in :data:`None`. Example::</span>
+
+<span class="sd">    # return detailed list of files</span>
+<span class="sd">    None | cmd(&quot;ls -la&quot;)</span>
+<span class="sd">    # return list of files that ends with &quot;ipynb&quot;</span>
+<span class="sd">    None | cmd(&quot;ls -la&quot;) | cmd(&#39;grep ipynb$&#39;)</span>
+
+<span class="sd">It might be tiresome to pipe in :data:`None` all the time. So, you can use &quot;&gt;&quot;</span>
+<span class="sd">operator to yield values right away::</span>
+
+<span class="sd">    # prints out first 10 lines of list of files</span>
+<span class="sd">    cmd(&quot;ls -la&quot;) &gt; headOut()</span>
+
+<span class="sd">If you&#39;re using Jupyter notebook/lab, then if you were to display a :class:`cmd`</span>
+<span class="sd">object, it will print out the outputs. So, a single command ``cmd(&quot;mkdir&quot;)``</span>
+<span class="sd">displayed at the end of a cell is enough to trigger creating the directory.</span>
+
+<span class="sd">Reminder that &quot;&gt;&quot; operator in here sort of has a different meaning to that of</span>
+<span class="sd">:class:`~k1lib.cli.init.BaseCli`. So you kinda have to becareful about this::</span>
+
+<span class="sd">    # returns a serial cli, cmd not executed</span>
+<span class="sd">    cmd(&quot;ls -la&quot;) | deref()</span>
+<span class="sd">    # executes cmd with no input stream and pipes output to deref</span>
+<span class="sd">    cmd(&quot;ls -la&quot;) &gt; deref()</span>
+<span class="sd">    # returns a serial cli</span>
+<span class="sd">    cmd(&quot;ls -la&quot;) &gt; grep(&quot;txt&quot;) &gt; headOut()</span>
+<span class="sd">    # executes pipeline</span>
+<span class="sd">    cmd(&quot;ls -la&quot;) &gt; grep(&quot;txt&quot;) | headOut()</span>
+
+<span class="sd">General advice is, right ater a :class:`cmd`, use &quot;&gt;&quot;, and use &quot;|&quot; everywhere else.</span>
+
+<span class="sd">Let&#39;s see a few more exotic examples. File ``a.sh``:</span>
+
+<span class="sd">.. code-block:: bash</span>
+
+<span class="sd">    #!/bin/bash</span>
+
+<span class="sd">    echo 1; sleep 0.5</span>
+<span class="sd">    echo This message goes to stderr &gt;&amp;2</span>
+<span class="sd">    echo 2; sleep 0.5</span>
+<span class="sd">    echo $(&lt;/dev/stdin)</span>
+<span class="sd">    sleep 0.5; echo 3</span>
+
+<span class="sd">Examples::</span>
+
+<span class="sd">    # returns [b&#39;1\\n&#39;, b&#39;2\\n&#39;, b&#39;45\\n&#39;, b&#39;3\\n&#39;] and prints out the error message</span>
+<span class="sd">    &quot;45&quot; | cmd(&quot;./a.sh&quot;, text=False) | deref()</span>
+<span class="sd">    # returns [b&#39;This message goes to stderr\\n&#39;]</span>
+<span class="sd">    &quot;45&quot; | cmd(&quot;./a.sh&quot;, mode=2, text=False) | deref()</span>
+<span class="sd">    # returns [[b&#39;1\\n&#39;, b&#39;2\\n&#39;, b&#39;45\\n&#39;, b&#39;3\\n&#39;], [b&#39;This message goes to stderr\\n&#39;]]</span>
+<span class="sd">    &quot;45&quot; | cmd(&quot;./a.sh&quot;, mode=0, text=False) | deref()</span>
+
+<span class="sd">Performance-wise, stdout and stderr will yield values right away as soon</span>
+<span class="sd">as the process outputs it, so you get real time feedback. However, this will</span>
+<span class="sd">convert the entire input into a :class:`bytes` object, and not feed it bit by</span>
+<span class="sd">bit lazily, so if you have a humongous input, it might slow you down a little.</span>
+
+<span class="sd">Also, because stdout and stderr yield values right away, it means that if you</span>
+<span class="sd">want the operation to be blocking until finished, you have to consume the output::</span>
+
+<span class="sd">    None | cmd(&quot;mkdir abc&quot;)</span>
+<span class="sd">    # might fail, because this might get executed before the previous line</span>
+<span class="sd">    None | cmd(&quot;echo a&gt;abc/rg.txt&quot;)</span>
+<span class="sd">    </span>
+<span class="sd">    None | cmd(&quot;mkdir abc&quot;) | ignore()</span>
+<span class="sd">    # will succeed, because this will be guaranteed to execute after the previous line</span>
+<span class="sd">    None | cmd(&quot;echo a&gt;abc/rg.txt&quot;)</span>
+
+<span class="sd">Settings:</span>
+<span class="sd">- cli.quiet: if True, won&#39;t display errors in mode 1</span>
+
+<span class="sd">:param mode: if 0, returns ``(stdout, stderr)``. If 1, returns ``stdout`` and prints</span>
+<span class="sd">    ``stderr`` if there are any errors. If 2, returns ``stderr``</span>
+<span class="sd">:param text: whether to decode the outputs into :class:`str` or return raw :class:`bytes`</span>
+<span class="sd">:param block: whether to wait for the task to finish before returning to Python or not&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">();</span> <span class="bp">self</span><span class="o">.</span><span class="n">cmd</span> <span class="o">=</span> <span class="n">cmd</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="n">mode</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">block</span> <span class="o">=</span> <span class="n">block</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">ro</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">RunOnce</span><span class="p">()</span></div>
+    <span class="k">def</span> <span class="nf">_typehint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ignored</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">tIter</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">text</span> <span class="k">else</span> <span class="n">tIter</span><span class="p">(</span><span class="nb">bytes</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="k">return</span> <span class="n">tCollection</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">t</span>
+<div class="viewcode-block" id="cmd.__ror__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.inp.cmd.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">:</span><span class="n">Union</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">Any</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">]]:</span>
+        <span class="sd">&quot;&quot;&quot;Pipes in lines of input, or if there&#39;s nothing to</span>
+<span class="sd">pass, then pass None&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">ro</span><span class="o">.</span><span class="n">done</span><span class="p">():</span> <span class="bp">self</span><span class="o">.</span><span class="n">out</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">err</span> <span class="o">=</span> <span class="n">executeCmd</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cmd</span><span class="p">,</span> <span class="n">it</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">text</span><span class="p">);</span> <span class="n">mode</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mode</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">block</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">out</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">deref</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">err</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">err</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">deref</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">out</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">err</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">mode</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span> <span class="n">printStderr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">err</span><span class="p">))</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">out</span>
+        <span class="k">elif</span> <span class="n">mode</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">err</span></div>
+    <span class="k">def</span> <span class="fm">__gt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">):</span> <span class="k">return</span> <span class="kc">None</span> <span class="o">|</span> <span class="bp">self</span> <span class="o">|</span> <span class="n">it</span>
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span><span class="kc">None</span> <span class="o">|</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__repr__</span><span class="p">()</span></div>
+<div class="viewcode-block" id="walk"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.inp.walk">[docs]</a><span class="k">class</span> <span class="nc">walk</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
+<div class="viewcode-block" id="walk.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.inp.walk.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Recursively get all files inside a dictionary.</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    # prints out first 10 files</span>
+<span class="sd">    &quot;.&quot; | walk() | headOut()&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span> <span class="o">=</span> <span class="n">kwargs</span></div>
+<div class="viewcode-block" id="walk.__ror__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.inp.walk.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">|</span> <span class="o">~</span><span class="n">cli</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">:</span> <span class="n">z</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span> <span class="o">+</span> <span class="n">e</span><span class="p">))</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">joinStreams</span><span class="p">()</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Quang Ho.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
