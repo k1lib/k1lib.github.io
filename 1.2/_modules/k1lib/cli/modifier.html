@@ -152,7 +152,7 @@
 <span class="n">aS</span> <span class="o">=</span> <span class="n">applyS</span>
 <div class="viewcode-block" id="apply"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.modifier.apply">[docs]</a><span class="k">class</span> <span class="nc">apply</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
 <div class="viewcode-block" id="apply.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.modifier.apply.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">:</span><span class="n">Callable</span><span class="p">[[</span><span class="n">T</span><span class="p">],</span> <span class="n">T</span><span class="p">],</span> <span class="n">column</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cache</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Applies a function f to every line.</span>
+        <span class="sd">&quot;&quot;&quot;Applies a function f to every element in the incoming list/iterator.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">    # returns [0, 1, 4, 9, 16]</span>
@@ -439,8 +439,7 @@
 <span class="sd">    # returns [0]</span>
 <span class="sd">    rs | item() # or `next(rs)`</span>
 
-<span class="sd">:param f: function to apply repeatedly</span>
-<span class="sd">:param includeFirst: whether to include the raw input value or not&quot;&quot;&quot;</span>
+<span class="sd">:param f: function to apply repeatedly&quot;&quot;&quot;</span>
         <span class="n">fs</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span><span class="p">];</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">fs</span><span class="o">=</span><span class="n">fs</span><span class="p">);</span> <span class="bp">self</span><span class="o">.</span><span class="n">f</span> <span class="o">=</span> <span class="n">fs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">unpack</span> <span class="o">=</span> <span class="kc">False</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">args</span> <span class="o">=</span> <span class="n">args</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span> <span class="o">=</span> <span class="n">kwargs</span></div>
 <div class="viewcode-block" id="applySerial.__ror__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.modifier.applySerial.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">):</span>
@@ -627,6 +626,19 @@
         <span class="sd">&quot;&quot;&quot;Absorbs operations done on it and applies it on the stream. Based</span>
 <span class="sd">on :class:`~k1lib.Absorber`. Example::</span>
 
+<span class="sd">    # returns 16</span>
+<span class="sd">    4 | op()**2</span>
+<span class="sd">    # returns 16, equivalent to the above</span>
+<span class="sd">    4 | aS(lambda x: x**2)</span>
+<span class="sd">    # returns [0, 1, 4, 9, 16]</span>
+<span class="sd">    range(5) | apply(op()**2) | deref()</span>
+<span class="sd">    # returns [0, 1, 4, 9, 16], equivalent to the above</span>
+<span class="sd">    range(5) | apply(lambda x: x**2) | deref()</span>
+
+<span class="sd">Main advantage is that you don&#39;t have to waste keystrokes when you just want</span>
+<span class="sd">to do a simple operation. How it works underneath is a little magical, so just</span>
+<span class="sd">treat it as a blackbox. A more complex example::</span>
+
 <span class="sd">    t = torch.tensor([[1, 2, 3], [4, 5, 6.0]])</span>
 <span class="sd">    # returns [torch.tensor([[4., 5., 6., 7., 8., 9.]])]</span>
 <span class="sd">    [t] | (op() + 3).view(1, -1).all() | deref()</span>
@@ -656,11 +668,11 @@
 <span class="sd">    range(100) | filt(3 &lt;= op() &lt; 10) | deref()</span>
 
 <span class="sd">This can only deal with simple operations only. For complex operations, resort</span>
-<span class="sd">to the longer version ``applyS(lambda x: ...)`` instead!</span>
+<span class="sd">to the longer version ``aS(lambda x: ...)`` instead!</span>
 
 <span class="sd">There are also operations that are difficult to achieve, like</span>
 <span class="sd">``len(op())``, as Python is expecting an integer output, so</span>
-<span class="sd">``op()`` can&#39;t exactly take over. Instead, you have to use ``applyS``,</span>
+<span class="sd">``op()`` can&#39;t exactly take over. Instead, you have to use :class:`aS`,</span>
 <span class="sd">or do ``op().ab_len()``. Get a list of all of these special operations</span>
 <span class="sd">in the source of :class:`~k1lib.Absorber`.</span>
 

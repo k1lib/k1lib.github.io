@@ -297,12 +297,22 @@
 
 <span class="sd">    # returns [[0, 1], [2, 3, 4], [5, 6, 7, 8, 9]]</span>
 <span class="sd">    range(10) | splitC(2, 5) | deref()</span>
-<span class="sd">    # returns [[0, 1], [2, 3, 4, 5], [6, 7, 8, 9]]</span>
-<span class="sd">    range(10) | splitC(0.2, 0.6) | deref()</span>
 <span class="sd">    # returns [&#39;01&#39;, &#39;234&#39;, &#39;56789&#39;]</span>
 <span class="sd">    &quot;0123456789&quot; | splitC(2, 5) | deref()</span>
 
-<span class="sd">See also: :class:`splitC`&quot;&quot;&quot;</span>
+<span class="sd">Here, you&#39;re specifying 2 checkpoints, 2 and 5, so it will split</span>
+<span class="sd">the list up into 3 sections. First section is 0-2, second section</span>
+<span class="sd">is 2-5, third section is 5-end. You can pass in fractional</span>
+<span class="sd">checkpoints too::</span>
+
+<span class="sd">    # returns [[0, 1], [2, 3, 4, 5], [6, 7, 8, 9]]</span>
+<span class="sd">    range(10) | splitC(0.2, 0.6) | deref()</span>
+
+<span class="sd">This cli might be unintuitive to remember, so if you want to just</span>
+<span class="sd">split it up into 2 parts, check out :meth:`~k1lib.cli.filt.head.split`.</span>
+
+<span class="sd">If you want to split things up by weighted length, check</span>
+<span class="sd">out :class:`splitW`&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">checkpoints</span> <span class="o">=</span> <span class="n">checkpoints</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">aS</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">intMode</span> <span class="o">=</span> <span class="n">checkpoints</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">==</span> <span class="n">x</span><span class="p">)</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">aS</span><span class="p">(</span><span class="nb">all</span><span class="p">)</span></div>
 <div class="viewcode-block" id="splitC.__ror__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.structural.splitC.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">):</span>

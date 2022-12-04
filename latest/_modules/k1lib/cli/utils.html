@@ -124,34 +124,33 @@
 <span class="sd">Example::</span>
 
 <span class="sd">    # returns (3, 2)</span>
-<span class="sd">    [[2, 3], [4, 5, 6], [3]] | size()</span>
+<span class="sd">    [[2, 3], [4, 5, 6], [3]] | shape()</span>
 <span class="sd">    # returns 3</span>
-<span class="sd">    [[2, 3], [4, 5, 6], [3]] | size(0)</span>
+<span class="sd">    [[2, 3], [4, 5, 6], [3]] | shape(0)</span>
 <span class="sd">    # returns 2</span>
-<span class="sd">    [[2, 3], [4, 5, 6], [3]] | size(1)</span>
+<span class="sd">    [[2, 3], [4, 5, 6], [3]] | shape(1)</span>
 <span class="sd">    # returns (2, 0)</span>
-<span class="sd">    [[], [2, 3]] | size()</span>
+<span class="sd">    [[], [2, 3]] | shape()</span>
 <span class="sd">    # returns (3,)</span>
-<span class="sd">    [2, 3, 5] | size()</span>
+<span class="sd">    [2, 3, 5] | shape()</span>
 <span class="sd">    # returns 3</span>
-<span class="sd">    [2, 3, 5] | size(0)</span>
+<span class="sd">    [2, 3, 5] | shape(0)</span>
 <span class="sd">    # returns (3, 2, 2)</span>
-<span class="sd">    [[[2, 1], [0, 6, 7]], 3, 5] | size()</span>
+<span class="sd">    [[[2, 1], [0, 6, 7]], 3, 5] | shape()</span>
 <span class="sd">    # returns (1, 3)</span>
-<span class="sd">    [&quot;abc&quot;] | size()</span>
+<span class="sd">    [&quot;abc&quot;] | shape()</span>
 <span class="sd">    # returns (1, 2, 3)</span>
-<span class="sd">    [torch.randn(2, 3)] | size()</span>
+<span class="sd">    [torch.randn(2, 3)] | shape()</span>
 <span class="sd">    # returns (2, 3, 5)</span>
-<span class="sd">    size()(np.random.randn(2, 3, 5))</span>
+<span class="sd">    shape()(np.random.randn(2, 3, 5))</span>
+
+<span class="sd">:class:`shape` is an alias of this cli. Use whichever is more intuitive for you.</span>
 
 <span class="sd">There&#39;s also :class:`lengths`, which is sort of a simplified/faster version of</span>
 <span class="sd">this, but only use it if you are sure that ``len(it)`` can be called.</span>
 
-<span class="sd">If encounter PyTorch tensors or Numpy arrays, then this will just get the shape</span>
-<span class="sd">instead of actually looping over them.</span>
-
-<span class="sd">:param idx: if idx is None return (rows, columns). If 0 or 1, then rows or</span>
-<span class="sd">    columns&quot;&quot;&quot;</span>
+<span class="sd">:param idx: if not specified, returns a tuple of ints. If specified,</span>
+<span class="sd">    then returns the specific index of the tuple&quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">();</span> <span class="bp">self</span><span class="o">.</span><span class="n">idx</span> <span class="o">=</span> <span class="n">idx</span><span class="p">;</span>
         <span class="k">if</span> <span class="n">idx</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_f</span> <span class="o">=</span> <span class="n">cli</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span></div>
     <span class="k">def</span> <span class="nf">_typehint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inp</span><span class="p">):</span>
@@ -178,7 +177,7 @@
 <span class="n">noFill</span> <span class="o">=</span> <span class="nb">object</span><span class="p">()</span>
 <div class="viewcode-block" id="item"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.utils.item">[docs]</a><span class="k">class</span> <span class="nc">item</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
 <div class="viewcode-block" id="item.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.utils.item.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amt</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="n">noFill</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Returns the first row.</span>
+        <span class="sd">&quot;&quot;&quot;Returns the first element of the input iterator.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">    # returns 0</span>
@@ -228,7 +227,10 @@
 <div class="viewcode-block" id="wrapList"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.utils.wrapList">[docs]</a><span class="k">class</span> <span class="nc">wrapList</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
 <div class="viewcode-block" id="wrapList.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.utils.wrapList.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Wraps inputs inside a list. There&#39;s a more advanced cli tool</span>
-<span class="sd">built from this, which is :meth:`~k1lib.cli.structural.unsqueeze`.&quot;&quot;&quot;</span>
+<span class="sd">built from this, which is :meth:`~k1lib.cli.structural.unsqueeze`. Example::</span>
+
+<span class="sd">    # returns [5]</span>
+<span class="sd">    5 | wrapList()&quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span></div>
     <span class="k">def</span> <span class="nf">_typehint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inp</span><span class="p">):</span> <span class="k">return</span> <span class="n">tList</span><span class="p">(</span><span class="n">inp</span><span class="p">)</span>
 <div class="viewcode-block" id="wrapList.__ror__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.utils.wrapList.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">:</span><span class="n">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">T</span><span class="p">]:</span> <span class="k">return</span> <span class="p">[</span><span class="n">it</span><span class="p">]</span></div></div>

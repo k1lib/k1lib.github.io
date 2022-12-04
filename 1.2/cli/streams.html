@@ -44,16 +44,20 @@
 </ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">k1lib.cli module</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Streams tutorial</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#symmetric">Symmetric</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#asymmetric">Asymmetric</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#more-procedural">More procedural?</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#vanilla-alternatives">Vanilla alternatives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#setup">Setup</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#intro">Intro</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Streams tutorial</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#symmetric">Symmetric</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#asymmetric">Asymmetric</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#more-procedural">More procedural?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#vanilla-alternatives">Vanilla alternatives</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="llvm.html">LLVM optimizer tutorial</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#where-to-start">Where to start?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#summary">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#under-the-hood">Under the hood</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.cli.bio">bio module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.cli.cif">cif module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.cli.conv">conv module</a></li>
@@ -193,8 +197,8 @@ things. If there is an operation that blows through the entire iterator before
 others use any elements, then that would slow things down.</p>
 <p>Also, there’s another way to join cli operators together. Let’s check over an
 example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">even</span> <span class="o">=</span> <span class="n">filt</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-<span class="n">odd</span> <span class="o">=</span> <span class="n">filt</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">even</span> <span class="o">=</span> <span class="n">filt</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">odd</span> <span class="o">=</span> <span class="n">filt</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
 <span class="c1"># returns [[10, 12, 14, 16, 18], [31, 33, 35, 37, 39]]</span>
 <span class="p">[</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="nb">range</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">)]</span> <span class="o">|</span> <span class="p">(</span><span class="n">even</span> <span class="o">+</span> <span class="n">odd</span><span class="p">)</span> <span class="o">|</span> <span class="n">deref</span><span class="p">()</span>
 <span class="c1"># pretty much identical to:</span>

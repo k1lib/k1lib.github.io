@@ -95,18 +95,16 @@
 it lacks is surrounding infrastructure to make general debugging and discovery process
 better. Other more official wrapper frameworks sort of don’t make sense to me, so this
 is an attempt at recreating a robust suite of tools that makes sense.</p>
-<p>Also, there’s the package <a class="reference internal" href="cli/index.html#module-k1lib.cli" title="k1lib.cli"><code class="xref py py-mod docutils literal notranslate"><span class="pre">k1lib.cli</span></code></a> which contains nice cli tools originally intended
-to replace the bash/awk/perl bioinformatics workflow. What does this have to do with
-PyTorch and DL? Originally nothing, but over time stuff like <cite>batched</cite> and <cite>stagger</cite>
-appeared which has largely replaced PyTorch data loaders.</p>
-<p>This cli stuff is quite insane man. You can literally perform extremely complex
-operations in 2-3 lines of code that would normally take &gt;100 lines. It’s also super
+<p>This is more than just an ML library though. A prominent feature is the set of “cli tools”
+originally intended to replace the bash/awk/perl bioinformatics workflow. It essentially
+allows you to pipe inputs into functions, which returns an output which can be piped into
+other functions. Using these tools, you can literally perform complex operations in multiple
+dimensions in 2-3 lines of code that would normally take &gt;100 lines. It’s also super
 flexible, operates on multiple dimensions and not locked in, as you can change the
-dataflow in quite a fundamental level in ~5 minutes. It’s like alchemy. Although I
-created it, I’m continously surprised at what it can do. Check
-<a class="reference external" href="https://mlexps.com/mo/3-cif-visualize/">this post</a> where cli is used to load,
-transform, analyze and visualize protein structural data.</p>
-<p>Check out the tutorials to get a feel of what the library can do.</p>
+dataflow in quite a fundamental level in ~5 minutes. Check over the basics of it
+here: <a class="reference internal" href="cli/index.html#module-k1lib.cli" title="k1lib.cli"><code class="xref py py-mod docutils literal notranslate"><span class="pre">k1lib.cli</span></code></a>.</p>
+<p>After doing that, you can check out the tutorials to get a large overview of how everything
+integrates together nicely.</p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="base.html">Base module</a></li>
@@ -163,8 +161,8 @@ The library has a soft dependency on PyTorch. It will run fine without PyTorch, 
 a lot of functionalities related to deep learning will not work. While tests are
 rigorously run in an environment where PyTorch is installed, they’re not run for
 environments that don’t, so strange bugs may appear.</p>
-<p>Repo is at <a class="reference external" href="https://github.com/157239n/k1lib/">https://github.com/157239n/k1lib/</a> btw. Also, the search bar is your
-friend, as there’re lots of stuff here.</p>
+<p>Repo is at <a class="reference external" href="https://github.com/157239n/k1lib/">https://github.com/157239n/k1lib/</a> btw. Also, if you have anything that
+looks strange, use the search bar on the top left to quickly lookup stuff.</p>
 <div class="toctree-wrapper compound">
 </div>
 </section>
