@@ -217,11 +217,11 @@
     <span class="n">_pools</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
     <span class="n">_torchNumThreads</span> <span class="o">=</span> <span class="kc">None</span>
 <div class="viewcode-block" id="applyMp.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.modifier.applyMp.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">:</span><span class="n">Callable</span><span class="p">[[</span><span class="n">T</span><span class="p">],</span> <span class="n">T</span><span class="p">],</span> <span class="n">prefetch</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">timeout</span><span class="p">:</span><span class="nb">float</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">utilization</span><span class="p">:</span><span class="nb">float</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">bs</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">newPoolEvery</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Like :class:`apply`, but execute ``f(row)`` of each row in</span>
-<span class="sd">multiple processes. Example::</span>
+        <span class="sd">&quot;&quot;&quot;Like :class:`apply`, but execute a function over the input iterator</span>
+<span class="sd">in multiple processes. Example::</span>
 
 <span class="sd">    # returns [3, 2]</span>
-<span class="sd">    [&quot;abc&quot;, &quot;de&quot;] | applyMp(lambda s: len(s)) | deref()</span>
+<span class="sd">    [&quot;abc&quot;, &quot;de&quot;] | applyMp(len) | deref()</span>
 <span class="sd">    # returns [5, 6, 9]</span>
 <span class="sd">    range(3) | applyMp(lambda x, bias: x**2+bias, bias=5) | deref()</span>
 <span class="sd">    </span>
@@ -232,11 +232,9 @@
 <span class="sd">Internally, this will continuously spawn new jobs up until 80% of all CPU</span>
 <span class="sd">cores are utilized. On posix systems, the default multiprocessing start method is</span>
 <span class="sd">``fork()``. This sort of means that all the variables in memory will be copied</span>
-<span class="sd">over. This might be expensive (might also not, with copy-on-write), so you might</span>
-<span class="sd">have to think about that. On windows and macos, the default start method is</span>
-<span class="sd">``spawn``, meaning each child process is a completely new interpreter, so you have</span>
-<span class="sd">to pass in all required variables and reimport every dependencies. Read more at</span>
-<span class="sd">https://docs.python.org/3/library/multiprocessing.html#contexts-and-start-methods</span>
+<span class="sd">over. On windows and macos, the default start method is ``spawn``, meaning each</span>
+<span class="sd">child process is a completely new interpreter, so you have to pass in all required</span>
+<span class="sd">variables and reimport every dependencies. Read more at https://docs.python.org/3/library/multiprocessing.html#contexts-and-start-methods</span>
 
 <span class="sd">If you don&#39;t wish to schedule all jobs at once, you can specify a ``prefetch``</span>
 <span class="sd">amount, and it will only schedule that much jobs ahead of time. Example::</span>
@@ -347,6 +345,14 @@
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">ps</span><span class="p">:</span> <span class="n">p</span><span class="o">.</span><span class="n">terminate</span><span class="p">();</span>
         <span class="k">return</span> <span class="n">gen</span><span class="p">(</span><span class="n">it</span><span class="p">)</span></div>
+    <span class="k">def</span> <span class="nf">_copy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="n">applyMp</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">prefetch</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">utilization</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">bs</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">newPoolEvery</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span><span class="p">)</span>
+<div class="viewcode-block" id="applyMp.__invert__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.modifier.applyMp.__invert__">[docs]</a>    <span class="k">def</span> <span class="fm">__invert__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Expands the arguments out, just like :class:`apply`.</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    # returns [20, 20, 18, 14, 8, 0, -10, -22, -36, -52]</span>
+<span class="sd">    [range(10), range(20, 30)] | transpose() | ~applyMp(lambda x, y: y-x**2) | deref()&quot;&quot;&quot;</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_copy</span><span class="p">();</span> <span class="n">f</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">f</span><span class="p">;</span> <span class="n">res</span><span class="o">.</span><span class="n">f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">x</span><span class="p">);</span> <span class="k">return</span> <span class="n">res</span></div>
 <div class="viewcode-block" id="applyMp.clearPools"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.modifier.applyMp.clearPools">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">clearPools</span><span class="p">():</span>
         <span class="sd">&quot;&quot;&quot;Terminate all existing pools. Do this before restarting/quitting the</span>
