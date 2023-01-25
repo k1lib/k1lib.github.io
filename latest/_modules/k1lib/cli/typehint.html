@@ -52,6 +52,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../imports.html">k1lib.imports module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../mo.html">k1lib.mo module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../knn.html">k1lib.knn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../p5.html">k1lib.p5 module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../schedule.html">k1lib.schedule module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../selector.html">k1lib.selector module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../serve.html">k1lib.serve module</a></li>
@@ -123,14 +124,14 @@
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">child</span> <span class="o">!=</span> <span class="n">v</span><span class="o">.</span><span class="n">child</span><span class="p">:</span> <span class="k">return</span> <span class="kc">False</span>
         <span class="k">return</span> <span class="kc">True</span>
 <div class="viewcode-block" id="tBase.check"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.typehint.tBase.check">[docs]</a>    <span class="k">def</span> <span class="nf">check</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Checks whether a specific object adhears to this type hint or not.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Checks whether a specific object adhears to this type hint or not.</span>
 <span class="sd">Returns :attr:`yieldT` if object does not adhere. If it does, then return the object.</span>
 
 <span class="sd">Note that in the case that the object is actually an iterator, it will return</span>
 <span class="sd">a new iterator containing all elements from the old iterator.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">NotImplemented</span></div>
 <div class="viewcode-block" id="tBase.item"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.typehint.tBase.item">[docs]</a>    <span class="k">def</span> <span class="nf">item</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Gets the child type of this type. Basically what&#39;s the type if</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Gets the child type of this type. Basically what&#39;s the type if</span>
 <span class="sd">it were to go through :class:`~k1lib.cli.utils.item`. Example::</span>
 
 <span class="sd">    # returns tTensor(torch.float32, 2)</span>
@@ -138,7 +139,7 @@
 <span class="sd">&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">child</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">child</span> <span class="ow">is</span> <span class="ow">not</span> <span class="nb">type</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="n">tAny</span><span class="p">()</span></div>
 <div class="viewcode-block" id="tBase.expand"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.typehint.tBase.expand">[docs]</a>    <span class="k">def</span> <span class="nf">expand</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="s2">&quot;tBase&quot;</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;Expands the type to a list with ``n`` elements.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Expands the type to a list with ``n`` elements.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">    # returns [int, int, int, int]</span>
@@ -191,7 +192,7 @@
 <span class="n">tListIter</span> <span class="o">=</span> <span class="p">(</span><span class="n">tList</span><span class="p">,</span> <span class="n">tIter</span><span class="p">)</span>
 <span class="k">class</span> <span class="nc">tDict</span><span class="p">(</span><span class="n">tBase</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">keys</span><span class="p">,</span> <span class="n">values</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Dictionary type.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Dictionary type.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">    d = tDict(tIter(str), tIter(int))</span>
@@ -213,7 +214,7 @@
         <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;&lt;</span><span class="si">{</span><span class="n">klassName</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">klassRepr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">keys</span><span class="p">)</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">klassRepr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">)</span><span class="si">}</span><span class="s2">&gt;&quot;</span>
 <div class="viewcode-block" id="tNpArray"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.typehint.tNpArray">[docs]</a><span class="k">class</span> <span class="nc">tNpArray</span><span class="p">(</span><span class="n">tBase</span><span class="p">):</span>
 <div class="viewcode-block" id="tNpArray.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.typehint.tNpArray.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">child</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rank</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Numpy array type.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Numpy array type.</span>
 <span class="sd">Example::</span>
 <span class="sd">    </span>
 <span class="sd">    # returns np.array([2, 3])</span>
@@ -238,7 +239,7 @@
 <span class="k">if</span> <span class="n">hasTorch</span><span class="p">:</span>
     <span class="k">class</span> <span class="nc">tTensor</span><span class="p">(</span><span class="n">tBase</span><span class="p">):</span>
 <div class="viewcode-block" id="tTensor.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.typehint.tTensor.__init__">[docs]</a>        <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">child</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rank</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-            <span class="sd">&quot;&quot;&quot;PyTorch tensor type.</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot;PyTorch tensor type.</span>
 <span class="sd">    Example::</span>
 
 <span class="sd">        # returns torch.tensor([2.0, 3.0])</span>
@@ -266,7 +267,7 @@
     <span class="n">tArrayTypes</span> <span class="o">=</span> <span class="p">(</span><span class="n">tNpArray</span><span class="p">,)</span>
 <div class="viewcode-block" id="tCollection"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.typehint.tCollection">[docs]</a><span class="k">class</span> <span class="nc">tCollection</span><span class="p">(</span><span class="n">tBase</span><span class="p">):</span>
 <div class="viewcode-block" id="tCollection.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.typehint.tCollection.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">children</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Fixed-length collection of things. Let&#39;s say you want a tuple with</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Fixed-length collection of things. Let&#39;s say you want a tuple with</span>
 <span class="sd">5 values::</span>
 
 <span class="sd">    a = [3, [2, 3], &quot;e&quot;, 2.0, b&#39;3&#39;]</span>
@@ -318,14 +319,14 @@
                 <span class="k">if</span> <span class="n">x</span> <span class="ow">is</span> <span class="n">yieldT</span><span class="p">:</span> <span class="k">return</span> <span class="n">yieldT</span>
         <span class="k">return</span> <span class="n">t</span><span class="p">(</span><span class="n">l</span><span class="p">)</span> <span class="k">if</span> <span class="n">t</span> <span class="k">else</span> <span class="n">l</span></div>
 <div class="viewcode-block" id="tCollection.reduce"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.typehint.tCollection.reduce">[docs]</a>    <span class="k">def</span> <span class="nf">reduce</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Tries to reduce ``tCollection(int, int)`` to ``tIter(int)`` if possible&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Tries to reduce ``tCollection(int, int)`` to ``tIter(int)`` if possible&quot;&quot;&quot;</span>
         <span class="n">s</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">children</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">s</span> <span class="o">!=</span> <span class="n">e</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span>
         <span class="k">return</span> <span class="n">tIter</span><span class="p">(</span><span class="n">s</span><span class="p">)</span></div>
 <div class="viewcode-block" id="tCollection.item"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.typehint.tCollection.item">[docs]</a>    <span class="k">def</span> <span class="nf">item</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="n">tLowest</span><span class="p">(</span><span class="o">*</span><span class="p">((</span><span class="n">t</span><span class="o">.</span><span class="n">child</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">tExpand</span><span class="p">)</span> <span class="k">else</span> <span class="n">t</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">children</span><span class="p">))</span></div>
 <div class="viewcode-block" id="tCollection.expand"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.typehint.tCollection.expand">[docs]</a>    <span class="k">def</span> <span class="nf">expand</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">tBase</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;Expands out this collection so that it has a specified length&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Expands out this collection so that it has a specified length&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">expandIdx</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">ts</span> <span class="o">=</span> <span class="p">[]</span>
             <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">children</span><span class="p">:</span>
@@ -339,12 +340,12 @@
                 <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">item</span><span class="p">()]</span><span class="o">*</span><span class="n">n</span></div></div>
 <div class="viewcode-block" id="tExpand"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.typehint.tExpand">[docs]</a><span class="k">class</span> <span class="nc">tExpand</span><span class="p">(</span><span class="n">tBase</span><span class="p">):</span>
 <div class="viewcode-block" id="tExpand.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.typehint.tExpand.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">child</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Supplement to :class:`tCollection`&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Supplement to :class:`tCollection`&quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">child</span><span class="p">)</span></div>
 <div class="viewcode-block" id="tExpand.check"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.typehint.tExpand.check">[docs]</a>    <span class="k">def</span> <span class="nf">check</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span> <span class="k">return</span> <span class="n">checkF</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">child</span><span class="p">)(</span><span class="n">v</span><span class="p">)</span></div></div>
 <span class="n">settings</span><span class="o">.</span><span class="n">atomic</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;typeHint&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">numbers</span><span class="o">.</span><span class="n">Number</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">number</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">bool</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">),</span> <span class="s2">&quot;atomic types used for infering type of object for optimization passes&quot;</span><span class="p">)</span>
 <div class="viewcode-block" id="inferType"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.typehint.inferType">[docs]</a><span class="k">def</span> <span class="nf">inferType</span><span class="p">(</span><span class="n">o</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Tries to infer the type of the input.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Tries to infer the type of the input.</span>
 <span class="sd">Example::</span>
 <span class="sd">    </span>
 <span class="sd">    # returns tList(int)</span>
@@ -384,7 +385,7 @@
 <span class="n">numericTypes</span> <span class="o">=</span> <span class="p">{</span><span class="o">*</span><span class="n">intTypes</span><span class="p">,</span> <span class="o">*</span><span class="n">floatTypes</span><span class="p">,</span> <span class="nb">complex</span><span class="p">,</span> <span class="n">numbers</span><span class="o">.</span><span class="n">Number</span><span class="p">}</span>
 <span class="k">def</span> <span class="nf">allSame</span><span class="p">(</span><span class="n">l</span><span class="p">):</span> <span class="k">return</span> <span class="nb">all</span><span class="p">(</span><span class="n">t</span> <span class="o">==</span> <span class="n">l</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">l</span><span class="p">)</span>
 <div class="viewcode-block" id="tLowest"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.typehint.tLowest">[docs]</a><span class="k">def</span> <span class="nf">tLowest</span><span class="p">(</span><span class="o">*</span><span class="n">ts</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Grabs the lowest possible shared type of all the example types.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Grabs the lowest possible shared type of all the example types.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">    # returns tIter(float)</span>
@@ -419,7 +420,7 @@
     <span class="k">return</span> <span class="n">z</span>
 <div class="viewcode-block" id="tCheck"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.typehint.tCheck">[docs]</a><span class="k">class</span> <span class="nc">tCheck</span><span class="p">(</span><span class="n">cli</span><span class="o">.</span><span class="n">BaseCli</span><span class="p">):</span>
 <div class="viewcode-block" id="tCheck.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.typehint.tCheck.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Tool similar to :class:`~k1lib.cli.trace.trace` to check whether</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Tool similar to :class:`~k1lib.cli.trace.trace` to check whether</span>
 <span class="sd">all type hint outputs of all clis are good or not. Example::</span>
 
 <span class="sd">    assert range(1, 3) | tCheck() | item() | op()*2 == 2</span>
@@ -442,7 +443,7 @@
     <span class="n">_passStruct</span> <span class="o">=</span> <span class="p">{};</span> <span class="n">_serialStruct</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="n">n</span> <span class="o">=</span> <span class="mi">10</span>
 <div class="viewcode-block" id="tOpt.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.typehint.tOpt.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Optimizes clis. Let&#39;s say you have something</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Optimizes clis. Let&#39;s say you have something</span>
 <span class="sd">like this::</span>
 
 <span class="sd">    range(1000) | toList() | head() | deref()</span>
@@ -473,7 +474,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_out</span> <span class="o">=</span> <span class="n">yieldT</span></div>
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_addBasePass</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">abstractness</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Adds an optimization pass that acts upon a single cli.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Adds an optimization pass that acts upon a single cli.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">    def o1(c:BaseCli, t:tBase):</span>
@@ -492,7 +493,7 @@
         <span class="n">tOpt</span><span class="o">.</span><span class="n">_passStruct</span> <span class="o">=</span> <span class="n">passStruct</span>
 <div class="viewcode-block" id="tOpt.addPass"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.typehint.tOpt.addPass">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">addPass</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">klasses</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="n">cli</span><span class="o">.</span><span class="n">BaseCli</span><span class="p">]</span><span class="o">=</span><span class="p">[],</span> <span class="n">abstractness</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Adds an optimization pass that acts upon multiple clis in series.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Adds an optimization pass that acts upon multiple clis in series.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">    # cs: list of clis, ts: list of input type hints, 1 for each cli</span>
@@ -529,7 +530,7 @@
         <span class="n">tOpt</span><span class="o">.</span><span class="n">_serialStruct</span> <span class="o">=</span> <span class="n">serialStruct</span></div>
 <div class="viewcode-block" id="tOpt.clearPasses"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.typehint.tOpt.clearPasses">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">clearPasses</span><span class="p">():</span>
-        <span class="sd">&quot;&quot;&quot;Clears all passes&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Clears all passes&quot;&quot;&quot;</span>
         <span class="n">tOpt</span><span class="o">.</span><span class="n">_passes</span> <span class="o">=</span> <span class="p">[];</span>     <span class="n">tOpt</span><span class="o">.</span><span class="n">_serialPasses</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">tOpt</span><span class="o">.</span><span class="n">_passStruct</span> <span class="o">=</span> <span class="p">{};</span> <span class="n">tOpt</span><span class="o">.</span><span class="n">_serialStruct</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="n">addSerialOpt</span><span class="p">()</span></div>
@@ -553,7 +554,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_out</span>
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">optCli</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Grabs the optimized cli.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Grabs the optimized cli.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">    # returns optimized cli</span>
@@ -591,7 +592,7 @@
 <span class="k">def</span> <span class="nf">grabKlasses</span><span class="p">(</span><span class="n">iKlasses</span><span class="p">):</span> <span class="k">return</span> <span class="p">[</span><span class="nb">type</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">iKlasses</span><span class="p">]</span>
 <span class="n">depth</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">debug</span> <span class="o">=</span> <span class="kc">False</span>
 <span class="k">def</span> <span class="nf">serialOpt</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Optimizes ``c``, which is supposed to be a :class:`~init.serial`</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Optimizes ``c``, which is supposed to be a :class:`~init.serial`</span>
 <span class="sd">object, with the input type hint ``t``. If it can actually optimize it,</span>
 <span class="sd">then it will return a new :class:`~init.serial` object, else it returns</span>
 <span class="sd">None.&quot;&quot;&quot;</span>
@@ -603,7 +604,7 @@
         <span class="k">return</span> <span class="kc">None</span>
     <span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;route&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;serial&quot;</span><span class="p">)</span>
     <span class="n">cs</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">clis</span><span class="p">;</span> <span class="n">ts</span> <span class="o">=</span> <span class="n">grabTypes</span><span class="p">(</span><span class="n">cs</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;serialOpt: </span><span class="si">{</span><span class="p">[</span><span class="n">c</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">cs</span><span class="p">]</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">ts</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;serialOpt: </span><span class="si">{</span><span class="p">[</span><span class="n">c</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">cs</span><span class="p">]</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">ts</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">windowSize</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">cs</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">a</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">cs</span><span class="p">,</span> <span class="n">ts</span><span class="p">]</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span> <span class="o">|</span> <span class="n">window</span><span class="p">(</span><span class="n">windowSize</span><span class="p">):</span>
             <span class="n">iKlasses</span><span class="p">,</span> <span class="n">ths</span> <span class="o">=</span> <span class="n">e</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
@@ -641,7 +642,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, Quang Ho.</p>
+    <p>&#169; Copyright 2023, Quang Ho.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

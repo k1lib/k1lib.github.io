@@ -52,6 +52,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../imports.html">k1lib.imports module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../mo.html">k1lib.mo module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../knn.html">k1lib.knn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../p5.html">k1lib.p5 module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../schedule.html">k1lib.schedule module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../selector.html">k1lib.selector module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../serve.html">k1lib.serve module</a></li>
@@ -108,13 +109,13 @@
 <span class="n">k1lib</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;cli&quot;</span><span class="p">,</span> <span class="n">settings</span><span class="p">,</span> <span class="s2">&quot;from k1lib.cli module&quot;</span><span class="p">)</span>
 <span class="n">yieldT</span> <span class="o">=</span> <span class="nb">object</span><span class="p">()</span>
 <span class="k">def</span> <span class="nf">patchDefaultDelim</span><span class="p">(</span><span class="n">st</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">:param s:</span>
 <span class="sd">    - if not None, returns self</span>
 <span class="sd">    - else returns the default delimiter in :attr:`~k1lib.settings`&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">settings</span><span class="o">.</span><span class="n">defaultDelim</span> <span class="k">if</span> <span class="n">st</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">st</span>
 <span class="k">def</span> <span class="nf">patchDefaultIndent</span><span class="p">(</span><span class="n">st</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">:param s:</span>
 <span class="sd">    - if not None, returns self</span>
 <span class="sd">    - else returns the default indent character in :attr:`~k1lib.settings`&quot;&quot;&quot;</span>
@@ -133,12 +134,12 @@
                 <span class="k">except</span><span class="p">:</span> <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">o</span><span class="si">}</span><span class="s2">&quot;</span>
             <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;__args__&quot;</span><span class="p">):</span>
                 <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__args__</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
-                    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_n</span><span class="si">}</span><span class="s2">[</span><span class="si">{</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">trueName</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__args__</span><span class="p">])</span><span class="si">}</span><span class="s2">]&quot;</span>
+                    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_n</span><span class="si">}</span><span class="s2">[</span><span class="si">{</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">trueName</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">__args__</span><span class="p">])</span><span class="si">}</span><span class="s2">]&quot;</span>
                 <span class="k">else</span><span class="p">:</span> <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_n</span><span class="si">}</span><span class="s2">[</span><span class="si">{</span><span class="n">trueName</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__args__</span><span class="p">)</span><span class="si">}</span><span class="s2">]&quot;</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_n</span>
         <span class="k">return</span> <span class="n">main</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">newTypeHint</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">docs</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Creates a new type hint that can be sliced and yet still looks fine</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Creates a new type hint that can be sliced and yet still looks fine</span>
 <span class="sd">in sphinx. Crudely written by my poorly understood idea of Python&#39;s</span>
 <span class="sd">metaclasses. Seriously, this shit is bonkers, read over it https://stackoverflow.com/questions/100003/what-are-metaclasses-in-python</span>
 
@@ -152,15 +153,15 @@
 <span class="c1">#Table = newTypeHint(&quot;Table&quot;, &quot;&quot;&quot;Essentially just Iterator[List[T]]. This class is just here so that I can generate the docs with nicely formatted types like &quot;Table[str]&quot;.&quot;&quot;&quot;)</span>
 <span class="c1">#Table = NewType(&quot;Table&quot;, List)</span>
 <span class="k">class</span> <span class="nc">Table</span><span class="p">(</span><span class="n">Generic</span><span class="p">[</span><span class="n">T</span><span class="p">]):</span>
-    <span class="sd">&quot;&quot;&quot;Essentially just Iterator[List[T]]. This class is just here so that I can generate the docs with nicely formatted types like &quot;Table[str]&quot;.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Essentially just Iterator[List[T]]. This class is just here so that I can generate the docs with nicely formatted types like &quot;Table[str]&quot;.&quot;&quot;&quot;</span>
     <span class="k">pass</span>
 <span class="n">Table</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="s2">&quot;Table&quot;</span>
 <span class="c1">#Table.__module__ = &quot;cli&quot;</span>
 <span class="k">class</span> <span class="nc">Row</span><span class="p">(</span><span class="nb">list</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Not really used currently. Just here for potential future feature&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Not really used currently. Just here for potential future feature&quot;&quot;&quot;</span>
     <span class="k">pass</span>
 <div class="viewcode-block" id="BaseCli"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.init.BaseCli">[docs]</a><span class="k">class</span> <span class="nc">BaseCli</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;A base class for all the cli stuff. You can definitely create new cli tools that</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A base class for all the cli stuff. You can definitely create new cli tools that</span>
 <span class="sd">have the same feel without extending from this class, but advanced stream operations</span>
 <span class="sd">(like ``+``, ``&amp;``, ``.all()``, ``|``) won&#39;t work.</span>
 
@@ -168,7 +169,7 @@
 <span class="sd">as __init__&#39;s only job right now is to solidify any :class:`~k1lib.cli.modifier.op`</span>
 <span class="sd">passed to it, and __ror__ does nothing.&quot;&quot;&quot;</span>
 <div class="viewcode-block" id="BaseCli.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.init.BaseCli.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fs</span><span class="p">:</span><span class="nb">list</span><span class="o">=</span><span class="p">[]):</span>
-        <span class="sd">&quot;&quot;&quot;Not expected to be instantiated by the end user.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Not expected to be instantiated by the end user.</span>
 
 <span class="sd">**fs param**</span>
 
@@ -190,13 +191,13 @@
         <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">fs</span><span class="p">:</span> <span class="n">cli</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">solidify</span><span class="p">(</span><span class="n">f</span><span class="p">);</span> <span class="n">l</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
         <span class="n">fs</span><span class="o">.</span><span class="n">clear</span><span class="p">();</span> <span class="n">fs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">l</span><span class="p">);</span></div>
 <div class="viewcode-block" id="BaseCli.hint"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.init.BaseCli.hint">[docs]</a>    <span class="k">def</span> <span class="nf">hint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_hint</span><span class="p">:</span><span class="s2">&quot;cli.typehint.tBase&quot;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Specifies output type hint.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Specifies output type hint.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_hint</span> <span class="o">=</span> <span class="n">_hint</span><span class="p">;</span> <span class="k">return</span> <span class="bp">self</span></div>
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">hasHint</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="s2">&quot;_hint&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hint</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
     <span class="k">def</span> <span class="nf">_typehint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inp</span><span class="p">:</span><span class="s2">&quot;cli.typehint.tBase&quot;</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;cli.typehint.tBase&quot;</span><span class="p">:</span> <span class="k">return</span> <span class="n">cli</span><span class="o">.</span><span class="n">typehint</span><span class="o">.</span><span class="n">tAny</span><span class="p">()</span> <span class="k">if</span> <span class="s2">&quot;_hint&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hint</span>
 <div class="viewcode-block" id="BaseCli.__and__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.init.BaseCli.__and__">[docs]</a>    <span class="k">def</span> <span class="fm">__and__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cli</span><span class="p">:</span><span class="s2">&quot;BaseCli&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;oneToMany&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Duplicates input stream to multiple joined clis.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Duplicates input stream to multiple joined clis.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">    # returns [[5], [0, 1, 2, 3, 4]]</span>
@@ -209,7 +210,7 @@
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">cli</span><span class="p">,</span> <span class="n">oneToMany</span><span class="p">):</span> <span class="k">return</span> <span class="n">cli</span><span class="o">.</span><span class="n">_copy</span><span class="p">()</span><span class="o">.</span><span class="n">_before</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">oneToMany</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cli</span><span class="p">)</span></div>
 <div class="viewcode-block" id="BaseCli.__add__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.init.BaseCli.__add__">[docs]</a>    <span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cli</span><span class="p">:</span><span class="s2">&quot;BaseCli&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;mtmS&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Parallel pass multiple streams to multiple clis.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Parallel pass multiple streams to multiple clis.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">    # returns [8, 15]</span>
@@ -218,7 +219,7 @@
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">cli</span><span class="p">,</span> <span class="n">mtmS</span><span class="p">):</span> <span class="k">return</span> <span class="n">cli</span><span class="o">.</span><span class="n">_copy</span><span class="p">()</span><span class="o">.</span><span class="n">_before</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">mtmS</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cli</span><span class="p">)</span></div>
 <div class="viewcode-block" id="BaseCli.all"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.init.BaseCli.all">[docs]</a>    <span class="k">def</span> <span class="nf">all</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;BaseCli&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Applies this cli to all incoming streams.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Applies this cli to all incoming streams.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">    # returns (3,)</span>
@@ -232,7 +233,7 @@
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span> <span class="n">s</span> <span class="o">=</span> <span class="n">cli</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">s</span></div>
 <div class="viewcode-block" id="BaseCli.__or__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.init.BaseCli.__or__">[docs]</a>    <span class="k">def</span> <span class="fm">__or__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cli</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;serial&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Joins clis end-to-end.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Joins clis end-to-end.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">    c = apply(op() ** 2) | deref()</span>
@@ -243,17 +244,17 @@
         <span class="k">return</span> <span class="n">serial</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cli</span><span class="p">)</span></div>
 <div class="viewcode-block" id="BaseCli.__ror__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.init.BaseCli.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">):</span> <span class="k">return</span> <span class="bp">NotImplemented</span></div>
 <div class="viewcode-block" id="BaseCli.f"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.init.BaseCli.f">[docs]</a>    <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Table</span><span class="p">[</span><span class="n">Table</span><span class="p">[</span><span class="nb">int</span><span class="p">]]:</span>
-        <span class="sd">&quot;&quot;&quot;Creates a normal function :math:`f(x)` which is equivalent to</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Creates a normal function :math:`f(x)` which is equivalent to</span>
 <span class="sd">``x | self``.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="k">lambda</span> <span class="n">it</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__ror__</span><span class="p">(</span><span class="n">it</span><span class="p">)</span></div>
 <div class="viewcode-block" id="BaseCli.__lt__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.init.BaseCli.__lt__">[docs]</a>    <span class="k">def</span> <span class="fm">__lt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Backup pipe symbol `&gt;`, purely for style, so that you can do something like</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Backup pipe symbol `&gt;`, purely for style, so that you can do something like</span>
 <span class="sd">this::</span>
 
 <span class="sd">    range(4) &gt; file(&quot;a.txt&quot;)&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__ror__</span><span class="p">(</span><span class="n">it</span><span class="p">)</span></div>
 <div class="viewcode-block" id="BaseCli.__call__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.init.BaseCli.__call__">[docs]</a>    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Another way to do ``it | cli``. If multiple arguments are fed, then the</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Another way to do ``it | cli``. If multiple arguments are fed, then the</span>
 <span class="sd">argument list is passed to cli instead of just the first element. Example::</span>
 
 <span class="sd">    @applyS</span>
@@ -264,10 +265,10 @@
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__ror__</span><span class="p">(</span><span class="n">it</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__ror__</span><span class="p">([</span><span class="n">it</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">])</span></div>
     <span class="k">def</span> <span class="fm">__neg__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Alias for __invert__, for clis that support inverting stuff.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Alias for __invert__, for clis that support inverting stuff.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="o">~</span><span class="bp">self</span></div>
 <div class="viewcode-block" id="fastF"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.init.fastF">[docs]</a><span class="k">def</span> <span class="nf">fastF</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Tries to figure out what&#39;s going on, is it a normal function, or an applyS,</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Tries to figure out what&#39;s going on, is it a normal function, or an applyS,</span>
 <span class="sd">or a BaseCli, etc., and return a really fast function for execution. Example::</span>
 
 <span class="sd">    # both returns 16, fastF returns &quot;lambda x: x**2&quot;, so it&#39;s really fast</span>
@@ -288,7 +289,7 @@
     <span class="k">return</span> <span class="n">c</span></div>
 <div class="viewcode-block" id="serial"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.init.serial">[docs]</a><span class="k">class</span> <span class="nc">serial</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
 <div class="viewcode-block" id="serial.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.init.serial.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">clis</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="n">BaseCli</span><span class="p">]):</span>
-        <span class="sd">&quot;&quot;&quot;Merges clis into 1, feeding end to end. Used in chaining clis</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Merges clis into 1, feeding end to end. Used in chaining clis</span>
 <span class="sd">together without a prime iterator. Meaning, without this, stuff like this</span>
 <span class="sd">fails to run::</span>
 
@@ -316,7 +317,7 @@
     <span class="k">except</span><span class="p">:</span> <span class="k">return</span> <span class="kc">False</span>
 <div class="viewcode-block" id="oneToMany"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.init.oneToMany">[docs]</a><span class="k">class</span> <span class="nc">oneToMany</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
 <div class="viewcode-block" id="oneToMany.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.init.oneToMany.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">clis</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="n">BaseCli</span><span class="p">]):</span>
-        <span class="sd">&quot;&quot;&quot;Duplicates 1 stream into multiple streams, each for a cli in the</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Duplicates 1 stream into multiple streams, each for a cli in the</span>
 <span class="sd">list. Used in the &quot;a &amp; b&quot; joining operator. See also: :meth:`BaseCli.__and__`&quot;&quot;&quot;</span>
         <span class="n">fs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">clis</span><span class="p">);</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">fs</span><span class="p">);</span> <span class="bp">self</span><span class="o">.</span><span class="n">clis</span> <span class="o">=</span> <span class="n">fs</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span><span class="p">()</span></div>
     <span class="k">def</span> <span class="nf">_typehint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inp</span><span class="p">):</span>
@@ -337,7 +338,7 @@
     <span class="k">def</span> <span class="nf">_copy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="n">oneToMany</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">clis</span><span class="p">)</span></div>
 <div class="viewcode-block" id="mtmS"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.init.mtmS">[docs]</a><span class="k">class</span> <span class="nc">mtmS</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
 <div class="viewcode-block" id="mtmS.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.init.mtmS.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">clis</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="n">BaseCli</span><span class="p">]):</span>
-        <span class="sd">&quot;&quot;&quot;Applies multiple streams to multiple clis independently. Used in</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Applies multiple streams to multiple clis independently. Used in</span>
 <span class="sd">the &quot;a + b&quot; joining operator. See also: :meth:`BaseCli.__add__`.</span>
 
 <span class="sd">Weird name is actually a shorthand for &quot;many to many specific&quot;.&quot;&quot;&quot;</span>
@@ -359,7 +360,7 @@
         <span class="k">for</span> <span class="n">cli</span><span class="p">,</span> <span class="n">it</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cliCs</span><span class="p">,</span> <span class="n">its</span><span class="p">):</span> <span class="k">yield</span> <span class="n">cli</span><span class="p">(</span><span class="n">it</span><span class="p">)</span></div>
 <div class="viewcode-block" id="mtmS.f"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.init.mtmS.f">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">i</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Convenience method, so</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convenience method, so</span>
 <span class="sd">that this::</span>
 
 <span class="sd">    mtmS(iden(), op()**2, iden(), iden(), iden())</span>
@@ -437,7 +438,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, Quang Ho.</p>
+    <p>&#169; Copyright 2023, Quang Ho.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

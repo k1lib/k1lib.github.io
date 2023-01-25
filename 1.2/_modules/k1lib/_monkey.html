@@ -52,6 +52,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../imports.html">k1lib.imports module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../mo.html">k1lib.mo module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../knn.html">k1lib.knn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../p5.html">k1lib.p5 module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../schedule.html">k1lib.schedule module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../selector.html">k1lib.selector module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../serve.html">k1lib.serve module</a></li>
@@ -97,19 +98,19 @@
 <span class="k">except</span><span class="p">:</span> <span class="n">hasTorch</span> <span class="o">=</span> <span class="kc">False</span>
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;dummy&quot;</span><span class="p">]</span>
 <div class="viewcode-block" id="dummy"><a class="viewcode-back" href="../../monkey.html#k1lib._monkey.dummy">[docs]</a><span class="k">def</span> <span class="nf">dummy</span><span class="p">():</span>
-    <span class="sd">&quot;&quot;&quot;Does nothing. Only here so that you can read source code of this file and</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Does nothing. Only here so that you can read source code of this file and</span>
 <span class="sd">see what’s up.&quot;&quot;&quot;</span>
     <span class="k">pass</span></div>
 <span class="k">if</span> <span class="n">hasTorch</span><span class="p">:</span>
     <span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">importParams</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">]):</span>
-        <span class="sd">&quot;&quot;&quot;Given a list of :class:`torch.nn.parameter.Parameter`/:class:`torch.Tensor`,</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Given a list of :class:`torch.nn.parameter.Parameter`/:class:`torch.Tensor`,</span>
 <span class="sd">update the current :class:`torch.nn.Module`&#39;s parameters with it&#39;&quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">oldParam</span><span class="p">,</span> <span class="n">newParam</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">params</span><span class="p">):</span>
             <span class="n">oldParam</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">newParam</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
     <span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">exportParams</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;Gets the list of :class:`torch.Tensor` data&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Gets the list of :class:`torch.Tensor` data&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="p">[</span><span class="n">param</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span> <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">()]</span>
     <span class="k">class</span> <span class="nc">ParamsContext</span><span class="p">:</span>
         <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">m</span><span class="p">:</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="n">m</span> <span class="o">=</span> <span class="n">m</span>
@@ -119,7 +120,7 @@
     <span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">)</span>
     <span class="nd">@contextmanager</span>
     <span class="k">def</span> <span class="nf">paramsContext</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;A nice context manager for :meth:`importParams` and :meth:`exportParams`.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;A nice context manager for :meth:`importParams` and :meth:`exportParams`.</span>
 <span class="sd">Returns the old parameters on enter context. Example::</span>
 
 <span class="sd">    m = nn.Linear(2, 3)</span>
@@ -136,7 +137,7 @@
 <span class="k">if</span> <span class="n">hasTorch</span><span class="p">:</span>
     <span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">getParamsVector</span><span class="p">(</span><span class="n">model</span><span class="p">:</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;For each parameter, returns a normal distributed random tensor</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;For each parameter, returns a normal distributed random tensor</span>
 <span class="sd">with the same standard deviation as the original parameter&quot;&quot;&quot;</span>
         <span class="n">answer</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">():</span>
@@ -149,7 +150,7 @@
     <span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">)</span>
     <span class="nd">@contextmanager</span>
     <span class="k">def</span> <span class="nf">deviceContext</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">,</span> <span class="n">buffers</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ContextManager</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Preserves the device of whatever operation is inside this.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Preserves the device of whatever operation is inside this.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">    import torch.nn as nn</span>
@@ -192,7 +193,7 @@
     <span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">)</span>
     <span class="nd">@contextmanager</span>
     <span class="k">def</span> <span class="nf">gradContext</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Preserves the requires_grad attribute.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Preserves the requires_grad attribute.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">    m = nn.Linear(2, 3)</span>
@@ -210,7 +211,7 @@
 <span class="k">if</span> <span class="n">hasTorch</span><span class="p">:</span>
     <span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">)</span>
     <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Allows piping input to :class:`torch.nn.Module`, to match same style as</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Allows piping input to :class:`torch.nn.Module`, to match same style as</span>
 <span class="sd">the module :mod:`k1lib.cli`. Example::</span>
 
 <span class="sd">    # returns torch.Size([5, 3])</span>
@@ -220,7 +221,7 @@
     <span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;nParams&quot;</span><span class="p">)</span>
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">nParams</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get the number of parameters of this module.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the number of parameters of this module.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">    # returns 9, because 6 (2*3) for weight, and 3 for bias</span>
@@ -230,7 +231,7 @@
     <span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">torch</span><span class="p">)</span>
     <span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">crissCross</span><span class="p">(</span><span class="o">*</span><span class="n">others</span><span class="p">:</span><span class="n">Tuple</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Concats multiple 1d tensors, sorts it, and get evenly-spaced values. Also</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Concats multiple 1d tensors, sorts it, and get evenly-spaced values. Also</span>
 <span class="sd">available as :meth:`torch.crissCross` and :meth:`~k1lib.cli.others.crissCross`.</span>
 <span class="sd">Example::</span>
 
@@ -253,7 +254,7 @@
 <span class="k">if</span> <span class="n">hasTorch</span><span class="p">:</span>
     <span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">torch</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">sameStorage</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Check whether 2 (:class:`np.ndarray` or :class:`torch.Tensor`)</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check whether 2 (:class:`np.ndarray` or :class:`torch.Tensor`)</span>
 <span class="sd">has the same storage or not. Example::</span>
 
 <span class="sd">    a = np.linspace(2, 3, 50)</span>
@@ -273,7 +274,7 @@
 <span class="k">if</span> <span class="n">hasTorch</span><span class="p">:</span>
     <span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">histBounds</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Flattens and sorts the tensor, then get value of tensor at regular</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Flattens and sorts the tensor, then get value of tensor at regular</span>
 <span class="sd">linspace intervals. Does not guarantee bounds&#39; uniqueness. Example::</span>
 
 <span class="sd">    # Tensor with lots of 2s and 5s</span>
@@ -291,7 +292,7 @@
 <span class="k">if</span> <span class="n">hasTorch</span><span class="p">:</span>
     <span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">histScaled</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Scale tensor&#39;s values so that the values are roughly spreaded out in range</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Scale tensor&#39;s values so that the values are roughly spreaded out in range</span>
 <span class="sd">:math:`[0, 1]` to ease neural networks&#39; pain. Rough idea taken from</span>
 <span class="sd">fastai.medical.imaging. Example::</span>
 
@@ -322,7 +323,7 @@
 <span class="k">if</span> <span class="n">hasTorch</span><span class="p">:</span>
     <span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">positionalEncode</span><span class="p">(</span><span class="n">t</span><span class="p">:</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">richFactor</span><span class="p">:</span><span class="nb">float</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Position encode a tensor of shape :math:`(L, F)`, where :math:`L`</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Position encode a tensor of shape :math:`(L, F)`, where :math:`L`</span>
 <span class="sd">is the sequence length, :math:`F` is the encoded features. Will add the</span>
 <span class="sd">encodings directly to the input tensor and return it.</span>
 
@@ -353,7 +354,7 @@
 <span class="k">if</span> <span class="n">hasTorch</span><span class="p">:</span>
     <span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">clearNan</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span><span class="nb">float</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Sets all nan values to a specified value.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets all nan values to a specified value.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">    a = torch.randn(3, 3) * float(&quot;nan&quot;)</span>
@@ -363,7 +364,7 @@
 <span class="k">if</span> <span class="n">hasTorch</span><span class="p">:</span>
     <span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">hasNan</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Returns whether this Tensor has any nan values at all.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns whether this Tensor has any nan values at all.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="p">(</span><span class="bp">self</span> <span class="o">!=</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span>
 <span class="k">if</span> <span class="n">hasTorch</span><span class="p">:</span>
     <span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span>
@@ -373,12 +374,12 @@
 <span class="k">if</span> <span class="n">hasTorch</span><span class="p">:</span>
     <span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">hasInfs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Whether this Tensor has negative or positive infinities.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Whether this Tensor has negative or positive infinities.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="p">(</span><span class="bp">self</span> <span class="o">==</span> <span class="n">inf</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">()</span> <span class="ow">or</span> <span class="p">(</span><span class="bp">self</span> <span class="o">==</span> <span class="o">-</span><span class="n">inf</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">()</span>
 <span class="k">if</span> <span class="n">hasTorch</span><span class="p">:</span>
     <span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">torch</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">loglinspace</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Like :meth:`torch.linspace`, but spread the values out in log space,</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Like :meth:`torch.linspace`, but spread the values out in log space,</span>
 <span class="sd">    instead of linear space. Different from :meth:`torch.logspace`&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">e</span><span class="o">**</span><span class="n">torch</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">b</span><span class="p">),</span> <span class="n">n</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 <span class="k">try</span><span class="p">:</span>
@@ -386,7 +387,7 @@
     <span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">graphviz</span><span class="o">.</span><span class="n">Digraph</span><span class="p">,</span> <span class="s2">&quot;__call__&quot;</span><span class="p">)</span>
     <span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">graphviz</span><span class="o">.</span><span class="n">Graph</span><span class="p">,</span> <span class="s2">&quot;__call__&quot;</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">_call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_from</span><span class="p">,</span> <span class="o">*</span><span class="n">tos</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Convenience method to quickly construct graphs.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convenience method to quickly construct graphs.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">    g = k1lib.graph()</span>
@@ -395,7 +396,7 @@
 <span class="sd">&quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">to</span> <span class="ow">in</span> <span class="n">tos</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">edge</span><span class="p">(</span><span class="n">_from</span><span class="p">,</span> <span class="n">to</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">digraph</span><span class="p">():</span>
-        <span class="sd">&quot;&quot;&quot;Convenience method for creating a new graphviz Digraph.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convenience method for creating a new graphviz Digraph.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">    g = k1lib.graph()</span>
@@ -404,7 +405,7 @@
 <span class="sd">&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">graphviz</span><span class="o">.</span><span class="n">Digraph</span><span class="p">(</span><span class="n">graph_attr</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;rankdir&quot;</span><span class="p">:</span><span class="s2">&quot;TB&quot;</span><span class="p">})</span>
     <span class="k">def</span> <span class="nf">graph</span><span class="p">():</span>
-        <span class="sd">&quot;&quot;&quot;Convenience method for creating a new graphviz Graph. See also: :meth:`digraph`&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convenience method for creating a new graphviz Graph. See also: :meth:`digraph`&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">graphviz</span><span class="o">.</span><span class="n">Graph</span><span class="p">(</span><span class="n">graph_attr</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;rankdir&quot;</span><span class="p">:</span><span class="s2">&quot;TB&quot;</span><span class="p">})</span>
 <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
     <span class="n">digraph</span> <span class="o">=</span> <span class="n">graph</span> <span class="o">=</span> <span class="k">lambda</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Module `graphviz` not found! Please install it first, something like `pip install graphviz`&quot;</span><span class="p">)</span>
@@ -413,7 +414,7 @@
     <span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">Axes3D</span><span class="p">,</span> <span class="n">art3d</span>
     <span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">Axes3D</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">march</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">heatMap</span><span class="p">,</span> <span class="n">level</span><span class="p">:</span><span class="nb">float</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="p">[</span><span class="mf">0.45</span><span class="p">,</span> <span class="mf">0.45</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">],</span> <span class="n">edgecolor</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Use marching cubes to plot surface of a 3d heat map.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Use marching cubes to plot surface of a 3d heat map.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">    plt.k3d(6).march(k1lib.perlin3d(), 0.17)</span>
@@ -433,7 +434,8 @@
 <span class="sd">:param heatMap: 3d numpy array</span>
 <span class="sd">:param level: array value to form the surface on&quot;&quot;&quot;</span>
         <span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">measure</span>
-        <span class="n">verts</span><span class="p">,</span> <span class="n">faces</span><span class="p">,</span> <span class="n">normals</span><span class="p">,</span> <span class="n">values</span> <span class="o">=</span> <span class="n">measure</span><span class="o">.</span><span class="n">marching_cubes</span><span class="p">(</span><span class="n">heatMap</span><span class="p">,</span> <span class="n">level</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span> <span class="n">verts</span><span class="p">,</span> <span class="n">faces</span><span class="p">,</span> <span class="n">normals</span><span class="p">,</span> <span class="n">values</span> <span class="o">=</span> <span class="n">measure</span><span class="o">.</span><span class="n">marching_cubes</span><span class="p">(</span><span class="n">heatMap</span><span class="p">,</span> <span class="n">level</span><span class="p">)</span>
+        <span class="k">except</span><span class="p">:</span> <span class="n">verts</span><span class="p">,</span> <span class="n">faces</span><span class="p">,</span> <span class="n">normals</span><span class="p">,</span> <span class="n">values</span> <span class="o">=</span> <span class="n">measure</span><span class="o">.</span><span class="n">marching_cubes_lewiner</span><span class="p">(</span><span class="n">heatMap</span><span class="p">,</span> <span class="n">level</span><span class="p">)</span>
         <span class="n">mesh</span> <span class="o">=</span> <span class="n">art3d</span><span class="o">.</span><span class="n">Poly3DCollection</span><span class="p">(</span><span class="n">verts</span><span class="p">[</span><span class="n">faces</span><span class="p">])</span>
         <span class="k">if</span> <span class="n">facecolor</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="n">mesh</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="n">facecolor</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">edgecolor</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="n">mesh</span><span class="o">.</span><span class="n">set_edgecolor</span><span class="p">(</span><span class="n">edgecolor</span><span class="p">)</span>
@@ -443,15 +445,16 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">set_zlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">heatMap</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span> <span class="k">return</span> <span class="bp">self</span>
     <span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">Axes3D</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">aspect</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Use the same aspect ratio for all axes.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Use the same aspect ratio for all axes.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">set_box_aspect</span><span class="p">([</span><span class="n">ub</span> <span class="o">-</span> <span class="n">lb</span> <span class="k">for</span> <span class="n">lb</span><span class="p">,</span> <span class="n">ub</span> <span class="ow">in</span> <span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;get_</span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s1">lim&#39;</span><span class="p">)()</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="s1">&#39;xyz&#39;</span><span class="p">)])</span>
     <span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">plt</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">k3d</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Convenience function to get an :class:`~mpl_toolkits.mplot3d.axes3d.Axes3D`.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convenience function to get an :class:`~mpl_toolkits.mplot3d.axes3d.Axes3D`.</span>
 
 <span class="sd">:param labels: whether to include xyz labels or not</span>
 <span class="sd">:param size: figure size&quot;&quot;&quot;</span>
-        <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="n">size</span><span class="p">,</span><span class="n">size</span><span class="p">),</span> <span class="n">constrained_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">)):</span> <span class="n">size</span> <span class="o">=</span> <span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span>
+        <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">size</span><span class="p">,</span> <span class="n">constrained_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s2">&quot;3d&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">labels</span><span class="p">:</span>
             <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
@@ -460,7 +463,7 @@
         <span class="k">return</span> <span class="n">ax</span>
     <span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">plt</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">animate</span><span class="p">(</span><span class="n">azimSpeed</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">azimStart</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">elevSpeed</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">elevStart</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">frames</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">close</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Animates the existing 3d axes.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Animates the existing 3d axes.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">    plt.k3d().scatter(*np.random.randn(3, 10))</span>
@@ -479,7 +482,7 @@
 <span class="k">try</span><span class="p">:</span>
     <span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">Axes3D</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">plane</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">origin</span><span class="p">,</span> <span class="n">v1</span><span class="p">,</span> <span class="n">v2</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">s1</span><span class="p">:</span><span class="nb">float</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">s2</span><span class="p">:</span><span class="nb">float</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Plots a 3d plane.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Plots a 3d plane.</span>
 
 <span class="sd">:param origin: origin vector, shape (3,)</span>
 <span class="sd">:param v1: 1st vector, shape (3,)</span>
@@ -505,7 +508,7 @@
 <span class="k">try</span><span class="p">:</span>
     <span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">Axes3D</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">point</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Plots a 3d point.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Plots a 3d point.</span>
 
 <span class="sd">:param v: point location, shape (3,)</span>
 <span class="sd">:param kwargs: keyword argument passed to :meth:`~mpl_toolkits.mplot3d.axes3d.Axes3D.scatter`&quot;&quot;&quot;</span>
@@ -513,7 +516,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="o">*</span><span class="n">v</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
     <span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">Axes3D</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">line</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v1</span><span class="p">,</span> <span class="n">v2</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Plots a 3d line.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Plots a 3d line.</span>
 
 <span class="sd">:param v1: 1st point location, shape (3,)</span>
 <span class="sd">:param v2: 2nd point location, shape (3,)</span>
@@ -523,7 +526,7 @@
 <span class="k">try</span><span class="p">:</span>
     <span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">Axes3D</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">surface</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Plots 2d surface in 3d. Pretty much exactly the same as</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Plots 2d surface in 3d. Pretty much exactly the same as</span>
 <span class="sd">:meth:`~mpl_toolkits.mplot3d.axes3d.Axes3D.plot_surface`, but fields x and y</span>
 <span class="sd">are filled in automatically. Example::</span>
 
@@ -543,7 +546,7 @@
     <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
     <span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">table</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Converts a :class:`pandas.core.frame.DataFrame` to a normal table made</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Converts a :class:`pandas.core.frame.DataFrame` to a normal table made</span>
 <span class="sd">from lists (with column headers), so that it can be more easily manipulated</span>
 <span class="sd">with cli tools. Example::</span>
 
@@ -554,7 +557,7 @@
 <span class="k">try</span><span class="p">:</span>
     <span class="kn">import</span> <span class="nn">forbiddenfruit</span>
     <span class="k">def</span> <span class="nf">splitCamel</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Splits a string up based on camel case.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Splits a string up based on camel case.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">    # returns [&#39;IHave&#39;, &#39;No&#39;, &#39;Idea&#39;, &#39;What&#39;, &#39;To&#39;, &#39;Put&#39;, &#39;Here&#39;]</span>
@@ -576,7 +579,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, Quang Ho.</p>
+    <p>&#169; Copyright 2023, Quang Ho.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

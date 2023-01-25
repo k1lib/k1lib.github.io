@@ -52,6 +52,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../imports.html">k1lib.imports module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../mo.html">k1lib.mo module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../knn.html">k1lib.knn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../p5.html">k1lib.p5 module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../schedule.html">k1lib.schedule module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../selector.html">k1lib.selector module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../serve.html">k1lib.serve module</a></li>
@@ -109,12 +110,12 @@
     <span class="k">class</span> <span class="nc">TimeProfiler</span><span class="p">:</span> <span class="k">pass</span>
 <div class="viewcode-block" id="Profiler"><a class="viewcode-back" href="../../../callbacks/index.html#k1lib.callbacks.profiler.Profiler">[docs]</a><span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">Cbs</span><span class="p">)</span>
 <span class="k">class</span> <span class="nc">Profiler</span><span class="p">(</span><span class="n">Callback</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Profiles memory, time, and computational complexity of the network. See over</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Profiles memory, time, and computational complexity of the network. See over</span>
 <span class="sd">:mod:`k1lib.callbacks.profilers` for more details on each of these profilers&quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">();</span> <span class="bp">self</span><span class="o">.</span><span class="n">clear</span><span class="p">();</span> <span class="bp">self</span><span class="o">.</span><span class="n">dependsOn</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Recorder&quot;</span><span class="p">]</span>
 <div class="viewcode-block" id="Profiler.clear"><a class="viewcode-back" href="../../../callbacks/index.html#k1lib.callbacks.profiler.Profiler.clear">[docs]</a>    <span class="k">def</span> <span class="nf">clear</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Clears every child profilers&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Clears every child profilers&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_mpCache</span><span class="o">=</span><span class="kc">None</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tpCache</span><span class="o">=</span><span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_cpCache</span><span class="o">=</span><span class="kc">None</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ioCache</span><span class="o">=</span><span class="kc">None</span></div>
     <span class="k">def</span> <span class="nf">_memory</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="c1"># do this to quickly debug, cause if not, Callback will just raise AttributeError on .memory</span>
@@ -124,7 +125,7 @@
             <span class="n">mp</span><span class="o">.</span><span class="n">_run</span><span class="p">();</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mpCache</span> <span class="o">=</span> <span class="n">mp</span><span class="p">;</span> <span class="k">return</span> <span class="n">mp</span>
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">memory</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MemoryProfiler</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Gets :class:`~k1lib.callbacks.profilers.memory.MemoryProfiler`&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Gets :class:`~k1lib.callbacks.profilers.memory.MemoryProfiler`&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_memory</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">_computation</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cpCache</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cpCache</span>
@@ -133,7 +134,7 @@
             <span class="n">cp</span><span class="o">.</span><span class="n">_run</span><span class="p">();</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cpCache</span> <span class="o">=</span> <span class="n">cp</span><span class="p">;</span> <span class="k">return</span> <span class="n">cp</span>
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">computation</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ComputationProfiler</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Gets :class:`~k1lib.callbacks.profilers.computation.ComputationProfiler`&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Gets :class:`~k1lib.callbacks.profilers.computation.ComputationProfiler`&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_computation</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">_time</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tpCache</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tpCache</span>
@@ -142,7 +143,7 @@
             <span class="n">tp</span><span class="o">.</span><span class="n">_run</span><span class="p">();</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tpCache</span> <span class="o">=</span> <span class="n">tp</span><span class="p">;</span> <span class="k">return</span> <span class="n">tp</span>
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">time</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TimeProfiler</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Gets :class:`~k1lib.callbacks.profilers.time.TimeProfiler`&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Gets :class:`~k1lib.callbacks.profilers.time.TimeProfiler`&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_time</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">_io</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ioCache</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ioCache</span>
@@ -151,7 +152,7 @@
             <span class="n">io</span><span class="o">.</span><span class="n">_run</span><span class="p">();</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ioCache</span> <span class="o">=</span> <span class="n">io</span><span class="p">;</span> <span class="k">return</span> <span class="n">io</span>
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">io</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">IOProfiler</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Gets :class:`~k1lib.callbacks.profilers.io.IOProfiler`&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Gets :class:`~k1lib.callbacks.profilers.io.IOProfiler`&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_io</span><span class="p">()</span>
     <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_reprHead</span><span class="si">}</span><span class="s2">, can...</span>
@@ -169,7 +170,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, Quang Ho.</p>
+    <p>&#169; Copyright 2023, Quang Ho.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

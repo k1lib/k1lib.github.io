@@ -52,6 +52,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../imports.html">k1lib.imports module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../mo.html">k1lib.mo module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../knn.html">k1lib.knn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../p5.html">k1lib.p5 module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../schedule.html">k1lib.schedule module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../selector.html">k1lib.selector module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../serve.html">k1lib.serve module</a></li>
@@ -100,9 +101,9 @@
 <span class="kn">import</span> <span class="nn">time</span>
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;batch&quot;</span><span class="p">]</span>
 <div class="viewcode-block" id="batch"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.mgi.batch">[docs]</a><span class="k">class</span> <span class="nc">batch</span><span class="p">(</span><span class="n">cli</span><span class="o">.</span><span class="n">BaseCli</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Queries MGI database, convert list of genes to MGI ids&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Queries MGI database, convert list of genes to MGI ids&quot;&quot;&quot;</span>
 <div class="viewcode-block" id="batch.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.mgi.batch.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">headless</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">:param headless: whether to run this operation headless, or actually</span>
 <span class="sd">    display the browser&quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">();</span> <span class="bp">self</span><span class="o">.</span><span class="n">headless</span> <span class="o">=</span> <span class="n">headless</span></div>
@@ -138,7 +139,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, Quang Ho.</p>
+    <p>&#169; Copyright 2023, Quang Ho.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

@@ -56,6 +56,7 @@
 <li class="toctree-l1"><a class="reference internal" href="imports.html">k1lib.imports module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mo.html">k1lib.mo module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="knn.html">k1lib.knn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="p5.html">k1lib.p5 module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="schedule.html">k1lib.schedule module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="selector.html">k1lib.selector module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="serve.html">k1lib.serve module</a></li>
@@ -67,13 +68,18 @@
 <li class="toctree-l2"><a class="reference internal" href="#k1lib.viz.plotSegments"><code class="docutils literal notranslate"><span class="pre">plotSegments()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#k1lib.viz.Carousel"><code class="docutils literal notranslate"><span class="pre">Carousel</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#k1lib.viz.Carousel.__init__"><code class="docutils literal notranslate"><span class="pre">Carousel.__init__()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#k1lib.viz.Carousel.saveBytes"><code class="docutils literal notranslate"><span class="pre">Carousel.saveBytes()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#k1lib.viz.Carousel.save"><code class="docutils literal notranslate"><span class="pre">Carousel.save()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#k1lib.viz.Carousel.savePlt"><code class="docutils literal notranslate"><span class="pre">Carousel.savePlt()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#k1lib.viz.Carousel.savePIL"><code class="docutils literal notranslate"><span class="pre">Carousel.savePIL()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#k1lib.viz.Carousel.saveFile"><code class="docutils literal notranslate"><span class="pre">Carousel.saveFile()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.viz.Carousel.__ror__"><code class="docutils literal notranslate"><span class="pre">Carousel.__ror__()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#k1lib.viz.Carousel.saveGraphviz"><code class="docutils literal notranslate"><span class="pre">Carousel.saveGraphviz()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#k1lib.viz.Carousel.pop"><code class="docutils literal notranslate"><span class="pre">Carousel.pop()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.viz.HtmlImage"><code class="docutils literal notranslate"><span class="pre">HtmlImage</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.viz.HtmlImage.__init__"><code class="docutils literal notranslate"><span class="pre">HtmlImage.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.viz.ToggleImage"><code class="docutils literal notranslate"><span class="pre">ToggleImage</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.viz.ToggleImage.__init__"><code class="docutils literal notranslate"><span class="pre">ToggleImage.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.viz.ToggleImage.__ror__"><code class="docutils literal notranslate"><span class="pre">ToggleImage.__ror__()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#k1lib.viz.confusionMatrix"><code class="docutils literal notranslate"><span class="pre">confusionMatrix()</span></code></a></li>
@@ -220,79 +226,30 @@ the same length as your data, filled with ints, like this:</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="k1lib.viz.Carousel">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.viz.</span></span><span class="sig-name descname"><span class="pre">Carousel</span></span><a class="reference internal" href="_modules/k1lib/viz.html#Carousel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.viz.Carousel" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.viz.</span></span><span class="sig-name descname"><span class="pre">Carousel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">imgs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/viz.html#Carousel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.viz.Carousel" title="Permalink to this definition"></a></dt>
 <dd><dl class="py method">
 <dt class="sig sig-object py" id="k1lib.viz.Carousel.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/viz.html#Carousel.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.viz.Carousel.__init__" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">imgs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/viz.html#Carousel.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.viz.Carousel.__init__" title="Permalink to this definition"></a></dt>
 <dd><p>Creates a new Carousel. You can then add images and whatnot.
 Will even work even when you export the notebook as html. Example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span><span class="o">,</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span><span class="o">,</span> <span class="nn">k1lib</span>
-<span class="n">c</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">viz</span><span class="o">.</span><span class="n">Carousel</span><span class="p">()</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">savePlt</span><span class="p">()</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span><span class="p">);</span> <span class="n">c</span><span class="o">.</span><span class="n">savePlt</span><span class="p">()</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">viz</span><span class="o">.</span><span class="n">Carousel</span><span class="p">()</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span> <span class="o">|</span> <span class="n">toImg</span><span class="p">()</span> <span class="o">|</span> <span class="n">c</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span> <span class="o">|</span> <span class="n">toImg</span><span class="p">()</span> <span class="o">|</span> <span class="n">c</span>
 <span class="n">c</span> <span class="c1"># displays in notebook cell</span>
 </pre></div>
 </div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>imgs</strong> – List of initial images. Can add more images later on by using <a class="reference internal" href="#k1lib.viz.Carousel.__ror__" title="k1lib.viz.Carousel.__ror__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__ror__()</span></code></a></p>
+</dd>
+</dl>
 <img alt="_images/carousel.png" src="_images/carousel.png" />
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="k1lib.viz.Carousel.saveBytes">
-<span class="sig-name descname"><span class="pre">saveBytes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_bytes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.11)"><span class="pre">bytes</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/viz.html#Carousel.saveBytes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.viz.Carousel.saveBytes" title="Permalink to this definition"></a></dt>
-<dd><p>Saves bytes as another image.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>fmt</strong> – format of image</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="k1lib.viz.Carousel.save">
-<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.11)"><span class="pre">Callable</span></a><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">BytesIO</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/viz.html#Carousel.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.viz.Carousel.save" title="Permalink to this definition"></a></dt>
-<dd><p>Generic image save function. Treat <a class="reference external" href="https://docs.python.org/3/library/io.html#io.BytesIO" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">io.BytesIO</span></code></a> as if it’s
-a file when you’re doing this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;file.txt&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-    <span class="k">pass</span> <span class="c1"># &quot;f&quot; is similar to io.BytesIO</span>
-</pre></div>
-</div>
-<p>So, you can do stuff like:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span><span class="o">,</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">c</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">viz</span><span class="o">.</span><span class="n">Carousel</span><span class="p">()</span>
-<span class="n">c</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="k">lambda</span> <span class="n">io</span><span class="p">:</span> <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">io</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;png&quot;</span><span class="p">))</span>
-</pre></div>
-</div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>f</strong> – lambda that provides a <a class="reference external" href="https://docs.python.org/3/library/io.html#io.BytesIO" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">io.BytesIO</span></code></a> for you to write to</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="k1lib.viz.Carousel.savePlt">
-<span class="sig-name descname"><span class="pre">savePlt</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/viz.html#Carousel.savePlt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.viz.Carousel.savePlt" title="Permalink to this definition"></a></dt>
-<dd><p>Saves current plot from matplotlib</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="k1lib.viz.Carousel.savePIL">
-<span class="sig-name descname"><span class="pre">savePIL</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/viz.html#Carousel.savePIL"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.viz.Carousel.savePIL" title="Permalink to this definition"></a></dt>
-<dd><p>Saves a PIL image</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="k1lib.viz.Carousel.saveFile">
-<span class="sig-name descname"><span class="pre">saveFile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fileName</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/viz.html#Carousel.saveFile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.viz.Carousel.saveFile" title="Permalink to this definition"></a></dt>
-<dd><p>Saves image from file.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>fmt</strong> – format of the file. Will figure out from file extension
-automatically if left empty</p>
-</dd>
-</dl>
+<dt class="sig sig-object py" id="k1lib.viz.Carousel.__ror__">
+<span class="sig-name descname"><span class="pre">__ror__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">it</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/viz.html#Carousel.__ror__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.viz.Carousel.__ror__" title="Permalink to this definition"></a></dt>
+<dd><p>Adds an image to the collection</p>
 </dd></dl>
 
 <dl class="py method">
@@ -309,9 +266,51 @@ automatically if left empty</p>
 
 </dd></dl>
 
+<dl class="py class">
+<dt class="sig sig-object py" id="k1lib.viz.HtmlImage">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.viz.</span></span><span class="sig-name descname"><span class="pre">HtmlImage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">im</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">style</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/viz.html#HtmlImage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.viz.HtmlImage" title="Permalink to this definition"></a></dt>
+<dd><dl class="py method">
+<dt class="sig sig-object py" id="k1lib.viz.HtmlImage.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">im</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">style</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/viz.html#HtmlImage.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.viz.HtmlImage.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a html image from a PIL image</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>im</strong> – PIL image</p></li>
+<li><p><strong>style</strong> – extra styles</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="k1lib.viz.ToggleImage">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.viz.</span></span><span class="sig-name descname"><span class="pre">ToggleImage</span></span><a class="reference internal" href="_modules/k1lib/viz.html#ToggleImage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.viz.ToggleImage" title="Permalink to this definition"></a></dt>
+<dd><dl class="py method">
+<dt class="sig sig-object py" id="k1lib.viz.ToggleImage.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/viz.html#ToggleImage.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.viz.ToggleImage.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a new toggle image, which is just an image that
+is hidden by default, but can be shown with a button. Will even work
+even when you export the notebook as html. Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">toImg</span><span class="p">()</span> <span class="o">|</span> <span class="n">viz</span><span class="o">.</span><span class="n">ToggleImage</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This will plot a graph, then create a button where you can toggle the image’s visibility</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.viz.ToggleImage.__ror__">
+<span class="sig-name descname"><span class="pre">__ror__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">it</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/viz.html#ToggleImage.__ror__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.viz.ToggleImage.__ror__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="k1lib.viz.confusionMatrix">
-<span class="sig-prename descclassname"><span class="pre">k1lib.viz.</span></span><span class="sig-name descname"><span class="pre">confusionMatrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matrix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.14.0a0+git4648baa ))"><span class="pre">Tensor</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">categories</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/viz.html#confusionMatrix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.viz.confusionMatrix" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">k1lib.viz.</span></span><span class="sig-name descname"><span class="pre">confusionMatrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matrix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.0.0a0+git01f1097 ))"><span class="pre">Tensor</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">categories</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/viz.html#confusionMatrix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.viz.confusionMatrix" title="Permalink to this definition"></a></dt>
 <dd><p>Plots a confusion matrix. Example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">k1lib</span><span class="o">.</span><span class="n">viz</span><span class="o">.</span><span class="n">confusionMatrix</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="s2">&quot;e&quot;</span><span class="p">])</span>
 </pre></div>
@@ -357,7 +356,7 @@ automatically if left empty</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="k1lib.viz.mask">
-<span class="sig-prename descclassname"><span class="pre">k1lib.viz.</span></span><span class="sig-name descname"><span class="pre">mask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">img</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.14.0a0+git4648baa ))"><span class="pre">Tensor</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">act</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.14.0a0+git4648baa ))"><span class="pre">Tensor</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.14.0a0+git4648baa ))"><span class="pre">Tensor</span></a></span></span><a class="reference internal" href="_modules/k1lib/viz.html#mask"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.viz.mask" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">k1lib.viz.</span></span><span class="sig-name descname"><span class="pre">mask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">img</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.0.0a0+git01f1097 ))"><span class="pre">Tensor</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">act</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.0.0a0+git01f1097 ))"><span class="pre">Tensor</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.0.0a0+git01f1097 ))"><span class="pre">Tensor</span></a></span></span><a class="reference internal" href="_modules/k1lib/viz.html#mask"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.viz.mask" title="Permalink to this definition"></a></dt>
 <dd><p>Shows which part of the image the network is focusing on.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -383,7 +382,7 @@ elements from 0 to 1.</p></li>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, Quang Ho.</p>
+    <p>&#169; Copyright 2023, Quang Ho.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

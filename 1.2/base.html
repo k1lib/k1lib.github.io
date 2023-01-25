@@ -192,6 +192,8 @@
 <li class="toctree-l3"><a class="reference internal" href="#k1lib.pValue"><code class="docutils literal notranslate"><span class="pre">pValue()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#k1lib.now"><code class="docutils literal notranslate"><span class="pre">now()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#k1lib.pushNotification"><code class="docutils literal notranslate"><span class="pre">pushNotification()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.dep"><code class="docutils literal notranslate"><span class="pre">dep()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.ticks"><code class="docutils literal notranslate"><span class="pre">ticks()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#k1lib.perlin3d"><code class="docutils literal notranslate"><span class="pre">perlin3d()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#k1lib.graph"><code class="docutils literal notranslate"><span class="pre">graph()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#k1lib.digraph"><code class="docutils literal notranslate"><span class="pre">digraph()</span></code></a></li>
@@ -221,6 +223,7 @@
 <li class="toctree-l1"><a class="reference internal" href="imports.html">k1lib.imports module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mo.html">k1lib.mo module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="knn.html">k1lib.knn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="p5.html">k1lib.p5 module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="schedule.html">k1lib.schedule module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="selector.html">k1lib.selector module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="serve.html">k1lib.serve module</a></li>
@@ -310,6 +313,13 @@
       - long  = [&#39;Query template name&#39;, &#39;Flags&#39;, &#39;Reference seq...            ​
 - fmt                 = &lt;Settings&gt;                                            ​from k1lib.fmt module
   - separator = True                                                          ​whether to have a space between the number and the unit
+- k1ui                = &lt;Settings&gt;                                            ​docs related to k1ui java library
+  - server = &lt;Settings&gt;                                                       ​server urls
+    - http = http://localhost:9511                                            ​normal http server
+    - ws   = ws://localhost:9512                                              ​websocket server
+  - draw   = &lt;Settings&gt;                                                       ​drawing settings
+    - trackHeight = 30                                                        ​Track&#39;s height in Recording visualization
+    - pad         = 10                                                        ​Padding between tracks
 - eqn                 = &lt;Settings&gt;                                            ​from k1lib.eqn module
   - spaceBetweenValueSymbol = True                                            ​
   - eqnPrintExtras          = True                                            ​
@@ -1685,7 +1695,7 @@ Example:</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="k1lib.pValue">
 <span class="sig-prename descclassname"><span class="pre">k1lib.</span></span><span class="sig-name descname"><span class="pre">pValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">zScore</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/_basics.html#pValue"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.pValue" title="Permalink to this definition"></a></dt>
-<dd><p>2-sided p value of a particular z score. Requires <a class="reference external" href="https://docs.scipy.org/doc/scipy/index.html#module-scipy" title="(in SciPy v1.9.3)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scipy</span></code></a>.</p>
+<dd><p>2-sided p value of a particular z score. Requires <a class="reference external" href="https://docs.scipy.org/doc/scipy/index.html#module-scipy" title="(in SciPy v1.10.0)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scipy</span></code></a>.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -1704,6 +1714,50 @@ string, with timezone and whatnot.</p>
 - Set the <cite>settings.pushNotificationKey</cite> key obtained from the app. Example key: <cite>k-967fe9…</cite>
 - Alternatively, set the environment variable <cite>k1lib_pushNotificationKey</cite> instead
 - Run the function as usual</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="k1lib.dep">
+<span class="sig-prename descclassname"><span class="pre">k1lib.</span></span><span class="sig-name descname"><span class="pre">dep</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/_basics.html#dep"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.dep" title="Permalink to this definition"></a></dt>
+<dd><p>Imports a potentially unavailable package
+Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">graphviz</span> <span class="o">=</span> <span class="n">k1</span><span class="o">.</span><span class="n">dep</span><span class="p">(</span><span class="s2">&quot;graphviz&quot;</span><span class="p">)</span>
+
+<span class="c1"># executes as normal, if graphviz is available, else throws an error</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">graphviz</span><span class="o">.</span><span class="n">Digraph</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>I don’t imagine this would be useful for everyday use though.
+This is mainly for writing this library, so that it can use
+optional dependencies.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="k1lib.ticks">
+<span class="sig-prename descclassname"><span class="pre">k1lib.</span></span><span class="sig-name descname"><span class="pre">ticks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">rounding</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">6</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/_basics.html#ticks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.ticks" title="Permalink to this definition"></a></dt>
+<dd><p>Get tick locations in a plot that look reasonable.
+Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ticks</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>     <span class="c1"># returns [-10.0, -5.0, 0.0, 5.0, 10.0, 15.0, 20.0, 25.0, 30.0, 35.0, 40.0, 45.0]</span>
+<span class="n">ticks</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.07</span><span class="p">)</span> <span class="c1"># returns [0.05, 0.0525, 0.055, 0.0575, 0.06, 0.0625, 0.065, 0.0675, 0.07, 0.0725]</span>
+<span class="n">ticks</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>      <span class="c1"># returns [-6.0, -5.0, -4.0, -3.0, -2.0, -1.0, 0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0]</span>
+</pre></div>
+</div>
+<p>So essentially, whenever you try to plot something, you want both the x and y axis
+to not have too many lines, and that the tick values snap to a nice number.</p>
+<p>Normally you don’t have to do this, as matplotlib does this automatically behind
+the scenes, but sometimes you need to implement plotting again, in strange
+situations, so this function comes in handy</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – start of interval</p></li>
+<li><p><strong>y</strong> – end of interval</p></li>
+<li><p><strong>rounding</strong> – internally, it rounds tick values to this number of
+digits, to fix tiny float overflows that make numbers ugly. So
+you can disable it if you’re working with really small numbers</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
@@ -1766,7 +1820,7 @@ Example:</p>
 </pre></div>
 </div>
 <p>This will create a best-fit function. You can just use it as a regular,
-normal function. You can even pass in <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.23)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>:</p>
+normal function. You can even pass in <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># returns some float</span>
 <span class="n">f</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 
@@ -1857,7 +1911,7 @@ which has a slightly different api.</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, Quang Ho.</p>
+    <p>&#169; Copyright 2023, Quang Ho.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

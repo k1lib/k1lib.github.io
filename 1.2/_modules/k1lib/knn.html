@@ -52,6 +52,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../imports.html">k1lib.imports module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../mo.html">k1lib.mo module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../knn.html">k1lib.knn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../p5.html">k1lib.p5 module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../schedule.html">k1lib.schedule module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../selector.html">k1lib.selector module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../serve.html">k1lib.serve module</a></li>
@@ -102,22 +103,22 @@
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Lambda&quot;</span><span class="p">,</span> <span class="s2">&quot;Identity&quot;</span><span class="p">,</span> <span class="s2">&quot;LinBlock&quot;</span><span class="p">,</span> <span class="s2">&quot;MultiheadAttention&quot;</span><span class="p">]</span>
 <div class="viewcode-block" id="Lambda"><a class="viewcode-back" href="../../knn.html#k1lib.knn.Lambda">[docs]</a><span class="k">class</span> <span class="nc">Lambda</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
 <div class="viewcode-block" id="Lambda.__init__"><a class="viewcode-back" href="../../knn.html#k1lib.knn.Lambda.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">:</span><span class="n">Callable</span><span class="p">[[</span><span class="n">Any</span><span class="p">],</span> <span class="n">Any</span><span class="p">]):</span>
-        <span class="sd">&quot;&quot;&quot;Creates a simple module with a specified :meth:`forward`</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Creates a simple module with a specified :meth:`forward`</span>
 <span class="sd">function.&quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">();</span> <span class="bp">self</span><span class="o">.</span><span class="n">f</span> <span class="o">=</span> <span class="n">f</span></div>
 <div class="viewcode-block" id="Lambda.forward"><a class="viewcode-back" href="../../knn.html#k1lib.knn.Lambda.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></div></div>
 <div class="viewcode-block" id="Identity"><a class="viewcode-back" href="../../knn.html#k1lib.knn.Identity">[docs]</a><span class="k">class</span> <span class="nc">Identity</span><span class="p">(</span><span class="n">Lambda</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Creates a module that returns the input in :meth:`forward`&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Creates a module that returns the input in :meth:`forward`&quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">)</span></div>
 <div class="viewcode-block" id="LinBlock"><a class="viewcode-back" href="../../knn.html#k1lib.knn.LinBlock">[docs]</a><span class="k">class</span> <span class="nc">LinBlock</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
 <div class="viewcode-block" id="LinBlock.__init__"><a class="viewcode-back" href="../../knn.html#k1lib.knn.LinBlock.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inC</span><span class="p">,</span> <span class="n">outC</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Linear layer with relu behind it&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Linear layer with relu behind it&quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">();</span> <span class="bp">self</span><span class="o">.</span><span class="n">lin</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">inC</span><span class="p">,</span> <span class="n">outC</span><span class="p">);</span> <span class="bp">self</span><span class="o">.</span><span class="n">relu</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">LeakyReLU</span><span class="p">()</span></div>
 <div class="viewcode-block" id="LinBlock.forward"><a class="viewcode-back" href="../../knn.html#k1lib.knn.LinBlock.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">x</span> <span class="o">|</span> <span class="bp">self</span><span class="o">.</span><span class="n">lin</span> <span class="o">|</span> <span class="bp">self</span><span class="o">.</span><span class="n">relu</span></div></div>
 <div class="viewcode-block" id="MultiheadAttention"><a class="viewcode-back" href="../../knn.html#k1lib.knn.MultiheadAttention">[docs]</a><span class="k">class</span> <span class="nc">MultiheadAttention</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
 <div class="viewcode-block" id="MultiheadAttention.__init__"><a class="viewcode-back" href="../../knn.html#k1lib.knn.MultiheadAttention.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qdim</span><span class="p">,</span> <span class="n">kdim</span><span class="p">,</span> <span class="n">vdim</span><span class="p">,</span> <span class="n">embed</span><span class="p">,</span> <span class="n">head</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">outdim</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Kinda like :class:`torch.nn.MultiheadAttention`, just simpler, shorter, and clearer.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Kinda like :class:`torch.nn.MultiheadAttention`, just simpler, shorter, and clearer.</span>
 <span class="sd">Probably not as fast as the official version, and doesn&#39;t have masks and whatnot, but easy to read!</span>
 <span class="sd">Example::</span>
 
@@ -139,7 +140,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">outLin</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">head</span><span class="o">*</span><span class="n">embed</span><span class="p">,</span> <span class="n">outdim</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">softmax</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Softmax</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span></div>
 <div class="viewcode-block" id="MultiheadAttention.forward"><a class="viewcode-back" href="../../knn.html#k1lib.knn.MultiheadAttention.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;If ``key`` or ``value`` is not specified, just default to ``query``.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;If ``key`` or ``value`` is not specified, just default to ``query``.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">key</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="n">key</span> <span class="o">=</span> <span class="n">query</span>
         <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="n">value</span> <span class="o">=</span> <span class="n">query</span>
         <span class="n">S</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="o">*</span><span class="n">_</span> <span class="o">=</span> <span class="n">key</span><span class="o">.</span><span class="n">shape</span><span class="p">;</span> <span class="n">F</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">embed</span><span class="p">;</span> <span class="n">head</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">head</span>
@@ -160,7 +161,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, Quang Ho.</p>
+    <p>&#169; Copyright 2023, Quang Ho.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

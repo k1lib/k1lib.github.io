@@ -52,6 +52,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../imports.html">k1lib.imports module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../mo.html">k1lib.mo module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../knn.html">k1lib.knn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../p5.html">k1lib.p5 module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../schedule.html">k1lib.schedule module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../selector.html">k1lib.selector module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../serve.html">k1lib.serve module</a></li>
@@ -97,7 +98,7 @@
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Recorder&quot;</span><span class="p">]</span>
 <div class="viewcode-block" id="Recorder"><a class="viewcode-back" href="../../../callbacks/index.html#k1lib.callbacks.recorder.Recorder">[docs]</a><span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">Cbs</span><span class="p">)</span>
 <span class="k">class</span> <span class="nc">Recorder</span><span class="p">(</span><span class="n">Callback</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Records xb, yb and y from a short run. No training involved.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Records xb, yb and y from a short run. No training involved.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">    l = k1lib.Learner.sample()</span>
@@ -139,7 +140,7 @@
         <span class="k">if</span> <span class="n">hasMeta</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">xbs</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ybs</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">metabs</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ys</span>
         <span class="k">else</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">xbs</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ybs</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ys</span>
 <div class="viewcode-block" id="Recorder.record"><a class="viewcode-back" href="../../../callbacks/index.html#k1lib.callbacks.recorder.Recorder.record">[docs]</a>    <span class="k">def</span> <span class="nf">record</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">epochs</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">batches</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">],</span> <span class="n">List</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">],</span> <span class="n">List</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]]:</span>
-        <span class="sd">&quot;&quot;&quot;Returns recorded xBatch, yBatch and answer y&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns recorded xBatch, yBatch and answer y&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">suspended</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">cbs</span><span class="o">.</span><span class="n">context</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">cbs</span><span class="o">.</span><span class="n">suspendEval</span><span class="p">():</span>
@@ -160,7 +161,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, Quang Ho.</p>
+    <p>&#169; Copyright 2023, Quang Ho.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

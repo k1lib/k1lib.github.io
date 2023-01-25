@@ -52,6 +52,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../../imports.html">k1lib.imports module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../mo.html">k1lib.mo module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../knn.html">k1lib.knn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../p5.html">k1lib.p5 module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../schedule.html">k1lib.schedule module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../selector.html">k1lib.selector module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../serve.html">k1lib.serve module</a></li>
@@ -102,7 +103,7 @@
 <span class="k">class</span> <span class="nc">LossF</span><span class="p">(</span><span class="n">Callback</span><span class="p">):</span>
     <span class="s2">&quot; &quot;</span>
 <div class="viewcode-block" id="LossF.__init__"><a class="viewcode-back" href="../../../../callbacks/lossFunctions.html#k1lib.callbacks.lossFunctions.shorts.LossF.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lossF</span><span class="p">:</span><span class="n">LossFSig</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Generic loss function.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Generic loss function.</span>
 <span class="sd">Expected variables in :class:`~k1lib.Learner`:</span>
 
 <span class="sd">- y: result of model. Auto-included in :class:`~k1lib.callbacks.core.CoreNormal`</span>
@@ -122,7 +123,7 @@
 <div class="viewcode-block" id="LossNLLCross"><a class="viewcode-back" href="../../../../callbacks/lossFunctions.html#k1lib.callbacks.lossFunctions.shorts.LossNLLCross">[docs]</a><span class="k">class</span> <span class="nc">LossNLLCross</span><span class="p">(</span><span class="n">Callback</span><span class="p">):</span>
     <span class="s2">&quot; &quot;</span>
 <div class="viewcode-block" id="LossNLLCross.__init__"><a class="viewcode-back" href="../../../../callbacks/lossFunctions.html#k1lib.callbacks.lossFunctions.shorts.LossNLLCross.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nll</span><span class="p">:</span><span class="nb">bool</span><span class="p">,</span> <span class="n">integrations</span><span class="p">:</span><span class="nb">bool</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Adds a cross-entropy/negative-likelihood loss function.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Adds a cross-entropy/negative-likelihood loss function.</span>
 
 <span class="sd">:param nll: if True, then use :class:`torch.nn.NLLLoss`, else use :class:`torch.nn.CrossEntropyLoss`</span>
 <span class="sd">:param integrations: whether to integrate with :class:`~k1lib.callbacks.accuracy.AccF` callback&quot;&quot;&quot;</span>
@@ -153,14 +154,14 @@
 <span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">Callback</span><span class="o">.</span><span class="n">lossCls</span><span class="p">)</span>
 <span class="k">class</span> <span class="nc">LossCrossEntropy</span><span class="p">(</span><span class="n">LossNLLCross</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">integrations</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Cross entropy loss function. Deposits into :class:`~k1lib.Learner`</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Cross entropy loss function. Deposits into :class:`~k1lib.Learner`</span>
 <span class="sd">the same variables as in :class:`LossF`.&quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="n">integrations</span><span class="p">)</span>
 <span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">Cbs</span><span class="p">)</span>
 <span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">Callback</span><span class="o">.</span><span class="n">lossCls</span><span class="p">)</span>
 <span class="k">class</span> <span class="nc">LossNLL</span><span class="p">(</span><span class="n">LossNLLCross</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">integrations</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Negative log loss function. Deposits into :class:`~k1lib.Learner`</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Negative log loss function. Deposits into :class:`~k1lib.Learner`</span>
 <span class="sd">the same variables as in :class:`LossF`.&quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">integrations</span><span class="p">)</span>
 </pre></div>
@@ -172,7 +173,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, Quang Ho.</p>
+    <p>&#169; Copyright 2023, Quang Ho.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

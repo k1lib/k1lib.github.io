@@ -52,6 +52,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../imports.html">k1lib.imports module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../mo.html">k1lib.mo module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../knn.html">k1lib.knn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../p5.html">k1lib.p5 module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../schedule.html">k1lib.schedule module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../selector.html">k1lib.selector module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../serve.html">k1lib.serve module</a></li>
@@ -117,9 +118,11 @@
 <span class="k">except</span><span class="p">:</span> <span class="n">torch</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">Object</span><span class="p">()</span><span class="o">.</span><span class="n">withAutoDeclare</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="nb">type</span><span class="p">(</span><span class="s2">&quot;RandomClass&quot;</span><span class="p">,</span> <span class="p">(</span><span class="nb">object</span><span class="p">,</span> <span class="p">),</span> <span class="p">{}));</span> <span class="n">hasTorch</span> <span class="o">=</span> <span class="kc">False</span>
 <span class="k">try</span><span class="p">:</span> <span class="kn">import</span> <span class="nn">rdkit</span><span class="p">;</span> <span class="n">hasRdkit</span> <span class="o">=</span> <span class="kc">True</span>
 <span class="k">except</span><span class="p">:</span> <span class="n">hasRdkit</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="k">try</span><span class="p">:</span> <span class="kn">import</span> <span class="nn">graphviz</span><span class="p">;</span> <span class="n">hasGraphviz</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="k">except</span><span class="p">:</span> <span class="n">hasGraphviz</span> <span class="o">=</span> <span class="kc">False</span>
 <div class="viewcode-block" id="toTensor"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.conv.toTensor">[docs]</a><span class="k">class</span> <span class="nc">toTensor</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
 <div class="viewcode-block" id="toTensor.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.conv.toTensor.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Converts generator to :class:`torch.Tensor`. Essentially</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Converts generator to :class:`torch.Tensor`. Essentially</span>
 <span class="sd">``torch.tensor(list(it))``.</span>
 
 <span class="sd">Also checks if input is a PIL Image. If yes, turn it into a :class:`torch.Tensor`</span>
@@ -139,7 +142,7 @@
         <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">it</span><span class="p">))</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span></div></div>
 <div class="viewcode-block" id="toList"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.conv.toList">[docs]</a><span class="k">class</span> <span class="nc">toList</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span> <span class="c1"># this still exists cause some LLVM optimizations are done on this, and too tired to change that at the moment</span>
 <div class="viewcode-block" id="toList.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.conv.toList.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Converts generator to list. </span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Converts generator to list. </span>
 <span class="sd">Example::</span>
 
 <span class="sd">    # returns [0, 1, 2, 3, 4]</span>
@@ -161,7 +164,7 @@
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">it</span><span class="p">):</span> <span class="k">yield</span> <span class="n">i</span>
 <div class="viewcode-block" id="toRange"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.conv.toRange">[docs]</a><span class="k">class</span> <span class="nc">toRange</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
 <div class="viewcode-block" id="toRange.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.conv.toRange.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Returns iter(range(len(it))), effectively.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns iter(range(len(it))), effectively.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">    # returns [0, 1, 2]</span>
@@ -179,7 +182,7 @@
     <span class="k">return</span> <span class="n">tAny</span><span class="p">()</span>
 <div class="viewcode-block" id="toSum"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.conv.toSum">[docs]</a><span class="k">class</span> <span class="nc">toSum</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
 <div class="viewcode-block" id="toSum.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.conv.toSum.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Calculates the sum of list of numbers. Can pipe in :class:`torch.Tensor` or :class:`numpy.ndarray`.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculates the sum of list of numbers. Can pipe in :class:`torch.Tensor` or :class:`numpy.ndarray`.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">    # returns 45</span>
@@ -191,7 +194,7 @@
         <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">it</span><span class="p">)</span></div></div>
 <div class="viewcode-block" id="toProd"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.conv.toProd">[docs]</a><span class="k">class</span> <span class="nc">toProd</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
 <div class="viewcode-block" id="toProd.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.conv.toProd.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Calculates the product of a list of numbers. Can pipe in :class:`torch.Tensor` or :class:`numpy.ndarray`.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculates the product of a list of numbers. Can pipe in :class:`torch.Tensor` or :class:`numpy.ndarray`.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">    # returns 362880</span>
@@ -203,7 +206,7 @@
         <span class="k">else</span><span class="p">:</span> <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">it</span><span class="p">)</span></div></div>
 <div class="viewcode-block" id="toAvg"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.conv.toAvg">[docs]</a><span class="k">class</span> <span class="nc">toAvg</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
 <div class="viewcode-block" id="toAvg.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.conv.toAvg.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Calculates average of list of numbers. Can pipe in :class:`torch.Tensor` or :class:`numpy.ndarray`.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculates average of list of numbers. Can pipe in :class:`torch.Tensor` or :class:`numpy.ndarray`.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">    # returns 4.5</span>
@@ -228,7 +231,7 @@
 <span class="n">toMean</span> <span class="o">=</span> <span class="n">toAvg</span>
 <div class="viewcode-block" id="toMax"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.conv.toMax">[docs]</a><span class="k">class</span> <span class="nc">toMax</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
 <div class="viewcode-block" id="toMax.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.conv.toMax.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Calculates the max of a bunch of numbers. Can pipe in :class:`torch.Tensor` or :class:`numpy.ndarray`.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculates the max of a bunch of numbers. Can pipe in :class:`torch.Tensor` or :class:`numpy.ndarray`.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">    # returns 6</span>
@@ -239,7 +242,7 @@
         <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="n">it</span><span class="p">)</span></div></div>
 <div class="viewcode-block" id="toMin"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.conv.toMin">[docs]</a><span class="k">class</span> <span class="nc">toMin</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
 <div class="viewcode-block" id="toMin.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.conv.toMin.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Calculates the min of a bunch of numbers. Can pipe in :class:`torch.Tensor` or :class:`numpy.ndarray`.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculates the min of a bunch of numbers. Can pipe in :class:`torch.Tensor` or :class:`numpy.ndarray`.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">    # returns 1</span>
@@ -259,8 +262,8 @@
     <span class="n">im</span> <span class="o">=</span> <span class="n">im</span> <span class="o">|</span> <span class="n">toTensor</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">op</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">aS</span><span class="p">(</span><span class="n">cropToContentNp</span><span class="p">,</span> <span class="n">pad</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">im</span><span class="p">)</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">|</span> <span class="n">toImg</span><span class="p">()</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">im</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="k">else</span> <span class="n">im</span> <span class="o">|</span> <span class="n">toImg</span><span class="p">()</span>
 <div class="viewcode-block" id="toPIL"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.conv.toPIL">[docs]</a><span class="k">class</span> <span class="nc">toPIL</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
-<div class="viewcode-block" id="toPIL.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.conv.toPIL.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Converts multiple data types into a PIL image.</span>
+<div class="viewcode-block" id="toPIL.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.conv.toPIL.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">closeFig</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Converts multiple data types into a PIL image.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">    # grabs first image in the current folder</span>
@@ -288,8 +291,10 @@
 <span class="sd">    </span>
 <span class="sd">    Also it&#39;s expected that</span>
 <span class="sd">    your tensor image ranges from 0-255, and not 0-1. Make sure you</span>
-<span class="sd">    renormalize it&quot;&quot;&quot;</span>
-        <span class="kn">import</span> <span class="nn">PIL</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">PIL</span> <span class="o">=</span> <span class="n">PIL</span></div>
+<span class="sd">    renormalize it</span>
+
+<span class="sd">:param closeFig: if input is a matplotlib figure, then closes the figure after generating the image&quot;&quot;&quot;</span>
+        <span class="kn">import</span> <span class="nn">PIL</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">PIL</span> <span class="o">=</span> <span class="n">PIL</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">closeFig</span> <span class="o">=</span> <span class="n">closeFig</span></div>
     <span class="k">def</span> <span class="nf">_typehint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inp</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">PIL</span><span class="o">.</span><span class="n">Image</span><span class="o">.</span><span class="n">Image</span>
 <div class="viewcode-block" id="toPIL.__ror__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.conv.toPIL.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;PIL.Image.Image&quot;</span><span class="p">:</span>
@@ -302,7 +307,16 @@
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">PIL</span><span class="o">.</span><span class="n">Image</span><span class="o">.</span><span class="n">fromarray</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;uint8&quot;</span><span class="p">))</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">mpl</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">Figure</span><span class="p">):</span>
             <span class="n">canvas</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">canvas</span><span class="p">;</span> <span class="n">canvas</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
-            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">PIL</span><span class="o">.</span><span class="n">Image</span><span class="o">.</span><span class="n">frombytes</span><span class="p">(</span><span class="s1">&#39;RGB&#39;</span><span class="p">,</span> <span class="n">canvas</span><span class="o">.</span><span class="n">get_width_height</span><span class="p">(),</span> <span class="n">canvas</span><span class="o">.</span><span class="n">tostring_rgb</span><span class="p">())</span>
+            <span class="n">img</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">PIL</span><span class="o">.</span><span class="n">Image</span><span class="o">.</span><span class="n">frombytes</span><span class="p">(</span><span class="s1">&#39;RGB&#39;</span><span class="p">,</span> <span class="n">canvas</span><span class="o">.</span><span class="n">get_width_height</span><span class="p">(),</span> <span class="n">canvas</span><span class="o">.</span><span class="n">tostring_rgb</span><span class="p">())</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">closeFig</span><span class="p">:</span> <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">img</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">aS</span><span class="p">(</span><span class="n">cropToContentPIL</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">graphviz</span><span class="o">.</span><span class="n">dot</span><span class="o">.</span><span class="n">Digraph</span><span class="p">):</span>
+            <span class="kn">import</span> <span class="nn">tempfile</span><span class="p">;</span> <span class="n">a</span> <span class="o">=</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">NamedTemporaryFile</span><span class="p">()</span>
+            <span class="n">path</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;jpeg&quot;</span><span class="p">);</span>
+            <span class="n">fn</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">a</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">.jpeg&quot;</span><span class="p">;</span> <span class="n">im</span> <span class="o">=</span> <span class="n">fn</span> <span class="o">|</span> <span class="n">toImg</span><span class="p">()</span>
+            <span class="k">try</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span>
+            <span class="k">except</span><span class="p">:</span> <span class="k">pass</span>
+            <span class="k">return</span> <span class="n">im</span>
         <span class="k">if</span> <span class="n">hasRdkit</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">rdkit</span><span class="o">.</span><span class="n">Chem</span><span class="o">.</span><span class="n">rdchem</span><span class="o">.</span><span class="n">Mol</span><span class="p">):</span>
             <span class="n">sz</span> <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">chem</span><span class="o">.</span><span class="n">imgSize</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__ror__</span><span class="p">(</span><span class="n">rdkit</span><span class="o">.</span><span class="n">Chem</span><span class="o">.</span><span class="n">Draw</span><span class="o">.</span><span class="n">MolsToGridImage</span><span class="p">([</span><span class="n">path</span><span class="p">],</span> <span class="n">subImgSize</span><span class="o">=</span><span class="p">[</span><span class="n">sz</span><span class="p">,</span> <span class="n">sz</span><span class="p">])</span><span class="o">.</span><span class="n">data</span><span class="p">)</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">aS</span><span class="p">(</span><span class="n">cropToContentPIL</span><span class="p">)</span>
@@ -318,7 +332,7 @@
 <span class="n">toImg</span> <span class="o">=</span> <span class="n">toPIL</span>
 <div class="viewcode-block" id="toRgb"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.conv.toRgb">[docs]</a><span class="k">class</span> <span class="nc">toRgb</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
 <div class="viewcode-block" id="toRgb.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.conv.toRgb.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Converts greyscale/rgb PIL image to rgb image.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Converts greyscale/rgb PIL image to rgb image.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">    # reads image file and converts it to rgb</span>
@@ -330,7 +344,7 @@
         <span class="n">rgbI</span><span class="o">.</span><span class="n">paste</span><span class="p">(</span><span class="n">i</span><span class="p">);</span> <span class="k">return</span> <span class="n">rgbI</span></div></div>
 <div class="viewcode-block" id="toRgba"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.conv.toRgba">[docs]</a><span class="k">class</span> <span class="nc">toRgba</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
 <div class="viewcode-block" id="toRgba.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.conv.toRgba.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Converts random PIL image to rgba image.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Converts random PIL image to rgba image.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">    # reads image file and converts it to rgba</span>
@@ -342,7 +356,7 @@
         <span class="n">rgbI</span><span class="o">.</span><span class="n">paste</span><span class="p">(</span><span class="n">i</span><span class="p">);</span> <span class="k">return</span> <span class="n">rgbI</span></div></div>
 <div class="viewcode-block" id="toGray"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.conv.toGray">[docs]</a><span class="k">class</span> <span class="nc">toGray</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
 <div class="viewcode-block" id="toGray.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.conv.toGray.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Converts random PIL image to a grayscale image.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Converts random PIL image to a grayscale image.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">    # reads image file and converts it to rgba</span>
@@ -352,14 +366,14 @@
 <div class="viewcode-block" id="toGray.__ror__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.conv.toGray.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">PIL</span><span class="o">.</span><span class="n">ImageOps</span><span class="o">.</span><span class="n">grayscale</span><span class="p">(</span><span class="n">i</span><span class="p">)</span></div></div>
 <div class="viewcode-block" id="toDict"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.conv.toDict">[docs]</a><span class="k">class</span> <span class="nc">toDict</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
-<div class="viewcode-block" id="toDict.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.conv.toDict.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rows</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Converts 2 Iterators, 1 key, 1 value into a dictionary.</span>
+<div class="viewcode-block" id="toDict.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.conv.toDict.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rows</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Converts 2 Iterators, 1 key, 1 value into a dictionary.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">    # returns {1: 3, 2: 4}</span>
-<span class="sd">    [[1, 2], [3, 4]] | toDict()</span>
+<span class="sd">    [[1, 3], [2, 4]] | toDict()</span>
 <span class="sd">    # returns {1: 3, 2: 4}</span>
-<span class="sd">    [[1, 3], [2, 4]] | toDict(True)</span>
+<span class="sd">    [[1, 2], [3, 4]] | toDict(False)</span>
 
 <span class="sd">:params rows: if True, reads input in row by row, else reads</span>
 <span class="sd">    in list of columns&quot;&quot;&quot;</span>
@@ -374,7 +388,7 @@
     <span class="k">except</span><span class="p">:</span> <span class="k">return</span> <span class="kc">None</span>
 <div class="viewcode-block" id="toFloat"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.conv.toFloat">[docs]</a><span class="k">class</span> <span class="nc">toFloat</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
 <div class="viewcode-block" id="toFloat.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.conv.toFloat.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">columns</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Converts every row into a float. Example::</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Converts every row into a float. Example::</span>
 
 <span class="sd">    # returns [1, 3, -2.3]</span>
 <span class="sd">    [&quot;1&quot;, &quot;3&quot;, &quot;-2.3&quot;] | toFloat() | deref()</span>
@@ -414,7 +428,7 @@
     <span class="k">except</span><span class="p">:</span> <span class="k">return</span> <span class="kc">None</span>
 <div class="viewcode-block" id="toInt"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.conv.toInt">[docs]</a><span class="k">class</span> <span class="nc">toInt</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
 <div class="viewcode-block" id="toInt.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.conv.toInt.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">columns</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Converts every row into an integer. Example::</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Converts every row into an integer. Example::</span>
 
 <span class="sd">    # returns [1, 3, -2]</span>
 <span class="sd">    [&quot;1&quot;, &quot;3&quot;, &quot;-2.3&quot;] | toInt() | deref()</span>
@@ -437,22 +451,25 @@
             <span class="k">return</span> <span class="n">it</span> <span class="o">|</span> <span class="n">_toop</span><span class="p">(</span><span class="n">_toInt</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">mode</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span> <span class="k">return</span> <span class="n">it</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">init</span><span class="o">.</span><span class="n">serial</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">_toop</span><span class="p">(</span><span class="n">_toInt</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">mode</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">columns</span><span class="p">))</span></div></div>
 <div class="viewcode-block" id="toBytes"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.conv.toBytes">[docs]</a><span class="k">class</span> <span class="nc">toBytes</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
-<div class="viewcode-block" id="toBytes.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.conv.toBytes.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Converts several object types to bytes.</span>
+<div class="viewcode-block" id="toBytes.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.conv.toBytes.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">imgType</span><span class="o">=</span><span class="s2">&quot;JPEG&quot;</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Converts several object types to bytes.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">    # converts string to bytes</span>
 <span class="sd">    &quot;abc&quot; | toBytes()</span>
 <span class="sd">    # converts image to base64 bytes</span>
-<span class="sd">    torch.randn(200, 100) | toImg() | toBytes()&quot;&quot;&quot;</span>
-        <span class="k">pass</span></div>
+<span class="sd">    torch.randn(200, 100) | toImg() | toBytes()</span>
+
+<span class="sd">:param imgType: if input is an image then this is the image type. Can</span>
+<span class="sd">    change to &quot;PNG&quot; or sth like that&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">imgType</span> <span class="o">=</span> <span class="n">imgType</span></div>
 <div class="viewcode-block" id="toBytes.__ror__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.conv.toBytes.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">):</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">it</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span> <span class="k">return</span> <span class="n">it</span><span class="o">.</span><span class="n">encode</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">hasPIL</span><span class="p">:</span>
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">it</span><span class="p">,</span> <span class="n">PIL</span><span class="o">.</span><span class="n">Image</span><span class="o">.</span><span class="n">Image</span><span class="p">):</span>
                 <span class="n">it</span> <span class="o">=</span> <span class="n">it</span> <span class="o">|</span> <span class="n">toRgb</span><span class="p">()</span>
                 <span class="n">buffered</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">()</span>
-                <span class="n">it</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">buffered</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;JPEG&quot;</span><span class="p">)</span>
+                <span class="n">it</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">buffered</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">imgType</span><span class="p">)</span>
                 <span class="k">return</span> <span class="n">buffered</span><span class="o">.</span><span class="n">getvalue</span><span class="p">()</span>
         <span class="k">return</span> <span class="bp">NotImplemented</span></div></div>
 <span class="k">try</span><span class="p">:</span>
@@ -463,13 +480,13 @@
     <span class="n">IPythonConsole</span><span class="o">.</span><span class="n">drawOptions</span><span class="o">.</span><span class="n">addAtomIndices</span> <span class="o">=</span> <span class="kc">True</span>
     <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="o">*</span><span class="n">__all__</span><span class="p">,</span> <span class="s2">&quot;toMol&quot;</span><span class="p">,</span> <span class="s2">&quot;toSmiles&quot;</span><span class="p">]</span>
 <div class="viewcode-block" id="toMol"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.conv.toMol">[docs]</a>    <span class="k">def</span> <span class="nf">toMol</span><span class="p">():</span>
-        <span class="sd">&quot;&quot;&quot;Smiles to molecule.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Smiles to molecule.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">    &quot;c1ccc(C)cc1&quot; | toMol()&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">cli</span><span class="o">.</span><span class="n">aS</span><span class="p">(</span><span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">)</span></div>
 <div class="viewcode-block" id="toSmiles"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.conv.toSmiles">[docs]</a>    <span class="k">def</span> <span class="nf">toSmiles</span><span class="p">():</span>
-        <span class="sd">&quot;&quot;&quot;Molecule to smiles.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Molecule to smiles.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">    &quot;c1ccc(C)cc1&quot; | toMol() | toSmiles()&quot;&quot;&quot;</span>
@@ -484,7 +501,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, Quang Ho.</p>
+    <p>&#169; Copyright 2023, Quang Ho.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

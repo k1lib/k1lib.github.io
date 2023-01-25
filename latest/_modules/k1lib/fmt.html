@@ -52,6 +52,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../imports.html">k1lib.imports module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../mo.html">k1lib.mo module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../knn.html">k1lib.knn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../p5.html">k1lib.p5 module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../schedule.html">k1lib.schedule module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../selector.html">k1lib.selector module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../serve.html">k1lib.serve module</a></li>
@@ -109,11 +110,11 @@
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">unit</span> <span class="ow">in</span> <span class="n">units</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
         <span class="n">upperBound</span> <span class="o">=</span> <span class="mi">1000</span> <span class="o">*</span> <span class="mi">1000</span><span class="o">**</span><span class="n">i</span>
         <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">upperBound</span><span class="p">:</span>
-            <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="mf">1e3</span><span class="o">*</span><span class="n">x</span><span class="o">/</span><span class="n">upperBound</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="si">}{</span><span class="n">c</span><span class="si">}{</span><span class="n">unit</span><span class="si">}</span><span class="s2">&quot;</span>
-    <span class="k">return</span> <span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="mf">1e3</span><span class="o">*</span><span class="n">x</span><span class="o">/</span><span class="n">upperBound</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="si">}{</span><span class="n">c</span><span class="si">}{</span><span class="n">unit</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span></div>
+            <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="mf">1e3</span><span class="o">*</span><span class="n">x</span><span class="o">/</span><span class="n">upperBound</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="si">}{</span><span class="n">c</span><span class="si">}{</span><span class="n">unit</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="k">return</span> <span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="mf">1e3</span><span class="o">*</span><span class="n">x</span><span class="o">/</span><span class="n">upperBound</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="si">}{</span><span class="n">c</span><span class="si">}{</span><span class="n">unit</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span></div>
 <span class="n">sizes</span> <span class="o">=</span> <span class="p">{</span><span class="n">i</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s2">B&quot;</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">metricPrefixes</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">};</span> <span class="c1">#sizes[0] = &quot;bytes&quot;</span>
 <div class="viewcode-block" id="size"><a class="viewcode-back" href="../../fmt.html#k1lib.fmt.size">[docs]</a><span class="k">def</span> <span class="nf">size</span><span class="p">(</span><span class="n">_bytes</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Formats disk size.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Formats disk size.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">    # returns &quot;50.0 bytes&quot;</span>
@@ -123,7 +124,7 @@
 <span class="sd">&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">generic</span><span class="p">(</span><span class="n">_bytes</span><span class="p">,</span> <span class="n">sizes</span><span class="p">)</span></div>
 <div class="viewcode-block" id="sizeOf"><a class="viewcode-back" href="../../fmt.html#k1lib.fmt.sizeOf">[docs]</a><span class="k">def</span> <span class="nf">sizeOf</span><span class="p">(</span><span class="n">l</span><span class="p">:</span><span class="n">Iterator</span><span class="p">[</span><span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Iterator</span><span class="p">[</span><span class="nb">float</span><span class="p">]]:</span>
-    <span class="sd">&quot;&quot;&quot;Figures out appropriate scale, scales back the Iterator, and return both.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Figures out appropriate scale, scales back the Iterator, and return both.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">    x = torch.abs(torch.randn(2)) * 1e4 + 1e5</span>
@@ -137,7 +138,7 @@
     <span class="k">return</span> <span class="n">sizes</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">l</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">*</span> <span class="n">coef</span><span class="p">)</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">deref</span><span class="p">()</span></div>
 <span class="n">computations</span> <span class="o">=</span> <span class="p">{</span><span class="n">i</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s2">FLOPs&quot;</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">metricPrefixes</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">}</span>
 <div class="viewcode-block" id="comp"><a class="viewcode-back" href="../../fmt.html#k1lib.fmt.comp">[docs]</a><span class="k">def</span> <span class="nf">comp</span><span class="p">(</span><span class="n">flop</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Formats computation amount.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Formats computation amount.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">    # returns &quot;50.0 FLOPs&quot;</span>
@@ -148,7 +149,7 @@
     <span class="k">return</span> <span class="n">generic</span><span class="p">(</span><span class="n">flop</span><span class="p">,</span> <span class="n">computations</span><span class="p">)</span></div>
 <span class="n">computationRates</span> <span class="o">=</span> <span class="p">{</span><span class="n">i</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s2">FLOPS&quot;</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">metricPrefixes</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">}</span>
 <div class="viewcode-block" id="compRate"><a class="viewcode-back" href="../../fmt.html#k1lib.fmt.compRate">[docs]</a><span class="k">def</span> <span class="nf">compRate</span><span class="p">(</span><span class="n">flops</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Formats computation rate.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Formats computation rate.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">    # returns &quot;50.0 FLOPS&quot;</span>
@@ -159,7 +160,7 @@
     <span class="k">return</span> <span class="n">generic</span><span class="p">(</span><span class="n">flops</span><span class="p">,</span> <span class="n">computationRates</span><span class="p">)</span></div>
 <span class="n">times</span> <span class="o">=</span> <span class="p">{</span><span class="n">i</span><span class="p">:</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s2">s&quot;</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">metricPrefixes</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">}</span>
 <div class="viewcode-block" id="time"><a class="viewcode-back" href="../../fmt.html#k1lib.fmt.time">[docs]</a><span class="k">def</span> <span class="nf">time</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Formats small times.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Formats small times.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">    fmt.time(50) # returns &quot;50.0 s&quot;</span>
@@ -170,7 +171,7 @@
     <span class="k">return</span> <span class="n">generic</span><span class="p">(</span><span class="n">seconds</span><span class="p">,</span> <span class="n">times</span><span class="p">)</span></div>
 <span class="n">items</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s2">&quot;M&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span> <span class="s2">&quot;T&quot;</span><span class="p">}</span>
 <div class="viewcode-block" id="item"><a class="viewcode-back" href="../../fmt.html#k1lib.fmt.item">[docs]</a><span class="k">def</span> <span class="nf">item</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Formats generic item.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Formats generic item.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">    # returns &quot;50.0&quot;</span>
@@ -180,7 +181,7 @@
 <span class="sd">&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">generic</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">items</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span></div>
 <div class="viewcode-block" id="throughput"><a class="viewcode-back" href="../../fmt.html#k1lib.fmt.throughput">[docs]</a><span class="k">def</span> <span class="nf">throughput</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Formats item throughput.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Formats item throughput.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">    # returns &quot;3.16/year&quot;</span>
@@ -206,7 +207,7 @@
 <span class="n">_esc</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\033</span><span class="s1">[&#39;</span>
 <span class="n">_end</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">_esc</span><span class="si">}</span><span class="s1">0m&#39;</span>
 <div class="viewcode-block" id="txt"><a class="viewcode-back" href="../../fmt.html#k1lib.fmt.txt">[docs]</a><span class="k">class</span> <span class="nc">txt</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Text formatting.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Text formatting.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">    # will print out red text</span>
@@ -244,7 +245,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, Quang Ho.</p>
+    <p>&#169; Copyright 2023, Quang Ho.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

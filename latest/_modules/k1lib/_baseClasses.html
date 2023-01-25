@@ -52,6 +52,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../imports.html">k1lib.imports module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../mo.html">k1lib.mo module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../knn.html">k1lib.knn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../p5.html">k1lib.p5 module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../schedule.html">k1lib.schedule module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../selector.html">k1lib.selector module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../serve.html">k1lib.serve module</a></li>
@@ -102,7 +103,7 @@
            <span class="s2">&quot;RunOnce&quot;</span><span class="p">,</span> <span class="s2">&quot;MaxDepth&quot;</span><span class="p">,</span> <span class="s2">&quot;MovingAvg&quot;</span><span class="p">,</span> <span class="s2">&quot;Absorber&quot;</span><span class="p">,</span>
            <span class="s2">&quot;Settings&quot;</span><span class="p">,</span> <span class="s2">&quot;settings&quot;</span><span class="p">,</span> <span class="s2">&quot;_settings&quot;</span><span class="p">,</span> <span class="s2">&quot;UValue&quot;</span><span class="p">,</span> <span class="s2">&quot;ConstantPad&quot;</span><span class="p">]</span>
 <div class="viewcode-block" id="Object"><a class="viewcode-back" href="../../base.html#k1lib.Object">[docs]</a><span class="k">class</span> <span class="nc">Object</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Convenience class that acts like :class:`~collections.defaultdict`. You</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convenience class that acts like :class:`~collections.defaultdict`. You</span>
 <span class="sd">can use it like a normal object::</span>
 
 <span class="sd">    a = k1lib.Object()</span>
@@ -140,17 +141,17 @@
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="n">_defaultValueGenerator</span> <span class="o">=</span> <span class="kc">None</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">repr</span> <span class="o">=</span> <span class="kc">None</span>
 <div class="viewcode-block" id="Object.fromDict"><a class="viewcode-back" href="../../base.html#k1lib.Object.fromDict">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">fromDict</span><span class="p">(</span><span class="n">_dict</span><span class="p">:</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]):</span>
-        <span class="sd">&quot;&quot;&quot;Creates an object with attributes from a dictionary&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Creates an object with attributes from a dictionary&quot;&quot;&quot;</span>
         <span class="n">answer</span> <span class="o">=</span> <span class="n">Object</span><span class="p">();</span> <span class="n">answer</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">_dict</span><span class="p">);</span> <span class="k">return</span> <span class="n">answer</span></div>
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">state</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Essentially ``__dict__``, but only outputs the fields you</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Essentially ``__dict__``, but only outputs the fields you</span>
 <span class="sd">defined. If your framework intentionally set some attributes, those</span>
 <span class="sd">will be reported too, so beware&quot;&quot;&quot;</span>
         <span class="n">answer</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">);</span> <span class="k">del</span> <span class="n">answer</span><span class="p">[</span><span class="s2">&quot;_defaultValueGenerator&quot;</span><span class="p">]</span>
         <span class="k">del</span> <span class="n">answer</span><span class="p">[</span><span class="s2">&quot;repr&quot;</span><span class="p">];</span> <span class="k">return</span> <span class="n">answer</span>
 <div class="viewcode-block" id="Object.withAutoDeclare"><a class="viewcode-back" href="../../base.html#k1lib.Object.withAutoDeclare">[docs]</a>    <span class="k">def</span> <span class="nf">withAutoDeclare</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">defaultValueGenerator</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Sets this Object up so that if a field doesn&#39;t</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets this Object up so that if a field doesn&#39;t</span>
 <span class="sd">        exist, it will automatically create it with a</span>
 <span class="sd">        default value.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_defaultValueGenerator</span> <span class="o">=</span> <span class="n">defaultValueGenerator</span><span class="p">;</span> <span class="k">return</span> <span class="bp">self</span></div>
@@ -167,7 +168,7 @@
         <span class="k">raise</span> <span class="ne">AttributeError</span>
     <span class="k">def</span> <span class="fm">__delitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span> <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
 <div class="viewcode-block" id="Object.withRepr"><a class="viewcode-back" href="../../base.html#k1lib.Object.withRepr">[docs]</a>    <span class="k">def</span> <span class="nf">withRepr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_repr</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Specify output of ``__repr__()``. Legacy code. You can just</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Specify output of ``__repr__()``. Legacy code. You can just</span>
 <span class="sd">monkey patch it instead.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">repr</span> <span class="o">=</span> <span class="n">_repr</span><span class="p">;</span> <span class="k">return</span> <span class="bp">self</span></div>
     <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -175,7 +176,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">repr</span> <span class="ow">or</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="si">}</span><span class="s2">, with attrs:</span><span class="se">\n</span><span class="si">{</span><span class="n">_dict</span><span class="si">}</span><span class="s2">&quot;</span></div>
 <span class="n">ninf</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s2">&quot;-inf&quot;</span><span class="p">);</span> <span class="n">inf</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s2">&quot;inf&quot;</span><span class="p">)</span>
 <div class="viewcode-block" id="Range"><a class="viewcode-back" href="../../base.html#k1lib.Range">[docs]</a><span class="k">class</span> <span class="nc">Range</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;A range of numbers. It&#39;s just 2 numbers really: start and stop</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A range of numbers. It&#39;s just 2 numbers really: start and stop</span>
 
 <span class="sd">This is essentially a convenience class to provide a nice, clean</span>
 <span class="sd">abstraction and to eliminate errors. You can transform values::</span>
@@ -189,7 +190,7 @@
 <span class="sd">    (Range(10, 20) * 2 + 3) == Range(23, 43) # returns True</span>
 <span class="sd">    Range(10, 20) == ~Range(20, 10) # returns True&quot;&quot;&quot;</span>
 <div class="viewcode-block" id="Range.__init__"><a class="viewcode-back" href="../../base.html#k1lib.Range.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Creates a new Range.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Creates a new Range.</span>
 
 <span class="sd">There are different ``__init__`` functions for many situations:</span>
 
@@ -213,7 +214,7 @@
         <span class="k">else</span><span class="p">:</span> <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Don&#39;t understand </span><span class="si">{</span><span class="n">start</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">stop</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">delta</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">stop</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">start</span></div>
 <div class="viewcode-block" id="Range.__getitem__"><a class="viewcode-back" href="../../base.html#k1lib.Range.__getitem__">[docs]</a>    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;0 for start, 1 for stop</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;0 for start, 1 for stop</span>
 
 <span class="sd">You can also pass in a :class:`slice` object, in which case, a range subset</span>
 <span class="sd">will be returned. Code kinda looks like this::</span>
@@ -225,7 +226,7 @@
             <span class="k">return</span> <span class="n">Range</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">stop</span><span class="p">)[</span><span class="n">index</span><span class="p">])</span>
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Can&#39;t get index </span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s2"> of range [</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">stop</span><span class="si">}</span><span class="s2">]&quot;</span><span class="p">)</span></div>
 <div class="viewcode-block" id="Range.fixOrder"><a class="viewcode-back" href="../../base.html#k1lib.Range.fixOrder">[docs]</a>    <span class="k">def</span> <span class="nf">fixOrder</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Range&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;If start greater than stop, switch the 2, else do nothing&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;If start greater than stop, switch the 2, else do nothing&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">start</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">stop</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">stop</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">stop</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">start</span>
         <span class="k">return</span> <span class="bp">self</span></div>
@@ -238,10 +239,10 @@
         <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Doesn&#39;t understand </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">;</span> <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">stop</span>
 <div class="viewcode-block" id="Range.intIter"><a class="viewcode-back" href="../../base.html#k1lib.Range.intIter">[docs]</a>    <span class="k">def</span> <span class="nf">intIter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">step</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;Returns integers within this Range&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns integers within this Range&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stop</span><span class="p">),</span> <span class="n">step</span><span class="p">)</span></div>
 <div class="viewcode-block" id="Range.toUnit"><a class="viewcode-back" href="../../base.html#k1lib.Range.toUnit">[docs]</a>    <span class="k">def</span> <span class="nf">toUnit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Converts x from current range to [0, 1] range. Example::</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Converts x from current range to [0, 1] range. Example::</span>
 
 <span class="sd">    r = Range(2, 10)</span>
 <span class="sd">    r.toUnit(5) # will return 0.375, as that is (5-2)/(10-2)</span>
@@ -262,7 +263,7 @@
             <span class="k">return</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">delta</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_common</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="s2">&quot;nan&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">delta</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">delta</span><span class="p">)</span></div>
 <div class="viewcode-block" id="Range.fromUnit"><a class="viewcode-back" href="../../base.html#k1lib.Range.fromUnit">[docs]</a>    <span class="k">def</span> <span class="nf">fromUnit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Converts x from [0, 1] range to this range. Example::</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Converts x from [0, 1] range to this range. Example::</span>
 
 <span class="sd">    r = Range(0, 10)</span>
 <span class="sd">    r.fromUnit(0.3) # will return 3</span>
@@ -270,7 +271,7 @@
 <span class="sd">x can be a lot of things, see :meth:`toUnit` for more&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_common</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">delta</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">)</span></div>
 <div class="viewcode-block" id="Range.toRange"><a class="viewcode-back" href="../../base.html#k1lib.Range.toRange">[docs]</a>    <span class="k">def</span> <span class="nf">toRange</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_range</span><span class="p">:</span><span class="s2">&quot;Range&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Converts x from current range to another range. Example::</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Converts x from current range to another range. Example::</span>
 
 <span class="sd">    r = Range(0, 10)</span>
 <span class="sd">    r.toRange(Range(0, 100), 6) # will return 60</span>
@@ -278,21 +279,21 @@
 <span class="sd">x can be a lot of things, see :meth:`toUnit` for more.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_common</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">Range</span><span class="p">(</span><span class="n">_range</span><span class="p">)</span><span class="o">.</span><span class="n">fromUnit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">toUnit</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span></div>
 <div class="viewcode-block" id="Range.fromRange"><a class="viewcode-back" href="../../base.html#k1lib.Range.fromRange">[docs]</a>    <span class="k">def</span> <span class="nf">fromRange</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_range</span><span class="p">:</span><span class="s2">&quot;Range&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Reverse of :meth:`toRange`, effectively.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Reverse of :meth:`toRange`, effectively.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">_range</span><span class="o">.</span><span class="n">toRange</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span></div>
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">range_</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Returns a :class:`range` object with start and stop values</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a :class:`range` object with start and stop values</span>
 <span class="sd">rounded off&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">range</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="o">+</span><span class="mf">0.001</span><span class="p">),</span> <span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stop</span><span class="o">+</span><span class="mf">0.001</span><span class="p">))</span>
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">slice_</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Returns a :class:`slice` object with start and stop values</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a :class:`slice` object with start and stop values</span>
 <span class="sd">rounded off&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">slice</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="o">+</span><span class="mf">0.001</span><span class="p">),</span> <span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stop</span><span class="o">+</span><span class="mf">0.001</span><span class="p">))</span>
 <div class="viewcode-block" id="Range.proportionalSlice"><a class="viewcode-back" href="../../base.html#k1lib.Range.proportionalSlice">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">proportionalSlice</span><span class="p">(</span><span class="n">r1</span><span class="p">,</span> <span class="n">r2</span><span class="p">,</span> <span class="n">r1Slice</span><span class="p">:</span><span class="nb">slice</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="s2">&quot;Range&quot;</span><span class="p">,</span> <span class="s2">&quot;Range&quot;</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;Slices r1 and r2 proportionally. Best to explain using an</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Slices r1 and r2 proportionally. Best to explain using an</span>
 <span class="sd">example. Let&#39;s say you have 2 arrays created from a time-dependent</span>
 <span class="sd">procedure like this::</span>
 
@@ -321,7 +322,7 @@
         <span class="n">ar1</span> <span class="o">=</span> <span class="n">r1</span><span class="p">[</span><span class="n">r1Slice</span><span class="p">];</span> <span class="n">ar2</span> <span class="o">=</span> <span class="n">r1</span><span class="o">.</span><span class="n">toRange</span><span class="p">(</span><span class="n">r2</span><span class="p">,</span> <span class="n">ar1</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">ar1</span><span class="p">,</span> <span class="n">ar2</span></div>
 <div class="viewcode-block" id="Range.bound"><a class="viewcode-back" href="../../base.html#k1lib.Range.bound">[docs]</a>    <span class="k">def</span> <span class="nf">bound</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rs</span><span class="p">:</span><span class="n">Union</span><span class="p">[</span><span class="nb">range</span><span class="p">,</span> <span class="nb">slice</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="nb">range</span><span class="p">,</span> <span class="nb">slice</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;If input range|slice&#39;s stop and start is missing, then use this</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;If input range|slice&#39;s stop and start is missing, then use this</span>
 <span class="sd">range&#39;s start and stop instead.&quot;&quot;&quot;</span>
         <span class="n">start</span> <span class="o">=</span> <span class="n">rs</span><span class="o">.</span><span class="n">start</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">start</span>
         <span class="n">stop</span> <span class="o">=</span> <span class="n">rs</span><span class="o">.</span><span class="n">stop</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">stop</span>
@@ -353,7 +354,7 @@
 
 <span class="s2">Note: for conversion methods, you can pass in&quot;&quot;&quot;</span></div>
 <span class="k">def</span> <span class="nf">yieldLowest</span><span class="p">(</span><span class="n">r1s</span><span class="p">:</span><span class="n">Iterator</span><span class="p">[</span><span class="n">Range</span><span class="p">],</span> <span class="n">r2s</span><span class="p">:</span><span class="n">Iterator</span><span class="p">[</span><span class="n">Range</span><span class="p">]):</span>
-    <span class="sd">&quot;&quot;&quot;Given 2 :class:`Range` generators with lengths a and b, yield every</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Given 2 :class:`Range` generators with lengths a and b, yield every</span>
 <span class="sd">object (a + b) so that :class:`Range`s with smaller start point gets yielded</span>
 <span class="sd">first. Assumes that each generator:</span>
 
@@ -379,7 +380,7 @@
             <span class="n">r2</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">r2s</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">r2</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="k">yield</span> <span class="n">r1</span><span class="p">;</span> <span class="k">yield from</span> <span class="n">r1s</span><span class="p">;</span> <span class="k">return</span>
 <span class="k">def</span> <span class="nf">join</span><span class="p">(</span><span class="n">r1s</span><span class="p">:</span><span class="n">Iterator</span><span class="p">[</span><span class="n">Range</span><span class="p">],</span> <span class="n">r2s</span><span class="p">:</span><span class="n">Iterator</span><span class="p">[</span><span class="n">Range</span><span class="p">]):</span>
-    <span class="sd">&quot;&quot;&quot;Joins 2 :class:`Range` generators, so that overlaps gets merged</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Joins 2 :class:`Range` generators, so that overlaps gets merged</span>
 <span class="sd">together.</span>
 
 <span class="sd">.. warning::</span>
@@ -395,7 +396,7 @@
             <span class="n">r</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">copy</span><span class="p">();</span> <span class="n">r</span><span class="o">.</span><span class="n">stop</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">stop</span><span class="p">,</span> <span class="n">nr</span><span class="o">.</span><span class="n">stop</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span> <span class="k">yield</span> <span class="n">r</span><span class="p">;</span> <span class="n">r</span> <span class="o">=</span> <span class="n">nr</span>
 <span class="k">def</span> <span class="nf">intersect</span><span class="p">(</span><span class="n">r1s</span><span class="p">:</span><span class="n">Iterator</span><span class="p">[</span><span class="n">Range</span><span class="p">],</span> <span class="n">r2s</span><span class="p">:</span><span class="n">Iterator</span><span class="p">[</span><span class="n">Range</span><span class="p">]):</span>
-    <span class="sd">&quot;&quot;&quot;Intersects 2 :class:`Range` generators, so that it only</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Intersects 2 :class:`Range` generators, so that it only</span>
 <span class="sd">returns overlaping regions&quot;&quot;&quot;</span>
     <span class="n">r1s</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">r1s</span><span class="p">);</span> <span class="n">r2s</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">r2s</span><span class="p">)</span>
     <span class="n">r1</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">r1s</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
@@ -414,7 +415,7 @@
                 <span class="n">r1</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">r1s</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
                 <span class="k">if</span> <span class="n">r1</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="k">return</span>
 <span class="k">def</span> <span class="nf">neg</span><span class="p">(</span><span class="n">rs</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="n">Range</span><span class="p">]):</span>
-    <span class="sd">&quot;&quot;&quot;Returns R - rs, where R is the set of real numbers.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns R - rs, where R is the set of real numbers.&quot;&quot;&quot;</span>
     <span class="n">rs</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">rs</span><span class="p">);</span> <span class="n">r</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">rs</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">r</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="k">yield</span> <span class="n">Range</span><span class="p">(</span><span class="n">ninf</span><span class="p">,</span> <span class="n">inf</span><span class="p">);</span> <span class="k">return</span>
     <span class="k">if</span> <span class="n">ninf</span> <span class="o">&lt;</span> <span class="n">r</span><span class="o">.</span><span class="n">start</span><span class="p">:</span> <span class="k">yield</span> <span class="n">Range</span><span class="p">(</span><span class="n">ninf</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">start</span><span class="p">)</span> <span class="c1"># check -inf case</span>
@@ -427,7 +428,7 @@
         <span class="k">yield</span> <span class="n">Range</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">start</span><span class="p">)</span>
 <div class="viewcode-block" id="Domain"><a class="viewcode-back" href="../../base.html#k1lib.Domain">[docs]</a><span class="k">class</span> <span class="nc">Domain</span><span class="p">:</span>
 <div class="viewcode-block" id="Domain.__init__"><a class="viewcode-back" href="../../base.html#k1lib.Domain.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">ranges</span><span class="p">,</span> <span class="n">dontCheck</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Creates a new domain.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Creates a new domain.</span>
 
 <span class="sd">:param ranges: each element is a :class:`Range`, although any format will be fine as this selects for that</span>
 <span class="sd">:param dontCheck: don&#39;t sanitize inputs, intended to boost perf internally only</span>
@@ -457,12 +458,12 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">ranges</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">join</span><span class="p">(</span><span class="n">ranges</span><span class="p">,</span> <span class="p">[]))</span></div>
 <div class="viewcode-block" id="Domain.fromInts"><a class="viewcode-back" href="../../base.html#k1lib.Domain.fromInts">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">fromInts</span><span class="p">(</span><span class="o">*</span><span class="n">ints</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]):</span>
-        <span class="sd">&quot;&quot;&quot;Returns a new :class:`Domain` which has ranges [i, i+1] for each</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a new :class:`Domain` which has ranges [i, i+1] for each</span>
 <span class="sd">int given.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">Domain</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">Range</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">ints</span><span class="p">))</span></div>
 <div class="viewcode-block" id="Domain.copy"><a class="viewcode-back" href="../../base.html#k1lib.Domain.copy">[docs]</a>    <span class="k">def</span> <span class="nf">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="n">Domain</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">ranges</span><span class="p">))</span></div>
 <div class="viewcode-block" id="Domain.intIter"><a class="viewcode-back" href="../../base.html#k1lib.Domain.intIter">[docs]</a>    <span class="k">def</span> <span class="nf">intIter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">step</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">start</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Yields ints in all ranges of this domain. If first range&#39;s domain</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Yields ints in all ranges of this domain. If first range&#39;s domain</span>
 <span class="sd">is :math:`(-\inf, a)`, then starts at the specified integer&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ranges</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="k">return</span>
         <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">ranges</span><span class="p">:</span>
@@ -473,7 +474,7 @@
     <span class="k">def</span> <span class="fm">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">domain</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span> <span class="o">+</span> <span class="p">(</span><span class="o">-</span><span class="n">domain</span><span class="p">)</span>
     <span class="k">def</span> <span class="fm">__and__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">domain</span><span class="p">):</span> <span class="k">return</span> <span class="n">Domain</span><span class="p">(</span><span class="o">*</span><span class="n">intersect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ranges</span><span class="p">,</span> <span class="n">domain</span><span class="o">.</span><span class="n">ranges</span><span class="p">),</span> <span class="n">dontCheck</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">domain</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">ranges</span> <span class="o">==</span> <span class="n">domain</span><span class="o">.</span><span class="n">ranges</span>
-    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Domain: </span><span class="si">{</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">r</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">ranges</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Domain: </span><span class="si">{</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">r</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">ranges</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
     <span class="k">def</span> <span class="fm">__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span> <span class="k">return</span> <span class="nb">any</span><span class="p">(</span><span class="n">x</span> <span class="ow">in</span> <span class="n">r</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">ranges</span><span class="p">)</span>
     <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">rs</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- </span><span class="si">{</span><span class="n">r</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">ranges</span><span class="p">)</span>
@@ -485,7 +486,7 @@
 <span class="s2">- d1 &amp; d2: intersects 2 domains&quot;&quot;&quot;</span></div>
 <div class="viewcode-block" id="AutoIncrement"><a class="viewcode-back" href="../../base.html#k1lib.AutoIncrement">[docs]</a><span class="k">class</span> <span class="nc">AutoIncrement</span><span class="p">:</span>
 <div class="viewcode-block" id="AutoIncrement.__init__"><a class="viewcode-back" href="../../base.html#k1lib.AutoIncrement.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">initialValue</span><span class="p">:</span><span class="nb">int</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="s2">&quot;inf&quot;</span><span class="p">),</span> <span class="n">prefix</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Creates a new AutoIncrement object. Every time the object is called</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Creates a new AutoIncrement object. Every time the object is called</span>
 <span class="sd">it gets incremented by 1 automatically. Example::</span>
 
 <span class="sd">    a = k1lib.AutoIncrement()</span>
@@ -507,25 +508,25 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">initialValue</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">=</span> <span class="n">n</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">prefix</span> <span class="o">=</span> <span class="n">prefix</span></div>
 <div class="viewcode-block" id="AutoIncrement.random"><a class="viewcode-back" href="../../base.html#k1lib.AutoIncrement.random">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">random</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="s2">&quot;AutoIncrement&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Creates a new AutoIncrement object that has a random integer initial value&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Creates a new AutoIncrement object that has a random integer initial value&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">AutoIncrement</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1e9</span><span class="p">))</span></div>
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">value</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get the value as-is, without auto incrementing it&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the value as-is, without auto incrementing it&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">prefix</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value</span>
         <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">prefix</span><span class="si">}{</span><span class="bp">self</span><span class="o">.</span><span class="n">_value</span><span class="si">}</span><span class="s2">&quot;</span>
     <span class="nd">@value</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">=</span> <span class="n">value</span>
 <div class="viewcode-block" id="AutoIncrement.__call__"><a class="viewcode-back" href="../../base.html#k1lib.AutoIncrement.__call__">[docs]</a>    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Increments internal counter, and return it.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Increments internal counter, and return it.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">+=</span> <span class="mi">1</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span></div></div>
 <div class="viewcode-block" id="Wrapper"><a class="viewcode-back" href="../../base.html#k1lib.Wrapper">[docs]</a><span class="k">class</span> <span class="nc">Wrapper</span><span class="p">:</span>
     <span class="n">value</span><span class="p">:</span><span class="n">Any</span>
-    <span class="sd">&quot;&quot;&quot;Internal value of this :class:`Wrapper`&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Internal value of this :class:`Wrapper`&quot;&quot;&quot;</span>
 <div class="viewcode-block" id="Wrapper.__init__"><a class="viewcode-back" href="../../base.html#k1lib.Wrapper.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Creates a wrapper for some value and get it by calling it.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Creates a wrapper for some value and get it by calling it.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">    a = k1lib.Wrapper(list(range(int(1e7))))</span>
@@ -545,7 +546,7 @@
     <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span></div>
 <div class="viewcode-block" id="Every"><a class="viewcode-back" href="../../base.html#k1lib.Every">[docs]</a><span class="k">class</span> <span class="nc">Every</span><span class="p">:</span>
 <div class="viewcode-block" id="Every.__init__"><a class="viewcode-back" href="../../base.html#k1lib.Every.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Returns True every interval.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns True every interval.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">    e = k1lib.Every(4)</span>
@@ -556,7 +557,7 @@
 <span class="sd">    e() # returns True&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">=</span> <span class="n">n</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">i</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span></div>
 <div class="viewcode-block" id="Every.__call__"><a class="viewcode-back" href="../../base.html#k1lib.Every.__call__">[docs]</a>    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Returns True or False based on internal count.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns True or False based on internal count.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span></div>
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">value</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
@@ -564,7 +565,7 @@
         <span class="k">else</span><span class="p">:</span> <span class="k">return</span> <span class="kc">True</span></div>
 <div class="viewcode-block" id="RunOnce"><a class="viewcode-back" href="../../base.html#k1lib.RunOnce">[docs]</a><span class="k">class</span> <span class="nc">RunOnce</span><span class="p">:</span>
 <div class="viewcode-block" id="RunOnce.__init__"><a class="viewcode-back" href="../../base.html#k1lib.RunOnce.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Returns False first time only.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns False first time only.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">    r = k1lib.RunOnce()</span>
@@ -589,18 +590,18 @@
 <span class="sd">    a.f(4) # returns 7&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="kc">False</span></div>
 <div class="viewcode-block" id="RunOnce.done"><a class="viewcode-back" href="../../base.html#k1lib.RunOnce.done">[docs]</a>    <span class="k">def</span> <span class="nf">done</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Whether this has been called once before.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Whether this has been called once before.&quot;&quot;&quot;</span>
         <span class="n">v</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="k">return</span> <span class="n">v</span></div>
     <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Alias of :meth:`done`.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Alias of :meth:`done`.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">done</span><span class="p">()</span>
 <div class="viewcode-block" id="RunOnce.revert"><a class="viewcode-back" href="../../base.html#k1lib.RunOnce.revert">[docs]</a>    <span class="k">def</span> <span class="nf">revert</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="kc">False</span></div></div>
 <div class="viewcode-block" id="MaxDepth"><a class="viewcode-back" href="../../base.html#k1lib.MaxDepth">[docs]</a><span class="k">class</span> <span class="nc">MaxDepth</span><span class="p">:</span>
 <div class="viewcode-block" id="MaxDepth.__init__"><a class="viewcode-back" href="../../base.html#k1lib.MaxDepth.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">maxDepth</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">depth</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Convenience utility to check for graph max depth.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convenience utility to check for graph max depth.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">    def f(d):</span>
@@ -617,11 +618,11 @@
     <span class="k">def</span> <span class="fm">__bool__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">depth</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">maxDepth</span>
     <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Alias of :meth:`__bool__`.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Alias of :meth:`__bool__`.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
 <div class="viewcode-block" id="MovingAvg"><a class="viewcode-back" href="../../base.html#k1lib.MovingAvg">[docs]</a><span class="k">class</span> <span class="nc">MovingAvg</span><span class="p">:</span>
 <div class="viewcode-block" id="MovingAvg.__init__"><a class="viewcode-back" href="../../base.html#k1lib.MovingAvg.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">initV</span><span class="p">:</span><span class="nb">float</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">debias</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Smoothes out sequential data using momentum.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Smoothes out sequential data using momentum.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">    a = k1lib.MovingAvg(5)</span>
@@ -648,7 +649,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">initV</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">=</span> <span class="n">alpha</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">debias</span> <span class="o">=</span> <span class="n">debias</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">m</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">t</span> <span class="o">=</span> <span class="mi">0</span></div>
     <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Updates the average with a new value&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Updates the average with a new value&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">m</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">m</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">+</span> <span class="n">value</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span><span class="p">)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">debias</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">t</span> <span class="o">+=</span> <span class="mi">1</span>
@@ -709,7 +710,7 @@
 <span class="n">opcodeAuto</span> <span class="o">=</span> <span class="n">AutoIncrement</span><span class="p">(</span><span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;_op_var_&quot;</span><span class="p">)</span>
 <span class="n">compareOps</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;__lt__&quot;</span><span class="p">,</span> <span class="s2">&quot;__le__&quot;</span><span class="p">,</span> <span class="s2">&quot;__eq__&quot;</span><span class="p">,</span> <span class="s2">&quot;__ne__&quot;</span><span class="p">,</span> <span class="s2">&quot;__gt__&quot;</span><span class="p">,</span> <span class="s2">&quot;__ge__&quot;</span><span class="p">}</span>
 <div class="viewcode-block" id="Absorber"><a class="viewcode-back" href="../../base.html#k1lib.Absorber">[docs]</a><span class="k">class</span> <span class="nc">Absorber</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Creates an object that absorbes every operation done on it. Could be</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Creates an object that absorbes every operation done on it. Could be</span>
 <span class="sd">useful in some scenarios::</span>
 
 <span class="sd">    ab = k1lib.Absorber()</span>
@@ -735,7 +736,7 @@
 <span class="sd">For extended code example that utilizes this, check over :class:`k1lib.cli.modifier.op`</span>
 <span class="sd">source code.&quot;&quot;&quot;</span>
 <div class="viewcode-block" id="Absorber.__init__"><a class="viewcode-back" href="../../base.html#k1lib.Absorber.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">initDict</span><span class="p">:</span><span class="nb">dict</span><span class="o">=</span><span class="nb">dict</span><span class="p">()):</span>
-        <span class="sd">&quot;&quot;&quot;Creates a new Absorber.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Creates a new Absorber.</span>
 
 <span class="sd">:param initDict: initial variables to set, as setattr operation is normally absorbed&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_ab_sentinel</span> <span class="o">=</span> <span class="kc">True</span>
@@ -744,7 +745,7 @@
         <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">initDict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span> <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_ab_sentinel</span> <span class="o">=</span> <span class="kc">False</span></div>
 <div class="viewcode-block" id="Absorber.ab_solidify"><a class="viewcode-back" href="../../base.html#k1lib.Absorber.ab_solidify">[docs]</a>    <span class="k">def</span> <span class="nf">ab_solidify</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Use this to not absorb ``__call__`` operations anymore and makes it</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Use this to not absorb ``__call__`` operations anymore and makes it</span>
 <span class="sd">feel like a regular function (still absorbs other operations though)::</span>
 
 <span class="sd">    f = op()**2</span>
@@ -756,7 +757,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_ab_sentinel</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="k">return</span> <span class="bp">self</span></div>
 <div class="viewcode-block" id="Absorber.ab_operate"><a class="viewcode-back" href="../../base.html#k1lib.Absorber.ab_operate">[docs]</a>    <span class="k">def</span> <span class="nf">ab_operate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Special method to actually operate on an object and get the result. Not</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Special method to actually operate on an object and get the result. Not</span>
 <span class="sd">absorbed. Example::</span>
 
 <span class="sd">    # returns 6</span>
@@ -764,7 +765,7 @@
         <span class="k">for</span> <span class="n">desc</span><span class="p">,</span> <span class="n">step</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ab_steps</span><span class="p">:</span> <span class="n">x</span> <span class="o">=</span> <span class="n">step</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">x</span></div>
 <div class="viewcode-block" id="Absorber.ab_fastF"><a class="viewcode-back" href="../../base.html#k1lib.Absorber.ab_fastF">[docs]</a>    <span class="k">def</span> <span class="nf">ab_fastF</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Returns a function that operates on the input (just like :meth:`ab_operate`),</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a function that operates on the input (just like :meth:`ab_operate`),</span>
 <span class="sd">but much faster, suitable for high performance tasks. Example::</span>
 
 <span class="sd">    f = (k1lib.Absorber() * 2).ab_fastF()</span>
@@ -815,7 +816,7 @@
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="n">idx</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">):</span> <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s2">&quot;Getting attributes starting with underscore is prohibited. If you&#39;re using `op`, consider using `aS(lambda x: x._field)` instead.&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ab_steps_append</span><span class="p">([[</span><span class="s2">&quot;__getattr__&quot;</span><span class="p">,</span> <span class="n">idx</span><span class="p">],</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">idx</span><span class="p">)]);</span>
     <span class="k">def</span> <span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Only allows legit variable setting when &#39;_ab_sentinel&#39; is True. Absorbs</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Only allows legit variable setting when &#39;_ab_sentinel&#39; is True. Absorbs</span>
 <span class="sd">operations if it&#39;s False.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="n">sen</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
         <span class="k">else</span><span class="p">:</span>
@@ -868,27 +869,27 @@
     <span class="k">def</span> <span class="fm">__abs__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ab_steps_append</span><span class="p">([[</span><span class="s2">&quot;__abs__&quot;</span><span class="p">],</span>    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">abs</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="p">]);</span>
 <div class="viewcode-block" id="Absorber.__invert__"><a class="viewcode-back" href="../../base.html#k1lib.Absorber.__invert__">[docs]</a>    <span class="k">def</span> <span class="fm">__invert__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ab_steps_append</span><span class="p">([[</span><span class="s2">&quot;__invert__&quot;</span><span class="p">],</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="o">~</span><span class="n">x</span>      <span class="p">]);</span></div>
 <div class="viewcode-block" id="Absorber.ab_int"><a class="viewcode-back" href="../../base.html#k1lib.Absorber.ab_int">[docs]</a>    <span class="k">def</span> <span class="nf">ab_int</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Replacement for ``int(ab)``, as that requires returning an actual :class:`int`.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Replacement for ``int(ab)``, as that requires returning an actual :class:`int`.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ab_steps_append</span><span class="p">([[</span><span class="s2">&quot;__int__&quot;</span><span class="p">],</span>    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="p">]);</span></div>
     <span class="k">def</span> <span class="fm">__int__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">int</span><span class="p">()</span>
 <div class="viewcode-block" id="Absorber.ab_float"><a class="viewcode-back" href="../../base.html#k1lib.Absorber.ab_float">[docs]</a>    <span class="k">def</span> <span class="nf">ab_float</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Replacement for ``float(ab)``, as that requires returning an actual :class:`float`.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Replacement for ``float(ab)``, as that requires returning an actual :class:`float`.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ab_steps_append</span><span class="p">([[</span><span class="s2">&quot;__float__&quot;</span><span class="p">],</span>  <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">)]);</span></div>
     <span class="k">def</span> <span class="fm">__float__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">float</span><span class="p">()</span>
 <div class="viewcode-block" id="Absorber.ab_str"><a class="viewcode-back" href="../../base.html#k1lib.Absorber.ab_str">[docs]</a>    <span class="k">def</span> <span class="nf">ab_str</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Replacement for ``str(ab)``, as that requires returning an actual :class:`str`.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Replacement for ``str(ab)``, as that requires returning an actual :class:`str`.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ab_steps_append</span><span class="p">([[</span><span class="s2">&quot;__str__&quot;</span><span class="p">],</span>    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="p">]);</span></div>
 <div class="viewcode-block" id="Absorber.ab_len"><a class="viewcode-back" href="../../base.html#k1lib.Absorber.ab_len">[docs]</a>    <span class="k">def</span> <span class="nf">ab_len</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Replacement for ``len(ab)``, as that requires returning an actual :class:`int`.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Replacement for ``len(ab)``, as that requires returning an actual :class:`int`.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ab_steps_append</span><span class="p">([[</span><span class="s2">&quot;__len__&quot;</span><span class="p">],</span>    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="p">]);</span></div>
 <div class="viewcode-block" id="Absorber.ab_contains"><a class="viewcode-back" href="../../base.html#k1lib.Absorber.ab_contains">[docs]</a>    <span class="k">def</span> <span class="nf">ab_contains</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Replacement for ``key in ab``, as that requires returning an actual :class:`int`.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Replacement for ``key in ab``, as that requires returning an actual :class:`int`.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ab_steps_append</span><span class="p">([[</span><span class="s2">&quot;__contains__&quot;</span><span class="p">,</span> <span class="n">key</span><span class="p">],</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">x</span><span class="p">]);</span></div></div>
 <span class="n">sep</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\u200b</span><span class="s2">&quot;</span> <span class="c1"># weird separator, guaranteed (mostly) to not appear anywhere in the</span>
 <span class="c1"># settings, so that I can pretty print it</span>
 <div class="viewcode-block" id="Settings"><a class="viewcode-back" href="../../base.html#k1lib.Settings">[docs]</a><span class="k">class</span> <span class="nc">Settings</span><span class="p">:</span>
 <div class="viewcode-block" id="Settings.__init__"><a class="viewcode-back" href="../../base.html#k1lib.Settings.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Creates a new settings object. Basically fancy version of :class:`dict`.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Creates a new settings object. Basically fancy version of :class:`dict`.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">    s = k1lib.Settings(a=3, b=&quot;42&quot;)</span>
@@ -904,7 +905,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_setattr_sentinel</span> <span class="o">=</span> <span class="kc">False</span></div>
 <div class="viewcode-block" id="Settings.context"><a class="viewcode-back" href="../../base.html#k1lib.Settings.context">[docs]</a>    <span class="nd">@contextlib</span><span class="o">.</span><span class="n">contextmanager</span>
     <span class="k">def</span> <span class="nf">context</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Context manager to temporarily modify some settings. Applies</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Context manager to temporarily modify some settings. Applies</span>
 <span class="sd">to all sub-settings. Example::</span>
 
 <span class="sd">    s = k1lib.Settings(a=3, b=&quot;42&quot;, c=k1lib.Settings(d=8))</span>
@@ -927,7 +928,7 @@
         <span class="k">finally</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">oldValues</span><span class="o">.</span><span class="n">items</span><span class="p">():</span> <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span></div>
 <div class="viewcode-block" id="Settings.add"><a class="viewcode-back" href="../../base.html#k1lib.Settings.add">[docs]</a>    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">v</span><span class="p">:</span><span class="n">Any</span><span class="p">,</span> <span class="n">docs</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">cb</span><span class="p">:</span><span class="n">Callable</span><span class="p">[[</span><span class="s2">&quot;Settings&quot;</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="kc">None</span><span class="p">]</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Settings&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Long way to add a variable. Advantage of this is that you can slip in extra</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Long way to add a variable. Advantage of this is that you can slip in extra</span>
 <span class="sd">documentation for the variable. Example::</span>
 
 <span class="sd">    s = k1lib.Settings()</span>
@@ -948,11 +949,11 @@
         <span class="k">if</span> <span class="n">k</span> <span class="o">!=</span> <span class="s2">&quot;_setattr_sentinel&quot;</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_setattr_sentinel</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cbs</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cbs</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cbs</span><span class="p">[</span><span class="n">k</span><span class="p">](</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
     <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;``includeDocs`` mainly used internally when generating docs in sphinx.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;``includeDocs`` mainly used internally when generating docs in sphinx.&quot;&quot;&quot;</span>
         <span class="n">ks</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">k</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">k</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">))</span>
         <span class="n">kSpace</span> <span class="o">=</span> <span class="nb">max</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="o">*</span><span class="p">(</span><span class="n">ks</span> <span class="o">|</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">cli</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">())]);</span> <span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;Settings:</span><span class="se">\n</span><span class="s2">&quot;</span>
         <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_simpleSettings</span><span class="p">():</span>
-            <span class="n">s</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;- </span><span class="si">{</span><span class="n">k</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="n">kSpace</span><span class="p">)</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">k1lib</span><span class="o">.</span><span class="n">limitChars</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">v</span><span class="p">),</span> <span class="n">settings</span><span class="o">.</span><span class="n">displayCutoff</span><span class="p">)</span><span class="si">}{</span><span class="n">sep</span><span class="si">}{</span><span class="bp">self</span><span class="o">.</span><span class="n">_docsOf</span><span class="p">(</span><span class="n">k</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+            <span class="n">s</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;- </span><span class="si">{</span><span class="n">k</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="n">kSpace</span><span class="p">)</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">k1lib</span><span class="o">.</span><span class="n">limitChars</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">v</span><span class="p">),</span><span class="w"> </span><span class="n">settings</span><span class="o">.</span><span class="n">displayCutoff</span><span class="p">)</span><span class="si">}{</span><span class="n">sep</span><span class="si">}{</span><span class="bp">self</span><span class="o">.</span><span class="n">_docsOf</span><span class="p">(</span><span class="n">k</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
         <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_subSettings</span><span class="p">():</span>
             <span class="n">sub</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="fm">__repr__</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">|</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">cli</span><span class="o">.</span><span class="n">tab</span><span class="p">(</span><span class="s2">&quot;  &quot;</span><span class="p">)</span> <span class="o">|</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">cli</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
             <span class="n">s</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;- </span><span class="si">{</span><span class="n">k</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="n">kSpace</span><span class="p">)</span><span class="si">}</span><span class="s2"> = &lt;Settings&gt;</span><span class="si">{</span><span class="n">sep</span><span class="si">}{</span><span class="bp">self</span><span class="o">.</span><span class="n">_docsOf</span><span class="p">(</span><span class="n">k</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="n">sub</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
@@ -1001,7 +1002,7 @@
     <span class="k">class</span> <span class="nc">UValue</span><span class="p">:</span>
         <span class="n">_unit</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">100000</span><span class="p">)</span>
         <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mean</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">std</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
-            <span class="sd">&quot;&quot;&quot;Creates a new &quot;uncertain value&quot;, which has a mean and a standard</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot;Creates a new &quot;uncertain value&quot;, which has a mean and a standard</span>
 <span class="sd">deviation. You can then do math operations on them as normal, and the</span>
 <span class="sd">propagation errors will be automatically calculated for you. Make sure to</span>
 <span class="sd">run the calculation multiple times as the mean and std values fluctuates by</span>
@@ -1101,7 +1102,7 @@
             <span class="k">if</span> <span class="n">n</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="n">t</span> <span class="o">=</span> <span class="n">t</span><span class="p">[:</span><span class="n">n</span><span class="p">]</span>
             <span class="k">return</span> <span class="n">t</span> <span class="o">*</span> <span class="n">std</span> <span class="o">+</span> <span class="n">mean</span>
 <div class="viewcode-block" id="UValue.sample"><a class="viewcode-back" href="../../base.html#k1lib.UValue.sample">[docs]</a>        <span class="k">def</span> <span class="nf">sample</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">_class</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-            <span class="sd">&quot;&quot;&quot;Gets a sample :class:`np.ndarray` representative of this</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot;Gets a sample :class:`np.ndarray` representative of this</span>
 <span class="sd">    uncertain value. Example::</span>
 
 <span class="sd">        # returns tensor([-5.1095,  3.3117, -2.5759,  ..., -2.5810, -1.8131,  1.8339])</span>
@@ -1109,7 +1110,7 @@
             <span class="k">return</span> <span class="n">UValue</span><span class="o">.</span><span class="n">_sample</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">_class</span><span class="p">)</span></div>
 <div class="viewcode-block" id="UValue.fromSeries"><a class="viewcode-back" href="../../base.html#k1lib.UValue.fromSeries">[docs]</a>        <span class="nd">@staticmethod</span>
         <span class="k">def</span> <span class="nf">fromSeries</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="n">unbiased</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-            <span class="sd">&quot;&quot;&quot;Creates a :class:`UValue` from a bunch of numbers</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot;Creates a :class:`UValue` from a bunch of numbers</span>
 
 <span class="sd">:param series: can be a list of numbers, numpy array or PyTorch tensor</span>
 <span class="sd">:param unbiased: if True, Bessel’s correction will be used&quot;&quot;&quot;</span>
@@ -1121,7 +1122,7 @@
             <span class="k">return</span> <span class="n">UValue</span><span class="p">(</span><span class="n">series</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">series</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">unbiased</span><span class="o">=</span><span class="n">unbiased</span><span class="p">))</span></div>
 <div class="viewcode-block" id="UValue.fromBounds"><a class="viewcode-back" href="../../base.html#k1lib.UValue.fromBounds">[docs]</a>        <span class="nd">@staticmethod</span>
         <span class="k">def</span> <span class="nf">fromBounds</span><span class="p">(</span><span class="n">min_</span><span class="p">,</span> <span class="n">max_</span><span class="p">):</span>
-            <span class="sd">&quot;&quot;&quot;Creates a :class:`UValue` from min and max values.</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot;Creates a :class:`UValue` from min and max values.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">    # returns UValue(mean=2.5, std=0.5)</span>
@@ -1140,7 +1141,7 @@
             <span class="k">return</span> <span class="n">UValue</span><span class="p">(</span><span class="n">roundOff</span><span class="p">(</span><span class="n">c1</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">c2</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">item</span><span class="p">()),</span> <span class="n">roundOff</span><span class="p">(</span><span class="n">c1</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">c2</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="o">.</span><span class="n">item</span><span class="p">()))</span>
         <span class="nd">@property</span>
         <span class="k">def</span> <span class="nf">exact</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-            <span class="sd">&quot;&quot;&quot;Whether this UValue is exact or not&quot;&quot;&quot;</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot;Whether this UValue is exact or not&quot;&quot;&quot;</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">std</span> <span class="o">==</span> <span class="mi">0</span>
         <span class="nd">@staticmethod</span>
         <span class="k">def</span> <span class="nf">_isValueExact</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
@@ -1153,10 +1154,10 @@
             <span class="k">try</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">);</span> <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Can&#39;t convert a series into an exact value&quot;</span><span class="p">)</span>
             <span class="k">except</span><span class="p">:</span> <span class="k">return</span> <span class="n">v</span>
 <div class="viewcode-block" id="UValue.test"><a class="viewcode-back" href="../../base.html#k1lib.UValue.test">[docs]</a>        <span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
-            <span class="sd">&quot;&quot;&quot;Returns how many sigma a particular value is.&quot;&quot;&quot;</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot;Returns how many sigma a particular value is.&quot;&quot;&quot;</span>
             <span class="k">return</span> <span class="p">(</span><span class="n">v</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">mean</span><span class="p">)</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">std</span></div>
 <div class="viewcode-block" id="UValue.f"><a class="viewcode-back" href="../../base.html#k1lib.UValue.f">[docs]</a>        <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">):</span>
-            <span class="sd">&quot;&quot;&quot;Covered in :meth:`__init__` docs&quot;&quot;&quot;</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot;Covered in :meth:`__init__` docs&quot;&quot;&quot;</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">exact</span><span class="p">:</span> <span class="k">return</span> <span class="n">UValue</span><span class="p">(</span><span class="n">func</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mean</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
             <span class="n">f</span> <span class="o">=</span> <span class="n">func</span><span class="p">;</span> <span class="n">a1</span><span class="p">,</span> <span class="n">a2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_niceValue</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
             <span class="k">try</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_postProcess</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">a1</span><span class="p">),</span> <span class="n">f</span><span class="p">(</span><span class="n">a2</span><span class="p">))</span>
@@ -1164,7 +1165,7 @@
                 <span class="n">f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">xs</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="n">func</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">xs</span><span class="p">[:</span><span class="mi">10000</span><span class="p">]])</span>
                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_postProcess</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">a1</span><span class="p">),</span> <span class="n">f</span><span class="p">(</span><span class="n">a2</span><span class="p">))</span></div>
 <div class="viewcode-block" id="UValue.bounds"><a class="viewcode-back" href="../../base.html#k1lib.UValue.bounds">[docs]</a>        <span class="k">def</span> <span class="nf">bounds</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-            <span class="sd">&quot;&quot;&quot;Returns (mean-std, mean+std)&quot;&quot;&quot;</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot;Returns (mean-std, mean+std)&quot;&quot;&quot;</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">mean</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">std</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mean</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">std</span></div>
         <span class="k">def</span> <span class="nf">_op2</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">UValue</span><span class="o">.</span><span class="n">_isValueExact</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="ow">and</span> <span class="n">UValue</span><span class="o">.</span><span class="n">_isValueExact</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
@@ -1176,7 +1177,7 @@
                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_postProcess</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">a1</span><span class="p">,</span> <span class="n">b1</span><span class="p">),</span> <span class="n">f</span><span class="p">(</span><span class="n">a2</span><span class="p">,</span> <span class="n">b2</span><span class="p">))</span>
 <div class="viewcode-block" id="UValue.combine"><a class="viewcode-back" href="../../base.html#k1lib.UValue.combine">[docs]</a>        <span class="nd">@staticmethod</span>
         <span class="k">def</span> <span class="nf">combine</span><span class="p">(</span><span class="o">*</span><span class="n">values</span><span class="p">,</span> <span class="n">samples</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
-            <span class="sd">&quot;&quot;&quot;Combines multiple UValues into 1.</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot;Combines multiple UValues into 1.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">    a = k1lib.UValue(5, 1)</span>
@@ -1229,9 +1230,9 @@
         <span class="k">def</span> <span class="fm">__neg__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="mi">0</span> <span class="o">-</span> <span class="bp">self</span>
         <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
             <span class="n">mean</span><span class="p">,</span> <span class="n">std</span> <span class="o">=</span> <span class="n">niceUS</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mean</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">std</span><span class="p">)</span>
-            <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;UValue(mean=</span><span class="si">{</span><span class="n">toPrecision</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mean</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span><span class="si">}</span><span class="s2">, std=</span><span class="si">{</span><span class="n">toPrecision</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">std</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span><span class="si">}</span><span class="s2">) -&gt; </span><span class="si">{</span><span class="n">mean</span><span class="si">}</span><span class="s2"> ± </span><span class="si">{</span><span class="n">std</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;UValue(mean=</span><span class="si">{</span><span class="n">toPrecision</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mean</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="si">}</span><span class="s2">, std=</span><span class="si">{</span><span class="n">toPrecision</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">std</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="si">}</span><span class="s2">) -&gt; </span><span class="si">{</span><span class="n">mean</span><span class="si">}</span><span class="s2"> ± </span><span class="si">{</span><span class="n">std</span><span class="si">}</span><span class="s2">&quot;</span>
 <div class="viewcode-block" id="UValue.plot"><a class="viewcode-back" href="../../base.html#k1lib.UValue.plot">[docs]</a>        <span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-            <span class="sd">&quot;&quot;&quot;Quickly plots a histogram of the distribution.</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot;Quickly plots a histogram of the distribution.</span>
 <span class="sd">Possible to plot multiple histograms in 1 plot.&quot;&quot;&quot;</span>
             <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">name</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span></div>
@@ -1241,7 +1242,7 @@
             <span class="k">return</span> <span class="bp">NotImplemented</span></div></div>
 <span class="k">class</span> <span class="nc">ConstantPad</span><span class="p">:</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Adds constant amount of padding to strings.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Adds constant amount of padding to strings.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">    p = k1.ConstantPad()</span>
@@ -1275,7 +1276,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, Quang Ho.</p>
+    <p>&#169; Copyright 2023, Quang Ho.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

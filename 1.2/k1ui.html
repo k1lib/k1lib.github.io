@@ -49,7 +49,116 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="k1a.html">k1lib._k1a module</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">k1lib.k1ui module</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#k1lib.k1ui.dummy"><code class="docutils literal notranslate"><span class="pre">dummy()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.k1ui.main.get"><code class="docutils literal notranslate"><span class="pre">get()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.k1ui.main.WsSession"><code class="docutils literal notranslate"><span class="pre">WsSession</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.WsSession.__init__"><code class="docutils literal notranslate"><span class="pre">WsSession.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.WsSession.stream"><code class="docutils literal notranslate"><span class="pre">WsSession.stream()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.WsSession.run"><code class="docutils literal notranslate"><span class="pre">WsSession.run()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.WsSession.close"><code class="docutils literal notranslate"><span class="pre">WsSession.close()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.WsSession.execute"><code class="docutils literal notranslate"><span class="pre">WsSession.execute()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.k1ui.main.selectArea"><code class="docutils literal notranslate"><span class="pre">selectArea()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.k1ui.main.record"><code class="docutils literal notranslate"><span class="pre">record()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.k1ui.main.execute"><code class="docutils literal notranslate"><span class="pre">execute()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.k1ui.main.Recording"><code class="docutils literal notranslate"><span class="pre">Recording</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.Recording.duration"><code class="docutils literal notranslate"><span class="pre">Recording.duration</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.Recording.addTracks"><code class="docutils literal notranslate"><span class="pre">Recording.addTracks()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.Recording.removeTracks"><code class="docutils literal notranslate"><span class="pre">Recording.removeTracks()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.Recording.zoom"><code class="docutils literal notranslate"><span class="pre">Recording.zoom()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.Recording.sel"><code class="docutils literal notranslate"><span class="pre">Recording.sel()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.Recording.sel1"><code class="docutils literal notranslate"><span class="pre">Recording.sel1()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.Recording.time0"><code class="docutils literal notranslate"><span class="pre">Recording.time0()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.Recording.timeUnix"><code class="docutils literal notranslate"><span class="pre">Recording.timeUnix()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.Recording.events"><code class="docutils literal notranslate"><span class="pre">Recording.events()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.Recording.copy"><code class="docutils literal notranslate"><span class="pre">Recording.copy()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.Recording.addTime"><code class="docutils literal notranslate"><span class="pre">Recording.addTime()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.Recording.formWords"><code class="docutils literal notranslate"><span class="pre">Recording.formWords()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.Recording.refine"><code class="docutils literal notranslate"><span class="pre">Recording.refine()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.Recording.removeTime"><code class="docutils literal notranslate"><span class="pre">Recording.removeTime()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.Recording.sample"><code class="docutils literal notranslate"><span class="pre">Recording.sample()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.Recording.sampleEvents"><code class="docutils literal notranslate"><span class="pre">Recording.sampleEvents()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.k1ui.main.Track"><code class="docutils literal notranslate"><span class="pre">Track</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.Track.__init__"><code class="docutils literal notranslate"><span class="pre">Track.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.Track.time0"><code class="docutils literal notranslate"><span class="pre">Track.time0()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.Track.time0Rec"><code class="docutils literal notranslate"><span class="pre">Track.time0Rec()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.Track.timeUnix"><code class="docutils literal notranslate"><span class="pre">Track.timeUnix()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.Track.concurrent"><code class="docutils literal notranslate"><span class="pre">Track.concurrent()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.Track.events"><code class="docutils literal notranslate"><span class="pre">Track.events()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.Track.copy"><code class="docutils literal notranslate"><span class="pre">Track.copy()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.Track.move"><code class="docutils literal notranslate"><span class="pre">Track.move()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.Track.nextTrack"><code class="docutils literal notranslate"><span class="pre">Track.nextTrack()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.k1ui.main.CharTrack"><code class="docutils literal notranslate"><span class="pre">CharTrack</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.CharTrack.__init__"><code class="docutils literal notranslate"><span class="pre">CharTrack.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.CharTrack.parse"><code class="docutils literal notranslate"><span class="pre">CharTrack.parse()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.CharTrack.events"><code class="docutils literal notranslate"><span class="pre">CharTrack.events()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.CharTrack.copy"><code class="docutils literal notranslate"><span class="pre">CharTrack.copy()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.CharTrack.move"><code class="docutils literal notranslate"><span class="pre">CharTrack.move()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.k1ui.main.WordTrack"><code class="docutils literal notranslate"><span class="pre">WordTrack</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.WordTrack.__init__"><code class="docutils literal notranslate"><span class="pre">WordTrack.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.WordTrack.events"><code class="docutils literal notranslate"><span class="pre">WordTrack.events()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.WordTrack.copy"><code class="docutils literal notranslate"><span class="pre">WordTrack.copy()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.k1ui.main.ContourTrack"><code class="docutils literal notranslate"><span class="pre">ContourTrack</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.ContourTrack.__init__"><code class="docutils literal notranslate"><span class="pre">ContourTrack.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.ContourTrack.parse"><code class="docutils literal notranslate"><span class="pre">ContourTrack.parse()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.ContourTrack.events"><code class="docutils literal notranslate"><span class="pre">ContourTrack.events()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.ContourTrack.copy"><code class="docutils literal notranslate"><span class="pre">ContourTrack.copy()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.ContourTrack.move"><code class="docutils literal notranslate"><span class="pre">ContourTrack.move()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.ContourTrack.movePoint"><code class="docutils literal notranslate"><span class="pre">ContourTrack.movePoint()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.ContourTrack.splitClick"><code class="docutils literal notranslate"><span class="pre">ContourTrack.splitClick()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.k1ui.main.ClickTrack"><code class="docutils literal notranslate"><span class="pre">ClickTrack</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.ClickTrack.__init__"><code class="docutils literal notranslate"><span class="pre">ClickTrack.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.ClickTrack.parse"><code class="docutils literal notranslate"><span class="pre">ClickTrack.parse()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.ClickTrack.isClick"><code class="docutils literal notranslate"><span class="pre">ClickTrack.isClick()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.ClickTrack.events"><code class="docutils literal notranslate"><span class="pre">ClickTrack.events()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.ClickTrack.copy"><code class="docutils literal notranslate"><span class="pre">ClickTrack.copy()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.k1ui.main.WheelTrack"><code class="docutils literal notranslate"><span class="pre">WheelTrack</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.WheelTrack.__init__"><code class="docutils literal notranslate"><span class="pre">WheelTrack.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.WheelTrack.parse"><code class="docutils literal notranslate"><span class="pre">WheelTrack.parse()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.WheelTrack.events"><code class="docutils literal notranslate"><span class="pre">WheelTrack.events()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.WheelTrack.copy"><code class="docutils literal notranslate"><span class="pre">WheelTrack.copy()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.k1ui.main.StreamTrack"><code class="docutils literal notranslate"><span class="pre">StreamTrack</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.StreamTrack.__init__"><code class="docutils literal notranslate"><span class="pre">StreamTrack.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.StreamTrack.parse"><code class="docutils literal notranslate"><span class="pre">StreamTrack.parse()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.StreamTrack.events"><code class="docutils literal notranslate"><span class="pre">StreamTrack.events()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.StreamTrack.copy"><code class="docutils literal notranslate"><span class="pre">StreamTrack.copy()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.StreamTrack.move"><code class="docutils literal notranslate"><span class="pre">StreamTrack.move()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.k1ui.main.distNet"><code class="docutils literal notranslate"><span class="pre">distNet()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.k1ui.main.TrainScreen"><code class="docutils literal notranslate"><span class="pre">TrainScreen</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.TrainScreen.__init__"><code class="docutils literal notranslate"><span class="pre">TrainScreen.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.TrainScreen.train"><code class="docutils literal notranslate"><span class="pre">TrainScreen.train()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.TrainScreen.trainParams"><code class="docutils literal notranslate"><span class="pre">TrainScreen.trainParams()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.TrainScreen.frames"><code class="docutils literal notranslate"><span class="pre">TrainScreen.frames</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.TrainScreen.feats"><code class="docutils literal notranslate"><span class="pre">TrainScreen.feats</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.TrainScreen.register"><code class="docutils literal notranslate"><span class="pre">TrainScreen.register()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.TrainScreen.registerFrames"><code class="docutils literal notranslate"><span class="pre">TrainScreen.registerFrames()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.TrainScreen.addRule"><code class="docutils literal notranslate"><span class="pre">TrainScreen.addRule()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.TrainScreen.transitionScreens"><code class="docutils literal notranslate"><span class="pre">TrainScreen.transitionScreens()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.TrainScreen.newEvent"><code class="docutils literal notranslate"><span class="pre">TrainScreen.newEvent()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.TrainScreen.predict"><code class="docutils literal notranslate"><span class="pre">TrainScreen.predict()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.TrainScreen.transitionGraph"><code class="docutils literal notranslate"><span class="pre">TrainScreen.transitionGraph()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.TrainScreen.ruleGraph"><code class="docutils literal notranslate"><span class="pre">TrainScreen.ruleGraph()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.TrainScreen.graphs"><code class="docutils literal notranslate"><span class="pre">TrainScreen.graphs()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.TrainScreen.labeledData"><code class="docutils literal notranslate"><span class="pre">TrainScreen.labeledData()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.TrainScreen.correctRatio"><code class="docutils literal notranslate"><span class="pre">TrainScreen.correctRatio()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="eqn.html">k1lib.eqn module</a></li>
@@ -58,6 +167,7 @@
 <li class="toctree-l1"><a class="reference internal" href="imports.html">k1lib.imports module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mo.html">k1lib.mo module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="knn.html">k1lib.knn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="p5.html">k1lib.p5 module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="schedule.html">k1lib.schedule module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="selector.html">k1lib.selector module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="serve.html">k1lib.serve module</a></li>
@@ -93,20 +203,868 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="k1lib-k1ui-module">
-<h1>k1lib.k1ui module<a class="headerlink" href="#k1lib-k1ui-module" title="Permalink to this heading"></a></h1>
+  <section id="module-k1lib.k1ui.main">
+<span id="k1lib-k1ui-module"></span><h1>k1lib.k1ui module<a class="headerlink" href="#module-k1lib.k1ui.main" title="Permalink to this heading"></a></h1>
 <p><a class="reference external" href="https://github.com/157239n/k1ui">k1ui</a> is another project made in Java that
 aims to record and manipulate the screen, keyboard and mouse. The interface to
 that project on its own is clunky, and this module is the Python interface to
 ease its use.</p>
 <p>Not quite developed yet tho, because I’m lazy.</p>
-<span class="target" id="module-k1lib.k1ui"></span><p>Python interface for k1ui, a Java project that can record and manipulate
-the screen. Github repo is at <a class="reference external" href="https://github.com/157239n/k1ui">https://github.com/157239n/k1ui</a></p>
-<p>Not really developed yet, but it’s just here as a placeholder</p>
 <dl class="py function">
-<dt class="sig sig-object py" id="k1lib.k1ui.dummy">
-<span class="sig-prename descclassname"><span class="pre">k1lib.k1ui.</span></span><span class="sig-name descname"><span class="pre">dummy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/k1ui.html#dummy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.dummy" title="Permalink to this definition"></a></dt>
-<dd><p>Does nothing. Only here so that you can read the source code</p>
+<dt class="sig sig-object py" id="k1lib.k1ui.main.get">
+<span class="sig-prename descclassname"><span class="pre">k1lib.k1ui.main.</span></span><span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.get" title="Permalink to this definition"></a></dt>
+<dd><p>Sends a get request to the Java server.
+Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">k1ui</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;mouse/200/300&quot;</span><span class="p">)</span> <span class="c1"># move mouse to (200, 300)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.WsSession">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.k1ui.main.</span></span><span class="sig-name descname"><span class="pre">WsSession</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eventCb</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.11)"><span class="pre">Callable</span></a><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#k1lib.k1ui.main.WsSession" title="k1lib.k1ui.main.WsSession"><span class="pre">WsSession</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><span class="pre">dict</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mainThreadCb</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.11)"><span class="pre">Callable</span></a><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#k1lib.k1ui.main.WsSession" title="k1lib.k1ui.main.WsSession"><span class="pre">WsSession</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#WsSession"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.WsSession" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.WsSession.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eventCb</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.11)"><span class="pre">Callable</span></a><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#k1lib.k1ui.main.WsSession" title="k1lib.k1ui.main.WsSession"><span class="pre">WsSession</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><span class="pre">dict</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mainThreadCb</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.11)"><span class="pre">Callable</span></a><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#k1lib.k1ui.main.WsSession" title="k1lib.k1ui.main.WsSession"><span class="pre">WsSession</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#WsSession.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.WsSession.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a websocket connection with the server, with some callback functions</p>
+<p>The callback functions (most are async btw) will be passed a WebSocket object
+as the first argument. You can use it to send messages like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># this will send a signal to the server to close the session</span>
+<span class="n">sess</span><span class="o">.</span><span class="n">ws</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;close&quot;</span><span class="p">}))</span>
+<span class="c1"># this will send a signal to the server requesting the current screenshot. Result will be deposited into eventCb</span>
+<span class="n">sess</span><span class="o">.</span><span class="n">ws</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;screenshot&quot;</span><span class="p">}))</span>
+<span class="c1"># this will execute a single event</span>
+<span class="n">sess</span><span class="o">.</span><span class="n">ws</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;execute&quot;</span><span class="p">,</span> <span class="s2">&quot;event&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;keyTyped&quot;</span><span class="p">,</span> <span class="s2">&quot;javaKeyCode&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="o">...</span><span class="p">}}))</span>
+</pre></div>
+</div>
+<p>Complete, minimum example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">events</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">eventCb</span><span class="p">(</span><span class="n">sess</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span> <span class="n">events</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">mainThreadCb</span><span class="p">(</span><span class="n">sess</span><span class="p">):</span>
+    <span class="n">sess</span><span class="o">.</span><span class="n">stream</span><span class="p">(</span><span class="mi">300</span><span class="p">)</span> <span class="c1"># starts a stream with output screen width of 300px</span>
+    <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">await</span> <span class="n">sess</span><span class="o">.</span><span class="n">ws</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;execute&quot;</span><span class="p">,</span> <span class="s2">&quot;event&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;keyPressed&quot;</span><span class="p">,</span> <span class="s2">&quot;javaKeyCode&quot;</span><span class="p">:</span> <span class="mi">65</span><span class="p">,</span> <span class="s2">&quot;timestamp&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}}))</span>
+    <span class="k">await</span> <span class="n">sess</span><span class="o">.</span><span class="n">ws</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;execute&quot;</span><span class="p">,</span> <span class="s2">&quot;event&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;keyReleased&quot;</span><span class="p">,</span> <span class="s2">&quot;javaKeyCode&quot;</span><span class="p">:</span> <span class="mi">65</span><span class="p">,</span> <span class="s2">&quot;timestamp&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}}))</span>
+    <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span> <span class="n">sess</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="k">await</span> <span class="n">k1ui</span><span class="o">.</span><span class="n">WsSession</span><span class="p">(</span><span class="n">eventCb</span><span class="p">,</span> <span class="n">mainThreadCb</span><span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>What this code does is that it will communicate with the server continuously for 12
+seconds, capturing all events in the mean time and save them into <code class="docutils literal notranslate"><span class="pre">events</span></code> list.
+It will start up a UDP stream to capture screenshots continuously, and after 6 seconds,
+it sends 2 events to the server, trying to type the letter “A”. Finally, it waits for
+another 10 seconds and then terminates the connection.</p>
+<p>This interface is quite low-level, and is the basis for all other functionalities.
+Some of them include:
+- <a class="reference internal" href="#k1lib.k1ui.main.record" title="k1lib.k1ui.main.record"><code class="xref py py-meth docutils literal notranslate"><span class="pre">record()</span></code></a>: recording a session
+- <a class="reference internal" href="#k1lib.k1ui.main.execute" title="k1lib.k1ui.main.execute"><code class="xref py py-meth docutils literal notranslate"><span class="pre">execute()</span></code></a>: executes a list of events</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>eventCb</strong> – (async) will be called whenever there’s a new event</p></li>
+<li><p><strong>mainThreadCb</strong> – (async) will be called after setting up everything</p></li>
+<li><p><strong>streamWidth</strong> – specifies the width of the UDP stream, in pixels</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.WsSession.stream">
+<span class="sig-name descname"><span class="pre">stream</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">width</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#WsSession.stream"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.WsSession.stream" title="Permalink to this definition"></a></dt>
+<dd><p>Starts a stream with a particular output width. The lower the width, the higher the fps and vice versa</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.WsSession.run">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#WsSession.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.WsSession.run" title="Permalink to this definition"></a></dt>
+<dd><p>Connects with Java server, set things up and runs <code class="docutils literal notranslate"><span class="pre">mainThreadCb</span></code></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.WsSession.close">
+<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#WsSession.close"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.WsSession.close" title="Permalink to this definition"></a></dt>
+<dd><p>Closes the connection with the Java server</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.WsSession.execute">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">execute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">events</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#WsSession.execute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.WsSession.execute" title="Permalink to this definition"></a></dt>
+<dd><p>Executes a series of events</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.selectArea">
+<span class="sig-prename descclassname"><span class="pre">k1lib.k1ui.main.</span></span><span class="sig-name descname"><span class="pre">selectArea</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">w</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#selectArea"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.selectArea" title="Permalink to this definition"></a></dt>
+<dd><p>Selects an area on the screen to focus into</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.record">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.k1ui.main.</span></span><span class="sig-name descname"><span class="pre">record</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keyCode=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">streamWidth=300</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f=&lt;k1lib.cli.utils.iden</span> <span class="pre">object&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#record"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.record" title="Permalink to this definition"></a></dt>
+<dd><p>Records activities.
+Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">events</span> <span class="o">=</span> <span class="k">await</span> <span class="n">k1ui</span><span class="o">.</span><span class="n">record</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span> <span class="c1"># records for 5 seconds</span>
+<span class="n">events</span> <span class="o">=</span> <span class="k">await</span> <span class="n">k1ui</span><span class="o">.</span><span class="n">record</span><span class="p">(</span><span class="n">keyCode</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span> <span class="c1"># records until &quot;Escape&quot; is pressed</span>
+<span class="n">events</span> <span class="o">=</span> <span class="k">await</span> <span class="n">k1ui</span><span class="o">.</span><span class="n">record</span><span class="p">()</span> <span class="c1"># records until interrupt signal is sent to the process</span>
+</pre></div>
+</div>
+<p>Note: these examples only work on jupyter notebooks. For regular Python processes,
+check out official Python docs (<a class="reference external" href="https://docs.python.org/3/library/asyncio-task.html">https://docs.python.org/3/library/asyncio-task.html</a>)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>t</strong> – record duration</p></li>
+<li><p><strong>keyCode</strong> – key to stop the recording</p></li>
+<li><p><strong>streamWidth</strong> – whether to opens the UDP stream and capture screenshots at this width or not</p></li>
+<li><p><strong>f</strong> – extra event post processing function</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.execute">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.k1ui.main.</span></span><span class="sig-name descname"><span class="pre">execute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">events</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><span class="pre">dict</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#execute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.execute" title="Permalink to this definition"></a></dt>
+<dd><p>Executes some events</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.Recording">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.k1ui.main.</span></span><span class="sig-name descname"><span class="pre">Recording</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">events</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#Recording"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.Recording" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dl class="py property">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.Recording.duration">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">duration</span></span><a class="headerlink" href="#k1lib.k1ui.main.Recording.duration" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.Recording.addTracks">
+<span class="sig-name descname"><span class="pre">addTracks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">tracks</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#k1lib.k1ui.main.Recording" title="k1lib.k1ui.main.Recording"><span class="pre">Recording</span></a></span></span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#Recording.addTracks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.Recording.addTracks" title="Permalink to this definition"></a></dt>
+<dd><p>Adds tracks to the Recording</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.Recording.removeTracks">
+<span class="sig-name descname"><span class="pre">removeTracks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">tracks</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#k1lib.k1ui.main.Recording" title="k1lib.k1ui.main.Recording"><span class="pre">Recording</span></a></span></span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#Recording.removeTracks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.Recording.removeTracks" title="Permalink to this definition"></a></dt>
+<dd><p>Removes tracks from the Recording</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.Recording.zoom">
+<span class="sig-name descname"><span class="pre">zoom</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#Recording.zoom"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.Recording.zoom" title="Permalink to this definition"></a></dt>
+<dd><p>Zooms into a particular time range. If either bounds are not
+specified, they will default to the start and end of all events.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>t1</strong> – time values are relative to the recording’s start time</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.Recording.sel">
+<span class="sig-name descname"><span class="pre">sel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">klass</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#k1lib.k1ui.main.Track" title="k1lib.k1ui.main.Track"><span class="pre">Track</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#Recording.sel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.Recording.sel" title="Permalink to this definition"></a></dt>
+<dd><p>Selects a subset of tracks using several filters.</p>
+<p>For selecting time, assuming we have a track that looks like
+this (x, y are t1, t2):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># |-1--|   |-2-|</span>
+<span class="c1">#    |---3---|</span>
+<span class="c1">#  x     y</span>
+</pre></div>
+</div>
+<p>Then, tracks 1 and 3 are selected. Time values are relative to
+recording’s start time</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>t1</strong> – choose tracks that happen after this time</p></li>
+<li><p><strong>t2</strong> – choose tracks that happen before this time</p></li>
+<li><p><strong>klass</strong> – choose specific track class</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.Recording.sel1">
+<span class="sig-name descname"><span class="pre">sel1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#k1lib.k1ui.main.Track" title="k1lib.k1ui.main.Track"><span class="pre">Track</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#Recording.sel1"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.Recording.sel1" title="Permalink to this definition"></a></dt>
+<dd><p>Like <a class="reference internal" href="#k1lib.k1ui.main.Recording.sel" title="k1lib.k1ui.main.Recording.sel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">sel()</span></code></a>, but this time gets the first element only.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.Recording.time0">
+<span class="sig-name descname"><span class="pre">time0</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#Recording.time0"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.Recording.time0" title="Permalink to this definition"></a></dt>
+<dd><p>Start and end recording times. Start time is zero</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.Recording.timeUnix">
+<span class="sig-name descname"><span class="pre">timeUnix</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#Recording.timeUnix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.Recording.timeUnix" title="Permalink to this definition"></a></dt>
+<dd><p>Start and end recording times. Both are absolute unix times</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.Recording.events">
+<span class="sig-name descname"><span class="pre">events</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><span class="pre">dict</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#Recording.events"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.Recording.events" title="Permalink to this definition"></a></dt>
+<dd><p>Reconstructs events from the Recording’s internal data.
+The events are lossy though:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">events</span> <span class="o">=</span> <span class="o">...</span> <span class="c1"># events recorded</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">k1ui</span><span class="o">.</span><span class="n">Recording</span><span class="p">(</span><span class="n">events</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">r</span><span class="o">.</span><span class="n">events</span><span class="p">()</span> <span class="o">!=</span> <span class="n">events</span> <span class="c1"># this is the lossy part. Don&#39;t expect the produced events match exactly with each other</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.Recording.copy">
+<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#k1lib.k1ui.main.Recording" title="k1lib.k1ui.main.Recording"><span class="pre">Recording</span></a></span></span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#Recording.copy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.Recording.copy" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a clone of this recording</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.Recording.addTime">
+<span class="sig-name descname"><span class="pre">addTime</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">duration</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#k1lib.k1ui.main.Recording" title="k1lib.k1ui.main.Recording"><span class="pre">Recording</span></a></span></span><a class="headerlink" href="#k1lib.k1ui.main.Recording.addTime" title="Permalink to this definition"></a></dt>
+<dd><p>Inserts a specific duration into a specific point in time.
+More clearly, this transfroms this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># |-1--|   |-2-|</span>
+<span class="c1">#    |---3---|</span>
+<span class="c1">#         ^ insert duration=3 here</span>
+</pre></div>
+</div>
+<p>Into this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># |-1--|      |-2-|</span>
+<span class="c1">#    |---3------|</span>
+</pre></div>
+</div>
+<p>Tracks that partly overlaps with the range will have their start/end times
+modified, and potentially delete some of the Track’s internal data:</p>
+<ul class="simple">
+<li><p>Tracks whose only start and end times are modified: Char, Word, Click, Wheel</p></li>
+<li><p>Tracks whose internal data are also modified: Contour, Stream</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>t</strong> – where to insert the duration, relative to Recording’s start time</p></li>
+<li><p><strong>duration</strong> – how long (in seconds) to insert?</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.Recording.formWords">
+<span class="sig-name descname"><span class="pre">formWords</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#k1lib.k1ui.main.Recording" title="k1lib.k1ui.main.Recording"><span class="pre">Recording</span></a></span></span><a class="headerlink" href="#k1lib.k1ui.main.Recording.formWords" title="Permalink to this definition"></a></dt>
+<dd><p>Tries to merge nearby CharTracks together that looks like the user
+is trying to type something, if they make sense. Assuming the user types
+“a”, then “b”, then “c”. This should be able to detect the intent that
+the user is trying to type “abc”, and replace 3 CharTracks with a WordTrack.
+Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># example recording, run in notebook cell to see interactive interface</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">k1ui</span><span class="o">.</span><span class="n">Recording</span><span class="o">.</span><span class="n">sample</span><span class="p">();</span> <span class="n">r</span>
+<span class="c1"># run in another notebook cell and compare difference</span>
+<span class="n">r</span><span class="o">.</span><span class="n">formWords</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.Recording.refine">
+<span class="sig-name descname"><span class="pre">refine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">enabled</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[1,</span> <span class="pre">1,</span> <span class="pre">0]</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#k1lib.k1ui.main.Recording" title="k1lib.k1ui.main.Recording"><span class="pre">Recording</span></a></span></span><a class="headerlink" href="#k1lib.k1ui.main.Recording.refine" title="Permalink to this definition"></a></dt>
+<dd><p>Perform sensible default operations to refine the Recording.
+This currently includes:</p>
+<ul class="simple">
+<li><ol class="arabic simple" start="0">
+<li><p>Splitting ContourTracks into multiple smaller tracks using click events</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple">
+<li><p>Forming words from nearby CharTracks</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="2">
+<li><p>Removing open-close CharTracks. Basically, CharTracks that don’t have a begin or end time</p></li>
+</ol>
+</li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>enabled</strong> – list of integers, whether to turn on or off certain features. 1 to turn on, 0 to turn off</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.Recording.removeTime">
+<span class="sig-name descname"><span class="pre">removeTime</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">t2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#k1lib.k1ui.main.Recording" title="k1lib.k1ui.main.Recording"><span class="pre">Recording</span></a></span></span><a class="headerlink" href="#k1lib.k1ui.main.Recording.removeTime" title="Permalink to this definition"></a></dt>
+<dd><p>Deletes time from t1 to t2 (relative to Recording’s start time).
+All tracks lying completely inside this range will be deleted. More
+clearly, it transforms this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># |-1--|  |-2-|   |-3-|</span>
+<span class="c1">#    |---4---|  |-5-|</span>
+<span class="c1">#        ^       ^ delete between these carets</span>
+</pre></div>
+</div>
+<p>Into this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># |-1--|   |-3-|</span>
+<span class="c1">#    |-4-||5-|</span>
+</pre></div>
+</div>
+<p>Tracks that partly overlaps with the range will have their start/end times
+modified, and potentially delete some of the Track’s internal data:</p>
+<ul class="simple">
+<li><p>Tracks whose only start and end times are modified: Char, Word, Click, Wheel</p></li>
+<li><p>Tracks whose internal data are also modified: Contour, Stream</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.Recording.sample">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">sample</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#k1lib.k1ui.main.Recording" title="k1lib.k1ui.main.Recording"><span class="pre">Recording</span></a></span></span><a class="headerlink" href="#k1lib.k1ui.main.Recording.sample" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a Recording from <a class="reference internal" href="#k1lib.k1ui.main.Recording.sampleEvents" title="k1lib.k1ui.main.Recording.sampleEvents"><code class="xref py py-meth docutils literal notranslate"><span class="pre">sampleEvents()</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.Recording.sampleEvents">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">sampleEvents</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><span class="pre">dict</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#k1lib.k1ui.main.Recording.sampleEvents" title="Permalink to this definition"></a></dt>
+<dd><p>Grabs the built-in example events. Results will be really long,
+so beware, as it can crash your notebook if you try to display it.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.Track">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.k1ui.main.</span></span><span class="sig-name descname"><span class="pre">Track</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">startTime</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">endTime</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#Track"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.Track" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.Track.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">startTime</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">endTime</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#Track.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.Track.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Time values are absolute unix time.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.Track.time0">
+<span class="sig-name descname"><span class="pre">time0</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#Track.time0"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.Track.time0" title="Permalink to this definition"></a></dt>
+<dd><p>Start and end track times. Times are relative to track’s start time</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.Track.time0Rec">
+<span class="sig-name descname"><span class="pre">time0Rec</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#Track.time0Rec"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.Track.time0Rec" title="Permalink to this definition"></a></dt>
+<dd><p>Start and end track times. Times are relative to recording’s start time</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.Track.timeUnix">
+<span class="sig-name descname"><span class="pre">timeUnix</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#Track.timeUnix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.Track.timeUnix" title="Permalink to this definition"></a></dt>
+<dd><p>Start and end track times. Times are absolute unix times</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.Track.concurrent">
+<span class="sig-name descname"><span class="pre">concurrent</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#k1lib.k1ui.main.Track" title="k1lib.k1ui.main.Track"><span class="pre">Track</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#Track.concurrent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.Track.concurrent" title="Permalink to this definition"></a></dt>
+<dd><p>Grabs all tracks that are concurrent to this track</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.Track.events">
+<span class="sig-name descname"><span class="pre">events</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><span class="pre">dict</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#Track.events"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.Track.events" title="Permalink to this definition"></a></dt>
+<dd><p>Reconstructs events from the Track’s internal data, to be implemented by subclasses.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.Track.copy">
+<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#Track.copy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.Track.copy" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a clone of this Track, to be implemented by subclasses</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.Track.move">
+<span class="sig-name descname"><span class="pre">move</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deltaTime</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#Track.move"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.Track.move" title="Permalink to this definition"></a></dt>
+<dd><p>Moves the entire track left or right, to be implemented by subclasses.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>deltaTime</strong> – if negative, move left by this number of seconds, else move right</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.Track.nextTrack">
+<span class="sig-name descname"><span class="pre">nextTrack</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#k1lib.k1ui.main.Track" title="k1lib.k1ui.main.Track"><span class="pre">Track</span></a></span></span><a class="headerlink" href="#k1lib.k1ui.main.Track.nextTrack" title="Permalink to this definition"></a></dt>
+<dd><p>Grabs the next track (ordered by start time) in the recording</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.CharTrack">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.k1ui.main.</span></span><span class="sig-name descname"><span class="pre">CharTrack</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keyText</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">keyCode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">mods</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">times</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#CharTrack"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.CharTrack" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#k1lib.k1ui.main.Track" title="k1lib.k1ui.main.Track"><code class="xref py py-class docutils literal notranslate"><span class="pre">Track</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.CharTrack.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keyText</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">keyCode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">mods</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">times</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#CharTrack.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.CharTrack.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Representing 1 key pressed and released.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>keyText</strong> – text to display to user, like “Enter”</p></li>
+<li><p><strong>keyCode</strong> – event’s “javaKeyCode”</p></li>
+<li><p><strong>mods</strong> – list of 3 booleans, whether ctrl, shift or alt is pressed</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.CharTrack.parse">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">events</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#k1lib.k1ui.main.CharTrack" title="k1lib.k1ui.main.CharTrack"><span class="pre">CharTrack</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#CharTrack.parse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.CharTrack.parse" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.CharTrack.events">
+<span class="sig-name descname"><span class="pre">events</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#CharTrack.events"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.CharTrack.events" title="Permalink to this definition"></a></dt>
+<dd><p>Reconstructs events from the Track’s internal data, to be implemented by subclasses.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.CharTrack.copy">
+<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#CharTrack.copy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.CharTrack.copy" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a clone of this Track, to be implemented by subclasses</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.CharTrack.move">
+<span class="sig-name descname"><span class="pre">move</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deltaTime</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#CharTrack.move"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.CharTrack.move" title="Permalink to this definition"></a></dt>
+<dd><p>Moves the entire track left or right, to be implemented by subclasses.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>deltaTime</strong> – if negative, move left by this number of seconds, else move right</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.WordTrack">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.k1ui.main.</span></span><span class="sig-name descname"><span class="pre">WordTrack</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">times</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#WordTrack"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.WordTrack" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#k1lib.k1ui.main.Track" title="k1lib.k1ui.main.Track"><code class="xref py py-class docutils literal notranslate"><span class="pre">Track</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.WordTrack.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">times</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#WordTrack.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.WordTrack.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Representing normal text input. This is not created from events
+directly. Rather, it’s created from scanning over CharTracks and merging them together</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.WordTrack.events">
+<span class="sig-name descname"><span class="pre">events</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#WordTrack.events"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.WordTrack.events" title="Permalink to this definition"></a></dt>
+<dd><p>Reconstructs events from the Track’s internal data, to be implemented by subclasses.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.WordTrack.copy">
+<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#WordTrack.copy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.WordTrack.copy" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a clone of this Track, to be implemented by subclasses</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.ContourTrack">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.k1ui.main.</span></span><span class="sig-name descname"><span class="pre">ContourTrack</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coords</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#ContourTrack"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.ContourTrack" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#k1lib.k1ui.main.Track" title="k1lib.k1ui.main.Track"><code class="xref py py-class docutils literal notranslate"><span class="pre">Track</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.ContourTrack.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coords</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#ContourTrack.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.ContourTrack.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Representing mouse trajectory (“mouseMoved” event).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>coords</strong> – numpy array with shape (#events, [x, y, unix time])</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.ContourTrack.parse">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">events</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#k1lib.k1ui.main.ContourTrack" title="k1lib.k1ui.main.ContourTrack"><span class="pre">ContourTrack</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#ContourTrack.parse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.ContourTrack.parse" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.ContourTrack.events">
+<span class="sig-name descname"><span class="pre">events</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#ContourTrack.events"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.ContourTrack.events" title="Permalink to this definition"></a></dt>
+<dd><p>Reconstructs events from the Track’s internal data, to be implemented by subclasses.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.ContourTrack.copy">
+<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#ContourTrack.copy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.ContourTrack.copy" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a clone of this Track, to be implemented by subclasses</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.ContourTrack.move">
+<span class="sig-name descname"><span class="pre">move</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deltaTime</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#ContourTrack.move"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.ContourTrack.move" title="Permalink to this definition"></a></dt>
+<dd><p>Moves the entire track left or right, to be implemented by subclasses.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>deltaTime</strong> – if negative, move left by this number of seconds, else move right</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.ContourTrack.movePoint">
+<span class="sig-name descname"><span class="pre">movePoint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#k1lib.k1ui.main.ContourTrack.movePoint" title="Permalink to this definition"></a></dt>
+<dd><p>Move contour’s start/end to another location, smoothly scaling all
+intermediary points along.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>start</strong> – if True, move the start point, else move the end point</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.ContourTrack.splitClick">
+<span class="sig-name descname"><span class="pre">splitClick</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clickTracks</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#k1lib.k1ui.main.ClickTrack" title="k1lib.k1ui.main.ClickTrack"><span class="pre">ClickTrack</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#k1lib.k1ui.main.ContourTrack.splitClick" title="Permalink to this definition"></a></dt>
+<dd><p>Splits this contour track by click events. Essentially, the click
+events chops this contour into multiple segments. Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">r</span> <span class="o">=</span> <span class="n">k1ui</span><span class="o">.</span><span class="n">Recording</span><span class="o">.</span><span class="n">sample</span><span class="p">()</span>
+<span class="n">r</span><span class="o">.</span><span class="n">sel1</span><span class="p">(</span><span class="n">klass</span><span class="o">=</span><span class="n">k1ui</span><span class="o">.</span><span class="n">ContourTrack</span><span class="p">)</span><span class="o">.</span><span class="n">splitClick</span><span class="p">()</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>clickTracks</strong> – if not specified, use all ClickTracks from the recording</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.ClickTrack">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.k1ui.main.</span></span><span class="sig-name descname"><span class="pre">ClickTrack</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coords</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><span class="pre">ndarray</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">times</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#ClickTrack"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.ClickTrack" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#k1lib.k1ui.main.Track" title="k1lib.k1ui.main.Track"><code class="xref py py-class docutils literal notranslate"><span class="pre">Track</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.ClickTrack.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coords</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><span class="pre">ndarray</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">times</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#ClickTrack.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.ClickTrack.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Representing a mouse pressed and released event</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.ClickTrack.parse">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">events</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#k1lib.k1ui.main.ClickTrack" title="k1lib.k1ui.main.ClickTrack"><span class="pre">ClickTrack</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#ClickTrack.parse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.ClickTrack.parse" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.ClickTrack.isClick">
+<span class="sig-name descname"><span class="pre">isClick</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#ClickTrack.isClick"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.ClickTrack.isClick" title="Permalink to this definition"></a></dt>
+<dd><p>Whether this ClickTrack represents a single click.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>threshold</strong> – if Manhattan distance between start and end is less than this amount, then declare it a single click</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.ClickTrack.events">
+<span class="sig-name descname"><span class="pre">events</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#ClickTrack.events"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.ClickTrack.events" title="Permalink to this definition"></a></dt>
+<dd><p>Reconstructs events from the Track’s internal data, to be implemented by subclasses.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.ClickTrack.copy">
+<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#ClickTrack.copy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.ClickTrack.copy" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a clone of this Track, to be implemented by subclasses</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.WheelTrack">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.k1ui.main.</span></span><span class="sig-name descname"><span class="pre">WheelTrack</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coords</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><span class="pre">ndarray</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">times</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#WheelTrack"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.WheelTrack" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#k1lib.k1ui.main.Track" title="k1lib.k1ui.main.Track"><code class="xref py py-class docutils literal notranslate"><span class="pre">Track</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.WheelTrack.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coords</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><span class="pre">ndarray</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">times</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#WheelTrack.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.WheelTrack.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Representing mouse wheel moved event</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.WheelTrack.parse">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">events</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#k1lib.k1ui.main.WheelTrack" title="k1lib.k1ui.main.WheelTrack"><span class="pre">WheelTrack</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#WheelTrack.parse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.WheelTrack.parse" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.WheelTrack.events">
+<span class="sig-name descname"><span class="pre">events</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#WheelTrack.events"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.WheelTrack.events" title="Permalink to this definition"></a></dt>
+<dd><p>Reconstructs events from the Track’s internal data, to be implemented by subclasses.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.WheelTrack.copy">
+<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#WheelTrack.copy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.WheelTrack.copy" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a clone of this Track, to be implemented by subclasses</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.StreamTrack">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.k1ui.main.</span></span><span class="sig-name descname"><span class="pre">StreamTrack</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frames</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><span class="pre">ndarray</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">times</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><span class="pre">ndarray</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#StreamTrack"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.StreamTrack" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#k1lib.k1ui.main.Track" title="k1lib.k1ui.main.Track"><code class="xref py py-class docutils literal notranslate"><span class="pre">Track</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.StreamTrack.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frames</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><span class="pre">ndarray</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">times</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><span class="pre">ndarray</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#StreamTrack.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.StreamTrack.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Representing screenshots from the UDP stream</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.StreamTrack.parse">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">events</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#k1lib.k1ui.main.StreamTrack" title="k1lib.k1ui.main.StreamTrack"><span class="pre">StreamTrack</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#StreamTrack.parse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.StreamTrack.parse" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.StreamTrack.events">
+<span class="sig-name descname"><span class="pre">events</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#StreamTrack.events"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.StreamTrack.events" title="Permalink to this definition"></a></dt>
+<dd><p>Reconstructs events from the Track’s internal data, to be implemented by subclasses.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.StreamTrack.copy">
+<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#StreamTrack.copy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.StreamTrack.copy" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a clone of this Track, to be implemented by subclasses</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.StreamTrack.move">
+<span class="sig-name descname"><span class="pre">move</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deltaTime</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#StreamTrack.move"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.StreamTrack.move" title="Permalink to this definition"></a></dt>
+<dd><p>Moves the entire track left or right, to be implemented by subclasses.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>deltaTime</strong> – if negative, move left by this number of seconds, else move right</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.distNet">
+<span class="sig-prename descclassname"><span class="pre">k1lib.k1ui.main.</span></span><span class="sig-name descname"><span class="pre">distNet</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch vmaster (2.0.0a0+git01f1097 ))"><span class="pre">Module</span></a></span></span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#distNet"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.distNet" title="Permalink to this definition"></a></dt>
+<dd><p>Grabs a pretrained network that might be useful in distinguishing
+between screens. Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">net</span> <span class="o">=</span> <span class="n">k1ui</span><span class="o">.</span><span class="n">distNet</span><span class="p">()</span>
+<span class="n">net</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">192</span><span class="p">,</span> <span class="mi">192</span><span class="p">))</span> <span class="c1"># returns tensor of shape (16, 10)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.TrainScreen">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.k1ui.main.</span></span><span class="sig-name descname"><span class="pre">TrainScreen</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">r</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#k1lib.k1ui.main.Recording" title="k1lib.k1ui.main.Recording"><span class="pre">Recording</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#TrainScreen"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.TrainScreen" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.TrainScreen.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">r</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#k1lib.k1ui.main.Recording" title="k1lib.k1ui.main.Recording"><span class="pre">Recording</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#TrainScreen.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.TrainScreen.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a screen training system that will train a small neural network
+to recognize different screens using a small amount of feedback from the user.
+Overview on how it’s supposed to look like:</p>
+<p>Setting up:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">r</span> <span class="o">=</span> <span class="n">k1ui</span><span class="o">.</span><span class="n">Recording</span><span class="p">(</span><span class="k">await</span> <span class="n">k1ui</span><span class="o">.</span><span class="n">record</span><span class="p">(</span><span class="mi">30</span><span class="p">))</span> <span class="c1"># record everything for 30 seconds, and creates a recording out of it</span>
+<span class="n">ts</span> <span class="o">=</span> <span class="n">k1ui</span><span class="o">.</span><span class="n">TrainScreen</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="c1"># creates the TrainScreen object</span>
+<span class="n">r</span> <span class="c1"># run this in a cell to display the recording, including StreamTrack</span>
+<span class="n">ts</span><span class="o">.</span><span class="n">addRule</span><span class="p">(</span><span class="s2">&quot;home&quot;</span><span class="p">,</span> <span class="s2">&quot;settings&quot;</span><span class="p">,</span> <span class="s2">&quot;home&quot;</span><span class="p">)</span> <span class="c1"># add expected screen transition dynamics (home -&gt; settings -&gt; home)</span>
+</pre></div>
+</div>
+<p>Training with user’s feedback:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ts</span><span class="o">.</span><span class="n">registerFrames</span><span class="p">({</span><span class="s2">&quot;home&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">590</span><span class="p">,</span> <span class="mi">4000</span><span class="p">,</span> <span class="mi">4503</span><span class="p">],</span> <span class="s2">&quot;settings&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1200</span><span class="p">,</span> <span class="mi">2438</span><span class="p">]})</span> <span class="c1"># label some frames of the recording. Network will train for ~6 seconds</span>
+<span class="nb">next</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span> <span class="c1"># display 20 images that confuses the network the most</span>
+<span class="n">ts</span><span class="o">.</span><span class="n">register</span><span class="p">({</span><span class="s2">&quot;home&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="s2">&quot;settings&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">16</span><span class="p">]})</span> <span class="c1"># label some frames from the last line. Notice the frame numbers are much smaller and are &lt;20</span>
+<span class="nb">next</span><span class="p">(</span><span class="n">ts</span><span class="p">);</span> <span class="n">ts</span><span class="o">.</span><span class="n">register</span><span class="p">({});</span> <span class="nb">next</span><span class="p">(</span><span class="n">ts</span><span class="p">);</span> <span class="n">ts</span><span class="o">.</span><span class="n">register</span><span class="p">({})</span> <span class="c1"># repeat the last 2 lines for a few times (3-5 times is probably good enough for ~7 screens)</span>
+</pre></div>
+</div>
+<p>Evaluating the performance:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ts</span><span class="o">.</span><span class="n">graphs</span><span class="p">()</span> <span class="c1"># displays 2 graphs: network&#39;s prediction graph and the actual rule graph. Best way to judge performance</span>
+<span class="n">ts</span><span class="o">.</span><span class="n">l</span><span class="o">.</span><span class="n">Accuracy</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span> <span class="c1"># actual accuracy metric while training. Network could have bad accuracy here while still able to construct a perfect graph, so don&#39;t rely much on this</span>
+</pre></div>
+</div>
+<p>Using the model:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ts</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">192</span><span class="p">,</span> <span class="mi">192</span><span class="p">)</span> <span class="o">|</span> <span class="n">k1ui</span><span class="o">.</span><span class="n">distNet</span><span class="p">())</span> <span class="c1"># returns list of ints. Can use ts.idx2Name dict to convert to screen names</span>
+</pre></div>
+</div>
+<p>Saving the model:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ts</span> <span class="o">|</span> <span class="n">aS</span><span class="p">(</span><span class="n">dill</span><span class="o">.</span><span class="n">dumps</span><span class="p">)</span> <span class="o">|</span> <span class="n">file</span><span class="p">(</span><span class="s2">&quot;ts.pth&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This won’t actually save the associated recording, because recordings are
+very heavy objects (several GB). It is expected that you manually manage
+the lifecycle of the recording.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.TrainScreen.train">
+<span class="sig-name descname"><span class="pre">train</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">restart</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#TrainScreen.train"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.TrainScreen.train" title="Permalink to this definition"></a></dt>
+<dd><p>Trains the network for a while (300 epochs/6 seconds). Will be called
+automatically when you register new frames to the system</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>restart</strong> – whether to restart the small network or not</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.TrainScreen.trainParams">
+<span class="sig-name descname"><span class="pre">trainParams</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">joinAlpha</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epochs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#TrainScreen.trainParams"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.TrainScreen.trainParams" title="Permalink to this definition"></a></dt>
+<dd><p>Sets training parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>joinAlpha</strong> – (default 0) alpha used in joinStreamsRandom component for each
+screen categories. Read more at <a class="reference internal" href="cli/index.html#k1lib.cli.structural.joinStreamsRandom" title="k1lib.cli.structural.joinStreamsRandom"><code class="xref py py-class docutils literal notranslate"><span class="pre">joinStreamsRandom</span></code></a></p></li>
+<li><p><strong>epochs</strong> – (default 300) number of epochs for each training session</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.TrainScreen.frames">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">frames</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><span class="pre">ndarray</span></a></em><a class="headerlink" href="#k1lib.k1ui.main.TrainScreen.frames" title="Permalink to this definition"></a></dt>
+<dd><p>Grab the frames from the first <a class="reference internal" href="#k1lib.k1ui.main.StreamTrack" title="k1lib.k1ui.main.StreamTrack"><code class="xref py py-class docutils literal notranslate"><span class="pre">StreamTrack</span></code></a> from the <a class="reference internal" href="#k1lib.k1ui.main.Recording" title="k1lib.k1ui.main.Recording"><code class="xref py py-class docutils literal notranslate"><span class="pre">Recording</span></code></a></p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.TrainScreen.feats">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">feats</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><span class="pre">ndarray</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#k1lib.k1ui.main.TrainScreen.feats" title="Permalink to this definition"></a></dt>
+<dd><p>Gets the feature array of shape (N, 10) by passing the frames
+through <a class="reference internal" href="#k1lib.k1ui.main.distNet" title="k1lib.k1ui.main.distNet"><code class="xref py py-meth docutils literal notranslate"><span class="pre">distNet()</span></code></a>. This returns a list of arrays, not a giant,
+stacked array for memory performance</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.TrainScreen.register">
+<span class="sig-name descname"><span class="pre">register</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#TrainScreen.register"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.TrainScreen.register" title="Permalink to this definition"></a></dt>
+<dd><p>Tells the object which images previously displayed by <code class="xref py py-meth docutils literal notranslate"><span class="pre">__next__()</span></code>
+associate with what screen name. Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">next</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span> <span class="c1"># displays the images out to a notebook cell</span>
+<span class="n">ts</span><span class="o">.</span><span class="n">register</span><span class="p">({</span><span class="s2">&quot;home&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> <span class="s2">&quot;settings&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="s2">&quot;monkeys&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">15</span><span class="p">,</span> <span class="mi">11</span><span class="p">],</span> <span class="s2">&quot;guns&quot;</span><span class="p">:</span> <span class="p">[]})</span>
+</pre></div>
+</div>
+<p>This will also quickly (around 6 seconds) train a small neural network on all
+available frames based on the new information you provided.</p>
+<p>See also: <a class="reference internal" href="#k1lib.k1ui.main.TrainScreen.registerFrames" title="k1lib.k1ui.main.TrainScreen.registerFrames"><code class="xref py py-meth docutils literal notranslate"><span class="pre">registerFrames()</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.TrainScreen.registerFrames">
+<span class="sig-name descname"><span class="pre">registerFrames</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.11)"><span class="pre">Dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#TrainScreen.registerFrames"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.TrainScreen.registerFrames" title="Permalink to this definition"></a></dt>
+<dd><p>Tells the object which frames should have which labels.
+Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ts</span><span class="o">.</span><span class="n">registerFrames</span><span class="p">({</span><span class="s2">&quot;home&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">328</span><span class="p">,</span> <span class="mi">609</span><span class="p">],</span> <span class="s2">&quot;settings&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">12029</span><span class="p">],</span> <span class="s2">&quot;monkeys&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1238</span><span class="p">]})</span>
+</pre></div>
+</div>
+<p>This differs from <a class="reference internal" href="#k1lib.k1ui.main.TrainScreen.register" title="k1lib.k1ui.main.TrainScreen.register"><code class="xref py py-meth docutils literal notranslate"><span class="pre">register()</span></code></a> in that the frame id here is the
+absolute frame index in the recording, while in <a class="reference internal" href="#k1lib.k1ui.main.TrainScreen.register" title="k1lib.k1ui.main.TrainScreen.register"><code class="xref py py-meth docutils literal notranslate"><span class="pre">register()</span></code></a>,
+it’s the frame displayed by <code class="xref py py-meth docutils literal notranslate"><span class="pre">__next__()</span></code>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.TrainScreen.addRule">
+<span class="sig-name descname"><span class="pre">addRule</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">screenNames</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#k1lib.k1ui.main.TrainScreen" title="k1lib.k1ui.main.TrainScreen"><span class="pre">TrainScreen</span></a></span></span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#TrainScreen.addRule"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.TrainScreen.addRule" title="Permalink to this definition"></a></dt>
+<dd><p>Adds a screen transition rule. Let’s say that the transition
+dynamic looks like this:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>home &lt;---&gt; settings &lt;---&gt; account
+              ^
+              |
+              v
+          shortcuts
+</pre></div>
+</div>
+<p>You can represent it like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ts</span><span class="o">.</span><span class="n">addRule</span><span class="p">(</span><span class="s2">&quot;home&quot;</span><span class="p">,</span> <span class="s2">&quot;settings&quot;</span><span class="p">,</span> <span class="s2">&quot;account&quot;</span><span class="p">,</span> <span class="s2">&quot;settings&quot;</span><span class="p">,</span> <span class="s2">&quot;home&quot;</span><span class="p">)</span>
+<span class="n">ts</span><span class="o">.</span><span class="n">addRule</span><span class="p">(</span><span class="s2">&quot;settings&quot;</span><span class="p">,</span> <span class="s2">&quot;shortcuts&quot;</span><span class="p">,</span> <span class="s2">&quot;settings&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.TrainScreen.transitionScreens">
+<span class="sig-name descname"><span class="pre">transitionScreens</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obeyRule:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">&lt;object</span> <span class="pre">object&gt;</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.11)"><span class="pre">Tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#TrainScreen.transitionScreens"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.TrainScreen.transitionScreens" title="Permalink to this definition"></a></dt>
+<dd><p>Get the list of screens (list of (frameId, screen name) tuple) that
+the network deems to be transitions between screen states.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>obeyRule</strong> – if not specified, then don’t filter. If True, returns only screens that
+are part of the specified rule and vice versa</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.TrainScreen.newEvent">
+<span class="sig-name descname"><span class="pre">newEvent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sess</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#k1lib.k1ui.main.WsSession" title="k1lib.k1ui.main.WsSession"><span class="pre">WsSession</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">event</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><span class="pre">dict</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#TrainScreen.newEvent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.TrainScreen.newEvent" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.TrainScreen.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feats</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.0.0a0+git01f1097 ))"><span class="pre">Tensor</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#TrainScreen.predict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.TrainScreen.predict" title="Permalink to this definition"></a></dt>
+<dd><p>Using the built-in network, tries to predict the screen name for a
+bunch of features of shape (N, 10). Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">r</span> <span class="o">=</span> <span class="o">...</span><span class="p">;</span> <span class="n">ts</span> <span class="o">=</span> <span class="n">k1ui</span><span class="o">.</span><span class="n">TrainScreen</span><span class="p">(</span><span class="n">r</span><span class="p">);</span> <span class="nb">next</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span>
+<span class="n">ts</span><span class="o">.</span><span class="n">register</span><span class="p">({</span><span class="s2">&quot;bg&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">19</span><span class="p">],</span> <span class="s2">&quot;docs&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="s2">&quot;jupyter&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]})</span>
+<span class="c1"># returns list of 2 integers</span>
+<span class="n">ts</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">192</span><span class="p">,</span> <span class="mi">192</span><span class="p">)</span> <span class="o">|</span> <span class="n">aS</span><span class="p">(</span><span class="n">k1ui</span><span class="o">.</span><span class="n">distNet</span><span class="p">()))</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.TrainScreen.transitionGraph">
+<span class="sig-name descname"><span class="pre">transitionGraph</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">graphviz.dot.Digraph</span></span></span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#TrainScreen.transitionGraph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.TrainScreen.transitionGraph" title="Permalink to this definition"></a></dt>
+<dd><p>Gets a screen transition graph of the entire recording. See also: <a class="reference internal" href="#k1lib.k1ui.main.TrainScreen.graphs" title="k1lib.k1ui.main.TrainScreen.graphs"><code class="xref py py-meth docutils literal notranslate"><span class="pre">graphs()</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.TrainScreen.ruleGraph">
+<span class="sig-name descname"><span class="pre">ruleGraph</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">graphviz.dot.Digraph</span></span></span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#TrainScreen.ruleGraph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.TrainScreen.ruleGraph" title="Permalink to this definition"></a></dt>
+<dd><p>Gets a screen transition graph based on the specified rules.
+Rules are added using <a class="reference internal" href="#k1lib.k1ui.main.TrainScreen.addRule" title="k1lib.k1ui.main.TrainScreen.addRule"><code class="xref py py-meth docutils literal notranslate"><span class="pre">addRule()</span></code></a>. See also: <a class="reference internal" href="#k1lib.k1ui.main.TrainScreen.graphs" title="k1lib.k1ui.main.TrainScreen.graphs"><code class="xref py py-meth docutils literal notranslate"><span class="pre">graphs()</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.TrainScreen.graphs">
+<span class="sig-name descname"><span class="pre">graphs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="viz.html#k1lib.viz.Carousel" title="k1lib.viz.Carousel"><span class="pre">Carousel</span></a></span></span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#TrainScreen.graphs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.TrainScreen.graphs" title="Permalink to this definition"></a></dt>
+<dd><p>Combines both graphs from <a class="reference internal" href="#k1lib.k1ui.main.TrainScreen.transitionGraph" title="k1lib.k1ui.main.TrainScreen.transitionGraph"><code class="xref py py-meth docutils literal notranslate"><span class="pre">transitionGraph()</span></code></a> and <a class="reference internal" href="#k1lib.k1ui.main.TrainScreen.ruleGraph" title="k1lib.k1ui.main.TrainScreen.ruleGraph"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ruleGraph()</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.TrainScreen.labeledData">
+<span class="sig-name descname"><span class="pre">labeledData</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="viz.html#k1lib.viz.Carousel" title="k1lib.viz.Carousel"><span class="pre">Carousel</span></a></span></span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#TrainScreen.labeledData"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.TrainScreen.labeledData" title="Permalink to this definition"></a></dt>
+<dd><p>Visualizes labeled data</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.TrainScreen.correctRatio">
+<span class="sig-name descname"><span class="pre">correctRatio</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#TrainScreen.correctRatio"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.TrainScreen.correctRatio" title="Permalink to this definition"></a></dt>
+<dd><p>Ratio between the number of screens that is in a valid transition and
+ones that isn’t in a valid transition. Just a quick metric to see how well the
+network is doing. The higher the number, the better it is</p>
+</dd></dl>
+
 </dd></dl>
 
 </section>
@@ -122,7 +1080,7 @@ the screen. Github repo is at <a class="reference external" href="https://github
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, Quang Ho.</p>
+    <p>&#169; Copyright 2023, Quang Ho.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

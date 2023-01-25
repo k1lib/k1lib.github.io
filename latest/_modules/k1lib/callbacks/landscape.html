@@ -52,6 +52,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../imports.html">k1lib.imports module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../mo.html">k1lib.mo module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../knn.html">k1lib.knn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../p5.html">k1lib.p5 module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../schedule.html">k1lib.schedule module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../selector.html">k1lib.selector module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../serve.html">k1lib.serve module</a></li>
@@ -93,6 +94,7 @@
 <span class="kn">import</span> <span class="nn">k1lib</span><span class="o">,</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span><span class="o">,</span> <span class="nn">time</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Callable</span>
+<span class="kn">import</span> <span class="nn">k1lib.cli</span> <span class="k">as</span> <span class="nn">cli</span>
 <span class="k">try</span><span class="p">:</span> <span class="kn">import</span> <span class="nn">torch</span><span class="p">;</span> <span class="n">hasTorch</span> <span class="o">=</span> <span class="kc">True</span>
 <span class="k">except</span><span class="p">:</span> <span class="n">hasTorch</span> <span class="o">=</span> <span class="kc">False</span>
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Landscape&quot;</span><span class="p">]</span>
@@ -107,7 +109,7 @@
 <span class="k">class</span> <span class="nc">Landscape</span><span class="p">(</span><span class="n">Callback</span><span class="p">):</span>
     <span class="s2">&quot; &quot;</span>
 <div class="viewcode-block" id="Landscape.__init__"><a class="viewcode-back" href="../../../callbacks/index.html#k1lib.callbacks.landscape.Landscape.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">propertyF</span><span class="p">:</span><span class="n">F</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Plots the landscape of the network.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Plots the landscape of the network.</span>
 
 <span class="sd">:param propertyF: a function that takes in :class:`k1lib.Learner` and outputs the</span>
 <span class="sd">    desired float property</span>
@@ -133,7 +135,7 @@
 <div class="viewcode-block" id="Landscape.startStep"><a class="viewcode-back" href="../../../callbacks/index.html#k1lib.callbacks.landscape.Landscape.startStep">[docs]</a>    <span class="k">def</span> <span class="nf">startStep</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="kc">True</span></div>
 <div class="viewcode-block" id="Landscape.startZeroGrad"><a class="viewcode-back" href="../../../callbacks/index.html#k1lib.callbacks.landscape.Landscape.startZeroGrad">[docs]</a>    <span class="k">def</span> <span class="nf">startZeroGrad</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="kc">True</span></div>
     <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;This one is the &quot;core running loop&quot;, if you&#39;d like to say so. Because</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;This one is the &quot;core running loop&quot;, if you&#39;d like to say so. Because</span>
 <span class="sd">this needs to be sort of event-triggered (by checkpoint &quot;startPass&quot;), so kinda have</span>
 <span class="sd">to put this into an iterator so that it&#39;s not the driving thread.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">zss</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># debug data</span>
@@ -151,7 +153,7 @@
             <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;     </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">/8 Finished [</span><span class="si">{</span><span class="o">-</span><span class="n">scale</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">scale</span><span class="si">}</span><span class="s2">] range              &quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
         <span class="k">raise</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">CancelRunException</span><span class="p">(</span><span class="s2">&quot;Landscape finished&quot;</span><span class="p">)</span>
 <div class="viewcode-block" id="Landscape.plot"><a class="viewcode-back" href="../../../callbacks/index.html#k1lib.callbacks.landscape.Landscape.plot">[docs]</a>    <span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Creates the landscapes and show plots&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Creates the landscapes and show plots&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">suspended</span> <span class="o">=</span> <span class="kc">False</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">iter</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="bp">self</span><span class="p">);</span> <span class="bp">self</span><span class="o">.</span><span class="n">beginTime</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
         <span class="k">def</span> <span class="nf">inner</span><span class="p">():</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">vs</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">getParamsVector</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">getParamsVector</span><span class="p">()]</span>
@@ -174,7 +176,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, Quang Ho.</p>
+    <p>&#169; Copyright 2023, Quang Ho.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

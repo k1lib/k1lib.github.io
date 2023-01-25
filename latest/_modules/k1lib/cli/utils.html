@@ -52,6 +52,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../imports.html">k1lib.imports module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../mo.html">k1lib.mo module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../knn.html">k1lib.knn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../p5.html">k1lib.p5 module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../schedule.html">k1lib.schedule module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../selector.html">k1lib.selector module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../serve.html">k1lib.serve module</a></li>
@@ -107,7 +108,7 @@
            <span class="s2">&quot;tree&quot;</span><span class="p">,</span> <span class="s2">&quot;lookup&quot;</span><span class="p">,</span> <span class="s2">&quot;dictFields&quot;</span><span class="p">]</span>
 <span class="n">settings</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">cli</span>
 <span class="k">def</span> <span class="nf">exploreSize</span><span class="p">(</span><span class="n">it</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Returns first element and length of array. Returns [first item, length]&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns first element and length of array. Returns [first item, length]&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">it</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span> <span class="k">return</span> <span class="kc">None</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">it</span><span class="p">)</span>
     <span class="k">try</span><span class="p">:</span> <span class="k">return</span> <span class="n">it</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">len</span><span class="p">(</span><span class="n">it</span><span class="p">)</span>
     <span class="k">except</span><span class="p">:</span> <span class="k">pass</span>
@@ -120,7 +121,7 @@
     <span class="k">return</span> <span class="n">o</span><span class="p">,</span> <span class="n">count</span>
 <div class="viewcode-block" id="size"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.utils.size">[docs]</a><span class="k">class</span> <span class="nc">size</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
 <div class="viewcode-block" id="size.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.utils.size.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Returns number of rows and columns in the input.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns number of rows and columns in the input.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">    # returns (3, 2)</span>
@@ -177,11 +178,11 @@
 <span class="n">noFill</span> <span class="o">=</span> <span class="nb">object</span><span class="p">()</span>
 <div class="viewcode-block" id="item"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.utils.item">[docs]</a><span class="k">class</span> <span class="nc">item</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
 <div class="viewcode-block" id="item.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.utils.item.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amt</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="n">noFill</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Returns the first element of the input iterator.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the first element of the input iterator.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">    # returns 0</span>
-<span class="sd">    iter(range(5)) | item()</span>
+<span class="sd">    range(5) | item()</span>
 <span class="sd">    # returns torch.Size([5])</span>
 <span class="sd">    torch.randn(3,4,5) | item(2) | shape()</span>
 <span class="sd">    # returns 3</span>
@@ -205,7 +206,7 @@
         <span class="k">return</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">it</span><span class="p">),</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">fillP</span><span class="p">)</span></div></div>
 <div class="viewcode-block" id="iden"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.utils.iden">[docs]</a><span class="k">class</span> <span class="nc">iden</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
 <div class="viewcode-block" id="iden.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.utils.iden.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Yields whatever the input is. Useful for multiple streams.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Yields whatever the input is. Useful for multiple streams.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">    # returns range(5)</span>
@@ -215,7 +216,7 @@
 <div class="viewcode-block" id="iden.__ror__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.utils.iden.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">:</span><span class="n">Iterator</span><span class="p">[</span><span class="n">Any</span><span class="p">]):</span> <span class="k">return</span> <span class="n">it</span></div></div>
 <div class="viewcode-block" id="join"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.utils.join">[docs]</a><span class="k">class</span> <span class="nc">join</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
 <div class="viewcode-block" id="join.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.utils.join.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">delim</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Merges all strings into 1, with `delim` in the middle. Basically</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Merges all strings into 1, with `delim` in the middle. Basically</span>
 <span class="sd">:meth:`str.join`. Example::</span>
 
 <span class="sd">    # returns &#39;2\na&#39;</span>
@@ -226,7 +227,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">delim</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">it</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">str</span><span class="p">))</span></div></div>
 <div class="viewcode-block" id="wrapList"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.utils.wrapList">[docs]</a><span class="k">class</span> <span class="nc">wrapList</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
 <div class="viewcode-block" id="wrapList.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.utils.wrapList.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Wraps inputs inside a list. There&#39;s a more advanced cli tool</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Wraps inputs inside a list. There&#39;s a more advanced cli tool</span>
 <span class="sd">built from this, which is :meth:`~k1lib.cli.structural.unsqueeze`. Example::</span>
 
 <span class="sd">    # returns [5]</span>
@@ -237,7 +238,7 @@
 <span class="k">class</span> <span class="nc">_EarlyExp</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span> <span class="k">pass</span>
 <div class="viewcode-block" id="equals"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.utils.equals">[docs]</a><span class="k">class</span> <span class="nc">equals</span><span class="p">:</span>
 <div class="viewcode-block" id="equals.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.utils.equals.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Checks if all incoming columns/streams are identical&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Checks if all incoming columns/streams are identical&quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span></div>
 <div class="viewcode-block" id="equals.__ror__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.utils.equals.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">streams</span><span class="p">:</span><span class="n">Iterator</span><span class="p">[</span><span class="n">Iterator</span><span class="p">[</span><span class="nb">str</span><span class="p">]]):</span>
         <span class="n">streams</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">streams</span><span class="p">)</span>
@@ -250,7 +251,7 @@
             <span class="k">except</span> <span class="n">_EarlyExp</span><span class="p">:</span> <span class="k">pass</span></div></div>
 <div class="viewcode-block" id="reverse"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.utils.reverse">[docs]</a><span class="k">class</span> <span class="nc">reverse</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
 <div class="viewcode-block" id="reverse.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.utils.reverse.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Reverses incoming list.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Reverses incoming list.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">    # returns [3, 5, 2]</span>
@@ -263,7 +264,7 @@
         <span class="k">return</span> <span class="nb">reversed</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">it</span><span class="p">))</span></div></div>
 <div class="viewcode-block" id="ignore"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.utils.ignore">[docs]</a><span class="k">class</span> <span class="nc">ignore</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
 <div class="viewcode-block" id="ignore.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.utils.ignore.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Just loops through everything, ignoring the output.</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Just loops through everything, ignoring the output.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">    # will just return an iterator, and not print anything</span>
@@ -276,7 +277,7 @@
         <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">it</span><span class="p">:</span> <span class="k">pass</span></div></div>
 <div class="viewcode-block" id="rateLimit"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.utils.rateLimit">[docs]</a><span class="k">class</span> <span class="nc">rateLimit</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
 <div class="viewcode-block" id="rateLimit.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.utils.rateLimit.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Limits the execution flow rate upon a condition.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Limits the execution flow rate upon a condition.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">    s = 0; semaphore = 0</span>
@@ -316,7 +317,7 @@
             <span class="k">yield</span> <span class="n">e</span></div>
 <div class="viewcode-block" id="rateLimit.cpu"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.utils.rateLimit.cpu">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">cpu</span><span class="p">(</span><span class="n">maxUtilization</span><span class="o">=</span><span class="mi">90</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Limits flow rate when cpu utilization is more than a specified</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Limits flow rate when cpu utilization is more than a specified</span>
 <span class="sd">percentage amount. Needs to install the package ``psutil`` to actually work.</span>
 <span class="sd">Example::</span>
 
@@ -326,7 +327,7 @@
         <span class="k">return</span> <span class="n">rateLimit</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="n">psutil</span><span class="o">.</span><span class="n">cpu_percent</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">maxUtilization</span><span class="p">)</span></div></div>
 <div class="viewcode-block" id="timeLimit"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.utils.timeLimit">[docs]</a><span class="k">class</span> <span class="nc">timeLimit</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
 <div class="viewcode-block" id="timeLimit.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.utils.timeLimit.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Caps the flow after a specified amount of time has</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Caps the flow after a specified amount of time has</span>
 <span class="sd">passed. Example::</span>
 
 <span class="sd">    # returns 20, or roughly close to that</span>
@@ -346,7 +347,7 @@
             <span class="k">yield</span> <span class="n">e</span>
             <span class="k">if</span> <span class="n">_time</span><span class="p">()</span> <span class="o">&gt;</span> <span class="n">endTime</span><span class="p">:</span> <span class="k">break</span></div></div>
 <div class="viewcode-block" id="tab"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.utils.tab">[docs]</a><span class="k">def</span> <span class="nf">tab</span><span class="p">(</span><span class="n">pad</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="o">*</span><span class="mi">4</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Indents incoming string iterator.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Indents incoming string iterator.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">    # prints out indented 0 to 9</span>
@@ -355,7 +356,7 @@
 <span class="n">indent</span> <span class="o">=</span> <span class="n">tab</span>
 <div class="viewcode-block" id="clipboard"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.utils.clipboard">[docs]</a><span class="k">class</span> <span class="nc">clipboard</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
 <div class="viewcode-block" id="clipboard.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.utils.clipboard.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Saves the input to clipboard.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Saves the input to clipboard.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">    # copies &quot;abc&quot; into the clipboard. Just use Ctrl+V to paste as usual</span>
@@ -369,7 +370,7 @@
 <span class="n">Tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">;</span> <span class="n">atomic</span> <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">atomic</span>
 <span class="k">class</span> <span class="nc">inv_dereference</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">igT</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Kinda the inverse to :class:`dereference`&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Kinda the inverse to :class:`dereference`&quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">();</span> <span class="bp">self</span><span class="o">.</span><span class="n">igT</span> <span class="o">=</span> <span class="n">igT</span>
     <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">:</span><span class="n">Iterator</span><span class="p">[</span><span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">]:</span>
         <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">it</span><span class="p">:</span>
@@ -382,7 +383,7 @@
                 <span class="k">except</span><span class="p">:</span> <span class="k">yield</span> <span class="n">e</span>
 <div class="viewcode-block" id="deref"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.utils.deref">[docs]</a><span class="k">class</span> <span class="nc">deref</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
 <div class="viewcode-block" id="deref.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.utils.deref.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">maxDepth</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="s2">&quot;inf&quot;</span><span class="p">),</span> <span class="n">igT</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Recursively converts any iterator into a list.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Recursively converts any iterator into a list.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">    # returns something like &quot;&lt;range_iterator at 0x7fa8c52ca870&gt;&quot;</span>
@@ -450,13 +451,13 @@
             <span class="n">answer</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="fm">__ror__</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">depth</span> <span class="o">-=</span> <span class="mi">1</span><span class="p">;</span> <span class="k">return</span> <span class="n">answer</span></div>
 <div class="viewcode-block" id="deref.__invert__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.utils.deref.__invert__">[docs]</a>    <span class="k">def</span> <span class="fm">__invert__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BaseCli</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Returns a :class:`~k1lib.cli.init.BaseCli` that makes</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a :class:`~k1lib.cli.init.BaseCli` that makes</span>
 <span class="sd">everything an iterator. Not entirely sure when this comes in handy, but it&#39;s</span>
 <span class="sd">there.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">inv_dereference</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">igT</span><span class="p">)</span></div></div>
 <div class="viewcode-block" id="bindec"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.utils.bindec">[docs]</a><span class="k">class</span> <span class="nc">bindec</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
 <div class="viewcode-block" id="bindec.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.utils.bindec.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cats</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">],</span> <span class="n">f</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Binary decodes the input.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Binary decodes the input.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">    # returns [&#39;a&#39;, &#39;c&#39;]</span>
@@ -473,7 +474,7 @@
 <span class="n">settings</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;smooth&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;default smooth amount, used in utils.smooth&quot;</span><span class="p">)</span>
 <div class="viewcode-block" id="smooth"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.utils.smooth">[docs]</a><span class="k">class</span> <span class="nc">smooth</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
 <div class="viewcode-block" id="smooth.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.utils.smooth.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">consecutives</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Smoothes out the input stream.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Smoothes out the input stream.</span>
 <span class="sd">Literally just a shortcut for::</span>
 
 <span class="sd">    batched(consecutives) | toMean().all()</span>
@@ -508,7 +509,7 @@
 <span class="k">def</span> <span class="nf">_f</span><span class="p">():</span> <span class="k">pass</span>
 <span class="n">_code</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="n">_f</span><span class="o">.</span><span class="vm">__code__</span><span class="p">)</span>
 <div class="viewcode-block" id="disassemble"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.utils.disassemble">[docs]</a><span class="k">def</span> <span class="nf">disassemble</span><span class="p">(</span><span class="n">f</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Disassembles anything piped into it.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Disassembles anything piped into it.</span>
 <span class="sd">Normal usage::</span>
 
 <span class="sd">    def f(a, b):</span>
@@ -536,7 +537,7 @@
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;co_flags: </span><span class="si">{</span><span class="n">c</span><span class="o">.</span><span class="n">co_flags</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;co_freevars: </span><span class="si">{</span><span class="n">c</span><span class="o">.</span><span class="n">co_freevars</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;co_kwonlyargcount: </span><span class="si">{</span><span class="n">c</span><span class="o">.</span><span class="n">co_kwonlyargcount</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;co_lnotab: </span><span class="si">{</span><span class="n">c</span><span class="o">.</span><span class="n">co_lnotab</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span> <span class="o">|</span> <span class="n">join</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;co_lnotab: </span><span class="si">{</span><span class="n">c</span><span class="o">.</span><span class="n">co_lnotab</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">cli</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">join</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;co_name: </span><span class="si">{</span><span class="n">c</span><span class="o">.</span><span class="n">co_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;co_names: </span><span class="si">{</span><span class="n">c</span><span class="o">.</span><span class="n">co_names</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;co_nlocals: </span><span class="si">{</span><span class="n">c</span><span class="o">.</span><span class="n">co_nlocals</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -549,7 +550,7 @@
     <span class="n">out</span><span class="p">()</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">filt</span><span class="p">(</span><span class="n">cli</span><span class="o">.</span><span class="n">op</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="s2">&quot;|&quot;</span> <span class="o">+</span> <span class="n">cli</span><span class="o">.</span><span class="n">op</span><span class="p">())</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">indent</span><span class="p">()</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">stdout</span><span class="p">()</span></div>
 <span class="n">shortName</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 <div class="viewcode-block" id="tree"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.utils.tree">[docs]</a><span class="k">def</span> <span class="nf">tree</span><span class="p">(</span><span class="n">fL</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">dL</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="s2">&quot;inf&quot;</span><span class="p">),</span> <span class="n">ff</span><span class="p">:</span><span class="n">Callable</span><span class="p">[[</span><span class="nb">str</span><span class="p">],</span> <span class="nb">bool</span><span class="p">]</span><span class="o">=</span><span class="p">(</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="kc">True</span><span class="p">),</span> <span class="n">df</span><span class="p">:</span><span class="n">Callable</span><span class="p">[[</span><span class="nb">str</span><span class="p">],</span> <span class="nb">bool</span><span class="p">]</span><span class="o">=</span><span class="p">(</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="kc">True</span><span class="p">)):</span>
-    <span class="sd">&quot;&quot;&quot;Recursively gets all files and folders. Output format might be a bit</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Recursively gets all files and folders. Output format might be a bit</span>
 <span class="sd">strange, so this is mainly for visualization. Example::</span>
 
 <span class="sd">    &quot;.&quot; | tree() | deref()</span>
@@ -559,13 +560,13 @@
 <span class="sd">:param depth: explore depth</span>
 <span class="sd">:param ff: optional file filter function</span>
 <span class="sd">:param df: optional directory filter function&quot;&quot;&quot;</span>
-    <span class="n">processFolders</span> <span class="o">=</span> <span class="n">cli</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">[</span><span class="n">shortName</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">x</span><span class="p">])</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">|</span> <span class="n">tree</span><span class="p">(</span><span class="n">fL</span><span class="p">,</span> <span class="n">dL</span><span class="p">,</span> <span class="n">depth</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">ff</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span> <span class="k">if</span> <span class="n">depth</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="p">[],</span> <span class="mi">1</span><span class="p">)</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">toDict</span><span class="p">()</span>
+    <span class="n">processFolders</span> <span class="o">=</span> <span class="n">cli</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">[</span><span class="n">shortName</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">x</span><span class="p">])</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">|</span> <span class="n">tree</span><span class="p">(</span><span class="n">fL</span><span class="p">,</span> <span class="n">dL</span><span class="p">,</span> <span class="n">depth</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">ff</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span> <span class="k">if</span> <span class="n">depth</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="p">[],</span> <span class="mi">1</span><span class="p">)</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">toDict</span><span class="p">()</span>
     <span class="n">a</span> <span class="o">=</span> <span class="n">cli</span><span class="o">.</span><span class="n">filt</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">)</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">filt</span><span class="p">(</span><span class="n">ff</span><span class="p">)</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">fL</span><span class="p">)</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">shortName</span><span class="p">)</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">aS</span><span class="p">(</span><span class="nb">set</span><span class="p">)</span>
     <span class="n">b</span> <span class="o">=</span> <span class="o">~</span><span class="n">cli</span><span class="o">.</span><span class="n">filt</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">)</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">filt</span><span class="p">(</span><span class="n">df</span><span class="p">)</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">dL</span><span class="p">)</span> <span class="o">|</span> <span class="n">processFolders</span>
     <span class="k">return</span> <span class="n">cli</span><span class="o">.</span><span class="n">ls</span><span class="p">()</span> <span class="o">|</span> <span class="o">~</span><span class="n">cli</span><span class="o">.</span><span class="n">sortF</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">a</span> <span class="o">&amp;</span> <span class="n">b</span><span class="p">)</span></div>
 <div class="viewcode-block" id="lookup"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.utils.lookup">[docs]</a><span class="k">class</span> <span class="nc">lookup</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
 <div class="viewcode-block" id="lookup.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.utils.lookup.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">d</span><span class="p">:</span><span class="nb">dict</span><span class="p">,</span> <span class="n">col</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Looks up items from a dictionary/object. Example::</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Looks up items from a dictionary/object. Example::</span>
 
 <span class="sd">    d = {&quot;a&quot;: 3, &quot;b&quot;: 5, &quot;c&quot;: 52}</span>
 <span class="sd">    # returns [3, 5, 52, 52, 3]</span>
@@ -591,7 +592,7 @@
         <span class="k">return</span> <span class="n">it</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="n">d</span><span class="p">[</span><span class="n">e</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">col</span><span class="p">)</span></div></div>
 <div class="viewcode-block" id="dictFields"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.utils.dictFields">[docs]</a><span class="k">class</span> <span class="nc">dictFields</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
 <div class="viewcode-block" id="dictFields.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.utils.dictFields.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">fields</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Grab a bunch of dictionary fields.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Grab a bunch of dictionary fields.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">    # returns [3, 1, &#39;&#39;]</span>
@@ -609,7 +610,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, Quang Ho.</p>
+    <p>&#169; Copyright 2023, Quang Ho.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

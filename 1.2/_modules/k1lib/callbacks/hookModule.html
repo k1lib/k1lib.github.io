@@ -52,6 +52,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../imports.html">k1lib.imports module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../mo.html">k1lib.mo module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../knn.html">k1lib.knn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../p5.html">k1lib.p5 module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../schedule.html">k1lib.schedule module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../selector.html">k1lib.selector module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../serve.html">k1lib.serve module</a></li>
@@ -153,12 +154,12 @@
 <span class="s2">- m.plot(&quot;means&quot;, &quot;stds&quot;): to plot simple statistics&quot;&quot;&quot;</span>
 <div class="viewcode-block" id="HookModule"><a class="viewcode-back" href="../../../callbacks/index.html#k1lib.callbacks.hookModule.HookModule">[docs]</a><span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">Cbs</span><span class="p">)</span>
 <span class="k">class</span> <span class="nc">HookModule</span><span class="p">(</span><span class="n">Callback</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Hooks into selected modules in the network, and</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Hooks into selected modules in the network, and</span>
 <span class="sd">execute functions like .mean(), .std(). This is fairly</span>
 <span class="sd">complicated, and I highly recommend displaying this</span>
 <span class="sd">callback in a cell for more info&quot;&quot;&quot;</span>
 <div class="viewcode-block" id="HookModule.__init__"><a class="viewcode-back" href="../../../callbacks/index.html#k1lib.callbacks.hookModule.HookModule.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">persistent</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">:param persistent: whether to save results across</span>
 <span class="sd">    runs. If false, then can execute `.reset()` to</span>
 <span class="sd">    reset everything&quot;&quot;&quot;</span>
@@ -169,11 +170,11 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">cleanFns</span> <span class="o">=</span> <span class="p">[];</span> <span class="bp">self</span><span class="o">.</span><span class="n">persistent</span> <span class="o">=</span> <span class="n">persistent</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">every</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">Every</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span></div>
 <div class="viewcode-block" id="HookModule.reset"><a class="viewcode-back" href="../../../callbacks/index.html#k1lib.callbacks.hookModule.HookModule.reset">[docs]</a>    <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Intended to be called by end user only, to reset</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Intended to be called by end user only, to reset</span>
 <span class="sd">        everything if choose to persist results across runs.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_end</span><span class="p">();</span> <span class="bp">self</span><span class="o">.</span><span class="n">_start</span><span class="p">()</span></div>
 <div class="viewcode-block" id="HookModule.persist"><a class="viewcode-back" href="../../../callbacks/index.html#k1lib.callbacks.hookModule.HookModule.persist">[docs]</a>    <span class="k">def</span> <span class="nf">persist</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;By default, data will be erased and populated on each run. If</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;By default, data will be erased and populated on each run. If</span>
 <span class="sd">you want the data to persist across runs, call this.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">persistent</span> <span class="o">=</span> <span class="kc">True</span></div>
     <span class="k">def</span> <span class="nf">startRun</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -200,14 +201,14 @@
         <span class="k">return</span> <span class="n">answer</span>
     <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">modules</span><span class="p">)</span>
     <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">f</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="sa">f</span><span class="s1">&#39;  - </span><span class="si">{</span><span class="n">fn</span><span class="o">.</span><span class="n">name</span> <span class="ow">or</span> <span class="nb">str</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">fn</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">forwardFns</span><span class="p">])</span>
+        <span class="n">f</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="sa">f</span><span class="s1">&#39;  - </span><span class="si">{</span><span class="n">fn</span><span class="o">.</span><span class="n">name</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="nb">str</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">fn</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">forwardFns</span><span class="p">])</span>
         <span class="n">f</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="k">if</span> <span class="n">f</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span> <span class="k">else</span> <span class="sa">f</span><span class="s2">&quot;Forward hooks:</span><span class="se">\n</span><span class="si">{</span><span class="n">f</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
-        <span class="n">b</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="sa">f</span><span class="s1">&#39;  - </span><span class="si">{</span><span class="n">fn</span><span class="o">.</span><span class="n">name</span> <span class="ow">or</span> <span class="nb">str</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">fn</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">backwardFns</span><span class="p">])</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="sa">f</span><span class="s1">&#39;  - </span><span class="si">{</span><span class="n">fn</span><span class="o">.</span><span class="n">name</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="nb">str</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">fn</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">backwardFns</span><span class="p">])</span>
         <span class="n">b</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="k">if</span> <span class="n">b</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span> <span class="k">else</span> <span class="sa">f</span><span class="s2">&quot;Backward hooks:</span><span class="se">\n</span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
         <span class="n">n</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="sa">f</span><span class="s1">&#39;  </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">. </span><span class="si">{</span><span class="n">data</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="p">)])</span>
         <span class="n">excludes</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;withForwardHook&quot;</span><span class="p">,</span> <span class="s2">&quot;withBackwardHook&quot;</span><span class="p">,</span> <span class="s2">&quot;withHook&quot;</span><span class="p">,</span> <span class="s2">&quot;withCheckpoint&quot;</span><span class="p">}</span>
         <span class="n">withs</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="sa">f</span><span class="s2">&quot;- m.</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">()&quot;</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="k">if</span> <span class="n">key</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;with&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">excludes</span><span class="p">])</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span><span class="si">{</span><span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">_reprHead</span><span class="si">}</span><span class="s2"> with </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="si">}</span><span class="s2"> modules:</span><span class="se">\n</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="n">f</span><span class="si">}{</span><span class="n">b</span><span class="si">}</span><span class="s2"></span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span><span class="si">{</span><span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">_reprHead</span><span class="si">}</span><span class="s2"> with </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="si">}</span><span class="s2"> modules:</span><span class="se">\n</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="n">f</span><span class="si">}{</span><span class="n">b</span><span class="si">}</span>
 <span class="s2">Use...</span>
 <span class="s2">- m.plot(&quot;means&quot;, &quot;stds&quot;): to plot simple statistics</span>
 <span class="s2">- m[i]: to get a specific module</span>
@@ -215,7 +216,7 @@
 <span class="s2">- m.css(&quot;...&quot;): to select a specific subset of modules only</span>
 <span class="s2">- m.withHook(hookCb): to hook a specific callback function</span>
 <span class="s2">- m.clearHooks(): to clear all hooks</span>
-<span class="si">{</span><span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">_reprCan</span><span class="si">}</span><span class="s2"></span>
+<span class="si">{</span><span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">_reprCan</span><span class="si">}</span>
 
 <span class="s2">Built-in `with-` functions:</span><span class="se">\n</span><span class="si">{</span><span class="n">withs</span><span class="si">}</span><span class="s2">&quot;&quot;&quot;</span></div>
 <span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">HookModule</span><span class="p">)</span>
@@ -232,15 +233,15 @@
     <span class="bp">self</span><span class="o">.</span><span class="n">_unregisterHooks</span><span class="p">()</span>
 <span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">HookModule</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">withForwardHook</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hook</span><span class="p">:</span><span class="n">_Fn</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Adds a hook to the forward pass. See :func:`~k1lib.callbacks.hookModule.HookModule.withHook`&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Adds a hook to the forward pass. See :func:`~k1lib.callbacks.hookModule.HookModule.withHook`&quot;&quot;&quot;</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">forwardFns</span> <span class="o">+=</span> <span class="p">[</span><span class="n">Function</span><span class="p">(</span><span class="n">hook</span><span class="p">,</span> <span class="n">name</span><span class="p">)];</span> <span class="k">return</span> <span class="bp">self</span>
 <span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">HookModule</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">withBackwardHook</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hook</span><span class="p">:</span><span class="n">_Fn</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Adds a hook to the backward pass. See :func:`~k1lib.callbacks.hookModule.HookModule.withHook`&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Adds a hook to the backward pass. See :func:`~k1lib.callbacks.hookModule.HookModule.withHook`&quot;&quot;&quot;</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">backwardFns</span> <span class="o">+=</span> <span class="p">[</span><span class="n">Function</span><span class="p">(</span><span class="n">hook</span><span class="p">,</span> <span class="n">name</span><span class="p">)];</span> <span class="k">return</span> <span class="bp">self</span>
 <span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">HookModule</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">withHook</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hook</span><span class="p">:</span><span class="n">_Fn</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Adds a hook to both the forward and backward pass.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Adds a hook to both the forward and backward pass.</span>
 
 <span class="sd">:param hook: this function is expected to take in these parameters: **(data, module, inp, out)**</span>
 
@@ -273,25 +274,25 @@
     <span class="n">data</span><span class="o">.</span><span class="n">means</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">squeeze</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">hard</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">item</span><span class="p">())</span>
 <span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">HookModule</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">withMeanRecorder</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Records mean&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Records mean&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">withHook</span><span class="p">(</span><span class="n">meanCb</span><span class="p">,</span> <span class="s2">&quot;mean&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">stdCb</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">inp</span><span class="p">,</span> <span class="n">out</span><span class="p">):</span>
     <span class="n">data</span><span class="o">.</span><span class="n">stds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">squeeze</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">hard</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="o">.</span><span class="n">item</span><span class="p">())</span>
 <span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">HookModule</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">withStdRecorder</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Records standard deviation&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Records standard deviation&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">withHook</span><span class="p">(</span><span class="n">stdCb</span><span class="p">,</span> <span class="s2">&quot;std&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">minCb</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">inp</span><span class="p">,</span> <span class="n">out</span><span class="p">):</span>
     <span class="n">data</span><span class="o">.</span><span class="n">mins</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">squeeze</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">hard</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="o">.</span><span class="n">item</span><span class="p">())</span>
 <span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">HookModule</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">withMinRecorder</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Records min&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Records min&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">withHook</span><span class="p">(</span><span class="n">minCb</span><span class="p">,</span> <span class="s2">&quot;min&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">maxCb</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">inp</span><span class="p">,</span> <span class="n">out</span><span class="p">):</span>
     <span class="n">data</span><span class="o">.</span><span class="n">maxs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">squeeze</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">hard</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">.</span><span class="n">item</span><span class="p">())</span>
 <span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">HookModule</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">withMaxRecorder</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Records max&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Records max&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">withHook</span><span class="p">(</span><span class="n">maxCb</span><span class="p">,</span> <span class="s2">&quot;max&quot;</span><span class="p">)</span>
 <span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">HookModule</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">css</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">css</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
@@ -314,7 +315,7 @@
 <span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">HookModule</span><span class="p">)</span>
 <span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">Module</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">fields</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">f</span><span class="o">=</span><span class="n">cli</span><span class="o">.</span><span class="n">iden</span><span class="p">()):</span>
-    <span class="sd">&quot;&quot;&quot;Plots every simple (1 number saved/pass/module) fields.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Plots every simple (1 number saved/pass/module) fields.</span>
 
 <span class="sd">:param fields: list of fields to plot. If none, then</span>
 <span class="sd">    will automatically find all simple fields&quot;&quot;&quot;</span>
@@ -337,7 +338,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, Quang Ho.</p>
+    <p>&#169; Copyright 2023, Quang Ho.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

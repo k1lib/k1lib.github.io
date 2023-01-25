@@ -52,6 +52,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../imports.html">k1lib.imports module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../mo.html">k1lib.mo module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../knn.html">k1lib.knn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../p5.html">k1lib.p5 module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../schedule.html">k1lib.schedule module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../selector.html">k1lib.selector module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../serve.html">k1lib.serve module</a></li>
@@ -129,12 +130,12 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="n">a</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">operation</span> <span class="o">=</span> <span class="n">operation</span>
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">resolved</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Whether this expression has been resolved (both internal variables are</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Whether this expression has been resolved (both internal variables are</span>
 <span class="sd">resolved).&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="o">.</span><span class="n">resolved</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span><span class="o">.</span><span class="n">resolved</span>
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">value</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Value of the expression.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Value of the expression.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">operation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="o">.</span><span class="n">_value</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span><span class="o">.</span><span class="n">_value</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">applyF</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">:</span><span class="n">_Callable</span><span class="p">[[</span><span class="s2">&quot;Variable&quot;</span><span class="p">],</span> <span class="kc">None</span><span class="p">]):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="o">.</span><span class="n">_applyF</span><span class="p">(</span><span class="n">f</span><span class="p">);</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span><span class="o">.</span><span class="n">_applyF</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
@@ -154,27 +155,27 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">trial</span><span class="p">:</span><span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># current resolve trial number</span>
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">value</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">_Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;Actual float value of :class:`Variable`. When setting this, if the</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Actual float value of :class:`Variable`. When setting this, if the</span>
 <span class="sd">new value&#39;s not None, the object would act like a constant in every future</span>
 <span class="sd">equations. To turn it back into a :class:`Variable`, simply set this to</span>
 <span class="sd">:data:`None`.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value</span>
     <span class="nd">@value</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Sets the value of variable. If it&#39;s an actual value, &quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets the value of variable. If it&#39;s an actual value, &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">v</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">=</span> <span class="kc">None</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">isConstant</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="k">else</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">=</span> <span class="n">v</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">isConstant</span> <span class="o">=</span> <span class="kc">True</span>
     <span class="k">def</span> <span class="nf">_reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">isConstant</span> <span class="k">else</span> <span class="kc">None</span>
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">resolved</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Whether this variable has been resolved or not.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Whether this variable has been resolved or not.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">!=</span> <span class="kc">None</span>
     <span class="k">def</span> <span class="nf">_applyF</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">:</span><span class="n">_Callable</span><span class="p">[[</span><span class="s2">&quot;Variable&quot;</span><span class="p">],</span> <span class="kc">None</span><span class="p">]):</span> <span class="c1"># apply an operation to variable and its dependencies</span>
         <span class="n">f</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">expr</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">expr</span><span class="o">.</span><span class="n">applyF</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">_leaves</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">_Iterator</span><span class="p">[</span><span class="s2">&quot;Variable&quot;</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;Get variables that does not have an expression linked to it. Aka at</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get variables that does not have an expression linked to it. Aka at</span>
 <span class="sd">the leaf.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">resolved</span><span class="p">:</span> <span class="k">return</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">expr</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span> <span class="k">yield</span> <span class="bp">self</span>
@@ -184,7 +185,7 @@
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">leaves</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_leaves</span><span class="p">))</span>
 <div class="viewcode-block" id="Variable.__call__"><a class="viewcode-back" href="../../graphEqn.html#k1lib.graphEqn.Variable.__call__">[docs]</a>    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span><span class="nb">float</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">_Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;Tries to solve this variable given the independent variable ``x``.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Tries to solve this variable given the independent variable ``x``.</span>
 
 <span class="sd">:param x: if nothing is specified, you have to be sure that all variables already</span>
 <span class="sd">    have a value.&quot;&quot;&quot;</span>
@@ -205,7 +206,7 @@
     <span class="k">def</span> <span class="fm">__float__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value</span></div>
 <span class="nd">@_k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">Variable</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">_resolve</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">trial</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Attempts to resolve variable. Return true if expression tree under</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Attempts to resolve variable. Return true if expression tree under</span>
 <span class="sd">this Variable changes at all.</span>
 
 <span class="sd">:param trial: how many times _resolve() has been called by the originating</span>
@@ -218,13 +219,13 @@
     <span class="k">return</span> <span class="n">changed</span>
 <span class="nd">@_k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">Variable</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">_simplify</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">printStuff</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Simplify system before solving&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Simplify system before solving&quot;&quot;&quot;</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_applyF</span><span class="p">(</span><span class="k">lambda</span> <span class="n">v</span><span class="p">:</span> <span class="nb">setattr</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="s2">&quot;trial&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">));</span> <span class="n">trial</span> <span class="o">=</span> <span class="mi">2</span>
     <span class="k">while</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve</span><span class="p">(</span><span class="n">trial</span><span class="p">):</span> <span class="n">trial</span> <span class="o">+=</span> <span class="mi">1</span>
     <span class="k">if</span> <span class="n">printStuff</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">resolved</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Can&#39;t find a solution&quot;</span><span class="p">)</span>
 <span class="nd">@_k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">Variable</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">_solve</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span><span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">_Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
-    <span class="sd">&quot;&quot;&quot;Try to solve this expression tree, given value of independent</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Try to solve this expression tree, given value of independent</span>
 <span class="sd">variable.&quot;&quot;&quot;</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_applyF</span><span class="p">(</span><span class="k">lambda</span> <span class="n">v</span><span class="p">:</span> <span class="n">v</span><span class="o">.</span><span class="n">_reset</span><span class="p">());</span> <span class="bp">self</span><span class="o">.</span><span class="n">_simplify</span><span class="p">();</span> <span class="n">leaves</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">leaves</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">leaves</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span> <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;System of equation has </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">leaves</span><span class="p">)</span><span class="si">}</span><span class="s2"> indenpendent variables. Please constrain system more!&quot;</span><span class="p">)</span>
@@ -232,7 +233,7 @@
     <span class="bp">self</span><span class="o">.</span><span class="n">_simplify</span><span class="p">(</span><span class="kc">True</span><span class="p">);</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value</span>
 <span class="k">class</span> <span class="nc">_Constant</span><span class="p">(</span><span class="n">Variable</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span><span class="nb">float</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Creates a constant :class:`Variable` with some specified value.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Creates a constant :class:`Variable` with some specified value.&quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">();</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">=</span> <span class="n">value</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">isConstant</span> <span class="o">=</span> <span class="kc">True</span>
 </pre></div>
 
@@ -243,7 +244,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, Quang Ho.</p>
+    <p>&#169; Copyright 2023, Quang Ho.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

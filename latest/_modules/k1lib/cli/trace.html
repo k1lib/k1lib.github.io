@@ -52,6 +52,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../imports.html">k1lib.imports module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../mo.html">k1lib.mo module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../knn.html">k1lib.knn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../p5.html">k1lib.p5 module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../schedule.html">k1lib.schedule module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../selector.html">k1lib.selector module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../serve.html">k1lib.serve module</a></li>
@@ -95,7 +96,7 @@
 <span class="n">traceIdxAuto</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">AutoIncrement</span><span class="p">(</span><span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;TD_&quot;</span><span class="p">)</span>
 <span class="k">class</span> <span class="nc">TraceData</span><span class="p">:</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_cli</span><span class="p">,</span> <span class="n">inS</span><span class="p">,</span> <span class="n">outS</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">:param inS: in and out strings to be displayed in the edges&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">idx</span> <span class="o">=</span> <span class="n">traceIdxAuto</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">inS</span> <span class="o">=</span> <span class="n">inS</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">outS</span> <span class="o">=</span> <span class="n">outS</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">cli</span> <span class="o">=</span> <span class="n">_cli</span>
@@ -118,7 +119,7 @@
 <span class="n">emptyInputSentinel</span> <span class="o">=</span> <span class="nb">object</span><span class="p">()</span>
 <span class="k">class</span> <span class="nc">_trace</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inp</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">g</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Some notes. startTd will always tries to grab the first thing, lastTd will only</span>
 <span class="sd">grab the last thing at the end of __ror__, hence &quot;last&quot; and not &quot;end&quot;.</span>
 
@@ -137,9 +138,9 @@
     <span class="k">def</span> <span class="nf">_formNode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">td</span><span class="p">:</span><span class="n">TraceData</span><span class="p">,</span> <span class="n">g</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span> <span class="p">(</span><span class="n">g</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">g</span><span class="p">)</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="n">td</span><span class="o">.</span><span class="n">idx</span><span class="p">,</span> <span class="n">td</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">_formEdge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">td1</span><span class="p">:</span><span class="n">TraceData</span><span class="p">,</span> <span class="n">td2</span><span class="p">:</span><span class="n">TraceData</span><span class="p">,</span> <span class="n">g</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">label</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">td1</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">td2</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="k">return</span>
-        <span class="p">(</span><span class="n">g</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">g</span><span class="p">)</span><span class="o">.</span><span class="n">edge</span><span class="p">(</span><span class="n">td1</span><span class="o">.</span><span class="n">idx</span><span class="p">,</span> <span class="n">td2</span><span class="o">.</span><span class="n">idx</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot; </span><span class="si">{</span><span class="n">label</span> <span class="ow">or</span> <span class="n">td2</span><span class="o">.</span><span class="n">inS</span> <span class="ow">or</span> <span class="n">td1</span><span class="o">.</span><span class="n">outS</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="p">(</span><span class="n">g</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">g</span><span class="p">)</span><span class="o">.</span><span class="n">edge</span><span class="p">(</span><span class="n">td1</span><span class="o">.</span><span class="n">idx</span><span class="p">,</span> <span class="n">td2</span><span class="o">.</span><span class="n">idx</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot; </span><span class="si">{</span><span class="n">label</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">td2</span><span class="o">.</span><span class="n">inS</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">td1</span><span class="o">.</span><span class="n">outS</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">_run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">inp</span><span class="p">,</span> <span class="n">cliName</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Takes in cli tool and input, runs it, and get trace data and output&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Takes in cli tool and input, runs it, and get trace data and output&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">op</span><span class="p">):</span> <span class="n">c</span><span class="o">.</span><span class="n">ab_solidify</span><span class="p">()</span>
         <span class="n">out</span> <span class="o">=</span> <span class="n">c</span><span class="p">(</span><span class="n">inp</span><span class="p">)</span> <span class="o">|</span> <span class="n">deref</span><span class="p">()</span> <span class="c1"># why not &quot;inp | c&quot;? Cause we want to serve plain old functions inside apply too</span>
         <span class="k">return</span> <span class="n">TraceData</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">(</span><span class="n">inp</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">cliName</span><span class="p">),</span> <span class="n">out</span>
@@ -155,7 +156,7 @@
             <span class="k">except</span><span class="p">:</span> <span class="k">pass</span>
         <span class="n">dis</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">dis</span><span class="o">.</span><span class="n">SVG</span><span class="p">(</span><span class="n">k1lib</span><span class="o">.</span><span class="n">scaleSvg</span><span class="p">(</span><span class="n">svg</span><span class="p">)));</span> <span class="k">return</span> <span class="s2">&quot;&lt;trace object&gt;&quot;</span>
     <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Alternative way to specify input.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Alternative way to specify input.&quot;&quot;&quot;</span>
         <span class="c1">#if self.inp != emptyInputSentinel: raise TraceException(&quot;Input to trace has already been set, but it&#39;s being set again (possibly due to `.all()`). Check last trace using ``trace.last``&quot;)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">inp</span> <span class="o">!=</span> <span class="n">emptyInputSentinel</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">firstTime</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">inp</span> <span class="o">=</span> <span class="n">it</span> <span class="o">|</span> <span class="n">deref</span><span class="p">();</span> <span class="k">return</span> <span class="bp">self</span>
@@ -247,9 +248,9 @@
     <span class="bp">self</span><span class="o">.</span><span class="n">inp</span> <span class="o">=</span> <span class="n">out</span><span class="p">;</span> <span class="k">return</span> <span class="bp">self</span>
 <div class="viewcode-block" id="trace"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.trace.trace">[docs]</a><span class="k">class</span> <span class="nc">trace</span><span class="p">(</span><span class="n">_trace</span><span class="p">):</span>
     <span class="n">last</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="sd">&quot;&quot;&quot;Last instantiated trace object. Access this to view the previous (possibly nested) trace.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Last instantiated trace object. Access this to view the previous (possibly nested) trace.&quot;&quot;&quot;</span>
 <div class="viewcode-block" id="trace.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.trace.trace.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="o">=</span><span class="n">shape</span><span class="p">(),</span> <span class="n">maxDepth</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="s2">&quot;inf&quot;</span><span class="p">)):</span>
-        <span class="sd">&quot;&quot;&quot;Traces out how the data stream is transformed through complex cli tools.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Traces out how the data stream is transformed through complex cli tools.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">    # returns [1, 4, 9, 16], normal command</span>
@@ -279,7 +280,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, Quang Ho.</p>
+    <p>&#169; Copyright 2023, Quang Ho.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

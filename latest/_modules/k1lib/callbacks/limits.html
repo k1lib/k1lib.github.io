@@ -52,6 +52,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../imports.html">k1lib.imports module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../mo.html">k1lib.mo module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../knn.html">k1lib.knn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../p5.html">k1lib.p5 module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../schedule.html">k1lib.schedule module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../selector.html">k1lib.selector module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../serve.html">k1lib.serve module</a></li>
@@ -98,7 +99,7 @@
            <span class="s2">&quot;GradientClipping&quot;</span><span class="p">,</span> <span class="s2">&quot;GradientClippingNorm&quot;</span><span class="p">,</span> <span class="s2">&quot;TrainOnly&quot;</span><span class="p">,</span> <span class="s2">&quot;ValidOnly&quot;</span><span class="p">]</span>
 <div class="viewcode-block" id="BatchLimit"><a class="viewcode-back" href="../../../callbacks/index.html#k1lib.callbacks.limits.BatchLimit">[docs]</a><span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">Cbs</span><span class="p">)</span>
 <span class="k">class</span> <span class="nc">BatchLimit</span><span class="p">(</span><span class="n">Callback</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Cancels the epoch after executed certain number of batches&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Cancels the epoch after executed certain number of batches&quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">limit</span><span class="p">:</span><span class="nb">int</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">();</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span> <span class="o">=</span> <span class="mi">25</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">limit</span> <span class="o">=</span> <span class="n">limit</span> <span class="k">if</span> <span class="n">limit</span> <span class="o">!=</span> <span class="kc">None</span> <span class="k">else</span> <span class="nb">float</span><span class="p">(</span><span class="s2">&quot;inf&quot;</span><span class="p">)</span>
@@ -109,7 +110,7 @@
     <span class="k">def</span> <span class="nf">endBatch</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="n">currentBatch</span> <span class="o">+=</span> <span class="mi">1</span></div>
 <div class="viewcode-block" id="EpochLimit"><a class="viewcode-back" href="../../../callbacks/index.html#k1lib.callbacks.limits.EpochLimit">[docs]</a><span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">Cbs</span><span class="p">)</span>
 <span class="k">class</span> <span class="nc">EpochLimit</span><span class="p">(</span><span class="n">Callback</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Cancels the run after executed certain number of epochs&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Cancels the run after executed certain number of epochs&quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">limit</span><span class="p">:</span><span class="nb">int</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">();</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span> <span class="o">=</span> <span class="mi">25</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">limit</span> <span class="o">=</span> <span class="n">limit</span> <span class="k">if</span> <span class="n">limit</span> <span class="o">!=</span> <span class="kc">None</span> <span class="k">else</span> <span class="nb">float</span><span class="p">(</span><span class="s2">&quot;inf&quot;</span><span class="p">)</span>
@@ -120,7 +121,7 @@
     <span class="k">def</span> <span class="nf">endEpoch</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="n">currentEpoch</span> <span class="o">+=</span> <span class="mi">1</span></div>
 <div class="viewcode-block" id="TimeLimit"><a class="viewcode-back" href="../../../callbacks/index.html#k1lib.callbacks.limits.TimeLimit">[docs]</a><span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">Cbs</span><span class="p">)</span>
 <span class="k">class</span> <span class="nc">TimeLimit</span><span class="p">(</span><span class="n">Callback</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Cancels the run after a certain number of seconds have passed&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Cancels the run after a certain number of seconds have passed&quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">seconds</span><span class="o">=</span><span class="mi">30</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">();</span> <span class="bp">self</span><span class="o">.</span><span class="n">seconds</span> <span class="o">=</span> <span class="n">seconds</span> <span class="k">if</span> <span class="n">seconds</span> <span class="o">!=</span> <span class="kc">None</span> <span class="k">else</span> <span class="nb">float</span><span class="p">(</span><span class="s2">&quot;inf&quot;</span><span class="p">);</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span> <span class="o">=</span> <span class="mi">25</span>
     <span class="k">def</span> <span class="nf">startRun</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="n">startTime</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
@@ -129,7 +130,7 @@
             <span class="k">raise</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">CancelRunException</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Takes more than </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">seconds</span><span class="si">}</span><span class="s2"> seconds!&quot;</span><span class="p">)</span></div>
 <div class="viewcode-block" id="CancelOnExplosion"><a class="viewcode-back" href="../../../callbacks/index.html#k1lib.callbacks.limits.CancelOnExplosion">[docs]</a><span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">Cbs</span><span class="p">)</span>
 <span class="k">class</span> <span class="nc">CancelOnExplosion</span><span class="p">(</span><span class="n">Callback</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Cancels the run if any of the parameters are larger than a certain limit&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Cancels the run if any of the parameters are larger than a certain limit&quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">limit</span><span class="p">:</span><span class="nb">float</span><span class="o">=</span><span class="mf">1e6</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">();</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span> <span class="o">=</span> <span class="mi">25</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">limit</span> <span class="o">=</span> <span class="n">limit</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">triggered</span> <span class="o">=</span> <span class="kc">False</span>
@@ -149,7 +150,7 @@
 <span class="k">class</span> <span class="nc">CancelOnLowLoss</span><span class="p">(</span><span class="n">Callback</span><span class="p">):</span>
     <span class="s2">&quot; &quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">loss</span><span class="p">:</span><span class="nb">float</span><span class="p">,</span> <span class="n">epochMode</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Cancels the run if loss is lower than amount specified.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Cancels the run if loss is lower than amount specified.</span>
 <span class="sd">Original class: :class:`~k1lib.callbacks.limits.CancelOnLowLoss`</span>
 
 <span class="sd">:param epochMode: False if use batch loss, True if use valid epoch loss&quot;&quot;&quot;</span>
@@ -167,7 +168,7 @@
             <span class="k">raise</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">CancelRunException</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Low loss </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">loss</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:]</span><span class="si">}</span><span class="s2"> actual) achieved!&quot;</span><span class="p">)</span>
 <div class="viewcode-block" id="CancelOnHighAccuracy"><a class="viewcode-back" href="../../../callbacks/index.html#k1lib.callbacks.limits.CancelOnHighAccuracy">[docs]</a><span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">Cbs</span><span class="p">)</span>
 <span class="k">class</span> <span class="nc">CancelOnHighAccuracy</span><span class="p">(</span><span class="n">Callback</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Cancels the run if accuracy is higher than the amount specified&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Cancels the run if accuracy is higher than the amount specified&quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">accuracy</span><span class="p">:</span><span class="nb">float</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">();</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span> <span class="o">=</span> <span class="mi">25</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">accuracy</span> <span class="o">=</span> <span class="n">accuracy</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">dependsOn</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Accuracy&quot;</span><span class="p">]</span>
@@ -179,7 +180,7 @@
 <div class="viewcode-block" id="CancelOnOverfit"><a class="viewcode-back" href="../../../callbacks/index.html#k1lib.callbacks.limits.CancelOnOverfit">[docs]</a><span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">Cbs</span><span class="p">)</span>
 <span class="k">class</span> <span class="nc">CancelOnOverfit</span><span class="p">(</span><span class="n">Callback</span><span class="p">):</span>
 <div class="viewcode-block" id="CancelOnOverfit.__init__"><a class="viewcode-back" href="../../../callbacks/index.html#k1lib.callbacks.limits.CancelOnOverfit.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ratio</span><span class="p">:</span><span class="nb">float</span><span class="o">=</span><span class="mf">1.2</span><span class="p">,</span> <span class="n">alpha</span><span class="p">:</span><span class="nb">float</span><span class="o">=</span><span class="mf">0.99</span><span class="p">,</span> <span class="n">after</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Cancels the run if overfit is detected.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Cancels the run if overfit is detected.</span>
 
 <span class="sd">:param ratio: Max ratio between the lowest loss and the current loss before cancelling the run</span>
 <span class="sd">:param alpha: Moving average&#39;s alpha, used for both minLoss and loss estimates</span>
@@ -198,14 +199,14 @@
                 <span class="k">raise</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">CancelRunException</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Overfit detected! Smoothed min loss: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">minLoss</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">, loss: </span><span class="si">{</span><span class="n">loss</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
 <div class="viewcode-block" id="DontTrain"><a class="viewcode-back" href="../../../callbacks/index.html#k1lib.callbacks.limits.DontTrain">[docs]</a><span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">Cbs</span><span class="p">)</span>
 <span class="k">class</span> <span class="nc">DontTrain</span><span class="p">(</span><span class="n">Callback</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Don&#39;t allow the network to train at all&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Don&#39;t allow the network to train at all&quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="nf">startBackward</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="kc">True</span>
     <span class="k">def</span> <span class="nf">startStep</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="kc">True</span></div>
 <span class="k">if</span> <span class="n">hasTorch</span><span class="p">:</span>
     <span class="kn">from</span> <span class="nn">torch.nn.utils</span> <span class="kn">import</span> <span class="n">clip_grad_value_</span>
     <span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">Cbs</span><span class="p">)</span>
     <span class="k">class</span> <span class="nc">GradientClipping</span><span class="p">(</span><span class="n">Callback</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Clips gradient to a specific max value&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Clips gradient to a specific max value&quot;&quot;&quot;</span>
         <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span><span class="nb">float</span><span class="p">):</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">();</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">value</span>
         <span class="k">def</span> <span class="nf">startStep</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
             <span class="n">clip_grad_value_</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
@@ -215,7 +216,7 @@
     <span class="kn">from</span> <span class="nn">torch.nn.utils</span> <span class="kn">import</span> <span class="n">clip_grad_norm_</span>
     <span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">Cbs</span><span class="p">)</span>
     <span class="k">class</span> <span class="nc">GradientClippingNorm</span><span class="p">(</span><span class="n">Callback</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Clips gradient to a specific max_norm value. Can choose to lump</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Clips gradient to a specific max_norm value. Can choose to lump</span>
 <span class="sd">all params together or do each separately.</span>
 
 <span class="sd">See also: :class:`~k1lib.callbacks.limits.GradientClipping` callback.&quot;&quot;&quot;</span>
@@ -232,7 +233,7 @@
 <span class="k">class</span> <span class="nc">TrainOnly</span><span class="p">(</span><span class="n">Callback</span><span class="p">):</span>
     <span class="s2">&quot; &quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cb</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Only executes specified callback when training. This modifies the callback&#39;s</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Only executes specified callback when training. This modifies the callback&#39;s</span>
 <span class="sd">``suspended`` variable, so it may interfere with :meth:`k1lib.callbacks.callbacks.Callbacks.suspend`</span>
 <span class="sd">by setting it to different values while in the context.&quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">();</span> <span class="bp">self</span><span class="o">.</span><span class="n">cb</span> <span class="o">=</span> <span class="n">cb</span>
@@ -242,7 +243,7 @@
 <span class="k">class</span> <span class="nc">ValidOnly</span><span class="p">(</span><span class="n">Callback</span><span class="p">):</span>
     <span class="s2">&quot; &quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cb</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Same as :class:`TrainOnly`, but only executes specified callback when doing</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Same as :class:`TrainOnly`, but only executes specified callback when doing</span>
 <span class="sd">validation.&quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">();</span> <span class="bp">self</span><span class="o">.</span><span class="n">cb</span> <span class="o">=</span> <span class="n">cb</span>
     <span class="k">def</span> <span class="nf">startBatch</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -256,7 +257,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, Quang Ho.</p>
+    <p>&#169; Copyright 2023, Quang Ho.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

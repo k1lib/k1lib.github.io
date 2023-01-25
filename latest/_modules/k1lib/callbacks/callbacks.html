@@ -52,6 +52,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../imports.html">k1lib.imports module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../mo.html">k1lib.mo module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../knn.html">k1lib.knn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../p5.html">k1lib.p5 module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../schedule.html">k1lib.schedule module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../selector.html">k1lib.selector module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../serve.html">k1lib.serve module</a></li>
@@ -137,11 +138,12 @@
 <span class="sd">other, and remove entire complex functionalities by commenting out a</span>
 <span class="sd">single line.&quot;&quot;&quot;</span>
 <span class="kn">import</span> <span class="nn">k1lib</span><span class="o">,</span> <span class="nn">time</span><span class="o">,</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">logging</span><span class="o">,</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span><span class="o">,</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">k1lib.cli</span> <span class="k">as</span> <span class="nn">cli</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Set</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">ContextManager</span><span class="p">,</span> <span class="n">Iterator</span>
 <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">OrderedDict</span>
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Callback&quot;</span><span class="p">,</span> <span class="s2">&quot;Callbacks&quot;</span><span class="p">,</span> <span class="s2">&quot;Cbs&quot;</span><span class="p">]</span>
 <div class="viewcode-block" id="Callback"><a class="viewcode-back" href="../../../callbacks/index.html#k1lib.callbacks.callbacks.Callback">[docs]</a><span class="k">class</span> <span class="nc">Callback</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Represents a callback. Define specific functions</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Represents a callback. Define specific functions</span>
 <span class="sd">inside to intercept certain parts of the training</span>
 <span class="sd">loop. Can access :class:`k1lib.Learner` like this::</span>
 
@@ -219,10 +221,10 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">dependsOn</span><span class="p">:</span><span class="n">Set</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">order</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1"># can be modified by subclasses. A smaller order will be executed first</span>
 <div class="viewcode-block" id="Callback.suspend"><a class="viewcode-back" href="../../../callbacks/index.html#k1lib.callbacks.callbacks.Callback.suspend">[docs]</a>    <span class="k">def</span> <span class="nf">suspend</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Checkpoint, called when the Callback is temporarily suspended. Overridable&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Checkpoint, called when the Callback is temporarily suspended. Overridable&quot;&quot;&quot;</span>
         <span class="k">pass</span></div>
 <div class="viewcode-block" id="Callback.restore"><a class="viewcode-back" href="../../../callbacks/index.html#k1lib.callbacks.callbacks.Callback.restore">[docs]</a>    <span class="k">def</span> <span class="nf">restore</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Checkpoint, called when the Callback is back from suspension. Overridable&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Checkpoint, called when the Callback is back from suspension. Overridable&quot;&quot;&quot;</span>
         <span class="k">pass</span></div>
     <span class="k">def</span> <span class="nf">__getstate__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">state</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">)</span>
@@ -236,7 +238,7 @@
 <span class="s2">- cb.withCheckpoint(checkpoint, f): to quickly insert an event handler</span>
 <span class="s2">- cb.detach(): to remove itself from its parent Callbacks&quot;&quot;&quot;</span>
 <div class="viewcode-block" id="Callback.withCheckpoint"><a class="viewcode-back" href="../../../callbacks/index.html#k1lib.callbacks.callbacks.Callback.withCheckpoint">[docs]</a>    <span class="k">def</span> <span class="nf">withCheckpoint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">checkpoint</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">f</span><span class="p">:</span><span class="n">Callable</span><span class="p">[[</span><span class="s2">&quot;Callback&quot;</span><span class="p">],</span> <span class="kc">None</span><span class="p">]):</span>
-        <span class="sd">&quot;&quot;&quot;Quickly set a checkpoint, for simple, inline-able functions</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Quickly set a checkpoint, for simple, inline-able functions</span>
 
 <span class="sd">:param checkpoint: checkpoints like &quot;startRun&quot;</span>
 <span class="sd">:param f: function that takes in the Callback itself&quot;&quot;&quot;</span>
@@ -245,16 +247,16 @@
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">suspended</span> <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">checkpoint</span><span class="p">):</span>
             <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">checkpoint</span><span class="p">)()</span> <span class="o">!=</span> <span class="kc">None</span>
 <div class="viewcode-block" id="Callback.attached"><a class="viewcode-back" href="../../../callbacks/index.html#k1lib.callbacks.callbacks.Callback.attached">[docs]</a>    <span class="k">def</span> <span class="nf">attached</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Called when this is added to a :class:`Callback`. Overrides this to</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Called when this is added to a :class:`Callback`. Overrides this to</span>
 <span class="sd">do custom stuff when this happens.&quot;&quot;&quot;</span>
         <span class="k">pass</span></div>
 <div class="viewcode-block" id="Callback.detach"><a class="viewcode-back" href="../../../callbacks/index.html#k1lib.callbacks.callbacks.Callback.detach">[docs]</a>    <span class="k">def</span> <span class="nf">detach</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Detaches from the parent :class:`Callbacks`&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Detaches from the parent :class:`Callbacks`&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cbs</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">);</span> <span class="k">return</span> <span class="bp">self</span></div></div>
 <span class="n">Cbs</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">Object</span><span class="p">()</span>
 <span class="n">Callback</span><span class="o">.</span><span class="n">lossCls</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">Object</span><span class="p">()</span>
 <div class="viewcode-block" id="Timings"><a class="viewcode-back" href="../../../callbacks/index.html#k1lib.callbacks.callbacks.Timings">[docs]</a><span class="k">class</span> <span class="nc">Timings</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;List of checkpoint timings. Not intended to be instantiated by the end user.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;List of checkpoint timings. Not intended to be instantiated by the end user.</span>
 <span class="sd">Used within :class:`~k1lib.callbacks.callbacks.Callbacks`, accessible via</span>
 <span class="sd">:attr:`Callbacks.timings` to record time taken to execute a single</span>
 <span class="sd">checkpoint. This is useful for profiling stuff.&quot;&quot;&quot;</span>
@@ -263,7 +265,7 @@
         <span class="n">answer</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">);</span> <span class="n">answer</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;getdoc&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">);</span> <span class="k">return</span> <span class="n">answer</span>
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">checkpoints</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;List of all checkpoints encountered&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;List of all checkpoints encountered&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="p">[</span><span class="n">cp</span> <span class="k">for</span> <span class="n">cp</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="k">if</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">isNumeric</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="n">cp</span><span class="p">])]</span>
     <span class="k">def</span> <span class="fm">__getattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attr</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">attr</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">):</span> <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">()</span>
@@ -271,7 +273,7 @@
     <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span> <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">)</span>
     <span class="k">def</span> <span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span> <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
 <div class="viewcode-block" id="Timings.plot"><a class="viewcode-back" href="../../../callbacks/index.html#k1lib.callbacks.callbacks.Timings.plot">[docs]</a>    <span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Plot all checkpoints&#39; execution times&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Plot all checkpoints&#39; execution times&quot;&quot;&quot;</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">dpi</span><span class="o">=</span><span class="mi">100</span><span class="p">);</span> <span class="n">checkpoints</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">checkpoints</span>
         <span class="n">timings</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="bp">self</span><span class="p">[</span><span class="n">cp</span><span class="p">]</span> <span class="k">for</span> <span class="n">cp</span> <span class="ow">in</span> <span class="n">checkpoints</span><span class="p">])</span>
         <span class="n">maxTiming</span> <span class="o">=</span> <span class="n">timings</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
@@ -283,11 +285,11 @@
             <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">checkpoints</span><span class="p">,</span> <span class="n">timings</span><span class="o">*</span><span class="mf">1e6</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Time (us)&quot;</span><span class="p">)</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="s2">&quot;vertical&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></div>
 <div class="viewcode-block" id="Timings.clear"><a class="viewcode-back" href="../../../callbacks/index.html#k1lib.callbacks.callbacks.Timings.clear">[docs]</a>    <span class="k">def</span> <span class="nf">clear</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Clears all timing data&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Clears all timing data&quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">cp</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">checkpoints</span><span class="p">:</span> <span class="bp">self</span><span class="p">[</span><span class="n">cp</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span></div>
     <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">cps</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="sa">f</span><span class="s1">&#39;- </span><span class="si">{</span><span class="n">cp</span><span class="si">}</span><span class="s1">: </span><span class="si">{</span><span class="bp">self</span><span class="p">[</span><span class="n">cp</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">cp</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">checkpoints</span><span class="p">])</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;Timings object. Checkpoints:</span><span class="se">\n</span><span class="si">{</span><span class="n">cps</span><span class="si">}</span><span class="se">\n</span><span class="s2"></span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;Timings object. Checkpoints:</span><span class="se">\n</span><span class="si">{</span><span class="n">cps</span><span class="si">}</span><span class="se">\n</span>
 <span class="s2">Can...</span>
 <span class="s2">- t.startRun: to get specific checkpoint&#39;s execution time</span>
 <span class="s2">- t.plot(): to plot all checkpoints&quot;&quot;&quot;</span></div>
@@ -298,11 +300,11 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_timings</span> <span class="o">=</span> <span class="n">Timings</span><span class="p">();</span> <span class="bp">self</span><span class="o">.</span><span class="n">contexts</span> <span class="o">=</span> <span class="p">[[]]</span>
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">timings</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Timings</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Returns :class:`~k1lib.callbacks.callbacks.Timings` object&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns :class:`~k1lib.callbacks.callbacks.Timings` object&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timings</span>
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">l</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;k1lib.Learner&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;:class:`k1lib.Learner` object. Will be set automatically when</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;:class:`k1lib.Learner` object. Will be set automatically when</span>
 <span class="sd">you set :attr:`k1lib.Learner.cbs` to this :class:`Callbacks`&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_l</span>
     <span class="nd">@l</span><span class="o">.</span><span class="n">setter</span>
@@ -311,12 +313,12 @@
         <span class="k">for</span> <span class="n">cb</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">cbs</span><span class="p">:</span> <span class="n">cb</span><span class="o">.</span><span class="n">l</span> <span class="o">=</span> <span class="n">learner</span>
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">cbs</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Callback</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;List of :class:`Callback`&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;List of :class:`Callback`&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="p">[</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">cbsDict</span><span class="o">.</span><span class="n">values</span><span class="p">()]</span> <span class="c1"># convenience method for looping over stuff</span>
     <span class="k">def</span> <span class="nf">_sort</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Callbacks&quot;</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cbsDict</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cbsDict</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="p">(</span><span class="k">lambda</span> <span class="n">o</span><span class="p">:</span> <span class="n">o</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">order</span><span class="p">)));</span> <span class="k">return</span> <span class="bp">self</span>
 <div class="viewcode-block" id="Callbacks.add"><a class="viewcode-back" href="../../../callbacks/index.html#k1lib.callbacks.callbacks.Callbacks.add">[docs]</a>    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cb</span><span class="p">:</span><span class="n">Callback</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Adds a callback to the collection. </span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Adds a callback to the collection. </span>
 <span class="sd">Example::</span>
 
 <span class="sd">    cbs = k1lib.Callbacks()</span>
@@ -338,21 +340,21 @@
         <span class="n">cb</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">cbsDict</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">cb</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sort</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_appendContext_append</span><span class="p">(</span><span class="n">cb</span><span class="p">);</span> <span class="n">cb</span><span class="p">(</span><span class="s2">&quot;attached&quot;</span><span class="p">);</span> <span class="k">return</span> <span class="bp">self</span></div>
 <div class="viewcode-block" id="Callbacks.__contains__"><a class="viewcode-back" href="../../../callbacks/index.html#k1lib.callbacks.callbacks.Callbacks.__contains__">[docs]</a>    <span class="k">def</span> <span class="fm">__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">e</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Whether a specific Callback name is in this :class:`Callback`.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Whether a specific Callback name is in this :class:`Callback`.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">e</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">cbsDict</span></div>
 <div class="viewcode-block" id="Callbacks.remove"><a class="viewcode-back" href="../../../callbacks/index.html#k1lib.callbacks.callbacks.Callbacks.remove">[docs]</a>    <span class="k">def</span> <span class="nf">remove</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">names</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
-        <span class="sd">&quot;&quot;&quot;Removes a callback from the collection.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Removes a callback from the collection.&quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">cbsDict</span><span class="p">:</span> <span class="k">return</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Callback `</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">` not found&quot;</span><span class="p">)</span>
             <span class="n">cb</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cbsDict</span><span class="p">[</span><span class="n">name</span><span class="p">];</span> <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">cbsDict</span><span class="p">[</span><span class="n">name</span><span class="p">];</span> <span class="n">cb</span><span class="p">(</span><span class="s2">&quot;detached&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_sort</span><span class="p">();</span> <span class="k">return</span> <span class="bp">self</span></div>
 <div class="viewcode-block" id="Callbacks.removePrefix"><a class="viewcode-back" href="../../../callbacks/index.html#k1lib.callbacks.callbacks.Callbacks.removePrefix">[docs]</a>    <span class="k">def</span> <span class="nf">removePrefix</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prefix</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Removes any callback with the specified prefix&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Removes any callback with the specified prefix&quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">cb</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">cbs</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">cb</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">prefix</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">cb</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span></div>
 <div class="viewcode-block" id="Callbacks.__call__"><a class="viewcode-back" href="../../../callbacks/index.html#k1lib.callbacks.callbacks.Callbacks.__call__">[docs]</a>    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">checkpoints</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Calls a number of checkpoints one after another.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Calls a number of checkpoints one after another.</span>
 <span class="sd">Returns True if any of the checkpoints return anything at all&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_checkpointGraph_call</span><span class="p">(</span><span class="n">checkpoints</span><span class="p">)</span>
         <span class="n">answer</span> <span class="o">=</span> <span class="kc">False</span>
@@ -362,16 +364,16 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_timings</span><span class="p">[</span><span class="n">checkpoint</span><span class="p">]</span> <span class="o">+=</span> <span class="n">_time</span><span class="p">()</span> <span class="o">-</span> <span class="n">beginTime</span>
         <span class="k">return</span> <span class="n">answer</span></div>
 <div class="viewcode-block" id="Callbacks.__getitem__"><a class="viewcode-back" href="../../../callbacks/index.html#k1lib.callbacks.callbacks.Callbacks.__getitem__">[docs]</a>    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">:</span><span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Callback</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Get specific cbs.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get specific cbs.</span>
 
 <span class="sd">:param idx: if :class:`str`, then get the Callback with this specific name,</span>
 <span class="sd">    if :class:`int`, then get the Callback in that index.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">cbs</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">cbsDict</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span></div>
 <div class="viewcode-block" id="Callbacks.__iter__"><a class="viewcode-back" href="../../../callbacks/index.html#k1lib.callbacks.callbacks.Callbacks.__iter__">[docs]</a>    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">Callback</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;Iterates through all :class:`Callback`.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Iterates through all :class:`Callback`.&quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">cb</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">cbsDict</span><span class="o">.</span><span class="n">values</span><span class="p">():</span> <span class="k">yield</span> <span class="n">cb</span></div>
 <div class="viewcode-block" id="Callbacks.__len__"><a class="viewcode-back" href="../../../callbacks/index.html#k1lib.callbacks.callbacks.Callbacks.__len__">[docs]</a>    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;How many :class:`Callback` are there in total?&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;How many :class:`Callback` are there in total?&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cbsDict</span><span class="p">)</span></div>
     <span class="k">def</span> <span class="fm">__getattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attr</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">attr</span> <span class="o">==</span> <span class="s2">&quot;cbsDict&quot;</span><span class="p">:</span> <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="n">attr</span><span class="p">)</span>
@@ -387,7 +389,7 @@
         <span class="n">answer</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cbsDict</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
         <span class="k">return</span> <span class="n">answer</span>
     <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="s2">&quot;Callbacks:</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="sa">f</span><span class="s2">&quot;- </span><span class="si">{</span><span class="n">cbName</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">cbName</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">cbsDict</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">cbName</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)])</span> <span class="o">+</span> <span class="s2">&quot;&quot;&quot;</span><span class="se">\n</span><span class="s2"></span>
+        <span class="k">return</span> <span class="s2">&quot;Callbacks:</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="sa">f</span><span class="s2">&quot;- </span><span class="si">{</span><span class="n">cbName</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">cbName</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">cbsDict</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">cbName</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)])</span> <span class="o">+</span> <span class="s2">&quot;&quot;&quot;</span><span class="se">\n</span>
 <span class="s2">Use...</span>
 <span class="s2">- cbs.add(cb[, name]): to add a callback with a name</span>
 <span class="s2">- cbs(&quot;startRun&quot;): to trigger a specific checkpoint, this case &quot;startRun&quot;</span>
@@ -398,16 +400,16 @@
 <span class="s2">- cbs.context(): context manager that will detach all Callbacks attached inside the context</span>
 <span class="s2">- cbs.suspend(&quot;Loss&quot;, &quot;Cuda&quot;): context manager to temporarily prevent triggering checkpoints&quot;&quot;&quot;</span>
 <div class="viewcode-block" id="Callbacks.withBasics"><a class="viewcode-back" href="../../../callbacks/index.html#k1lib.callbacks.callbacks.Callbacks.withBasics">[docs]</a>    <span class="k">def</span> <span class="nf">withBasics</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Adds a bunch of very basic Callbacks that&#39;s needed for everything. Also</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Adds a bunch of very basic Callbacks that&#39;s needed for everything. Also</span>
 <span class="sd">includes Callbacks that are not necessary, but don&#39;t slow things down&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Cbs</span><span class="o">.</span><span class="n">CoreNormal</span><span class="p">())</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Cbs</span><span class="o">.</span><span class="n">Profiler</span><span class="p">())</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Cbs</span><span class="o">.</span><span class="n">Recorder</span><span class="p">())</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Cbs</span><span class="o">.</span><span class="n">ProgressBar</span><span class="p">())</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Cbs</span><span class="o">.</span><span class="n">Loss</span><span class="p">())</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Cbs</span><span class="o">.</span><span class="n">Accuracy</span><span class="p">())</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Cbs</span><span class="o">.</span><span class="n">DontTrainValid</span><span class="p">())</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Cbs</span><span class="o">.</span><span class="n">CancelOnExplosion</span><span class="p">())</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Cbs</span><span class="o">.</span><span class="n">ParamFinder</span><span class="p">())</span></div>
 <div class="viewcode-block" id="Callbacks.withQOL"><a class="viewcode-back" href="../../../callbacks/index.html#k1lib.callbacks.callbacks.Callbacks.withQOL">[docs]</a>    <span class="k">def</span> <span class="nf">withQOL</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Adds quality of life Callbacks.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Adds quality of life Callbacks.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span></div>
 <div class="viewcode-block" id="Callbacks.withAdvanced"><a class="viewcode-back" href="../../../callbacks/index.html#k1lib.callbacks.callbacks.Callbacks.withAdvanced">[docs]</a>    <span class="k">def</span> <span class="nf">withAdvanced</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Adds advanced Callbacks that do fancy stuff, but may slow things</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Adds advanced Callbacks that do fancy stuff, but may slow things</span>
 <span class="sd">down if not configured specifically.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Cbs</span><span class="o">.</span><span class="n">HookModule</span><span class="p">()</span><span class="o">.</span><span class="n">withMeanRecorder</span><span class="p">()</span><span class="o">.</span><span class="n">withStdRecorder</span><span class="p">())</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Cbs</span><span class="o">.</span><span class="n">HookParam</span><span class="p">())</span></div></div>
 <span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">Callbacks</span><span class="p">)</span>
@@ -439,7 +441,7 @@
     <span class="k">def</span> <span class="fm">__getattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attr</span><span class="p">):</span> <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cbs</span><span class="p">,</span> <span class="n">attr</span><span class="p">)</span>
 <span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">Callbacks</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">suspend</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">cbNames</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">ContextManager</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Creates suspension context for specified Callbacks. Matches callbacks with</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Creates suspension context for specified Callbacks. Matches callbacks with</span>
 <span class="sd">their name. Works like this::</span>
 
 <span class="sd">    cbs = k1lib.Callbacks().add(CbA()).add(CbB()).add(CbC())</span>
@@ -451,7 +453,7 @@
     <span class="k">return</span> <span class="n">SuspendContext</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cbNames</span><span class="p">,</span> <span class="p">[])</span>
 <span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">Callbacks</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">suspendClasses</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">classNames</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">ContextManager</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Like :meth:`suspend`, but matches callbacks&#39; class names to the given list,</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Like :meth:`suspend`, but matches callbacks&#39; class names to the given list,</span>
 <span class="sd">instead of matching names. Meaning::</span>
 
 <span class="sd">    cbs.k1lib.Callbacks().add(Cbs.Loss()).add(Cbs.Loss())</span>
@@ -461,7 +463,7 @@
     <span class="k">return</span> <span class="n">SuspendContext</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="p">[],</span> <span class="n">classNames</span><span class="p">)</span>
 <span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">Callbacks</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">suspendEval</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">more</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span><span class="o">=</span><span class="p">[],</span> <span class="n">less</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span><span class="o">=</span><span class="p">[])</span> <span class="o">-&gt;</span> <span class="n">ContextManager</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Same as :meth:`suspendClasses`, but suspend some default classes typical</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Same as :meth:`suspendClasses`, but suspend some default classes typical</span>
 <span class="sd">used for evaluation callbacks. Just convenience method really. Currently includes:</span>
 
 <span class="sd">- HookModule, HookParam, ProgressBar</span>
@@ -487,7 +489,7 @@
     <span class="bp">self</span><span class="o">.</span><span class="n">contexts</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cb</span><span class="p">)</span>
 <span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">Callbacks</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">context</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">initCbs</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="n">Callback</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">ContextManager</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Add context.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Add context.</span>
 
 <span class="sd">Works like this::</span>
 
@@ -516,7 +518,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_lastCheckpoint</span> <span class="o">=</span> <span class="n">cp</span>
 <span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">Callbacks</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">checkpointGraph</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">highlightCb</span><span class="p">:</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Callback</span><span class="p">]</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Graphs what checkpoints follows what checkpoints. Has to run at least once</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Graphs what checkpoints follows what checkpoints. Has to run at least once</span>
 <span class="sd">first. Requires graphviz package though. Example::</span>
 
 <span class="sd">    cbs = Callbacks()</span>
@@ -557,7 +559,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, Quang Ho.</p>
+    <p>&#169; Copyright 2023, Quang Ho.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

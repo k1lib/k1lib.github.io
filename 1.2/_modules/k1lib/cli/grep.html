@@ -52,6 +52,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../imports.html">k1lib.imports module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../mo.html">k1lib.mo module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../knn.html">k1lib.knn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../p5.html">k1lib.p5 module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../schedule.html">k1lib.schedule module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../selector.html">k1lib.selector module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../serve.html">k1lib.serve module</a></li>
@@ -96,7 +97,7 @@
 <span class="n">inf</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s2">&quot;inf&quot;</span><span class="p">)</span>
 <div class="viewcode-block" id="grep"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.grep.grep">[docs]</a><span class="k">class</span> <span class="nc">grep</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
 <div class="viewcode-block" id="grep.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.grep.grep.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pattern</span><span class="p">:</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">Any</span><span class="p">],</span> <span class="nb">bool</span><span class="p">]],</span> <span class="n">before</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">after</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">N</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="s2">&quot;inf&quot;</span><span class="p">),</span> <span class="n">sep</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">col</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Find lines that has the specified pattern.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Find lines that has the specified pattern.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">    # returns [&#39;d&#39;, &#39;d&#39;]</span>
@@ -149,7 +150,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">before</span> <span class="o">=</span> <span class="n">before</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">after</span> <span class="o">=</span> <span class="n">after</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">col</span> <span class="o">=</span> <span class="n">col</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">N</span> <span class="o">=</span> <span class="n">N</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">sep</span> <span class="o">=</span> <span class="n">sep</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">tillPattern</span> <span class="o">=</span> <span class="kc">None</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">tillAfter</span> <span class="o">=</span> <span class="kc">None</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tillF</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="kc">False</span></div>
 <div class="viewcode-block" id="grep.till"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.grep.grep.till">[docs]</a>    <span class="k">def</span> <span class="nf">till</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pattern</span><span class="p">:</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">Any</span><span class="p">],</span> <span class="nb">bool</span><span class="p">]]</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Greps until some other pattern appear. Inclusive, so you might want to</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Greps until some other pattern appear. Inclusive, so you might want to</span>
 <span class="sd">trim the last line. Example::</span>
 
 <span class="sd">    # returns [&#39;5&#39;, &#39;6&#39;, &#39;7&#39;, &#39;8&#39;], includes last item</span>
@@ -203,7 +204,7 @@
         <span class="n">answer</span><span class="o">.</span><span class="n">_tillF</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tillF</span><span class="p">;</span> <span class="n">answer</span><span class="o">.</span><span class="n">tillAfter</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tillAfter</span><span class="p">;</span> <span class="k">return</span> <span class="n">answer</span></div>
 <div class="viewcode-block" id="grepTemplate"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.grep.grepTemplate">[docs]</a><span class="k">class</span> <span class="nc">grepTemplate</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
 <div class="viewcode-block" id="grepTemplate.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.grep.grepTemplate.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pattern</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">template</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Searches over all lines, pick out the match, and expands</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Searches over all lines, pick out the match, and expands</span>
 <span class="sd">it to the templateand yields&quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">pattern</span><span class="p">);</span> <span class="bp">self</span><span class="o">.</span><span class="n">template</span> <span class="o">=</span> <span class="n">template</span></div>
@@ -222,7 +223,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, Quang Ho.</p>
+    <p>&#169; Copyright 2023, Quang Ho.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

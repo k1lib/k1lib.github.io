@@ -52,6 +52,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../imports.html">k1lib.imports module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../mo.html">k1lib.mo module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../knn.html">k1lib.knn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../p5.html">k1lib.p5 module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../schedule.html">k1lib.schedule module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../selector.html">k1lib.selector module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../serve.html">k1lib.serve module</a></li>
@@ -99,7 +100,7 @@
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">List</span>
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;feats&quot;</span><span class="p">,</span> <span class="s2">&quot;origin&quot;</span><span class="p">]</span>
 <div class="viewcode-block" id="feats"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.gb.feats">[docs]</a><span class="k">class</span> <span class="nc">feats</span><span class="p">(</span><span class="n">cli</span><span class="o">.</span><span class="n">BaseCli</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Fetches features, each on a separate stream.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Fetches features, each on a separate stream.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">    cat(&quot;a.gb&quot;) | gb.feats()</span>
@@ -131,7 +132,7 @@
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">cache</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span> <span class="k">yield</span> <span class="nb">iter</span><span class="p">(</span><span class="n">cache</span><span class="p">)</span></div>
 <div class="viewcode-block" id="feats.filt"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.gb.feats.filt">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">filt</span><span class="p">(</span><span class="o">*</span><span class="n">terms</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">cli</span><span class="o">.</span><span class="n">BaseCli</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Filters for specific terms in all the features texts. If there</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Filters for specific terms in all the features texts. If there</span>
 <span class="sd">are multiple terms, then filters for first term, then second, then third,</span>
 <span class="sd">so the term&#39;s order might matter to you. Example::</span>
 
@@ -162,7 +163,7 @@
         <span class="k">return</span> <span class="n">cli</span><span class="o">.</span><span class="n">toList</span><span class="p">()</span><span class="o">.</span><span class="n">all</span><span class="p">()</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">filt</span><span class="p">(</span><span class="k">lambda</span> <span class="n">F</span><span class="p">:</span> <span class="n">F</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">grep</span><span class="p">(</span><span class="n">terms</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span></div>
 <div class="viewcode-block" id="feats.root"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.gb.feats.root">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">root</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">cli</span><span class="o">.</span><span class="n">BaseCli</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Gets root (top most unnamed tag) of a feature.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Gets root (top most unnamed tag) of a feature.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">     [&#39;     misc_RNA        complement(join(14362..14829,14970..15038,15796..15947,&#39;,</span>
@@ -188,7 +189,7 @@
         <span class="k">return</span> <span class="n">cli</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">breakIf</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">))</span> <span class="o">|</span> <span class="o">~</span><span class="n">cli</span><span class="o">.</span><span class="n">aS</span><span class="p">(</span><span class="k">lambda</span> <span class="n">a</span><span class="p">,</span> <span class="o">*</span><span class="n">b</span><span class="p">:</span> <span class="p">[</span><span class="n">a</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">:])</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span> <span class="o">*</span><span class="n">b</span><span class="p">]])</span></div>
 <div class="viewcode-block" id="feats.tags"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.gb.feats.tags">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">tags</span><span class="p">(</span><span class="o">*</span><span class="n">tags</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">cli</span><span class="o">.</span><span class="n">BaseCli</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Grabs a list of tags.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Grabs a list of tags.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">    s = [&#39;     misc_RNA        complement(join(14362..14829,14970..15038,15796..15947,&#39;,</span>
@@ -226,11 +227,11 @@
             <span class="o">|</span> <span class="p">(</span><span class="n">cli</span><span class="o">.</span><span class="n">op</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="p">)</span> <span class="o">|</span> <span class="o">~</span><span class="n">cli</span><span class="o">.</span><span class="n">aS</span><span class="p">(</span><span class="k">lambda</span> <span class="n">a</span><span class="p">,</span> <span class="o">*</span><span class="n">b</span><span class="p">:</span> <span class="p">[</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span><span class="p">]))</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tags</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="k">return</span> <span class="n">f</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">deref</span><span class="p">()</span>
         <span class="k">def</span> <span class="nf">g</span><span class="p">(</span><span class="n">it</span><span class="p">):</span>
-            <span class="n">d</span> <span class="o">=</span> <span class="n">it</span> <span class="o">|</span> <span class="n">f</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">toDict</span><span class="p">()</span>
+            <span class="n">d</span> <span class="o">=</span> <span class="n">it</span> <span class="o">|</span> <span class="n">f</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">toDict</span><span class="p">()</span>
             <span class="k">return</span> <span class="p">[[</span><span class="n">tag</span><span class="p">,</span> <span class="n">d</span><span class="p">[</span><span class="n">tag</span><span class="p">]</span> <span class="k">if</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">d</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">tags</span><span class="p">]</span>
         <span class="k">return</span> <span class="n">cli</span><span class="o">.</span><span class="n">aS</span><span class="p">(</span><span class="n">g</span><span class="p">)</span></div></div>
 <div class="viewcode-block" id="origin"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.gb.origin">[docs]</a><span class="k">class</span> <span class="nc">origin</span><span class="p">(</span><span class="n">cli</span><span class="o">.</span><span class="n">BaseCli</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Return the origin section of the genbank file.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the origin section of the genbank file.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">    # returns single fasta string</span>
@@ -249,7 +250,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, Quang Ho.</p>
+    <p>&#169; Copyright 2023, Quang Ho.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

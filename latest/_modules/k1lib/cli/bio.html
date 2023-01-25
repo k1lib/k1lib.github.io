@@ -52,6 +52,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../imports.html">k1lib.imports module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../mo.html">k1lib.mo module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../knn.html">k1lib.knn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../p5.html">k1lib.p5 module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../schedule.html">k1lib.schedule module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../selector.html">k1lib.selector module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../serve.html">k1lib.serve module</a></li>
@@ -108,7 +109,7 @@
 <span class="n">settings</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;so&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;location of sequence ontology file&quot;</span><span class="p">,</span> <span class="n">partial</span><span class="p">(</span><span class="n">_patchDir</span><span class="p">,</span> <span class="s2">&quot;so&quot;</span><span class="p">));</span>
 <span class="n">settings</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;lookupImgs&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;sort of niche. Whether to auto looks up extra gene ontology relationship images&quot;</span><span class="p">)</span>
 <div class="viewcode-block" id="go"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.bio.go">[docs]</a><span class="k">def</span> <span class="nf">go</span><span class="p">(</span><span class="n">term</span><span class="p">:</span><span class="nb">int</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Looks up a GO term&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Looks up a GO term&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">settings</span><span class="o">.</span><span class="n">go</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s2">&quot;go.obo&quot;</span><span class="p">):</span>
         <span class="n">answer</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;No gene ontology obo file specified! You can:</span>
 <span class="s2">- Specify the file using `settings.cli.bio.go = &#39;/some/folder/go.obo&#39;`</span>
@@ -135,7 +136,7 @@
         <span class="n">chars</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">chars</span>
         <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">it</span><span class="p">:</span> <span class="k">yield</span> <span class="n">chars</span><span class="p">[</span><span class="n">e</span><span class="p">]</span>
 <div class="viewcode-block" id="quality"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.bio.quality">[docs]</a><span class="k">def</span> <span class="nf">quality</span><span class="p">(</span><span class="n">log</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Get numeric quality of sequence.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get numeric quality of sequence.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">    # returns [2, 2, 5, 30]</span>
@@ -145,7 +146,7 @@
     <span class="k">if</span> <span class="n">log</span><span class="p">:</span> <span class="k">return</span> <span class="n">toIdx</span><span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">phred</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span> <span class="k">return</span> <span class="n">toIdx</span><span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">phred</span><span class="p">)</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="o">/</span><span class="mi">10</span><span class="p">))</span></div>
 <div class="viewcode-block" id="longFa"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.bio.longFa">[docs]</a><span class="k">def</span> <span class="nf">longFa</span><span class="p">():</span>
-    <span class="sd">&quot;&quot;&quot;Takes in a fasta file and put each sequence on 1 line.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Takes in a fasta file and put each sequence on 1 line.</span>
 <span class="sd">File &quot;gene.fa&quot;::</span>
 
 <span class="sd">    &gt;AF086833.2 Ebola virus - Mayinga, Zaire, 1976, complete genome</span>
@@ -168,19 +169,19 @@
     <span class="k">return</span> <span class="n">cli</span><span class="o">.</span><span class="n">grep</span><span class="p">(</span><span class="s2">&quot;^&gt;&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">till</span><span class="p">()</span> <span class="o">|</span> <span class="p">(</span><span class="n">cli</span><span class="o">.</span><span class="n">item</span><span class="p">()</span> <span class="o">&amp;</span> <span class="p">(</span><span class="o">~</span><span class="n">cli</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)))</span><span class="o">.</span><span class="n">all</span><span class="p">()</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">joinStreams</span><span class="p">()</span></div>
 <span class="k">def</span> <span class="nf">_fileWithoutExt</span><span class="p">(</span><span class="n">f</span><span class="p">):</span> <span class="k">return</span> <span class="s2">&quot;.&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
 <div class="viewcode-block" id="idx"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.bio.idx">[docs]</a><span class="k">class</span> <span class="nc">idx</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Indexes files with various formats.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Indexes files with various formats.&quot;&quot;&quot;</span>
 <div class="viewcode-block" id="idx.blast"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.bio.idx.blast">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">blast</span><span class="p">(</span><span class="n">fileName</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dbtype</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Uses ``makeblastdb`` to create a blast database from a fasta file.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Uses ``makeblastdb`` to create a blast database from a fasta file.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">    &quot;file.fa&quot; | bio.idx.blast()</span>
 <span class="sd">    bio.idx.blast(&quot;file.fa&quot;)&quot;&quot;&quot;</span>
-        <span class="n">f</span> <span class="o">=</span> <span class="n">cli</span><span class="o">.</span><span class="n">applyS</span><span class="p">(</span><span class="k">lambda</span> <span class="n">fileName</span><span class="p">:</span> <span class="kc">None</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">cmd</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;makeblastdb -dbtype </span><span class="si">{</span><span class="n">dbtype</span> <span class="ow">or</span> <span class="s1">&#39;nucl&#39;</span><span class="si">}</span><span class="s2"> -in </span><span class="si">{</span><span class="n">fileName</span><span class="si">}</span><span class="s2"> -out </span><span class="si">{</span><span class="n">_fileWithoutExt</span><span class="p">(</span><span class="n">fileName</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">))</span>
+        <span class="n">f</span> <span class="o">=</span> <span class="n">cli</span><span class="o">.</span><span class="n">applyS</span><span class="p">(</span><span class="k">lambda</span> <span class="n">fileName</span><span class="p">:</span> <span class="kc">None</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">cmd</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;makeblastdb -dbtype </span><span class="si">{</span><span class="n">dbtype</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="s1">&#39;nucl&#39;</span><span class="si">}</span><span class="s2"> -in </span><span class="si">{</span><span class="n">fileName</span><span class="si">}</span><span class="s2"> -out </span><span class="si">{</span><span class="n">_fileWithoutExt</span><span class="p">(</span><span class="n">fileName</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">f</span> <span class="k">if</span> <span class="n">fileName</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">f</span><span class="p">(</span><span class="n">fileName</span><span class="p">)</span></div>
 <div class="viewcode-block" id="idx.bwa"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.bio.idx.bwa">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">bwa</span><span class="p">(</span><span class="n">fileName</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Uses ``bwa`` to index a fasta file.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Uses ``bwa`` to index a fasta file.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">    &quot;file.fa&quot; | bio.idx.bwa()</span>
@@ -189,7 +190,7 @@
         <span class="k">return</span> <span class="n">f</span> <span class="k">if</span> <span class="n">fileName</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">f</span><span class="p">(</span><span class="n">fileName</span><span class="p">)</span></div>
 <div class="viewcode-block" id="idx.bam"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.bio.idx.bam">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">bam</span><span class="p">(</span><span class="n">fileName</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Uses ``samtools`` to index a bam file.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Uses ``samtools`` to index a bam file.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">    &quot;file.bam&quot; | bio.idx.bam()</span>
@@ -197,7 +198,7 @@
         <span class="n">f</span> <span class="o">=</span> <span class="n">cli</span><span class="o">.</span><span class="n">applyS</span><span class="p">(</span><span class="k">lambda</span> <span class="n">fileName</span><span class="p">:</span> <span class="kc">None</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">cmd</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;samtools index </span><span class="si">{</span><span class="n">fileName</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">f</span> <span class="k">if</span> <span class="n">fileName</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">f</span><span class="p">(</span><span class="n">fileName</span><span class="p">)</span></div></div>
 <div class="viewcode-block" id="transcribe"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.bio.transcribe">[docs]</a><span class="k">class</span> <span class="nc">transcribe</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Transcribes (DNA -&gt; RNA) incoming rows.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Transcribes (DNA -&gt; RNA) incoming rows.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">    # returns &quot;AUCG&quot;</span>
@@ -208,7 +209,7 @@
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">it</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span> <span class="k">return</span> <span class="p">[</span><span class="n">it</span><span class="p">]</span> <span class="o">|</span> <span class="bp">self</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
         <span class="k">return</span> <span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="s2">&quot;U&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">it</span><span class="p">)</span></div></div>
 <div class="viewcode-block" id="complement"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.bio.complement">[docs]</a><span class="k">class</span> <span class="nc">complement</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Get the reverse complement of DNA.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get the reverse complement of DNA.</span>
 <span class="sd">Example::</span>
 
 <span class="sd">    # returns &quot;TAGC&quot;</span>
@@ -254,7 +255,7 @@
 <span class="p">}</span>
 <div class="viewcode-block" id="translate"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.bio.translate">[docs]</a><span class="k">class</span> <span class="nc">translate</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
 <div class="viewcode-block" id="translate.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.bio.translate.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">length</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Translates incoming rows.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Translates incoming rows.</span>
 
 <span class="sd">:param length: 0 for short (L), 1 for med (Leu), 2 for long (Leucine)&quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">();</span> <span class="bp">self</span><span class="o">.</span><span class="n">delim</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="k">if</span> <span class="n">length</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="s2">&quot; &quot;</span>
@@ -271,13 +272,13 @@
                 <span class="n">answer</span> <span class="o">+=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dict</span><span class="p">[</span><span class="n">ntAa</span><span class="p">[</span><span class="n">codon</span><span class="p">]]</span> <span class="k">if</span> <span class="n">codon</span> <span class="ow">in</span> <span class="n">ntAa</span> <span class="k">else</span> <span class="s2">&quot;?&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">delim</span>
             <span class="k">yield</span> <span class="n">answer</span></div></div>
 <div class="viewcode-block" id="medAa"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.bio.medAa">[docs]</a><span class="k">class</span> <span class="nc">medAa</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Converts short aa sequence to medium one&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Converts short aa sequence to medium one&quot;&quot;&quot;</span>
 <div class="viewcode-block" id="medAa.__ror__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.bio.medAa.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">:</span><span class="n">Iterator</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">it</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span> <span class="n">it</span> <span class="o">=</span> <span class="p">[</span><span class="n">it</span><span class="p">]</span>
         <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">it</span><span class="p">:</span>
             <span class="k">yield</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">_medAa</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">line</span><span class="p">)</span></div></div>
 <div class="viewcode-block" id="longAa"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.bio.longAa">[docs]</a><span class="k">class</span> <span class="nc">longAa</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Converts short aa sequence to long one&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Converts short aa sequence to long one&quot;&quot;&quot;</span>
 <div class="viewcode-block" id="longAa.__ror__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.bio.longAa.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">:</span><span class="n">Iterator</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">it</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span> <span class="n">it</span> <span class="o">=</span> <span class="p">[</span><span class="n">it</span><span class="p">]</span>
         <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">it</span><span class="p">:</span>
@@ -291,7 +292,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, Quang Ho.</p>
+    <p>&#169; Copyright 2023, Quang Ho.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
