@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>k1lib.cli.output &mdash; k1lib  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> k1lib
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../base.html">Base module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../cli/index.html">k1lib.cli module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../callbacks/index.html">k1lib.callbacks module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../k1a.html">k1lib._k1a module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../k1ui.html">k1lib.k1ui module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eqn.html">k1lib.eqn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fmt.html">k1lib.fmt module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../graphEqn.html">k1lib.graphEqn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../imports.html">k1lib.imports module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mo.html">k1lib.mo module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../knn.html">k1lib.knn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../p5.html">k1lib.p5 module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../schedule.html">k1lib.schedule module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../selector.html">k1lib.selector module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../serve.html">k1lib.serve module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../viz.html">k1lib.viz module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../monkey.html">Monkey patched classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelogs.html">Changelogs</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">k1lib</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">k1lib.cli.output</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for k1lib.cli.output</h1><div class="highlight"><pre>
+<span></span><span class="c1"># AUTOGENERATED FILE! PLEASE DON&#39;T EDIT</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">For operations that feel like the termination of operations</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Iterator</span><span class="p">,</span> <span class="n">Any</span>
+<span class="kn">from</span> <span class="nn">k1lib.cli.init</span> <span class="kn">import</span> <span class="n">BaseCli</span><span class="p">,</span> <span class="n">Table</span>
+<span class="kn">import</span> <span class="nn">numbers</span><span class="o">,</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span><span class="o">,</span> <span class="nn">k1lib</span><span class="o">,</span> <span class="nn">tempfile</span><span class="o">,</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">time</span><span class="o">,</span> <span class="nn">math</span>
+<span class="kn">from</span> <span class="nn">k1lib</span> <span class="kn">import</span> <span class="n">cli</span><span class="p">;</span> <span class="kn">from</span> <span class="nn">k1lib.cli.typehint</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="k">try</span><span class="p">:</span> <span class="kn">import</span> <span class="nn">torch</span><span class="p">;</span> <span class="n">hasTorch</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="k">except</span><span class="p">:</span> <span class="n">hasTorch</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;stdout&quot;</span><span class="p">,</span> <span class="s2">&quot;tee&quot;</span><span class="p">,</span> <span class="s2">&quot;file&quot;</span><span class="p">,</span> <span class="s2">&quot;pretty&quot;</span><span class="p">,</span> <span class="s2">&quot;display&quot;</span><span class="p">,</span> <span class="s2">&quot;headOut&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;intercept&quot;</span><span class="p">,</span> <span class="s2">&quot;plotImgs&quot;</span><span class="p">]</span>
+<span class="n">settings</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">cli</span>
+<div class="viewcode-block" id="stdout"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.output.stdout">[docs]</a><span class="k">class</span> <span class="nc">stdout</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
+<div class="viewcode-block" id="stdout.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.output.stdout.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Prints out all lines. If not iterable, then print out the input</span>
+<span class="sd">raw. Example::</span>
+
+<span class="sd">    # prints out &quot;0\\n1\\n2&quot;</span>
+<span class="sd">    range(3) | stdout()</span>
+<span class="sd">    # same as above, but (maybe?) more familiar</span>
+<span class="sd">    range(3) &gt; stdout()</span>
+
+<span class="sd">This is rarely used alone. It&#39;s more common to use :meth:`headOut`</span>
+<span class="sd">for list of items, and :meth:`display` for tables.&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span></div>
+    <span class="k">def</span> <span class="nf">_typehint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inp</span><span class="p">):</span> <span class="k">return</span> <span class="kc">None</span>
+<div class="viewcode-block" id="stdout.__ror__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.output.stdout.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">:</span><span class="n">Iterator</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">it</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">it</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">it</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">it</span><span class="p">)</span></div></div>
+<span class="n">_defaultTeeF</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">s</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+<div class="viewcode-block" id="tee"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.output.tee">[docs]</a><span class="k">class</span> <span class="nc">tee</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
+<div class="viewcode-block" id="tee.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.output.tee.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="o">=</span><span class="n">_defaultTeeF</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">every</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Like the Linux ``tee`` command, this prints the elements to another</span>
+<span class="sd">specified stream, while yielding the elements. Example::</span>
+
+<span class="sd">    # prints &quot;0\\n1\\n2\\n3\\n4\\n&quot; and returns [0, 1, 4, 9, 16]</span>
+<span class="sd">    range(5) | tee() | apply(op() ** 2) | deref()</span>
+
+<span class="sd">See also: :class:`~k1lib.cli.modifier.consume`</span>
+
+<span class="sd">:param f: element transform function. Defaults to just adding a new</span>
+<span class="sd">    line at the end</span>
+<span class="sd">:param s: stream to write to. Defaults to :attr:`sys.stdout`</span>
+<span class="sd">:param every: only prints out 1 line in ``every`` lines, to limit print rate&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">s</span> <span class="o">=</span> <span class="n">s</span> <span class="ow">or</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">f</span> <span class="o">=</span> <span class="n">f</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">every</span> <span class="o">=</span> <span class="n">every</span></div>
+<div class="viewcode-block" id="tee.__ror__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.output.tee.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">):</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">s</span><span class="p">;</span> <span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">;</span> <span class="n">every</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">every</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">e</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">it</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="n">every</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">e</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">s</span><span class="p">)</span>
+            <span class="k">yield</span> <span class="n">e</span></div>
+<div class="viewcode-block" id="tee.cr"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.output.tee.cr">[docs]</a>    <span class="k">def</span> <span class="nf">cr</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Tee, but replaces the previous line. &quot;cr&quot; stands for carriage return.</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    # prints &quot;4&quot; and returns [0, 1, 4, 9, 16]. Does print all the numbers in the middle, but is overriden</span>
+<span class="sd">    range(5) | tee().cr() | apply(op() ** 2) | deref()&quot;&quot;&quot;</span>
+        <span class="n">f</span> <span class="o">=</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">)</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">f</span> <span class="o">==</span> <span class="n">_defaultTeeF</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">f</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\r</span><span class="si">{</span><span class="n">f</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">;</span> <span class="k">return</span> <span class="bp">self</span></div>
+<div class="viewcode-block" id="tee.crt"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.output.tee.crt">[docs]</a>    <span class="k">def</span> <span class="nf">crt</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Like :meth:`tee.cr`, but includes an elapsed time text at the end.</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    range(5) | tee().cr() | apply(op() ** 2) | deref()&quot;&quot;&quot;</span>
+        <span class="n">beginTime</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="n">f</span> <span class="o">=</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">)</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">f</span> <span class="o">==</span> <span class="n">_defaultTeeF</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">f</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\r</span><span class="si">{</span><span class="n">f</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">beginTime</span><span class="p">)</span><span class="si">}</span><span class="s2">s elapsed&quot;</span><span class="p">;</span> <span class="k">return</span> <span class="bp">self</span></div></div>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">PIL</span><span class="p">;</span> <span class="n">hasPIL</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="k">except</span><span class="p">:</span> <span class="n">hasPIL</span> <span class="o">=</span> <span class="kc">False</span>
+<div class="viewcode-block" id="file"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.output.file">[docs]</a><span class="k">class</span> <span class="nc">file</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
+<div class="viewcode-block" id="file.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.output.file.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fileName</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">flush</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Opens a new file for writing. This will iterate through</span>
+<span class="sd">the iterator fed to it and put each element on a separate line. Example::</span>
+
+<span class="sd">    # writes &quot;0\\n1\\n2\\n&quot; to file</span>
+<span class="sd">    range(3) | file(&quot;test/f.txt&quot;)</span>
+<span class="sd">    # same as above, but (maybe?) more familiar</span>
+<span class="sd">    range(3) &gt; file(&quot;text/f.txt&quot;)</span>
+<span class="sd">    # returns [&#39;0&#39;, &#39;1&#39;, &#39;2&#39;]</span>
+<span class="sd">    cat(&quot;folder/f.txt&quot;) | deref()</span>
+
+<span class="sd">If the input is a string, then it will just put the string into the</span>
+<span class="sd">file and does not iterate through the string::</span>
+
+<span class="sd">    # writes &quot;some text\\n123&quot; to file, default iterator mode like above</span>
+<span class="sd">    [&quot;some text&quot;, &quot;123&quot;] | file(&quot;test/f.txt&quot;)</span>
+<span class="sd">    # same as above, but this is a special case when it detects you&#39;re piping in a string</span>
+<span class="sd">    &quot;some text\\n123&quot; | file(&quot;test/f.txt&quot;)</span>
+
+<span class="sd">If the input is a :class:`bytes` object or an iterator of :class:`bytes`, then it</span>
+<span class="sd">will open the file in binary mode and dumps the bytes in::</span>
+
+<span class="sd">    # writes bytes to file</span>
+<span class="sd">    b&#39;5643&#39; | file(&quot;test/a.bin&quot;)</span>
+<span class="sd">    [b&#39;56&#39;, b&#39;43&#39;] &gt;&gt; file(&quot;test/a.bin&quot;)</span>
+<span class="sd">    # returns [&#39;56435643&#39;]</span>
+<span class="sd">    cat(&quot;test/a.bin&quot;) | deref()</span>
+
+<span class="sd">If the input is a :class:`PIL.Image.Image` object, then it will just save the image in</span>
+<span class="sd">the file::</span>
+
+<span class="sd">    # creates an random image and saves it to a file</span>
+<span class="sd">    torch.randn(100, 200) | toImg() | file(&quot;a.png&quot;)</span>
+
+<span class="sd">Reminder that the image pixel range is expected to be from 0 to 255. You</span>
+<span class="sd">can create temporary files on the fly by not specifying a file name::</span>
+
+<span class="sd">    # creates temporary file</span>
+<span class="sd">    url = range(3) &gt; file()</span>
+<span class="sd">    # returns [&#39;0&#39;, &#39;1&#39;, &#39;2&#39;]</span>
+<span class="sd">    cat(url) | deref()</span>
+
+<span class="sd">This can be especially useful when integrating with shell scripts that wants to</span>
+<span class="sd">read in a file::</span>
+
+<span class="sd">    seq1 = &quot;CCAAACCCCCCCTCCCCCGCTTC&quot;</span>
+<span class="sd">    seq2 = &quot;CCAAACCCCCCCCTCCCCCCGCTTC&quot;</span>
+<span class="sd">    # use &quot;needle&quot; program to locally align 2 sequences</span>
+<span class="sd">    None | cmd(f&quot;needle {seq1 &gt; file()} {seq2 &gt; file()} -filter&quot;)</span>
+
+<span class="sd">You can also append to file with the &quot;&gt;&gt;&quot; operator::</span>
+
+<span class="sd">    url = range(3) &gt; file()</span>
+<span class="sd">    # appended to file</span>
+<span class="sd">    range(10, 13) &gt;&gt; file(url)</span>
+<span class="sd">    # returns [&#39;0&#39;, &#39;1&#39;, &#39;2&#39;, &#39;10&#39;, &#39;11&#39;, &#39;12&#39;]</span>
+<span class="sd">    cat(url) | deref()</span>
+
+<span class="sd">:param fileName: if not specified, create new temporary file and returns the url</span>
+<span class="sd">    when pipes into it</span>
+<span class="sd">:param flush: whether to flush to file immediately after every iteration&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">();</span> <span class="bp">self</span><span class="o">.</span><span class="n">fileName</span> <span class="o">=</span> <span class="n">fileName</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">flush</span> <span class="o">=</span> <span class="n">flush</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">append</span> <span class="o">=</span> <span class="kc">False</span> <span class="c1"># whether to append to file rather than erasing it</span></div>
+<div class="viewcode-block" id="file.__ror__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.output.file.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">:</span><span class="n">Iterator</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__ror__</span><span class="p">(</span><span class="n">it</span><span class="p">);</span> <span class="n">fileName</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fileName</span><span class="p">;</span> <span class="n">flushF</span> <span class="o">=</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">f</span><span class="p">:</span> <span class="n">f</span><span class="o">.</span><span class="n">flush</span><span class="p">())</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">flush</span> <span class="k">else</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">_</span><span class="p">:</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">fileName</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">f</span> <span class="o">=</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">NamedTemporaryFile</span><span class="p">()</span>
+            <span class="n">fileName</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">name</span><span class="p">;</span> <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="n">fileName</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="n">fileName</span><span class="p">);</span> <span class="n">firstLine</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">hasPIL</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">it</span><span class="p">,</span> <span class="n">PIL</span><span class="o">.</span><span class="n">Image</span><span class="o">.</span><span class="n">Image</span><span class="p">):</span> <span class="n">it</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">fileName</span><span class="p">);</span> <span class="k">return</span> <span class="n">fileName</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">it</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span> <span class="n">it</span> <span class="o">=</span> <span class="p">[</span><span class="n">it</span><span class="p">];</span> <span class="n">text</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">it</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">):</span> <span class="n">text</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">it</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">it</span><span class="p">);</span> <span class="n">sentinel</span> <span class="o">=</span> <span class="nb">object</span><span class="p">();</span> <span class="n">firstLine</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">it</span><span class="p">,</span> <span class="n">sentinel</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">firstLine</span> <span class="ow">is</span> <span class="n">sentinel</span><span class="p">:</span> <span class="c1"># no elements at all</span>
+                <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fileName</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span> <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+                <span class="k">return</span> <span class="n">fileName</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">firstLine</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">text</span><span class="p">:</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fileName</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">append</span> <span class="k">else</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">firstLine</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">firstLine</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">it</span><span class="p">:</span> <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">line</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span> <span class="n">flushF</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fileName</span><span class="p">,</span> <span class="s2">&quot;ab&quot;</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">append</span> <span class="k">else</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">firstLine</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">firstLine</span><span class="p">)</span>
+                    <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">it</span><span class="p">:</span> <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">e</span><span class="p">);</span> <span class="n">flushF</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span> <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">it</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">fileName</span></div>
+    <span class="k">def</span> <span class="fm">__rrshift__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">append</span> <span class="o">=</span> <span class="kc">True</span> <span class="c1"># why do this? because `a | b &gt;&gt; c` will be interpreted as `a | (b &gt;&gt; c)`</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">it</span><span class="p">,</span> <span class="n">BaseCli</span><span class="p">):</span> <span class="k">return</span> <span class="n">cli</span><span class="o">.</span><span class="n">serial</span><span class="p">(</span><span class="n">it</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__ror__</span><span class="p">(</span><span class="n">it</span><span class="p">)</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;File name of this :class:`file`&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">fileName</span></div>
+<div class="viewcode-block" id="pretty"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.output.pretty">[docs]</a><span class="k">class</span> <span class="nc">pretty</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
+<div class="viewcode-block" id="pretty.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.output.pretty.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">delim</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Pretty prints a table. Not really used directly.</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    # These 2 statements are pretty much the same</span>
+<span class="sd">    [range(10), range(10)] | head(5) | pretty() &gt; stdout()</span>
+<span class="sd">    [range(10), range(10)] | display()&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">delim</span> <span class="o">=</span> <span class="n">delim</span></div>
+    <span class="k">def</span> <span class="nf">_typehint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inp</span><span class="p">):</span> <span class="k">return</span> <span class="n">tIter</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+<div class="viewcode-block" id="pretty.__ror__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.output.pretty.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">:</span><span class="n">Table</span><span class="p">[</span><span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+        <span class="n">table</span> <span class="o">=</span> <span class="p">[];</span> <span class="n">widths</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">it</span><span class="p">:</span>
+            <span class="n">_row</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">e</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
+                <span class="n">e</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">;</span> <span class="n">_row</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+                <span class="n">widths</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">e</span><span class="p">),</span> <span class="n">widths</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+            <span class="n">table</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_row</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">table</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">delim</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="n">w</span><span class="o">+</span><span class="mi">3</span><span class="p">)</span> <span class="k">for</span> <span class="n">w</span><span class="p">,</span> <span class="n">e</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">widths</span><span class="o">.</span><span class="n">values</span><span class="p">(),</span> <span class="n">row</span><span class="p">))</span></div></div>
+<div class="viewcode-block" id="display"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.output.display">[docs]</a><span class="k">def</span> <span class="nf">display</span><span class="p">(</span><span class="n">lines</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convenience method for displaying a table.</span>
+<span class="sd">Pretty much equivalent to ``head() | pretty() | stdout()``.</span>
+
+<span class="sd">See also: :class:`pretty`&quot;&quot;&quot;</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="n">pretty</span><span class="p">()</span> <span class="o">|</span> <span class="n">stdout</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">lines</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="k">return</span> <span class="n">f</span>
+    <span class="k">else</span><span class="p">:</span> <span class="k">return</span> <span class="n">cli</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span> <span class="o">|</span> <span class="n">f</span></div>
+<div class="viewcode-block" id="headOut"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.output.headOut">[docs]</a><span class="k">def</span> <span class="nf">headOut</span><span class="p">(</span><span class="n">lines</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convenience method for head() | stdout()&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">lines</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="k">return</span> <span class="n">stdout</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span> <span class="k">return</span> <span class="n">cli</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span> <span class="o">|</span> <span class="n">stdout</span><span class="p">()</span></div>
+<span class="k">def</span> <span class="nf">tab</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="s2">&quot;    &quot;</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">pad</span> <span class="o">+</span> <span class="n">line</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)])</span>
+<div class="viewcode-block" id="intercept"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.output.intercept">[docs]</a><span class="k">class</span> <span class="nc">intercept</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
+<div class="viewcode-block" id="intercept.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.output.intercept.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">raiseError</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Intercept flow at a particular point, analyze the object piped in, and</span>
+<span class="sd">raises error to stop flow. Example::</span>
+
+<span class="sd">    3 | intercept()</span>
+
+<span class="sd">:param raiseError: whether to raise error when executed or not.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">raiseError</span> <span class="o">=</span> <span class="n">raiseError</span></div>
+<div class="viewcode-block" id="intercept.__ror__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.output.intercept.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="p">(</span><span class="n">numbers</span><span class="o">.</span><span class="n">Number</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">bool</span><span class="p">)):</span> <span class="nb">print</span><span class="p">(</span><span class="n">tab</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">s</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">))</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="p">(</span><span class="nb">tuple</span><span class="p">,</span> <span class="nb">list</span><span class="p">)):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">tab</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Length: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">))</span>
+            <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">tab</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">))</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">settings</span><span class="o">.</span><span class="n">arrayTypes</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">tab</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Shape: </span><span class="si">{</span><span class="n">s</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">))</span>
+            <span class="k">if</span> <span class="n">s</span><span class="o">.</span><span class="n">numel</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mi">1000</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">tab</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">s</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">))</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">raiseError</span><span class="p">:</span> <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;intercepted&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">s</span></div></div>
+<div class="viewcode-block" id="plotImgs"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.output.plotImgs">[docs]</a><span class="k">class</span> <span class="nc">plotImgs</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
+<div class="viewcode-block" id="plotImgs.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.output.plotImgs.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">fac</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">table</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">im</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Plots a bunch of images at the same time in a table.</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    # plots all images</span>
+<span class="sd">    [torch.randn(10, 20), torch.randn(20, 10)] | plotImgs()</span>
+<span class="sd">    # plots all images with titles</span>
+<span class="sd">    [[torch.randn(10, 20), &quot;img 1&quot;], [torch.randn(20, 10), &quot;img 2&quot;]] | plotImgs()</span>
+
+<span class="sd">If you have multiple rows with different number of images, you can</span>
+<span class="sd">plot that with this too, just set ``table=True`` like this::</span>
+
+<span class="sd">    [[torch.randn(10, 20), torch.randn(20, 10)], [torch.randn(10, 20)]] | plotImgs(table=True)</span>
+
+<span class="sd">:param col: number of columns in the table. If explicitly None, it will turn</span>
+<span class="sd">    into the number of images fed. Not available if ``table=True``</span>
+<span class="sd">:param aspect: aspect ratio of each images, or ratio between width and height</span>
+<span class="sd">:param fac: figsize factor. The higher, the more resolution</span>
+<span class="sd">:param axis: whether to display the axis or not</span>
+<span class="sd">:param table: whether to plot using table mode</span>
+<span class="sd">:param im: if True, returns an image&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">col</span> <span class="o">=</span> <span class="n">col</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">fac</span> <span class="o">=</span> <span class="n">fac</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">axis</span> <span class="o">=</span> <span class="n">axis</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">aspect</span> <span class="o">=</span> <span class="n">aspect</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">table</span> <span class="o">=</span> <span class="n">table</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">im</span> <span class="o">=</span> <span class="n">im</span></div>
+<div class="viewcode-block" id="plotImgs.__ror__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.output.plotImgs.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">imgs</span><span class="p">):</span>
+        <span class="n">imgs</span> <span class="o">=</span> <span class="n">imgs</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">deref</span><span class="p">();</span> <span class="n">col</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">col</span><span class="p">;</span> <span class="n">fac</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fac</span><span class="p">;</span> <span class="n">aspect</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">aspect</span><span class="o">**</span><span class="mf">0.5</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="p">:</span> <span class="c1"># main code</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">imgs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="k">return</span>
+            <span class="k">if</span> <span class="n">col</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">col</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">imgs</span><span class="p">):</span> <span class="n">col</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">imgs</span><span class="p">)</span>
+            <span class="n">n</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">imgs</span><span class="p">)</span><span class="o">/</span><span class="n">col</span><span class="p">)</span>
+            <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">col</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="n">col</span><span class="o">*</span><span class="n">fac</span><span class="o">*</span><span class="n">aspect</span><span class="p">,</span> <span class="n">n</span><span class="o">*</span><span class="n">fac</span><span class="o">/</span><span class="n">aspect</span><span class="p">));</span>
+            <span class="n">axes</span> <span class="o">=</span> <span class="n">axes</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">axes</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="k">else</span> <span class="p">[</span><span class="n">axes</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">ax</span><span class="p">,</span> <span class="n">im</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">axes</span><span class="p">,</span> <span class="n">imgs</span><span class="p">):</span>
+                <span class="n">plt</span><span class="o">.</span><span class="n">sca</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">im</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">im</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+                <span class="k">else</span><span class="p">:</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">im</span><span class="p">)</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">axis</span><span class="p">:</span> <span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">imgs</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">axes</span><span class="p">)):</span> <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span> <span class="c1"># removing leftover axes</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">col</span> <span class="o">!=</span> <span class="mi">5</span><span class="p">:</span> <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Currently in table mode, can&#39;t set `col` parameter&quot;</span><span class="p">)</span> <span class="c1"># change this value to match col&#39;s default value</span>
+            <span class="n">h</span> <span class="o">=</span> <span class="n">imgs</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> <span class="n">w</span> <span class="o">=</span> <span class="n">imgs</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">toMax</span><span class="p">()</span>
+            <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="n">w</span><span class="o">*</span><span class="n">fac</span><span class="o">*</span><span class="n">aspect</span><span class="p">,</span> <span class="n">h</span><span class="o">*</span><span class="n">fac</span><span class="o">/</span><span class="n">aspect</span><span class="p">));</span>
+            <span class="k">for</span> <span class="n">rAx</span><span class="p">,</span> <span class="n">rIm</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">axes</span><span class="p">,</span> <span class="n">imgs</span><span class="p">):</span>
+                <span class="k">for</span> <span class="n">cAx</span><span class="p">,</span> <span class="n">cIm</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">rAx</span><span class="p">,</span> <span class="n">rIm</span><span class="p">):</span>
+                    <span class="n">plt</span><span class="o">.</span><span class="n">sca</span><span class="p">(</span><span class="n">cAx</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">cIm</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">cIm</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">cIm</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+                    <span class="k">else</span><span class="p">:</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">cIm</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">axis</span><span class="p">:</span> <span class="n">cAx</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">rIm</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">rAx</span><span class="p">)):</span> <span class="n">rAx</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span> <span class="c1"># removing leftover axes</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">im</span><span class="p">:</span> <span class="k">return</span> <span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">toImg</span><span class="p">()</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Quang Ho.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

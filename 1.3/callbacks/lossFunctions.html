@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>lossFunctions module &mdash; k1lib  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="profilers module" href="profilers.html" />
+    <link rel="prev" title="k1lib.callbacks module" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> k1lib
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../base.html">Base module</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../cli/index.html">k1lib.cli module</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">k1lib.callbacks module</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">lossFunctions module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-k1lib.callbacks.lossFunctions.shorts">shorts module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#k1lib.callbacks.lossFunctions.shorts.LossF"><code class="docutils literal notranslate"><span class="pre">LossF</span></code></a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#k1lib.callbacks.lossFunctions.shorts.LossF.__init__"><code class="docutils literal notranslate"><span class="pre">LossF.__init__()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#k1lib.callbacks.lossFunctions.shorts.LossF.inLoss"><code class="docutils literal notranslate"><span class="pre">LossF.inLoss()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#k1lib.callbacks.lossFunctions.shorts.LossNLLCross"><code class="docutils literal notranslate"><span class="pre">LossNLLCross</span></code></a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#k1lib.callbacks.lossFunctions.shorts.LossNLLCross.__init__"><code class="docutils literal notranslate"><span class="pre">LossNLLCross.__init__()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#k1lib.callbacks.lossFunctions.shorts.LossNLLCross.attached"><code class="docutils literal notranslate"><span class="pre">LossNLLCross.attached()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#k1lib.callbacks.lossFunctions.shorts.LossNLLCross.inLoss"><code class="docutils literal notranslate"><span class="pre">LossNLLCross.inLoss()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#k1lib.callbacks.lossFunctions.shorts.LossNLLCross.detach"><code class="docutils literal notranslate"><span class="pre">LossNLLCross.detach()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-k1lib.callbacks.lossFunctions.accuracy">accuracy module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#k1lib.callbacks.lossFunctions.accuracy.AccF"><code class="docutils literal notranslate"><span class="pre">AccF</span></code></a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#k1lib.callbacks.lossFunctions.accuracy.AccF.__init__"><code class="docutils literal notranslate"><span class="pre">AccF.__init__()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#k1lib.callbacks.lossFunctions.accuracy.AccF.attached"><code class="docutils literal notranslate"><span class="pre">AccF.attached()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#k1lib.callbacks.lossFunctions.accuracy.AccF.endLoss"><code class="docutils literal notranslate"><span class="pre">AccF.endLoss()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#k1lib.callbacks.lossFunctions.accuracy.AccF.detach"><code class="docutils literal notranslate"><span class="pre">AccF.detach()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="profilers.html">profilers module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.callbacks.callbacks">callbacks module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.callbacks.confusionMatrix">confusionMatrix module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.callbacks.core">core module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.callbacks.hookModule">hookModule module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.callbacks.hookParam">hookParam module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.callbacks.limits">limits module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.callbacks.landscape">landscape module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.callbacks.loss_accuracy">loss_accuracy module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.callbacks.paramFinder">paramFinder module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.callbacks.profiler">profiler module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.callbacks.progress">progress module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.callbacks.recorder">recorder module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.callbacks.shorts">shorts module</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../k1a.html">k1lib._k1a module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../k1ui.html">k1lib.k1ui module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eqn.html">k1lib.eqn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fmt.html">k1lib.fmt module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../graphEqn.html">k1lib.graphEqn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../imports.html">k1lib.imports module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mo.html">k1lib.mo module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../knn.html">k1lib.knn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../p5.html">k1lib.p5 module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../schedule.html">k1lib.schedule module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../selector.html">k1lib.selector module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../serve.html">k1lib.serve module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../viz.html">k1lib.viz module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../monkey.html">Monkey patched classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelogs.html">Changelogs</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">k1lib</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">k1lib.callbacks module</a></li>
+      <li class="breadcrumb-item active">lossFunctions module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/callbacks/lossFunctions.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <span class="target" id="module-k1lib.callbacks.lossFunctions"></span><section id="lossfunctions-module">
+<h1>lossFunctions module<a class="headerlink" href="#lossfunctions-module" title="Permalink to this heading"></a></h1>
+<p>Package with a bunch of loss function callbacks. If you’re planning to write your
+own loss function classes, then you have to set l’s <code class="docutils literal notranslate"><span class="pre">loss</span></code> and <code class="docutils literal notranslate"><span class="pre">lossG</span></code> fields.
+<code class="docutils literal notranslate"><span class="pre">lossG</span></code> is the original loss, still attached to the graph (hence “G”). Then,
+<code class="docutils literal notranslate"><span class="pre">loss</span></code> is just <code class="docutils literal notranslate"><span class="pre">lossG.detach().item()</span></code>. This is so that other utilities can use
+a shared detached loss value, for performance reasons.</p>
+<section id="module-k1lib.callbacks.lossFunctions.shorts">
+<span id="shorts-module"></span><h2>shorts module<a class="headerlink" href="#module-k1lib.callbacks.lossFunctions.shorts" title="Permalink to this heading"></a></h2>
+<p>For not very complicated loss functions</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="k1lib.callbacks.lossFunctions.shorts.LossF">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.callbacks.lossFunctions.shorts.</span></span><span class="sig-name descname"><span class="pre">LossF</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lossF</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.11)"><span class="pre">Callable</span></a><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.11)"><span class="pre">Tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.0.0a0+git01f1097 ))"><span class="pre">Tensor</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.0.0a0+git01f1097 ))"><span class="pre">Tensor</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/callbacks/lossFunctions/shorts.html#LossF"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.callbacks.lossFunctions.shorts.LossF" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="index.html#k1lib.callbacks.callbacks.Callback" title="k1lib.callbacks.callbacks.Callback"><code class="xref py py-class docutils literal notranslate"><span class="pre">Callback</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.callbacks.lossFunctions.shorts.LossF.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lossF</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.11)"><span class="pre">Callable</span></a><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.11)"><span class="pre">Tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.0.0a0+git01f1097 ))"><span class="pre">Tensor</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.0.0a0+git01f1097 ))"><span class="pre">Tensor</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/callbacks/lossFunctions/shorts.html#LossF.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.callbacks.lossFunctions.shorts.LossF.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Generic loss function.
+Expected variables in <a class="reference internal" href="../base.html#k1lib.Learner" title="k1lib.Learner"><code class="xref py py-class docutils literal notranslate"><span class="pre">Learner</span></code></a>:</p>
+<ul class="simple">
+<li><p>y: result of model. Auto-included in <a class="reference internal" href="index.html#k1lib.callbacks.core.CoreNormal" title="k1lib.callbacks.core.CoreNormal"><code class="xref py py-class docutils literal notranslate"><span class="pre">CoreNormal</span></code></a>
+and <a class="reference internal" href="index.html#k1lib.callbacks.core.CoreRNN" title="k1lib.callbacks.core.CoreRNN"><code class="xref py py-class docutils literal notranslate"><span class="pre">CoreRNN</span></code></a>.</p></li>
+</ul>
+<p>Deposits variables into <a class="reference internal" href="../base.html#k1lib.Learner" title="k1lib.Learner"><code class="xref py py-class docutils literal notranslate"><span class="pre">Learner</span></code></a> at checkpoint <code class="docutils literal notranslate"><span class="pre">inLoss</span></code>:</p>
+<ul class="simple">
+<li><p>lossG: single float tensor value, attached to graph</p></li>
+<li><p>loss: lossG, but single float value</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>lossF</strong> – takes in <code class="docutils literal notranslate"><span class="pre">(y,</span> <span class="pre">yb)</span></code> and returns <code class="docutils literal notranslate"><span class="pre">lossG</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.callbacks.lossFunctions.shorts.LossF.inLoss">
+<span class="sig-name descname"><span class="pre">inLoss</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/callbacks/lossFunctions/shorts.html#LossF.inLoss"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.callbacks.lossFunctions.shorts.LossF.inLoss" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="k1lib.callbacks.lossFunctions.shorts.LossNLLCross">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.callbacks.lossFunctions.shorts.</span></span><span class="sig-name descname"><span class="pre">LossNLLCross</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nll</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">integrations</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/callbacks/lossFunctions/shorts.html#LossNLLCross"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.callbacks.lossFunctions.shorts.LossNLLCross" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="index.html#k1lib.callbacks.callbacks.Callback" title="k1lib.callbacks.callbacks.Callback"><code class="xref py py-class docutils literal notranslate"><span class="pre">Callback</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.callbacks.lossFunctions.shorts.LossNLLCross.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nll</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">integrations</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/callbacks/lossFunctions/shorts.html#LossNLLCross.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.callbacks.lossFunctions.shorts.LossNLLCross.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Adds a cross-entropy/negative-likelihood loss function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>nll</strong> – if True, then use <a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.NLLLoss.html#torch.nn.NLLLoss" title="(in PyTorch vmaster (2.0.0a0+git01f1097 ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.NLLLoss</span></code></a>, else use <a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.CrossEntropyLoss.html#torch.nn.CrossEntropyLoss" title="(in PyTorch vmaster (2.0.0a0+git01f1097 ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.CrossEntropyLoss</span></code></a></p></li>
+<li><p><strong>integrations</strong> – whether to integrate with <code class="xref py py-class docutils literal notranslate"><span class="pre">AccF</span></code> callback</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.callbacks.lossFunctions.shorts.LossNLLCross.attached">
+<span class="sig-name descname"><span class="pre">attached</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/callbacks/lossFunctions/shorts.html#LossNLLCross.attached"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.callbacks.lossFunctions.shorts.LossNLLCross.attached" title="Permalink to this definition"></a></dt>
+<dd><p>Called when this is added to a <code class="xref py py-class docutils literal notranslate"><span class="pre">Callback</span></code>. Overrides this to
+do custom stuff when this happens.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.callbacks.lossFunctions.shorts.LossNLLCross.inLoss">
+<span class="sig-name descname"><span class="pre">inLoss</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/callbacks/lossFunctions/shorts.html#LossNLLCross.inLoss"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.callbacks.lossFunctions.shorts.LossNLLCross.inLoss" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.callbacks.lossFunctions.shorts.LossNLLCross.detach">
+<span class="sig-name descname"><span class="pre">detach</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/callbacks/lossFunctions/shorts.html#LossNLLCross.detach"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.callbacks.lossFunctions.shorts.LossNLLCross.detach" title="Permalink to this definition"></a></dt>
+<dd><p>Detaches from the parent <code class="xref py py-class docutils literal notranslate"><span class="pre">Callbacks</span></code></p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-k1lib.callbacks.lossFunctions.accuracy">
+<span id="accuracy-module"></span><h2>accuracy module<a class="headerlink" href="#module-k1lib.callbacks.lossFunctions.accuracy" title="Permalink to this heading"></a></h2>
+<p>For not very complicated accuracies functions</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="k1lib.callbacks.lossFunctions.accuracy.AccF">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.callbacks.lossFunctions.accuracy.</span></span><span class="sig-name descname"><span class="pre">AccF</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predF</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.11)"><span class="pre">Callable</span></a><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.0.0a0+git01f1097 ))"><span class="pre">Tensor</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.0.0a0+git01f1097 ))"><span class="pre">Tensor</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">accF</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.11)"><span class="pre">Callable</span></a><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.11)"><span class="pre">Tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.0.0a0+git01f1097 ))"><span class="pre">Tensor</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.0.0a0+git01f1097 ))"><span class="pre">Tensor</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">integrations</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variable</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'accuracy'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hookToLearner</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/callbacks/lossFunctions/accuracy.html#AccF"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.callbacks.lossFunctions.accuracy.AccF" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="index.html#k1lib.callbacks.callbacks.Callback" title="k1lib.callbacks.callbacks.Callback"><code class="xref py py-class docutils literal notranslate"><span class="pre">Callback</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.callbacks.lossFunctions.accuracy.AccF.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predF</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.11)"><span class="pre">Callable</span></a><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.0.0a0+git01f1097 ))"><span class="pre">Tensor</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.0.0a0+git01f1097 ))"><span class="pre">Tensor</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">accF</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.11)"><span class="pre">Callable</span></a><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.11)"><span class="pre">Tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.0.0a0+git01f1097 ))"><span class="pre">Tensor</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.0.0a0+git01f1097 ))"><span class="pre">Tensor</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">integrations</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variable</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'accuracy'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hookToLearner</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/callbacks/lossFunctions/accuracy.html#AccF.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.callbacks.lossFunctions.accuracy.AccF.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Generic accuracy function.</p>
+<p>Built in default accuracies functions are fine, if you don’t do something too
+dramatic/different. Expected variables in <a class="reference internal" href="../base.html#k1lib.Learner" title="k1lib.Learner"><code class="xref py py-class docutils literal notranslate"><span class="pre">Learner</span></code></a>:</p>
+<ul class="simple">
+<li><p>y:  <a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.0.0a0+git01f1097 ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a> of shape (*N, C)</p></li>
+<li><p>yb: <a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.0.0a0+git01f1097 ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></a> of shape (*N,)</p></li>
+</ul>
+<p>Deposits variables into <a class="reference internal" href="../base.html#k1lib.Learner" title="k1lib.Learner"><code class="xref py py-class docutils literal notranslate"><span class="pre">Learner</span></code></a>:</p>
+<ul class="simple">
+<li><p>preds:      detached, batched tensor output of <code class="docutils literal notranslate"><span class="pre">predF</span></code></p></li>
+<li><p>accuracies: detached, batched tensor output of <code class="docutils literal notranslate"><span class="pre">accF</span></code></p></li>
+<li><p>accuracy:   detached, single float, mean of <code class="docutils literal notranslate"><span class="pre">accuracies</span></code></p></li>
+</ul>
+<p>Where:</p>
+<ul class="simple">
+<li><p>N is the batch size. Can be multidimensional, but has to agree between <code class="docutils literal notranslate"><span class="pre">y</span></code> and <code class="docutils literal notranslate"><span class="pre">yb</span></code></p></li>
+<li><p>C is the number of categories</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>predF</strong> – takes in <code class="docutils literal notranslate"><span class="pre">y</span></code>, returns predictions (tensor with int elements indicating the categories)</p></li>
+<li><p><strong>accF</strong> – takes in <code class="docutils literal notranslate"><span class="pre">(predictions,</span> <span class="pre">yb)</span></code>, returns accuracies (tensor with 0 or 1 elements)</p></li>
+<li><p><strong>integrations</strong> – whether to integrate <a class="reference internal" href="index.html#k1lib.callbacks.confusionMatrix.ConfusionMatrix" title="k1lib.callbacks.confusionMatrix.ConfusionMatrix"><code class="xref py py-class docutils literal notranslate"><span class="pre">ConfusionMatrix</span></code></a> or not.</p></li>
+<li><p><strong>variable</strong> – variable to deposit into Learner</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.callbacks.lossFunctions.accuracy.AccF.attached">
+<span class="sig-name descname"><span class="pre">attached</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/callbacks/lossFunctions/accuracy.html#AccF.attached"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.callbacks.lossFunctions.accuracy.AccF.attached" title="Permalink to this definition"></a></dt>
+<dd><p>Called when this is added to a <code class="xref py py-class docutils literal notranslate"><span class="pre">Callback</span></code>. Overrides this to
+do custom stuff when this happens.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.callbacks.lossFunctions.accuracy.AccF.endLoss">
+<span class="sig-name descname"><span class="pre">endLoss</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/callbacks/lossFunctions/accuracy.html#AccF.endLoss"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.callbacks.lossFunctions.accuracy.AccF.endLoss" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.callbacks.lossFunctions.accuracy.AccF.detach">
+<span class="sig-name descname"><span class="pre">detach</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/callbacks/lossFunctions/accuracy.html#AccF.detach"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.callbacks.lossFunctions.accuracy.AccF.detach" title="Permalink to this definition"></a></dt>
+<dd><p>Detaches from the parent <code class="xref py py-class docutils literal notranslate"><span class="pre">Callbacks</span></code></p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="k1lib.callbacks module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="profilers.html" class="btn btn-neutral float-right" title="profilers module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Quang Ho.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

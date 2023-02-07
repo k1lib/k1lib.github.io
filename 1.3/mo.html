@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>k1lib.mo module &mdash; k1lib  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="k1lib.knn module" href="knn.html" />
+    <link rel="prev" title="k1lib.imports module" href="imports.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> k1lib
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="base.html">Base module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cli/index.html">k1lib.cli module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="callbacks/index.html">k1lib.callbacks module</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="k1a.html">k1lib._k1a module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="k1ui.html">k1lib.k1ui module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="eqn.html">k1lib.eqn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fmt.html">k1lib.fmt module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graphEqn.html">k1lib.graphEqn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imports.html">k1lib.imports module</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">k1lib.mo module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.mo.Atom"><code class="docutils literal notranslate"><span class="pre">Atom</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.mo.Atom.HBonds"><code class="docutils literal notranslate"><span class="pre">Atom.HBonds</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.mo.Atom.__call__"><code class="docutils literal notranslate"><span class="pre">Atom.__call__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.mo.Atom.__init__"><code class="docutils literal notranslate"><span class="pre">Atom.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.mo.Atom.atoms"><code class="docutils literal notranslate"><span class="pre">Atom.atoms()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.mo.Atom.availableBonds"><code class="docutils literal notranslate"><span class="pre">Atom.availableBonds</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.mo.Atom.bond"><code class="docutils literal notranslate"><span class="pre">Atom.bond()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.mo.Atom.bonds"><code class="docutils literal notranslate"><span class="pre">Atom.bonds</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.mo.Atom.empirical"><code class="docutils literal notranslate"><span class="pre">Atom.empirical()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.mo.Atom.endChain"><code class="docutils literal notranslate"><span class="pre">Atom.endChain</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.mo.Atom.main"><code class="docutils literal notranslate"><span class="pre">Atom.main()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.mo.Atom.moveLastCTo2ndC"><code class="docutils literal notranslate"><span class="pre">Atom.moveLastCTo2ndC()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.mo.Atom.nBonds"><code class="docutils literal notranslate"><span class="pre">Atom.nBonds()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.mo.Atom.next"><code class="docutils literal notranslate"><span class="pre">Atom.next()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.mo.Atom.nexts"><code class="docutils literal notranslate"><span class="pre">Atom.nexts()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.mo.Atom.nonHBonds"><code class="docutils literal notranslate"><span class="pre">Atom.nonHBonds</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.mo.Atom.perfluoro_ize"><code class="docutils literal notranslate"><span class="pre">Atom.perfluoro_ize()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.mo.Atom.removeBond"><code class="docutils literal notranslate"><span class="pre">Atom.removeBond()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.mo.Atom.show"><code class="docutils literal notranslate"><span class="pre">Atom.show()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.mo.Atom.system"><code class="docutils literal notranslate"><span class="pre">Atom.system()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.mo.Atom.uniqueBonds"><code class="docutils literal notranslate"><span class="pre">Atom.uniqueBonds</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.mo.Atom.uniqueNonHBonds"><code class="docutils literal notranslate"><span class="pre">Atom.uniqueNonHBonds</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.mo.substances"><code class="docutils literal notranslate"><span class="pre">substances()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.mo.NoFreeElectrons"><code class="docutils literal notranslate"><span class="pre">NoFreeElectrons</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.mo.OctetFull"><code class="docutils literal notranslate"><span class="pre">OctetFull</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.mo.alkane"><code class="docutils literal notranslate"><span class="pre">alkane()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.mo.alcohol"><code class="docutils literal notranslate"><span class="pre">alcohol()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.mo.sameEmpirical"><code class="docutils literal notranslate"><span class="pre">sameEmpirical()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.mo.System"><code class="docutils literal notranslate"><span class="pre">System</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.mo.System.__init__"><code class="docutils literal notranslate"><span class="pre">System.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.mo.System.animate"><code class="docutils literal notranslate"><span class="pre">System.animate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.mo.System.plot"><code class="docutils literal notranslate"><span class="pre">System.plot()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.mo.System.simulate"><code class="docutils literal notranslate"><span class="pre">System.simulate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.mo.System.v"><code class="docutils literal notranslate"><span class="pre">System.v()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.mo.System.x"><code class="docutils literal notranslate"><span class="pre">System.x()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.mo.parse"><code class="docutils literal notranslate"><span class="pre">parse()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="knn.html">k1lib.knn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="p5.html">k1lib.p5 module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="schedule.html">k1lib.schedule module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="selector.html">k1lib.selector module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="serve.html">k1lib.serve module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="viz.html">k1lib.viz module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="monkey.html">Monkey patched classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelogs.html">Changelogs</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">k1lib</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">k1lib.mo module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/mo.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-k1lib.mo">
+<span id="k1lib-mo-module"></span><h1>k1lib.mo module<a class="headerlink" href="#module-k1lib.mo" title="Permalink to this heading"></a></h1>
+<p>This module is for everything related to molecules. You can construct, explore and
+simulate molecules quite easily. Check out the tutorials section for a walkthrough.
+This is exposed automatically with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">k1lib.imports</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">mo</span><span class="o">.</span><span class="n">C</span> <span class="c1"># exposed</span>
+</pre></div>
+</div>
+<dl class="py class">
+<dt class="sig sig-object py" id="k1lib.mo.Atom">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.mo.</span></span><span class="sig-name descname"><span class="pre">Atom</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">atomicN</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">massN</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">valenceE</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">octetE</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">8</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#k1lib.mo.Atom" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Just an atom really. Has properties, can bond to other atoms, and can
+generate a <a class="reference internal" href="#k1lib.mo.System" title="k1lib.mo.System"><code class="xref py py-class docutils literal notranslate"><span class="pre">System</span></code></a> for simulation.</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="k1lib.mo.Atom.HBonds">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">HBonds</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#k1lib.mo.Atom" title="k1lib.mo.Atom"><span class="pre">Atom</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#k1lib.mo.Atom.HBonds" title="Permalink to this definition"></a></dt>
+<dd><p>All hydrogens this atom is bonded to.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.mo.Atom.__call__">
+<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">atom</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#k1lib.mo.Atom" title="k1lib.mo.Atom"><span class="pre">Atom</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">nBonds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">main</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#k1lib.mo.Atom" title="k1lib.mo.Atom"><span class="pre">Atom</span></a></span></span><a class="headerlink" href="#k1lib.mo.Atom.__call__" title="Permalink to this definition"></a></dt>
+<dd><p>Forms a bond with another atom. If valence electrons are full, will
+attempt to disconnect Hydrogens from self to make room.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>bond</strong> – number of bonds. 2 for double, 3 for triple</p></li>
+<li><p><strong>main</strong> – whether to put this bond in front of existing bonds, to
+signify the “main” chain, so that it works well with <a class="reference internal" href="#k1lib.mo.Atom.next" title="k1lib.mo.Atom.next"><code class="xref py py-meth docutils literal notranslate"><span class="pre">next()</span></code></a></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>self</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.mo.Atom.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">atomicN</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">massN</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">valenceE</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">octetE</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">8</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#k1lib.mo.Atom.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a new atom. Not intended to be used by the end user. If you
+wish to get a new atom, just do stuff like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">c1</span> <span class="o">=</span> <span class="n">mo</span><span class="o">.</span><span class="n">C</span>
+<span class="n">c2</span> <span class="o">=</span> <span class="n">mo</span><span class="o">.</span><span class="n">C</span>
+<span class="n">c1</span> <span class="o">==</span> <span class="n">c2</span> <span class="c1"># returns False, demonstrating that these are different atoms</span>
+</pre></div>
+</div>
+<p>If you wish to register new substances with the module, you can do this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">genF</span> <span class="o">=</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">Atom</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="n">mo</span><span class="o">.</span><span class="n">registerSubstance</span><span class="p">(</span><span class="s2">&quot;elementName&quot;</span><span class="p">,</span> <span class="n">genF</span><span class="p">)</span>
+<span class="n">mo</span><span class="o">.</span><span class="n">elementName</span> <span class="c1"># should executes `genF` and returns</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> – element name (eg. “C”)</p></li>
+<li><p><strong>atomicN</strong> – atomic number (eg. 6)</p></li>
+<li><p><strong>massN</strong> – atomic mass in g/mol (eg. 12)</p></li>
+<li><p><strong>valenceE</strong> – how many valence electrons initially?</p></li>
+<li><p><strong>radius</strong> – covalent radiuses (in pm) for single, double and triple bonds</p></li>
+<li><p><strong>octetE</strong> – how many electrons in a full octet? Default 8, but can be 2 for H and He</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.mo.Atom.atoms">
+<span class="sig-name descname"><span class="pre">atoms</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#k1lib.mo.Atom" title="k1lib.mo.Atom"><span class="pre">Atom</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#k1lib.mo.Atom.atoms" title="Permalink to this definition"></a></dt>
+<dd><p>Returns a list of Atoms in the molecule this specific Atom is attached to.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="k1lib.mo.Atom.availableBonds">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">availableBonds</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></em><a class="headerlink" href="#k1lib.mo.Atom.availableBonds" title="Permalink to this definition"></a></dt>
+<dd><p>Available bonds. This includes electron clouds, radical electrons, and
+Hydrogen bonds.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.mo.Atom.bond">
+<span class="sig-name descname"><span class="pre">bond</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">atom</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#k1lib.mo.Atom" title="k1lib.mo.Atom"><span class="pre">Atom</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">nBonds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">main</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#k1lib.mo.Atom" title="k1lib.mo.Atom"><span class="pre">Atom</span></a></span></span><a class="headerlink" href="#k1lib.mo.Atom.bond" title="Permalink to this definition"></a></dt>
+<dd><p>Like <a class="reference internal" href="#k1lib.mo.Atom.__call__" title="k1lib.mo.Atom.__call__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__call__()</span></code></a>, but returns the atom passed in instead, so you
+can form the main loop quickly.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="k1lib.mo.Atom.bonds">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bonds</span></span><a class="headerlink" href="#k1lib.mo.Atom.bonds" title="Permalink to this definition"></a></dt>
+<dd><p>List of Atoms bonded to this Atom</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.mo.Atom.empirical">
+<span class="sig-name descname"><span class="pre">empirical</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></span><a class="headerlink" href="#k1lib.mo.Atom.empirical" title="Permalink to this definition"></a></dt>
+<dd><p>Returns an empirical formula for the molecule this <a class="reference internal" href="#k1lib.mo.Atom" title="k1lib.mo.Atom"><code class="xref py py-class docutils literal notranslate"><span class="pre">Atom</span></code></a> is attached to.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="k1lib.mo.Atom.endChain">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">endChain</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#k1lib.mo.Atom" title="k1lib.mo.Atom"><span class="pre">Atom</span></a></em><a class="headerlink" href="#k1lib.mo.Atom.endChain" title="Permalink to this definition"></a></dt>
+<dd><p>Do a bunch of .next() until reached the end of the carbon chain.
+Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">c1</span> <span class="o">=</span> <span class="n">mo</span><span class="o">.</span><span class="n">alcohol</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">c3</span> <span class="o">=</span> <span class="n">c1</span><span class="o">.</span><span class="n">endChain</span>
+<span class="n">c3</span><span class="p">(</span><span class="n">mo</span><span class="o">.</span><span class="n">NH3</span><span class="p">)</span>
+<span class="n">c1</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> <span class="c1"># displays in cell</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.mo.Atom.main">
+<span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">atom</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#k1lib.mo.Atom" title="k1lib.mo.Atom"><span class="pre">Atom</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">nBonds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#k1lib.mo.Atom" title="k1lib.mo.Atom"><span class="pre">Atom</span></a></span></span><a class="headerlink" href="#k1lib.mo.Atom.main" title="Permalink to this definition"></a></dt>
+<dd><p>Like <a class="reference internal" href="#k1lib.mo.Atom.bond" title="k1lib.mo.Atom.bond"><code class="xref py py-meth docutils literal notranslate"><span class="pre">bond()</span></code></a>, but with <code class="docutils literal notranslate"><span class="pre">main</span></code> param defaulted to True.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.mo.Atom.moveLastCTo2ndC">
+<span class="sig-name descname"><span class="pre">moveLastCTo2ndC</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#k1lib.mo.Atom" title="k1lib.mo.Atom"><span class="pre">Atom</span></a></span></span><a class="headerlink" href="#k1lib.mo.Atom.moveLastCTo2ndC" title="Permalink to this definition"></a></dt>
+<dd><p>Move last carbon to 2nd carbon. Useful in constructing iso- and tert-.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.mo.Atom.nBonds">
+<span class="sig-name descname"><span class="pre">nBonds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">atom</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#k1lib.mo.Atom" title="k1lib.mo.Atom"><span class="pre">Atom</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#k1lib.mo.Atom.nBonds" title="Permalink to this definition"></a></dt>
+<dd><p>Get number of bonds between this and another atom.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.mo.Atom.next">
+<span class="sig-name descname"><span class="pre">next</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">times</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#k1lib.mo.Atom" title="k1lib.mo.Atom"><span class="pre">Atom</span></a></span></span><a class="headerlink" href="#k1lib.mo.Atom.next" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the next atom bonded to this. Tries to avoid going into Hydrogens.
+This is the main way to navigate around the molecule.</p>
+<p>You kinda have to make sure that your molecule’s bonding order is appropriate by
+choosing between <a class="reference internal" href="#k1lib.mo.Atom.bond" title="k1lib.mo.Atom.bond"><code class="xref py py-meth docutils literal notranslate"><span class="pre">bond()</span></code></a> and <a class="reference internal" href="#k1lib.mo.Atom.main" title="k1lib.mo.Atom.main"><code class="xref py py-meth docutils literal notranslate"><span class="pre">main()</span></code></a>. Check the bonding order with
+<a class="reference internal" href="#k1lib.mo.Atom.show" title="k1lib.mo.Atom.show"><code class="xref py py-meth docutils literal notranslate"><span class="pre">show()</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>offset</strong> – if there are multiple non-Hydrogen atoms, which ones should I pick?</p></li>
+<li><p><strong>times</strong> – how many times do you want to chain <code class="docutils literal notranslate"><span class="pre">.next()</span></code>?</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.mo.Atom.nexts">
+<span class="sig-name descname"><span class="pre">nexts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">atoms</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#k1lib.mo.Atom" title="k1lib.mo.Atom"><span class="pre">Atom</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#k1lib.mo.Atom.nexts" title="Permalink to this definition"></a></dt>
+<dd><p>Kinda like <a class="reference internal" href="#k1lib.mo.Atom.next" title="k1lib.mo.Atom.next"><code class="xref py py-meth docutils literal notranslate"><span class="pre">next()</span></code></a>, but fetches multiple atoms on the backbone.
+Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">c1</span><span class="p">,</span> <span class="n">c2</span> <span class="o">=</span> <span class="n">mo</span><span class="o">.</span><span class="n">CH4</span><span class="p">(</span><span class="n">mo</span><span class="o">.</span><span class="n">CH4</span><span class="p">)</span><span class="o">.</span><span class="n">nexts</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="k1lib.mo.Atom.nonHBonds">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">nonHBonds</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#k1lib.mo.Atom" title="k1lib.mo.Atom"><span class="pre">Atom</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#k1lib.mo.Atom.nonHBonds" title="Permalink to this definition"></a></dt>
+<dd><p>All atoms this atom is bonded to, minus the Hydrogens.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.mo.Atom.perfluoro_ize">
+<span class="sig-name descname"><span class="pre">perfluoro_ize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#k1lib.mo.Atom" title="k1lib.mo.Atom"><span class="pre">Atom</span></a></span></span><a class="headerlink" href="#k1lib.mo.Atom.perfluoro_ize" title="Permalink to this definition"></a></dt>
+<dd><p>Replaces all C-H bonds with C-F bonds</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.mo.Atom.removeBond">
+<span class="sig-name descname"><span class="pre">removeBond</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">atom</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#k1lib.mo.Atom" title="k1lib.mo.Atom"><span class="pre">Atom</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#k1lib.mo.Atom.removeBond" title="Permalink to this definition"></a></dt>
+<dd><p>Removes all bonds between this and another atom</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.mo.Atom.show">
+<span class="sig-name descname"><span class="pre">show</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">H</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#k1lib.mo.Atom.show" title="Permalink to this definition"></a></dt>
+<dd><p>Show the molecule graph this atom is a part of. Meant for debugging
+simple substances only, as graphs of big molecules look unwieldy. This also
+highlights the current <a class="reference internal" href="#k1lib.mo.Atom" title="k1lib.mo.Atom"><code class="xref py py-class docutils literal notranslate"><span class="pre">Atom</span></code></a>, and each bond is an arrow, indicating
+where <a class="reference internal" href="#k1lib.mo.Atom.next" title="k1lib.mo.Atom.next"><code class="xref py py-meth docutils literal notranslate"><span class="pre">next()</span></code></a> will go next.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>H</strong> – whether to display hydrogens as separate atoms, or bunched into the main atom</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.mo.Atom.system">
+<span class="sig-name descname"><span class="pre">system</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#k1lib.mo.System" title="k1lib.mo.System"><span class="pre">System</span></a></span></span><a class="headerlink" href="#k1lib.mo.Atom.system" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a <a class="reference internal" href="#k1lib.mo.System" title="k1lib.mo.System"><code class="xref py py-class docutils literal notranslate"><span class="pre">System</span></code></a> of the molecule this <a class="reference internal" href="#k1lib.mo.Atom" title="k1lib.mo.Atom"><code class="xref py py-class docutils literal notranslate"><span class="pre">Atom</span></code></a> is attached
+to.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="k1lib.mo.Atom.uniqueBonds">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">uniqueBonds</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#k1lib.mo.Atom" title="k1lib.mo.Atom"><span class="pre">Atom</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#k1lib.mo.Atom.uniqueBonds" title="Permalink to this definition"></a></dt>
+<dd><p>All unique bonds. Meaning, if there’s a double bond, only return 1
+atom, not 2.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="k1lib.mo.Atom.uniqueNonHBonds">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">uniqueNonHBonds</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#k1lib.mo.Atom" title="k1lib.mo.Atom"><span class="pre">Atom</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#k1lib.mo.Atom.uniqueNonHBonds" title="Permalink to this definition"></a></dt>
+<dd><p>All unique non Hydrogen bonds.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="k1lib.mo.substances">
+<span class="sig-prename descclassname"><span class="pre">k1lib.mo.</span></span><span class="sig-name descname"><span class="pre">substances</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#k1lib.mo.substances" title="Permalink to this definition"></a></dt>
+<dd><p>Get a list of builtin substances. To register new substances, check over
+<a class="reference internal" href="#k1lib.mo.Atom" title="k1lib.mo.Atom"><code class="xref py py-class docutils literal notranslate"><span class="pre">Atom</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="k1lib.mo.NoFreeElectrons">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.mo.</span></span><span class="sig-name descname"><span class="pre">NoFreeElectrons</span></span><a class="headerlink" href="#k1lib.mo.NoFreeElectrons" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">RuntimeError</span></code></a></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="k1lib.mo.OctetFull">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.mo.</span></span><span class="sig-name descname"><span class="pre">OctetFull</span></span><a class="headerlink" href="#k1lib.mo.OctetFull" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">RuntimeError</span></code></a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="k1lib.mo.alkane">
+<span class="sig-prename descclassname"><span class="pre">k1lib.mo.</span></span><span class="sig-name descname"><span class="pre">alkane</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#k1lib.mo.Atom" title="k1lib.mo.Atom"><span class="pre">Atom</span></a></span></span><a class="headerlink" href="#k1lib.mo.alkane" title="Permalink to this definition"></a></dt>
+<dd><p>Creates an alkane with <code class="docutils literal notranslate"><span class="pre">n</span></code> carbons.
+Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># returns &quot;C3H8&quot;</span>
+<span class="n">mo</span><span class="o">.</span><span class="n">alkane</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">empirical</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="k1lib.mo.alcohol">
+<span class="sig-prename descclassname"><span class="pre">k1lib.mo.</span></span><span class="sig-name descname"><span class="pre">alcohol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">loc</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#k1lib.mo.Atom" title="k1lib.mo.Atom"><span class="pre">Atom</span></a></span></span><a class="headerlink" href="#k1lib.mo.alcohol" title="Permalink to this definition"></a></dt>
+<dd><p>Creates an alcohol with <code class="docutils literal notranslate"><span class="pre">n</span></code> carbons and an OH group at carbon <code class="docutils literal notranslate"><span class="pre">loc</span></code>.
+Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># returns &quot;C3H8O&quot;</span>
+<span class="n">mo</span><span class="o">.</span><span class="n">alcohol</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">empirical</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="k1lib.mo.sameEmpirical">
+<span class="sig-prename descclassname"><span class="pre">k1lib.mo.</span></span><span class="sig-name descname"><span class="pre">sameEmpirical</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#k1lib.mo.sameEmpirical" title="Permalink to this definition"></a></dt>
+<dd><p>Checks whether 2 empirical formula are the same or not.
+Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">moparse</span><span class="o">.</span><span class="n">sameEmpirical</span><span class="p">(</span><span class="s2">&quot;C2H4&quot;</span><span class="p">,</span> <span class="s2">&quot;H4C2&quot;</span><span class="p">)</span> <span class="c1"># returns True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="k1lib.mo.System">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.mo.</span></span><span class="sig-name descname"><span class="pre">System</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mapping</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.11)"><span class="pre">Dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#k1lib.mo.Atom" title="k1lib.mo.Atom"><span class="pre">Atom</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#k1lib.mo.System" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.mo.System.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mapping</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.11)"><span class="pre">Dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#k1lib.mo.Atom" title="k1lib.mo.Atom"><span class="pre">Atom</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#k1lib.mo.System.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a new system that contains a molecule so that it can be
+simulated. Not intended to be used by the end user. Use <a class="reference internal" href="#k1lib.mo.Atom.system" title="k1lib.mo.Atom.system"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Atom.system()</span></code></a>
+instead.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>mapping</strong> – maps from atom index to <a class="reference internal" href="#k1lib.mo.Atom" title="k1lib.mo.Atom"><code class="xref py py-class docutils literal notranslate"><span class="pre">Atom</span></code></a> object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.mo.System.animate">
+<span class="sig-name descname"><span class="pre">animate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.0.0a0+git01f1097 ))"><span class="pre">Tensor</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotateSpeed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">H</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#k1lib.mo.System.animate" title="Permalink to this definition"></a></dt>
+<dd><p>Animates the molecule. This requires location information from
+<a class="reference internal" href="#k1lib.mo.System.simulate" title="k1lib.mo.System.simulate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">simulate()</span></code></a>. Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">mo</span><span class="o">.</span><span class="n">CH4</span><span class="p">(</span><span class="n">mo</span><span class="o">.</span><span class="n">H2O</span><span class="p">)</span><span class="o">.</span><span class="n">system</span><span class="p">()</span>
+<span class="n">s</span><span class="o">.</span><span class="n">animate</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">simulate</span><span class="p">())</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>H</strong> – whether to include Hydrogens as separate atoms or bunched together to
+another main atom.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.mo.System.plot">
+<span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.0.0a0+git01f1097 ))"><span class="pre">Tensor</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://matplotlib.org/stable/api/axes_api.html#matplotlib.axes.Axes" title="(in Matplotlib v3.6.3)"><span class="pre">matplotlib.axes.Axes</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">H</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#k1lib.mo.System.plot" title="Permalink to this definition"></a></dt>
+<dd><p>Plots the molecule.
+Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">matplotlib</span> <span class="n">widget</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">mo</span><span class="o">.</span><span class="n">CH4</span><span class="p">(</span><span class="n">mo</span><span class="o">.</span><span class="n">H2O</span><span class="p">)</span><span class="o">.</span><span class="n">system</span><span class="p">()</span>
+<span class="n">s</span><span class="o">.</span><span class="n">simulate</span><span class="p">();</span> <span class="n">s</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The first line is so that you can rotate the molecule around in 3d interactively.
+The 3rd line includes a simulation step, to get the molecule into roughly the
+right position.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – location Tensor of shape (n, 3). If none provided, will use current locations</p></li>
+<li><p><strong>ax</strong> – Axes object, in case you want to plot this on an existing plot</p></li>
+<li><p><strong>H</strong> – whether to include Hydrogens as separate atoms or bunched together to
+another main atom.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.mo.System.simulate">
+<span class="sig-name descname"><span class="pre">simulate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">300</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">recordXs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cuda</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.0.0a0+git01f1097 ))"><span class="pre">Tensor</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#k1lib.mo.System.simulate" title="Permalink to this definition"></a></dt>
+<dd><p>Simulate system for <code class="docutils literal notranslate"><span class="pre">t</span></code> steps.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>t</strong> – simulation total steps. 100 to view dynamics closely, 1000 to make
+sure it converges, default 300 is sweet spot</p></li>
+<li><p><strong>dt</strong> – simulation time between steps</p></li>
+<li><p><strong>recordXs</strong> – whether to record locations while the simulation happens. Put
+False to save memory/performance.</p></li>
+<li><p><strong>cuda</strong> – if True, do the simulation on the graphics card</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>if <code class="docutils literal notranslate"><span class="pre">recordXs</span></code> is True, returns max 100 location Tensors. The Tensors
+will have shape of (n, 3), where n is the number of atoms and electron clouds
+your molecule has.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.mo.System.v">
+<span class="sig-name descname"><span class="pre">v</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#k1lib.mo.Atom" title="k1lib.mo.Atom"><span class="pre">Atom</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#k1lib.mo.System.v" title="Permalink to this definition"></a></dt>
+<dd><p>Get current velocity vector of the specified <a class="reference internal" href="#k1lib.mo.Atom" title="k1lib.mo.Atom"><code class="xref py py-class docutils literal notranslate"><span class="pre">Atom</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.mo.System.x">
+<span class="sig-name descname"><span class="pre">x</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#k1lib.mo.Atom" title="k1lib.mo.Atom"><span class="pre">Atom</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.0.0a0+git01f1097 ))"><span class="pre">Tensor</span></a></span></span><a class="headerlink" href="#k1lib.mo.System.x" title="Permalink to this definition"></a></dt>
+<dd><p>Get current location vector of the specified <a class="reference internal" href="#k1lib.mo.Atom" title="k1lib.mo.Atom"><code class="xref py py-class docutils literal notranslate"><span class="pre">Atom</span></code></a>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="k1lib.mo.parse">
+<span class="sig-prename descclassname"><span class="pre">k1lib.mo.</span></span><span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">quiet</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.11)"><span class="pre">Union</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#k1lib.mo.Atom" title="k1lib.mo.Atom"><span class="pre">Atom</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#k1lib.mo.parse" title="Permalink to this definition"></a></dt>
+<dd><p>Tries to recognize molecule. Returns molecule <a class="reference internal" href="#k1lib.mo.Atom" title="k1lib.mo.Atom"><code class="xref py py-class docutils literal notranslate"><span class="pre">Atom</span></code></a>
+if recognized, else the molecule’s string.</p>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="imports.html" class="btn btn-neutral float-left" title="k1lib.imports module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="knn.html" class="btn btn-neutral float-right" title="k1lib.knn module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Quang Ho.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

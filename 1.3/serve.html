@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>k1lib.serve module &mdash; k1lib  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="k1lib.viz module" href="viz.html" />
+    <link rel="prev" title="k1lib.selector module" href="selector.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> k1lib
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="base.html">Base module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cli/index.html">k1lib.cli module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="callbacks/index.html">k1lib.callbacks module</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="k1a.html">k1lib._k1a module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="k1ui.html">k1lib.k1ui module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="eqn.html">k1lib.eqn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fmt.html">k1lib.fmt module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graphEqn.html">k1lib.graphEqn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imports.html">k1lib.imports module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mo.html">k1lib.mo module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="knn.html">k1lib.knn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="p5.html">k1lib.p5 module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="schedule.html">k1lib.schedule module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="selector.html">k1lib.selector module</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">k1lib.serve module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.serve.main.FromNotebook"><code class="docutils literal notranslate"><span class="pre">FromNotebook</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.serve.main.FromNotebook.__init__"><code class="docutils literal notranslate"><span class="pre">FromNotebook.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.serve.main.FromNotebook.fetchSource"><code class="docutils literal notranslate"><span class="pre">FromNotebook.fetchSource()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.serve.main.FromPythonFile"><code class="docutils literal notranslate"><span class="pre">FromPythonFile</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.serve.main.FromPythonFile.__init__"><code class="docutils literal notranslate"><span class="pre">FromPythonFile.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.serve.main.FromPythonFile.fetchSource"><code class="docutils literal notranslate"><span class="pre">FromPythonFile.fetchSource()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.serve.main.BuildPythonFile"><code class="docutils literal notranslate"><span class="pre">BuildPythonFile</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.serve.main.BuildPythonFile.__init__"><code class="docutils literal notranslate"><span class="pre">BuildPythonFile.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.serve.main.BuildPythonFile.buildPythonFile"><code class="docutils literal notranslate"><span class="pre">BuildPythonFile.buildPythonFile()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.serve.main.StartServer"><code class="docutils literal notranslate"><span class="pre">StartServer</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.serve.main.StartServer.__init__"><code class="docutils literal notranslate"><span class="pre">StartServer.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.serve.main.StartServer.startServer"><code class="docutils literal notranslate"><span class="pre">StartServer.startServer()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.serve.main.GenerateHtml"><code class="docutils literal notranslate"><span class="pre">GenerateHtml</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.serve.main.GenerateHtml.__init__"><code class="docutils literal notranslate"><span class="pre">GenerateHtml.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.serve.main.GenerateHtml.generateHtml"><code class="docutils literal notranslate"><span class="pre">GenerateHtml.generateHtml()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.serve.main.commonCbs"><code class="docutils literal notranslate"><span class="pre">commonCbs()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.serve.main.serve"><code class="docutils literal notranslate"><span class="pre">serve()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="viz.html">k1lib.viz module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="monkey.html">Monkey patched classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelogs.html">Changelogs</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">k1lib</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">k1lib.serve module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/serve.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="k1lib-serve-module">
+<h1>k1lib.serve module<a class="headerlink" href="#k1lib-serve-module" title="Permalink to this heading"></a></h1>
+<p>This module is for quickly serving Python functions in an interactive website, so that
+you can build interfaces for your experiments real quick. Let’s say you have a
+function in the file “a.py”:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">endpoint</span><span class="p">(</span><span class="n">a</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span><span class="nb">float</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">c</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+   <span class="k">if</span> <span class="n">c</span><span class="p">:</span> <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+   <span class="k">else</span><span class="p">:</span> <span class="k">return</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span>
+</pre></div>
+</div>
+<p>You want to be able to expose a nice interactive interface so that you can present to
+everyone, or to be used in other systems, then you can do something like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cbs</span> <span class="o">=</span> <span class="n">k1</span><span class="o">.</span><span class="n">Callbacks</span><span class="p">()</span>
+<span class="n">cbs</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">serve</span><span class="o">.</span><span class="n">FromPythonFile</span><span class="p">(</span><span class="s2">&quot;a.py&quot;</span><span class="p">))</span>
+<span class="n">cbs</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">serve</span><span class="o">.</span><span class="n">BuildPythonFile</span><span class="p">(</span><span class="n">port</span><span class="o">=</span><span class="mi">5138</span><span class="p">))</span>
+<span class="n">cbs</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">serve</span><span class="o">.</span><span class="n">StartServer</span><span class="p">())</span>
+<span class="n">cbs</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">serve</span><span class="o">.</span><span class="n">GenerateHtml</span><span class="p">(</span><span class="n">htmlFile</span><span class="o">=</span><span class="s2">&quot;index.html&quot;</span><span class="p">))</span>
+
+<span class="n">serve</span><span class="o">.</span><span class="n">serve</span><span class="p">(</span><span class="n">cbs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This will start up a local server at the specified port (this case 5138), and dumps a
+<code class="docutils literal notranslate"><span class="pre">index.html</span></code> file in the current folder. Opening it up will give you this interface:</p>
+<img alt="_images/serve.png" src="_images/serve.png" />
+<p>That’s pretty much it. You can add in your own callbacks, to enable further integration
+with your systems. You can also customize the given callbacks more.</p>
+<p>Currently, these data types are supported, together with their appearance on the interface:</p>
+<ul class="simple">
+<li><p>int, float, str: text box</p></li>
+<li><p>bool: checkbox toggle</p></li>
+<li><p>bytes, <a class="reference external" href="https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.Image" title="(in Pillow (PIL Fork) v9.4.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">PIL.Image.Image</span></code></a>: file upload</p></li>
+<li><p><a class="reference internal" href="base.html#k1lib.Range" title="k1lib.Range"><code class="xref py py-class docutils literal notranslate"><span class="pre">k1lib.Range</span></code></a>: continuous slider</p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#range" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">range</span></code></a>: stepped slider</p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a>: dropdown</p></li>
+</ul>
+<p>See a few demo examples at <a class="reference external" href="https://mlexps.com/">https://mlexps.com/</a></p>
+<span class="target" id="module-k1lib.serve.main"></span><dl class="py class">
+<dt class="sig sig-object py" id="k1lib.serve.main.FromNotebook">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.serve.main.</span></span><span class="sig-name descname"><span class="pre">FromNotebook</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fileName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tagName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'serve'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/serve/main.html#FromNotebook"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.serve.main.FromNotebook" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="callbacks/index.html#k1lib.callbacks.callbacks.Callback" title="k1lib.callbacks.callbacks.Callback"><code class="xref py py-class docutils literal notranslate"><span class="pre">Callback</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.serve.main.FromNotebook.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fileName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tagName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'serve'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/serve/main.html#FromNotebook.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.serve.main.FromNotebook.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Grabs source code from a Jupyter notebook. Will grab cells with the comment
+like <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">serve</span></code> in the first line.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>tagName</strong> – tag name on the first line of the cell to pull out from</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.serve.main.FromNotebook.fetchSource">
+<span class="sig-name descname"><span class="pre">fetchSource</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/serve/main.html#FromNotebook.fetchSource"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.serve.main.FromNotebook.fetchSource" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="k1lib.serve.main.FromPythonFile">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.serve.main.</span></span><span class="sig-name descname"><span class="pre">FromPythonFile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fileName</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/serve/main.html#FromPythonFile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.serve.main.FromPythonFile" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="callbacks/index.html#k1lib.callbacks.callbacks.Callback" title="k1lib.callbacks.callbacks.Callback"><code class="xref py py-class docutils literal notranslate"><span class="pre">Callback</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.serve.main.FromPythonFile.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fileName</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/serve/main.html#FromPythonFile.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.serve.main.FromPythonFile.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Grabs source code from a python file.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.serve.main.FromPythonFile.fetchSource">
+<span class="sig-name descname"><span class="pre">fetchSource</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/serve/main.html#FromPythonFile.fetchSource"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.serve.main.FromPythonFile.fetchSource" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="k1lib.serve.main.BuildPythonFile">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.serve.main.</span></span><span class="sig-name descname"><span class="pre">BuildPythonFile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">port</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/serve/main.html#BuildPythonFile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.serve.main.BuildPythonFile" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="callbacks/index.html#k1lib.callbacks.callbacks.Callback" title="k1lib.callbacks.callbacks.Callback"><code class="xref py py-class docutils literal notranslate"><span class="pre">Callback</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.serve.main.BuildPythonFile.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">port</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/serve/main.html#BuildPythonFile.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.serve.main.BuildPythonFile.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Builds the output Python file, ready to be served on localhost.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>port</strong> – which port to run on localhost. If not given, then a port will
+be picked at random, and will be available at <code class="docutils literal notranslate"><span class="pre">cbs.l['port']</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.serve.main.BuildPythonFile.buildPythonFile">
+<span class="sig-name descname"><span class="pre">buildPythonFile</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/serve/main.html#BuildPythonFile.buildPythonFile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.serve.main.BuildPythonFile.buildPythonFile" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="k1lib.serve.main.StartServer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.serve.main.</span></span><span class="sig-name descname"><span class="pre">StartServer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">initTime</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/serve/main.html#StartServer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.serve.main.StartServer" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="callbacks/index.html#k1lib.callbacks.callbacks.Callback" title="k1lib.callbacks.callbacks.Callback"><code class="xref py py-class docutils literal notranslate"><span class="pre">Callback</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.serve.main.StartServer.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">initTime</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/serve/main.html#StartServer.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.serve.main.StartServer.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Starts the server, verify that it starts okay and dumps meta information (including
+function signatures) to <code class="docutils literal notranslate"><span class="pre">cbs.l</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>initTime</strong> – time to wait in seconds until the server is online before declaring it’s unsuccessful</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.serve.main.StartServer.startServer">
+<span class="sig-name descname"><span class="pre">startServer</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/serve/main.html#StartServer.startServer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.serve.main.StartServer.startServer" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="k1lib.serve.main.GenerateHtml">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.serve.main.</span></span><span class="sig-name descname"><span class="pre">GenerateHtml</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">serverPrefix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">htmlFile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Interactive</span> <span class="pre">demo'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/serve/main.html#GenerateHtml"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.serve.main.GenerateHtml" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="callbacks/index.html#k1lib.callbacks.callbacks.Callback" title="k1lib.callbacks.callbacks.Callback"><code class="xref py py-class docutils literal notranslate"><span class="pre">Callback</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.serve.main.GenerateHtml.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">serverPrefix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">htmlFile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Interactive</span> <span class="pre">demo'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/serve/main.html#GenerateHtml.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.serve.main.GenerateHtml.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Generates a html file that communicates with the server.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>serverPrefix</strong> – prefix of server for back and forth requests, like “<a class="reference external" href="https://example.com/proj1">https://example.com/proj1</a>”. If
+empty, tries to grab <code class="docutils literal notranslate"><span class="pre">cbs.l[&quot;serverPrefix&quot;]</span></code>, which you can deposit from your own callback. If
+that’s not available then it will fallback to <code class="docutils literal notranslate"><span class="pre">localhost:port</span></code></p></li>
+<li><p><strong>htmlFile</strong> – path of the target html file. If not specified then a temporary file
+will be created and made available in <code class="docutils literal notranslate"><span class="pre">cbs.l[&quot;htmlFile&quot;]</span></code></p></li>
+<li><p><strong>title</strong> – title of html page</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.serve.main.GenerateHtml.generateHtml">
+<span class="sig-name descname"><span class="pre">generateHtml</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/serve/main.html#GenerateHtml.generateHtml"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.serve.main.GenerateHtml.generateHtml" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="k1lib.serve.main.commonCbs">
+<span class="sig-prename descclassname"><span class="pre">k1lib.serve.main.</span></span><span class="sig-name descname"><span class="pre">commonCbs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/serve/main.html#commonCbs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.serve.main.commonCbs" title="Permalink to this definition"></a></dt>
+<dd><p>Grabs common callbacks, including <a class="reference internal" href="#k1lib.serve.main.BuildPythonFile" title="k1lib.serve.main.BuildPythonFile"><code class="xref py py-class docutils literal notranslate"><span class="pre">BuildPythonFile</span></code></a> and <a class="reference internal" href="#k1lib.serve.main.StartServer" title="k1lib.serve.main.StartServer"><code class="xref py py-class docutils literal notranslate"><span class="pre">StartServer</span></code></a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="k1lib.serve.main.serve">
+<span class="sig-prename descclassname"><span class="pre">k1lib.serve.main.</span></span><span class="sig-name descname"><span class="pre">serve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cbs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/serve/main.html#serve"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.serve.main.serve" title="Permalink to this definition"></a></dt>
+<dd><p>Runs the serving pipeline.</p>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="selector.html" class="btn btn-neutral float-left" title="k1lib.selector module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="viz.html" class="btn btn-neutral float-right" title="k1lib.viz module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Quang Ho.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

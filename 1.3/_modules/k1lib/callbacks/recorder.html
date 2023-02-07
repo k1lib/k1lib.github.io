@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>k1lib.callbacks.recorder &mdash; k1lib  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> k1lib
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../base.html">Base module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../cli/index.html">k1lib.cli module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../callbacks/index.html">k1lib.callbacks module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../k1a.html">k1lib._k1a module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../k1ui.html">k1lib.k1ui module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eqn.html">k1lib.eqn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fmt.html">k1lib.fmt module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../graphEqn.html">k1lib.graphEqn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../imports.html">k1lib.imports module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mo.html">k1lib.mo module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../knn.html">k1lib.knn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../p5.html">k1lib.p5 module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../schedule.html">k1lib.schedule module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../selector.html">k1lib.selector module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../serve.html">k1lib.serve module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../viz.html">k1lib.viz module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../monkey.html">Monkey patched classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelogs.html">Changelogs</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">k1lib</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">k1lib.callbacks.recorder</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for k1lib.callbacks.recorder</h1><div class="highlight"><pre>
+<span></span><span class="c1"># AUTOGENERATED FILE! PLEASE DON&#39;T EDIT</span>
+<span class="kn">import</span> <span class="nn">k1lib</span><span class="p">;</span> <span class="kn">from</span> <span class="nn">k1lib.cli</span> <span class="kn">import</span> <span class="n">empty</span><span class="p">,</span> <span class="n">shape</span>
+<span class="kn">from</span> <span class="nn">.callbacks</span> <span class="kn">import</span> <span class="n">Callback</span><span class="p">,</span> <span class="n">Callbacks</span><span class="p">,</span> <span class="n">Cbs</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">List</span>
+<span class="k">try</span><span class="p">:</span> <span class="kn">import</span> <span class="nn">torch</span><span class="p">;</span> <span class="n">hasTorch</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="k">except</span><span class="p">:</span> <span class="n">torch</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">Object</span><span class="p">()</span><span class="o">.</span><span class="n">withAutoDeclare</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="nb">type</span><span class="p">(</span><span class="s2">&quot;RandomClass&quot;</span><span class="p">,</span> <span class="p">(</span><span class="nb">object</span><span class="p">,</span> <span class="p">),</span> <span class="p">{}));</span> <span class="n">hasTorch</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Recorder&quot;</span><span class="p">]</span>
+<div class="viewcode-block" id="Recorder"><a class="viewcode-back" href="../../../callbacks/index.html#k1lib.callbacks.recorder.Recorder">[docs]</a><span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">Cbs</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">Recorder</span><span class="p">(</span><span class="n">Callback</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Records xb, yb and y from a short run. No training involved.</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    l = k1lib.Learner.sample()</span>
+<span class="sd">    l.cbs.add(Cbs.Recorder())</span>
+<span class="sd">    xbs, ybs, ys = l.Recorder.record(1, 2)</span>
+<span class="sd">    xbs # list of x batches passed in</span>
+<span class="sd">    ybs # list of y batches passed in, &quot;the correct label&quot;</span>
+<span class="sd">    ys #  list of network&#39;s output</span>
+
+<span class="sd">If you have extra metadata in your dataloader, then the recorder will return</span>
+<span class="sd">(xb, yb, metab, ys) instead::</span>
+
+<span class="sd">    # creating a new dataloader that yields (xb, yb, metadata)</span>
+<span class="sd">    x = torch.linspace(-5, 5, 1000); meta = torch.tensor(range(1000))</span>
+<span class="sd">    dl = [x, x+2, meta] | transpose() | randomize(None) | repeatFrom() | batched()\</span>
+<span class="sd">    | (transpose() | (toTensor() + toTensor() + toTensor())).all() | stagger(50)</span>
+<span class="sd">    </span>
+<span class="sd">    l = k1lib.Learner.sample(); l.data = [dl, []]</span>
+<span class="sd">    l.cbs.add(Cbs.Recorder())</span>
+<span class="sd">    xbs, ybs, metabs, ys = l.Recorder.record(1, 2)</span>
+<span class="sd">&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">();</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">suspended</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">def</span> <span class="nf">startRun</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">xbs</span> <span class="o">=</span> <span class="p">[];</span> <span class="bp">self</span><span class="o">.</span><span class="n">ybs</span> <span class="o">=</span> <span class="p">[];</span> <span class="bp">self</span><span class="o">.</span><span class="n">metabs</span> <span class="o">=</span> <span class="p">[];</span> <span class="bp">self</span><span class="o">.</span><span class="n">ys</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">def</span> <span class="nf">startBatch</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">xbs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="o">.</span><span class="n">xb</span><span class="o">.</span><span class="n">detach</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ybs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="o">.</span><span class="n">yb</span><span class="o">.</span><span class="n">detach</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">metabs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="o">.</span><span class="n">metab</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">endRun</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">xbs</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ybs</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">metabs</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ys</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">xbs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xbs</span><span class="p">[:</span><span class="n">n</span><span class="p">];</span> <span class="bp">self</span><span class="o">.</span><span class="n">ybs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ybs</span><span class="p">[:</span><span class="n">n</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">metabs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">metabs</span><span class="p">[:</span><span class="n">n</span><span class="p">];</span> <span class="bp">self</span><span class="o">.</span><span class="n">ys</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ys</span><span class="p">[:</span><span class="n">n</span><span class="p">]</span>
+    <span class="k">def</span> <span class="nf">endPass</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ys</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">detach</span><span class="p">())</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">values</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">hasMeta</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">metabs</span> <span class="o">|</span> <span class="o">~</span><span class="n">empty</span><span class="p">()</span> <span class="o">|</span> <span class="n">shape</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>
+        <span class="k">if</span> <span class="n">hasMeta</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">xbs</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ybs</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">metabs</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ys</span>
+        <span class="k">else</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">xbs</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ybs</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ys</span>
+<div class="viewcode-block" id="Recorder.record"><a class="viewcode-back" href="../../../callbacks/index.html#k1lib.callbacks.recorder.Recorder.record">[docs]</a>    <span class="k">def</span> <span class="nf">record</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">epochs</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">batches</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">],</span> <span class="n">List</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">],</span> <span class="n">List</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns recorded xBatch, yBatch and answer y&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">suspended</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">cbs</span><span class="o">.</span><span class="n">context</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">cbs</span><span class="o">.</span><span class="n">suspendEval</span><span class="p">():</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">cbs</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Cbs</span><span class="o">.</span><span class="n">DontTrain</span><span class="p">())</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Cbs</span><span class="o">.</span><span class="n">TimeLimit</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">epochs</span><span class="p">,</span> <span class="n">batches</span><span class="p">)</span>
+        <span class="k">finally</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">suspended</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">values</span></div>
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_reprHead</span><span class="si">}</span><span class="s2">, can...</span>
+<span class="s2">- r.record(epoch[, batches]): runs for a while, and records x and y batches, and the output</span>
+<span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_reprCan</span><span class="si">}</span><span class="s2">&quot;&quot;&quot;</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Quang Ho.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

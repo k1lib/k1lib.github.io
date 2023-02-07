@@ -113,6 +113,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.ContourTrack.copy"><code class="docutils literal notranslate"><span class="pre">ContourTrack.copy()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.ContourTrack.move"><code class="docutils literal notranslate"><span class="pre">ContourTrack.move()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.ContourTrack.movePoint"><code class="docutils literal notranslate"><span class="pre">ContourTrack.movePoint()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.ContourTrack.split"><code class="docutils literal notranslate"><span class="pre">ContourTrack.split()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.ContourTrack.splitClick"><code class="docutils literal notranslate"><span class="pre">ContourTrack.splitClick()</span></code></a></li>
 </ul>
 </li>
@@ -142,6 +143,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#k1lib.k1ui.main.distNet"><code class="docutils literal notranslate"><span class="pre">distNet()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#k1lib.k1ui.main.TrainScreen"><code class="docutils literal notranslate"><span class="pre">TrainScreen</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.TrainScreen.__init__"><code class="docutils literal notranslate"><span class="pre">TrainScreen.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.TrainScreen.data"><code class="docutils literal notranslate"><span class="pre">TrainScreen.data</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.TrainScreen.train"><code class="docutils literal notranslate"><span class="pre">TrainScreen.train()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.TrainScreen.trainParams"><code class="docutils literal notranslate"><span class="pre">TrainScreen.trainParams()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#k1lib.k1ui.main.TrainScreen.frames"><code class="docutils literal notranslate"><span class="pre">TrainScreen.frames</span></code></a></li>
@@ -256,9 +258,11 @@ It will start up a UDP stream to capture screenshots continuously, and after 6 s
 it sends 2 events to the server, trying to type the letter “A”. Finally, it waits for
 another 10 seconds and then terminates the connection.</p>
 <p>This interface is quite low-level, and is the basis for all other functionalities.
-Some of them include:
-- <a class="reference internal" href="#k1lib.k1ui.main.record" title="k1lib.k1ui.main.record"><code class="xref py py-meth docutils literal notranslate"><span class="pre">record()</span></code></a>: recording a session
-- <a class="reference internal" href="#k1lib.k1ui.main.execute" title="k1lib.k1ui.main.execute"><code class="xref py py-meth docutils literal notranslate"><span class="pre">execute()</span></code></a>: executes a list of events</p>
+Some of them include:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#k1lib.k1ui.main.record" title="k1lib.k1ui.main.record"><code class="xref py py-meth docutils literal notranslate"><span class="pre">record()</span></code></a>: recording a session</p></li>
+<li><p><a class="reference internal" href="#k1lib.k1ui.main.execute" title="k1lib.k1ui.main.execute"><code class="xref py py-meth docutils literal notranslate"><span class="pre">execute()</span></code></a>: executes a list of events</p></li>
+</ul>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -732,6 +736,17 @@ intermediary points along.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.ContourTrack.split">
+<span class="sig-name descname"><span class="pre">split</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">times</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#k1lib.k1ui.main.ContourTrack.split" title="Permalink to this definition"></a></dt>
+<dd><p>Splits this contour track by multiple timestamps relative
+to recording’s start time. Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">r</span> <span class="o">=</span> <span class="n">k1ui</span><span class="o">.</span><span class="n">Recording</span><span class="o">.</span><span class="n">sample</span><span class="p">()</span>
+<span class="n">r</span><span class="o">.</span><span class="n">sel1</span><span class="p">(</span><span class="n">klass</span><span class="o">=</span><span class="n">k1ui</span><span class="o">.</span><span class="n">ContourTrack</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">([</span><span class="mi">5</span><span class="p">])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="k1lib.k1ui.main.ContourTrack.splitClick">
 <span class="sig-name descname"><span class="pre">splitClick</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clickTracks</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#k1lib.k1ui.main.ClickTrack" title="k1lib.k1ui.main.ClickTrack"><span class="pre">ClickTrack</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#k1lib.k1ui.main.ContourTrack.splitClick" title="Permalink to this definition"></a></dt>
 <dd><p>Splits this contour track by click events. Essentially, the click
@@ -860,7 +875,7 @@ events chops this contour into multiple segments. Example:</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="k1lib.k1ui.main.distNet">
-<span class="sig-prename descclassname"><span class="pre">k1lib.k1ui.main.</span></span><span class="sig-name descname"><span class="pre">distNet</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch vmaster (2.0.0a0+git01f1097 ))"><span class="pre">Module</span></a></span></span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#distNet"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.distNet" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">k1lib.k1ui.main.</span></span><span class="sig-name descname"><span class="pre">distNet</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch vmaster (2.0.0a0+git0dfc3e1 ))"><span class="pre">Module</span></a></span></span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#distNet"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.distNet" title="Permalink to this definition"></a></dt>
 <dd><p>Grabs a pretrained network that might be useful in distinguishing
 between screens. Example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">net</span> <span class="o">=</span> <span class="n">k1ui</span><span class="o">.</span><span class="n">distNet</span><span class="p">()</span>
@@ -912,6 +927,12 @@ Overview on how it’s supposed to look like:</p>
 very heavy objects (several GB). It is expected that you manually manage
 the lifecycle of the recording.</p>
 </div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="k1lib.k1ui.main.TrainScreen.data">
+<span class="sig-name descname"><span class="pre">data</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.11)"><span class="pre">Tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#k1lib.k1ui.main.TrainScreen.data" title="Permalink to this definition"></a></dt>
+<dd><p>Core dataset of TrainScreen. Essentially just a list of (frameId, screen name)</p>
 </dd></dl>
 
 <dl class="py method">
@@ -1021,7 +1042,7 @@ are part of the specified rule and vice versa</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="k1lib.k1ui.main.TrainScreen.predict">
-<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feats</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.0.0a0+git01f1097 ))"><span class="pre">Tensor</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#TrainScreen.predict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.TrainScreen.predict" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feats</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.0.0a0+git0dfc3e1 ))"><span class="pre">Tensor</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#TrainScreen.predict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.TrainScreen.predict" title="Permalink to this definition"></a></dt>
 <dd><p>Using the built-in network, tries to predict the screen name for a
 bunch of features of shape (N, 10). Example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">r</span> <span class="o">=</span> <span class="o">...</span><span class="p">;</span> <span class="n">ts</span> <span class="o">=</span> <span class="n">k1ui</span><span class="o">.</span><span class="n">TrainScreen</span><span class="p">(</span><span class="n">r</span><span class="p">);</span> <span class="nb">next</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span>

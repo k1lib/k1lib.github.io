@@ -478,6 +478,19 @@
                 <span class="n">ax</span><span class="o">.</span><span class="n">view_init</span><span class="p">(</span><span class="n">elevStart</span><span class="o">+</span><span class="n">frame</span><span class="o">*</span><span class="n">elevSpeed</span><span class="p">,</span> <span class="n">azimStart</span><span class="o">+</span><span class="n">frame</span><span class="o">*</span><span class="n">azimSpeed</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">close</span><span class="p">:</span> <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">viz</span><span class="o">.</span><span class="n">FAnim</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">frames</span><span class="p">)</span>
+    <span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">plt</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">getFig</span><span class="p">():</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Grab figure of the current plot.</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    plt.plot() | plt.getFig() | toImg()</span>
+
+<span class="sd">Internally, this just calls ``plt.gcf()`` and that&#39;s it, pretty simple.</span>
+<span class="sd">But I usually plot things as a part of the cli pipeline, and it&#39;s very</span>
+<span class="sd">annoying that I can&#39;t quite chain ``plt.gcf()`` operation, so I created</span>
+<span class="sd">this&quot;&quot;&quot;</span>
+        <span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="n">_</span><span class="p">):</span> <span class="k">return</span> <span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">inner</span>
 <span class="k">except</span><span class="p">:</span> <span class="k">pass</span>
 <span class="k">try</span><span class="p">:</span>
     <span class="nd">@k1lib</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="n">Axes3D</span><span class="p">)</span>
