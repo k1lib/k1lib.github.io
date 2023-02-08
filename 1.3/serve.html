@@ -86,6 +86,17 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#k1lib.serve.main.commonCbs"><code class="docutils literal notranslate"><span class="pre">commonCbs()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#k1lib.serve.main.serve"><code class="docutils literal notranslate"><span class="pre">serve()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.serve.main.text"><code class="docutils literal notranslate"><span class="pre">text</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.serve.main.text.__init__"><code class="docutils literal notranslate"><span class="pre">text.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.serve.main.slider"><code class="docutils literal notranslate"><span class="pre">slider</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.serve.main.slider.__init__"><code class="docutils literal notranslate"><span class="pre">slider.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.serve.main.analyze"><code class="docutils literal notranslate"><span class="pre">analyze()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.serve.main.webToPy"><code class="docutils literal notranslate"><span class="pre">webToPy()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.serve.main.pyToWeb"><code class="docutils literal notranslate"><span class="pre">pyToWeb()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="viz.html">k1lib.viz module</a></li>
@@ -146,16 +157,25 @@ everyone, or to be used in other systems, then you can do something like this:</
 <img alt="_images/serve.png" src="_images/serve.png" />
 <p>That’s pretty much it. You can add in your own callbacks, to enable further integration
 with your systems. You can also customize the given callbacks more.</p>
-<p>Currently, these data types are supported, together with their appearance on the interface:</p>
+<p>An example of all supported data types and interfaces:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">endpoint</span><span class="p">(</span><span class="n">a</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span><span class="nb">float</span><span class="o">=</span><span class="mf">5.2</span><span class="p">,</span> <span class="n">c</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s2">&quot;short string&quot;</span><span class="p">,</span> <span class="n">d</span><span class="p">:</span><span class="n">serve</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span><span class="o">=</span><span class="s2">&quot;paragraph&quot;</span><span class="p">,</span>
+             <span class="n">e</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">f</span><span class="p">:</span><span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">21</span><span class="p">)</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">g</span><span class="p">:</span><span class="n">serve</span><span class="o">.</span><span class="n">slider</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">=</span><span class="mf">1.2</span><span class="p">,</span>
+             <span class="n">h</span><span class="p">:</span><span class="n">PIL</span><span class="o">.</span><span class="n">Image</span><span class="o">.</span><span class="n">Image</span><span class="o">=</span><span class="n">someImg</span><span class="p">,</span> <span class="n">i</span><span class="p">:</span><span class="nb">bytes</span><span class="o">=</span><span class="n">someBinaryData</span><span class="p">,</span>
+             <span class="n">j</span><span class="p">:[</span><span class="s2">&quot;opt 1&quot;</span><span class="p">,</span> <span class="s2">&quot;opt 2&quot;</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;opt 1&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+   <span class="k">pass</span>
+</pre></div>
+</div>
+<p>And how they’re displayed:</p>
 <ul class="simple">
-<li><p>int, float, str: text box</p></li>
-<li><p>bool: checkbox toggle</p></li>
-<li><p>bytes, <a class="reference external" href="https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.Image" title="(in Pillow (PIL Fork) v9.4.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">PIL.Image.Image</span></code></a>: file upload</p></li>
-<li><p><a class="reference internal" href="base.html#k1lib.Range" title="k1lib.Range"><code class="xref py py-class docutils literal notranslate"><span class="pre">k1lib.Range</span></code></a>: continuous slider</p></li>
-<li><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#range" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">range</span></code></a>: stepped slider</p></li>
-<li><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a>: dropdown</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">int,</span> <span class="pre">float,</span> <span class="pre">str,</span> <span class="pre">serve.text(True)</span></code>: text box. Could be multiline for <a class="reference internal" href="#k1lib.serve.main.text" title="k1lib.serve.main.text"><code class="xref py py-class docutils literal notranslate"><span class="pre">text</span></code></a> case</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bool</span></code>: checkbox</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">range(3,</span> <span class="pre">21)</span></code>: discrete slider</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">serve.slider(1,</span> <span class="pre">2)</span></code>: continuous slider</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PIL.Image.Image`</span></code>: file upload. If return value is this then will just display the image directly</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bytes</span></code>: file upload</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[&quot;opt</span> <span class="pre">1&quot;,</span> <span class="pre">&quot;opt</span> <span class="pre">2&quot;]</span></code>: dropdown menu</p></li>
 </ul>
-<p>See a few demo examples at <a class="reference external" href="https://mlexps.com/">https://mlexps.com/</a></p>
+<p>See a few demo examples at <a class="reference external" href="https://mlexps.com/">https://mlexps.com/</a> (at the very bottom of the page)</p>
 <span class="target" id="module-k1lib.serve.main"></span><dl class="py class">
 <dt class="sig sig-object py" id="k1lib.serve.main.FromNotebook">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.serve.main.</span></span><span class="sig-name descname"><span class="pre">FromNotebook</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fileName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tagName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'serve'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/serve/main.html#FromNotebook"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.serve.main.FromNotebook" title="Permalink to this definition"></a></dt>
@@ -282,6 +302,47 @@ will be created and made available in <code class="docutils literal notranslate"
 <span class="sig-prename descclassname"><span class="pre">k1lib.serve.main.</span></span><span class="sig-name descname"><span class="pre">serve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cbs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/serve/main.html#serve"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.serve.main.serve" title="Permalink to this definition"></a></dt>
 <dd><p>Runs the serving pipeline.</p>
 </dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="k1lib.serve.main.text">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.serve.main.</span></span><span class="sig-name descname"><span class="pre">text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">multiline</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/serve/main.html#text"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.serve.main.text" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">baseType</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.serve.main.text.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">multiline</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/serve/main.html#text.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.serve.main.text.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Represents text, either on single or multiple lines.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="k1lib.serve.main.slider">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.serve.main.</span></span><span class="sig-name descname"><span class="pre">slider</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">stop</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">intervals</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/serve/main.html#slider"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.serve.main.slider" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">baseType</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.serve.main.slider.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">stop</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">intervals</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/serve/main.html#slider.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.serve.main.slider.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Represents a slider from <cite>start</cite> to <cite>stop</cite> with a bunch of
+intervals in the middle. If <cite>defValue</cite> is not specified, uses the
+middle point between start and stop</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="k1lib.serve.main.analyze">
+<span class="sig-prename descclassname"><span class="pre">k1lib.serve.main.</span></span><span class="sig-name descname"><span class="pre">analyze</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/serve/main.html#analyze"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.serve.main.analyze" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="k1lib.serve.main.webToPy">
+<span class="sig-prename descclassname"><span class="pre">k1lib.serve.main.</span></span><span class="sig-name descname"><span class="pre">webToPy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">o</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">klass</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">baseType</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/serve/main.html#webToPy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.serve.main.webToPy" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="k1lib.serve.main.pyToWeb">
+<span class="sig-prename descclassname"><span class="pre">k1lib.serve.main.</span></span><span class="sig-name descname"><span class="pre">pyToWeb</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">o</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">klass</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">baseType</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></span><a class="reference internal" href="_modules/k1lib/serve/main.html#pyToWeb"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.serve.main.pyToWeb" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
 
 </section>
 

@@ -21,7 +21,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Streams tutorial" href="streams.html" />
+    <link rel="next" title="LLVM optimizer tutorial" href="llvm.html" />
     <link rel="prev" title="Base module" href="../base.html" /> 
 </head>
 
@@ -46,8 +46,14 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">k1lib.cli module</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#setup">Setup</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#intro">Intro</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="streams.html">Streams tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#intro">Intro</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#argument-expansion">Argument expansion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#inverting-conditions">Inverting conditions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cli-composition">Cli composition</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#serial-composition">Serial composition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#composition-or-onetomany">“&amp;” composition, or “oneToMany”</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#composition-or-mtms">“+” composition, or “mtmS”</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#vanilla-alternatives">Vanilla alternatives</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#where-to-start">Where to start?</a></li>
@@ -278,6 +284,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#k1lib.cli.grep.grep.__init__"><code class="docutils literal notranslate"><span class="pre">grep.__init__()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#k1lib.cli.grep.grep.till"><code class="docutils literal notranslate"><span class="pre">grep.till()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#k1lib.cli.grep.grep.__ror__"><code class="docutils literal notranslate"><span class="pre">grep.__ror__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#k1lib.cli.grep.grep.__invert__"><code class="docutils literal notranslate"><span class="pre">grep.__invert__()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#k1lib.cli.grep.grepTemplate"><code class="docutils literal notranslate"><span class="pre">grepTemplate</span></code></a><ul>
@@ -936,10 +943,12 @@ equivalent to this bash statement:</p>
 <span class="mi">3</span> <span class="o">|</span> <span class="n">f</span>
 </pre></div>
 </div>
+<p>Here, <a class="reference internal" href="#k1lib.cli.modifier.aS" title="k1lib.cli.modifier.aS"><code class="xref py py-class docutils literal notranslate"><span class="pre">aS</span></code></a> is pretty much the simplest cli available. It just makes whatever
+function you give it pipe-able, as you can’t quite pipe things to lambda functions in vanilla Python.</p>
 <p>You can think of the flow of these clis in terms of 2 phases. 1 is configuring what you
 want the cli to do, and 2 is actually executing it. Let’s say you want to take a list
 of numbers and take the square of them:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># configuration stage. You provide a function to `apply` to tell it what to apply to each element in the list</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># configuration stage. You provide a function to `apply` to tell it what function to apply to each element in the list, kinda like Python&#39;s &quot;map&quot; function</span>
 <span class="n">f</span> <span class="o">=</span> <span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
 <span class="c1"># initialize the input</span>
 <span class="n">x</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
@@ -956,20 +965,20 @@ of numbers and take the square of them:</p>
 </div>
 <p>You may wonder why do we have to turn it into a list. That’s because all cli tools execute
 things lazily, so they will return iterators, instead of lists. Here’s how iterators work:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">gen</span><span class="p">():</span> <span class="c1"># this is a generator. It generates elements</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">gen</span><span class="p">():</span> <span class="c1"># this is a generator, a special type of iterator. It generates elements</span>
     <span class="k">yield</span> <span class="mi">3</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;after yielding 3&quot;</span><span class="p">)</span>
     <span class="k">yield</span> <span class="mi">2</span>
     <span class="k">yield</span> <span class="mi">5</span>
 <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">gen</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;in for loop:&quot;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>It will print this out:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>3
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>in for loop: 3
 after yielding 3
-2
-5
+in for loop: 2
+in for loop: 5
 </pre></div>
 </div>
 <p>So, iterators feels like lists. In fact, a list is an iterator, <code class="docutils literal notranslate"><span class="pre">range(5)</span></code>, numpy arrays
@@ -1024,33 +1033,179 @@ sometimes assume that we are operating on a table. So this table:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[[</span><span class="s2">&quot;col1&quot;</span><span class="p">,</span> <span class="s2">&quot;col2&quot;</span><span class="p">,</span> <span class="s2">&quot;col3&quot;</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]]</span>
 </pre></div>
 </div>
-<p><a class="reference internal" href="#k1lib.cli.structural.transpose" title="k1lib.cli.structural.transpose"><code class="xref py py-class docutils literal notranslate"><span class="pre">transpose</span></code></a> and <a class="reference internal" href="#k1lib.cli.init.mtmS" title="k1lib.cli.init.mtmS"><code class="xref py py-class docutils literal notranslate"><span class="pre">mtmS</span></code></a> provides more flexible ways
-to transform a table structure (but usually involves more code).</p>
-<p>Besides operating on string iterators alone, this package can also be extra meta,
-and operate on streams of strings, or streams of streams of anything. I think this
-is one of the most powerful concept of the cli workflow. Check over it here:</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="streams.html">Streams tutorial</a></li>
-</ul>
-</div>
-<p>All cli tools should work fine with <a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.0.0a0+git0dfc3e1 ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a>, <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a> and <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.Series.html#pandas.Series" title="(in pandas v1.5.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.core.series.Series</span></code></a>,
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you’re not an advanced user, just skip this warning.</p>
+<p>All cli tools should work fine with <a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.0.0a0+git3ce1ebb ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a>, <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a> and <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.Series.html#pandas.Series" title="(in pandas v1.5.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.core.series.Series</span></code></a>,
 but k1lib actually modifies Numpy arrays and Pandas series deep down for it to work.
 This means that you can still do normal bitwise or with a numpy float value, and
 they work fine in all regression tests that I have, but you might encounter strange bugs.
-You can disable it manually by changing <a class="reference internal" href="../base.html#k1lib.settings" title="k1lib.settings"><code class="xref py py-attr docutils literal notranslate"><span class="pre">settings</span></code></a>.startup.or_patch. If you
-chooses to do this, you have to be careful and use these workarounds:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># returns (2, 3, 5), works fine</span>
-<span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="o">|</span> <span class="n">shape</span><span class="p">()</span>
-<span class="c1"># will not work, returns weird numpy array of shape (2, 3, 5)</span>
-<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="o">|</span> <span class="n">shape</span><span class="p">()</span>
-<span class="c1"># returns (2, 3, 5), mitigation strategy #1</span>
-<span class="n">shape</span><span class="p">()(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-<span class="c1"># returns (2, 3, 5), mitigation strategy #2</span>
-<span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)]</span> <span class="o">|</span> <span class="p">(</span><span class="n">item</span><span class="p">()</span> <span class="o">|</span> <span class="n">shape</span><span class="p">())</span>
+You can disable it manually by changing <a class="reference internal" href="../base.html#k1lib.settings" title="k1lib.settings"><code class="xref py py-attr docutils literal notranslate"><span class="pre">settings</span></code></a>.startup.or_patch like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">k1lib</span>
+<span class="n">k1lib</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">startup</span><span class="o">.</span><span class="n">or_patch</span><span class="o">.</span><span class="n">numpy</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="kn">from</span> <span class="nn">k1lib.imports</span> <span class="kn">import</span> <span class="o">*</span>
 </pre></div>
 </div>
+<p>If you choose to do this, you’ll have to be careful and use these workarounds:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="o">|</span> <span class="n">shape</span><span class="p">()</span>                  <span class="c1"># returns (2, 3, 5), works fine</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="o">|</span> <span class="n">shape</span><span class="p">()</span>              <span class="c1"># will not work, returns weird numpy array of shape (2, 3, 5)</span>
+<span class="n">shape</span><span class="p">()(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>               <span class="c1"># returns (2, 3, 5), mitigation strategy #1</span>
+<span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)]</span> <span class="o">|</span> <span class="p">(</span><span class="n">item</span><span class="p">()</span> <span class="o">|</span> <span class="n">shape</span><span class="p">())</span> <span class="c1"># returns (2, 3, 5), mitigation strategy #2</span>
+</pre></div>
+</div>
+<p>Again, please note that you only need to do these workarounds if you choose to turn off C-type
+modifications. If you keep things by default, then all examples above should work just fine.</p>
+</div>
 <p>All cli-related settings are at <a class="reference internal" href="../base.html#k1lib.settings" title="k1lib.settings"><code class="xref py py-attr docutils literal notranslate"><span class="pre">settings</span></code></a>.cli.</p>
+</section>
+<section id="argument-expansion">
+<h2>Argument expansion<a class="headerlink" href="#argument-expansion" title="Permalink to this heading"></a></h2>
+<p>I’d like to quickly mention the argument expansion motif that’s prominent in some cli tools. Check out this example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span> <span class="o">|</span> <span class="n">aS</span><span class="p">(</span><span class="k">lambda</span> <span class="n">a</span><span class="p">:</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="c1"># returns 8, long version, not descriptive elements (&quot;a[0]&quot; and &quot;a[1]&quot;)</span>
+<span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span> <span class="o">|</span> <span class="o">~</span><span class="n">aS</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">)</span> <span class="c1"># returns 8, short version, descriptive elements (&quot;x&quot; and &quot;y&quot;)</span>
+
+<span class="p">[[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">]]</span> <span class="o">|</span> <span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">a</span><span class="p">:</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">|</span> <span class="n">aS</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span> <span class="c1"># returns [8, 9], long version</span>
+<span class="p">[[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">]]</span> <span class="o">|</span> <span class="o">~</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">)</span> <span class="o">|</span> <span class="n">aS</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span> <span class="c1"># returns [8, 9], short version</span>
+</pre></div>
+</div>
+<p>Here, the tilde operator (“~”, officially called “invert” in Python) used on <a class="reference internal" href="#k1lib.cli.modifier.aS" title="k1lib.cli.modifier.aS"><code class="xref py py-class docutils literal notranslate"><span class="pre">aS</span></code></a> and
+<a class="reference internal" href="#k1lib.cli.modifier.apply" title="k1lib.cli.modifier.apply"><code class="xref py py-class docutils literal notranslate"><span class="pre">apply</span></code></a> means that the input object/iterator will be expanded so that it fills all
+available arguments. This is a small quality-of-life feature, but makes a big difference, as parameters
+can now be named separately and nicely (“x” and “y”, which can convey that this is a coordinate of some
+sort, instead of “a[0]” and “a[1]”, which conveys nothing).</p>
+</section>
+<section id="inverting-conditions">
+<h2>Inverting conditions<a class="headerlink" href="#inverting-conditions" title="Permalink to this heading"></a></h2>
+<p>The tilde operator does not always mean expanding the arguments though. Sometimes it’s used for actually
+inverting the functionality of some clis:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">|</span>  <span class="n">filt</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">|</span> <span class="n">aS</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span> <span class="c1"># returns [0, 2, 4]</span>
+<span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">|</span> <span class="o">~</span><span class="n">filt</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">|</span> <span class="n">aS</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span> <span class="c1"># returns [1, 3]</span>
+
+<span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mf">5.5</span><span class="p">,</span> <span class="s2">&quot;text&quot;</span><span class="p">]</span> <span class="o">|</span> <span class="o">~</span><span class="n">instanceOf</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span> <span class="o">|</span> <span class="n">aS</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span> <span class="c1"># returns [5.5, &quot;text&quot;]</span>
+</pre></div>
+</div>
+</section>
+<section id="cli-composition">
+<h2>Cli composition<a class="headerlink" href="#cli-composition" title="Permalink to this heading"></a></h2>
+<p>One of the very powerful things about this workflow is that you can easily combine cli tools together,
+to reach unfathomable levels of complexity while using very little code and still remain relatively readable.
+For example, this is an <a class="reference external" href="https://mlexps.com/imagenet/8-vit/">image dataloader</a> built pretty much from
+scratch, but will full functionality comparable to PyTorch’s dataloaders:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">base</span> <span class="o">=</span> <span class="s2">&quot;~/ssd/data/imagenet/set1/192px&quot;</span>
+<span class="n">idxToCat</span> <span class="o">=</span> <span class="n">base</span> <span class="o">|</span> <span class="n">ls</span><span class="p">()</span> <span class="o">|</span> <span class="n">head</span><span class="p">(</span><span class="mi">80</span><span class="p">)</span> <span class="o">|</span> <span class="n">op</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">all</span><span class="p">()</span> <span class="o">|</span> <span class="n">insertIdColumn</span><span class="p">()</span> <span class="o">|</span> <span class="n">toDict</span><span class="p">()</span>
+<span class="n">catToIdx</span> <span class="o">=</span> <span class="n">idxToCat</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="o">|</span> <span class="n">permute</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">|</span> <span class="n">toDict</span><span class="p">()</span>
+<span class="c1"># stage 1, (train/valid, classes, samples (url of img))</span>
+<span class="n">st1</span> <span class="o">=</span> <span class="n">base</span> <span class="o">|</span> <span class="n">ls</span><span class="p">()</span> <span class="o">|</span> <span class="n">head</span><span class="p">(</span><span class="mi">80</span><span class="p">)</span> <span class="o">|</span> <span class="n">apply</span><span class="p">(</span><span class="n">ls</span><span class="p">()</span> <span class="o">|</span> <span class="n">splitW</span><span class="p">())</span> <span class="o">|</span> <span class="n">transpose</span><span class="p">()</span> <span class="o">|</span> <span class="n">deref</span><span class="p">()</span> <span class="o">|</span> <span class="n">aS</span><span class="p">(</span><span class="n">k1</span><span class="o">.</span><span class="n">Wrapper</span><span class="p">)</span>
+<span class="c1"># stage 2, (train/valid, classes, samples, [img, class])</span>
+<span class="n">st2</span> <span class="o">=</span> <span class="n">st1</span><span class="p">()</span> <span class="o">|</span> <span class="p">(</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">[</span><span class="n">x</span> <span class="o">|</span> <span class="n">toImg</span><span class="p">()</span> <span class="o">|</span> <span class="n">toTensor</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">uint8</span><span class="p">),</span> <span class="n">catToIdx</span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">2</span><span class="p">]]])</span> <span class="o">|</span> <span class="n">repeatFrom</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="o">|</span> <span class="n">apply</span><span class="p">(</span><span class="n">aS</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">Resize</span><span class="p">(</span><span class="mi">192</span><span class="p">))</span> <span class="o">|</span> <span class="n">aS</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">AutoAugment</span><span class="p">())</span> <span class="o">|</span> <span class="n">op</span><span class="p">()</span><span class="o">/</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">|</span> <span class="n">deref</span><span class="p">()</span> <span class="o">|</span> <span class="n">aS</span><span class="p">(</span><span class="n">k1</span><span class="o">.</span><span class="n">Wrapper</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">dataF</span><span class="p">(</span><span class="n">bs</span><span class="p">):</span> <span class="k">return</span> <span class="n">st2</span><span class="p">()</span> <span class="o">|</span> <span class="n">apply</span><span class="p">(</span><span class="n">repeatFrom</span><span class="p">()</span><span class="o">.</span><span class="n">all</span><span class="p">()</span> <span class="o">|</span> <span class="n">joinStreamsRandom</span><span class="p">()</span> <span class="o">|</span> <span class="n">batched</span><span class="p">(</span><span class="n">bs</span><span class="p">)</span> <span class="o">|</span> <span class="n">apply</span><span class="p">(</span><span class="n">transpose</span><span class="p">()</span> <span class="o">|</span> <span class="n">aS</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">)</span> <span class="o">+</span> <span class="n">toTensor</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">long</span><span class="p">)))</span> <span class="o">|</span> <span class="n">stagger</span><span class="o">.</span><span class="n">tv</span><span class="p">(</span><span class="mi">10000</span><span class="o">/</span><span class="n">bs</span><span class="p">)</span> <span class="o">|</span> <span class="n">aS</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>These 6 lines of code will read from a directory, grabs all images from the first 80 categories, splits
+them into train and valid sets. Then it will extend the data infinitely (so that we never run out of batches
+to train), load the images on multiple worker processes, do augmentations on them, renormalize them, batch
+them up, stack them together into a tensor, and split batches into multiple epochs.</p>
+<p>All of that, from scratch, where you’re in control of every detail, operating in 7 dimensions, in multiple
+processes, in just 6 lines of code. This is just so ridiculously powerful that it boggles my mind every day.
+Yes, you can argue that it’s not clear what’s going on, but for a person that is already familiar with them
+like I do, seeing exactly how data is being transformed at every stage is quite straightforward and trivial.</p>
+<section id="serial-composition">
+<h3>Serial composition<a class="headerlink" href="#serial-composition" title="Permalink to this heading"></a></h3>
+<p>So let’s see a few examples on how to compose clis together. Let’s say you have a list of files:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fileNames</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;a.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;b.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;c.txt&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Let’s say you now want to read every line from every file quickly, using cli tools,
+and get the number of lines in each file. Instead of something like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sizes</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">fileName</span> <span class="ow">in</span> <span class="n">fileNames</span><span class="p">:</span>
+   <span class="n">sizes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cat</span><span class="p">(</span><span class="n">fileName</span><span class="p">)</span> <span class="o">|</span> <span class="n">shape</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span> <span class="c1"># shape(0) is kinda like aS(len). It just returns the length of the input iterator, but difference is that aS(len) can only operate on lists</span>
+</pre></div>
+</div>
+<p>…which really defeats the purpose of the elegant cli workflow, you can do:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sizes</span> <span class="o">=</span> <span class="n">fileNames</span> <span class="o">|</span> <span class="n">apply</span><span class="p">(</span><span class="n">cat</span><span class="p">()</span> <span class="o">|</span> <span class="n">shape</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span> <span class="o">|</span> <span class="n">aS</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In this example, there is 1 “composition”: <code class="docutils literal notranslate"><span class="pre">cat()</span> <span class="pre">|</span> <span class="pre">shape(0)</span></code>. If you check out the
+docs for <a class="reference internal" href="#k1lib.cli.inp.cat" title="k1lib.cli.inp.cat"><code class="xref py py-class docutils literal notranslate"><span class="pre">cat</span></code></a>, which is used to read files, you’d know that there’re 2 modes of operation:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span><span class="p">(</span><span class="s2">&quot;a.txt&quot;</span><span class="p">)</span> <span class="o">|</span> <span class="n">shape</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># mode 1: cat() acts like a function, returning a list of lines in the file</span>
+<span class="s2">&quot;a.txt&quot;</span> <span class="o">|</span> <span class="n">cat</span><span class="p">()</span> <span class="o">|</span> <span class="n">shape</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># mode 2: cat() acts like a cli tool, which will return a list of lines in the file when a file name is piped into it</span>
+<span class="s2">&quot;a.txt&quot;</span> <span class="o">|</span> <span class="p">(</span><span class="n">cat</span><span class="p">()</span> <span class="o">|</span> <span class="n">shape</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span> <span class="c1"># mode 2: cat() acts like a cli tool, &quot;cat() | shape(0)&quot; acts as a &quot;serial&quot; cli</span>
+
+<span class="n">s</span> <span class="o">=</span> <span class="n">cat</span><span class="p">()</span> <span class="o">|</span> <span class="n">shape</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> <span class="s2">&quot;a.txt&quot;</span> <span class="o">|</span> <span class="n">s</span> <span class="c1"># equivalent to the 3rd line, but this time declaring &quot;cat() | shape(0)&quot; as a separate object</span>
+</pre></div>
+</div>
+<p>In the second case, <code class="docutils literal notranslate"><span class="pre">&quot;a.txt&quot;</span> <span class="pre">|</span> <span class="pre">cat()</span></code> will be executed first, then getting the number of elements will be
+executed later (<code class="docutils literal notranslate"><span class="pre">...</span> <span class="pre">|</span> <span class="pre">shape(0)</span></code>), but in the third case, <code class="docutils literal notranslate"><span class="pre">cat()</span> <span class="pre">|</span> <span class="pre">shape(0)</span></code> will be executed first, which
+returns the special cli <a class="reference internal" href="#k1lib.cli.init.serial" title="k1lib.cli.init.serial"><code class="xref py py-class docutils literal notranslate"><span class="pre">serial</span></code></a>, then the file name will be piped in later (<code class="docutils literal notranslate"><span class="pre">&quot;a.txt&quot;</span> <span class="pre">|</span> <span class="pre">(...)</span></code>)</p>
+<p>Because cli tools are also functions, which includes <a class="reference internal" href="#k1lib.cli.init.serial" title="k1lib.cli.init.serial"><code class="xref py py-class docutils literal notranslate"><span class="pre">serial</span></code></a>, you can pass them into other cli
+tools that expects a function, like <a class="reference internal" href="#k1lib.cli.modifier.apply" title="k1lib.cli.modifier.apply"><code class="xref py py-class docutils literal notranslate"><span class="pre">apply</span></code></a>. You can be extra meta, like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># assume a.txt, b.txt, c.txt has 10, 20, 30 lines</span>
+<span class="n">fileNames</span> <span class="o">=</span> <span class="p">[[</span><span class="s2">&quot;a.txt&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;b.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;c.txt&quot;</span><span class="p">]]</span>
+<span class="c1"># returns [[10], [20, 30]]</span>
+<span class="n">sizes</span> <span class="o">=</span> <span class="n">fileNames</span> <span class="o">|</span> <span class="n">apply</span><span class="p">(</span><span class="n">apply</span><span class="p">(</span><span class="n">cat</span><span class="p">()</span> <span class="o">|</span> <span class="n">shape</span><span class="p">(</span><span class="mi">0</span><span class="p">)))</span>
+<span class="c1"># also returns [[10], [20, 30]], and is equivalent to the line above, as &quot;apply(apply(...))&quot; is equivalent to &quot;(...).all(2)&quot;</span>
+<span class="n">sizes</span> <span class="o">=</span> <span class="n">fileNames</span> <span class="o">|</span> <span class="p">(</span><span class="n">cat</span><span class="p">()</span> <span class="o">|</span> <span class="n">shape</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This type of composition is quite straightforward, unlike the next 2.</p>
+</section>
+<section id="composition-or-onetomany">
+<h3>“&amp;” composition, or “oneToMany”<a class="headerlink" href="#composition-or-onetomany" title="Permalink to this heading"></a></h3>
+<p>Take a look at this example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">]</span>
+<span class="n">arr</span> <span class="o">|</span> <span class="n">toRange</span><span class="p">()</span>                       <span class="c1"># returns range(3), equivalent to [0, 1, 2]</span>
+<span class="n">arr</span> <span class="o">|</span> <span class="n">iden</span><span class="p">()</span>                          <span class="c1"># returns [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]</span>
+<span class="n">arr</span> <span class="o">|</span> <span class="p">(</span><span class="n">toRange</span><span class="p">()</span> <span class="o">&amp;</span> <span class="n">iden</span><span class="p">())</span> <span class="o">|</span> <span class="n">aS</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span> <span class="c1"># returns [range(3), [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]]</span>
+<span class="n">arr</span> <span class="o">|</span> <span class="n">toRange</span><span class="p">()</span> <span class="o">&amp;</span> <span class="n">iden</span><span class="p">()</span> <span class="o">|</span> <span class="n">aS</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>   <span class="c1"># returns [range(3), [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]], demonstrating &quot;&amp;&quot; will be executed before &quot;|&quot;, so you don&#39;t need parentheses around it</span>
+<span class="n">arr</span> <span class="o">|</span> <span class="n">toRange</span><span class="p">()</span> <span class="o">&amp;</span> <span class="n">iden</span><span class="p">()</span> <span class="o">|</span> <span class="n">joinStreams</span><span class="p">()</span> <span class="o">|</span> <span class="n">aS</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span> <span class="c1"># returns [0, 1, 2, &quot;a&quot;, &quot;b&quot;, &quot;c&quot;]</span>
+</pre></div>
+</div>
+<p>So, this will take the input iterator, duplicates into 2 versions, pipes them into the 2
+clis you specified and return both of them. You can do this with as much clis as you want:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span> <span class="o">|</span> <span class="n">toRange</span><span class="p">()</span> <span class="o">&amp;</span>  <span class="n">shape</span><span class="p">()</span> <span class="o">&amp;</span> <span class="n">grep</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">)</span>  <span class="o">|</span> <span class="n">deref</span><span class="p">()</span> <span class="c1"># returns [[0, 1, 2], [3, 1], [&quot;a&quot;]]</span>
+<span class="n">arr</span> <span class="o">|</span> <span class="n">toRange</span><span class="p">()</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">shape</span><span class="p">()</span> <span class="o">&amp;</span> <span class="n">grep</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">))</span> <span class="o">|</span> <span class="n">deref</span><span class="p">()</span> <span class="c1"># also returns [[0, 1, 2], [3, 1], [&quot;a&quot;]], demonstrating a strange edge case that parentheses won&#39;t stop all clis adjacent to each other joined by &quot;&amp;&quot; from combining together</span>
+</pre></div>
+</div>
+<p>Hopefully it now makes sense why it’s called “oneToMany”, as we’re making 1 iterator available
+for many clis. Also, if the exact cli operation is only known at run time, then you can
+procedurally do this using <a class="reference internal" href="#k1lib.cli.init.oneToMany" title="k1lib.cli.init.oneToMany"><code class="xref py py-class docutils literal notranslate"><span class="pre">oneToMany</span></code></a>.</p>
+</section>
+<section id="composition-or-mtms">
+<h3>“+” composition, or “mtmS”<a class="headerlink" href="#composition-or-mtms" title="Permalink to this heading"></a></h3>
+<p>Take a look at this example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">even</span> <span class="o">=</span> <span class="n">filt</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">odd</span>  <span class="o">=</span> <span class="n">filt</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="c1"># can also just be &quot;~even&quot;, but I&#39;m writing it out this way to be clear</span>
+<span class="p">[</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="nb">range</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">)]</span> <span class="o">|</span> <span class="p">(</span><span class="n">even</span> <span class="o">+</span> <span class="n">odd</span><span class="p">)</span> <span class="o">|</span> <span class="n">deref</span><span class="p">()</span>    <span class="c1"># returns [[10, 12, 14, 16, 18], [31, 33, 35, 37, 39]]</span>
+<span class="p">[</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span> <span class="o">|</span> <span class="n">even</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span> <span class="o">|</span> <span class="n">odd</span><span class="p">]</span> <span class="o">|</span> <span class="n">deref</span><span class="p">()</span> <span class="c1"># also returns [[10, 12, 14, 16, 18], [31, 33, 35, 37, 39]], demonstrating that these are equivalent to each other</span>
+</pre></div>
+</div>
+<p>So, let’s say that there’re n items inside of the input iterator and that you specified n
+clis. Then, each item will be piped into the corresponding cli, hence the name <a class="reference internal" href="#k1lib.cli.init.mtmS" title="k1lib.cli.init.mtmS"><code class="xref py py-class docutils literal notranslate"><span class="pre">mtmS</span></code></a>, or
+“manyToManySpecific”. Why not just “mtm”? Well, there used to be a “manyToMany” operator,
+but it’s been removed and I’m lazy to change it back.</p>
+</section>
+<section id="vanilla-alternatives">
+<h3>Vanilla alternatives<a class="headerlink" href="#vanilla-alternatives" title="Permalink to this heading"></a></h3>
+<p>These operations are not actually strictly necessary, they’re just convenience functions
+so that writing code is simpler and more straightforward. They can be implemented using
+normal clis like so:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">iden</span><span class="p">()</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">shape</span><span class="p">()</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]]</span>
+<span class="n">x</span> <span class="o">|</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="o">+</span> <span class="n">c</span> <span class="o">|</span> <span class="n">deref</span><span class="p">()</span>                                  <span class="c1"># returns [[1, 2], [9, 16], [2]]</span>
+<span class="n">x</span> <span class="o">|</span> <span class="o">~</span><span class="n">aS</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">:</span> <span class="p">[</span><span class="n">x</span> <span class="o">|</span> <span class="n">a</span><span class="p">,</span> <span class="n">y</span> <span class="o">|</span> <span class="n">b</span><span class="p">,</span> <span class="n">z</span> <span class="o">|</span> <span class="n">c</span><span class="p">])</span> <span class="o">|</span> <span class="n">deref</span><span class="p">()</span> <span class="c1"># returns [[1, 2], [9, 16], [2]]</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">|</span> <span class="n">a</span> <span class="o">&amp;</span> <span class="n">b</span> <span class="o">&amp;</span> <span class="n">c</span> <span class="o">|</span> <span class="n">deref</span><span class="p">()</span>                           <span class="c1"># returns [[0, 1, 2, 3, 4], [0, 1, 4, 9, 16], [5]]</span>
+<span class="n">x</span> <span class="o">|</span> <span class="n">aS</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">[</span><span class="n">x</span> <span class="o">|</span> <span class="n">a</span><span class="p">,</span> <span class="n">x</span> <span class="o">|</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span> <span class="o">|</span> <span class="n">c</span><span class="p">])</span> <span class="o">|</span> <span class="n">deref</span><span class="p">()</span> <span class="c1"># returns [[0, 1, 2, 3, 4], [0, 1, 4, 9, 16], [5]]</span>
+</pre></div>
+</div>
+<p>So you might want to use these vanilla versions initially if you’re having a hard time with this,
+but I wouldn’t recommend using vanilla in the long term.</p>
+</section>
 </section>
 <section id="where-to-start">
 <h2>Where to start?<a class="headerlink" href="#where-to-start" title="Permalink to this heading"></a></h2>
@@ -1806,15 +1961,15 @@ an iterator and output a single object (like getting max, min, std, mean values)
 <dl class="py method">
 <dt class="sig sig-object py" id="k1lib.cli.conv.toTensor.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">torch.float32</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/conv.html#toTensor.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli.conv.toTensor.__init__" title="Permalink to this definition"></a></dt>
-<dd><p>Converts generator to <a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.0.0a0+git0dfc3e1 ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a>. Essentially
+<dd><p>Converts generator to <a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.0.0a0+git3ce1ebb ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a>. Essentially
 <code class="docutils literal notranslate"><span class="pre">torch.tensor(list(it))</span></code>.</p>
-<p>Also checks if input is a PIL Image. If yes, turn it into a <a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.0.0a0+git0dfc3e1 ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a>
+<p>Also checks if input is a PIL Image. If yes, turn it into a <a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.0.0a0+git3ce1ebb ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a>
 and return.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="k1lib.cli.conv.toTensor.__ror__">
-<span class="sig-name descname"><span class="pre">__ror__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">it</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Iterator" title="(in Python v3.11)"><span class="pre">Iterator</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.0.0a0+git0dfc3e1 ))"><span class="pre">Tensor</span></a></span></span><a class="reference internal" href="../_modules/k1lib/cli/conv.html#toTensor.__ror__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli.conv.toTensor.__ror__" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">__ror__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">it</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Iterator" title="(in Python v3.11)"><span class="pre">Iterator</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.0.0a0+git3ce1ebb ))"><span class="pre">Tensor</span></a></span></span><a class="reference internal" href="../_modules/k1lib/cli/conv.html#toTensor.__ror__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli.conv.toTensor.__ror__" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -1875,7 +2030,7 @@ avoid breaking old projects.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="k1lib.cli.conv.toSum.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/conv.html#toSum.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli.conv.toSum.__init__" title="Permalink to this definition"></a></dt>
-<dd><p>Calculates the sum of list of numbers. Can pipe in <a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.0.0a0+git0dfc3e1 ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a> or <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>.
+<dd><p>Calculates the sum of list of numbers. Can pipe in <a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.0.0a0+git3ce1ebb ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a> or <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>.
 Example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># returns 45</span>
 <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">|</span> <span class="n">toSum</span><span class="p">()</span>
@@ -1897,7 +2052,7 @@ Example:</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="k1lib.cli.conv.toProd.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/conv.html#toProd.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli.conv.toProd.__init__" title="Permalink to this definition"></a></dt>
-<dd><p>Calculates the product of a list of numbers. Can pipe in <a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.0.0a0+git0dfc3e1 ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a> or <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>.
+<dd><p>Calculates the product of a list of numbers. Can pipe in <a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.0.0a0+git3ce1ebb ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a> or <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>.
 Example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># returns 362880</span>
 <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span> <span class="o">|</span> <span class="n">toProd</span><span class="p">()</span>
@@ -1919,7 +2074,7 @@ Example:</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="k1lib.cli.conv.toAvg.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/conv.html#toAvg.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli.conv.toAvg.__init__" title="Permalink to this definition"></a></dt>
-<dd><p>Calculates average of list of numbers. Can pipe in <a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.0.0a0+git0dfc3e1 ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a> or <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>.
+<dd><p>Calculates average of list of numbers. Can pipe in <a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.0.0a0+git3ce1ebb ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a> or <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>.
 Example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># returns 4.5</span>
 <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">|</span> <span class="n">toAvg</span><span class="p">()</span>
@@ -1949,7 +2104,7 @@ Example:</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="k1lib.cli.conv.toMax.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/conv.html#toMax.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli.conv.toMax.__init__" title="Permalink to this definition"></a></dt>
-<dd><p>Calculates the max of a bunch of numbers. Can pipe in <a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.0.0a0+git0dfc3e1 ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a> or <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>.
+<dd><p>Calculates the max of a bunch of numbers. Can pipe in <a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.0.0a0+git3ce1ebb ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a> or <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>.
 Example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># returns 6</span>
 <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">|</span> <span class="n">toMax</span><span class="p">()</span>
@@ -1971,7 +2126,7 @@ Example:</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="k1lib.cli.conv.toMin.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/conv.html#toMin.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli.conv.toMin.__init__" title="Permalink to this definition"></a></dt>
-<dd><p>Calculates the min of a bunch of numbers. Can pipe in <a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.0.0a0+git0dfc3e1 ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a> or <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>.
+<dd><p>Calculates the min of a bunch of numbers. Can pipe in <a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.0.0a0+git3ce1ebb ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a> or <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>.
 Example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># returns 1</span>
 <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">|</span> <span class="n">toMin</span><span class="p">()</span>
@@ -2159,7 +2314,7 @@ in list of columns</p>
 <span class="p">[[</span><span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">],</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">]]</span> <span class="o">|</span> <span class="n">toFloat</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">|</span> <span class="n">deref</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>This also works well with <a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.0.0a0+git0dfc3e1 ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a> and <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>,
+<p>This also works well with <a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.0.0a0+git3ce1ebb ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a> and <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>,
 as they will not be broken up into an iterator:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># returns a numpy array, instead of an iterator</span>
 <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span> <span class="o">|</span> <span class="n">toFloat</span><span class="p">()</span>
@@ -2316,7 +2471,7 @@ Examples:</p>
 <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="o">|</span> <span class="n">filt</span><span class="p">(</span><span class="mi">3</span> <span class="o">&lt;=</span> <span class="n">op</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">)</span> <span class="o">|</span> <span class="n">deref</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>If you pass in <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a> or <a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.0.0a0+git0dfc3e1 ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a>, then it will
+<p>If you pass in <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a> or <a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.0.0a0+git3ce1ebb ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a>, then it will
 automatically use the C-accelerated versions if possible, like this:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># returns np.array([2, 3, 4]), instead of iter([2, 3, 4])</span>
 <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span> <span class="o">|</span> <span class="n">filt</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">&gt;=</span><span class="mi">2</span><span class="p">)</span> <span class="o">|</span> <span class="n">deref</span><span class="p">()</span>
@@ -2466,7 +2621,7 @@ Example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> <span class="o">|</span> <span class="n">head</span><span class="p">(</span><span class="mf">0.25</span><span class="p">)</span> <span class="o">|</span> <span class="n">deref</span><span class="p">()</span> <span class="c1"># returns [0, 1, 2, 3, 4], or the first 25% of samples</span>
 </pre></div>
 </div>
-<p>Also works well and fast with <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>, <a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.0.0a0+git0dfc3e1 ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a>
+<p>Also works well and fast with <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>, <a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.0.0a0+git3ce1ebb ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a>
 and other sliceable types:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># returns (10,)</span>
 <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">|</span> <span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">|</span> <span class="n">shape</span><span class="p">()</span>
@@ -2540,7 +2695,7 @@ Examples:</p>
 <p>So, result of that is just <code class="docutils literal notranslate"><span class="pre">[['5',</span> <span class="pre">'8'],</span> <span class="pre">['f',</span> <span class="pre">'i']]</span></code></p>
 <p>In the fourth example, if you’re only cutting out 1 column, then it
 will just grab that column directly, instead of putting it in a list.</p>
-<p>If you pass in <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a> or <a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.0.0a0+git0dfc3e1 ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a>, then it will
+<p>If you pass in <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a> or <a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.0.0a0+git3ce1ebb ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a>, then it will
 automatically use the C-accelerated versions, like this:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span> <span class="o">|</span> <span class="n">cut</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>  <span class="c1"># returns tensor of shape (4, 2, 6)</span>
 <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span> <span class="o">|</span> <span class="n">cut</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>     <span class="c1"># returns tensor of shape (4, 6)</span>
@@ -3022,6 +3177,17 @@ all. Instead, do something like this:</p>
 <dt class="sig sig-object py" id="k1lib.cli.grep.grep.__ror__">
 <span class="sig-name descname"><span class="pre">__ror__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">it</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Iterator" title="(in Python v3.11)"><span class="pre">Iterator</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Iterator" title="(in Python v3.11)"><span class="pre">Iterator</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/k1lib/cli/grep.html#grep.__ror__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli.grep.grep.__ror__" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.cli.grep.grep.__invert__">
+<span class="sig-name descname"><span class="pre">__invert__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/grep.html#grep.__invert__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli.grep.grep.__invert__" title="Permalink to this definition"></a></dt>
+<dd><p>Flips the pattern, just like how <a class="reference internal" href="#k1lib.cli.filt.filt" title="k1lib.cli.filt.filt"><code class="xref py py-class docutils literal notranslate"><span class="pre">filt</span></code></a>
+works. Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># returns [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;e&#39;, &#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;4&#39;]</span>
+<span class="s2">&quot;abcde12d34&quot;</span> <span class="o">|</span> <span class="o">~</span><span class="n">grep</span><span class="p">(</span><span class="s2">&quot;d&quot;</span><span class="p">)</span> <span class="o">|</span> <span class="n">deref</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
 
 </dd></dl>
 
@@ -5314,7 +5480,7 @@ Example:</p>
 <span class="p">[[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]],</span> <span class="p">[[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> <span class="p">[],</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">]]]</span> <span class="o">|</span> <span class="n">joinStreams</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">|</span> <span class="n">deref</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>If you pass in <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a> or <a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.0.0a0+git0dfc3e1 ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a>, then it will
+<p>If you pass in <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a> or <a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.0.0a0+git3ce1ebb ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a>, then it will
 automatically use the C-accelerated version, like this:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># returns Tensor with shape (6, 4)</span>
 <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="o">|</span> <span class="n">joinStreams</span><span class="p">()</span>
@@ -5425,7 +5591,7 @@ Example:</p>
 <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">|</span> <span class="n">batched</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="s2">&quot;inf&quot;</span><span class="p">),</span> <span class="kc">False</span><span class="p">)</span> <span class="o">|</span> <span class="n">deref</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Can work well and fast with <a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.0.0a0+git0dfc3e1 ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a> and <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>:</p>
+<p>Can work well and fast with <a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.0.0a0+git3ce1ebb ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a> and <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># both returns torch.Tensor of shape (2, 3, 4, 5)</span>
 <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="o">|</span> <span class="n">batched</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="o">|</span> <span class="n">batched</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
@@ -5671,7 +5837,7 @@ Example:</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="k1lib.cli.structural.permute.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">permutations</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/structural.html#permute.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli.structural.permute.__init__" title="Permalink to this definition"></a></dt>
-<dd><p>Permutes the columns. Acts kinda like <a class="reference external" href="https://pytorch.org/docs/master/generated/torch.Tensor.permute.html#torch.Tensor.permute" title="(in PyTorch vmaster (2.0.0a0+git0dfc3e1 ))"><code class="xref py py-meth docutils literal notranslate"><span class="pre">torch.Tensor.permute()</span></code></a>.
+<dd><p>Permutes the columns. Acts kinda like <a class="reference external" href="https://pytorch.org/docs/master/generated/torch.Tensor.permute.html#torch.Tensor.permute" title="(in PyTorch vmaster (2.0.0a0+git3ce1ebb ))"><code class="xref py py-meth docutils literal notranslate"><span class="pre">torch.Tensor.permute()</span></code></a>.
 Example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># returns [[&#39;b&#39;, &#39;a&#39;], [&#39;d&#39;, &#39;c&#39;]]</span>
 <span class="p">[</span><span class="s2">&quot;ab&quot;</span><span class="p">,</span> <span class="s2">&quot;cd&quot;</span><span class="p">]</span> <span class="o">|</span> <span class="n">permute</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">|</span> <span class="n">deref</span><span class="p">()</span>
@@ -6472,7 +6638,7 @@ will never try to iterate over it. If you wish to change it, do something like:<
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>maxDepth</strong> – maximum depth to dereference. Starts at 0 for not doing anything
 at all</p></li>
-<li><p><strong>igT</strong> – short for “ignore tensor”. If True, then don’t loop over <a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.0.0a0+git0dfc3e1 ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a>
+<li><p><strong>igT</strong> – short for “ignore tensor”. If True, then don’t loop over <a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.0.0a0+git3ce1ebb ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a>
 and <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a> internals</p></li>
 </ul>
 </dd>
@@ -6543,7 +6709,7 @@ Literally just a shortcut for:</p>
 <span class="nb">range</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="o">|</span> <span class="n">smooth</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">|</span> <span class="n">deref</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Smoothing over <a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.0.0a0+git0dfc3e1 ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a> or <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a> will
+<p>Smoothing over <a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.0.0a0+git3ce1ebb ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a> or <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a> will
 be much faster, and produce high dimensional results:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># returns torch.Tensor with shape (2, 3, 4)</span>
 <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="o">|</span> <span class="n">smooth</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
@@ -7180,7 +7346,7 @@ so not worth it/can’t mention it here. Anyway, execute this:</p>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="../base.html" class="btn btn-neutral float-left" title="Base module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="streams.html" class="btn btn-neutral float-right" title="Streams tutorial" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="llvm.html" class="btn btn-neutral float-right" title="LLVM optimizer tutorial" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
