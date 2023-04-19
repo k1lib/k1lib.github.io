@@ -10,10 +10,18 @@ Changelogs
 Cli:
 
 - Revamped docs a lot
+- Added :class:`~modifier.applyCl` to execute functions across an entire cluster
+- Auto get representation if not string in :class:`~grep.grep`.
+- Added aliases :class:`~modifier.map_` and :class:`~filt.filter_`
+- Added string execution ``3 | aS("x+2")`` capability to all clis
+- Added :class:`~conv.toHtml` to quickly convert PIL image to html tag
+- Accelerated :class:`~filt.filt` for array types even more
 
 Generic:
 
 - Revamped :mod:`~k1lib.serve` a little, adding a more robust type system
+- Added more default imports like ray and pyarrow
+- Added :class:`~k1lib.viz.Scroll` and :class:`~k1lib.viz.Toggle`
 
 `1.2 </1.2>`_
 ---------------

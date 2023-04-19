@@ -11,9 +11,6 @@
   <![endif]-->
   
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
@@ -26,11 +23,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> k1lib
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            k1lib
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -77,7 +78,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
       <li class="breadcrumb-item active">Index</li>
       <li class="wy-breadcrumbs-aside">
       </li>
@@ -127,13 +128,9 @@
 </li>
       <li><a href="cli/index.html#k1lib.cli.init.BaseCli.__and__">__and__() (k1lib.cli.init.BaseCli method)</a>
 </li>
-      <li><a href="monkey.html#graphviz.dot.Digraph.__call__">__call__() (graphviz.dot.Digraph method)</a>
+      <li><a href="base.html#k1lib.AutoIncrement.__call__">__call__() (k1lib.AutoIncrement method)</a>
 
       <ul>
-        <li><a href="monkey.html#graphviz.dot.Graph.__call__">(graphviz.dot.Graph method)</a>
-</li>
-        <li><a href="base.html#k1lib.AutoIncrement.__call__">(k1lib.AutoIncrement method)</a>
-</li>
         <li><a href="callbacks/index.html#k1lib.callbacks.callbacks.Callbacks.__call__">(k1lib.callbacks.callbacks.Callbacks method)</a>
 </li>
         <li><a href="cli/index.html#k1lib.cli.init.BaseCli.__call__">(k1lib.cli.init.BaseCli method)</a>
@@ -222,6 +219,8 @@
 </li>
         <li><a href="cli/index.html#k1lib.cli.conv.toGray.__init__">(k1lib.cli.conv.toGray method)</a>
 </li>
+        <li><a href="cli/index.html#k1lib.cli.conv.toHtml.__init__">(k1lib.cli.conv.toHtml method)</a>
+</li>
         <li><a href="cli/index.html#k1lib.cli.conv.toInt.__init__">(k1lib.cli.conv.toInt method)</a>
 </li>
         <li><a href="cli/index.html#k1lib.cli.conv.toList.__init__">(k1lib.cli.conv.toList method)</a>
@@ -295,6 +294,8 @@
         <li><a href="cli/index.html#k1lib.cli.mgi.batch.__init__">(k1lib.cli.mgi.batch method)</a>
 </li>
         <li><a href="cli/index.html#k1lib.cli.modifier.apply.__init__">(k1lib.cli.modifier.apply method)</a>
+</li>
+        <li><a href="cli/index.html#k1lib.cli.modifier.applyCl.__init__">(k1lib.cli.modifier.applyCl method)</a>
 </li>
         <li><a href="cli/index.html#k1lib.cli.modifier.applyMp.__init__">(k1lib.cli.modifier.applyMp method)</a>
 </li>
@@ -498,9 +499,9 @@
 </li>
         <li><a href="viz.html#k1lib.viz.Carousel.__init__">(k1lib.viz.Carousel method)</a>
 </li>
-        <li><a href="viz.html#k1lib.viz.HtmlImage.__init__">(k1lib.viz.HtmlImage method)</a>
+        <li><a href="viz.html#k1lib.viz.Scroll.__init__">(k1lib.viz.Scroll method)</a>
 </li>
-        <li><a href="viz.html#k1lib.viz.ToggleImage.__init__">(k1lib.viz.ToggleImage method)</a>
+        <li><a href="viz.html#k1lib.viz.Toggle.__init__">(k1lib.viz.Toggle method)</a>
 </li>
         <li><a href="base.html#k1lib.wrapMod.__init__">(k1lib.wrapMod method)</a>
 </li>
@@ -584,6 +585,8 @@
 </li>
         <li><a href="cli/index.html#k1lib.cli.conv.toGray.__ror__">(k1lib.cli.conv.toGray method)</a>
 </li>
+        <li><a href="cli/index.html#k1lib.cli.conv.toHtml.__ror__">(k1lib.cli.conv.toHtml method)</a>
+</li>
         <li><a href="cli/index.html#k1lib.cli.conv.toInt.__ror__">(k1lib.cli.conv.toInt method)</a>
 </li>
         <li><a href="cli/index.html#k1lib.cli.conv.toList.__ror__">(k1lib.cli.conv.toList method)</a>
@@ -663,6 +666,8 @@
         <li><a href="cli/index.html#k1lib.cli.mgi.batch.__ror__">(k1lib.cli.mgi.batch method)</a>
 </li>
         <li><a href="cli/index.html#k1lib.cli.modifier.apply.__ror__">(k1lib.cli.modifier.apply method)</a>
+</li>
+        <li><a href="cli/index.html#k1lib.cli.modifier.applyCl.__ror__">(k1lib.cli.modifier.applyCl method)</a>
 </li>
         <li><a href="cli/index.html#k1lib.cli.modifier.applyMp.__ror__">(k1lib.cli.modifier.applyMp method)</a>
 </li>
@@ -786,7 +791,9 @@
 </li>
         <li><a href="viz.html#k1lib.viz.Carousel.__ror__">(k1lib.viz.Carousel method)</a>
 </li>
-        <li><a href="viz.html#k1lib.viz.ToggleImage.__ror__">(k1lib.viz.ToggleImage method)</a>
+        <li><a href="viz.html#k1lib.viz.Scroll.__ror__">(k1lib.viz.Scroll method)</a>
+</li>
+        <li><a href="viz.html#k1lib.viz.Toggle.__ror__">(k1lib.viz.Toggle method)</a>
 </li>
         <li><a href="monkey.html#torch.nn.modules.Module.__ror__">(torch.nn.modules.Module method)</a>
 </li>
@@ -843,10 +850,10 @@
 </li>
       <li><a href="mo.html#k1lib.mo.alcohol">alcohol() (in module k1lib.mo)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="mo.html#k1lib.mo.alkane">alkane() (in module k1lib.mo)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="cli/index.html#k1lib.cli.init.BaseCli.all">all() (k1lib.cli.init.BaseCli method)</a>
 </li>
       <li><a href="serve.html#k1lib.serve.main.analyze">analyze() (in module k1lib.serve.main)</a>
@@ -862,6 +869,8 @@
       <li><a href="cli/index.html#k1lib.cli.modifier.apply">apply (class in k1lib.cli.modifier)</a>
 </li>
       <li><a href="selector.html#k1lib.selector.ModuleSelector.apply">apply() (k1lib.selector.ModuleSelector method)</a>
+</li>
+      <li><a href="cli/index.html#k1lib.cli.modifier.applyCl">applyCl (class in k1lib.cli.modifier)</a>
 </li>
       <li><a href="cli/index.html#k1lib.cli.modifier.applyMp">applyMp (class in k1lib.cli.modifier)</a>
 </li>
@@ -1371,12 +1380,14 @@
 </li>
       <li><a href="cli/index.html#k1lib.cli.gb.feats.filt">filt() (k1lib.cli.gb.feats static method)</a>
 </li>
-      <li><a href="base.html#k1lib.Range.fixOrder">fixOrder() (k1lib.Range method)</a>
+      <li><a href="cli/index.html#k1lib.cli.filt.filter_">filter_ (in module k1lib.cli.filt)</a>
 </li>
-      <li><a href="cli/index.html#k1lib.cli.sam.flag">flag (class in k1lib.cli.sam)</a>
+      <li><a href="base.html#k1lib.Range.fixOrder">fixOrder() (k1lib.Range method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="cli/index.html#k1lib.cli.sam.flag">flag (class in k1lib.cli.sam)</a>
+</li>
       <li><a href="schedule.html#k1lib.schedule.Fn">Fn (class in k1lib.schedule)</a>
 </li>
       <li><a href="k1ui.html#k1lib.k1ui.main.Recording.formWords">formWords() (k1lib.k1ui.main.Recording method)</a>
@@ -1425,16 +1436,20 @@
 </li>
       <li><a href="k1ui.html#k1lib.k1ui.main.get">get() (in module k1lib.k1ui.main)</a>
 </li>
+      <li><a href="monkey.html#matplotlib.pyplot.getFig">getFig() (matplotlib.pyplot method)</a>
+</li>
       <li><a href="monkey.html#torch.nn.modules.Module.getParamsVector">getParamsVector() (torch.nn.modules.Module method)</a>
+</li>
+      <li><a href="base.html#k1lib.glo">glo() (in module k1lib)</a>
 </li>
       <li><a href="cli/index.html#k1lib.cli.bio.go">go() (in module k1lib.cli.bio)</a>
 </li>
       <li><a href="callbacks/index.html#k1lib.callbacks.confusionMatrix.ConfusionMatrix.goodMatrix">goodMatrix (k1lib.callbacks.confusionMatrix.ConfusionMatrix property)</a>
 </li>
-      <li><a href="monkey.html#torch.nn.modules.Module.gradContext">gradContext() (torch.nn.modules.Module method)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="monkey.html#torch.nn.modules.Module.gradContext">gradContext() (torch.nn.modules.Module method)</a>
+</li>
       <li><a href="callbacks/index.html#k1lib.callbacks.limits.GradientClipping">GradientClipping (class in k1lib.callbacks.limits)</a>
 </li>
       <li><a href="callbacks/index.html#k1lib.callbacks.limits.GradientClippingNorm">GradientClippingNorm (class in k1lib.callbacks.limits)</a>
@@ -1495,7 +1510,7 @@
 </li>
       <li><a href="callbacks/index.html#k1lib.callbacks.hookParam.HookParam">HookParam (class in k1lib.callbacks.hookParam)</a>
 </li>
-      <li><a href="viz.html#k1lib.viz.HtmlImage">HtmlImage (class in k1lib.viz)</a>
+      <li><a href="serve.html#k1lib.serve.main.html">html (class in k1lib.serve.main)</a>
 </li>
       <li><a href="schedule.html#k1lib.schedule.hump">hump() (in module k1lib.schedule)</a>
 </li>
@@ -2107,6 +2122,8 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="mo.html#k1lib.mo.Atom.main">main() (k1lib.mo.Atom method)</a>
 </li>
+      <li><a href="cli/index.html#k1lib.cli.modifier.map_">map_ (in module k1lib.cli.modifier)</a>
+</li>
       <li><a href="monkey.html#mpl_toolkits.mplot3d.axes3d.Axes3D.march">march() (mpl_toolkits.mplot3d.axes3d.Axes3D method)</a>
 </li>
       <li><a href="cli/index.html#k1lib.cli.filt.mask">mask (class in k1lib.cli.filt)</a>
@@ -2616,9 +2633,9 @@
         <li><a href="base.html#k1lib.Learner.save">(k1lib.Learner method)</a>
 </li>
       </ul></li>
-      <li><a href="viz.html#k1lib.viz.Carousel.saveGraphviz">saveGraphviz() (k1lib.viz.Carousel method)</a>
-</li>
       <li><a href="base.html#k1lib.scaleSvg">scaleSvg() (in module k1lib)</a>
+</li>
+      <li><a href="viz.html#k1lib.viz.Scroll">Scroll (class in k1lib.viz)</a>
 </li>
       <li><a href="k1ui.html#k1lib.k1ui.main.Recording.sel">sel() (k1lib.k1ui.main.Recording method)</a>
 </li>
@@ -2856,13 +2873,17 @@
 </li>
       <li><a href="cli/index.html#k1lib.cli.conv.toDict">toDict (class in k1lib.cli.conv)</a>
 </li>
+      <li><a href="cli/index.html#k1lib.cli.conv.toFloat">toFloat (class in k1lib.cli.conv)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="cli/index.html#k1lib.cli.conv.toFloat">toFloat (class in k1lib.cli.conv)</a>
+      <li><a href="viz.html#k1lib.viz.Toggle">Toggle (class in k1lib.viz)</a>
 </li>
       <li><a href="viz.html#k1lib.viz.ToggleImage">ToggleImage (class in k1lib.viz)</a>
 </li>
       <li><a href="cli/index.html#k1lib.cli.conv.toGray">toGray (class in k1lib.cli.conv)</a>
+</li>
+      <li><a href="cli/index.html#k1lib.cli.conv.toHtml">toHtml (class in k1lib.cli.conv)</a>
 </li>
       <li><a href="cli/index.html#k1lib.cli.conv.toImg">toImg (in module k1lib.cli.conv)</a>
 </li>

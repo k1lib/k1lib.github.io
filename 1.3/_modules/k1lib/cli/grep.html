@@ -11,9 +11,6 @@
   <![endif]-->
   
         <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-        <script src="../../../_static/jquery.js"></script>
-        <script src="../../../_static/underscore.js"></script>
-        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../_static/doctools.js"></script>
         <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/js/theme.js"></script>
@@ -26,11 +23,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../../../index.html" class="icon icon-home"> k1lib
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            k1lib
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -77,7 +78,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../../index.html" class="icon icon-home"></a></li>
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
       <li class="breadcrumb-item active">k1lib.cli.grep</li>
       <li class="wy-breadcrumbs-aside">
@@ -137,6 +138,10 @@
 
 <span class="sd">Also, there&#39;s a `whole tutorial &lt;../tutorials/cli.html&gt;`_ devoted to just this cli</span>
 
+<span class="sd">Also also, if each element in the input iterator is not a string/bytes, and</span>
+<span class="sd">you&#39;re searching using regex, then it will get its representation and searches</span>
+<span class="sd">in it.</span>
+
 <span class="sd">:param pattern: regex pattern to search for in a line</span>
 <span class="sd">:param before: lines before the hit. Outputs independent lines</span>
 <span class="sd">:param after: lines after the hit. Outputs independent lines</span>
@@ -145,8 +150,8 @@
 <span class="sd">:param col: searches for pattern in a specific column&quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_f</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">pattern</span><span class="p">)</span><span class="o">.</span><span class="n">search</span> <span class="c1"># make func quickly accessible</span>
-        <span class="k">else</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_f</span> <span class="o">=</span> <span class="n">cli</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">solidify</span><span class="p">(</span><span class="n">pattern</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_f</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">pattern</span><span class="p">)</span><span class="o">.</span><span class="n">search</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># make func quickly accessible</span>
+        <span class="k">else</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_f</span> <span class="o">=</span> <span class="n">cli</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">solidify</span><span class="p">(</span><span class="n">pattern</span><span class="p">);</span> <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># mode for either regex or normal funcs</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">before</span> <span class="o">=</span> <span class="n">before</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">after</span> <span class="o">=</span> <span class="n">after</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">col</span> <span class="o">=</span> <span class="n">col</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">N</span> <span class="o">=</span> <span class="n">N</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">sep</span> <span class="o">=</span> <span class="n">sep</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">tillPattern</span> <span class="o">=</span> <span class="kc">None</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">tillAfter</span> <span class="o">=</span> <span class="kc">None</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tillF</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="kc">False</span></div>
 <div class="viewcode-block" id="grep.till"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.grep.grep.till">[docs]</a>    <span class="k">def</span> <span class="nf">till</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pattern</span><span class="p">:</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">Any</span><span class="p">],</span> <span class="nb">bool</span><span class="p">]]</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -185,6 +190,7 @@
         <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">it</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">col</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span> <span class="n">line</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">line</span><span class="p">);</span> <span class="n">elem</span> <span class="o">=</span> <span class="n">line</span><span class="p">[</span><span class="n">col</span><span class="p">]</span>
             <span class="k">else</span><span class="p">:</span> <span class="n">elem</span> <span class="o">=</span> <span class="n">line</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">elem</span><span class="p">,</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">)):</span> <span class="n">elem</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">elem</span><span class="si">}</span><span class="s2">&quot;</span>
             <span class="k">if</span> <span class="n">_f</span><span class="p">(</span><span class="n">elem</span><span class="p">):</span> <span class="c1"># new section</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">sectionIdx</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">counter</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">after</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span> <span class="n">cRO</span><span class="o">.</span><span class="n">revert</span><span class="p">()</span>
                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">sectionIdx</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">N</span><span class="p">:</span> <span class="k">return</span>

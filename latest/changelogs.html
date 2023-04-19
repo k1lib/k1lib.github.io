@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Changelogs &mdash; k1lib  documentation</title>
@@ -12,9 +12,6 @@
   <![endif]-->
   
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
@@ -28,11 +25,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> k1lib
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            k1lib
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -109,7 +110,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
       <li class="breadcrumb-item active">Changelogs</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/changelogs.rst.txt" rel="nofollow"> View page source</a>
@@ -127,10 +128,18 @@
 <p>Cli:</p>
 <ul class="simple">
 <li><p>Revamped docs a lot</p></li>
+<li><p>Added <a class="reference internal" href="cli/index.html#k1lib.cli.modifier.applyCl" title="k1lib.cli.modifier.applyCl"><code class="xref py py-class docutils literal notranslate"><span class="pre">applyCl</span></code></a> to execute functions across an entire cluster</p></li>
+<li><p>Auto get representation if not string in <a class="reference internal" href="cli/index.html#k1lib.cli.grep.grep" title="k1lib.cli.grep.grep"><code class="xref py py-class docutils literal notranslate"><span class="pre">grep</span></code></a>.</p></li>
+<li><p>Added aliases <a class="reference internal" href="cli/index.html#k1lib.cli.modifier.map_" title="k1lib.cli.modifier.map_"><code class="xref py py-class docutils literal notranslate"><span class="pre">map_</span></code></a> and <a class="reference internal" href="cli/index.html#k1lib.cli.filt.filter_" title="k1lib.cli.filt.filter_"><code class="xref py py-class docutils literal notranslate"><span class="pre">filter_</span></code></a></p></li>
+<li><p>Added string execution <code class="docutils literal notranslate"><span class="pre">3</span> <span class="pre">|</span> <span class="pre">aS(&quot;x+2&quot;)</span></code> capability to all clis</p></li>
+<li><p>Added <a class="reference internal" href="cli/index.html#k1lib.cli.conv.toHtml" title="k1lib.cli.conv.toHtml"><code class="xref py py-class docutils literal notranslate"><span class="pre">toHtml</span></code></a> to quickly convert PIL image to html tag</p></li>
+<li><p>Accelerated <a class="reference internal" href="cli/index.html#k1lib.cli.filt.filt" title="k1lib.cli.filt.filt"><code class="xref py py-class docutils literal notranslate"><span class="pre">filt</span></code></a> for array types even more</p></li>
 </ul>
 <p>Generic:</p>
 <ul class="simple">
 <li><p>Revamped <code class="xref py py-mod docutils literal notranslate"><span class="pre">serve</span></code> a little, adding a more robust type system</p></li>
+<li><p>Added more default imports like ray and pyarrow</p></li>
+<li><p>Added <a class="reference internal" href="viz.html#k1lib.viz.Scroll" title="k1lib.viz.Scroll"><code class="xref py py-class docutils literal notranslate"><span class="pre">Scroll</span></code></a> and <a class="reference internal" href="viz.html#k1lib.viz.Toggle" title="k1lib.viz.Toggle"><code class="xref py py-class docutils literal notranslate"><span class="pre">Toggle</span></code></a></p></li>
 </ul>
 </section>
 <section id="id4">
@@ -157,7 +166,7 @@ and <a class="reference internal" href="cli/index.html#k1lib.cli.modifier.random
 <li><p>Added padding option to <a class="reference internal" href="cli/index.html#k1lib.cli.structural.window" title="k1lib.cli.structural.window"><code class="xref py py-class docutils literal notranslate"><span class="pre">window</span></code></a></p></li>
 <li><p>Added probability weighting mode to <a class="reference internal" href="cli/index.html#k1lib.cli.structural.joinStreamsRandom" title="k1lib.cli.structural.joinStreamsRandom"><code class="xref py py-class docutils literal notranslate"><span class="pre">joinStreamsRandom</span></code></a></p></li>
 <li><p>Fixed <code class="xref py py-mod docutils literal notranslate"><span class="pre">forbiddenfruit</span></code> or-patching of <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a>,
-<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.Series.html#pandas.Series" title="(in pandas v1.5.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.core.series.Series</span></code></a> and <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v1.5.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.core.frame.DataFrame</span></code></a></p></li>
+<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.Series.html#pandas.Series" title="(in pandas v2.0.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.core.series.Series</span></code></a> and <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.0.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.core.frame.DataFrame</span></code></a></p></li>
 </ul>
 <p>Generic:</p>
 <ul class="simple">
@@ -266,7 +275,7 @@ manipulate mouse/keyboard and screens.</p></li>
 <h2><a class="reference external" href="/0.16">0.16</a><a class="headerlink" href="#id12" title="Permalink to this heading"></a></h2>
 <p>Cli:</p>
 <ul class="simple">
-<li><p>Accelerated <a class="reference internal" href="cli/index.html#k1lib.cli.filt.head" title="k1lib.cli.filt.head"><code class="xref py py-class docutils literal notranslate"><span class="pre">head</span></code></a> if input’s a <a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.0.0a0+git3ce1ebb ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a> or <code class="xref py py-class docutils literal notranslate"><span class="pre">np.ndarray</span></code>.</p></li>
+<li><p>Accelerated <a class="reference internal" href="cli/index.html#k1lib.cli.filt.head" title="k1lib.cli.filt.head"><code class="xref py py-class docutils literal notranslate"><span class="pre">head</span></code></a> if input’s a <a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.1.0a0+gitbe0b12e ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a> or <code class="xref py py-class docutils literal notranslate"><span class="pre">np.ndarray</span></code>.</p></li>
 <li><p>Added <a class="reference internal" href="cli/index.html#k1lib.cli.utils.tree" title="k1lib.cli.utils.tree"><code class="xref py py-meth docutils literal notranslate"><span class="pre">tree()</span></code></a>, <a class="reference internal" href="cli/index.html#k1lib.cli.utils.timeLimit" title="k1lib.cli.utils.timeLimit"><code class="xref py py-class docutils literal notranslate"><span class="pre">timeLimit</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">split</span></code>,
 <a class="reference internal" href="cli/index.html#k1lib.cli.utils.lookup" title="k1lib.cli.utils.lookup"><code class="xref py py-class docutils literal notranslate"><span class="pre">lookup</span></code></a>.</p></li>
 <li><p>Renamed <code class="xref py py-class docutils literal notranslate"><span class="pre">joinList</span></code> to <a class="reference internal" href="cli/index.html#k1lib.cli.structural.insert" title="k1lib.cli.structural.insert"><code class="xref py py-class docutils literal notranslate"><span class="pre">insert</span></code></a>, cause that’s more intuitive</p></li>
@@ -300,7 +309,7 @@ manipulate mouse/keyboard and screens.</p></li>
 <li><p>Added <code class="docutils literal notranslate"><span class="pre">mode</span></code> option to <code class="xref py py-class docutils literal notranslate"><span class="pre">toFloat</span></code> and <code class="xref py py-class docutils literal notranslate"><span class="pre">toInt</span></code></p></li>
 <li><p>Accelerated <code class="xref py py-class docutils literal notranslate"><span class="pre">toFloat</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">toInt</span></code>,
 <a class="reference internal" href="cli/index.html#k1lib.cli.structural.batched" title="k1lib.cli.structural.batched"><code class="xref py py-class docutils literal notranslate"><span class="pre">batched</span></code></a> and <a class="reference internal" href="cli/index.html#k1lib.cli.utils.smooth" title="k1lib.cli.utils.smooth"><code class="xref py py-class docutils literal notranslate"><span class="pre">smooth</span></code></a> if it’s a
-<a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.0.0a0+git3ce1ebb ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a> or <code class="xref py py-class docutils literal notranslate"><span class="pre">np.ndarray</span></code></p></li>
+<a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.1.0a0+gitbe0b12e ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a> or <code class="xref py py-class docutils literal notranslate"><span class="pre">np.ndarray</span></code></p></li>
 </ul>
 </section>
 <section id="id16">
@@ -560,7 +569,7 @@ and is much more robust.</p></li>
 <li><p>Removed <code class="xref py py-meth docutils literal notranslate"><span class="pre">copy()</span></code>, as you can just grab another selector
 straight from the model real quick.</p></li>
 <li><p>Removed <code class="xref py py-meth docutils literal notranslate"><span class="pre">parameters()</span></code>, as you can always access the
-associated <a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch vmaster (2.0.0a0+git3ce1ebb ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></a> inside and get params from there.</p></li>
+associated <a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch vmaster (2.1.0a0+gitbe0b12e ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></a> inside and get params from there.</p></li>
 </ul>
 <p>Cli:</p>
 <ul class="simple">
@@ -568,7 +577,7 @@ associated <a class="reference external" href="https://pytorch.org/docs/master/g
 <li><p>Added multi argument capabilities to <a class="reference internal" href="cli/index.html#k1lib.cli.init.BaseCli.__call__" title="k1lib.cli.init.BaseCli.__call__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__call__()</span></code></a>.</p></li>
 <li><p>Added <a class="reference internal" href="cli/index.html#k1lib.cli.modifier.op" title="k1lib.cli.modifier.op"><code class="xref py py-class docutils literal notranslate"><span class="pre">op</span></code></a>.</p></li>
 <li><p>Changed default param <code class="docutils literal notranslate"><span class="pre">ignoreTensors</span></code> of <a class="reference internal" href="cli/index.html#k1lib.cli.utils.deref" title="k1lib.cli.utils.deref"><code class="xref py py-class docutils literal notranslate"><span class="pre">deref</span></code></a> to True.</p></li>
-<li><p>Ignores <a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch vmaster (2.0.0a0+git3ce1ebb ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></a> by default in <a class="reference internal" href="cli/index.html#k1lib.cli.utils.deref" title="k1lib.cli.utils.deref"><code class="xref py py-class docutils literal notranslate"><span class="pre">deref</span></code></a>.</p></li>
+<li><p>Ignores <a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch vmaster (2.1.0a0+gitbe0b12e ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></a> by default in <a class="reference internal" href="cli/index.html#k1lib.cli.utils.deref" title="k1lib.cli.utils.deref"><code class="xref py py-class docutils literal notranslate"><span class="pre">deref</span></code></a>.</p></li>
 </ul>
 </section>
 <section id="id34">
@@ -624,7 +633,7 @@ does the same thing.</p></li>
 <code class="xref py py-class docutils literal notranslate"><span class="pre">DatasetWithSampler</span></code>, as they’re complex and obsolete.</p></li>
 <li><p>Added <code class="xref py py-meth docutils literal notranslate"><span class="pre">tfImg()</span></code>, <code class="xref py py-meth docutils literal notranslate"><span class="pre">tfFloat()</span></code>,
 <code class="xref py py-meth docutils literal notranslate"><span class="pre">analyzeFloat()</span></code></p></li>
-<li><p>Monkey-patched <a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch vmaster (2.0.0a0+git3ce1ebb ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></a> to have piping capabilities.</p></li>
+<li><p>Monkey-patched <a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch vmaster (2.1.0a0+gitbe0b12e ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></a> to have piping capabilities.</p></li>
 <li><p>Renamed <code class="xref py py-mod docutils literal notranslate"><span class="pre">k1lib.data</span></code> to <code class="xref py py-mod docutils literal notranslate"><span class="pre">k1lib.kdata</span></code>, and exposed it automatically in
 <a class="reference internal" href="imports.html#module-k1lib.imports" title="k1lib.imports"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imports</span></code></a>.</p></li>
 <li><p>Renamed <code class="xref py py-mod docutils literal notranslate"><span class="pre">k1lib.nn</span></code> to <a class="reference internal" href="knn.html#module-k1lib.knn" title="k1lib.knn"><code class="xref py py-mod docutils literal notranslate"><span class="pre">k1lib.knn</span></code></a>, and exposed it automatically.</p></li>
@@ -707,7 +716,7 @@ created a new <code class="xref py py-class docutils literal notranslate"><span 
 <p>DL:</p>
 <ul class="simple">
 <li><p>Added class <code class="xref py py-class docutils literal notranslate"><span class="pre">CaptureStdout</span></code></p></li>
-<li><p>Patched <a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.0.0a0+git3ce1ebb ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a> with <a class="reference internal" href="monkey.html#torch.Tensor.crissCross" title="torch.Tensor.crissCross"><code class="xref py py-meth docutils literal notranslate"><span class="pre">crissCross()</span></code></a>,
+<li><p>Patched <a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.1.0a0+gitbe0b12e ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a> with <a class="reference internal" href="monkey.html#torch.Tensor.crissCross" title="torch.Tensor.crissCross"><code class="xref py py-meth docutils literal notranslate"><span class="pre">crissCross()</span></code></a>,
 <a class="reference internal" href="monkey.html#torch.Tensor.histBounds" title="torch.Tensor.histBounds"><code class="xref py py-meth docutils literal notranslate"><span class="pre">histBounds()</span></code></a> and <a class="reference internal" href="monkey.html#torch.Tensor.histScaled" title="torch.Tensor.histScaled"><code class="xref py py-meth docutils literal notranslate"><span class="pre">histScaled()</span></code></a></p></li>
 </ul>
 </section>
@@ -799,7 +808,7 @@ and <code class="xref py py-class docutils literal notranslate"><span class="pre
 <li><p>Added <a class="reference internal" href="monkey.html#torch.nn.modules.Module.paramsContext" title="torch.nn.modules.Module.paramsContext"><code class="xref py py-meth docutils literal notranslate"><span class="pre">torch.nn.modules.Module.paramsContext()</span></code></a></p></li>
 <li><p>Modified <a class="reference internal" href="base.html#k1lib.Object" title="k1lib.Object"><code class="xref py py-class docutils literal notranslate"><span class="pre">k1lib.Object</span></code></a> to allow setting <code class="docutils literal notranslate"><span class="pre">getdoc</span></code> field</p></li>
 <li><p>Added <code class="xref py py-meth docutils literal notranslate"><span class="pre">k1lib.viz.Carousel.saveBytes()</span></code>, <code class="xref py py-meth docutils literal notranslate"><span class="pre">k1lib.viz.Carousel.saveFile()</span></code>,
-<a class="reference internal" href="viz.html#k1lib.viz.Carousel.saveGraphviz" title="k1lib.viz.Carousel.saveGraphviz"><code class="xref py py-meth docutils literal notranslate"><span class="pre">k1lib.viz.Carousel.saveGraphviz()</span></code></a>, and handle different image formats much
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">k1lib.viz.Carousel.saveGraphviz()</span></code>, and handle different image formats much
 better now</p></li>
 </ul>
 </section>
@@ -854,7 +863,7 @@ as “joinRows” is not really obvious</p></li>
 <h2><a class="reference external" href="/0.1.7">0.1.7</a><a class="headerlink" href="#id54" title="Permalink to this heading"></a></h2>
 <p>Interface with external modules:</p>
 <ul class="simple">
-<li><p>Swapped out <code class="docutils literal notranslate"><span class="pre">register_backward_hook</span></code> with <a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.Module.html#torch.nn.Module.register_full_backward_hook" title="(in PyTorch vmaster (2.0.0a0+git3ce1ebb ))"><code class="xref py py-meth docutils literal notranslate"><span class="pre">register_full_backward_hook()</span></code></a>
+<li><p>Swapped out <code class="docutils literal notranslate"><span class="pre">register_backward_hook</span></code> with <a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.Module.html#torch.nn.Module.register_full_backward_hook" title="(in PyTorch vmaster (2.1.0a0+gitbe0b12e ))"><code class="xref py py-meth docutils literal notranslate"><span class="pre">register_full_backward_hook()</span></code></a>
 in <a class="reference internal" href="callbacks/index.html#k1lib.callbacks.hookModule.HookModule" title="k1lib.callbacks.hookModule.HookModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">HookModule</span></code></a> callback</p></li>
 <li><p>Added <code class="docutils literal notranslate"><span class="pre">torch.nn.Module.preserveDevice()</span></code> context manager</p></li>
 </ul>

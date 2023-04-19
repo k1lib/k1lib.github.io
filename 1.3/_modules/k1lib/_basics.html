@@ -11,9 +11,6 @@
   <![endif]-->
   
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
         <script src="../../_static/sphinx_highlight.js"></script>
     <script src="../../_static/js/theme.js"></script>
@@ -26,11 +23,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../../index.html" class="icon icon-home"> k1lib
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            k1lib
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -77,7 +78,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home"></a></li>
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
       <li class="breadcrumb-item active">k1lib._basics</li>
       <li class="wy-breadcrumbs-aside">
@@ -96,13 +97,26 @@
 <span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
 <span class="k">try</span><span class="p">:</span> <span class="kn">import</span> <span class="nn">torch</span><span class="p">;</span> <span class="n">hasTorch</span> <span class="o">=</span> <span class="kc">True</span>
 <span class="k">except</span><span class="p">:</span> <span class="n">hasTorch</span> <span class="o">=</span> <span class="kc">False</span>
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;_docsUrl&quot;</span><span class="p">,</span> <span class="s2">&quot;isNumeric&quot;</span><span class="p">,</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;_docsUrl&quot;</span><span class="p">,</span> <span class="s2">&quot;glo&quot;</span><span class="p">,</span> <span class="s2">&quot;isNumeric&quot;</span><span class="p">,</span>
            <span class="s2">&quot;patch&quot;</span><span class="p">,</span> <span class="s2">&quot;wrapMod&quot;</span><span class="p">,</span> <span class="s2">&quot;wraps&quot;</span><span class="p">,</span> <span class="s2">&quot;squeeze&quot;</span><span class="p">,</span> <span class="s2">&quot;raiseEx&quot;</span><span class="p">,</span>
            <span class="s2">&quot;numDigits&quot;</span><span class="p">,</span> <span class="s2">&quot;limitLines&quot;</span><span class="p">,</span>
-           <span class="s2">&quot;limitChars&quot;</span><span class="p">,</span> <span class="s2">&quot;showLog&quot;</span><span class="p">,</span> <span class="s2">&quot;cleanDiv&quot;</span><span class="p">,</span> <span class="s2">&quot;graph&quot;</span><span class="p">,</span> <span class="s2">&quot;digraph&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;limitChars&quot;</span><span class="p">,</span> <span class="s2">&quot;showLog&quot;</span><span class="p">,</span> <span class="s2">&quot;cleanDiv&quot;</span><span class="p">,</span>
            <span class="s2">&quot;beep&quot;</span><span class="p">,</span> <span class="s2">&quot;beepOnAvailable&quot;</span><span class="p">,</span> <span class="s2">&quot;dontWrap&quot;</span><span class="p">,</span>
-           <span class="s2">&quot;debounce&quot;</span><span class="p">,</span> <span class="s2">&quot;scaleSvg&quot;</span><span class="p">,</span> <span class="s2">&quot;now&quot;</span><span class="p">,</span> <span class="s2">&quot;pushNotification&quot;</span><span class="p">,</span> <span class="s2">&quot;dep&quot;</span><span class="p">,</span> <span class="s2">&quot;ticks&quot;</span><span class="p">]</span>
+           <span class="s2">&quot;debounce&quot;</span><span class="p">,</span> <span class="s2">&quot;scaleSvg&quot;</span><span class="p">,</span> <span class="s2">&quot;now&quot;</span><span class="p">,</span> <span class="s2">&quot;pushNotification&quot;</span><span class="p">,</span> <span class="s2">&quot;dep&quot;</span><span class="p">,</span> <span class="s2">&quot;ticks&quot;</span><span class="p">,</span> <span class="s2">&quot;digraph&quot;</span><span class="p">,</span> <span class="s2">&quot;graph&quot;</span><span class="p">]</span>
 <span class="n">_docsUrl</span> <span class="o">=</span> <span class="s2">&quot;https://k1lib.com&quot;</span>
+<span class="n">_glo</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span>
+<div class="viewcode-block" id="glo"><a class="viewcode-back" href="../../base.html#k1lib.glo">[docs]</a><span class="k">def</span> <span class="nf">glo</span><span class="p">(</span><span class="n">glo</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Registers the global context with k1lib, so that you can do</span>
+<span class="sd">things like ``5 | aS(&quot;x+3&quot;)`` directly. Do this right after importing::</span>
+
+<span class="sd">    from k1lib.imports import *</span>
+<span class="sd">    k1.glo(globals())</span>
+<span class="sd">    </span>
+<span class="sd">    4 | aS(&quot;x + 5&quot;) # returns 9</span>
+
+<span class="sd">:param glo: globals() object. Put None here if you want to get the stored value&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">glo</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="k">return</span> <span class="n">_glo</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">_glo</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">glo</span></div>
 <div class="viewcode-block" id="isNumeric"><a class="viewcode-back" href="../../base.html#k1lib.isNumeric">[docs]</a><span class="k">def</span> <span class="nf">isNumeric</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns whether object is actually a number&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">number</span><span class="p">))</span></div>
@@ -230,22 +244,6 @@
     <span class="n">_list</span> <span class="o">=</span> <span class="p">(</span><span class="n">_list</span><span class="o">*</span><span class="n">total</span><span class="o">/</span><span class="n">_list</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
     <span class="n">_list</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">total</span> <span class="o">-</span> <span class="n">_list</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">_list</span>
-<span class="k">try</span><span class="p">:</span>
-    <span class="kn">import</span> <span class="nn">graphviz</span>
-<div class="viewcode-block" id="digraph"><a class="viewcode-back" href="../../base.html#k1lib.digraph">[docs]</a>    <span class="k">def</span> <span class="nf">digraph</span><span class="p">():</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convenience method for creating a new graphviz Digraph.</span>
-<span class="sd">Example::</span>
-
-<span class="sd">    g = k1lib.graph()</span>
-<span class="sd">    g(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;)</span>
-<span class="sd">    g # displays arrows from &quot;a&quot; to &quot;b&quot; and &quot;a&quot; to &quot;c&quot;</span>
-<span class="sd">&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">graphviz</span><span class="o">.</span><span class="n">Digraph</span><span class="p">(</span><span class="n">graph_attr</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;rankdir&quot;</span><span class="p">:</span><span class="s2">&quot;TB&quot;</span><span class="p">})</span></div>
-<div class="viewcode-block" id="graph"><a class="viewcode-back" href="../../base.html#k1lib.graph">[docs]</a>    <span class="k">def</span> <span class="nf">graph</span><span class="p">():</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convenience method for creating a new graphviz Graph. See also: :meth:`digraph`&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">graphviz</span><span class="o">.</span><span class="n">Graph</span><span class="p">(</span><span class="n">graph_attr</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;rankdir&quot;</span><span class="p">:</span><span class="s2">&quot;TB&quot;</span><span class="p">,</span> <span class="s2">&quot;overlap&quot;</span><span class="p">:</span> <span class="s2">&quot;false&quot;</span><span class="p">})</span></div>
-<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-    <span class="n">digraph</span> <span class="o">=</span> <span class="n">graph</span> <span class="o">=</span> <span class="k">lambda</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Module `graphviz` not found! Please install it first, something like `pip install graphviz`&quot;</span><span class="p">)</span>
 <div class="viewcode-block" id="beep"><a class="viewcode-back" href="../../base.html#k1lib.beep">[docs]</a><span class="k">def</span> <span class="nf">beep</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="mf">0.3</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Plays a beeping sound, may be useful as notification for long-running tasks&quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span> <span class="kn">import</span> <span class="nn">IPython</span><span class="p">;</span> <span class="n">IPython</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">display_html</span><span class="p">(</span><span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">HTML</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&quot;&quot;&lt;script&gt;(new Audio(&#39;data:audio/wav;base64,UklGRl9vT19XQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YU&#39;+Array(Math.round(3.3333e3*</span><span class="si">{</span><span class="n">seconds</span><span class="si">}</span><span class="s2">)).join(123))).play();&lt;/script&gt;&quot;&quot;&quot;</span><span class="p">));</span>
@@ -276,7 +274,7 @@
 <span class="s2">    div.output_area pre {white-space: pre;}</span>
 <span class="s2">    div.CodeMirror &gt; div.highlight {overflow-y: auto;}</span>
 <span class="s2">&lt;/style&gt;&quot;&quot;&quot;</span><span class="p">))</span>
-    <span class="k">except</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Can&#39;t run dontWrap()&quot;</span><span class="p">)</span></div>
+    <span class="k">except</span><span class="p">:</span> <span class="k">pass</span><span class="c1">#print(&quot;Can&#39;t run dontWrap()&quot;)</span></div>
 <span class="kn">import</span> <span class="nn">asyncio</span><span class="o">,</span> <span class="nn">functools</span>
 <span class="kn">from</span> <span class="nn">threading</span> <span class="kn">import</span> <span class="n">Timer</span> <span class="k">as</span> <span class="n">ThreadingTimer</span>
 <span class="k">class</span> <span class="nc">AsyncTimer</span><span class="p">:</span> <span class="c1"># rename if want to use</span>
@@ -395,6 +393,22 @@
     <span class="n">f2</span> <span class="o">=</span> <span class="n">cli</span><span class="o">.</span><span class="n">applySerial</span><span class="p">(</span><span class="n">cli</span><span class="o">.</span><span class="n">op</span><span class="p">()</span><span class="o">+</span><span class="n">interval</span><span class="p">)</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">breakIf</span><span class="p">(</span><span class="n">cli</span><span class="o">.</span><span class="n">op</span><span class="p">()</span><span class="o">&gt;</span><span class="n">y</span><span class="o">+</span><span class="n">interval</span><span class="p">)</span>
     <span class="c1"># finally, use the seed to expand in both directions to get all the ticks</span>
     <span class="k">return</span> <span class="n">seed</span> <span class="o">|</span> <span class="n">f1</span> <span class="o">&amp;</span> <span class="n">f2</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">joinStreams</span><span class="p">()</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">aS</span><span class="p">(</span><span class="nb">set</span><span class="p">)</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">round</span><span class="p">,</span> <span class="n">ndigits</span><span class="o">=</span><span class="n">rounding</span><span class="p">)</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">deref</span><span class="p">()</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">aS</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">)</span></div>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">graphviz</span>
+<div class="viewcode-block" id="digraph"><a class="viewcode-back" href="../../base.html#k1lib.digraph">[docs]</a>    <span class="k">def</span> <span class="nf">digraph</span><span class="p">():</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convenience method for creating a new graphviz Digraph.</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    g = k1lib.graph()</span>
+<span class="sd">    g(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;)</span>
+<span class="sd">    g # displays arrows from &quot;a&quot; to &quot;b&quot; and &quot;a&quot; to &quot;c&quot;</span>
+<span class="sd">&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">graphviz</span><span class="o">.</span><span class="n">Digraph</span><span class="p">(</span><span class="n">graph_attr</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;rankdir&quot;</span><span class="p">:</span><span class="s2">&quot;TB&quot;</span><span class="p">})</span></div>
+<div class="viewcode-block" id="graph"><a class="viewcode-back" href="../../base.html#k1lib.graph">[docs]</a>    <span class="k">def</span> <span class="nf">graph</span><span class="p">():</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convenience method for creating a new graphviz Graph. See also: :meth:`digraph`&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">graphviz</span><span class="o">.</span><span class="n">Graph</span><span class="p">(</span><span class="n">graph_attr</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;rankdir&quot;</span><span class="p">:</span><span class="s2">&quot;TB&quot;</span><span class="p">})</span></div>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="n">digraph</span> <span class="o">=</span> <span class="n">graph</span> <span class="o">=</span> <span class="k">lambda</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Module `graphviz` not found! Please install it first, something like `pip install graphviz`&quot;</span><span class="p">)</span>
 </pre></div>
 
            </div>

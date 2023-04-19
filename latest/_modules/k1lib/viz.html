@@ -11,9 +11,6 @@
   <![endif]-->
   
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
         <script src="../../_static/sphinx_highlight.js"></script>
     <script src="../../_static/js/theme.js"></script>
@@ -26,11 +23,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../../index.html" class="icon icon-home"> k1lib
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            k1lib
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -77,7 +78,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home"></a></li>
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
       <li class="breadcrumb-item active">k1lib.viz</li>
       <li class="wy-breadcrumbs-aside">
@@ -105,8 +106,8 @@
 <span class="k">except</span><span class="p">:</span>
     <span class="n">torch</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">Object</span><span class="p">()</span><span class="o">.</span><span class="n">withAutoDeclare</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="nb">type</span><span class="p">(</span><span class="s2">&quot;RandomClass&quot;</span><span class="p">,</span> <span class="p">(</span><span class="nb">object</span><span class="p">,</span> <span class="p">),</span> <span class="p">{}))</span>
     <span class="n">nn</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">Object</span><span class="p">()</span><span class="o">.</span><span class="n">withAutoDeclare</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="nb">type</span><span class="p">(</span><span class="s2">&quot;RandomClass&quot;</span><span class="p">,</span> <span class="p">(</span><span class="nb">object</span><span class="p">,</span> <span class="p">),</span> <span class="p">{}));</span> <span class="n">hasTorch</span> <span class="o">=</span> <span class="kc">False</span>
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;SliceablePlot&quot;</span><span class="p">,</span> <span class="s2">&quot;plotSegments&quot;</span><span class="p">,</span> <span class="s2">&quot;Carousel&quot;</span><span class="p">,</span> <span class="s2">&quot;HtmlImage&quot;</span><span class="p">,</span> <span class="s2">&quot;ToggleImage&quot;</span><span class="p">,</span>
-           <span class="s2">&quot;confusionMatrix&quot;</span><span class="p">,</span> <span class="s2">&quot;FAnim&quot;</span><span class="p">,</span> <span class="s2">&quot;mask&quot;</span><span class="p">]</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;SliceablePlot&quot;</span><span class="p">,</span> <span class="s2">&quot;plotSegments&quot;</span><span class="p">,</span> <span class="s2">&quot;Carousel&quot;</span><span class="p">,</span> <span class="s2">&quot;Toggle&quot;</span><span class="p">,</span> <span class="s2">&quot;ToggleImage&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;Scroll&quot;</span><span class="p">,</span> <span class="s2">&quot;confusionMatrix&quot;</span><span class="p">,</span> <span class="s2">&quot;FAnim&quot;</span><span class="p">,</span> <span class="s2">&quot;mask&quot;</span><span class="p">]</span>
 <span class="k">class</span> <span class="nc">_PlotDecorator</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;The idea with decorators is that you can do something like this::</span>
 
@@ -271,6 +272,7 @@
 <span class="sd">    c = viz.Carousel()</span>
 <span class="sd">    x = np.linspace(-2, 2); plt.plot(x, x ** 2); plt.gcf() | toImg() | c</span>
 <span class="sd">    x = np.linspace(-1, 3); plt.plot(x, x ** 2); plt.gcf() | toImg() | c</span>
+<span class="sd">    &quot;&lt;h1&gt;abc&lt;/h1&gt;&lt;div&gt;Some content&lt;/div&gt;&quot; | c # can add html</span>
 <span class="sd">    c # displays in notebook cell</span>
 
 <span class="sd">:param imgs: List of initial images. Can add more images later on by using :meth:`__ror__`</span>
@@ -280,19 +282,17 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">imgs</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># Tuple[format, base64 img]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">defaultFormat</span> <span class="o">=</span> <span class="s2">&quot;jpeg&quot;</span>
         <span class="k">for</span> <span class="n">im</span> <span class="ow">in</span> <span class="n">imgs</span><span class="p">:</span> <span class="n">im</span> <span class="o">|</span> <span class="bp">self</span></div>
-<div class="viewcode-block" id="Carousel.__ror__"><a class="viewcode-back" href="../../viz.html#k1lib.viz.Carousel.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Adds an image to the collection&quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">imgs</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="s2">&quot;png&quot;</span><span class="p">,</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">it</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">toBytes</span><span class="p">())</span><span class="o">.</span><span class="n">decode</span><span class="p">()])</span></div>
-<div class="viewcode-block" id="Carousel.saveGraphviz"><a class="viewcode-back" href="../../viz.html#k1lib.viz.Carousel.saveGraphviz">[docs]</a>    <span class="k">def</span> <span class="nf">saveGraphviz</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">g</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Saves a graphviz graph&quot;&quot;&quot;</span>
-        <span class="kn">import</span> <span class="nn">tempfile</span><span class="p">;</span> <span class="n">a</span> <span class="o">=</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">NamedTemporaryFile</span><span class="p">()</span>
-        <span class="n">g</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;jpeg&quot;</span><span class="p">);</span> <span class="bp">self</span><span class="o">.</span><span class="n">saveFile</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">a</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">.jpeg&quot;</span><span class="p">)</span></div>
+<div class="viewcode-block" id="Carousel.__ror__"><a class="viewcode-back" href="../../viz.html#k1lib.viz.Carousel.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">d</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Adds an image/html content to the collection&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="n">imgs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">d</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">imgs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&lt;img alt=&#39;&#39; style=&#39;max-width: 100%&#39; src=&#39;data:image/png;base64, </span><span class="si">{</span><span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">d</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">cli</span><span class="o">.</span><span class="n">toBytes</span><span class="p">())</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span><span class="si">}</span><span class="s2">&#39; /&gt;&quot;</span><span class="p">)</span></div>
 <div class="viewcode-block" id="Carousel.pop"><a class="viewcode-back" href="../../viz.html#k1lib.viz.Carousel.pop">[docs]</a>    <span class="k">def</span> <span class="nf">pop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Pops last image&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">imgs</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span></div>
     <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">imgs</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
     <span class="k">def</span> <span class="nf">_repr_html_</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">imgs</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\&quot;</span><span class="s2">&lt;img alt=&#39;&#39; src=&#39;data:image/</span><span class="si">{</span><span class="n">fmt</span><span class="si">}</span><span class="s2">;base64, </span><span class="si">{</span><span class="n">img</span><span class="si">}</span><span class="s2">&#39; /&gt;</span><span class="se">\&quot;</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">fmt</span><span class="p">,</span> <span class="n">img</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">imgs</span><span class="p">]</span>
+        <span class="n">imgs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">imgs</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">op</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;`&quot;</span><span class="p">,</span> <span class="s2">&quot;\`&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;`</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">`&quot;</span><span class="p">)</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">deref</span><span class="p">()</span>
+        <span class="c1">#imgs = [f&quot;\&quot;&lt;img alt=&#39;&#39; src=&#39;data:image/{fmt};base64, {img}&#39; /&gt;\&quot;&quot; for fmt, img in self.imgs]</span>
         <span class="n">idx</span> <span class="o">=</span> <span class="n">Carousel</span><span class="o">.</span><span class="n">_idx</span><span class="p">()</span>
         <span class="n">pre</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;k1c_</span><span class="si">{</span><span class="n">idx</span><span class="si">}</span><span class="s2">&quot;</span>
         <span class="n">html</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;&lt;!-- k1lib.Carousel --&gt;</span>
@@ -342,31 +342,21 @@
 <span class="s2">    </span><span class="si">{</span><span class="n">pre</span><span class="si">}</span><span class="s2">_display();</span>
 <span class="s2">&lt;/script&gt;&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">html</span></div>
-<div class="viewcode-block" id="HtmlImage"><a class="viewcode-back" href="../../viz.html#k1lib.viz.HtmlImage">[docs]</a><span class="k">class</span> <span class="nc">HtmlImage</span><span class="p">:</span>
-<div class="viewcode-block" id="HtmlImage.__init__"><a class="viewcode-back" href="../../viz.html#k1lib.viz.HtmlImage.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">im</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Creates a html image from a PIL image</span>
-
-<span class="sd">:param im: PIL image</span>
-<span class="sd">:param style: extra styles&quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">imB64</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">im</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">toBytes</span><span class="p">())</span><span class="o">.</span><span class="n">decode</span><span class="p">();</span> <span class="bp">self</span><span class="o">.</span><span class="n">style</span> <span class="o">=</span> <span class="n">style</span></div>
-    <span class="k">def</span> <span class="nf">_repr_html_</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;&lt;img alt=&#39;&#39; src=&#39;data:image/jpg;base64,</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">imB64</span><span class="si">}</span><span class="s2">&#39; style=&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">style</span><span class="si">}</span><span class="s2">&#39; /&gt;&quot;&quot;&quot;</span></div>
-<div class="viewcode-block" id="ToggleImage"><a class="viewcode-back" href="../../viz.html#k1lib.viz.ToggleImage">[docs]</a><span class="k">class</span> <span class="nc">ToggleImage</span><span class="p">:</span>
+<div class="viewcode-block" id="Toggle"><a class="viewcode-back" href="../../viz.html#k1lib.viz.Toggle">[docs]</a><span class="k">class</span> <span class="nc">Toggle</span><span class="p">(</span><span class="n">cli</span><span class="o">.</span><span class="n">BaseCli</span><span class="p">):</span>
     <span class="n">_idx</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">AutoIncrement</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
-<div class="viewcode-block" id="ToggleImage.__init__"><a class="viewcode-back" href="../../viz.html#k1lib.viz.ToggleImage.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Creates a new toggle image, which is just an image that</span>
-<span class="sd">is hidden by default, but can be shown with a button. Will even work</span>
-<span class="sd">even when you export the notebook as html. Example::</span>
+<div class="viewcode-block" id="Toggle.__init__"><a class="viewcode-back" href="../../viz.html#k1lib.viz.Toggle.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Button to toggle whether the content is displayed or</span>
+<span class="sd">not. Useful if the html content is very big in size. Example::</span>
 
 <span class="sd">    x = np.linspace(-2, 2); plt.plot(x, x ** 2)</span>
-<span class="sd">    plt.gcf() | cli.toImg() | viz.ToggleImage()</span>
+<span class="sd">    plt.gcf() | toImg() | toHtml() | viz.Toggle()</span>
 
 <span class="sd">This will plot a graph, then create a button where you can toggle the image&#39;s visibility&quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">imgs</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># Tuple[format, base64 img]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">img</span> <span class="o">=</span> <span class="kc">None</span></div>
-<div class="viewcode-block" id="ToggleImage.__ror__"><a class="viewcode-back" href="../../viz.html#k1lib.viz.ToggleImage.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="n">img</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">it</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">toBytes</span><span class="p">())</span><span class="o">.</span><span class="n">decode</span><span class="p">();</span> <span class="k">return</span> <span class="bp">self</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">content</span><span class="p">:</span><span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="c1"># html string</span></div>
+<div class="viewcode-block" id="Toggle.__ror__"><a class="viewcode-back" href="../../viz.html#k1lib.viz.Toggle.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="n">content</span> <span class="o">=</span> <span class="n">it</span><span class="p">;</span> <span class="k">return</span> <span class="bp">self</span></div>
     <span class="k">def</span> <span class="nf">_repr_html_</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">pre</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;k1ti_</span><span class="si">{</span><span class="n">ToggleImage</span><span class="o">.</span><span class="n">_idx</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span>
-        <span class="n">html</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;&lt;!-- k1lib.ToggleImage --&gt;</span>
+        <span class="n">pre</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;k1t_</span><span class="si">{</span><span class="n">Toggle</span><span class="o">.</span><span class="n">_idx</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">html</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;&lt;!-- k1lib.Toggle --&gt;</span>
 <span class="s2">&lt;style&gt;</span>
 <span class="s2">    #</span><span class="si">{</span><span class="n">pre</span><span class="si">}</span><span class="s2">_btn </span><span class="se">{{</span>
 <span class="s2">        cursor: pointer;</span>
@@ -386,23 +376,46 @@
 <span class="s2">&lt;/style&gt;</span>
 <span class="s2">&lt;div&gt;</span>
 <span class="s2">    &lt;div style=&quot;display: flex; flex-direction: row; padding: 4px&quot;&gt;</span>
-<span class="s2">        &lt;div id=&quot;</span><span class="si">{</span><span class="n">pre</span><span class="si">}</span><span class="s2">_btn&quot;&gt;Show image&lt;/div&gt;</span>
+<span class="s2">        &lt;div id=&quot;</span><span class="si">{</span><span class="n">pre</span><span class="si">}</span><span class="s2">_btn&quot;&gt;Show content&lt;/div&gt;</span>
 <span class="s2">        &lt;div style=&quot;flex: 1&quot;&gt;&lt;/div&gt;</span>
 <span class="s2">    &lt;/div&gt;</span>
-<span class="s2">    &lt;img id=&quot;</span><span class="si">{</span><span class="n">pre</span><span class="si">}</span><span class="s2">_img&quot; src=&#39;data:image/jpg;base64,</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">img</span><span class="si">}</span><span class="s2">&#39; style=&quot;display: none; margin-top: 12px&quot; /&gt;</span>
+<span class="s2">    &lt;div id=&quot;</span><span class="si">{</span><span class="n">pre</span><span class="si">}</span><span class="s2">_content&quot; style=&quot;display: none; margin-top: 12px&quot;&gt;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">content</span><span class="si">}</span><span class="s2">&lt;/div&gt;</span>
 <span class="s2">&lt;/div&gt;</span>
 <span class="s2">&lt;script&gt;</span>
 <span class="s2">    console.log(&quot;setup script ran for </span><span class="si">{</span><span class="n">pre</span><span class="si">}</span><span class="s2">&quot;);</span>
 <span class="s2">    </span><span class="si">{</span><span class="n">pre</span><span class="si">}</span><span class="s2">_btn = document.querySelector(&quot;#</span><span class="si">{</span><span class="n">pre</span><span class="si">}</span><span class="s2">_btn&quot;);</span>
-<span class="s2">    </span><span class="si">{</span><span class="n">pre</span><span class="si">}</span><span class="s2">_img = document.querySelector(&quot;#</span><span class="si">{</span><span class="n">pre</span><span class="si">}</span><span class="s2">_img&quot;);</span>
+<span class="s2">    </span><span class="si">{</span><span class="n">pre</span><span class="si">}</span><span class="s2">_content = document.querySelector(&quot;#</span><span class="si">{</span><span class="n">pre</span><span class="si">}</span><span class="s2">_content&quot;);</span>
 <span class="s2">    </span>
 <span class="s2">    </span><span class="si">{</span><span class="n">pre</span><span class="si">}</span><span class="s2">_displayed = false;</span>
 <span class="s2">    </span><span class="si">{</span><span class="n">pre</span><span class="si">}</span><span class="s2">_btn.onclick = () =&gt; </span><span class="se">{{</span>
 <span class="s2">        </span><span class="si">{</span><span class="n">pre</span><span class="si">}</span><span class="s2">_displayed = !</span><span class="si">{</span><span class="n">pre</span><span class="si">}</span><span class="s2">_displayed;</span>
-<span class="s2">        </span><span class="si">{</span><span class="n">pre</span><span class="si">}</span><span class="s2">_btn.innerHTML = </span><span class="si">{</span><span class="n">pre</span><span class="si">}</span><span class="s2">_displayed ? &quot;Hide image&quot; : &quot;Show image&quot;;</span>
-<span class="s2">        </span><span class="si">{</span><span class="n">pre</span><span class="si">}</span><span class="s2">_img.style.display = </span><span class="si">{</span><span class="n">pre</span><span class="si">}</span><span class="s2">_displayed ? &quot;block&quot; : &quot;none&quot;;</span>
+<span class="s2">        </span><span class="si">{</span><span class="n">pre</span><span class="si">}</span><span class="s2">_btn.innerHTML = </span><span class="si">{</span><span class="n">pre</span><span class="si">}</span><span class="s2">_displayed ? &quot;Hide content&quot; : &quot;Show content&quot;;</span>
+<span class="s2">        </span><span class="si">{</span><span class="n">pre</span><span class="si">}</span><span class="s2">_content.style.display = </span><span class="si">{</span><span class="n">pre</span><span class="si">}</span><span class="s2">_displayed ? &quot;block&quot; : &quot;none&quot;;</span>
 <span class="s2">    </span><span class="se">}}</span><span class="s2">;</span>
 <span class="s2">&lt;/script&gt;&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">html</span></div>
+<div class="viewcode-block" id="ToggleImage"><a class="viewcode-back" href="../../viz.html#k1lib.viz.ToggleImage">[docs]</a><span class="k">def</span> <span class="nf">ToggleImage</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;This function is sort of legacy. It&#39;s just ``img | toHtml() | viz.Toggle()`` really&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">cli</span><span class="o">.</span><span class="n">toHtml</span><span class="p">()</span> <span class="o">|</span> <span class="n">Toggle</span><span class="p">()</span></div>
+<div class="viewcode-block" id="Scroll"><a class="viewcode-back" href="../../viz.html#k1lib.viz.Scroll">[docs]</a><span class="k">class</span> <span class="nc">Scroll</span><span class="p">(</span><span class="n">cli</span><span class="o">.</span><span class="n">BaseCli</span><span class="p">):</span>
+    <span class="n">_idx</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">AutoIncrement</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
+<div class="viewcode-block" id="Scroll.__init__"><a class="viewcode-back" href="../../viz.html#k1lib.viz.Scroll.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">300</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Creates a new preview html component. If content</span>
+<span class="sd">is too long, then it will only show the first 500px, then</span>
+<span class="sd">have a button to expand and view the rest. Example::</span>
+
+<span class="sd">    x = np.linspace(-2, 2); plt.plot(x, x ** 2)</span>
+<span class="sd">    plt.gcf() | toImg() | toHtml() | viz.Scroll()</span>
+
+<span class="sd">This will plot a preview of a graph</span>
+<span class="sd">:param height: height of the parent container&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">content</span><span class="p">:</span><span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="c1"># html string</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">height</span></div>
+<div class="viewcode-block" id="Scroll.__ror__"><a class="viewcode-back" href="../../viz.html#k1lib.viz.Scroll.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="n">content</span> <span class="o">=</span> <span class="n">it</span><span class="p">;</span> <span class="k">return</span> <span class="bp">self</span></div>
+    <span class="k">def</span> <span class="nf">_repr_html_</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">pre</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;k1scr_</span><span class="si">{</span><span class="n">Scroll</span><span class="o">.</span><span class="n">_idx</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">html</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;&lt;!-- k1lib.Scroll --&gt;</span>
+<span class="s2">&lt;div style=&quot;max-height: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">height</span><span class="si">}</span><span class="s2">px&quot;&gt;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">content</span><span class="si">}</span><span class="s2">&lt;/div&gt;&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">html</span></div>
 <div class="viewcode-block" id="confusionMatrix"><a class="viewcode-back" href="../../viz.html#k1lib.viz.confusionMatrix">[docs]</a><span class="k">def</span> <span class="nf">confusionMatrix</span><span class="p">(</span><span class="n">matrix</span><span class="p">:</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">categories</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Plots a confusion matrix. Example::</span>

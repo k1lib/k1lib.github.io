@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Monkey patched classes &mdash; k1lib  documentation</title>
@@ -12,9 +12,6 @@
   <![endif]-->
   
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/sphinx_highlight.js"></script>
         <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -30,11 +27,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> k1lib
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            k1lib
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -96,14 +97,8 @@
 <li class="toctree-l3"><a class="reference internal" href="#k1lib._monkey.torch.sameStorage"><code class="docutils literal notranslate"><span class="pre">torch.sameStorage()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#class-graphviz-digraph">Class <code class="xref py py-class docutils literal notranslate"><span class="pre">graphviz.Digraph</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#graphviz.dot.Digraph.__call__"><code class="docutils literal notranslate"><span class="pre">Digraph.__call__()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#class-graphviz-graph">Class <code class="xref py py-class docutils literal notranslate"><span class="pre">graphviz.Graph</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#graphviz.dot.Graph.__call__"><code class="docutils literal notranslate"><span class="pre">Graph.__call__()</span></code></a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="#class-graphviz-digraph">Class <code class="xref py py-class docutils literal notranslate"><span class="pre">graphviz.Digraph</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#class-graphviz-graph">Class <code class="xref py py-class docutils literal notranslate"><span class="pre">graphviz.Graph</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#class-mpl-toolkits-mplot3d-axes3d-axes3d">Class <code class="xref py py-class docutils literal notranslate"><span class="pre">mpl_toolkits.mplot3d.axes3d.Axes3D</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#mpl_toolkits.mplot3d.axes3d.Axes3D.march"><code class="docutils literal notranslate"><span class="pre">Axes3D.march()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#mpl_toolkits.mplot3d.axes3d.Axes3D.surface"><code class="docutils literal notranslate"><span class="pre">Axes3D.surface()</span></code></a></li>
@@ -115,6 +110,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#module-matplotlib-pyplot">Module <code class="xref py py-mod docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#matplotlib.pyplot.k3d"><code class="docutils literal notranslate"><span class="pre">pyplot.k3d()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#matplotlib.pyplot.animate"><code class="docutils literal notranslate"><span class="pre">pyplot.animate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#matplotlib.pyplot.getFig"><code class="docutils literal notranslate"><span class="pre">pyplot.getFig()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -136,7 +132,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
       <li class="breadcrumb-item active">Monkey patched classes</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/monkey.rst.txt" rel="nofollow"> View page source</a>
@@ -173,25 +169,25 @@ Example:</p>
 
 </section>
 <section id="class-torch-nn-module">
-<h2>Class <a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch vmaster (2.0.0a0+git3ce1ebb ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></a><a class="headerlink" href="#class-torch-nn-module" title="Permalink to this heading"></a></h2>
+<h2>Class <a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch vmaster (2.1.0a0+gitbe0b12e ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></a><a class="headerlink" href="#class-torch-nn-module" title="Permalink to this heading"></a></h2>
 <dl class="py method">
 <dt class="sig sig-object py" id="torch.nn.modules.Module.getParamsVector">
-<span class="sig-prename descclassname"><span class="pre">Module.</span></span><span class="sig-name descname"><span class="pre">getParamsVector</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.0.0a0+git3ce1ebb ))"><span class="pre">Tensor</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#torch.nn.modules.Module.getParamsVector" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">Module.</span></span><span class="sig-name descname"><span class="pre">getParamsVector</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.1.0a0+gitbe0b12e ))"><span class="pre">Tensor</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#torch.nn.modules.Module.getParamsVector" title="Permalink to this definition"></a></dt>
 <dd><p>For each parameter, returns a normal distributed random tensor
 with the same standard deviation as the original parameter</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="torch.nn.modules.Module.importParams">
-<span class="sig-prename descclassname"><span class="pre">Module.</span></span><span class="sig-name descname"><span class="pre">importParams</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.parameter.Parameter.html#torch.nn.parameter.Parameter" title="(in PyTorch vmaster (2.0.0a0+git3ce1ebb ))"><span class="pre">Parameter</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torch.nn.modules.Module.importParams" title="Permalink to this definition"></a></dt>
-<dd><p>Given a list of <a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.parameter.Parameter.html#torch.nn.parameter.Parameter" title="(in PyTorch vmaster (2.0.0a0+git3ce1ebb ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.parameter.Parameter</span></code></a>/<a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.0.0a0+git3ce1ebb ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a>,
-update the current <a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch vmaster (2.0.0a0+git3ce1ebb ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></a>’s parameters with it’</p>
+<span class="sig-prename descclassname"><span class="pre">Module.</span></span><span class="sig-name descname"><span class="pre">importParams</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.parameter.Parameter.html#torch.nn.parameter.Parameter" title="(in PyTorch vmaster (2.1.0a0+gitbe0b12e ))"><span class="pre">Parameter</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torch.nn.modules.Module.importParams" title="Permalink to this definition"></a></dt>
+<dd><p>Given a list of <a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.parameter.Parameter.html#torch.nn.parameter.Parameter" title="(in PyTorch vmaster (2.1.0a0+gitbe0b12e ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.parameter.Parameter</span></code></a>/<a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.1.0a0+gitbe0b12e ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a>,
+update the current <a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch vmaster (2.1.0a0+gitbe0b12e ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></a>’s parameters with it’</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="torch.nn.modules.Module.exportParams">
-<span class="sig-prename descclassname"><span class="pre">Module.</span></span><span class="sig-name descname"><span class="pre">exportParams</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.0.0a0+git3ce1ebb ))"><span class="pre">Tensor</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#torch.nn.modules.Module.exportParams" title="Permalink to this definition"></a></dt>
-<dd><p>Gets the list of <a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.0.0a0+git3ce1ebb ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a> data</p>
+<span class="sig-prename descclassname"><span class="pre">Module.</span></span><span class="sig-name descname"><span class="pre">exportParams</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.1.0a0+gitbe0b12e ))"><span class="pre">Tensor</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#torch.nn.modules.Module.exportParams" title="Permalink to this definition"></a></dt>
+<dd><p>Gets the list of <a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.1.0a0+gitbe0b12e ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a> data</p>
 </dd></dl>
 
 <dl class="py method">
@@ -205,9 +201,9 @@ Returns the old parameters on enter context. Example:</p>
 <span class="c1"># m automatically snaps back to the old param</span>
 </pre></div>
 </div>
-<p>Small reminder that this is not foolproof, as there are some <a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch vmaster (2.0.0a0+git3ce1ebb ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></a>
+<p>Small reminder that this is not foolproof, as there are some <a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch vmaster (2.1.0a0+gitbe0b12e ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></a>
 that stores extra information not accessible from the model itself, like
-<a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.BatchNorm2d.html#torch.nn.BatchNorm2d" title="(in PyTorch vmaster (2.0.0a0+git3ce1ebb ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">BatchNorm2d</span></code></a>.</p>
+<a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.BatchNorm2d.html#torch.nn.BatchNorm2d" title="(in PyTorch vmaster (2.1.0a0+gitbe0b12e ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">BatchNorm2d</span></code></a>.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -223,7 +219,7 @@ Example:</p>
 </pre></div>
 </div>
 <p>This is capable of preserving buffers’ devices too. But it might be unstable.
-<a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.parameter.Parameter.html#torch.nn.parameter.Parameter" title="(in PyTorch vmaster (2.0.0a0+git3ce1ebb ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">Parameter</span></code></a> are often updated inline, and they keep
+<a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.parameter.Parameter.html#torch.nn.parameter.Parameter" title="(in PyTorch vmaster (2.1.0a0+gitbe0b12e ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">Parameter</span></code></a> are often updated inline, and they keep
 their old identity, which makes it easy to keep track of which device the parameters
 are on. However, buffers are rarely updated inline, so their identities change all
 the time. To deal with this, this does something like this:</p>
@@ -235,13 +231,13 @@ the time. To deal with this, this does something like this:</p>
 </div>
 <p>This means that while inside the context, if you add a buffer anywhere to the
 network, buffer-device alignment will be shifted and wrong. So, register all
-your buffers (aka Tensors attached to <a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch vmaster (2.0.0a0+git3ce1ebb ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></a>) outside this context
+your buffers (aka Tensors attached to <a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch vmaster (2.1.0a0+gitbe0b12e ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></a>) outside this context
 to avoid headaches, or set <code class="docutils literal notranslate"><span class="pre">buffers</span></code> option to False.</p>
 <p>If you don’t know what I’m talking about, don’t worry and just leave as default.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>buffers</strong> – whether to preserve device of buffers (regular Tensors attached
-to <a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch vmaster (2.0.0a0+git3ce1ebb ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></a>) or not.</p>
+to <a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch vmaster (2.1.0a0+gitbe0b12e ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></a>) or not.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -259,13 +255,13 @@ Example:</p>
 </pre></div>
 </div>
 <p>It’s worth mentioning that this does not work with buffers (Tensors attached to
-<a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch vmaster (2.0.0a0+git3ce1ebb ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></a>), as buffers are not meant to track gradients!</p>
+<a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch vmaster (2.1.0a0+gitbe0b12e ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></a>), as buffers are not meant to track gradients!</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="torch.nn.modules.Module.__ror__">
 <span class="sig-prename descclassname"><span class="pre">Module.</span></span><span class="sig-name descname"><span class="pre">__ror__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torch.nn.modules.Module.__ror__" title="Permalink to this definition"></a></dt>
-<dd><p>Allows piping input to <a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch vmaster (2.0.0a0+git3ce1ebb ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></a>, to match same style as
+<dd><p>Allows piping input to <a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch vmaster (2.1.0a0+gitbe0b12e ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></a>, to match same style as
 the module <a class="reference internal" href="cli/index.html#module-k1lib.cli" title="k1lib.cli"><code class="xref py py-mod docutils literal notranslate"><span class="pre">k1lib.cli</span></code></a>. Example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># returns torch.Size([5, 3])</span>
 <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">|</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">shape</span><span class="p">()</span>
@@ -286,9 +282,9 @@ Example:</p>
 </pre></div>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>model</strong> – the <a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch vmaster (2.0.0a0+git3ce1ebb ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></a> object to select from</p></li>
+<li><p><strong>model</strong> – the <a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch vmaster (2.1.0a0+gitbe0b12e ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></a> object to select from</p></li>
 <li><p><strong>css</strong> – the css selectors</p></li>
 </ul>
 </dd>
@@ -308,10 +304,10 @@ Example:</p>
 
 </section>
 <section id="class-torch-tensor">
-<h2>Class <a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.0.0a0+git3ce1ebb ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a><a class="headerlink" href="#class-torch-tensor" title="Permalink to this heading"></a></h2>
+<h2>Class <a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.1.0a0+gitbe0b12e ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a><a class="headerlink" href="#class-torch-tensor" title="Permalink to this heading"></a></h2>
 <dl class="py method">
 <dt class="sig sig-object py" id="torch.Tensor.crissCross">
-<span class="sig-prename descclassname"><span class="pre">Tensor.</span></span><span class="sig-name descname"><span class="pre">crissCross</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.0.0a0+git3ce1ebb ))"><span class="pre">Tensor</span></a></span></span><a class="headerlink" href="#torch.Tensor.crissCross" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">Tensor.</span></span><span class="sig-name descname"><span class="pre">crissCross</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.1.0a0+gitbe0b12e ))"><span class="pre">Tensor</span></a></span></span><a class="headerlink" href="#torch.Tensor.crissCross" title="Permalink to this definition"></a></dt>
 <dd><p>Concats multiple 1d tensors, sorts it, and get evenly-spaced values. Also
 available as <code class="xref py py-meth docutils literal notranslate"><span class="pre">torch.crissCross()</span></code> and <code class="xref py py-meth docutils literal notranslate"><span class="pre">crissCross()</span></code>.
 Example:</p>
@@ -335,7 +331,7 @@ the same as tensor a, and the contents are also pretty close to a.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="torch.Tensor.histBounds">
-<span class="sig-prename descclassname"><span class="pre">Tensor.</span></span><span class="sig-name descname"><span class="pre">histBounds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bins</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.0.0a0+git3ce1ebb ))"><span class="pre">Tensor</span></a></span></span><a class="headerlink" href="#torch.Tensor.histBounds" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">Tensor.</span></span><span class="sig-name descname"><span class="pre">histBounds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bins</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.1.0a0+gitbe0b12e ))"><span class="pre">Tensor</span></a></span></span><a class="headerlink" href="#torch.Tensor.histBounds" title="Permalink to this definition"></a></dt>
 <dd><p>Flattens and sorts the tensor, then get value of tensor at regular
 linspace intervals. Does not guarantee bounds’ uniqueness. Example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Tensor with lots of 2s and 5s</span>
@@ -351,7 +347,7 @@ it nicely. Rough idea taken from fastai.medical.imaging.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="torch.Tensor.histScaled">
-<span class="sig-prename descclassname"><span class="pre">Tensor.</span></span><span class="sig-name descname"><span class="pre">histScaled</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bins</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bounds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.0.0a0+git3ce1ebb ))"><span class="pre">Tensor</span></a></span></span><a class="headerlink" href="#torch.Tensor.histScaled" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">Tensor.</span></span><span class="sig-name descname"><span class="pre">histScaled</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bins</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bounds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.1.0a0+gitbe0b12e ))"><span class="pre">Tensor</span></a></span></span><a class="headerlink" href="#torch.Tensor.histScaled" title="Permalink to this definition"></a></dt>
 <dd><p>Scale tensor’s values so that the values are roughly spreaded out in range
 <span class="math notranslate nohighlight">\([0, 1]\)</span> to ease neural networks’ pain. Rough idea taken from
 fastai.medical.imaging. Example:</p>
@@ -368,7 +364,7 @@ fastai.medical.imaging. Example:</p>
 <p>Plot #2:</p>
 <img alt="_images/histScaledUniform.png" src="_images/histScaledUniform.png" />
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>bins</strong> – if <code class="docutils literal notranslate"><span class="pre">bounds</span></code> not specified, then will scale according to a hist
 with this many bins</p></li>
@@ -382,7 +378,7 @@ this. Expected this to be a sorted tensor going from <code class="docutils liter
 
 <dl class="py method">
 <dt class="sig sig-object py" id="torch.Tensor.positionalEncode">
-<span class="sig-prename descclassname"><span class="pre">Tensor.</span></span><span class="sig-name descname"><span class="pre">positionalEncode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">richFactor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.0.0a0+git3ce1ebb ))"><span class="pre">Tensor</span></a></span></span><a class="headerlink" href="#torch.Tensor.positionalEncode" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">Tensor.</span></span><span class="sig-name descname"><span class="pre">positionalEncode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">richFactor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.1.0a0+gitbe0b12e ))"><span class="pre">Tensor</span></a></span></span><a class="headerlink" href="#torch.Tensor.positionalEncode" title="Permalink to this definition"></a></dt>
 <dd><p>Position encode a tensor of shape <span class="math notranslate nohighlight">\((L, F)\)</span>, where <span class="math notranslate nohighlight">\(L\)</span>
 is the sequence length, <span class="math notranslate nohighlight">\(F\)</span> is the encoded features. Will add the
 encodings directly to the input tensor and return it.</p>
@@ -403,7 +399,7 @@ This is exactly:</p>
 </div>
 <img alt="_images/positionalEncoding.png" src="_images/positionalEncoding.png" />
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>richFactor</strong> – the bigger, the richer the features are. A lot of
 times, I observe that the features that are meant to cover huge scales
 are pretty empty and don’t really contribute anything useful. So this
@@ -414,7 +410,7 @@ is to bump up the usefulness of those features</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="torch.Tensor.clearNan">
-<span class="sig-prename descclassname"><span class="pre">Tensor.</span></span><span class="sig-name descname"><span class="pre">clearNan</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.0.0a0+git3ce1ebb ))"><span class="pre">Tensor</span></a></span></span><a class="headerlink" href="#torch.Tensor.clearNan" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">Tensor.</span></span><span class="sig-name descname"><span class="pre">clearNan</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.1.0a0+gitbe0b12e ))"><span class="pre">Tensor</span></a></span></span><a class="headerlink" href="#torch.Tensor.clearNan" title="Permalink to this definition"></a></dt>
 <dd><p>Sets all nan values to a specified value.
 Example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="nb">float</span><span class="p">(</span><span class="s2">&quot;nan&quot;</span><span class="p">)</span>
@@ -437,7 +433,7 @@ Example:</p>
 
 </section>
 <section id="module-torch">
-<h2>Module <a class="reference external" href="https://pytorch.org/docs/master/torch.html#module-torch" title="(in PyTorch vmaster (2.0.0a0+git3ce1ebb ))"><code class="xref py py-mod docutils literal notranslate"><span class="pre">torch</span></code></a><a class="headerlink" href="#module-torch" title="Permalink to this heading"></a></h2>
+<h2>Module <a class="reference external" href="https://pytorch.org/docs/master/torch.html#module-torch" title="(in PyTorch vmaster (2.1.0a0+gitbe0b12e ))"><code class="xref py py-mod docutils literal notranslate"><span class="pre">torch</span></code></a><a class="headerlink" href="#module-torch" title="Permalink to this heading"></a></h2>
 <dl class="py method">
 <dt class="sig sig-object py" id="k1lib._monkey.torch.loglinspace">
 <span class="sig-prename descclassname"><span class="pre">torch.</span></span><span class="sig-name descname"><span class="pre">loglinspace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#k1lib._monkey.torch.loglinspace" title="Permalink to this definition"></a></dt>
@@ -448,7 +444,7 @@ instead of linear space. Different from <code class="xref py py-meth docutils li
 <dl class="py method">
 <dt class="sig sig-object py" id="k1lib._monkey.torch.sameStorage">
 <span class="sig-prename descclassname"><span class="pre">torch.</span></span><span class="sig-name descname"><span class="pre">sameStorage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">b</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#k1lib._monkey.torch.sameStorage" title="Permalink to this definition"></a></dt>
-<dd><p>Check whether 2 (<code class="xref py py-class docutils literal notranslate"><span class="pre">np.ndarray</span></code> or <a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.0.0a0+git3ce1ebb ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a>)
+<dd><p>Check whether 2 (<code class="xref py py-class docutils literal notranslate"><span class="pre">np.ndarray</span></code> or <a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.1.0a0+gitbe0b12e ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a>)
 has the same storage or not. Example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
 <span class="c1"># returns True</span>
@@ -465,36 +461,12 @@ has the same storage or not. Example:</p>
 </section>
 <section id="class-graphviz-digraph">
 <h2>Class <a class="reference external" href="https://graphviz.readthedocs.io/en/stable/api.html#graphviz.Digraph" title="(in graphviz)"><code class="xref py py-class docutils literal notranslate"><span class="pre">graphviz.Digraph</span></code></a><a class="headerlink" href="#class-graphviz-digraph" title="Permalink to this heading"></a></h2>
-<dl class="py method">
-<dt class="sig sig-object py" id="graphviz.dot.Digraph.__call__">
-<span class="sig-prename descclassname"><span class="pre">Digraph.</span></span><span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_from</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">tos</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#graphviz.dot.Digraph.__call__" title="Permalink to this definition"></a></dt>
-<dd><p>Convenience method to quickly construct graphs.
-Example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">graph</span><span class="p">()</span>
-<span class="n">g</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">)</span>
-<span class="n">g</span> <span class="c1"># displays arrows from &quot;a&quot; to &quot;b&quot; and &quot;a&quot; to &quot;c&quot;</span>
-</pre></div>
-</div>
-</dd></dl>
-
 </section>
 <section id="class-graphviz-graph">
 <h2>Class <a class="reference external" href="https://graphviz.readthedocs.io/en/stable/api.html#graphviz.Graph" title="(in graphviz)"><code class="xref py py-class docutils literal notranslate"><span class="pre">graphviz.Graph</span></code></a><a class="headerlink" href="#class-graphviz-graph" title="Permalink to this heading"></a></h2>
-<dl class="py method">
-<dt class="sig sig-object py" id="graphviz.dot.Graph.__call__">
-<span class="sig-prename descclassname"><span class="pre">Graph.</span></span><span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_from</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">tos</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#graphviz.dot.Graph.__call__" title="Permalink to this definition"></a></dt>
-<dd><p>Convenience method to quickly construct graphs.
-Example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">graph</span><span class="p">()</span>
-<span class="n">g</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">)</span>
-<span class="n">g</span> <span class="c1"># displays arrows from &quot;a&quot; to &quot;b&quot; and &quot;a&quot; to &quot;c&quot;</span>
-</pre></div>
-</div>
-</dd></dl>
-
 </section>
 <section id="class-mpl-toolkits-mplot3d-axes3d-axes3d">
-<h2>Class <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/mpl_toolkits.mplot3d.axes3d.Axes3D.html#mpl_toolkits.mplot3d.axes3d.Axes3D" title="(in Matplotlib v3.6.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">mpl_toolkits.mplot3d.axes3d.Axes3D</span></code></a><a class="headerlink" href="#class-mpl-toolkits-mplot3d-axes3d-axes3d" title="Permalink to this heading"></a></h2>
+<h2>Class <a class="reference external" href="https://matplotlib.org/stable/api/toolkits/mplot3d/axes3d.html#mpl_toolkits.mplot3d.axes3d.Axes3D" title="(in Matplotlib v3.7.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">mpl_toolkits.mplot3d.axes3d.Axes3D</span></code></a><a class="headerlink" href="#class-mpl-toolkits-mplot3d-axes3d-axes3d" title="Permalink to this heading"></a></h2>
 <dl class="py method">
 <dt class="sig sig-object py" id="mpl_toolkits.mplot3d.axes3d.Axes3D.march">
 <span class="sig-prename descclassname"><span class="pre">Axes3D.</span></span><span class="sig-name descname"><span class="pre">march</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">heatMap</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">level</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">facecolor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[0.45,</span> <span class="pre">0.45,</span> <span class="pre">0.75]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edgecolor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpl_toolkits.mplot3d.axes3d.Axes3D.march" title="Permalink to this definition"></a></dt>
@@ -514,7 +486,7 @@ Example:</p>
 <p>The function name is “march” because how it works internally is by using
 something called marching cubes.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>heatMap</strong> – 3d numpy array</p></li>
 <li><p><strong>level</strong> – array value to form the surface on</p></li>
@@ -527,7 +499,7 @@ something called marching cubes.</p>
 <dt class="sig sig-object py" id="mpl_toolkits.mplot3d.axes3d.Axes3D.surface">
 <span class="sig-prename descclassname"><span class="pre">Axes3D.</span></span><span class="sig-name descname"><span class="pre">surface</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">z</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpl_toolkits.mplot3d.axes3d.Axes3D.surface" title="Permalink to this definition"></a></dt>
 <dd><p>Plots 2d surface in 3d. Pretty much exactly the same as
-<a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/mpl_toolkits.mplot3d.axes3d.Axes3D.html#mpl_toolkits.mplot3d.axes3d.Axes3D.plot_surface" title="(in Matplotlib v3.6.3)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">plot_surface()</span></code></a>, but fields x and y
+<a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/mpl_toolkits.mplot3d.axes3d.Axes3D.plot_surface.html#mpl_toolkits.mplot3d.axes3d.Axes3D.plot_surface" title="(in Matplotlib v3.7.1)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">plot_surface()</span></code></a>, but fields x and y
 are filled in automatically. Example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">k3d</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span><span class="o">.</span><span class="n">surface</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="n">y</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span>
@@ -535,7 +507,7 @@ are filled in automatically. Example:</p>
 </div>
 <img alt="_images/surface.png" src="_images/surface.png" />
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>z</strong> – 2d numpy array for the heights</p></li>
 <li><p><strong>kwargs</strong> – keyword arguments passed to <code class="docutils literal notranslate"><span class="pre">plot_surface</span></code></p></li>
@@ -549,7 +521,7 @@ are filled in automatically. Example:</p>
 <span class="sig-prename descclassname"><span class="pre">Axes3D.</span></span><span class="sig-name descname"><span class="pre">plane</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">origin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpl_toolkits.mplot3d.axes3d.Axes3D.plane" title="Permalink to this definition"></a></dt>
 <dd><p>Plots a 3d plane.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>origin</strong> – origin vector, shape (3,)</p></li>
 <li><p><strong>v1</strong> – 1st vector, shape (3,)</p></li>
@@ -557,7 +529,7 @@ are filled in automatically. Example:</p>
 by 2 vectors. If not, plots a plane perpendicular to the 1st vector</p></li>
 <li><p><strong>s1</strong> – optional, how much to scale 1st vector by</p></li>
 <li><p><strong>s2</strong> – optional, how much to scale 2nd vector by</p></li>
-<li><p><strong>kwargs</strong> – keyword arguments passed to <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/mpl_toolkits.mplot3d.axes3d.Axes3D.html#mpl_toolkits.mplot3d.axes3d.Axes3D.plot_surface" title="(in Matplotlib v3.6.3)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">plot_surface()</span></code></a></p></li>
+<li><p><strong>kwargs</strong> – keyword arguments passed to <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/mpl_toolkits.mplot3d.axes3d.Axes3D.plot_surface.html#mpl_toolkits.mplot3d.axes3d.Axes3D.plot_surface" title="(in Matplotlib v3.7.1)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">plot_surface()</span></code></a></p></li>
 </ul>
 </dd>
 </dl>
@@ -568,10 +540,10 @@ by 2 vectors. If not, plots a plane perpendicular to the 1st vector</p></li>
 <span class="sig-prename descclassname"><span class="pre">Axes3D.</span></span><span class="sig-name descname"><span class="pre">point</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpl_toolkits.mplot3d.axes3d.Axes3D.point" title="Permalink to this definition"></a></dt>
 <dd><p>Plots a 3d point.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>v</strong> – point location, shape (3,)</p></li>
-<li><p><strong>kwargs</strong> – keyword argument passed to <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/mpl_toolkits.mplot3d.axes3d.Axes3D.html#mpl_toolkits.mplot3d.axes3d.Axes3D.scatter" title="(in Matplotlib v3.6.3)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">scatter()</span></code></a></p></li>
+<li><p><strong>kwargs</strong> – keyword argument passed to <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/mpl_toolkits.mplot3d.axes3d.Axes3D.scatter.html#mpl_toolkits.mplot3d.axes3d.Axes3D.scatter" title="(in Matplotlib v3.7.1)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">scatter()</span></code></a></p></li>
 </ul>
 </dd>
 </dl>
@@ -582,11 +554,11 @@ by 2 vectors. If not, plots a plane perpendicular to the 1st vector</p></li>
 <span class="sig-prename descclassname"><span class="pre">Axes3D.</span></span><span class="sig-name descname"><span class="pre">line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v2</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpl_toolkits.mplot3d.axes3d.Axes3D.line" title="Permalink to this definition"></a></dt>
 <dd><p>Plots a 3d line.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>v1</strong> – 1st point location, shape (3,)</p></li>
 <li><p><strong>v2</strong> – 2nd point location, shape (3,)</p></li>
-<li><p><strong>kwargs</strong> – keyword argument passed to <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/mpl_toolkits.mplot3d.axes3d.Axes3D.html#mpl_toolkits.mplot3d.axes3d.Axes3D.plot" title="(in Matplotlib v3.6.3)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">plot()</span></code></a></p></li>
+<li><p><strong>kwargs</strong> – keyword argument passed to <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/mpl_toolkits.mplot3d.axes3d.Axes3D.plot.html#mpl_toolkits.mplot3d.axes3d.Axes3D.plot" title="(in Matplotlib v3.7.1)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">plot()</span></code></a></p></li>
 </ul>
 </dd>
 </dl>
@@ -594,13 +566,13 @@ by 2 vectors. If not, plots a plane perpendicular to the 1st vector</p></li>
 
 </section>
 <section id="module-matplotlib-pyplot">
-<h2>Module <a class="reference external" href="https://matplotlib.org/stable/api/pyplot_summary.html#module-matplotlib.pyplot" title="(in Matplotlib v3.6.3)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code></a><a class="headerlink" href="#module-matplotlib-pyplot" title="Permalink to this heading"></a></h2>
+<h2>Module <a class="reference external" href="https://matplotlib.org/stable/api/pyplot_summary.html#module-matplotlib.pyplot" title="(in Matplotlib v3.7.1)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code></a><a class="headerlink" href="#module-matplotlib-pyplot" title="Permalink to this heading"></a></h2>
 <dl class="py method">
 <dt class="sig sig-object py" id="matplotlib.pyplot.k3d">
 <span class="sig-prename descclassname"><span class="pre">pyplot.</span></span><span class="sig-name descname"><span class="pre">k3d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#matplotlib.pyplot.k3d" title="Permalink to this definition"></a></dt>
-<dd><p>Convenience function to get an <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/mpl_toolkits.mplot3d.axes3d.Axes3D.html#mpl_toolkits.mplot3d.axes3d.Axes3D" title="(in Matplotlib v3.6.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Axes3D</span></code></a>.</p>
+<dd><p>Convenience function to get an <a class="reference external" href="https://matplotlib.org/stable/api/toolkits/mplot3d/axes3d.html#mpl_toolkits.mplot3d.axes3d.Axes3D" title="(in Matplotlib v3.7.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Axes3D</span></code></a>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>labels</strong> – whether to include xyz labels or not</p></li>
 <li><p><strong>size</strong> – figure size</p></li>
@@ -619,7 +591,7 @@ Example:</p>
 </pre></div>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>frames</strong> – how many frames to render? Frame rate is 30 fps</p></li>
 <li><p><strong>close</strong> – whether to close the figure (to prevent the animation and
@@ -627,6 +599,20 @@ static plot showing at the same time) or not</p></li>
 </ul>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="matplotlib.pyplot.getFig">
+<span class="sig-prename descclassname"><span class="pre">pyplot.</span></span><span class="sig-name descname"><span class="pre">getFig</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#matplotlib.pyplot.getFig" title="Permalink to this definition"></a></dt>
+<dd><p>Grab figure of the current plot.
+Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span> <span class="o">|</span> <span class="n">plt</span><span class="o">.</span><span class="n">getFig</span><span class="p">()</span> <span class="o">|</span> <span class="n">toImg</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Internally, this just calls <code class="docutils literal notranslate"><span class="pre">plt.gcf()</span></code> and that’s it, pretty simple.
+But I usually plot things as a part of the cli pipeline, and it’s very
+annoying that I can’t quite chain <code class="docutils literal notranslate"><span class="pre">plt.gcf()</span></code> operation, so I created
+this</p>
 </dd></dl>
 
 </section>
