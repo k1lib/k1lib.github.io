@@ -218,7 +218,7 @@ Cli composition
 One of the very powerful things about this workflow is that you can easily combine cli tools together,
 to reach unfathomable levels of complexity while using very little code and still remain relatively readable.
 For example, this is an `image dataloader <https://mlexps.com/imagenet/8-vit/>`_ built pretty much from
-scratch, but will full functionality comparable to PyTorch's dataloaders::
+scratch, but with full functionality comparable to PyTorch's dataloaders::
 
    base = "~/ssd/data/imagenet/set1/192px"
    idxToCat = base | ls() | head(80) | op().split("/")[-1].all() | insertIdColumn() | toDict()

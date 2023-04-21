@@ -16,6 +16,7 @@ Cli:
 - Added string execution ``3 | aS("x+2")`` capability to all clis
 - Added :class:`~conv.toHtml` to quickly convert PIL image to html tag
 - Accelerated :class:`~filt.filt` for array types even more
+- Added :class:`~structural.ungroup`, and added more modes to :class:`~structural.groupBy`
 
 Generic:
 

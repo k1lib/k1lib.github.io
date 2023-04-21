@@ -603,6 +603,11 @@
 <li class="toctree-l4"><a class="reference internal" href="#k1lib.cli.structural.groupBy.__ror__"><code class="docutils literal notranslate"><span class="pre">groupBy.__ror__()</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.cli.structural.ungroup"><code class="docutils literal notranslate"><span class="pre">ungroup</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#k1lib.cli.structural.ungroup.__init__"><code class="docutils literal notranslate"><span class="pre">ungroup.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#k1lib.cli.structural.ungroup.__ror__"><code class="docutils literal notranslate"><span class="pre">ungroup.__ror__()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#k1lib.cli.structural.insertColumn"><code class="docutils literal notranslate"><span class="pre">insertColumn</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#k1lib.cli.structural.insertColumn.__init__"><code class="docutils literal notranslate"><span class="pre">insertColumn.__init__()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#k1lib.cli.structural.insertColumn.__ror__"><code class="docutils literal notranslate"><span class="pre">insertColumn.__ror__()</span></code></a></li>
@@ -1098,7 +1103,7 @@ inverting the functionality of some clis:</p>
 <p>One of the very powerful things about this workflow is that you can easily combine cli tools together,
 to reach unfathomable levels of complexity while using very little code and still remain relatively readable.
 For example, this is an <a class="reference external" href="https://mlexps.com/imagenet/8-vit/">image dataloader</a> built pretty much from
-scratch, but will full functionality comparable to PyTorch’s dataloaders:</p>
+scratch, but with full functionality comparable to PyTorch’s dataloaders:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">base</span> <span class="o">=</span> <span class="s2">&quot;~/ssd/data/imagenet/set1/192px&quot;</span>
 <span class="n">idxToCat</span> <span class="o">=</span> <span class="n">base</span> <span class="o">|</span> <span class="n">ls</span><span class="p">()</span> <span class="o">|</span> <span class="n">head</span><span class="p">(</span><span class="mi">80</span><span class="p">)</span> <span class="o">|</span> <span class="n">op</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">all</span><span class="p">()</span> <span class="o">|</span> <span class="n">insertIdColumn</span><span class="p">()</span> <span class="o">|</span> <span class="n">toDict</span><span class="p">()</span>
 <span class="n">catToIdx</span> <span class="o">=</span> <span class="n">idxToCat</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="o">|</span> <span class="n">permute</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">|</span> <span class="n">toDict</span><span class="p">()</span>
@@ -1360,91 +1365,97 @@ check that cli out.</p>
 <td><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">tListIter()</span></code></p></td>
 <td><p><a class="reference internal" href="#k1lib.cli.filt.intersection" title="k1lib.cli.filt.intersection"><code class="xref py py-class docutils literal notranslate"><span class="pre">intersection</span></code></a></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#k1lib.cli.structural.insertColumn" title="k1lib.cli.structural.insertColumn"><code class="xref py py-class docutils literal notranslate"><span class="pre">insertColumn</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#k1lib.cli.structural.ungroup" title="k1lib.cli.structural.ungroup"><code class="xref py py-class docutils literal notranslate"><span class="pre">ungroup</span></code></a></p></td>
 <td><p><a class="reference internal" href="#k1lib.cli.utils.indent" title="k1lib.cli.utils.indent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">indent()</span></code></a></p></td>
 <td><p><a class="reference internal" href="#k1lib.cli.conv.toRgba" title="k1lib.cli.conv.toRgba"><code class="xref py py-class docutils literal notranslate"><span class="pre">toRgba</span></code></a></p></td>
 <td><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">tArrayTypes()</span></code></p></td>
 <td><p><a class="reference internal" href="#k1lib.cli.filt.union" title="k1lib.cli.filt.union"><code class="xref py py-class docutils literal notranslate"><span class="pre">union</span></code></a></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#k1lib.cli.structural.insertIdColumn" title="k1lib.cli.structural.insertIdColumn"><code class="xref py py-meth docutils literal notranslate"><span class="pre">insertIdColumn()</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#k1lib.cli.structural.insertColumn" title="k1lib.cli.structural.insertColumn"><code class="xref py py-class docutils literal notranslate"><span class="pre">insertColumn</span></code></a></p></td>
 <td><p><a class="reference internal" href="#k1lib.cli.utils.clipboard" title="k1lib.cli.utils.clipboard"><code class="xref py py-class docutils literal notranslate"><span class="pre">clipboard</span></code></a></p></td>
 <td><p><a class="reference internal" href="#k1lib.cli.conv.toGray" title="k1lib.cli.conv.toGray"><code class="xref py py-class docutils literal notranslate"><span class="pre">toGray</span></code></a></p></td>
 <td><p><a class="reference internal" href="#k1lib.cli.typehint.inferType" title="k1lib.cli.typehint.inferType"><code class="xref py py-meth docutils literal notranslate"><span class="pre">inferType()</span></code></a></p></td>
 <td><p><a class="reference internal" href="#k1lib.cli.filt.unique" title="k1lib.cli.filt.unique"><code class="xref py py-class docutils literal notranslate"><span class="pre">unique</span></code></a></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#k1lib.cli.structural.expandE" title="k1lib.cli.structural.expandE"><code class="xref py py-class docutils literal notranslate"><span class="pre">expandE</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#k1lib.cli.structural.insertIdColumn" title="k1lib.cli.structural.insertIdColumn"><code class="xref py py-meth docutils literal notranslate"><span class="pre">insertIdColumn()</span></code></a></p></td>
 <td><p><a class="reference internal" href="#k1lib.cli.utils.deref" title="k1lib.cli.utils.deref"><code class="xref py py-class docutils literal notranslate"><span class="pre">deref</span></code></a></p></td>
 <td><p><a class="reference internal" href="#k1lib.cli.conv.toDict" title="k1lib.cli.conv.toDict"><code class="xref py py-class docutils literal notranslate"><span class="pre">toDict</span></code></a></p></td>
 <td><p><a class="reference internal" href="#k1lib.cli.typehint.TypeHintException" title="k1lib.cli.typehint.TypeHintException"><code class="xref py py-class docutils literal notranslate"><span class="pre">TypeHintException</span></code></a></p></td>
 <td><p><a class="reference internal" href="#k1lib.cli.filt.breakIf" title="k1lib.cli.filt.breakIf"><code class="xref py py-class docutils literal notranslate"><span class="pre">breakIf</span></code></a></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#k1lib.cli.structural.unsqueeze" title="k1lib.cli.structural.unsqueeze"><code class="xref py py-meth docutils literal notranslate"><span class="pre">unsqueeze()</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#k1lib.cli.structural.expandE" title="k1lib.cli.structural.expandE"><code class="xref py py-class docutils literal notranslate"><span class="pre">expandE</span></code></a></p></td>
 <td><p><a class="reference internal" href="#k1lib.cli.utils.bindec" title="k1lib.cli.utils.bindec"><code class="xref py py-class docutils literal notranslate"><span class="pre">bindec</span></code></a></p></td>
 <td><p><a class="reference internal" href="#k1lib.cli.conv.toFloat" title="k1lib.cli.conv.toFloat"><code class="xref py py-class docutils literal notranslate"><span class="pre">toFloat</span></code></a></p></td>
 <td><p><a class="reference internal" href="#k1lib.cli.typehint.tLowest" title="k1lib.cli.typehint.tLowest"><code class="xref py py-meth docutils literal notranslate"><span class="pre">tLowest()</span></code></a></p></td>
 <td><p><a class="reference internal" href="#k1lib.cli.filt.mask" title="k1lib.cli.filt.mask"><code class="xref py py-class docutils literal notranslate"><span class="pre">mask</span></code></a></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#k1lib.cli.structural.count" title="k1lib.cli.structural.count"><code class="xref py py-class docutils literal notranslate"><span class="pre">count</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#k1lib.cli.structural.unsqueeze" title="k1lib.cli.structural.unsqueeze"><code class="xref py py-meth docutils literal notranslate"><span class="pre">unsqueeze()</span></code></a></p></td>
 <td><p><a class="reference internal" href="#k1lib.cli.utils.smooth" title="k1lib.cli.utils.smooth"><code class="xref py py-class docutils literal notranslate"><span class="pre">smooth</span></code></a></p></td>
 <td><p><a class="reference internal" href="#k1lib.cli.conv.toInt" title="k1lib.cli.conv.toInt"><code class="xref py py-class docutils literal notranslate"><span class="pre">toInt</span></code></a></p></td>
 <td><p><a class="reference internal" href="#k1lib.cli.typehint.tCheck" title="k1lib.cli.typehint.tCheck"><code class="xref py py-class docutils literal notranslate"><span class="pre">tCheck</span></code></a></p></td>
 <td><p><a class="reference internal" href="#k1lib.cli.filt.tryout" title="k1lib.cli.filt.tryout"><code class="xref py py-class docutils literal notranslate"><span class="pre">tryout</span></code></a></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#k1lib.cli.structural.permute" title="k1lib.cli.structural.permute"><code class="xref py py-class docutils literal notranslate"><span class="pre">permute</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#k1lib.cli.structural.count" title="k1lib.cli.structural.count"><code class="xref py py-class docutils literal notranslate"><span class="pre">count</span></code></a></p></td>
 <td><p><a class="reference internal" href="#k1lib.cli.utils.disassemble" title="k1lib.cli.utils.disassemble"><code class="xref py py-meth docutils literal notranslate"><span class="pre">disassemble()</span></code></a></p></td>
 <td><p><a class="reference internal" href="#k1lib.cli.conv.toBytes" title="k1lib.cli.conv.toBytes"><code class="xref py py-class docutils literal notranslate"><span class="pre">toBytes</span></code></a></p></td>
 <td><p><a class="reference internal" href="#k1lib.cli.typehint.tOpt" title="k1lib.cli.typehint.tOpt"><code class="xref py py-class docutils literal notranslate"><span class="pre">tOpt</span></code></a></p></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#k1lib.cli.structural.accumulate" title="k1lib.cli.structural.accumulate"><code class="xref py py-class docutils literal notranslate"><span class="pre">accumulate</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#k1lib.cli.structural.permute" title="k1lib.cli.structural.permute"><code class="xref py py-class docutils literal notranslate"><span class="pre">permute</span></code></a></p></td>
 <td><p><a class="reference internal" href="#k1lib.cli.utils.tree" title="k1lib.cli.utils.tree"><code class="xref py py-meth docutils literal notranslate"><span class="pre">tree()</span></code></a></p></td>
 <td><p><a class="reference internal" href="#k1lib.cli.conv.toHtml" title="k1lib.cli.conv.toHtml"><code class="xref py py-class docutils literal notranslate"><span class="pre">toHtml</span></code></a></p></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#k1lib.cli.structural.AA_" title="k1lib.cli.structural.AA_"><code class="xref py py-class docutils literal notranslate"><span class="pre">AA_</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#k1lib.cli.structural.accumulate" title="k1lib.cli.structural.accumulate"><code class="xref py py-class docutils literal notranslate"><span class="pre">accumulate</span></code></a></p></td>
 <td><p><a class="reference internal" href="#k1lib.cli.utils.lookup" title="k1lib.cli.utils.lookup"><code class="xref py py-class docutils literal notranslate"><span class="pre">lookup</span></code></a></p></td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#k1lib.cli.structural.peek" title="k1lib.cli.structural.peek"><code class="xref py py-class docutils literal notranslate"><span class="pre">peek</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#k1lib.cli.structural.AA_" title="k1lib.cli.structural.AA_"><code class="xref py py-class docutils literal notranslate"><span class="pre">AA_</span></code></a></p></td>
 <td><p><a class="reference internal" href="#k1lib.cli.utils.dictFields" title="k1lib.cli.utils.dictFields"><code class="xref py py-class docutils literal notranslate"><span class="pre">dictFields</span></code></a></p></td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#k1lib.cli.structural.peekF" title="k1lib.cli.structural.peekF"><code class="xref py py-class docutils literal notranslate"><span class="pre">peekF</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#k1lib.cli.structural.peek" title="k1lib.cli.structural.peek"><code class="xref py py-class docutils literal notranslate"><span class="pre">peek</span></code></a></p></td>
 <td></td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#k1lib.cli.structural.repeat" title="k1lib.cli.structural.repeat"><code class="xref py py-class docutils literal notranslate"><span class="pre">repeat</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#k1lib.cli.structural.peekF" title="k1lib.cli.structural.peekF"><code class="xref py py-class docutils literal notranslate"><span class="pre">peekF</span></code></a></p></td>
 <td></td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#k1lib.cli.structural.repeatF" title="k1lib.cli.structural.repeatF"><code class="xref py py-meth docutils literal notranslate"><span class="pre">repeatF()</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#k1lib.cli.structural.repeat" title="k1lib.cli.structural.repeat"><code class="xref py py-class docutils literal notranslate"><span class="pre">repeat</span></code></a></p></td>
 <td></td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#k1lib.cli.structural.repeatFrom" title="k1lib.cli.structural.repeatFrom"><code class="xref py py-class docutils literal notranslate"><span class="pre">repeatFrom</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#k1lib.cli.structural.repeatF" title="k1lib.cli.structural.repeatF"><code class="xref py py-meth docutils literal notranslate"><span class="pre">repeatF()</span></code></a></p></td>
 <td></td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#k1lib.cli.structural.oneHot" title="k1lib.cli.structural.oneHot"><code class="xref py py-class docutils literal notranslate"><span class="pre">oneHot</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#k1lib.cli.structural.repeatFrom" title="k1lib.cli.structural.repeatFrom"><code class="xref py py-class docutils literal notranslate"><span class="pre">repeatFrom</span></code></a></p></td>
 <td></td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#k1lib.cli.structural.indexTable" title="k1lib.cli.structural.indexTable"><code class="xref py py-class docutils literal notranslate"><span class="pre">indexTable</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#k1lib.cli.structural.oneHot" title="k1lib.cli.structural.oneHot"><code class="xref py py-class docutils literal notranslate"><span class="pre">oneHot</span></code></a></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#k1lib.cli.structural.indexTable" title="k1lib.cli.structural.indexTable"><code class="xref py py-class docutils literal notranslate"><span class="pre">indexTable</span></code></a></p></td>
 <td></td>
 <td></td>
 <td></td>
@@ -5777,33 +5788,56 @@ has the same number of elements as the input stream or not</p></li>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="k1lib.cli.structural.groupBy">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.cli.structural.</span></span><span class="sig-name descname"><span class="pre">groupBy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/structural.html#groupBy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli.structural.groupBy" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.cli.structural.</span></span><span class="sig-name descname"><span class="pre">groupBy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">separate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">removeCol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/structural.html#groupBy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli.structural.groupBy" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#k1lib.cli.init.BaseCli" title="k1lib.cli.init.BaseCli"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseCli</span></code></a></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="k1lib.cli.structural.groupBy.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/structural.html#groupBy.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli.structural.groupBy.__init__" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">separate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">removeCol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/structural.html#groupBy.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli.structural.groupBy.__init__" title="Permalink to this definition"></a></dt>
 <dd><p>Groups table by some column.
 Example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[[</span><span class="mf">2.3</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
- <span class="p">[</span><span class="mf">3.4</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
- <span class="p">[</span><span class="mf">4.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
- <span class="p">[</span><span class="mf">5.6</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
- <span class="p">[</span><span class="mf">6.7</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">|</span> <span class="n">groupBy</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">|</span> <span class="n">deref</span><span class="p">()</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[[</span><span class="mf">2.3</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
+     <span class="p">[</span><span class="mf">3.4</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+     <span class="p">[</span><span class="mf">4.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+     <span class="p">[</span><span class="mf">5.6</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
+     <span class="p">[</span><span class="mf">6.7</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
+<span class="n">a</span> <span class="o">|</span> <span class="n">groupBy</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">|</span> <span class="n">deref</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>This returns:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[[[</span><span class="mf">2.3</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
-  <span class="p">[</span><span class="mf">5.6</span><span class="p">,</span> <span class="mi">5</span><span class="p">]],</span>
- <span class="p">[[</span><span class="mf">3.4</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
-  <span class="p">[</span><span class="mf">4.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">]],</span>
- <span class="p">[[</span><span class="mf">6.7</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[[[</span><span class="mf">6.7</span><span class="p">,</span> <span class="mi">1</span><span class="p">]],</span>
+ <span class="p">[[</span><span class="mf">3.4</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mf">4.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">]],</span>
+ <span class="p">[[</span><span class="mf">2.3</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mf">5.6</span><span class="p">,</span> <span class="mi">5</span><span class="p">]]]</span>
 </pre></div>
 </div>
-<p>Should have O(n log(n)) time complexity</p>
+<p>Should have O(n log(n)) time complexity. What if <code class="docutils literal notranslate"><span class="pre">separate</span></code> is True?</p>
+<blockquote>
+<div><p>a | groupBy(1, True) | deref()</p>
+</div></blockquote>
+<p>This returns:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="p">[[</span><span class="mf">6.7</span><span class="p">]]],</span>
+ <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="p">[[</span><span class="mf">3.4</span><span class="p">],</span> <span class="p">[</span><span class="mf">4.5</span><span class="p">]]],</span>
+ <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="p">[[</span><span class="mf">2.3</span><span class="p">],</span> <span class="p">[</span><span class="mf">5.6</span><span class="p">]]]]</span>
+</pre></div>
+</div>
+<p>What if <code class="docutils literal notranslate"><span class="pre">removeCol</span></code> is False?</p>
+<blockquote>
+<div><p>a | groupBy(1, True, False) | deref()</p>
+</div></blockquote>
+<p>This returns:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="p">[[</span><span class="mf">6.7</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]],</span>
+ <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="p">[[</span><span class="mf">3.4</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mf">4.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]],</span>
+ <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="p">[[</span><span class="mf">2.3</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mf">5.6</span><span class="p">,</span> <span class="mi">5</span><span class="p">]]]]</span>
+</pre></div>
+</div>
 <p>See also: <a class="reference internal" href="#k1lib.cli.grep.grep" title="k1lib.cli.grep.grep"><code class="xref py py-class docutils literal notranslate"><span class="pre">grep</span></code></a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>column</strong> – which column to group by</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>column</strong> – which column to group by</p></li>
+<li><p><strong>separate</strong> – whether to separate out the column to sort of form a dict or not. See example</p></li>
+<li><p><strong>removeCol</strong> – whether to remove the grouped-by column. Defaults to True if
+<code class="docutils literal notranslate"><span class="pre">separate=True</span></code>, and False if <code class="docutils literal notranslate"><span class="pre">separate=False</span></code></p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -5811,6 +5845,37 @@ Example:</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="k1lib.cli.structural.groupBy.__ror__">
 <span class="sig-name descname"><span class="pre">__ror__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">it</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/structural.html#groupBy.__ror__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli.structural.groupBy.__ror__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="k1lib.cli.structural.ungroup">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.cli.structural.</span></span><span class="sig-name descname"><span class="pre">ungroup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">insertCol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/structural.html#ungroup"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli.structural.ungroup" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#k1lib.cli.init.BaseCli" title="k1lib.cli.init.BaseCli"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseCli</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.cli.structural.ungroup.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">insertCol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/structural.html#ungroup.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli.structural.ungroup.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Ungroups things that were grouped using :class:<a href="#id1"><span class="problematic" id="id2">`</span></a>groupBy`(…, True).
+Particularly useful to transform some complex data structure into a flat
+dataframe so that you can plug into pandas. Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[[</span><span class="mf">2.3</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mf">3.4</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mf">4.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mf">5.6</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mf">6.7</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
+<span class="c1"># returns [[6.7, 1], [3.4, 2], [4.5, 2], [2.3, 5], [5.6, 5]]</span>
+<span class="n">a</span> <span class="o">|</span> <span class="n">groupBy</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span> <span class="o">|</span> <span class="n">ungroup</span><span class="p">()</span> <span class="o">|</span> <span class="n">deref</span><span class="p">()</span>
+<span class="c1"># returns [[6.7], [3.4], [4.5], [2.3], [5.6]]</span>
+<span class="n">a</span> <span class="o">|</span> <span class="n">groupBy</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span> <span class="o">|</span> <span class="n">ungroup</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span> <span class="o">|</span> <span class="n">deref</span><span class="p">()</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>insertCol</strong> – whether to insert the column into the table or not</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.cli.structural.ungroup.__ror__">
+<span class="sig-name descname"><span class="pre">__ror__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">it</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/structural.html#ungroup.__ror__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli.structural.ungroup.__ror__" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
