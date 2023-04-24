@@ -2450,11 +2450,12 @@ change to “PNG” or sth like that</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="k1lib.cli.conv.toHtml.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/conv.html#toHtml.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli.conv.toHtml.__init__" title="Permalink to this definition"></a></dt>
-<dd><p>Converts several object types to bytes. Example:</p>
+<dd><p>Converts several object types to bytes.
+Example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># converts PIL image to html &lt;img&gt; tag</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="o">|</span> <span class="n">toImg</span><span class="p">()</span> <span class="o">|</span> <span class="n">toHtml</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>torch.randn(200, 100) | toImg() | toHtml()</p>
 </dd></dl>
 
 <dl class="py method">
@@ -5888,9 +5889,9 @@ Example:</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="k1lib.cli.structural.ungroup.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">insertCol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/structural.html#ungroup.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli.structural.ungroup.__init__" title="Permalink to this definition"></a></dt>
-<dd><p>Ungroups things that were grouped using :class:<a href="#id1"><span class="problematic" id="id2">`</span></a>groupBy`(…, True).
-Particularly useful to transform some complex data structure into a flat
-dataframe so that you can plug into pandas. Example:</p>
+<dd><p>Ungroups things that were grouped using a specific mode of
+<a class="reference internal" href="#k1lib.cli.structural.groupBy" title="k1lib.cli.structural.groupBy"><code class="xref py py-class docutils literal notranslate"><span class="pre">groupBy</span></code></a>. Particularly useful to transform some complex data
+structure into a flat dataframe so that you can plug into pandas. Example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[[</span><span class="mf">2.3</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mf">3.4</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mf">4.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mf">5.6</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mf">6.7</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
 <span class="c1"># returns [[6.7, 1], [3.4, 2], [4.5, 2], [2.3, 5], [5.6, 5]]</span>
 <span class="n">a</span> <span class="o">|</span> <span class="n">groupBy</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span> <span class="o">|</span> <span class="n">ungroup</span><span class="p">()</span> <span class="o">|</span> <span class="n">deref</span><span class="p">()</span>
