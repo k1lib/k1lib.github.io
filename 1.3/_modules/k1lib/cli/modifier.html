@@ -210,6 +210,9 @@
 <span class="sd">    # returns [15, 17, 19, 21, 23]</span>
 <span class="sd">    [range(5), range(10, 15)] | transpose() | ~apply(f, z=5) | deref()</span>
 
+<span class="sd">If &quot;apply&quot; is too hard to remember, this cli also has an alias :class:`map_`</span>
+<span class="sd">that kinda mimics Python&#39;s ``map()``.</span>
+
 <span class="sd">:param column: if not None, then applies the function to that column only</span>
 <span class="sd">:param cache: if specified, then caches this much number of values</span>
 <span class="sd">:param kwargs: extra keyword arguments to pass in the function&quot;&quot;&quot;</span>

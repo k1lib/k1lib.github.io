@@ -60,6 +60,9 @@
 <li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#under-the-hood">Under the hood</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="llvm.html">LLVM optimizer tutorial</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#creating-your-own-cli">Creating your own cli</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#biology-related-clis">Biology-related clis</a></li>
 </ul>
 </li>
@@ -1643,6 +1646,29 @@ you can implement optimization passes to speed up everything by a lot:</p>
 <li class="toctree-l1"><a class="reference internal" href="llvm.html">LLVM optimizer tutorial</a></li>
 </ul>
 </div>
+</section>
+<section id="creating-your-own-cli">
+<h2>Creating your own cli<a class="headerlink" href="#creating-your-own-cli" title="Permalink to this heading"></a></h2>
+<p>It’s fairly simple to create your new cli. If it’s composed of other clis, you can do
+something like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">newCli</span> <span class="o">=</span> <span class="n">filt</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">%</span><span class="mi">2</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span> <span class="o">|</span> <span class="n">head</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="o">|</span> <span class="n">deref</span><span class="p">()</span>
+<span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">|</span> <span class="n">newCli</span> <span class="c1"># returns [0, 2, 4, 6]</span>
+</pre></div>
+</div>
+<p>If it’s more complicated that needs to have access to some state, like a sum of numbers,
+then you can extend from <a class="reference internal" href="#k1lib.cli.init.BaseCli" title="k1lib.cli.init.BaseCli"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseCli</span></code></a> like so:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">NewCli</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bias</span> <span class="o">=</span> <span class="n">bias</span> <span class="c1"># don&#39;t necessarily have to call super.__init__()</span>
+    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">):</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bias</span>
+        <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">it</span><span class="p">:</span>
+            <span class="n">s</span> <span class="o">+=</span> <span class="n">elem</span>
+         <span class="k">return</span> <span class="n">s</span>
+
+<span class="p">[</span><span class="nb">range</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">30</span><span class="p">),</span> <span class="nb">range</span><span class="p">(</span><span class="mi">8</span><span class="p">)]</span> <span class="o">|</span> <span class="n">NewCli</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span> <span class="o">|</span> <span class="n">deref</span><span class="p">()</span> <span class="c1"># returns [373, 32]</span>
+</pre></div>
+</div>
 <section id="biology-related-clis">
 <h3>Biology-related clis<a class="headerlink" href="#biology-related-clis" title="Permalink to this heading"></a></h3>
 <p>I separated these out because they might not be interesting to the majority of users.</p>
@@ -2540,6 +2566,8 @@ automatically use the C-accelerated versions if possible, like this:</p>
 </pre></div>
 </div>
 <p>If you need more extensive filtering capabilities involving text, check out <a class="reference internal" href="#k1lib.cli.grep.grep" title="k1lib.cli.grep.grep"><code class="xref py py-class docutils literal notranslate"><span class="pre">grep</span></code></a></p>
+<p>If “filt” is too hard to remember, this cli also has an alias <a class="reference internal" href="#k1lib.cli.filt.filter_" title="k1lib.cli.filt.filter_"><code class="xref py py-class docutils literal notranslate"><span class="pre">filter_</span></code></a>
+that kinda mimics Python’s <code class="docutils literal notranslate"><span class="pre">filter()</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -4234,6 +4262,8 @@ Example:</p>
 <span class="p">[</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">)]</span> <span class="o">|</span> <span class="n">transpose</span><span class="p">()</span> <span class="o">|</span> <span class="o">~</span><span class="n">apply</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span> <span class="o">|</span> <span class="n">deref</span><span class="p">()</span>
 </pre></div>
 </div>
+<p>If “apply” is too hard to remember, this cli also has an alias <a class="reference internal" href="#k1lib.cli.modifier.map_" title="k1lib.cli.modifier.map_"><code class="xref py py-class docutils literal notranslate"><span class="pre">map_</span></code></a>
+that kinda mimics Python’s <code class="docutils literal notranslate"><span class="pre">map()</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">

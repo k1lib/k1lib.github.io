@@ -429,6 +429,29 @@ you can implement optimization passes to speed up everything by a lot:
 
    llvm
 
+Creating your own cli
+-------------------------
+
+It's fairly simple to create your new cli. If it's composed of other clis, you can do
+something like this::
+
+   newCli = filt(lambda x: x%2==0) | head(4) | deref()
+   range(10) | newCli # returns [0, 2, 4, 6]
+
+If it's more complicated that needs to have access to some state, like a sum of numbers,
+then you can extend from :class:`~k1lib.cli.init.BaseCli` like so::
+
+   class NewCli(BaseCli):
+       def __init__(self, bias=0):
+           self.bias = bias # don't necessarily have to call super.__init__()
+       def __ror__(self, it):
+           s = self.bias
+           for elem in it:
+               s += elem
+            return s
+
+   [range(12, 30), range(8)] | NewCli(4).all() | deref() # returns [373, 32]
+
 Biology-related clis
 ***********************
 
