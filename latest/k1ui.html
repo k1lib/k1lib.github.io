@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>k1lib.k1ui module &mdash; k1lib  documentation</title>
@@ -12,6 +12,9 @@
   <![endif]-->
   
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
@@ -26,15 +29,11 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-
-          
-          
-          <a href="index.html" class="icon icon-home">
-            k1lib
+            <a href="index.html" class="icon icon-home"> k1lib
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -195,7 +194,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li><a href="index.html" class="icon icon-home"></a></li>
       <li class="breadcrumb-item active">k1lib.k1ui module</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/k1ui.rst.txt" rel="nofollow"> View page source</a>
@@ -265,7 +264,7 @@ Some of them include:</p>
 <li><p><a class="reference internal" href="#k1lib.k1ui.main.execute" title="k1lib.k1ui.main.execute"><code class="xref py py-meth docutils literal notranslate"><span class="pre">execute()</span></code></a>: executes a list of events</p></li>
 </ul>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>eventCb</strong> – (async) will be called whenever there’s a new event</p></li>
 <li><p><strong>mainThreadCb</strong> – (async) will be called after setting up everything</p></li>
@@ -320,7 +319,7 @@ Examples:</p>
 <p>Note: these examples only work on jupyter notebooks. For regular Python processes,
 check out official Python docs (<a class="reference external" href="https://docs.python.org/3/library/asyncio-task.html">https://docs.python.org/3/library/asyncio-task.html</a>)</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>t</strong> – record duration</p></li>
 <li><p><strong>keyCode</strong> – key to stop the recording</p></li>
@@ -364,7 +363,7 @@ check out official Python docs (<a class="reference external" href="https://docs
 <dd><p>Zooms into a particular time range. If either bounds are not
 specified, they will default to the start and end of all events.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>t1</strong> – time values are relative to the recording’s start time</p>
 </dd>
 </dl>
@@ -384,7 +383,7 @@ this (x, y are t1, t2):</p>
 <p>Then, tracks 1 and 3 are selected. Time values are relative to
 recording’s start time</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>t1</strong> – choose tracks that happen after this time</p></li>
 <li><p><strong>t2</strong> – choose tracks that happen before this time</p></li>
@@ -452,7 +451,7 @@ modified, and potentially delete some of the Track’s internal data:</p>
 <li><p>Tracks whose internal data are also modified: Contour, Stream</p></li>
 </ul>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>t</strong> – where to insert the duration, relative to Recording’s start time</p></li>
 <li><p><strong>duration</strong> – how long (in seconds) to insert?</p></li>
@@ -497,7 +496,7 @@ This currently includes:</p>
 </li>
 </ul>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>enabled</strong> – list of integers, whether to turn on or off certain features. 1 to turn on, 0 to turn off</p>
 </dd>
 </dl>
@@ -593,7 +592,7 @@ so beware, as it can crash your notebook if you try to display it.</p>
 <span class="sig-name descname"><span class="pre">move</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deltaTime</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#Track.move"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.Track.move" title="Permalink to this definition"></a></dt>
 <dd><p>Moves the entire track left or right, to be implemented by subclasses.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>deltaTime</strong> – if negative, move left by this number of seconds, else move right</p>
 </dd>
 </dl>
@@ -616,7 +615,7 @@ so beware, as it can crash your notebook if you try to display it.</p>
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keyText</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">keyCode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">mods</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">times</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#CharTrack.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.CharTrack.__init__" title="Permalink to this definition"></a></dt>
 <dd><p>Representing 1 key pressed and released.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>keyText</strong> – text to display to user, like “Enter”</p></li>
 <li><p><strong>keyCode</strong> – event’s “javaKeyCode”</p></li>
@@ -648,7 +647,7 @@ so beware, as it can crash your notebook if you try to display it.</p>
 <span class="sig-name descname"><span class="pre">move</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deltaTime</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#CharTrack.move"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.CharTrack.move" title="Permalink to this definition"></a></dt>
 <dd><p>Moves the entire track left or right, to be implemented by subclasses.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>deltaTime</strong> – if negative, move left by this number of seconds, else move right</p>
 </dd>
 </dl>
@@ -690,7 +689,7 @@ directly. Rather, it’s created from scanning over CharTracks and merging them 
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coords</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#ContourTrack.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.ContourTrack.__init__" title="Permalink to this definition"></a></dt>
 <dd><p>Representing mouse trajectory (“mouseMoved” event).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>coords</strong> – numpy array with shape (#events, [x, y, unix time])</p>
 </dd>
 </dl>
@@ -718,7 +717,7 @@ directly. Rather, it’s created from scanning over CharTracks and merging them 
 <span class="sig-name descname"><span class="pre">move</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deltaTime</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#ContourTrack.move"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.ContourTrack.move" title="Permalink to this definition"></a></dt>
 <dd><p>Moves the entire track left or right, to be implemented by subclasses.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>deltaTime</strong> – if negative, move left by this number of seconds, else move right</p>
 </dd>
 </dl>
@@ -730,7 +729,7 @@ directly. Rather, it’s created from scanning over CharTracks and merging them 
 <dd><p>Move contour’s start/end to another location, smoothly scaling all
 intermediary points along.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>start</strong> – if True, move the start point, else move the end point</p>
 </dd>
 </dl>
@@ -749,7 +748,7 @@ to recording’s start time. Example:</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="k1lib.k1ui.main.ContourTrack.splitClick">
-<span class="sig-name descname"><span class="pre">splitClick</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clickTracks</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#k1lib.k1ui.main.ClickTrack" title="k1lib.k1ui.main.ClickTrack"><span class="pre">ClickTrack</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#k1lib.k1ui.main.ContourTrack.splitClick" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">splitClick</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clickTracks</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#k1lib.k1ui.main.ClickTrack" title="k1lib.k1ui.main.ClickTrack"><span class="pre">ClickTrack</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#k1lib.k1ui.main.ContourTrack.splitClick" title="Permalink to this definition"></a></dt>
 <dd><p>Splits this contour track by click events. Essentially, the click
 events chops this contour into multiple segments. Example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">r</span> <span class="o">=</span> <span class="n">k1ui</span><span class="o">.</span><span class="n">Recording</span><span class="o">.</span><span class="n">sample</span><span class="p">()</span>
@@ -757,7 +756,7 @@ events chops this contour into multiple segments. Example:</p>
 </pre></div>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>clickTracks</strong> – if not specified, use all ClickTracks from the recording</p>
 </dd>
 </dl>
@@ -785,7 +784,7 @@ events chops this contour into multiple segments. Example:</p>
 <span class="sig-name descname"><span class="pre">isClick</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#ClickTrack.isClick"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.ClickTrack.isClick" title="Permalink to this definition"></a></dt>
 <dd><p>Whether this ClickTrack represents a single click.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>threshold</strong> – if Manhattan distance between start and end is less than this amount, then declare it a single click</p>
 </dd>
 </dl>
@@ -866,7 +865,7 @@ events chops this contour into multiple segments. Example:</p>
 <span class="sig-name descname"><span class="pre">move</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deltaTime</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#StreamTrack.move"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.StreamTrack.move" title="Permalink to this definition"></a></dt>
 <dd><p>Moves the entire track left or right, to be implemented by subclasses.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>deltaTime</strong> – if negative, move left by this number of seconds, else move right</p>
 </dd>
 </dl>
@@ -942,7 +941,7 @@ the lifecycle of the recording.</p>
 <dd><p>Trains the network for a while (300 epochs/6 seconds). Will be called
 automatically when you register new frames to the system</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>restart</strong> – whether to restart the small network or not</p>
 </dd>
 </dl>
@@ -950,10 +949,10 @@ automatically when you register new frames to the system</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="k1lib.k1ui.main.TrainScreen.trainParams">
-<span class="sig-name descname"><span class="pre">trainParams</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">joinAlpha</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epochs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#TrainScreen.trainParams"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.TrainScreen.trainParams" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">trainParams</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">joinAlpha</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epochs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/k1ui/main.html#TrainScreen.trainParams"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.k1ui.main.TrainScreen.trainParams" title="Permalink to this definition"></a></dt>
 <dd><p>Sets training parameters.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>joinAlpha</strong> – (default 0) alpha used in joinStreamsRandom component for each
 screen categories. Read more at <a class="reference internal" href="cli/index.html#k1lib.cli.structural.joinStreamsRandom" title="k1lib.cli.structural.joinStreamsRandom"><code class="xref py py-class docutils literal notranslate"><span class="pre">joinStreamsRandom</span></code></a></p></li>
@@ -1029,7 +1028,7 @@ dynamic looks like this:</p>
 <dd><p>Get the list of screens (list of (frameId, screen name) tuple) that
 the network deems to be transitions between screen states.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>obeyRule</strong> – if not specified, then don’t filter. If True, returns only screens that
 are part of the specified rule and vice versa</p>
 </dd>

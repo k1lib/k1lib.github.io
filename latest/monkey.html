@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Monkey patched classes &mdash; k1lib  documentation</title>
@@ -12,6 +12,9 @@
   <![endif]-->
   
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/sphinx_highlight.js"></script>
         <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -27,15 +30,11 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-
-          
-          
-          <a href="index.html" class="icon icon-home">
-            k1lib
+            <a href="index.html" class="icon icon-home"> k1lib
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -97,8 +96,14 @@
 <li class="toctree-l3"><a class="reference internal" href="#k1lib._monkey.torch.sameStorage"><code class="docutils literal notranslate"><span class="pre">torch.sameStorage()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#class-graphviz-digraph">Class <code class="xref py py-class docutils literal notranslate"><span class="pre">graphviz.Digraph</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#class-graphviz-graph">Class <code class="xref py py-class docutils literal notranslate"><span class="pre">graphviz.Graph</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#class-graphviz-digraph">Class <code class="xref py py-class docutils literal notranslate"><span class="pre">graphviz.Digraph</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#graphviz.dot.Digraph.__call__"><code class="docutils literal notranslate"><span class="pre">Digraph.__call__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#class-graphviz-graph">Class <code class="xref py py-class docutils literal notranslate"><span class="pre">graphviz.Graph</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#graphviz.dot.Graph.__call__"><code class="docutils literal notranslate"><span class="pre">Graph.__call__()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#class-mpl-toolkits-mplot3d-axes3d-axes3d">Class <code class="xref py py-class docutils literal notranslate"><span class="pre">mpl_toolkits.mplot3d.axes3d.Axes3D</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#mpl_toolkits.mplot3d.axes3d.Axes3D.march"><code class="docutils literal notranslate"><span class="pre">Axes3D.march()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#mpl_toolkits.mplot3d.axes3d.Axes3D.surface"><code class="docutils literal notranslate"><span class="pre">Axes3D.surface()</span></code></a></li>
@@ -132,7 +137,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li><a href="index.html" class="icon icon-home"></a></li>
       <li class="breadcrumb-item active">Monkey patched classes</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/monkey.rst.txt" rel="nofollow"> View page source</a>
@@ -235,7 +240,7 @@ your buffers (aka Tensors attached to <a class="reference external" href="https:
 to avoid headaches, or set <code class="docutils literal notranslate"><span class="pre">buffers</span></code> option to False.</p>
 <p>If you don’t know what I’m talking about, don’t worry and just leave as default.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>buffers</strong> – whether to preserve device of buffers (regular Tensors attached
 to <a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch vmaster (2.1.0a0+gitbe0b12e ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></a>) or not.</p>
 </dd>
@@ -282,7 +287,7 @@ Example:</p>
 </pre></div>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>model</strong> – the <a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch vmaster (2.1.0a0+gitbe0b12e ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></a> object to select from</p></li>
 <li><p><strong>css</strong> – the css selectors</p></li>
@@ -364,7 +369,7 @@ fastai.medical.imaging. Example:</p>
 <p>Plot #2:</p>
 <img alt="_images/histScaledUniform.png" src="_images/histScaledUniform.png" />
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>bins</strong> – if <code class="docutils literal notranslate"><span class="pre">bounds</span></code> not specified, then will scale according to a hist
 with this many bins</p></li>
@@ -399,7 +404,7 @@ This is exactly:</p>
 </div>
 <img alt="_images/positionalEncoding.png" src="_images/positionalEncoding.png" />
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>richFactor</strong> – the bigger, the richer the features are. A lot of
 times, I observe that the features that are meant to cover huge scales
 are pretty empty and don’t really contribute anything useful. So this
@@ -461,9 +466,33 @@ has the same storage or not. Example:</p>
 </section>
 <section id="class-graphviz-digraph">
 <h2>Class <a class="reference external" href="https://graphviz.readthedocs.io/en/stable/api.html#graphviz.Digraph" title="(in graphviz)"><code class="xref py py-class docutils literal notranslate"><span class="pre">graphviz.Digraph</span></code></a><a class="headerlink" href="#class-graphviz-digraph" title="Permalink to this heading"></a></h2>
+<dl class="py method">
+<dt class="sig sig-object py" id="graphviz.dot.Digraph.__call__">
+<span class="sig-prename descclassname"><span class="pre">Digraph.</span></span><span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_from</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">tos</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#graphviz.dot.Digraph.__call__" title="Permalink to this definition"></a></dt>
+<dd><p>Convenience method to quickly construct graphs.
+Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">graph</span><span class="p">()</span>
+<span class="n">g</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">)</span>
+<span class="n">g</span> <span class="c1"># displays arrows from &quot;a&quot; to &quot;b&quot; and &quot;a&quot; to &quot;c&quot;</span>
+</pre></div>
+</div>
+</dd></dl>
+
 </section>
 <section id="class-graphviz-graph">
 <h2>Class <a class="reference external" href="https://graphviz.readthedocs.io/en/stable/api.html#graphviz.Graph" title="(in graphviz)"><code class="xref py py-class docutils literal notranslate"><span class="pre">graphviz.Graph</span></code></a><a class="headerlink" href="#class-graphviz-graph" title="Permalink to this heading"></a></h2>
+<dl class="py method">
+<dt class="sig sig-object py" id="graphviz.dot.Graph.__call__">
+<span class="sig-prename descclassname"><span class="pre">Graph.</span></span><span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_from</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">tos</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#graphviz.dot.Graph.__call__" title="Permalink to this definition"></a></dt>
+<dd><p>Convenience method to quickly construct graphs.
+Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">graph</span><span class="p">()</span>
+<span class="n">g</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">)</span>
+<span class="n">g</span> <span class="c1"># displays arrows from &quot;a&quot; to &quot;b&quot; and &quot;a&quot; to &quot;c&quot;</span>
+</pre></div>
+</div>
+</dd></dl>
+
 </section>
 <section id="class-mpl-toolkits-mplot3d-axes3d-axes3d">
 <h2>Class <a class="reference external" href="https://matplotlib.org/stable/api/toolkits/mplot3d/axes3d.html#mpl_toolkits.mplot3d.axes3d.Axes3D" title="(in Matplotlib v3.7.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">mpl_toolkits.mplot3d.axes3d.Axes3D</span></code></a><a class="headerlink" href="#class-mpl-toolkits-mplot3d-axes3d-axes3d" title="Permalink to this heading"></a></h2>
@@ -486,7 +515,7 @@ Example:</p>
 <p>The function name is “march” because how it works internally is by using
 something called marching cubes.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>heatMap</strong> – 3d numpy array</p></li>
 <li><p><strong>level</strong> – array value to form the surface on</p></li>
@@ -507,7 +536,7 @@ are filled in automatically. Example:</p>
 </div>
 <img alt="_images/surface.png" src="_images/surface.png" />
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>z</strong> – 2d numpy array for the heights</p></li>
 <li><p><strong>kwargs</strong> – keyword arguments passed to <code class="docutils literal notranslate"><span class="pre">plot_surface</span></code></p></li>
@@ -521,7 +550,7 @@ are filled in automatically. Example:</p>
 <span class="sig-prename descclassname"><span class="pre">Axes3D.</span></span><span class="sig-name descname"><span class="pre">plane</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">origin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpl_toolkits.mplot3d.axes3d.Axes3D.plane" title="Permalink to this definition"></a></dt>
 <dd><p>Plots a 3d plane.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>origin</strong> – origin vector, shape (3,)</p></li>
 <li><p><strong>v1</strong> – 1st vector, shape (3,)</p></li>
@@ -540,7 +569,7 @@ by 2 vectors. If not, plots a plane perpendicular to the 1st vector</p></li>
 <span class="sig-prename descclassname"><span class="pre">Axes3D.</span></span><span class="sig-name descname"><span class="pre">point</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpl_toolkits.mplot3d.axes3d.Axes3D.point" title="Permalink to this definition"></a></dt>
 <dd><p>Plots a 3d point.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>v</strong> – point location, shape (3,)</p></li>
 <li><p><strong>kwargs</strong> – keyword argument passed to <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/mpl_toolkits.mplot3d.axes3d.Axes3D.scatter.html#mpl_toolkits.mplot3d.axes3d.Axes3D.scatter" title="(in Matplotlib v3.7.1)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">scatter()</span></code></a></p></li>
@@ -554,7 +583,7 @@ by 2 vectors. If not, plots a plane perpendicular to the 1st vector</p></li>
 <span class="sig-prename descclassname"><span class="pre">Axes3D.</span></span><span class="sig-name descname"><span class="pre">line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v2</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpl_toolkits.mplot3d.axes3d.Axes3D.line" title="Permalink to this definition"></a></dt>
 <dd><p>Plots a 3d line.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>v1</strong> – 1st point location, shape (3,)</p></li>
 <li><p><strong>v2</strong> – 2nd point location, shape (3,)</p></li>
@@ -572,7 +601,7 @@ by 2 vectors. If not, plots a plane perpendicular to the 1st vector</p></li>
 <span class="sig-prename descclassname"><span class="pre">pyplot.</span></span><span class="sig-name descname"><span class="pre">k3d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#matplotlib.pyplot.k3d" title="Permalink to this definition"></a></dt>
 <dd><p>Convenience function to get an <a class="reference external" href="https://matplotlib.org/stable/api/toolkits/mplot3d/axes3d.html#mpl_toolkits.mplot3d.axes3d.Axes3D" title="(in Matplotlib v3.7.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Axes3D</span></code></a>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>labels</strong> – whether to include xyz labels or not</p></li>
 <li><p><strong>size</strong> – figure size</p></li>
@@ -591,7 +620,7 @@ Example:</p>
 </pre></div>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>frames</strong> – how many frames to render? Frame rate is 30 fps</p></li>
 <li><p><strong>close</strong> – whether to close the figure (to prevent the animation and
