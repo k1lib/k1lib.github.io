@@ -12,11 +12,14 @@ Cli:
 - Revamped docs a lot
 - Added :class:`~modifier.applyCl` to execute functions across an entire cluster
 - Auto get representation if not string in :class:`~grep.grep`.
-- Added aliases :class:`~modifier.map_` and :class:`~filt.filter_`
+- Added aliases :class:`~modifier.map_`, :class:`~filt.filter_` and :class:`~structural.flatten`
 - Added string execution ``3 | aS("x+2")`` capability to all clis
 - Added :class:`~conv.toHtml` to quickly convert PIL image to html tag
 - Accelerated :class:`~filt.filt` for array types even more
 - Added :class:`~structural.ungroup`, and added more modes to :class:`~structural.groupBy`
+- Fixed ``cut()[2:-2]`` edge case
+- Added :class:`~utils.rItem` for quality of life
+- Added demiliter-splitting mode to :class:`~conv.toDict`
 
 Generic:
 
