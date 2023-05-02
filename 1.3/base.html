@@ -176,7 +176,6 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#functions">Functions</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#k1lib.glo"><code class="docutils literal notranslate"><span class="pre">glo()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#k1lib.isNumeric"><code class="docutils literal notranslate"><span class="pre">isNumeric()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#k1lib.patch"><code class="docutils literal notranslate"><span class="pre">patch()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#k1lib.wraps"><code class="docutils literal notranslate"><span class="pre">wraps()</span></code></a></li>
@@ -1532,24 +1531,6 @@ clean up code, then rethrow again. Same deal at the run level.</p>
 </section>
 <section id="functions">
 <h2>Functions<a class="headerlink" href="#functions" title="Permalink to this heading"></a></h2>
-<dl class="py function">
-<dt class="sig sig-object py" id="k1lib.glo">
-<span class="sig-prename descclassname"><span class="pre">k1lib.</span></span><span class="sig-name descname"><span class="pre">glo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">glo</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/_basics.html#glo"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.glo" title="Permalink to this definition"></a></dt>
-<dd><p>Registers the global context with k1lib, so that you can do
-things like <code class="docutils literal notranslate"><span class="pre">5</span> <span class="pre">|</span> <span class="pre">aS(&quot;x+3&quot;)</span></code> directly. Do this right after importing:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">k1lib.imports</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="n">k1</span><span class="o">.</span><span class="n">glo</span><span class="p">(</span><span class="nb">globals</span><span class="p">())</span>
-
-<span class="mi">4</span> <span class="o">|</span> <span class="n">aS</span><span class="p">(</span><span class="s2">&quot;x + 5&quot;</span><span class="p">)</span> <span class="c1"># returns 9</span>
-</pre></div>
-</div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>glo</strong> – globals() object. Put None here if you want to get the stored value</p>
-</dd>
-</dl>
-</dd></dl>
-
 <dl class="py function">
 <dt class="sig sig-object py" id="k1lib.isNumeric">
 <span class="sig-prename descclassname"><span class="pre">k1lib.</span></span><span class="sig-name descname"><span class="pre">isNumeric</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span></span><a class="reference internal" href="_modules/k1lib/_basics.html#isNumeric"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.isNumeric" title="Permalink to this definition"></a></dt>

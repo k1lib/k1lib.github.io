@@ -379,12 +379,43 @@
 <span class="sd">    # returns {1: 3, 2: 4}</span>
 <span class="sd">    [[1, 2], [3, 4]] | toDict(False)</span>
 
+<span class="sd">If ``rows`` is a string, then it will build a dictionary from key-value</span>
+<span class="sd">pairs delimited by this character. For example::</span>
+
+<span class="sd">    [&#39;gene_id &quot;ENSG00000290825.1&quot;&#39;,</span>
+<span class="sd">     &#39;transcript_id &quot;ENST00000456328.2&quot;&#39;,</span>
+<span class="sd">     &#39;gene_type &quot;lncRNA&quot;&#39;,</span>
+<span class="sd">     &#39;gene_name &quot;DDX11L2&quot;&#39;,</span>
+<span class="sd">     &#39;transcript_type &quot;lncRNA&quot;&#39;,</span>
+<span class="sd">     &#39;transcript_name &quot;DDX11L2-202&quot;&#39;,</span>
+<span class="sd">     &#39;level 2&#39;,</span>
+<span class="sd">     &#39;transcript_support_level &quot;1&quot;&#39;,</span>
+<span class="sd">     &#39;tag &quot;basic&quot;&#39;,</span>
+<span class="sd">     &#39;tag &quot;Ensembl_canonical&quot;&#39;,</span>
+<span class="sd">     &#39;havana_transcript &quot;OTTHUMT00000362751.1&quot;&#39;] | toDict(&quot; &quot;)</span>
+
+<span class="sd">That returns::</span>
+
+<span class="sd">    {&#39;gene_id&#39;: &#39;&quot;ENSG00000290825.1&quot;&#39;,</span>
+<span class="sd">     &#39;transcript_id&#39;: &#39;&quot;ENST00000456328.2&quot;&#39;,</span>
+<span class="sd">     &#39;gene_type&#39;: &#39;&quot;lncRNA&quot;&#39;,</span>
+<span class="sd">     &#39;gene_name&#39;: &#39;&quot;DDX11L2&quot;&#39;,</span>
+<span class="sd">     &#39;transcript_type&#39;: &#39;&quot;lncRNA&quot;&#39;,</span>
+<span class="sd">     &#39;transcript_name&#39;: &#39;&quot;DDX11L2-202&quot;&#39;,</span>
+<span class="sd">     &#39;level&#39;: &#39;2&#39;,</span>
+<span class="sd">     &#39;transcript_support_level&#39;: &#39;&quot;1&quot;&#39;,</span>
+<span class="sd">     &#39;tag&#39;: &#39;&quot;Ensembl_canonical&quot;&#39;,</span>
+<span class="sd">     &#39;havana_transcript&#39;: &#39;&quot;OTTHUMT00000362751.1&quot;&#39;}</span>
+
 <span class="sd">:params rows: if True, reads input in row by row, else reads</span>
 <span class="sd">    in list of columns&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">rows</span> <span class="o">=</span> <span class="n">rows</span></div>
 <div class="viewcode-block" id="toDict.__ror__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.conv.toDict.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">:</span><span class="n">Tuple</span><span class="p">[</span><span class="n">Iterator</span><span class="p">[</span><span class="n">T</span><span class="p">],</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">T</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">rows</span><span class="p">:</span> <span class="k">return</span> <span class="p">{</span><span class="n">_k</span><span class="p">:</span><span class="n">_v</span> <span class="k">for</span> <span class="n">_k</span><span class="p">,</span> <span class="n">_v</span> <span class="ow">in</span> <span class="n">it</span><span class="p">}</span>
-        <span class="k">else</span><span class="p">:</span> <span class="k">return</span> <span class="p">{</span><span class="n">_k</span><span class="p">:</span><span class="n">_v</span> <span class="k">for</span> <span class="n">_k</span><span class="p">,</span> <span class="n">_v</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">it</span><span class="p">)}</span></div></div>
+        <span class="n">r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rows</span>
+        <span class="k">if</span> <span class="n">r</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span> <span class="k">return</span> <span class="n">it</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">cli</span><span class="o">.</span><span class="n">aS</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">))</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">()</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">item</span><span class="p">()</span> <span class="o">+</span> <span class="n">cli</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">))</span> <span class="o">|</span> <span class="n">toDict</span><span class="p">()</span>
+            <span class="k">return</span> <span class="p">{</span><span class="n">_k</span><span class="p">:</span><span class="n">_v</span> <span class="k">for</span> <span class="n">_k</span><span class="p">,</span> <span class="n">_v</span> <span class="ow">in</span> <span class="n">it</span><span class="p">}</span>
+        <span class="k">return</span> <span class="p">{</span><span class="n">_k</span><span class="p">:</span><span class="n">_v</span> <span class="k">for</span> <span class="n">_k</span><span class="p">,</span> <span class="n">_v</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">it</span><span class="p">)}</span></div></div>
 <span class="k">def</span> <span class="nf">_toop</span><span class="p">(</span><span class="n">toOp</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">force</span><span class="p">,</span> <span class="n">defaultValue</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">cli</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">toOp</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">cli</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="ow">or</span> <span class="n">defaultValue</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span> <span class="k">if</span> <span class="n">force</span> <span class="k">else</span> <span class="n">cli</span><span class="o">.</span><span class="n">filt</span><span class="p">(</span><span class="n">cli</span><span class="o">.</span><span class="n">op</span><span class="p">()</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">c</span><span class="p">))</span>
 <span class="k">def</span> <span class="nf">_toFloat</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>

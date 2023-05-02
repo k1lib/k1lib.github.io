@@ -74,6 +74,12 @@
 <li class="toctree-l3"><a class="reference internal" href="#k1lib.fmt.txt.identity"><code class="docutils literal notranslate"><span class="pre">txt.identity()</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.fmt.code"><code class="docutils literal notranslate"><span class="pre">code</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.fmt.code.python"><code class="docutils literal notranslate"><span class="pre">code.python()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.fmt.h"><code class="docutils literal notranslate"><span class="pre">h()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.fmt.pre"><code class="docutils literal notranslate"><span class="pre">pre()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="graphEqn.html">k1lib.graphEqn module</a></li>
@@ -304,6 +310,50 @@ Example:</p>
 <em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">identity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/fmt.html#txt.identity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.fmt.txt.identity" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="k1lib.fmt.code">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.fmt.</span></span><span class="sig-name descname"><span class="pre">code</span></span><a class="reference internal" href="_modules/k1lib/fmt.html#code"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.fmt.code" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.fmt.code.python">
+<span class="sig-name descname"><span class="pre">python</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/fmt.html#code.python"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.fmt.code.python" title="Permalink to this definition"></a></dt>
+<dd><p>Formats Python code.
+Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fmt</span><span class="o">.</span><span class="n">code</span><span class="o">.</span><span class="n">python</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">def f(x:int):</span>
+<span class="s2">    return x + 3</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span> <span class="o">|</span> <span class="n">aS</span><span class="p">(</span><span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">HTML</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="k1lib.fmt.h">
+<span class="sig-prename descclassname"><span class="pre">k1lib.fmt.</span></span><span class="sig-name descname"><span class="pre">h</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">level</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></span><a class="reference internal" href="_modules/k1lib/fmt.html#h"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.fmt.h" title="Permalink to this definition"></a></dt>
+<dd><p>Wraps content inside a ‘h’ html tag.
+Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fmt</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="s2">&quot;abc&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="c1"># returns &quot;&lt;h2&gt;abc&lt;/h2&gt;&quot;</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>level</strong> – what’s the header level?</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="k1lib.fmt.pre">
+<span class="sig-prename descclassname"><span class="pre">k1lib.fmt.</span></span><span class="sig-name descname"><span class="pre">pre</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></span><a class="reference internal" href="_modules/k1lib/fmt.html#pre"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.fmt.pre" title="Permalink to this definition"></a></dt>
+<dd><p>Wraps content inside a ‘pre’ html tag.
+Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fmt</span><span class="o">.</span><span class="n">pre</span><span class="p">(</span><span class="s2">&quot;abc&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </section>

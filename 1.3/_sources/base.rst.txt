@@ -151,7 +151,6 @@ clean up code, then rethrow again. Same deal at the run level.
 Functions
 -----------
 
-.. autofunction:: k1lib.glo
 .. autofunction:: k1lib.isNumeric
 .. autofunction:: k1lib.patch
 .. autofunction:: k1lib.wraps
