@@ -92,25 +92,81 @@
              
   <span class="target" id="module-k1lib"></span><section id="k1lib-library">
 <h1>k1lib library<a class="headerlink" href="#k1lib-library" title="Permalink to this heading"></a></h1>
-<p>PyTorch is awesome, and it provides a very effective way to execute ML code fast. What
-it lacks is surrounding infrastructure to make general debugging and discovery process
-better. Other more official wrapper frameworks sort of don’t make sense to me, so this
-is an attempt at recreating a robust suite of tools that makes sense.</p>
-<p>This is more than just an ML library though. A prominent feature is the set of “cli tools”
-originally intended to replace the bash/awk/perl bioinformatics workflow. It essentially
-allows you to pipe inputs into functions, which returns an output which can be piped into
-other functions. Using these tools, you can literally perform complex operations in multiple
-dimensions in 2-3 lines of code that would normally take &gt;100 lines. It’s also super
-flexible, operates on multiple dimensions and not locked in, as you can change the
-dataflow in quite a fundamental level in ~5 minutes. Check over the basics of it
-here: <a class="reference internal" href="cli/index.html#module-k1lib.cli" title="k1lib.cli"><code class="xref py py-mod docutils literal notranslate"><span class="pre">k1lib.cli</span></code></a>.</p>
+<p>This library enables piping in Python, and has a lot of prebuilt functionalities
+to support this workflow.</p>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this heading"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">k1lib</span><span class="p">[</span><span class="nb">all</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>This will install lots of heavy dependencies like PyTorch. If you want to install
+the leanest version of the library, do this instead:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">k1lib</span>
+</pre></div>
+</div>
+<p>To use it in a notebook, do this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">k1lib.imports</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+<p>Check out the source code for “k1lib.imports” if you’re curious what it’s
+importing. If you hate * imports for whatever reason, you can import cli
+tools individually, like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">k1lib.cli</span> <span class="kn">import</span> <span class="n">ls</span><span class="p">,</span> <span class="n">cat</span><span class="p">,</span> <span class="n">grep</span><span class="p">,</span> <span class="n">apply</span><span class="p">,</span> <span class="n">batched</span><span class="p">,</span> <span class="n">display</span>
+</pre></div>
+</div>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># returns [0, 1, 4, 9, 16], kinda like map</span>
+<span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">|</span> <span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">|</span> <span class="n">deref</span><span class="p">()</span>
+
+<span class="c1"># plotting the function y = x^2</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span> <span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>         <span class="c1"># normal way</span>
+<span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span> <span class="o">|</span> <span class="o">~</span><span class="n">aS</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">)</span> <span class="c1"># pipe way</span>
+
+<span class="c1"># plotting the functions y = x**2, y = x**3, y = x**4</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span> <span class="o">|</span> <span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">exp</span><span class="p">:</span> <span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">**</span><span class="n">exp</span><span class="p">])</span> <span class="o">|</span> <span class="o">~</span><span class="n">apply</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">)</span> <span class="o">|</span> <span class="n">deref</span><span class="p">()</span>
+
+<span class="c1"># loading csv file and displaying first 10 rows in a nice table</span>
+<span class="n">cat</span><span class="p">(</span><span class="s2">&quot;abc.csv&quot;</span><span class="p">)</span> <span class="o">|</span> <span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">))</span> <span class="o">|</span> <span class="n">display</span><span class="p">()</span>
+
+<span class="c1"># searching for &quot;gene_name: ...&quot; lines in a file and display a nice overview of just the gene names alone</span>
+<span class="n">cat</span><span class="p">(</span><span class="s2">&quot;abc.txt&quot;</span><span class="p">)</span> <span class="o">|</span> <span class="n">grep</span><span class="p">(</span><span class="s2">&quot;gene_name: &quot;</span><span class="p">)</span> <span class="o">|</span> <span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;: &quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">])</span> <span class="o">|</span> <span class="n">batched</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="o">|</span> <span class="n">display</span><span class="p">()</span>
+
+<span class="c1"># manipulate numpy arrays and pytorch tensors</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">a</span> <span class="o">|</span> <span class="n">transpose</span><span class="p">()</span>     <span class="o">|</span> <span class="n">shape</span><span class="p">()</span> <span class="c1"># returns (4, 3, 5)</span>
+<span class="n">a</span> <span class="o">|</span> <span class="n">transpose</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">|</span> <span class="n">shape</span><span class="p">()</span> <span class="c1"># returns (5, 4, 3)</span>
+
+<span class="c1"># loading images from categories and splitting them into train and valid sets. Image url: dataset/categoryA/image1.jpg</span>
+<span class="n">train</span><span class="p">,</span> <span class="n">valid</span> <span class="o">=</span> <span class="n">ls</span><span class="p">(</span><span class="s2">&quot;dataset&quot;</span><span class="p">)</span> <span class="o">|</span> <span class="n">apply</span><span class="p">(</span><span class="n">ls</span><span class="p">()</span> <span class="o">|</span> <span class="n">splitW</span><span class="p">())</span> <span class="o">|</span> <span class="n">transpose</span><span class="p">()</span> <span class="o">|</span> <span class="n">deref</span><span class="p">()</span>
+<span class="c1"># shape of output is (train/valid, category, image url). It was (category, train/valid, image url) before going through transpose()</span>
+
+<span class="c1"># executing task in multiple processes</span>
+<span class="nb">range</span><span class="p">(</span><span class="mi">10_000_000</span><span class="p">)</span> <span class="o">|</span> <span class="n">batched</span><span class="p">(</span><span class="mi">1_000_000</span><span class="p">)</span> <span class="o">|</span> <span class="n">applyMp</span><span class="p">(</span><span class="n">toSum</span><span class="p">())</span> <span class="o">|</span> <span class="n">toSum</span><span class="p">()</span>
+<span class="c1"># this splits numbers from 0 to 10M into 10 batches, and then sum each batch in parallel, and then sum the results of each batch</span>
+
+<span class="c1"># executing task in multiple processes on multiple computers</span>
+<span class="nb">range</span><span class="p">(</span><span class="mi">10_000_000</span><span class="p">)</span> <span class="o">|</span> <span class="n">batched</span><span class="p">(</span><span class="mi">1_000_000</span><span class="p">)</span> <span class="o">|</span> <span class="n">applyCl</span><span class="p">(</span><span class="n">toSum</span><span class="p">())</span> <span class="o">|</span> <span class="n">toSum</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>You can combine these “cli tools” together in really complex ways to do really complex
+manipulation really fast and with little code. Hell, you can even create a full blown
+PyTorch dataloader from scratch where you’re in control of every detail, operating in 7
+dimensions, in multiple processes on multiple nodes, in just 6 lines of code. Check over
+the basics of it here: <a class="reference internal" href="cli/index.html#module-k1lib.cli" title="k1lib.cli"><code class="xref py py-mod docutils literal notranslate"><span class="pre">k1lib.cli</span></code></a>.</p>
 <p>After doing that, you can check out the tutorials to get a large overview of how everything
 integrates together nicely.</p>
+<p>Repo is at <a class="reference external" href="https://github.com/157239n/k1lib/">https://github.com/157239n/k1lib/</a>. Also, if you have any function that
+looks strange, use the search bar on the top left to quickly lookup stuff.</p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="base.html">Base module</a></li>
 </ul>
 </div>
+</section>
 <section id="subpackages">
 <h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this heading"></a></h2>
 <div class="toctree-wrapper compound">
@@ -139,32 +195,6 @@ integrates together nicely.</p>
 <li class="toctree-l1"><a class="reference internal" href="viz.html">k1lib.viz module</a></li>
 </ul>
 </div>
-</section>
-<section id="installation">
-<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this heading"></a></h2>
-<p>Just do this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">k1lib</span><span class="p">[</span><span class="nb">all</span><span class="p">]</span>
-</pre></div>
-</div>
-<p>If you can’t install the optional extra dependencies for some reason then do this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">k1lib</span>
-</pre></div>
-</div>
-<p>Then in a notebook, do this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">k1lib.imports</span> <span class="kn">import</span> <span class="o">*</span>
-</pre></div>
-</div>
-<p>I’ve found importing all symbols work best for my day-to-day use, and it makes
-cli tools more pleasant to use. However, if you’re those diehard programmers
-who sworn to never import all, then you can just do <cite>import k1lib</cite> instead.
-Still, look over the <cite>k1lib.imports</cite> module to know what you should import.</p>
-<p>This library has very few dependencies, and all of them are very commonly used.
-The library has a soft dependency on PyTorch. It will run fine without PyTorch, but
-a lot of functionalities related to deep learning will not work. While tests are
-rigorously run in an environment where PyTorch is installed, they’re not run for
-environments that don’t, so strange bugs may appear.</p>
-<p>Repo is at <a class="reference external" href="https://github.com/157239n/k1lib/">https://github.com/157239n/k1lib/</a> btw. Also, if you have anything that
-looks strange, use the search bar on the top left to quickly lookup stuff.</p>
 <div class="toctree-wrapper compound">
 </div>
 </section>

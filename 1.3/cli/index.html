@@ -349,6 +349,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#k1lib.cli.inp.splitSeek.forward"><code class="docutils literal notranslate"><span class="pre">splitSeek.forward()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#k1lib.cli.inp.splitSeek.backward"><code class="docutils literal notranslate"><span class="pre">splitSeek.backward()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#k1lib.cli.inp.splitSeek.__ror__"><code class="docutils literal notranslate"><span class="pre">splitSeek.__ror__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#k1lib.cli.inp.splitSeek.window"><code class="docutils literal notranslate"><span class="pre">splitSeek.window()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#k1lib.cli.inp.curl"><code class="docutils literal notranslate"><span class="pre">curl()</span></code></a></li>
@@ -426,7 +427,13 @@
 <li class="toctree-l4"><a class="reference internal" href="#k1lib.cli.modifier.applyCl.__init__"><code class="docutils literal notranslate"><span class="pre">applyCl.__init__()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#k1lib.cli.modifier.applyCl.__ror__"><code class="docutils literal notranslate"><span class="pre">applyCl.__ror__()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#k1lib.cli.modifier.applyCl.nodeIds"><code class="docutils literal notranslate"><span class="pre">applyCl.nodeIds()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#k1lib.cli.modifier.applyCl.nodeId"><code class="docutils literal notranslate"><span class="pre">applyCl.nodeId()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#k1lib.cli.modifier.applyCl.meta"><code class="docutils literal notranslate"><span class="pre">applyCl.meta()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#k1lib.cli.modifier.applyCl.cpu"><code class="docutils literal notranslate"><span class="pre">applyCl.cpu()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#k1lib.cli.modifier.applyCl.aS"><code class="docutils literal notranslate"><span class="pre">applyCl.aS()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#k1lib.cli.modifier.applyCl.replicateFile"><code class="docutils literal notranslate"><span class="pre">applyCl.replicateFile()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#k1lib.cli.modifier.applyCl.splitFile"><code class="docutils literal notranslate"><span class="pre">applyCl.splitFile()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#k1lib.cli.modifier.applyCl.cat"><code class="docutils literal notranslate"><span class="pre">applyCl.cat()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#k1lib.cli.modifier.applyTh"><code class="docutils literal notranslate"><span class="pre">applyTh</span></code></a><ul>
@@ -3760,11 +3767,11 @@ printing frequency using <cite>settings.cli.cat.every</cite></p></li>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="k1lib.cli.inp.splitSeek">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.cli.inp.</span></span><span class="sig-name descname"><span class="pre">splitSeek</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">b'\n'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/inp.html#splitSeek"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli.inp.splitSeek" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.cli.inp.</span></span><span class="sig-name descname"><span class="pre">splitSeek</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">b'\n'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/inp.html#splitSeek"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli.inp.splitSeek" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#k1lib.cli.init.BaseCli" title="k1lib.cli.init.BaseCli"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseCli</span></code></a></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="k1lib.cli.inp.splitSeek.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">b'\n'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/inp.html#splitSeek.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli.inp.splitSeek.__init__" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">b'\n'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/inp.html#splitSeek.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli.inp.splitSeek.__init__" title="Permalink to this definition"></a></dt>
 <dd><p>Splits a file up into n fragments aligned to the closest character and return the seek points.
 Example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># preparing the large file</span>
@@ -3876,6 +3883,19 @@ Example:</p>
 <dt class="sig sig-object py" id="k1lib.cli.inp.splitSeek.__ror__">
 <span class="sig-name descname"><span class="pre">__ror__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fn</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/inp.html#splitSeek.__ror__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli.inp.splitSeek.__ror__" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.cli.inp.splitSeek.window">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">window</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/inp.html#splitSeek.window"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli.inp.splitSeek.window" title="Permalink to this definition"></a></dt>
+<dd><p>Converts input boundaries into segment windows.
+Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># returns [[0, 4], [5, 9], [10, 20]]</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">]</span> <span class="o">|</span> <span class="n">splitSeek</span><span class="o">.</span><span class="n">window</span><span class="p">()</span>
+<span class="c1"># example use case</span>
+<span class="s2">&quot;abc.txt&quot;</span> <span class="o">|</span> <span class="n">splitSeek</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">|</span> <span class="n">splitSeek</span><span class="o">.</span><span class="n">window</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
 
 </dd></dl>
 
@@ -4518,11 +4538,11 @@ if you run into problems, try doing this.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="k1lib.cli.modifier.applyCl">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.cli.modifier.</span></span><span class="sig-name descname"><span class="pre">applyCl</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefetch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rss</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.11)"><span class="pre">Union</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><span class="pre">dict</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pre</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orPatch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/modifier.html#applyCl"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli.modifier.applyCl" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.cli.modifier.</span></span><span class="sig-name descname"><span class="pre">applyCl</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefetch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rss</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.11)"><span class="pre">Union</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><span class="pre">dict</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pre</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orPatch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_cpus</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/modifier.html#applyCl"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli.modifier.applyCl" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#k1lib.cli.init.BaseCli" title="k1lib.cli.init.BaseCli"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseCli</span></code></a></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="k1lib.cli.modifier.applyCl.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefetch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rss</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.11)"><span class="pre">Union</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><span class="pre">dict</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pre</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orPatch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/modifier.html#applyCl.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli.modifier.applyCl.__init__" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefetch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rss</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.11)"><span class="pre">Union</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><span class="pre">dict</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pre</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orPatch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_cpus</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/modifier.html#applyCl.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli.modifier.applyCl.__init__" title="Permalink to this definition"></a></dt>
 <dd><p>Like <a class="reference internal" href="#k1lib.cli.modifier.apply" title="k1lib.cli.modifier.apply"><code class="xref py py-class docutils literal notranslate"><span class="pre">apply</span></code></a>, but execute a function over the input iterator
 in multiple processes on multiple nodes inside of a cluster (hence “cl”). So, just a more
 powerful version of <a class="reference internal" href="#k1lib.cli.modifier.applyMp" title="k1lib.cli.modifier.applyMp"><code class="xref py py-class docutils literal notranslate"><span class="pre">applyMp</span></code></a>, assuming you have a cluster to run it on.
@@ -4610,6 +4630,7 @@ efficient.</p></li>
 through node ids as the first column to shedule jobs on those specific nodes only</p></li>
 <li><p><strong>orPatch</strong> – whether to automatically patch __or__ function so that cli tools can
 work with numpy arrays on that remote worker</p></li>
+<li><p><strong>num_cpus</strong> – how many cpu does each task take?</p></li>
 <li><p><strong>kwargs</strong> – extra arguments to be passed to the function. <code class="docutils literal notranslate"><span class="pre">args</span></code> not
 included as there’re a couple of options you can pass for this cli.</p></li>
 </ul>
@@ -4624,13 +4645,36 @@ included as there’re a couple of options you can pass for this cli.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="k1lib.cli.modifier.applyCl.nodeIds">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">nodeIds</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">iter</span></span></span><a class="reference internal" href="../_modules/k1lib/cli/modifier.html#applyCl.nodeIds"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli.modifier.applyCl.nodeIds" title="Permalink to this definition"></a></dt>
-<dd><p>Returns an iterator of all node ids in the current cluster.
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">nodeIds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">includeSelf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/k1lib/cli/modifier.html#applyCl.nodeIds"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli.modifier.applyCl.nodeIds" title="Permalink to this definition"></a></dt>
+<dd><p>Returns a list of all node ids in the current cluster.
 Example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">applyCl</span><span class="o">.</span><span class="n">nodeIds</span><span class="p">()</span> <span class="c1"># returns something like [&#39;7bb387b2920694abe9f7d2a2ed939b6d31843faf91d174d0221e871d&#39;, &#39;1051dafd2b0dac13561c46fe052f561400592f0723df2cd746a41068&#39;]</span>
 </pre></div>
 </div>
 <p>If you want to get nodes’ metadata, then just use ray’s builtin function <code class="docutils literal notranslate"><span class="pre">ray.nodes()</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>includeSelf</strong> – whether to include node id of the current process or not</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.cli.modifier.applyCl.nodeId">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">nodeId</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></span><a class="reference internal" href="../_modules/k1lib/cli/modifier.html#applyCl.nodeId"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli.modifier.applyCl.nodeId" title="Permalink to this definition"></a></dt>
+<dd><p>Returns current node id</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.cli.modifier.applyCl.meta">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">meta</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.11)"><span class="pre">object</span></a></span></span><a class="reference internal" href="../_modules/k1lib/cli/modifier.html#applyCl.meta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli.modifier.applyCl.meta" title="Permalink to this definition"></a></dt>
+<dd><p>Grabs the metadata object for the current node</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.cli.modifier.applyCl.cpu">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cpu</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></span><a class="reference internal" href="../_modules/k1lib/cli/modifier.html#applyCl.cpu"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli.modifier.applyCl.cpu" title="Permalink to this definition"></a></dt>
+<dd><p>Grabs the number of cpus available on this node</p>
 </dd></dl>
 
 <dl class="py method">
@@ -4653,6 +4697,95 @@ different. It just means execute once for each node ids.</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>f</strong> – main function to execute in each node. Not supposed to accept any arguments</p></li>
 <li><p><strong>timeout</strong> – seconds to wait for job before raising an error</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.cli.modifier.applyCl.replicateFile">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">replicateFile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodeIds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/modifier.html#applyCl.replicateFile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli.modifier.applyCl.replicateFile" title="Permalink to this definition"></a></dt>
+<dd><p>Replicates a specific file in the current node to all the other nodes.
+Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">applyCl</span><span class="o">.</span><span class="n">replicate</span><span class="p">(</span><span class="s2">&quot;~/cron.log&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Internally, this will read chunks of 100kB of the specified file and dump it
+incrementally to all other nodes, which has implications on performance. To
+increase or decrease it, check out <a class="reference internal" href="#k1lib.cli.inp.cat" title="k1lib.cli.inp.cat"><code class="xref py py-class docutils literal notranslate"><span class="pre">cat</span></code></a>. This also means
+you can replicate arbitrarily large files around as long as you have the disk
+space for it, while ram size doesn’t really matter</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>fn</strong> – file name</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.cli.modifier.applyCl.splitFile">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">splitFile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodeIds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/modifier.html#applyCl.splitFile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli.modifier.applyCl.splitFile" title="Permalink to this definition"></a></dt>
+<dd><p>Splits a specified file in the current node and dumps other parts
+to other nodes. Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">applyCl</span><span class="o">.</span><span class="n">splitFile</span><span class="p">(</span><span class="s2">&quot;~/cron.log&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This will split the big file up into multiple segments (1 for each node). Then
+for each segment, it will read through it chunk by chunk into memory, and then
+deposits it into the respective nodes. Finally, it truncates the original file
+down to its segment boundary.</p>
+<p>The exact split rule depends on the number of CPUs of each node. Say there’re
+2 nodes: A and B. A has 16 cpus and B has 8 cpus. Then, a 48MB file will be split
+into 2 parts. A will have the first 32MB, and B will have the last 16MB. This is
+to optimize for distributed reading and processing using <a class="reference internal" href="#k1lib.cli.modifier.applyCl.cat" title="k1lib.cli.modifier.applyCl.cat"><code class="xref py py-meth docutils literal notranslate"><span class="pre">applyCl.cat()</span></code></a>.
+This makes sense right? If you don’t have as many cores, you should process less
+data, so you should have less data to work with from the beginning.</p>
+<p>Again, this means that you can split arbitrarily large files as long as you have
+the disk space for it, ram size is not a concern. How does this perform? Not
+the best in the world if you don’t have a lot of nodes. With sata 3 ssds, 750MB/s
+ethernet, I got transfer speeds of roughly 100MB/s. This should increase as you
+have more nodes based on the code structure, but I haven’t tested it yet. Can
+it be faster? Definitely. Am I willing to spend time optimizing it? No.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.cli.modifier.applyCl.cat">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">f</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.11)"><span class="pre">Callable</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">30</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepNodeIds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">multiplier</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/modifier.html#applyCl.cat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli.modifier.applyCl.cat" title="Permalink to this definition"></a></dt>
+<dd><p>Reads a file distributedly, does some operation on them, collects and
+returns all of the data together. Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fn</span> <span class="o">=</span> <span class="s2">&quot;~/repos/labs/k1lib/k1lib/cli/test/applyCl.cat.data&quot;</span>
+<span class="p">(</span><span class="s2">&quot;0123456789&quot;</span><span class="o">*</span><span class="mi">5</span> <span class="o">+</span> <span class="s2">&quot;</span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt>“) * 1000 | file(fn)</dt><dd><p>applyCl.splitFile(fn)
+applyCl.cat(fn, shape(0), keepNodeIds=True) | deref()</p>
+</dd>
+</dl>
+<p>That returns something like this (for a 2-node cluster, with 2 (node A) and 4 (node B) cpus respectively):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[[</span><span class="s1">&#39;7bb387b2920694abe9f7d2a2ed939b6d31843faf91d174d0221e871d&#39;</span><span class="p">,</span> <span class="mi">167</span><span class="p">],</span>
+ <span class="p">[</span><span class="s1">&#39;7bb387b2920694abe9f7d2a2ed939b6d31843faf91d174d0221e871d&#39;</span><span class="p">,</span> <span class="mi">167</span><span class="p">],</span>
+ <span class="p">[</span><span class="s1">&#39;1051dafd2b0dac13561c46fe052f561400592f0723df2cd746a41068&#39;</span><span class="p">,</span> <span class="mi">166</span><span class="p">],</span>
+ <span class="p">[</span><span class="s1">&#39;1051dafd2b0dac13561c46fe052f561400592f0723df2cd746a41068&#39;</span><span class="p">,</span> <span class="mi">167</span><span class="p">],</span>
+ <span class="p">[</span><span class="s1">&#39;1051dafd2b0dac13561c46fe052f561400592f0723df2cd746a41068&#39;</span><span class="p">,</span> <span class="mi">166</span><span class="p">],</span>
+ <span class="p">[</span><span class="s1">&#39;1051dafd2b0dac13561c46fe052f561400592f0723df2cd746a41068&#39;</span><span class="p">,</span> <span class="mi">167</span><span class="p">]]</span>
+</pre></div>
+</div>
+<p>Here, we’re creating an initial file with 1000 lines. Then we’ll split it up into
+2 fragments: 334 lines and 667 lines and store them on the respective nodes. Then,
+on node A, we’ll split the file up into 2 parts, each with 167 lines. On node B,
+we’ll split the file up into 4 parts, each with around 166 lines. Then we’ll
+schedule 6 processes total, each dealing with 166 lines. After all of that, results
+are collected together and returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fn</strong> – file name</p></li>
+<li><p><strong>f</strong> – function to execute in every process</p></li>
+<li><p><strong>timeout</strong> – kills the processes if it takes longer than this amount of seconds</p></li>
+<li><p><strong>keepNodeIds</strong> – whether to keep the node id column or not</p></li>
+<li><p><strong>multiplier</strong> – by default, each node will spawn as many process as there
+are cpus. Sometimes you want to spawn more process, change this to a higher number</p></li>
 </ul>
 </dd>
 </dl>
