@@ -172,7 +172,19 @@
                 <span class="k">try</span><span class="p">:</span> <span class="n">exec</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_globals</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
                 <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
                     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Problematic cell:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-                    <span class="nb">print</span><span class="p">(</span><span class="n">source</span><span class="p">);</span> <span class="n">traceback</span><span class="o">.</span><span class="n">print_exc</span><span class="p">();</span> <span class="k">raise</span> <span class="n">e</span></div></div>
+                    <span class="nb">print</span><span class="p">(</span><span class="n">source</span><span class="p">);</span> <span class="n">traceback</span><span class="o">.</span><span class="n">print_exc</span><span class="p">();</span> <span class="k">raise</span> <span class="n">e</span></div>
+<div class="viewcode-block" id="execute.rightAway"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.nb.execute.rightAway">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">rightAway</span><span class="p">(</span><span class="n">fileName</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">_globals</span><span class="p">:</span><span class="nb">dict</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">tag</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convenience function to execute a notebook right away.</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    fn = &quot;some/file.ipynb&quot;</span>
+<span class="sd">    nb.cells(fn) | nb.pretty(whitelist=[tag]) | nb.execute(nb, globals())</span>
+<span class="sd">    nb.execute.rightAway(fn, globals(), tag)</span>
+
+<span class="sd">Last 2 lines are pretty much the same.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">tag</span><span class="p">:</span> <span class="n">tag</span> <span class="o">=</span> <span class="n">pretty</span><span class="p">(</span><span class="n">whitelist</span><span class="o">=</span><span class="p">[</span><span class="n">tag</span><span class="p">])</span> <span class="k">if</span> <span class="n">tag</span> <span class="k">else</span> <span class="n">cli</span><span class="o">.</span><span class="n">iden</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">cells</span><span class="p">(</span><span class="n">fileName</span><span class="p">)</span> <span class="o">|</span> <span class="n">tag</span> <span class="o">|</span> <span class="n">execute</span><span class="p">(</span><span class="n">fileName</span><span class="p">,</span> <span class="n">_globals</span><span class="p">)</span></div></div>
 </pre></div>
 
            </div>

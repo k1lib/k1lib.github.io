@@ -95,7 +95,9 @@
 <span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
 <span class="k">try</span><span class="p">:</span> <span class="kn">import</span> <span class="nn">rdkit</span><span class="p">;</span> <span class="n">hasRdkit</span> <span class="o">=</span> <span class="kc">True</span>
 <span class="k">except</span><span class="p">:</span> <span class="n">hasRdkit</span> <span class="o">=</span> <span class="kc">False</span>
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;captureStdout&quot;</span><span class="p">,</span> <span class="s2">&quot;ignoreWarnings&quot;</span><span class="p">,</span> <span class="s2">&quot;timer&quot;</span><span class="p">,</span> <span class="s2">&quot;attrContext&quot;</span><span class="p">]</span>
+<span class="k">try</span><span class="p">:</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="k">except</span><span class="p">:</span> <span class="k">pass</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;captureStdout&quot;</span><span class="p">,</span> <span class="s2">&quot;capturePlt&quot;</span><span class="p">,</span> <span class="s2">&quot;ignoreWarnings&quot;</span><span class="p">,</span> <span class="s2">&quot;timer&quot;</span><span class="p">,</span> <span class="s2">&quot;attrContext&quot;</span><span class="p">]</span>
 <div class="viewcode-block" id="captureStdout"><a class="viewcode-back" href="../../base.html#k1lib.captureStdout">[docs]</a><span class="nd">@contextmanager</span>
 <span class="k">def</span> <span class="nf">captureStdout</span><span class="p">(</span><span class="n">out</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">Wrapper</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Captures every print() statement. Taken from https://stackoverflow.com/questions/16571150/how-to-capture-stdout-output-from-a-python-function-call.</span>
@@ -144,6 +146,7 @@
         <span class="kn">import</span> <span class="nn">wurlitzer</span><span class="p">;</span> <span class="n">w</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">Wrapper</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="k">with</span> <span class="n">wurlitzer</span><span class="o">.</span><span class="n">pipes</span><span class="p">()</span> <span class="k">as</span> <span class="p">(</span><span class="n">_out</span><span class="p">,</span> <span class="n">_err</span><span class="p">):</span> <span class="k">yield</span> <span class="n">w</span>
+        <span class="k">except</span> <span class="ne">BrokenPipeError</span><span class="p">:</span> <span class="k">pass</span>
         <span class="k">finally</span><span class="p">:</span> <span class="n">w</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">_out</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="n">out</span> <span class="k">else</span> <span class="n">_err</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">out</span><span class="p">:</span> <span class="n">_stdout</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">;</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span> <span class="o">=</span> <span class="n">_stringio</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">StringIO</span><span class="p">()</span>
@@ -156,6 +159,26 @@
             <span class="n">w</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="p">[</span><span class="n">l</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\r</span><span class="s2">&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">_stringio</span><span class="o">.</span><span class="n">getvalue</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)]</span>
             <span class="k">if</span> <span class="n">out</span><span class="p">:</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span> <span class="o">=</span> <span class="n">_stdout</span>
             <span class="k">else</span><span class="p">:</span>   <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span> <span class="o">=</span> <span class="n">_stdout</span></div>
+<div class="viewcode-block" id="capturePlt"><a class="viewcode-back" href="../../base.html#k1lib.capturePlt">[docs]</a><span class="nd">@contextmanager</span>
+<span class="k">def</span> <span class="nf">capturePlt</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Tries to capture matplotlib plot.</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    x = np.linspace(-2, 2)</span>
+<span class="sd">    with k1.capturePlt() as fig:</span>
+<span class="sd">        plt.plot(x, x**2)</span>
+<span class="sd">        plt.show()</span>
+
+<span class="sd">    capturedImage = fig() # reference it here</span>
+
+<span class="sd">This is a convenience function to deal with libraries that call ``plt.show()``</span>
+<span class="sd">and doesn&#39;t let us intercept at the middle to generate an image.&quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">ans</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">Wrapper</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+        <span class="k">with</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">_settings</span><span class="o">.</span><span class="n">monkey</span><span class="o">.</span><span class="n">context</span><span class="p">(</span><span class="n">capturePlt</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+            <span class="k">yield</span> <span class="n">ans</span>
+        <span class="n">ans</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">_k1_capturedImg</span><span class="p">()</span>
+    <span class="k">finally</span><span class="p">:</span> <span class="k">pass</span></div>
 <div class="viewcode-block" id="ignoreWarnings"><a class="viewcode-back" href="../../base.html#k1lib.ignoreWarnings">[docs]</a><span class="nd">@contextmanager</span>
 <span class="k">def</span> <span class="nf">ignoreWarnings</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Context manager to ignore every warning.</span>
