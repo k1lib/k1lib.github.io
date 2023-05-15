@@ -192,6 +192,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#k1lib.cli.conv.toHtml.__ror__"><code class="docutils literal notranslate"><span class="pre">toHtml.__ror__()</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.cli.conv.toAscii"><code class="docutils literal notranslate"><span class="pre">toAscii()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#module-k1lib.cli.mgi">mgi module</a><ul>
@@ -352,6 +353,12 @@
 <li class="toctree-l4"><a class="reference internal" href="#k1lib.cli.inp.splitSeek.window"><code class="docutils literal notranslate"><span class="pre">splitSeek.window()</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.cli.inp.refineSeek"><code class="docutils literal notranslate"><span class="pre">refineSeek</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#k1lib.cli.inp.refineSeek.__init__"><code class="docutils literal notranslate"><span class="pre">refineSeek.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#k1lib.cli.inp.refineSeek.__ror__"><code class="docutils literal notranslate"><span class="pre">refineSeek.__ror__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#k1lib.cli.inp.refineSeek.fastq"><code class="docutils literal notranslate"><span class="pre">refineSeek.fastq()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#k1lib.cli.inp.curl"><code class="docutils literal notranslate"><span class="pre">curl()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#k1lib.cli.inp.wget"><code class="docutils literal notranslate"><span class="pre">wget()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#k1lib.cli.inp.ls"><code class="docutils literal notranslate"><span class="pre">ls()</span></code></a></li>
@@ -436,7 +443,8 @@
 <li class="toctree-l4"><a class="reference internal" href="#k1lib.cli.modifier.applyCl.aS"><code class="docutils literal notranslate"><span class="pre">applyCl.aS()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#k1lib.cli.modifier.applyCl.cmd"><code class="docutils literal notranslate"><span class="pre">applyCl.cmd()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#k1lib.cli.modifier.applyCl.replicateFile"><code class="docutils literal notranslate"><span class="pre">applyCl.replicateFile()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#k1lib.cli.modifier.applyCl.splitFile"><code class="docutils literal notranslate"><span class="pre">applyCl.splitFile()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#k1lib.cli.modifier.applyCl.balanceFile"><code class="docutils literal notranslate"><span class="pre">applyCl.balanceFile()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#k1lib.cli.modifier.applyCl.decommission"><code class="docutils literal notranslate"><span class="pre">applyCl.decommission()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#k1lib.cli.modifier.applyCl.cat"><code class="docutils literal notranslate"><span class="pre">applyCl.cat()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#k1lib.cli.modifier.applyCl.balanceFolder"><code class="docutils literal notranslate"><span class="pre">applyCl.balanceFolder()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#k1lib.cli.modifier.applyCl.download"><code class="docutils literal notranslate"><span class="pre">applyCl.download()</span></code></a></li>
@@ -1447,7 +1455,7 @@ check that cli out.</p>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#k1lib.cli.structural.hist" title="k1lib.cli.structural.hist"><code class="xref py py-class docutils literal notranslate"><span class="pre">hist</span></code></a></p></td>
 <td><p><a class="reference internal" href="#k1lib.cli.utils.tree" title="k1lib.cli.utils.tree"><code class="xref py py-meth docutils literal notranslate"><span class="pre">tree()</span></code></a></p></td>
-<td></td>
+<td><p><a class="reference internal" href="#k1lib.cli.conv.toAscii" title="k1lib.cli.conv.toAscii"><code class="xref py py-meth docutils literal notranslate"><span class="pre">toAscii()</span></code></a></p></td>
 <td></td>
 <td></td>
 </tr>
@@ -1517,69 +1525,69 @@ check that cli out.</p>
 <colgroup>
 <col style="width: 23%" />
 <col style="width: 19%" />
-<col style="width: 18%" />
-<col style="width: 21%" />
+<col style="width: 19%" />
+<col style="width: 20%" />
 <col style="width: 18%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>modifier</p></th>
-<th class="head"><p>init</p></th>
 <th class="head"><p>inp</p></th>
+<th class="head"><p>init</p></th>
 <th class="head"><p>output</p></th>
 <th class="head"><p>kxml</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><a class="reference internal" href="#k1lib.cli.modifier.applyS" title="k1lib.cli.modifier.applyS"><code class="xref py py-class docutils literal notranslate"><span class="pre">applyS</span></code></a></p></td>
-<td><p><a class="reference internal" href="#k1lib.cli.init.BaseCli" title="k1lib.cli.init.BaseCli"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseCli</span></code></a></p></td>
 <td><p><a class="reference internal" href="#k1lib.cli.inp.cat" title="k1lib.cli.inp.cat"><code class="xref py py-meth docutils literal notranslate"><span class="pre">cat()</span></code></a></p></td>
+<td><p><a class="reference internal" href="#k1lib.cli.init.BaseCli" title="k1lib.cli.init.BaseCli"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseCli</span></code></a></p></td>
 <td><p><a class="reference internal" href="#k1lib.cli.output.stdout" title="k1lib.cli.output.stdout"><code class="xref py py-class docutils literal notranslate"><span class="pre">stdout</span></code></a></p></td>
 <td><p><a class="reference internal" href="#k1lib.cli.kxml.node" title="k1lib.cli.kxml.node"><code class="xref py py-class docutils literal notranslate"><span class="pre">node</span></code></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#k1lib.cli.modifier.aS" title="k1lib.cli.modifier.aS"><code class="xref py py-class docutils literal notranslate"><span class="pre">aS</span></code></a></p></td>
-<td><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Table</span></code></p></td>
 <td><p><a class="reference internal" href="#k1lib.cli.inp.splitSeek" title="k1lib.cli.inp.splitSeek"><code class="xref py py-class docutils literal notranslate"><span class="pre">splitSeek</span></code></a></p></td>
+<td><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Table</span></code></p></td>
 <td><p><a class="reference internal" href="#k1lib.cli.output.tee" title="k1lib.cli.output.tee"><code class="xref py py-class docutils literal notranslate"><span class="pre">tee</span></code></a></p></td>
 <td><p><a class="reference internal" href="#k1lib.cli.kxml.maxDepth" title="k1lib.cli.kxml.maxDepth"><code class="xref py py-class docutils literal notranslate"><span class="pre">maxDepth</span></code></a></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#k1lib.cli.modifier.apply" title="k1lib.cli.modifier.apply"><code class="xref py py-class docutils literal notranslate"><span class="pre">apply</span></code></a></p></td>
+<td><p><a class="reference internal" href="#k1lib.cli.inp.refineSeek" title="k1lib.cli.inp.refineSeek"><code class="xref py py-class docutils literal notranslate"><span class="pre">refineSeek</span></code></a></p></td>
 <td><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">T()</span></code></p></td>
-<td><p><a class="reference internal" href="#k1lib.cli.inp.curl" title="k1lib.cli.inp.curl"><code class="xref py py-meth docutils literal notranslate"><span class="pre">curl()</span></code></a></p></td>
 <td><p><a class="reference internal" href="#k1lib.cli.output.file" title="k1lib.cli.output.file"><code class="xref py py-class docutils literal notranslate"><span class="pre">file</span></code></a></p></td>
 <td><p><a class="reference internal" href="#k1lib.cli.kxml.tags" title="k1lib.cli.kxml.tags"><code class="xref py py-class docutils literal notranslate"><span class="pre">tags</span></code></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#k1lib.cli.modifier.map_" title="k1lib.cli.modifier.map_"><code class="xref py py-class docutils literal notranslate"><span class="pre">map_</span></code></a></p></td>
+<td><p><a class="reference internal" href="#k1lib.cli.inp.curl" title="k1lib.cli.inp.curl"><code class="xref py py-meth docutils literal notranslate"><span class="pre">curl()</span></code></a></p></td>
 <td><p><a class="reference internal" href="#k1lib.cli.init.fastF" title="k1lib.cli.init.fastF"><code class="xref py py-meth docutils literal notranslate"><span class="pre">fastF()</span></code></a></p></td>
-<td><p><a class="reference internal" href="#k1lib.cli.inp.wget" title="k1lib.cli.inp.wget"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wget()</span></code></a></p></td>
 <td><p><a class="reference internal" href="#k1lib.cli.output.pretty" title="k1lib.cli.output.pretty"><code class="xref py py-class docutils literal notranslate"><span class="pre">pretty</span></code></a></p></td>
 <td><p><a class="reference internal" href="#k1lib.cli.kxml.pretty" title="k1lib.cli.kxml.pretty"><code class="xref py py-class docutils literal notranslate"><span class="pre">pretty</span></code></a></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#k1lib.cli.modifier.applyMp" title="k1lib.cli.modifier.applyMp"><code class="xref py py-class docutils literal notranslate"><span class="pre">applyMp</span></code></a></p></td>
+<td><p><a class="reference internal" href="#k1lib.cli.inp.wget" title="k1lib.cli.inp.wget"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wget()</span></code></a></p></td>
 <td><p><a class="reference internal" href="#k1lib.cli.init.yieldT" title="k1lib.cli.init.yieldT"><code class="xref py py-meth docutils literal notranslate"><span class="pre">yieldT()</span></code></a></p></td>
-<td><p><a class="reference internal" href="#k1lib.cli.inp.ls" title="k1lib.cli.inp.ls"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ls()</span></code></a></p></td>
 <td><p><a class="reference internal" href="#k1lib.cli.output.display" title="k1lib.cli.output.display"><code class="xref py py-meth docutils literal notranslate"><span class="pre">display()</span></code></a></p></td>
 <td><p><a class="reference internal" href="#k1lib.cli.kxml.display" title="k1lib.cli.kxml.display"><code class="xref py py-class docutils literal notranslate"><span class="pre">display</span></code></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#k1lib.cli.modifier.parallel" title="k1lib.cli.modifier.parallel"><code class="xref py py-class docutils literal notranslate"><span class="pre">parallel</span></code></a></p></td>
+<td><p><a class="reference internal" href="#k1lib.cli.inp.ls" title="k1lib.cli.inp.ls"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ls()</span></code></a></p></td>
 <td><p><a class="reference internal" href="#k1lib.cli.init.serial" title="k1lib.cli.init.serial"><code class="xref py py-class docutils literal notranslate"><span class="pre">serial</span></code></a></p></td>
-<td><p><a class="reference internal" href="#k1lib.cli.inp.cmd" title="k1lib.cli.inp.cmd"><code class="xref py py-class docutils literal notranslate"><span class="pre">cmd</span></code></a></p></td>
 <td><p><a class="reference internal" href="#k1lib.cli.output.headOut" title="k1lib.cli.output.headOut"><code class="xref py py-meth docutils literal notranslate"><span class="pre">headOut()</span></code></a></p></td>
 <td></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#k1lib.cli.modifier.applyCl" title="k1lib.cli.modifier.applyCl"><code class="xref py py-class docutils literal notranslate"><span class="pre">applyCl</span></code></a></p></td>
+<td><p><a class="reference internal" href="#k1lib.cli.inp.cmd" title="k1lib.cli.inp.cmd"><code class="xref py py-class docutils literal notranslate"><span class="pre">cmd</span></code></a></p></td>
 <td><p><a class="reference internal" href="#k1lib.cli.init.oneToMany" title="k1lib.cli.init.oneToMany"><code class="xref py py-class docutils literal notranslate"><span class="pre">oneToMany</span></code></a></p></td>
-<td><p><a class="reference internal" href="#k1lib.cli.inp.walk" title="k1lib.cli.inp.walk"><code class="xref py py-class docutils literal notranslate"><span class="pre">walk</span></code></a></p></td>
 <td><p><a class="reference internal" href="#k1lib.cli.output.intercept" title="k1lib.cli.output.intercept"><code class="xref py py-class docutils literal notranslate"><span class="pre">intercept</span></code></a></p></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#k1lib.cli.modifier.applyTh" title="k1lib.cli.modifier.applyTh"><code class="xref py py-class docutils literal notranslate"><span class="pre">applyTh</span></code></a></p></td>
+<td><p><a class="reference internal" href="#k1lib.cli.inp.walk" title="k1lib.cli.inp.walk"><code class="xref py py-class docutils literal notranslate"><span class="pre">walk</span></code></a></p></td>
 <td><p><a class="reference internal" href="#k1lib.cli.init.mtmS" title="k1lib.cli.init.mtmS"><code class="xref py py-class docutils literal notranslate"><span class="pre">mtmS</span></code></a></p></td>
-<td><p><a class="reference internal" href="#k1lib.cli.inp.requireCli" title="k1lib.cli.inp.requireCli"><code class="xref py py-meth docutils literal notranslate"><span class="pre">requireCli()</span></code></a></p></td>
 <td><p><a class="reference internal" href="#k1lib.cli.output.plotImgs" title="k1lib.cli.output.plotImgs"><code class="xref py py-class docutils literal notranslate"><span class="pre">plotImgs</span></code></a></p></td>
 <td></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#k1lib.cli.modifier.applySerial" title="k1lib.cli.modifier.applySerial"><code class="xref py py-class docutils literal notranslate"><span class="pre">applySerial</span></code></a></p></td>
-<td></td>
+<td><p><a class="reference internal" href="#k1lib.cli.inp.requireCli" title="k1lib.cli.inp.requireCli"><code class="xref py py-meth docutils literal notranslate"><span class="pre">requireCli()</span></code></a></p></td>
 <td></td>
 <td></td>
 <td></td>
@@ -2553,6 +2561,17 @@ Example:</p>
 <span class="sig-name descname"><span class="pre">__ror__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">it</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/conv.html#toHtml.__ror__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli.conv.toHtml.__ror__" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="k1lib.cli.conv.toAscii">
+<span class="sig-prename descclassname"><span class="pre">k1lib.cli.conv.</span></span><span class="sig-name descname"><span class="pre">toAscii</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/conv.html#toAscii"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli.conv.toAscii" title="Permalink to this definition"></a></dt>
+<dd><p>Converts complex unicode text to its base ascii form.
+Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;hà nội&quot;</span> <span class="o">|</span> <span class="n">toAscii</span><span class="p">()</span> <span class="c1"># returns &quot;ha noi&quot;</span>
+</pre></div>
+</div>
+<p>Taken from <a class="reference external" href="https://stackoverflow.com/questions/2365411/convert-unicode-to-ascii-without-errors-in-python">https://stackoverflow.com/questions/2365411/convert-unicode-to-ascii-without-errors-in-python</a></p>
 </dd></dl>
 
 </section>
@@ -3766,7 +3785,7 @@ entire file. Defaults to True in text mode and False in binary mode</p></li>
 <li><p><strong>profile</strong> – whether to profile the file reading rate or not. Can adjust
 printing frequency using <cite>settings.cli.cat.every</cite></p></li>
 <li><p><strong>sB</strong> – “start byte”. Specify this if you want to start reading from this byte</p></li>
-<li><p><strong>eB</strong> – “end byte”, inclusive. Default -1 means end of file</p></li>
+<li><p><strong>eB</strong> – “end byte”, exclusive. Default -1 means end of file</p></li>
 </ul>
 </dd>
 </dl>
@@ -3774,11 +3793,11 @@ printing frequency using <cite>settings.cli.cat.every</cite></p></li>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="k1lib.cli.inp.splitSeek">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.cli.inp.</span></span><span class="sig-name descname"><span class="pre">splitSeek</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">b'\n'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/inp.html#splitSeek"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli.inp.splitSeek" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.cli.inp.</span></span><span class="sig-name descname"><span class="pre">splitSeek</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">b'\n'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ws</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/inp.html#splitSeek"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli.inp.splitSeek" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#k1lib.cli.init.BaseCli" title="k1lib.cli.init.BaseCli"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseCli</span></code></a></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="k1lib.cli.inp.splitSeek.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">b'\n'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/inp.html#splitSeek.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli.inp.splitSeek.__init__" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">b'\n'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ws</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/inp.html#splitSeek.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli.inp.splitSeek.__init__" title="Permalink to this definition"></a></dt>
 <dd><p>Splits a file up into n fragments aligned to the closest character and return the seek points.
 Example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># preparing the large file</span>
@@ -3791,6 +3810,8 @@ Example:</p>
 <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;test/largeFile.txt&quot;</span><span class="p">)</span> <span class="o">|</span> <span class="n">splitSeek</span><span class="p">(</span><span class="mi">31</span><span class="p">)</span> <span class="o">|</span> <span class="n">shape</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="c1"># returns [0, 0, 10, 10, 20, 30, 30, 40, 40, 50], notice some segments have zero length</span>
 <span class="s2">&quot;test/largeFile.txt&quot;</span> <span class="o">|</span> <span class="n">splitSeek</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span> <span class="o">|</span> <span class="n">head</span><span class="p">()</span>
+<span class="c1"># returns [0, 400, 1200], demonstrating that you can split a file up unevenly by weights</span>
+<span class="s2">&quot;test/largeFile.txt&quot;</span> <span class="o">|</span> <span class="n">splitSeek</span><span class="p">(</span><span class="n">ws</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span> <span class="o">|</span> <span class="n">deref</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>So, the generated file has 120 lines in total. Each line is 10 bytes (9 for
@@ -3799,7 +3820,7 @@ fragments will result in 32 seek points (<span class="math notranslate nohighlig
 can then use these seek points to read the file in multiple threads/processes
 using <a class="reference internal" href="#k1lib.cli.inp.cat" title="k1lib.cli.inp.cat"><code class="xref py py-meth docutils literal notranslate"><span class="pre">cat()</span></code></a>, like this:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># returns [[&#39;  0_56789&#39;, &#39;  1_56789&#39;, &#39;  2_56789&#39;], [&#39;  3_56789&#39;, &#39;  4_56789&#39;, &#39;  5_56789&#39;, &#39;  6_56789&#39;]]</span>
-<span class="s2">&quot;test/largeFile.txt&quot;</span> <span class="o">|</span> <span class="n">splitSeek</span><span class="p">(</span><span class="mi">31</span><span class="p">)</span> <span class="o">|</span> <span class="n">window</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">|</span> <span class="o">~</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">sB</span><span class="p">,</span> <span class="n">eB</span><span class="p">:</span> <span class="n">cat</span><span class="p">(</span><span class="s2">&quot;test/largeFile.txt&quot;</span><span class="p">,</span> <span class="n">sB</span><span class="o">=</span><span class="n">sB</span><span class="p">,</span> <span class="n">eB</span><span class="o">=</span><span class="n">eB</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span> <span class="o">|</span> <span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">|</span> <span class="n">deref</span><span class="p">()</span>
+<span class="s2">&quot;test/largeFile.txt&quot;</span> <span class="o">|</span> <span class="n">splitSeek</span><span class="p">(</span><span class="mi">31</span><span class="p">)</span> <span class="o">|</span> <span class="n">splitSeek</span><span class="o">.</span><span class="n">window</span><span class="p">()</span> <span class="o">|</span> <span class="o">~</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">sB</span><span class="p">,</span> <span class="n">eB</span><span class="p">:</span> <span class="n">cat</span><span class="p">(</span><span class="s2">&quot;test/largeFile.txt&quot;</span><span class="p">,</span> <span class="n">sB</span><span class="o">=</span><span class="n">sB</span><span class="p">,</span> <span class="n">eB</span><span class="o">=</span><span class="n">eB</span><span class="p">))</span> <span class="o">|</span> <span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">|</span> <span class="n">deref</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Because <span class="math notranslate nohighlight">\(120/31\approx4\)</span>, most of cat’s reads contain 4 lines, but some
@@ -3835,6 +3856,7 @@ using <a class="reference internal" href="#k1lib.cli.inp.splitSeek.forward" titl
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>n</strong> – how many splits do you want?</p></li>
 <li><p><strong>c</strong> – block-boundary character, usually just the new line character</p></li>
+<li><p><strong>ws</strong> – weights. If given, the splits length ratios will roughly correspond to this</p></li>
 </ul>
 </dd>
 </dl>
@@ -3902,6 +3924,52 @@ Example:</p>
 <span class="s2">&quot;abc.txt&quot;</span> <span class="o">|</span> <span class="n">splitSeek</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">|</span> <span class="n">splitSeek</span><span class="o">.</span><span class="n">window</span><span class="p">()</span>
 </pre></div>
 </div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="k1lib.cli.inp.refineSeek">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.cli.inp.</span></span><span class="sig-name descname"><span class="pre">refineSeek</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/inp.html#refineSeek"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli.inp.refineSeek" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#k1lib.cli.init.BaseCli" title="k1lib.cli.init.BaseCli"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseCli</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.cli.inp.refineSeek.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/inp.html#refineSeek.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli.inp.refineSeek.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Refines seek positions.
+Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># returns list of integers for seek positions</span>
+<span class="s2">&quot;abc.txt&quot;</span> <span class="o">|</span> <span class="n">splitSeek</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+<span class="c1"># returns refined seek positions, such that the line starting at the seek positions starts with &quot;@&quot;</span>
+<span class="s2">&quot;abc.txt&quot;</span> <span class="o">|</span> <span class="n">splitSeek</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="o">|</span> <span class="n">refineSeek</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;@&quot;</span><span class="p">))</span>
+<span class="c1"># same thing as above</span>
+<span class="s2">&quot;abc.txt&quot;</span> <span class="o">|</span> <span class="n">splitSeek</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="o">|</span> <span class="n">refineSeek</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="sa">b</span><span class="s2">&quot;@&quot;</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="c1"># returns refined seek positions, such that 0th line starts with &quot;@&quot; and 2nd line starts with &quot;+&quot;. This demonstrates `window` parameter</span>
+<span class="s2">&quot;abc.txt&quot;</span> <span class="o">|</span> <span class="n">splitSeek</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="o">|</span> <span class="n">refineSeek</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="sa">b</span><span class="s2">&quot;@&quot;</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">and</span> <span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="sa">b</span><span class="s2">&quot;+&quot;</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">3</span><span class="p">)</span>
+<span class="c1"># same thing as above, demonstrating some builtin refine seek functions</span>
+<span class="s2">&quot;abc.txt&quot;</span> <span class="o">|</span> <span class="n">splitSeek</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="o">|</span> <span class="n">refineSeek</span><span class="o">.</span><span class="n">fastq</span><span class="p">()</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>f</strong> – function that returns True if the current line/lines is a valid block boundary</p></li>
+<li><p><strong>window</strong> – by default (1), will fetch 1 line and check boundary using <code class="docutils literal notranslate"><span class="pre">f(line)</span></code>.
+If a value greater than 1 is passed (for example, 3), will fetch 3 lines and check
+boundary using <code class="docutils literal notranslate"><span class="pre">f([line1,</span> <span class="pre">line2,</span> <span class="pre">line3])</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.cli.inp.refineSeek.__ror__">
+<span class="sig-name descname"><span class="pre">__ror__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seeks</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/inp.html#refineSeek.__ror__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli.inp.refineSeek.__ror__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.cli.inp.refineSeek.fastq">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">fastq</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/inp.html#refineSeek.fastq"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli.inp.refineSeek.fastq" title="Permalink to this definition"></a></dt>
+<dd><p>Refine fastq file’s seek points</p>
 </dd></dl>
 
 </dd></dl>
@@ -4275,7 +4343,9 @@ also an alias shorthand for this called <a class="reference internal" href="#k1l
 </div>
 <p>This also decorates the returned object so that it has same qualname, docstring
 and whatnot.</p>
-<p>(Advanced) Writing out “lambda x:” all the time is annoying, and there are ways
+<div class="admonition-shorthands admonition">
+<p class="admonition-title">Shorthands</p>
+<p>Writing out “lambda x:” all the time is annoying, and there are ways
 to quickly say <code class="docutils literal notranslate"><span class="pre">lambda</span> <span class="pre">x:</span> <span class="pre">x+2</span></code> like so:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span> <span class="o">|</span> <span class="n">op</span><span class="p">()</span><span class="o">+</span><span class="mi">2</span> <span class="c1"># returns 5</span>
 <span class="mi">3</span> <span class="o">|</span> <span class="n">aS</span><span class="p">(</span><span class="s2">&quot;x+2&quot;</span><span class="p">)</span> <span class="c1"># returns 5. Behind the scenes, it compiles and execute `lambda x: x+2`</span>
@@ -4292,6 +4362,7 @@ of function, like <a class="reference internal" href="#k1lib.cli.filt.filt" titl
 <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="o">|</span> <span class="n">filt</span><span class="p">(</span><span class="s2">&quot;x%2&quot;</span><span class="p">)</span> <span class="o">|</span> <span class="n">deref</span><span class="p">()</span>
 <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="o">|</span> <span class="n">filt</span><span class="p">(</span><span class="n">op</span><span class="p">()</span><span class="o">%</span><span class="mi">2</span><span class="p">)</span> <span class="o">|</span> <span class="n">deref</span><span class="p">()</span>
 </pre></div>
+</div>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -4785,29 +4856,89 @@ space for it, while ram size doesn’t really matter</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="k1lib.cli.modifier.applyCl.splitFile">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">splitFile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodeIds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/modifier.html#applyCl.splitFile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli.modifier.applyCl.splitFile" title="Permalink to this definition"></a></dt>
-<dd><p>Splits a specified file in the current node and dumps other parts
-to other nodes. Example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">applyCl</span><span class="o">.</span><span class="n">splitFile</span><span class="p">(</span><span class="s2">&quot;~/cron.log&quot;</span><span class="p">)</span>
+<dt class="sig sig-object py" id="k1lib.cli.modifier.applyCl.balanceFile">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">balanceFile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">nAs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nBs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rS</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/modifier.html#applyCl.balanceFile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli.modifier.applyCl.balanceFile" title="Permalink to this definition"></a></dt>
+<dd><p>Splits a specified file in node nAs and dumps other parts
+to nodes nBs. Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">applyCl</span><span class="o">.</span><span class="n">balanceFile</span><span class="p">(</span><span class="s2">&quot;~/cron.log&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>This will split the big file up into multiple segments (1 for each node). Then
+<p>This will split the big files up into multiple segments (1 for each node). Then
 for each segment, it will read through it chunk by chunk into memory, and then
-deposits it into the respective nodes. Finally, it truncates the original file
+deposits it into the respective nodes. Finally, it truncates the original files
 down to its segment boundary.</p>
-<p>The exact split rule depends on the number of CPUs of each node. Say there’re
-2 nodes: A and B. A has 16 cpus and B has 8 cpus. Then, a 48MB file will be split
-into 2 parts. A will have the first 32MB, and B will have the last 16MB. This is
-to optimize for distributed reading and processing using <a class="reference internal" href="#k1lib.cli.modifier.applyCl.cat" title="k1lib.cli.modifier.applyCl.cat"><code class="xref py py-meth docutils literal notranslate"><span class="pre">applyCl.cat()</span></code></a>.
-This makes sense right? If you don’t have as many cores, you should process less
-data, so you should have less data to work with from the beginning.</p>
+<p>The exact split rule depends on the number of CPUs of each node. Best to see an
+example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Command</span><span class="p">:</span>         <span class="n">applyCl</span><span class="o">.</span><span class="n">balanceFile</span><span class="p">(</span><span class="s2">&quot;~/cron.log&quot;</span><span class="p">)</span>
+<span class="n">Verbose</span> <span class="n">command</span><span class="p">:</span> <span class="n">applyCl</span><span class="o">.</span><span class="n">balanceFile</span><span class="p">(</span><span class="s2">&quot;~/cron.log&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;1&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span><span class="p">,</span> <span class="s2">&quot;4&quot;</span><span class="p">,</span> <span class="s2">&quot;5&quot;</span><span class="p">])</span>
+<span class="o">-----------</span> <span class="n">Before</span> <span class="o">-----------</span>
+<span class="n">Node</span><span class="p">:</span>      <span class="mi">1</span>  <span class="mi">2</span>  <span class="mi">3</span>  <span class="mi">4</span> <span class="mi">5</span>
+<span class="n">Cpu</span><span class="p">:</span>       <span class="mi">8</span>  <span class="mi">12</span> <span class="mi">16</span> <span class="mi">8</span> <span class="mi">8</span>
+<span class="n">Size</span> <span class="p">(</span><span class="n">GB</span><span class="p">):</span> <span class="mi">52</span> <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">0</span> <span class="mi">0</span>
+<span class="o">-----------</span> <span class="n">After</span>  <span class="o">-----------</span>
+<span class="n">Node</span><span class="p">:</span>      <span class="mi">1</span>  <span class="mi">2</span>  <span class="mi">3</span>  <span class="mi">4</span> <span class="mi">5</span>
+<span class="n">Cpu</span><span class="p">:</span>       <span class="mi">8</span>  <span class="mi">12</span> <span class="mi">16</span> <span class="mi">8</span> <span class="mi">8</span>
+<span class="n">Size</span> <span class="p">(</span><span class="n">GB</span><span class="p">):</span> <span class="mi">8</span>  <span class="mi">12</span> <span class="mi">16</span> <span class="mi">8</span> <span class="mi">8</span>
+</pre></div>
+</div>
+<p>This also works if you have files on existing nodes already, and are upgrading the
+cluster:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Command</span><span class="p">:</span>         <span class="n">applyCl</span><span class="o">.</span><span class="n">balanceFile</span><span class="p">(</span><span class="s2">&quot;~/cron.log&quot;</span><span class="p">)</span>
+<span class="n">Verbose</span> <span class="n">command</span><span class="p">:</span> <span class="n">applyCl</span><span class="o">.</span><span class="n">balanceFile</span><span class="p">(</span><span class="s2">&quot;~/cron.log&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;5&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span><span class="p">,</span> <span class="s2">&quot;4&quot;</span><span class="p">,</span> <span class="s2">&quot;5&quot;</span><span class="p">])</span>
+<span class="o">-----------</span> <span class="n">Before</span> <span class="o">-----------</span>
+<span class="n">Node</span><span class="p">:</span>      <span class="mi">1</span>  <span class="mi">2</span>  <span class="mi">3</span>  <span class="mi">4</span>  <span class="mi">5</span>
+<span class="n">Cpu</span><span class="p">:</span>       <span class="mi">8</span>  <span class="mi">12</span> <span class="mi">16</span> <span class="mi">8</span>  <span class="mi">8</span>
+<span class="n">Size</span> <span class="p">(</span><span class="n">GB</span><span class="p">):</span> <span class="mi">26</span> <span class="mi">0</span>  <span class="mi">0</span>  <span class="mi">26</span> <span class="mi">0</span>
+<span class="o">-----------</span> <span class="n">After</span>  <span class="o">-----------</span>
+<span class="n">Node</span><span class="p">:</span>      <span class="mi">1</span>  <span class="mi">2</span>  <span class="mi">3</span>  <span class="mi">4</span>  <span class="mi">5</span>
+<span class="n">Cpu</span><span class="p">:</span>       <span class="mi">8</span>  <span class="mi">12</span> <span class="mi">16</span> <span class="mi">8</span>  <span class="mi">8</span>
+<span class="n">Size</span> <span class="p">(</span><span class="n">GB</span><span class="p">):</span> <span class="mi">8</span>  <span class="mi">12</span> <span class="mi">16</span> <span class="mi">8</span>  <span class="mi">8</span>
+</pre></div>
+</div>
+<p>If you want to move files out of a node when decommissioning them, you can do
+something like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Command</span><span class="p">:</span>         <span class="n">applyCl</span><span class="o">.</span><span class="n">decommission</span><span class="p">(</span><span class="s2">&quot;~/cron.log&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;3&quot;</span><span class="p">,</span> <span class="s2">&quot;4&quot;</span><span class="p">])</span>
+<span class="n">Verbose</span> <span class="n">command</span><span class="p">:</span> <span class="n">applyCl</span><span class="o">.</span><span class="n">balanceFile</span><span class="p">(</span><span class="s2">&quot;~/cron.log&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span><span class="p">,</span> <span class="s2">&quot;4&quot;</span><span class="p">,</span> <span class="s2">&quot;5&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span> <span class="s2">&quot;5&quot;</span><span class="p">])</span>
+<span class="o">-----------</span> <span class="n">Before</span> <span class="o">-----------</span>
+<span class="n">Node</span><span class="p">:</span>      <span class="mi">1</span>  <span class="mi">2</span>  <span class="mi">3</span>  <span class="mi">4</span> <span class="mi">5</span>
+<span class="n">Cpu</span><span class="p">:</span>       <span class="mi">8</span>  <span class="mi">12</span> <span class="mi">16</span> <span class="mi">8</span> <span class="mi">8</span>
+<span class="n">Size</span> <span class="p">(</span><span class="n">GB</span><span class="p">):</span> <span class="mi">8</span>  <span class="mi">12</span> <span class="mi">16</span> <span class="mi">8</span> <span class="mi">8</span>
+<span class="o">-----------</span> <span class="n">After</span>  <span class="o">-----------</span>
+<span class="n">Node</span><span class="p">:</span>      <span class="mi">1</span>  <span class="mi">2</span>  <span class="mi">3</span>  <span class="mi">4</span> <span class="mi">5</span>
+<span class="n">Cpu</span><span class="p">:</span>       <span class="mi">8</span>  <span class="mi">12</span> <span class="mi">16</span> <span class="mi">8</span> <span class="mi">8</span>
+<span class="n">Size</span> <span class="p">(</span><span class="n">GB</span><span class="p">):</span> <span class="mi">15</span> <span class="mi">22</span> <span class="mi">0</span>  <span class="mi">0</span> <span class="mi">15</span>
+</pre></div>
+</div>
+<p>Remember that the node ids “1”, etc. is for illustrative purposes only. You should get
+real node ids from <a class="reference internal" href="#k1lib.cli.modifier.applyCl.nodeIds" title="k1lib.cli.modifier.applyCl.nodeIds"><code class="xref py py-meth docutils literal notranslate"><span class="pre">nodeIds()</span></code></a>.</p>
+<p>Why is the file size proportional to the number of cores on each node? Well, if
+you have more cores, you should be able to process more, so as to make everything
+balanced, right?</p>
 <p>Again, this means that you can split arbitrarily large files as long as you have
 the disk space for it, ram size is not a concern. How does this perform? Not
 the best in the world if you don’t have a lot of nodes. With sata 3 ssds, 750MB/s
 ethernet, I got transfer speeds of roughly 100MB/s. This should increase as you
 have more nodes based on the code structure, but I haven’t tested it yet. Can
 it be faster? Definitely. Am I willing to spend time optimizing it? No.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fn</strong> – file name</p></li>
+<li><p><strong>nAs</strong> – node ids that currently stores the file. If not specified, try to detect
+what nodes the file exists in</p></li>
+<li><p><strong>nBs</strong> – node ids that will store the file after balancing everything out. If not
+specified, will take all available nodes</p></li>
+<li><p><strong>rS</strong> – <a class="reference internal" href="#k1lib.cli.inp.refineSeek" title="k1lib.cli.inp.refineSeek"><code class="xref py py-class docutils literal notranslate"><span class="pre">refineSeek</span></code></a> instance, if you need more fine-grained
+control over section boundaries so as to not make everything corrupted</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.cli.modifier.applyCl.decommission">
+<span class="sig-name descname"><span class="pre">decommission</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nAs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rS</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/modifier.html#applyCl.decommission"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli.modifier.applyCl.decommission" title="Permalink to this definition"></a></dt>
+<dd><p>Convenience function for <a class="reference internal" href="#k1lib.cli.modifier.applyCl.balanceFile" title="k1lib.cli.modifier.applyCl.balanceFile"><code class="xref py py-meth docutils literal notranslate"><span class="pre">balanceFile()</span></code></a>. See docs over there.</p>
 </dd></dl>
 
 <dl class="py method">

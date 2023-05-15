@@ -20,7 +20,7 @@ Cli:
 - Fixed ``cut()[2:-2]`` edge case
 - Added :class:`~utils.rItem` for quality of life
 - Added demiliter-splitting mode to :class:`~conv.toDict`
-- Added :meth:`nb.execute.rightAway`
+- Added :meth:`nb.execute.rightAway`, :meth:`conv.toAscii`
 - Added :meth:`modifier.applyMp.shared` to easily share memory between processes
 
 Generic:

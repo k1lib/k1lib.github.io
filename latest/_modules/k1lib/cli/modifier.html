@@ -128,25 +128,27 @@
 <span class="sd">This also decorates the returned object so that it has same qualname, docstring</span>
 <span class="sd">and whatnot.</span>
 
-<span class="sd">(Advanced) Writing out &quot;lambda x:&quot; all the time is annoying, and there are ways</span>
-<span class="sd">to quickly say ``lambda x: x+2`` like so::</span>
+<span class="sd">.. admonition:: Shorthands</span>
 
-<span class="sd">    3 | op()+2 # returns 5</span>
-<span class="sd">    3 | aS(&quot;x+2&quot;) # returns 5. Behind the scenes, it compiles and execute `lambda x: x+2`</span>
+<span class="sd">    Writing out &quot;lambda x:&quot; all the time is annoying, and there are ways</span>
+<span class="sd">    to quickly say ``lambda x: x+2`` like so::</span>
 
-<span class="sd">The first way is to use :class:`op`, that will absorb all operations done on it,</span>
-<span class="sd">like &quot;+&quot;, and returns a function that essentially replays all the operations.</span>
+<span class="sd">        3 | op()+2 # returns 5</span>
+<span class="sd">        3 | aS(&quot;x+2&quot;) # returns 5. Behind the scenes, it compiles and execute `lambda x: x+2`</span>
 
-<span class="sd">In the second way, you only have to pass in the string containing code that you want</span>
-<span class="sd">done on the variable &quot;x&quot;. Then internally, it will compile to regular Python code.</span>
+<span class="sd">    The first way is to use :class:`op`, that will absorb all operations done on it,</span>
+<span class="sd">    like &quot;+&quot;, and returns a function that essentially replays all the operations.</span>
 
-<span class="sd">In fact, you can pass in ``op()`` or just a string to any cli that accepts any kind</span>
-<span class="sd">of function, like :class:`~k1lib.cli.filt.filt` or :class:`apply`::</span>
+<span class="sd">    In the second way, you only have to pass in the string containing code that you want</span>
+<span class="sd">    done on the variable &quot;x&quot;. Then internally, it will compile to regular Python code.</span>
 
-<span class="sd">    range(4) | apply(&quot;x-2&quot;) | deref()</span>
-<span class="sd">    range(4) | apply(op()-2) | deref()</span>
-<span class="sd">    range(4) | filt(&quot;x%2&quot;) | deref()</span>
-<span class="sd">    range(4) | filt(op()%2) | deref()</span>
+<span class="sd">    In fact, you can pass in ``op()`` or just a string to any cli that accepts any kind</span>
+<span class="sd">    of function, like :class:`~k1lib.cli.filt.filt` or :class:`apply`::</span>
+
+<span class="sd">        range(4) | apply(&quot;x-2&quot;) | deref()</span>
+<span class="sd">        range(4) | apply(op()-2) | deref()</span>
+<span class="sd">        range(4) | filt(&quot;x%2&quot;) | deref()</span>
+<span class="sd">        range(4) | filt(op()%2) | deref()</span>
 
 <span class="sd">:param f: the function to be executed</span>
 <span class="sd">:param kwargs: other keyword arguments to pass to the function, together with ``args``&quot;&quot;&quot;</span>
@@ -643,40 +645,88 @@
         <span class="n">nodeIds</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span> <span class="o">|</span> <span class="n">applyCl</span><span class="p">(</span><span class="k">lambda</span> <span class="n">_</span><span class="p">:</span> <span class="kc">None</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">cmd</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;mkdir -p </span><span class="si">{</span><span class="n">dirname</span><span class="si">}</span><span class="s2">; rm </span><span class="si">{</span><span class="n">fn</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">deref</span><span class="p">(),</span> <span class="n">pre</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">deref</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">cli</span><span class="o">.</span><span class="n">cat</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">chunks</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
             <span class="n">nodeIds</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">chunk</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span> <span class="o">|</span> <span class="n">applyCl</span><span class="p">(</span><span class="k">lambda</span> <span class="n">chunk</span><span class="p">:</span> <span class="n">chunk</span> <span class="o">&gt;&gt;</span> <span class="n">cli</span><span class="o">.</span><span class="n">file</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">deref</span><span class="p">(),</span> <span class="n">pre</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">deref</span><span class="p">()</span></div>
-<div class="viewcode-block" id="applyCl.splitFile"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.modifier.applyCl.splitFile">[docs]</a>    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">splitFile</span><span class="p">(</span><span class="n">fn</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">nodeIds</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Splits a specified file in the current node and dumps other parts</span>
-<span class="sd">to other nodes. Example::</span>
+<div class="viewcode-block" id="applyCl.balanceFile"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.modifier.applyCl.balanceFile">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">balanceFile</span><span class="p">(</span><span class="n">fn</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">nAs</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">nBs</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rS</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Splits a specified file in node nAs and dumps other parts</span>
+<span class="sd">to nodes nBs. Example::</span>
 
-<span class="sd">    applyCl.splitFile(&quot;~/cron.log&quot;)</span>
+<span class="sd">    applyCl.balanceFile(&quot;~/cron.log&quot;)</span>
 
-<span class="sd">This will split the big file up into multiple segments (1 for each node). Then</span>
+<span class="sd">This will split the big files up into multiple segments (1 for each node). Then</span>
 <span class="sd">for each segment, it will read through it chunk by chunk into memory, and then</span>
-<span class="sd">deposits it into the respective nodes. Finally, it truncates the original file</span>
+<span class="sd">deposits it into the respective nodes. Finally, it truncates the original files</span>
 <span class="sd">down to its segment boundary.</span>
 
-<span class="sd">The exact split rule depends on the number of CPUs of each node. Say there&#39;re</span>
-<span class="sd">2 nodes: A and B. A has 16 cpus and B has 8 cpus. Then, a 48MB file will be split</span>
-<span class="sd">into 2 parts. A will have the first 32MB, and B will have the last 16MB. This is</span>
-<span class="sd">to optimize for distributed reading and processing using :meth:`applyCl.cat`.</span>
-<span class="sd">This makes sense right? If you don&#39;t have as many cores, you should process less</span>
-<span class="sd">data, so you should have less data to work with from the beginning.</span>
+<span class="sd">The exact split rule depends on the number of CPUs of each node. Best to see an</span>
+<span class="sd">example::</span>
+
+<span class="sd">    Command:         applyCl.balanceFile(&quot;~/cron.log&quot;)</span>
+<span class="sd">    Verbose command: applyCl.balanceFile(&quot;~/cron.log&quot;, [&quot;1&quot;], [&quot;1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;4&quot;, &quot;5&quot;])</span>
+<span class="sd">    ----------- Before -----------</span>
+<span class="sd">    Node:      1  2  3  4 5</span>
+<span class="sd">    Cpu:       8  12 16 8 8</span>
+<span class="sd">    Size (GB): 52 0  0  0 0</span>
+<span class="sd">    ----------- After  -----------</span>
+<span class="sd">    Node:      1  2  3  4 5</span>
+<span class="sd">    Cpu:       8  12 16 8 8</span>
+<span class="sd">    Size (GB): 8  12 16 8 8</span>
+
+<span class="sd">This also works if you have files on existing nodes already, and are upgrading the</span>
+<span class="sd">cluster::</span>
+
+<span class="sd">    Command:         applyCl.balanceFile(&quot;~/cron.log&quot;)</span>
+<span class="sd">    Verbose command: applyCl.balanceFile(&quot;~/cron.log&quot;, [&quot;1&quot;, &quot;5&quot;], [&quot;1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;4&quot;, &quot;5&quot;])</span>
+<span class="sd">    ----------- Before -----------</span>
+<span class="sd">    Node:      1  2  3  4  5</span>
+<span class="sd">    Cpu:       8  12 16 8  8</span>
+<span class="sd">    Size (GB): 26 0  0  26 0</span>
+<span class="sd">    ----------- After  -----------</span>
+<span class="sd">    Node:      1  2  3  4  5</span>
+<span class="sd">    Cpu:       8  12 16 8  8</span>
+<span class="sd">    Size (GB): 8  12 16 8  8</span>
+
+<span class="sd">If you want to move files out of a node when decommissioning them, you can do</span>
+<span class="sd">something like this::</span>
+
+<span class="sd">    Command:         applyCl.decommission(&quot;~/cron.log&quot;, [&quot;3&quot;, &quot;4&quot;])</span>
+<span class="sd">    Verbose command: applyCl.balanceFile(&quot;~/cron.log&quot;, [&quot;1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;4&quot;, &quot;5&quot;], [&quot;1&quot;, &quot;2&quot;, &quot;5&quot;])</span>
+<span class="sd">    ----------- Before -----------</span>
+<span class="sd">    Node:      1  2  3  4 5</span>
+<span class="sd">    Cpu:       8  12 16 8 8</span>
+<span class="sd">    Size (GB): 8  12 16 8 8</span>
+<span class="sd">    ----------- After  -----------</span>
+<span class="sd">    Node:      1  2  3  4 5</span>
+<span class="sd">    Cpu:       8  12 16 8 8</span>
+<span class="sd">    Size (GB): 15 22 0  0 15</span>
+
+<span class="sd">Remember that the node ids &quot;1&quot;, etc. is for illustrative purposes only. You should get</span>
+<span class="sd">real node ids from :meth:`nodeIds`.</span>
+
+<span class="sd">Why is the file size proportional to the number of cores on each node? Well, if</span>
+<span class="sd">you have more cores, you should be able to process more, so as to make everything</span>
+<span class="sd">balanced, right?</span>
 
 <span class="sd">Again, this means that you can split arbitrarily large files as long as you have</span>
 <span class="sd">the disk space for it, ram size is not a concern. How does this perform? Not</span>
 <span class="sd">the best in the world if you don&#39;t have a lot of nodes. With sata 3 ssds, 750MB/s</span>
 <span class="sd">ethernet, I got transfer speeds of roughly 100MB/s. This should increase as you</span>
 <span class="sd">have more nodes based on the code structure, but I haven&#39;t tested it yet. Can</span>
-<span class="sd">it be faster? Definitely. Am I willing to spend time optimizing it? No.&quot;&quot;&quot;</span>
-        <span class="n">fn</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="n">fn</span><span class="p">);</span> <span class="n">dirname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">nodeIds</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="n">nodeIds</span> <span class="o">=</span> <span class="n">applyCl</span><span class="o">.</span><span class="n">nodeIds</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-        <span class="n">nodeIds</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">wrapList</span><span class="p">()</span><span class="o">.</span><span class="n">all</span><span class="p">()</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span> <span class="o">|</span> <span class="n">applyCl</span><span class="p">(</span><span class="k">lambda</span> <span class="n">_</span><span class="p">:</span> <span class="kc">None</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">cmd</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;mkdir -p </span><span class="si">{</span><span class="n">dirname</span><span class="si">}</span><span class="s2">; rm </span><span class="si">{</span><span class="n">fn</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">deref</span><span class="p">(),</span> <span class="n">pre</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">deref</span><span class="p">()</span>
-        <span class="n">nodeId2Cpu</span> <span class="o">=</span> <span class="n">ray</span><span class="o">.</span><span class="n">nodes</span><span class="p">()</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">filt</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s2">&quot;Alive&quot;</span><span class="p">])</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="s2">&quot;NodeID&quot;</span><span class="p">],</span> <span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s2">&quot;Resources&quot;</span><span class="p">][</span><span class="s2">&quot;CPU&quot;</span><span class="p">])])</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">toDict</span><span class="p">()</span>
-        <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">nodeIds</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span> <span class="n">ranges</span> <span class="o">=</span> <span class="n">fn</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">splitSeek</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="p">[</span><span class="n">nodeId2Cpu</span><span class="p">[</span><span class="n">applyCl</span><span class="o">.</span><span class="n">nodeId</span><span class="p">()],</span> <span class="o">*</span><span class="n">nodeIds</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">lookup</span><span class="p">(</span><span class="n">nodeId2Cpu</span><span class="p">)])</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">splitSeek</span><span class="o">.</span><span class="n">window</span><span class="p">()</span>
-        <span class="k">for</span> <span class="n">chunks</span> <span class="ow">in</span> <span class="n">ranges</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">|</span> <span class="o">~</span><span class="n">cli</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">:</span> <span class="p">[</span><span class="n">cli</span><span class="o">.</span><span class="n">cat</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="n">sB</span><span class="o">=</span><span class="n">a</span><span class="p">,</span> <span class="n">eB</span><span class="o">=</span><span class="n">b</span><span class="p">),</span> <span class="sa">b</span><span class="s1">&#39;&#39;</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">repeat</span><span class="p">()]</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">joinStreams</span><span class="p">())</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">transpose</span><span class="p">():</span>
-            <span class="k">if</span> <span class="n">chunks</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">len</span><span class="p">)</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">toSum</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="k">break</span>
-            <span class="p">[</span><span class="n">nodeIds</span><span class="p">,</span> <span class="n">chunks</span><span class="p">]</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span> <span class="o">|</span> <span class="n">applyCl</span><span class="p">(</span><span class="k">lambda</span> <span class="n">chunk</span><span class="p">:</span> <span class="n">chunk</span> <span class="o">&gt;&gt;</span> <span class="n">cli</span><span class="o">.</span><span class="n">file</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">deref</span><span class="p">(),</span> <span class="n">pre</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">deref</span><span class="p">()</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span> <span class="n">f</span><span class="o">.</span><span class="n">truncate</span><span class="p">(</span><span class="n">ranges</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span></div>
+<span class="sd">it be faster? Definitely. Am I willing to spend time optimizing it? No.</span>
+
+<span class="sd">:param fn: file name</span>
+<span class="sd">:param nAs: node ids that currently stores the file. If not specified, try to detect</span>
+<span class="sd">    what nodes the file exists in</span>
+<span class="sd">:param nBs: node ids that will store the file after balancing everything out. If not</span>
+<span class="sd">    specified, will take all available nodes</span>
+<span class="sd">:param rS: :class:`~k1lib.cli.inp.refineSeek` instance, if you need more fine-grained</span>
+<span class="sd">    control over section boundaries so as to not make everything corrupted</span>
+<span class="sd">&quot;&quot;&quot;</span>
+        <span class="kn">from</span> <span class="nn">k1lib.cli._applyCl</span> <span class="kn">import</span> <span class="n">balanceFile</span>
+        <span class="n">balanceFile</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="n">nAs</span><span class="p">,</span> <span class="n">nBs</span><span class="p">,</span> <span class="n">rS</span> <span class="ow">or</span> <span class="n">cli</span><span class="o">.</span><span class="n">iden</span><span class="p">())</span></div>
+<div class="viewcode-block" id="applyCl.decommission"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.modifier.applyCl.decommission">[docs]</a>    <span class="k">def</span> <span class="nf">decommission</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fn</span><span class="p">,</span> <span class="n">nAs</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">rS</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convenience function for :meth:`balanceFile`. See docs over there.&quot;&quot;&quot;</span>
+        <span class="kn">from</span> <span class="nn">k1lib.cli._applyCl</span> <span class="kn">import</span> <span class="n">balanceFile</span>
+        <span class="n">balanceFile</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">applyCl</span><span class="o">.</span><span class="n">nodeIds</span><span class="p">()</span> <span class="o">|</span> <span class="o">~</span><span class="n">cli</span><span class="o">.</span><span class="n">inSet</span><span class="p">(</span><span class="n">nAs</span><span class="p">)</span> <span class="o">|</span> <span class="n">deref</span><span class="p">(),</span> <span class="n">rS</span> <span class="ow">or</span> <span class="n">cli</span><span class="o">.</span><span class="n">iden</span><span class="p">())</span></div>
 <div class="viewcode-block" id="applyCl.cat"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.modifier.applyCl.cat">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">cat</span><span class="p">(</span><span class="n">fn</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">f</span><span class="p">:</span><span class="n">Callable</span><span class="p">,</span> <span class="n">timeout</span><span class="p">:</span><span class="nb">float</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">keepNodeIds</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">multiplier</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">includeId</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Reads a file distributedly, does some operation on them, collects and</span>
