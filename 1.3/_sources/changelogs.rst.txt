@@ -22,6 +22,7 @@ Cli:
 - Added demiliter-splitting mode to :class:`~conv.toDict`
 - Added :meth:`nb.execute.rightAway`, :meth:`conv.toAscii`
 - Added :meth:`modifier.applyMp.shared` to easily share memory between processes
+- Accelerated :meth:`~inp.cat` using :mod:`k1a` if sB and eB are specified
 
 Generic:
 
