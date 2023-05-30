@@ -49,6 +49,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#intro">Intro</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#argument-expansion">Argument expansion</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#inverting-conditions">Inverting conditions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#capturing-operators">Capturing operators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#cli-composition">Cli composition</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#serial-composition">Serial composition</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#composition-or-onetomany">“&amp;” composition, or “oneToMany”</a></li>
@@ -56,6 +57,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#vanilla-alternatives">Vanilla alternatives</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#philosophy">Philosophy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#where-to-start">Where to start?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#under-the-hood">Under the hood</a><ul>
@@ -504,6 +506,38 @@
 <li class="toctree-l4"><a class="reference internal" href="#k1lib.cli.modifier.integrate.__ror__"><code class="docutils literal notranslate"><span class="pre">integrate.__ror__()</span></code></a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#applycl-module">_applyCl module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.cli._applyCl.getIr"><code class="docutils literal notranslate"><span class="pre">getIr()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.cli._applyCl.normalize"><code class="docutils literal notranslate"><span class="pre">normalize()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.cli._applyCl.statsCpu"><code class="docutils literal notranslate"><span class="pre">statsCpu()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.cli._applyCl.statsNodeId"><code class="docutils literal notranslate"><span class="pre">statsNodeId()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.cli._applyCl.stats"><code class="docutils literal notranslate"><span class="pre">stats()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.cli._applyCl.scores"><code class="docutils literal notranslate"><span class="pre">scores()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.cli._applyCl.score"><code class="docutils literal notranslate"><span class="pre">score()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.cli._applyCl.move"><code class="docutils literal notranslate"><span class="pre">move()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.cli._applyCl.optimize"><code class="docutils literal notranslate"><span class="pre">optimize()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.cli._applyCl.traj"><code class="docutils literal notranslate"><span class="pre">traj()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.cli._applyCl.collapse"><code class="docutils literal notranslate"><span class="pre">collapse()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.cli._applyCl.traj2"><code class="docutils literal notranslate"><span class="pre">traj2()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.cli._applyCl.moveFile"><code class="docutils literal notranslate"><span class="pre">moveFile()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.cli._applyCl.moveFF"><code class="docutils literal notranslate"><span class="pre">moveFF()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.cli._applyCl.balanceFolder"><code class="docutils literal notranslate"><span class="pre">balanceFolder()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.cli._applyCl.getSize"><code class="docutils literal notranslate"><span class="pre">getSize()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.cli._applyCl.NoPartialContent"><code class="docutils literal notranslate"><span class="pre">NoPartialContent</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.cli._applyCl.getChunk"><code class="docutils literal notranslate"><span class="pre">getChunk()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.cli._applyCl.getChunks"><code class="docutils literal notranslate"><span class="pre">getChunks()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.cli._applyCl.download"><code class="docutils literal notranslate"><span class="pre">download()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.cli._applyCl.a_transfer"><code class="docutils literal notranslate"><span class="pre">a_transfer()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.cli._applyCl.decommission"><code class="docutils literal notranslate"><span class="pre">decommission()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.cli._applyCl.spreadOut"><code class="docutils literal notranslate"><span class="pre">spreadOut()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.cli._applyCl.balanceFile"><code class="docutils literal notranslate"><span class="pre">balanceFile()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.cli._applyCl.diskScan1"><code class="docutils literal notranslate"><span class="pre">diskScan1()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.cli._applyCl.diskScan2"><code class="docutils literal notranslate"><span class="pre">diskScan2()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.cli._applyCl.diskScan3"><code class="docutils literal notranslate"><span class="pre">diskScan3()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.cli._applyCl.diskScan4"><code class="docutils literal notranslate"><span class="pre">diskScan4()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.cli._applyCl.diskScan5"><code class="docutils literal notranslate"><span class="pre">diskScan5()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#module-k1lib.cli.nb">nb module</a><ul>
@@ -1097,7 +1131,7 @@ sometimes assume that we are operating on a table. So this table:</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>If you’re not an advanced user, just skip this warning.</p>
-<p>All cli tools should work fine with <a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.1.0a0+gitbe0b12e ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a>, <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a> and <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.Series.html#pandas.Series" title="(in pandas v2.0.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.core.series.Series</span></code></a>,
+<p>All cli tools should work fine with <a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.1.0a0+gitbe0b12e ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a>, <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a> and <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.Series.html#pandas.Series" title="(in pandas v2.0.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.core.series.Series</span></code></a>,
 but k1lib actually modifies Numpy arrays and Pandas series deep down for it to work.
 This means that you can still do normal bitwise or with a numpy float value, and
 they work fine in all regression tests that I have, but you might encounter strange bugs.
@@ -1143,6 +1177,30 @@ inverting the functionality of some clis:</p>
 <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">|</span> <span class="o">~</span><span class="n">filt</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">|</span> <span class="n">aS</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span> <span class="c1"># returns [1, 3]</span>
 
 <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mf">5.5</span><span class="p">,</span> <span class="s2">&quot;text&quot;</span><span class="p">]</span> <span class="o">|</span> <span class="o">~</span><span class="n">instanceOf</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span> <span class="o">|</span> <span class="n">aS</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span> <span class="c1"># returns [5.5, &quot;text&quot;]</span>
+</pre></div>
+</div>
+</section>
+<section id="capturing-operators">
+<h2>Capturing operators<a class="headerlink" href="#capturing-operators" title="Permalink to this heading"></a></h2>
+<p>Some clis have the ability to “capture” the behavior of other clis and modify them on the fly. For
+example, let’s see tryout(), which catches errors in the pipeline and returns a default value if
+an error is raised:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;a3&quot;</span> <span class="o">|</span> <span class="p">(</span><span class="n">tryout</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="o">|</span> <span class="n">aS</span><span class="p">(</span><span class="nb">int</span><span class="p">))</span> <span class="o">|</span> <span class="n">op</span><span class="p">()</span><span class="o">*</span><span class="mi">2</span> <span class="c1"># returns 8, because int(&quot;a3&quot;) will throws an error, which will be caught, and the pipeline reduces down to 4*2</span>
+<span class="s2">&quot;3&quot;</span>  <span class="o">|</span> <span class="p">(</span><span class="n">tryout</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="o">|</span> <span class="n">aS</span><span class="p">(</span><span class="nb">int</span><span class="p">))</span> <span class="o">|</span> <span class="n">op</span><span class="p">()</span><span class="o">*</span><span class="mi">2</span> <span class="c1"># returns 6, because int(&quot;3&quot;) will not throw an error, and the pipeline effectively reduces down to int(&quot;3&quot;)*2</span>
+<span class="s2">&quot;3&quot;</span>  <span class="o">|</span>  <span class="n">tryout</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="o">|</span> <span class="n">aS</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>  <span class="o">|</span> <span class="n">op</span><span class="p">()</span><span class="o">*</span><span class="mi">2</span> <span class="c1"># throws an error, because tryout() doesn&#39;t capture anything</span>
+</pre></div>
+</div>
+<p>Just a side note, op() will record all operations done on it, and it will replay those operations
+on anything that’s piped into it.</p>
+<p>In the first line, <code class="docutils literal notranslate"><span class="pre">tryout()</span> <span class="pre">|</span> <span class="pre">aS(int)</span></code> will be executed first, which will lead to tryout()
+capturing all of the clis behind it and injecting in a try-catch code block to wrap all of them
+together. In the third line, it doesn’t work because <code class="docutils literal notranslate"><span class="pre">&quot;3&quot;</span> <span class="pre">|</span> <span class="pre">tryout(4)</span></code> is executed first,
+but here, tryout() doesn’t have the chance to capture the clis behind it, so it can’t inject
+a try-catch block around them. This also means that in the 1st and 2nd line, the final multify-by-2
+step is not caught, because tryout() is bounded by the parentheses. If you’re composing this
+inside of another cli, then the scope is bounded by the outside cli:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">|</span> <span class="n">apply</span><span class="p">(</span> <span class="n">tryout</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">|</span> <span class="n">op</span><span class="p">()</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>  <span class="o">|</span> <span class="n">deref</span><span class="p">()</span> <span class="c1"># returns [0, 1, 4, 9, 16]. tryout() will capture op()**2</span>
+<span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">|</span> <span class="n">apply</span><span class="p">((</span><span class="n">tryout</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">|</span> <span class="n">op</span><span class="p">()</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span> <span class="o">|</span> <span class="n">deref</span><span class="p">()</span> <span class="c1"># returns [0, 1, 4, 9, 16], exactly the same as before, demonstrating that you don&#39;t have to wrap tryout() around another pair of braces</span>
 </pre></div>
 </div>
 </section>
@@ -1268,6 +1326,26 @@ normal clis like so:</p>
 but I wouldn’t recommend using vanilla in the long term.</p>
 </section>
 </section>
+<section id="philosophy">
+<h2>Philosophy<a class="headerlink" href="#philosophy" title="Permalink to this heading"></a></h2>
+<p>Just a short note: while I was developing this, the emphasis is on creating very succinct
+code that does a whole lot, to aid in exploring/creating datasets. Because of it, I’ve chosen
+to sacrifice readability. The idea is, if it’s so fast to create a functionality, whenever
+you need to change the code, it’ll be faster to just recreate it from scratch than try to
+change the existing code. And the mental effort to recreate it is substantially lower than
+the mental effort needed to understand a normal codebase written using vanilla Python. Also
+this encourages you to rethink the problem in a new light entirely, which usually results in
+much shorter and simpler code than if you were to adapt an existing solution. This seem to be
+true for me so far.</p>
+<p>Note that creating unreadable, fantastically complicated code only happens around 5%. Majority
+of the time it’s actually very readable and I can change an obscure detail after 10 seconds.
+The way I usually do it is to “feel” what the data looks like, instead of trying to trace what
+it looks like from the very beginning. This is possible because certain functions has certain
+common signatures. For example, <code class="docutils literal notranslate"><span class="pre">~apply(lambda</span> <span class="pre">x,y:</span> <span class="pre">x+y,</span> <span class="pre">3)</span></code> probably means that it’s manipulating
+a table with the 3rd column being a list of 2 coordinate numbers. So, overtime, you’ll develop
+an intuition for what’s happenning and can visualize the data’s shape right in the middle of the
+pipeline.</p>
+</section>
 <section id="where-to-start">
 <h2>Where to start?<a class="headerlink" href="#where-to-start" title="Permalink to this heading"></a></h2>
 <p>Core clis include:</p>
@@ -1286,7 +1364,7 @@ top left of the page.</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#k1lib.cli.modifier.applyMp" title="k1lib.cli.modifier.applyMp"><code class="xref py py-class docutils literal notranslate"><span class="pre">applyMp</span></code></a>, <a class="reference internal" href="#k1lib.cli.modifier.sort" title="k1lib.cli.modifier.sort"><code class="xref py py-class docutils literal notranslate"><span class="pre">sort</span></code></a>, <a class="reference internal" href="#k1lib.cli.modifier.randomize" title="k1lib.cli.modifier.randomize"><code class="xref py py-class docutils literal notranslate"><span class="pre">randomize</span></code></a></p></li>
 <li><p><a class="reference internal" href="#k1lib.cli.utils.wrapList" title="k1lib.cli.utils.wrapList"><code class="xref py py-class docutils literal notranslate"><span class="pre">wrapList</span></code></a>, <a class="reference internal" href="#k1lib.cli.utils.ignore" title="k1lib.cli.utils.ignore"><code class="xref py py-class docutils literal notranslate"><span class="pre">ignore</span></code></a>, <a class="reference internal" href="#k1lib.cli.inp.cmd" title="k1lib.cli.inp.cmd"><code class="xref py py-class docutils literal notranslate"><span class="pre">cmd</span></code></a></p></li>
-<li><p><a class="reference internal" href="#k1lib.cli.structural.repeat" title="k1lib.cli.structural.repeat"><code class="xref py py-class docutils literal notranslate"><span class="pre">repeat</span></code></a> and friends, <a class="reference internal" href="#k1lib.cli.structural.groupBy" title="k1lib.cli.structural.groupBy"><code class="xref py py-class docutils literal notranslate"><span class="pre">groupBy</span></code></a></p></li>
+<li><p><a class="reference internal" href="#k1lib.cli.structural.repeat" title="k1lib.cli.structural.repeat"><code class="xref py py-class docutils literal notranslate"><span class="pre">repeat</span></code></a> and friends, <a class="reference internal" href="#k1lib.cli.structural.groupBy" title="k1lib.cli.structural.groupBy"><code class="xref py py-class docutils literal notranslate"><span class="pre">groupBy</span></code></a>, <a class="reference internal" href="#k1lib.cli.structural.ungroup" title="k1lib.cli.structural.ungroup"><code class="xref py py-class docutils literal notranslate"><span class="pre">ungroup</span></code></a>, <a class="reference internal" href="#k1lib.cli.structural.hist" title="k1lib.cli.structural.hist"><code class="xref py py-class docutils literal notranslate"><span class="pre">hist</span></code></a></p></li>
 </ul>
 <p>So, start reading over what these do first, as you can pretty much 95% utilize everything
 the cli workflow has to offer with those alone. Then skim over basic conversions in
@@ -1312,7 +1390,7 @@ the following debugging steps, to see how everything works:</p>
 <span class="n">A</span> <span class="o">|</span> <span class="n">B</span><span class="o">.</span><span class="n">all</span><span class="p">()</span> <span class="o">|</span> <span class="n">deref</span><span class="p">()</span>
 
 <span class="c1"># assume there&#39;s this piece of code:</span>
-<span class="n">A</span> <span class="o">|</span> <span class="p">(</span><span class="n">B</span> <span class="o">&amp;</span> <span class="n">C</span><span class="p">)</span>
+<span class="n">A</span> <span class="o">|</span> <span class="n">B</span> <span class="o">&amp;</span> <span class="n">C</span>
 <span class="c1"># do this instead:</span>
 <span class="n">A</span> <span class="o">|</span> <span class="n">B</span> <span class="o">|</span> <span class="n">deref</span><span class="p">()</span>
 
@@ -3718,8 +3796,8 @@ this work:</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="k1lib.cli.init.patchPandas">
 <span class="sig-prename descclassname"><span class="pre">k1lib.cli.init.</span></span><span class="sig-name descname"><span class="pre">patchPandas</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/init.html#patchPandas"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli.init.patchPandas" title="Permalink to this definition"></a></dt>
-<dd><p>Patches panda’s <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.Series.html#pandas.Series" title="(in pandas v2.0.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.core.series.Series</span></code></a> and
-<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.0.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.core.frame.DataFrame</span></code></a> so that piping works:</p>
+<dd><p>Patches panda’s <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.Series.html#pandas.Series" title="(in pandas v2.0.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.core.series.Series</span></code></a> and
+<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.0.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.core.frame.DataFrame</span></code></a> so that piping works:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;a.csv&quot;</span><span class="p">)[</span><span class="s2">&quot;col3&quot;</span><span class="p">]</span> <span class="o">|</span> <span class="n">shape</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -5655,6 +5733,178 @@ Example:</p>
 <dd></dd></dl>
 
 </dd></dl>
+
+</section>
+<section id="applycl-module">
+<h2>_applyCl module<a class="headerlink" href="#applycl-module" title="Permalink to this heading"></a></h2>
+<p>These are helper functions for <a class="reference internal" href="#k1lib.cli.modifier.applyCl" title="k1lib.cli.modifier.applyCl"><code class="xref py py-class docutils literal notranslate"><span class="pre">applyCl</span></code></a> and are not
+intended for the end user (aka you) to use. They’re just here so that you can read
+the source code if interested.</p>
+<span class="target" id="module-k1lib.cli._applyCl"></span><dl class="py function">
+<dt class="sig sig-object py" id="k1lib.cli._applyCl.getIr">
+<span class="sig-prename descclassname"><span class="pre">k1lib.cli._applyCl.</span></span><span class="sig-name descname"><span class="pre">getIr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/_applyCl.html#getIr"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli._applyCl.getIr" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="k1lib.cli._applyCl.normalize">
+<span class="sig-prename descclassname"><span class="pre">k1lib.cli._applyCl.</span></span><span class="sig-name descname"><span class="pre">normalize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/_applyCl.html#normalize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli._applyCl.normalize" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="k1lib.cli._applyCl.statsCpu">
+<span class="sig-prename descclassname"><span class="pre">k1lib.cli._applyCl.</span></span><span class="sig-name descname"><span class="pre">statsCpu</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/_applyCl.html#statsCpu"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli._applyCl.statsCpu" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="k1lib.cli._applyCl.statsNodeId">
+<span class="sig-prename descclassname"><span class="pre">k1lib.cli._applyCl.</span></span><span class="sig-name descname"><span class="pre">statsNodeId</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/_applyCl.html#statsNodeId"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli._applyCl.statsNodeId" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="k1lib.cli._applyCl.stats">
+<span class="sig-prename descclassname"><span class="pre">k1lib.cli._applyCl.</span></span><span class="sig-name descname"><span class="pre">stats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ir</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/_applyCl.html#stats"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli._applyCl.stats" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="k1lib.cli._applyCl.scores">
+<span class="sig-prename descclassname"><span class="pre">k1lib.cli._applyCl.</span></span><span class="sig-name descname"><span class="pre">scores</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ir</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/_applyCl.html#scores"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli._applyCl.scores" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="k1lib.cli._applyCl.score">
+<span class="sig-prename descclassname"><span class="pre">k1lib.cli._applyCl.</span></span><span class="sig-name descname"><span class="pre">score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ir</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/_applyCl.html#score"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli._applyCl.score" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="k1lib.cli._applyCl.move">
+<span class="sig-prename descclassname"><span class="pre">k1lib.cli._applyCl.</span></span><span class="sig-name descname"><span class="pre">move</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nA</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">nB</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">idx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/_applyCl.html#move"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli._applyCl.move" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="k1lib.cli._applyCl.optimize">
+<span class="sig-prename descclassname"><span class="pre">k1lib.cli._applyCl.</span></span><span class="sig-name descname"><span class="pre">optimize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ir</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/_applyCl.html#optimize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli._applyCl.optimize" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="k1lib.cli._applyCl.traj">
+<span class="sig-prename descclassname"><span class="pre">k1lib.cli._applyCl.</span></span><span class="sig-name descname"><span class="pre">traj</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxSteps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/_applyCl.html#traj"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli._applyCl.traj" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="k1lib.cli._applyCl.collapse">
+<span class="sig-prename descclassname"><span class="pre">k1lib.cli._applyCl.</span></span><span class="sig-name descname"><span class="pre">collapse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">it</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/_applyCl.html#collapse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli._applyCl.collapse" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="k1lib.cli._applyCl.traj2">
+<span class="sig-prename descclassname"><span class="pre">k1lib.cli._applyCl.</span></span><span class="sig-name descname"><span class="pre">traj2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxSteps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/_applyCl.html#traj2"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli._applyCl.traj2" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="k1lib.cli._applyCl.moveFile">
+<span class="sig-prename descclassname"><span class="pre">k1lib.cli._applyCl.</span></span><span class="sig-name descname"><span class="pre">moveFile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fileName</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">destNodeId</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">60</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/_applyCl.html#moveFile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli._applyCl.moveFile" title="Permalink to this definition"></a></dt>
+<dd><p>Moves file from the current node to the destination node. Usually executed on other nodes than the driver node</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="k1lib.cli._applyCl.moveFF">
+<span class="sig-prename descclassname"><span class="pre">k1lib.cli._applyCl.</span></span><span class="sig-name descname"><span class="pre">moveFF</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ff</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">destNodeId</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">60</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/_applyCl.html#moveFF"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli._applyCl.moveFF" title="Permalink to this definition"></a></dt>
+<dd><p>Moves file or folder from the current node to the destination node</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="k1lib.cli._applyCl.balanceFolder">
+<span class="sig-prename descclassname"><span class="pre">k1lib.cli._applyCl.</span></span><span class="sig-name descname"><span class="pre">balanceFolder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">audit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxSteps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/_applyCl.html#balanceFolder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli._applyCl.balanceFolder" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="k1lib.cli._applyCl.getSize">
+<span class="sig-prename descclassname"><span class="pre">k1lib.cli._applyCl.</span></span><span class="sig-name descname"><span class="pre">getSize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/_applyCl.html#getSize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli._applyCl.getSize" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="k1lib.cli._applyCl.NoPartialContent">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.cli._applyCl.</span></span><span class="sig-name descname"><span class="pre">NoPartialContent</span></span><a class="reference internal" href="../_modules/k1lib/cli/_applyCl.html#NoPartialContent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli._applyCl.NoPartialContent" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#Exception" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="k1lib.cli._applyCl.getChunk">
+<span class="sig-prename descclassname"><span class="pre">k1lib.cli._applyCl.</span></span><span class="sig-name descname"><span class="pre">getChunk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">sB</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">eB</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.11)"><span class="pre">bytes</span></a></span></span><a class="reference internal" href="../_modules/k1lib/cli/_applyCl.html#getChunk"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli._applyCl.getChunk" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="k1lib.cli._applyCl.getChunks">
+<span class="sig-prename descclassname"><span class="pre">k1lib.cli._applyCl.</span></span><span class="sig-name descname"><span class="pre">getChunks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">sB</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">eB</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">chunkSize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chunkTimeout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.11)"><span class="pre">bytes</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/k1lib/cli/_applyCl.html#getChunks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli._applyCl.getChunks" title="Permalink to this definition"></a></dt>
+<dd><p>Grabs bytes from sB to eB in chunks</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="k1lib.cli._applyCl.download">
+<span class="sig-prename descclassname"><span class="pre">k1lib.cli._applyCl.</span></span><span class="sig-name descname"><span class="pre">download</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">folder</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">merge</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">120</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chunkTimeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/_applyCl.html#download"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli._applyCl.download" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="k1lib.cli._applyCl.a_transfer">
+<span class="sig-prename descclassname"><span class="pre">k1lib.cli._applyCl.</span></span><span class="sig-name descname"><span class="pre">a_transfer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nse</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodeB</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rpF:</span> <span class="pre">callable</span> <span class="pre">=</span> <span class="pre">&lt;k1lib.cli.utils.iden</span> <span class="pre">object&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/_applyCl.html#a_transfer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli._applyCl.a_transfer" title="Permalink to this definition"></a></dt>
+<dd><p>Transfers a lot of blocks from a bunch of nodes to nodeB. Does not delete from those node though</p>
+<p>nse = List[nodeAId, [sB, eB]]</p>
+<p>Runs on driver process, blocks, so better use applyTh outside of this</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>rpF</strong> – ray progress function</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="k1lib.cli._applyCl.decommission">
+<span class="sig-prename descclassname"><span class="pre">k1lib.cli._applyCl.</span></span><span class="sig-name descname"><span class="pre">decommission</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">fn:</span> <span class="pre">str,</span> <span class="pre">nodeAs:</span> <span class="pre">~typing.List[str],</span> <span class="pre">nodeBs:</span> <span class="pre">~typing.List[str],</span> <span class="pre">rS=&lt;k1lib.cli.utils.iden</span> <span class="pre">object&gt;</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/_applyCl.html#decommission"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli._applyCl.decommission" title="Permalink to this definition"></a></dt>
+<dd><p>Spreads out a particular file in nodeAs to all nodeBs, to prepare
+to decomission nodeAs. The 2 sets should be mutually exclusive</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>rS</strong> – instance of refineSeek</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="k1lib.cli._applyCl.spreadOut">
+<span class="sig-prename descclassname"><span class="pre">k1lib.cli._applyCl.</span></span><span class="sig-name descname"><span class="pre">spreadOut</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">fn:</span> <span class="pre">str,</span> <span class="pre">nAs:</span> <span class="pre">~typing.List[str],</span> <span class="pre">nBs:</span> <span class="pre">~typing.List[str],</span> <span class="pre">rS=&lt;k1lib.cli.utils.iden</span> <span class="pre">object&gt;</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/_applyCl.html#spreadOut"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli._applyCl.spreadOut" title="Permalink to this definition"></a></dt>
+<dd><p>Spreads out a file from nodes A to B, where B fully contains A (no decomissioning).
+A and B should be mutually exclusive. Initial nodes are A, final nodes are A + B</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="k1lib.cli._applyCl.balanceFile">
+<span class="sig-prename descclassname"><span class="pre">k1lib.cli._applyCl.</span></span><span class="sig-name descname"><span class="pre">balanceFile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fn:</span> <span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nAs:</span> <span class="pre">~typing.Optional[~typing.List[str]]</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nBs:</span> <span class="pre">~typing.Optional[~typing.List[str]]</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rS=&lt;k1lib.cli.utils.iden</span> <span class="pre">object&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/_applyCl.html#balanceFile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli._applyCl.balanceFile" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="k1lib.cli._applyCl.diskScan1">
+<span class="sig-prename descclassname"><span class="pre">k1lib.cli._applyCl.</span></span><span class="sig-name descname"><span class="pre">diskScan1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/k1lib/cli/_applyCl.html#diskScan1"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli._applyCl.diskScan1" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="k1lib.cli._applyCl.diskScan2">
+<span class="sig-prename descclassname"><span class="pre">k1lib.cli._applyCl.</span></span><span class="sig-name descname"><span class="pre">diskScan2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.11)"><span class="pre">Tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.11)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/k1lib/cli/_applyCl.html#diskScan2"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli._applyCl.diskScan2" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="k1lib.cli._applyCl.diskScan3">
+<span class="sig-prename descclassname"><span class="pre">k1lib.cli._applyCl.</span></span><span class="sig-name descname"><span class="pre">diskScan3</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/_applyCl.html#diskScan3"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli._applyCl.diskScan3" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="k1lib.cli._applyCl.diskScan4">
+<span class="sig-prename descclassname"><span class="pre">k1lib.cli._applyCl.</span></span><span class="sig-name descname"><span class="pre">diskScan4</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">sortSize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/_applyCl.html#diskScan4"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli._applyCl.diskScan4" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="k1lib.cli._applyCl.diskScan5">
+<span class="sig-prename descclassname"><span class="pre">k1lib.cli._applyCl.</span></span><span class="sig-name descname"><span class="pre">diskScan5</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">sortSize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/cli/_applyCl.html#diskScan5"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.cli._applyCl.diskScan5" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
 
 </section>
 <section id="module-k1lib.cli.nb">
