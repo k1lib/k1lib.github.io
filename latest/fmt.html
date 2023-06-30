@@ -53,6 +53,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">k1lib.fmt module</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#k1lib.fmt.generic"><code class="docutils literal notranslate"><span class="pre">generic()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#k1lib.fmt.size"><code class="docutils literal notranslate"><span class="pre">size()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.fmt.fromSize"><code class="docutils literal notranslate"><span class="pre">fromSize()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#k1lib.fmt.sizeOf"><code class="docutils literal notranslate"><span class="pre">sizeOf()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#k1lib.fmt.comp"><code class="docutils literal notranslate"><span class="pre">comp()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#k1lib.fmt.compRate"><code class="docutils literal notranslate"><span class="pre">compRate()</span></code></a></li>
@@ -82,6 +83,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#k1lib.fmt.pre"><code class="docutils literal notranslate"><span class="pre">pre()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#k1lib.fmt.row"><code class="docutils literal notranslate"><span class="pre">row()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#k1lib.fmt.col"><code class="docutils literal notranslate"><span class="pre">col()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.fmt.colors"><code class="docutils literal notranslate"><span class="pre">colors()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="graphEqn.html">k1lib.graphEqn module</a></li>
@@ -146,6 +148,17 @@ Example:</p>
 <span class="n">fmt</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
 <span class="c1"># returns &quot;12.0 MB&quot;</span>
 <span class="n">fmt</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mf">1.2e7</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="k1lib.fmt.fromSize">
+<span class="sig-prename descclassname"><span class="pre">k1lib.fmt.</span></span><span class="sig-name descname"><span class="pre">fromSize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></span><a class="reference internal" href="_modules/k1lib/fmt.html#fromSize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.fmt.fromSize" title="Permalink to this definition"></a></dt>
+<dd><p>Grabs size from string representation.
+Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fromSize</span><span class="p">(</span><span class="s2">&quot;31.5k&quot;</span><span class="p">)</span> <span class="c1"># returns 31500</span>
+<span class="n">fromSize</span><span class="p">(</span><span class="s2">&quot;31.5kB&quot;</span><span class="p">)</span> <span class="c1"># also returns 31500</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -376,6 +389,17 @@ Example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fmt</span><span class="o">.</span><span class="n">col</span><span class="p">([</span><span class="s2">&quot;abc&quot;</span><span class="p">,</span> <span class="s2">&quot;def&quot;</span><span class="p">])</span> <span class="o">|</span> <span class="n">aS</span><span class="p">(</span><span class="n">IPython</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">HTML</span><span class="p">)</span>
 </pre></div>
 </div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="k1lib.fmt.colors">
+<span class="sig-prename descclassname"><span class="pre">k1lib.fmt.</span></span><span class="sig-name descname"><span class="pre">colors</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/fmt.html#colors"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.fmt.colors" title="Permalink to this definition"></a></dt>
+<dd><p>Returns an infinite iterator that cycles through 12 colors.
+Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fmt</span><span class="o">.</span><span class="n">colors</span><span class="p">()</span> <span class="o">|</span> <span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">|</span> <span class="n">deref</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Color scheme taken from <a class="reference external" href="https://colorbrewer2.org/#type=qualitative&amp;scheme=Set3&amp;n=12">https://colorbrewer2.org/#type=qualitative&amp;scheme=Set3&amp;n=12</a></p>
 </dd></dl>
 
 </section>

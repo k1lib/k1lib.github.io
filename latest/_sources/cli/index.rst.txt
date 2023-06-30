@@ -408,7 +408,8 @@ Then other important, not necessarily core clis include:
 
 - :class:`~modifier.applyMp`, :class:`~modifier.sort`, :class:`~modifier.randomize`
 - :class:`~utils.wrapList`, :class:`~utils.ignore`, :class:`~inp.cmd`
-- :class:`~structural.repeat` and friends, :class:`~structural.groupBy`, :class:`~structural.ungroup`, :class:`~structural.hist`
+- :class:`~structural.repeat` and friends, :class:`~structural.groupBy`, :class:`~structural.ungroup`,
+  :class:`~structural.hist`, :class:`~structural.insert`, :class:`~structural.insertIdColumn`
 
 So, start reading over what these do first, as you can pretty much 95% utilize everything
 the cli workflow has to offer with those alone. Then skim over basic conversions in

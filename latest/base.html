@@ -100,6 +100,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#k1lib.Wrapper"><code class="docutils literal notranslate"><span class="pre">Wrapper</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#k1lib.Wrapper.__init__"><code class="docutils literal notranslate"><span class="pre">Wrapper.__init__()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#k1lib.Wrapper.value"><code class="docutils literal notranslate"><span class="pre">Wrapper.value</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#k1lib.Wrapper.__ror__"><code class="docutils literal notranslate"><span class="pre">Wrapper.__ror__()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#k1lib.Every"><code class="docutils literal notranslate"><span class="pre">Every</span></code></a><ul>
@@ -300,6 +301,10 @@
     - every     = &lt;Settings&gt;                                                  ​profiler print frequency
       - text   = 1000                                                         ​for text mode, will print every n lines
       - binary = 10                                                           ​for binary mode, will print every n 100000-byte blocks
+  - RemoteFile    = &lt;Settings&gt;                                                ​inp.RemoteFile() settings, used in cat(), splitSeek() and the like
+    - memoryLimit = 100000000                                                 ​if the internal cache exceeds this limit (in bytes), and randomAccess is False, then old downloaded chunks will be deleted
+    - timeout     = 10                                                        ​seconds before terminating the remote request and retrying
+    - retries     = 10                                                        ​how many times to retry sending the request before giving up
   - applyCl       = &lt;Settings&gt;                                                ​modifier.applyCl() settings
     - sudoTimeout = 300                                                       ​seconds before deleting the stored password for sudo commands
   - chem          = &lt;Settings&gt;                                                ​chemistry-related settings
@@ -319,6 +324,7 @@
 
 - fmt                 = &lt;Settings&gt;                                            ​from k1lib.fmt module
   - separator = True                                                          ​whether to have a space between the number and the unit
+  - colors    = [&#39;#8dd3c7&#39;, &#39;#ffffb3&#39;, &#39;#bebada&#39;, &#39;#fb8072&#39;, &#39;#...            ​List of colors to cycle through in fmt.colors()
 - k1ui                = &lt;Settings&gt;                                            ​docs related to k1ui java library
   - server = &lt;Settings&gt;                                                       ​server urls
     - http = http://localhost:9511                                            ​normal http server
@@ -833,14 +839,14 @@ it gets incremented by 1 automatically. Example:</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="k1lib.Wrapper">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.</span></span><span class="sig-name descname"><span class="pre">Wrapper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/_baseClasses.html#Wrapper"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.Wrapper" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.</span></span><span class="sig-name descname"><span class="pre">Wrapper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/_baseClasses.html#Wrapper"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.Wrapper" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="k1lib.Wrapper.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/_baseClasses.html#Wrapper.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.Wrapper.__init__" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/_baseClasses.html#Wrapper.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.Wrapper.__init__" title="Permalink to this definition"></a></dt>
 <dd><p>Creates a wrapper for some value and get it by calling it.
 Example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">Wrapper</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="mf">1e7</span><span class="p">))))</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">k1</span><span class="o">.</span><span class="n">Wrapper</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="mf">1e7</span><span class="p">))))</span>
 <span class="c1"># returns [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</span>
 <span class="n">a</span><span class="p">()[:</span><span class="mi">10</span><span class="p">]</span>
 </pre></div>
@@ -848,13 +854,18 @@ Example:</p>
 <p>This exists just so that Jupyter Lab’s contextual help won’t automatically
 display the (possibly humongous) value. Could be useful if you want to pass a
 value by reference everywhere like this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">o</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">Wrapper</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">o</span> <span class="o">=</span> <span class="n">k1</span><span class="o">.</span><span class="n">Wrapper</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
     <span class="n">obj</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="mi">3</span>
 <span class="n">f</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>
 <span class="n">o</span><span class="p">()</span> <span class="c1"># returns 3</span>
 </pre></div>
 </div>
+<p>You can also pipe into it like this:</p>
+<blockquote>
+<div><p>o = 3 | k1.Wrapper()
+o() # returns 3</p>
+</div></blockquote>
 </dd></dl>
 
 <dl class="py attribute">
@@ -862,6 +873,11 @@ value by reference everywhere like this:</p>
 <span class="sig-name descname"><span class="pre">value</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.11)"><span class="pre">Any</span></a></em><a class="headerlink" href="#k1lib.Wrapper.value" title="Permalink to this definition"></a></dt>
 <dd><p>Internal value of this <a class="reference internal" href="#k1lib.Wrapper" title="k1lib.Wrapper"><code class="xref py py-class docutils literal notranslate"><span class="pre">Wrapper</span></code></a></p>
 </dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.Wrapper.__ror__">
+<span class="sig-name descname"><span class="pre">__ror__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">it</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/_baseClasses.html#Wrapper.__ror__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.Wrapper.__ror__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -1720,7 +1736,7 @@ Example:</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="k1lib.pValue">
 <span class="sig-prename descclassname"><span class="pre">k1lib.</span></span><span class="sig-name descname"><span class="pre">pValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">zScore</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/_basics.html#pValue"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.pValue" title="Permalink to this definition"></a></dt>
-<dd><p>2-sided p value of a particular z score. Requires <a class="reference external" href="https://docs.scipy.org/doc/scipy/index.html#module-scipy" title="(in SciPy v1.10.1)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scipy</span></code></a>.</p>
+<dd><p>2-sided p value of a particular z score. Requires <a class="reference external" href="https://docs.scipy.org/doc/scipy/index.html#module-scipy" title="(in SciPy v1.11.1)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scipy</span></code></a>.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -1845,7 +1861,7 @@ Example:</p>
 </pre></div>
 </div>
 <p>This will create a best-fit function. You can just use it as a regular,
-normal function. You can even pass in <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>:</p>
+normal function. You can even pass in <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.25)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># returns some float</span>
 <span class="n">f</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 
