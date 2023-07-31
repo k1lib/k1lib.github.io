@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>profilers module &mdash; k1lib  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="k1lib._k1a module" href="../k1a.html" />
+    <link rel="prev" title="lossFunctions module" href="lossFunctions.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> k1lib
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../base.html">Base module</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../cli/index.html">k1lib.cli module</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">k1lib.callbacks module</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lossFunctions.html">lossFunctions module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">profilers module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-k1lib.callbacks.profilers.computation">computation module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#k1lib.callbacks.profilers.computation.ComputationProfiler"><code class="docutils literal notranslate"><span class="pre">ComputationProfiler</span></code></a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#k1lib.callbacks.profilers.computation.ComputationProfiler.css"><code class="docutils literal notranslate"><span class="pre">ComputationProfiler.css()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-k1lib.callbacks.profilers.io">io module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#k1lib.callbacks.profilers.io.IOProfiler"><code class="docutils literal notranslate"><span class="pre">IOProfiler</span></code></a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#k1lib.callbacks.profilers.io.IOProfiler.css"><code class="docutils literal notranslate"><span class="pre">IOProfiler.css()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-k1lib.callbacks.profilers.memory">memory module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#k1lib.callbacks.profilers.memory.MemoryProfiler"><code class="docutils literal notranslate"><span class="pre">MemoryProfiler</span></code></a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#k1lib.callbacks.profilers.memory.MemoryProfiler.css"><code class="docutils literal notranslate"><span class="pre">MemoryProfiler.css()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-k1lib.callbacks.profilers.time">time module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#k1lib.callbacks.profilers.time.TimeProfiler"><code class="docutils literal notranslate"><span class="pre">TimeProfiler</span></code></a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#k1lib.callbacks.profilers.time.TimeProfiler.css"><code class="docutils literal notranslate"><span class="pre">TimeProfiler.css()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.callbacks.callbacks">callbacks module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.callbacks.confusionMatrix">confusionMatrix module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.callbacks.core">core module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.callbacks.hookModule">hookModule module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.callbacks.hookParam">hookParam module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.callbacks.limits">limits module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.callbacks.landscape">landscape module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.callbacks.loss_accuracy">loss_accuracy module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.callbacks.paramFinder">paramFinder module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.callbacks.profiler">profiler module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.callbacks.progress">progress module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.callbacks.recorder">recorder module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.callbacks.shorts">shorts module</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../k1a.html">k1lib._k1a module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../k1ui.html">k1lib.k1ui module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eqn.html">k1lib.eqn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fmt.html">k1lib.fmt module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../graphEqn.html">k1lib.graphEqn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../imports.html">k1lib.imports module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mo.html">k1lib.mo module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../knn.html">k1lib.knn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../p5.html">k1lib.p5 module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../schedule.html">k1lib.schedule module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../selector.html">k1lib.selector module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../serve.html">k1lib.serve module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../viz.html">k1lib.viz module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../monkey.html">Monkey patched classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelogs.html">Changelogs</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">k1lib</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">k1lib.callbacks module</a></li>
+      <li class="breadcrumb-item active">profilers module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/callbacks/profilers.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <span class="target" id="module-k1lib.callbacks.profilers"></span><section id="profilers-module">
+<h1>profilers module<a class="headerlink" href="#profilers-module" title="Permalink to this heading"></a></h1>
+<p>These are subcallbacks reachable by <a class="reference internal" href="index.html#k1lib.callbacks.profiler.Profiler" title="k1lib.callbacks.profiler.Profiler"><code class="xref py py-class docutils literal notranslate"><span class="pre">Profiler</span></code></a>.
+When you try to access a subcallback (like <code class="docutils literal notranslate"><span class="pre">computation</span></code>), like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">l</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">Learner</span><span class="o">.</span><span class="n">sample</span><span class="p">()</span>
+<span class="n">l</span><span class="o">.</span><span class="n">cbs</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Cbs</span><span class="o">.</span><span class="n">Profiler</span><span class="p">())</span>
+<span class="n">l</span><span class="o">.</span><span class="n">Profiler</span><span class="o">.</span><span class="n">computation</span> <span class="c1"># accessing the field</span>
+</pre></div>
+</div>
+<p>...Profiler will temporarily attaches a specific subcallback, runs it, stores
+data, and then detachs it, so that you can only access it via <code class="docutils literal notranslate"><span class="pre">l.Profiler.computation</span></code>
+later on. Subsequent accesses don’t actually run the subcallback again, but just
+displays the cached value.</p>
+<section id="module-k1lib.callbacks.profilers.computation">
+<span id="computation-module"></span><h2>computation module<a class="headerlink" href="#module-k1lib.callbacks.profilers.computation" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="k1lib.callbacks.profilers.computation.ComputationProfiler">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.callbacks.profilers.computation.</span></span><span class="sig-name descname"><span class="pre">ComputationProfiler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">profiler</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="index.html#k1lib.callbacks.profiler.Profiler" title="k1lib.callbacks.profiler.Profiler"><span class="pre">Profiler</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/callbacks/profilers/computation.html#ComputationProfiler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.callbacks.profilers.computation.ComputationProfiler" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="index.html#k1lib.callbacks.callbacks.Callback" title="k1lib.callbacks.callbacks.Callback"><code class="xref py py-class docutils literal notranslate"><span class="pre">Callback</span></code></a></p>
+<p>Profiles computation. Only provide reports on well known
+layers only, and thus can’t really be universal. Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">l</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">Learner</span><span class="o">.</span><span class="n">sample</span><span class="p">()</span>
+<span class="n">l</span><span class="o">.</span><span class="n">cbs</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Cbs</span><span class="o">.</span><span class="n">Profiler</span><span class="p">())</span>
+<span class="c1"># views table</span>
+<span class="n">l</span><span class="o">.</span><span class="n">Profiler</span><span class="o">.</span><span class="n">computation</span>
+<span class="c1"># views table highlighted</span>
+<span class="n">l</span><span class="o">.</span><span class="n">Profiler</span><span class="o">.</span><span class="n">computation</span><span class="o">.</span><span class="n">css</span><span class="p">(</span><span class="s2">&quot;#lin1 &gt; #lin&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.callbacks.profilers.computation.ComputationProfiler.css">
+<span class="sig-name descname"><span class="pre">css</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">css</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/callbacks/profilers/computation.html#ComputationProfiler.css"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.callbacks.profilers.computation.ComputationProfiler.css" title="Permalink to this definition"></a></dt>
+<dd><p>Selects a small part of the network to highlight. See also: <a class="reference internal" href="../selector.html#module-k1lib.selector" title="k1lib.selector"><code class="xref py py-mod docutils literal notranslate"><span class="pre">k1lib.selector</span></code></a>.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-k1lib.callbacks.profilers.io">
+<span id="io-module"></span><h2>io module<a class="headerlink" href="#module-k1lib.callbacks.profilers.io" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="k1lib.callbacks.profilers.io.IOProfiler">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.callbacks.profilers.io.</span></span><span class="sig-name descname"><span class="pre">IOProfiler</span></span><a class="reference internal" href="../_modules/k1lib/callbacks/profilers/io.html#IOProfiler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.callbacks.profilers.io.IOProfiler" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="index.html#k1lib.callbacks.callbacks.Callback" title="k1lib.callbacks.callbacks.Callback"><code class="xref py py-class docutils literal notranslate"><span class="pre">Callback</span></code></a></p>
+<p>Gets input and output shapes of each layer.
+Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">l</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">Learner</span><span class="o">.</span><span class="n">sample</span><span class="p">()</span>
+<span class="n">l</span><span class="o">.</span><span class="n">cbs</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Cbs</span><span class="o">.</span><span class="n">Profiler</span><span class="p">())</span>
+<span class="c1"># views table</span>
+<span class="n">l</span><span class="o">.</span><span class="n">Profiler</span><span class="o">.</span><span class="n">io</span>
+<span class="c1"># views table highlighted</span>
+<span class="n">l</span><span class="o">.</span><span class="n">Profiler</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">css</span><span class="p">(</span><span class="s2">&quot;#lin1&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.callbacks.profilers.io.IOProfiler.css">
+<span class="sig-name descname"><span class="pre">css</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">css</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/callbacks/profilers/io.html#IOProfiler.css"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.callbacks.profilers.io.IOProfiler.css" title="Permalink to this definition"></a></dt>
+<dd><p>Selects a small part of the network to highlight. See also: <a class="reference internal" href="../selector.html#module-k1lib.selector" title="k1lib.selector"><code class="xref py py-mod docutils literal notranslate"><span class="pre">k1lib.selector</span></code></a>.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-k1lib.callbacks.profilers.memory">
+<span id="memory-module"></span><h2>memory module<a class="headerlink" href="#module-k1lib.callbacks.profilers.memory" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="k1lib.callbacks.profilers.memory.MemoryProfiler">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.callbacks.profilers.memory.</span></span><span class="sig-name descname"><span class="pre">MemoryProfiler</span></span><a class="reference internal" href="../_modules/k1lib/callbacks/profilers/memory.html#MemoryProfiler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.callbacks.profilers.memory.MemoryProfiler" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="index.html#k1lib.callbacks.callbacks.Callback" title="k1lib.callbacks.callbacks.Callback"><code class="xref py py-class docutils literal notranslate"><span class="pre">Callback</span></code></a></p>
+<p>Expected to be run only once only. If a new report for a new network
+architecture is required, then create a new one. Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">l</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">Learner</span><span class="o">.</span><span class="n">sample</span><span class="p">()</span>
+<span class="n">l</span><span class="o">.</span><span class="n">cbs</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Cbs</span><span class="o">.</span><span class="n">Profiler</span><span class="p">())</span>
+<span class="c1"># views graph and table</span>
+<span class="n">l</span><span class="o">.</span><span class="n">Profiler</span><span class="o">.</span><span class="n">memory</span>
+<span class="c1"># views graph and table highlighted</span>
+<span class="n">l</span><span class="o">.</span><span class="n">Profiler</span><span class="o">.</span><span class="n">memory</span><span class="o">.</span><span class="n">css</span><span class="p">(</span><span class="s2">&quot;Linear&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.callbacks.profilers.memory.MemoryProfiler.css">
+<span class="sig-name descname"><span class="pre">css</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">css</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/callbacks/profilers/memory.html#MemoryProfiler.css"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.callbacks.profilers.memory.MemoryProfiler.css" title="Permalink to this definition"></a></dt>
+<dd><p>Selects a small part of the network to highlight. See also: <a class="reference internal" href="../selector.html#module-k1lib.selector" title="k1lib.selector"><code class="xref py py-mod docutils literal notranslate"><span class="pre">k1lib.selector</span></code></a>.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-k1lib.callbacks.profilers.time">
+<span id="time-module"></span><h2>time module<a class="headerlink" href="#module-k1lib.callbacks.profilers.time" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="k1lib.callbacks.profilers.time.TimeProfiler">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.callbacks.profilers.time.</span></span><span class="sig-name descname"><span class="pre">TimeProfiler</span></span><a class="reference internal" href="../_modules/k1lib/callbacks/profilers/time.html#TimeProfiler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.callbacks.profilers.time.TimeProfiler" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="index.html#k1lib.callbacks.callbacks.Callback" title="k1lib.callbacks.callbacks.Callback"><code class="xref py py-class docutils literal notranslate"><span class="pre">Callback</span></code></a></p>
+<p>Profiles execution time. Only measures forward times, as
+backward times can’t really be measured. Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">l</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">Learner</span><span class="o">.</span><span class="n">sample</span><span class="p">()</span>
+<span class="n">l</span><span class="o">.</span><span class="n">cbs</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Cbs</span><span class="o">.</span><span class="n">Profiler</span><span class="p">())</span>
+<span class="c1"># views table</span>
+<span class="n">l</span><span class="o">.</span><span class="n">Profiler</span><span class="o">.</span><span class="n">time</span>
+<span class="c1"># views table highlighted</span>
+<span class="n">l</span><span class="o">.</span><span class="n">Profiler</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">css</span><span class="p">(</span><span class="s2">&quot;#lin1&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.callbacks.profilers.time.TimeProfiler.css">
+<span class="sig-name descname"><span class="pre">css</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">css</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/k1lib/callbacks/profilers/time.html#TimeProfiler.css"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.callbacks.profilers.time.TimeProfiler.css" title="Permalink to this definition"></a></dt>
+<dd><p>Selects a small part of the network to highlight. See also: <a class="reference internal" href="../selector.html#module-k1lib.selector" title="k1lib.selector"><code class="xref py py-mod docutils literal notranslate"><span class="pre">k1lib.selector</span></code></a>.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="lossFunctions.html" class="btn btn-neutral float-left" title="lossFunctions module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../k1a.html" class="btn btn-neutral float-right" title="k1lib._k1a module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Quang Ho.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

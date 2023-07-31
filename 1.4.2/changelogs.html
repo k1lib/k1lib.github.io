@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Changelogs &mdash; k1lib  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Tutorials" href="tutorials.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> k1lib
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="base.html">Base module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cli/index.html">k1lib.cli module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="callbacks/index.html">k1lib.callbacks module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="k1a.html">k1lib._k1a module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="k1ui.html">k1lib.k1ui module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="eqn.html">k1lib.eqn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fmt.html">k1lib.fmt module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graphEqn.html">k1lib.graphEqn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imports.html">k1lib.imports module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mo.html">k1lib.mo module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="knn.html">k1lib.knn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="p5.html">k1lib.p5 module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="schedule.html">k1lib.schedule module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="selector.html">k1lib.selector module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="serve.html">k1lib.serve module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="viz.html">k1lib.viz module</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="monkey.html">Monkey patched classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Changelogs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#june-30th-2023">1.4 - June 30th, 2023</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#may-26th-2023">1.3 - May 26th, 2023</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#feb-7th-2023">1.2 - Feb 7th, 2023</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#oct-3rd-2022">1.1 - Oct 3rd, 2022</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#aug-9th-2022">1.0 - Aug 9th, 2022</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#jul-15th-2022">0.17 - Jul 15th, 2022</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#jun-28th-2022">0.16 - Jun 28th, 2022</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mar-22nd-2022">0.15 - Mar 22nd, 2022</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#may-1st-2022">0.14 - May 1st, 2022</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mar-23rd-2022">0.13 - Mar 23rd, 2022</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dec-1st-2021">0.12 - Dec 1st, 2021</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#nov-24th-2021">0.11 - Nov 24th, 2021</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#nov-17th-2021">0.10 - Nov 17th, 2021</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mov-14th-2021">0.9 - Mov 14th, 2021</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#nov-7th-2021">0.8 - Nov 7th, 2021</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#nov-3rd-2021">0.7 - Nov 3rd, 2021</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#oct-30th-2021">0.6 - Oct 30th, 2021</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#oct-27th-2021">0.5 - Oct 27th, 2021</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#oct-23rd-2021">0.4 - Oct 23rd, 2021</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#oct-18th-2021">0.3 - Oct 18th, 2021</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sep-24th-2021">0.2 - Sep 24th, 2021</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sep-20th-2021">0.1.13 - Sep 20th, 2021</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sep-3rd-2021">0.1.12 - Sep 3rd, 2021</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#aug-25th-2021">0.1.11 - Aug 25th, 2021</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#aug-22nd-2021">0.1.10 - Aug 22nd, 2021</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#aug-19th-2021">0.1.9 - Aug 19th, 2021</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#aug-15th-2021">0.1.8 - Aug 15th, 2021</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#aug-14th-2021">0.1.7 - Aug 14th, 2021</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#aug-13th-2021">0.1.6 - Aug 13th, 2021</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">k1lib</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">Changelogs</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/changelogs.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="changelogs">
+<h1>Changelogs<a class="headerlink" href="#changelogs" title="Permalink to this heading"></a></h1>
+<section id="june-30th-2023">
+<h2><a class="reference external" href="/1.4">1.4</a> - June 30th, 2023<a class="headerlink" href="#june-30th-2023" title="Permalink to this heading"></a></h2>
+<p>Cli:</p>
+<ul class="simple">
+<li><p>Added ability for an existing cli to join with a function that’s not a cli
+transparently. Meaning this is now possible: <code class="docutils literal notranslate"><span class="pre">3</span> <span class="pre">|</span> <span class="pre">(iden()</span> <span class="pre">|</span> <span class="pre">(lambda</span> <span class="pre">x:</span> <span class="pre">x**4))</span></code></p></li>
+<li><p>Added <a class="reference internal" href="cli/index.html#k1lib.cli.conv.toHash" title="k1lib.cli.conv.toHash"><code class="xref py py-class docutils literal notranslate"><span class="pre">toHash</span></code></a>, <a class="reference internal" href="cli/index.html#k1lib.cli.conv.toStd" title="k1lib.cli.conv.toStd"><code class="xref py py-class docutils literal notranslate"><span class="pre">toStd</span></code></a></p></li>
+<li><p>Accelerated <a class="reference internal" href="cli/index.html#k1lib.cli.modifier.applyCl.balanceFolder" title="k1lib.cli.modifier.applyCl.balanceFolder"><code class="xref py py-meth docutils literal notranslate"><span class="pre">balanceFolder()</span></code></a></p></li>
+<li><p>Accelerated <a class="reference internal" href="cli/index.html#k1lib.cli.structural.repeat" title="k1lib.cli.structural.repeat"><code class="xref py py-class docutils literal notranslate"><span class="pre">repeat</span></code></a>, <a class="reference internal" href="cli/index.html#k1lib.cli.structural.repeatFrom" title="k1lib.cli.structural.repeatFrom"><code class="xref py py-class docutils literal notranslate"><span class="pre">repeatFrom</span></code></a>, <a class="reference internal" href="cli/index.html#k1lib.cli.structural.joinStreams" title="k1lib.cli.structural.joinStreams"><code class="xref py py-class docutils literal notranslate"><span class="pre">joinStreams</span></code></a>
+and <code class="xref py py-class docutils literal notranslate"><span class="pre">unique</span></code> for array types</p></li>
+<li><p>Added library-wide optimization that allows <code class="docutils literal notranslate"><span class="pre">np.random.randn(3,</span> <span class="pre">4,</span> <span class="pre">5,</span> <span class="pre">6)</span> <span class="pre">|</span> <span class="pre">item().all()</span> <span class="pre">|</span> <span class="pre">shape()</span> <span class="pre">==</span> <span class="pre">(3,</span> <span class="pre">5,</span> <span class="pre">6)</span></code>
+to operate on the array directly and not be broken up by <code class="docutils literal notranslate"><span class="pre">.all()</span></code></p></li>
+<li><p>Removed <code class="xref py py-class docutils literal notranslate"><span class="pre">structural.accumulate</span></code> and <code class="xref py py-class docutils literal notranslate"><span class="pre">structural.indexTable</span></code>, as it can be done using <a class="reference internal" href="cli/index.html#k1lib.cli.structural.groupBy" title="k1lib.cli.structural.groupBy"><code class="xref py py-class docutils literal notranslate"><span class="pre">groupBy</span></code></a> and it’s not used enough</p></li>
+<li><p>Added <a class="reference internal" href="cli/index.html#k1lib.cli.utils.sketch" title="k1lib.cli.utils.sketch"><code class="xref py py-class docutils literal notranslate"><span class="pre">sketch</span></code></a>, <a class="reference internal" href="cli/index.html#k1lib.cli.utils.syncStepper" title="k1lib.cli.utils.syncStepper"><code class="xref py py-class docutils literal notranslate"><span class="pre">syncStepper</span></code></a></p></li>
+<li><p>Added alias <a class="reference internal" href="cli/index.html#k1lib.cli.structural.T" title="k1lib.cli.structural.T"><code class="xref py py-class docutils literal notranslate"><span class="pre">T</span></code></a></p></li>
+<li><p>Added Cython support for <a class="reference internal" href="cli/index.html#k1lib.cli.modifier.applyCl" title="k1lib.cli.modifier.applyCl"><code class="xref py py-class docutils literal notranslate"><span class="pre">applyCl</span></code></a></p></li>
+<li><p>Added full distribution mode to <a class="reference internal" href="cli/index.html#k1lib.cli.filt.intersection" title="k1lib.cli.filt.intersection"><code class="xref py py-class docutils literal notranslate"><span class="pre">intersection</span></code></a></p></li>
+<li><p>Added builtin ML models support: <code class="xref py py-class docutils literal notranslate"><span class="pre">embed</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">complete</span></code> and <code class="xref py py-class docutils literal notranslate"><span class="pre">kmeans</span></code>.
+Model operations are also optimized to batch things together automatically</p></li>
+<li><p>Added new way to deal with infinite iterators generated by <a class="reference internal" href="cli/index.html#k1lib.cli.structural.repeat" title="k1lib.cli.structural.repeat"><code class="xref py py-class docutils literal notranslate"><span class="pre">repeat</span></code></a> and friends</p></li>
+<li><p>Added multiple table pretty-format mode to <a class="reference internal" href="cli/index.html#k1lib.cli.output.pretty" title="k1lib.cli.output.pretty"><code class="xref py py-class docutils literal notranslate"><span class="pre">pretty</span></code></a></p></li>
+</ul>
+<p>Generic:</p>
+<ul class="simple">
+<li><p>Added <code class="xref py py-meth docutils literal notranslate"><span class="pre">cron()</span></code></p></li>
+</ul>
+</section>
+<section id="may-26th-2023">
+<h2><a class="reference external" href="/1.3">1.3</a> - May 26th, 2023<a class="headerlink" href="#may-26th-2023" title="Permalink to this heading"></a></h2>
+<p>Cli:</p>
+<ul class="simple">
+<li><p>Revamped docs a lot</p></li>
+<li><p>Added <a class="reference internal" href="cli/index.html#k1lib.cli.modifier.applyCl" title="k1lib.cli.modifier.applyCl"><code class="xref py py-class docutils literal notranslate"><span class="pre">applyCl</span></code></a> to execute functions across an entire cluster</p></li>
+<li><p>Auto get representation if not string in <a class="reference internal" href="cli/index.html#k1lib.cli.grep.grep" title="k1lib.cli.grep.grep"><code class="xref py py-class docutils literal notranslate"><span class="pre">grep</span></code></a>.</p></li>
+<li><p>Added aliases <a class="reference internal" href="cli/index.html#k1lib.cli.modifier.map_" title="k1lib.cli.modifier.map_"><code class="xref py py-class docutils literal notranslate"><span class="pre">map_</span></code></a>, <a class="reference internal" href="cli/index.html#k1lib.cli.filt.filter_" title="k1lib.cli.filt.filter_"><code class="xref py py-class docutils literal notranslate"><span class="pre">filter_</span></code></a> and <a class="reference internal" href="cli/index.html#k1lib.cli.structural.flatten" title="k1lib.cli.structural.flatten"><code class="xref py py-class docutils literal notranslate"><span class="pre">flatten</span></code></a></p></li>
+<li><p>Added string execution <code class="docutils literal notranslate"><span class="pre">3</span> <span class="pre">|</span> <span class="pre">aS(&quot;x+2&quot;)</span></code> capability to all clis</p></li>
+<li><p>Added <a class="reference internal" href="cli/index.html#k1lib.cli.conv.toHtml" title="k1lib.cli.conv.toHtml"><code class="xref py py-class docutils literal notranslate"><span class="pre">toHtml</span></code></a> to quickly convert PIL image to html tag</p></li>
+<li><p>Accelerated <a class="reference internal" href="cli/index.html#k1lib.cli.filt.filt" title="k1lib.cli.filt.filt"><code class="xref py py-class docutils literal notranslate"><span class="pre">filt</span></code></a> for array types even more</p></li>
+<li><p>Added <a class="reference internal" href="cli/index.html#k1lib.cli.structural.ungroup" title="k1lib.cli.structural.ungroup"><code class="xref py py-class docutils literal notranslate"><span class="pre">ungroup</span></code></a>, and added more modes to <a class="reference internal" href="cli/index.html#k1lib.cli.structural.groupBy" title="k1lib.cli.structural.groupBy"><code class="xref py py-class docutils literal notranslate"><span class="pre">groupBy</span></code></a></p></li>
+<li><p>Fixed <code class="docutils literal notranslate"><span class="pre">cut()[2:-2]</span></code> edge case</p></li>
+<li><p>Added <a class="reference internal" href="cli/index.html#k1lib.cli.utils.rItem" title="k1lib.cli.utils.rItem"><code class="xref py py-class docutils literal notranslate"><span class="pre">rItem</span></code></a> and <a class="reference internal" href="cli/index.html#k1lib.cli.inp.urlPath" title="k1lib.cli.inp.urlPath"><code class="xref py py-class docutils literal notranslate"><span class="pre">urlPath</span></code></a> for quality of life</p></li>
+<li><p>Added demiliter-splitting mode to <a class="reference internal" href="cli/index.html#k1lib.cli.conv.toDict" title="k1lib.cli.conv.toDict"><code class="xref py py-class docutils literal notranslate"><span class="pre">toDict</span></code></a></p></li>
+<li><p>Added <a class="reference internal" href="cli/index.html#k1lib.cli.nb.execute.rightAway" title="k1lib.cli.nb.execute.rightAway"><code class="xref py py-meth docutils literal notranslate"><span class="pre">nb.execute.rightAway()</span></code></a>, <a class="reference internal" href="cli/index.html#k1lib.cli.conv.toAscii" title="k1lib.cli.conv.toAscii"><code class="xref py py-meth docutils literal notranslate"><span class="pre">toAscii()</span></code></a>, <a class="reference internal" href="cli/index.html#k1lib.cli.utils.backup" title="k1lib.cli.utils.backup"><code class="xref py py-class docutils literal notranslate"><span class="pre">backup</span></code></a>,
+<a class="reference internal" href="cli/index.html#k1lib.cli.inp.kzip" title="k1lib.cli.inp.kzip"><code class="xref py py-class docutils literal notranslate"><span class="pre">kzip</span></code></a> and <a class="reference internal" href="cli/index.html#k1lib.cli.inp.kunzip" title="k1lib.cli.inp.kunzip"><code class="xref py py-class docutils literal notranslate"><span class="pre">kunzip</span></code></a>, <a class="reference internal" href="cli/index.html#k1lib.cli.filt.resume" title="k1lib.cli.filt.resume"><code class="xref py py-meth docutils literal notranslate"><span class="pre">resume()</span></code></a></p></li>
+<li><p>Added <a class="reference internal" href="cli/index.html#k1lib.cli.modifier.applyMp.shared" title="k1lib.cli.modifier.applyMp.shared"><code class="xref py py-meth docutils literal notranslate"><span class="pre">modifier.applyMp.shared()</span></code></a> to easily share memory between processes</p></li>
+<li><p>Accelerated <a class="reference internal" href="cli/index.html#k1lib.cli.inp.cat" title="k1lib.cli.inp.cat"><code class="xref py py-meth docutils literal notranslate"><span class="pre">cat()</span></code></a> using <code class="xref py py-mod docutils literal notranslate"><span class="pre">k1a</span></code> if sB and eB are specified</p></li>
+<li><p>Added multi-column mode to <a class="reference internal" href="cli/index.html#k1lib.cli.modifier.apply" title="k1lib.cli.modifier.apply"><code class="xref py py-class docutils literal notranslate"><span class="pre">apply</span></code></a></p></li>
+<li><p>Removed <code class="xref py py-meth docutils literal notranslate"><span class="pre">inp.curl()</span></code> because you can do <code class="docutils literal notranslate"><span class="pre">cat(&quot;http://example.com&quot;)</span></code> directly</p></li>
+<li><p>Added array mode and <code class="docutils literal notranslate"><span class="pre">retries</span></code> parameter to <a class="reference internal" href="cli/index.html#k1lib.cli.filt.tryout" title="k1lib.cli.filt.tryout"><code class="xref py py-class docutils literal notranslate"><span class="pre">tryout</span></code></a></p></li>
+<li><p>Allowed building pipelines with normal classes that only define <code class="docutils literal notranslate"><span class="pre">__ror__</span></code> but not
+subclass <a class="reference internal" href="cli/index.html#k1lib.cli.init.BaseCli" title="k1lib.cli.init.BaseCli"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseCli</span></code></a></p></li>
+</ul>
+<p>Generic:</p>
+<ul class="simple">
+<li><p>Revamped <code class="xref py py-mod docutils literal notranslate"><span class="pre">serve</span></code> a little, adding a more robust type system</p></li>
+<li><p>Added more default imports like ray and pyarrow</p></li>
+<li><p>Added <a class="reference internal" href="viz.html#k1lib.viz.Scroll" title="k1lib.viz.Scroll"><code class="xref py py-class docutils literal notranslate"><span class="pre">Scroll</span></code></a> and <a class="reference internal" href="viz.html#k1lib.viz.Toggle" title="k1lib.viz.Toggle"><code class="xref py py-class docutils literal notranslate"><span class="pre">Toggle</span></code></a></p></li>
+<li><p>Added <code class="xref py py-meth docutils literal notranslate"><span class="pre">row()</span></code>, <code class="xref py py-meth docutils literal notranslate"><span class="pre">col()</span></code>, <code class="xref py py-meth docutils literal notranslate"><span class="pre">pre()</span></code> and
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">h()</span></code> to quickly build html strings</p></li>
+<li><p>Added <a class="reference internal" href="base.html#k1lib.capturePlt" title="k1lib.capturePlt"><code class="xref py py-meth docutils literal notranslate"><span class="pre">capturePlt()</span></code></a> to capture matplotlib plots</p></li>
+<li><p>Added formatting functions <a class="reference internal" href="fmt.html#k1lib.fmt.fromSize" title="k1lib.fmt.fromSize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">fromSize()</span></code></a> and <a class="reference internal" href="fmt.html#k1lib.fmt.colors" title="k1lib.fmt.colors"><code class="xref py py-meth docutils literal notranslate"><span class="pre">colors()</span></code></a></p></li>
+<li><p>Added pipe mode to <a class="reference internal" href="viz.html#k1lib.viz.Carousel" title="k1lib.viz.Carousel"><code class="xref py py-class docutils literal notranslate"><span class="pre">Carousel</span></code></a> and <a class="reference internal" href="base.html#k1lib.Wrapper" title="k1lib.Wrapper"><code class="xref py py-class docutils literal notranslate"><span class="pre">Wrapper</span></code></a></p></li>
+</ul>
+</section>
+<section id="feb-7th-2023">
+<h2><a class="reference external" href="/1.2">1.2</a> - Feb 7th, 2023<a class="headerlink" href="#feb-7th-2023" title="Permalink to this heading"></a></h2>
+<p>Cli:</p>
+<ul class="simple">
+<li><p>Added newPoolEvery mode to <a class="reference internal" href="cli/index.html#k1lib.cli.modifier.applyMp" title="k1lib.cli.modifier.applyMp"><code class="xref py py-class docutils literal notranslate"><span class="pre">applyMp</span></code></a></p></li>
+<li><p>Added <a class="reference internal" href="cli/index.html#k1lib.cli.inp.walk" title="k1lib.cli.inp.walk"><code class="xref py py-class docutils literal notranslate"><span class="pre">walk</span></code></a>, <a class="reference internal" href="cli/index.html#k1lib.cli.filt.tryout" title="k1lib.cli.filt.tryout"><code class="xref py py-class docutils literal notranslate"><span class="pre">tryout</span></code></a>, <a class="reference internal" href="cli/index.html#k1lib.cli.inp.splitSeek" title="k1lib.cli.inp.splitSeek"><code class="xref py py-class docutils literal notranslate"><span class="pre">splitSeek</span></code></a>,
+<a class="reference internal" href="cli/index.html#k1lib.cli.inp.cat.pickle" title="k1lib.cli.inp.cat.pickle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">inp.cat.pickle()</span></code></a>.</p></li>
+<li><p>Added PIL image mode to <a class="reference internal" href="cli/index.html#k1lib.cli.utils.size" title="k1lib.cli.utils.size"><code class="xref py py-class docutils literal notranslate"><span class="pre">size</span></code></a></p></li>
+<li><p>Added chemical structure mode to <a class="reference internal" href="cli/index.html#k1lib.cli.conv.toPIL" title="k1lib.cli.conv.toPIL"><code class="xref py py-class docutils literal notranslate"><span class="pre">toPIL</span></code></a></p></li>
+<li><p>Added read speed profiler to <a class="reference internal" href="cli/index.html#k1lib.cli.inp.cat" title="k1lib.cli.inp.cat"><code class="xref py py-meth docutils literal notranslate"><span class="pre">cat()</span></code></a></p></li>
+<li><p>Added table mode to <a class="reference internal" href="cli/index.html#k1lib.cli.output.plotImgs" title="k1lib.cli.output.plotImgs"><code class="xref py py-class docutils literal notranslate"><span class="pre">plotImgs</span></code></a></p></li>
+<li><p>Added <a class="reference internal" href="cli/index.html#k1lib.cli.filt.filt.split" title="k1lib.cli.filt.filt.split"><code class="xref py py-meth docutils literal notranslate"><span class="pre">filt.filt.split()</span></code></a>, <a class="reference internal" href="cli/index.html#k1lib.cli.filt.head.split" title="k1lib.cli.filt.head.split"><code class="xref py py-meth docutils literal notranslate"><span class="pre">filt.head.split()</span></code></a></p></li>
+<li><p>Removed <code class="xref py py-class docutils literal notranslate"><span class="pre">output.split</span></code>, because it’s horribly inefficient. Use
+<a class="reference internal" href="cli/index.html#k1lib.cli.inp.splitSeek" title="k1lib.cli.inp.splitSeek"><code class="xref py py-class docutils literal notranslate"><span class="pre">splitSeek</span></code></a> instead.</p></li>
+<li><p>Added argument expand mode to <a class="reference internal" href="cli/index.html#k1lib.cli.modifier.applyMp" title="k1lib.cli.modifier.applyMp"><code class="xref py py-class docutils literal notranslate"><span class="pre">applyMp</span></code></a>.</p></li>
+<li><p>Added column mode to <a class="reference internal" href="cli/index.html#k1lib.cli.filt.intersection" title="k1lib.cli.filt.intersection"><code class="xref py py-class docutils literal notranslate"><span class="pre">intersection</span></code></a> and added None column mode to <a class="reference internal" href="cli/index.html#k1lib.cli.filt.union" title="k1lib.cli.filt.union"><code class="xref py py-class docutils literal notranslate"><span class="pre">union</span></code></a></p></li>
+<li><p>Simplified <a class="reference internal" href="cli/index.html#k1lib.cli.structural.insert" title="k1lib.cli.structural.insert"><code class="xref py py-class docutils literal notranslate"><span class="pre">insert</span></code></a></p></li>
+<li><p>Accelerated <a class="reference internal" href="cli/index.html#k1lib.cli.filt.filt" title="k1lib.cli.filt.filt"><code class="xref py py-class docutils literal notranslate"><span class="pre">filt</span></code></a>, <a class="reference internal" href="cli/index.html#k1lib.cli.filt.cut" title="k1lib.cli.filt.cut"><code class="xref py py-class docutils literal notranslate"><span class="pre">cut</span></code></a>, <a class="reference internal" href="cli/index.html#k1lib.cli.structural.joinStreams" title="k1lib.cli.structural.joinStreams"><code class="xref py py-class docutils literal notranslate"><span class="pre">joinStreams</span></code></a>
+and <a class="reference internal" href="cli/index.html#k1lib.cli.modifier.randomize" title="k1lib.cli.modifier.randomize"><code class="xref py py-class docutils literal notranslate"><span class="pre">randomize</span></code></a> for array types</p></li>
+<li><p>Added complex yielding functionality to <a class="reference internal" href="cli/index.html#k1lib.cli.structural.repeatF" title="k1lib.cli.structural.repeatF"><code class="xref py py-class docutils literal notranslate"><span class="pre">repeatF</span></code></a>.</p></li>
+<li><p>Added automatic error checking for <a class="reference internal" href="cli/index.html#k1lib.cli.filt.filt" title="k1lib.cli.filt.filt"><code class="xref py py-class docutils literal notranslate"><span class="pre">filt</span></code></a>.</p></li>
+<li><p>Added padding option to <a class="reference internal" href="cli/index.html#k1lib.cli.structural.window" title="k1lib.cli.structural.window"><code class="xref py py-class docutils literal notranslate"><span class="pre">window</span></code></a></p></li>
+<li><p>Added probability weighting mode to <a class="reference internal" href="cli/index.html#k1lib.cli.structural.joinStreamsRandom" title="k1lib.cli.structural.joinStreamsRandom"><code class="xref py py-class docutils literal notranslate"><span class="pre">joinStreamsRandom</span></code></a></p></li>
+<li><p>Fixed <code class="xref py py-mod docutils literal notranslate"><span class="pre">forbiddenfruit</span></code> or-patching of <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.25)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a>,
+<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.Series.html#pandas.Series" title="(in pandas v2.0.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.core.series.Series</span></code></a> and <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.0.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.core.frame.DataFrame</span></code></a></p></li>
+</ul>
+<p>Generic:</p>
+<ul class="simple">
+<li><p>Added <code class="xref py py-class docutils literal notranslate"><span class="pre">ConstantPad</span></code>, <a class="reference internal" href="viz.html#k1lib.viz.ToggleImage" title="k1lib.viz.ToggleImage"><code class="xref py py-class docutils literal notranslate"><span class="pre">ToggleImage</span></code></a>, <a class="reference internal" href="base.html#k1lib.dep" title="k1lib.dep"><code class="xref py py-meth docutils literal notranslate"><span class="pre">dep()</span></code></a>
+and <a class="reference internal" href="base.html#k1lib.ticks" title="k1lib.ticks"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ticks()</span></code></a>.</p></li>
+<li><p>Added more features to <a class="reference internal" href="viz.html#k1lib.viz.Carousel" title="k1lib.viz.Carousel"><code class="xref py py-class docutils literal notranslate"><span class="pre">Carousel</span></code></a></p></li>
+<li><p>Changed <a class="reference internal" href="base.html#k1lib.captureStdout" title="k1lib.captureStdout"><code class="xref py py-meth docutils literal notranslate"><span class="pre">captureStdout()</span></code></a> so that it can capture C library’s output and
+can capture stderr</p></li>
+<li><p>Added <a class="reference internal" href="p5.html#module-k1lib.p5" title="k1lib.p5"><code class="xref py py-mod docutils literal notranslate"><span class="pre">p5</span></code></a> module for quick Processing-like image manipulation</p></li>
+<li><p>Developed <code class="xref py py-mod docutils literal notranslate"><span class="pre">k1ui</span></code> module a lot further</p></li>
+</ul>
+</section>
+<section id="oct-3rd-2022">
+<h2><a class="reference external" href="/1.1">1.1</a> - Oct 3rd, 2022<a class="headerlink" href="#oct-3rd-2022" title="Permalink to this heading"></a></h2>
+<p>Cli:</p>
+<ul class="simple">
+<li><p>Added dictionary mode, with table name to <a class="reference internal" href="cli/index.html#k1lib.cli.cif.tables" title="k1lib.cli.cif.tables"><code class="xref py py-meth docutils literal notranslate"><span class="pre">tables()</span></code></a></p></li>
+<li><p>Added <a class="reference internal" href="cli/index.html#k1lib.cli.cif.records" title="k1lib.cli.cif.records"><code class="xref py py-meth docutils literal notranslate"><span class="pre">records()</span></code></a>, <a class="reference internal" href="cli/index.html#k1lib.cli.conv.toGray" title="k1lib.cli.conv.toGray"><code class="xref py py-class docutils literal notranslate"><span class="pre">toGray</span></code></a>, <a class="reference internal" href="cli/index.html#k1lib.cli.output.plotImgs" title="k1lib.cli.output.plotImgs"><code class="xref py py-class docutils literal notranslate"><span class="pre">plotImgs</span></code></a>,
+<a class="reference internal" href="cli/index.html#k1lib.cli.conv.toBytes" title="k1lib.cli.conv.toBytes"><code class="xref py py-class docutils literal notranslate"><span class="pre">toBytes</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">indexTable</span></code>, <a class="reference internal" href="cli/index.html#k1lib.cli.structural.splitC" title="k1lib.cli.structural.splitC"><code class="xref py py-class docutils literal notranslate"><span class="pre">splitC</span></code></a></p></li>
+<li><p>k1a speedups: <a class="reference internal" href="cli/index.html#k1lib.cli.inp.cat" title="k1lib.cli.inp.cat"><code class="xref py py-class docutils literal notranslate"><span class="pre">cat</span></code></a></p></li>
+<li><p>Fixed strange bug in <a class="reference internal" href="cli/index.html#k1lib.cli.modifier.applyMp" title="k1lib.cli.modifier.applyMp"><code class="xref py py-class docutils literal notranslate"><span class="pre">applyMp</span></code></a> that happens between PyTorch and multiprocessing</p></li>
+<li><p>Added tensor/bytes/figure to image feature to <a class="reference internal" href="cli/index.html#k1lib.cli.conv.toPIL" title="k1lib.cli.conv.toPIL"><code class="xref py py-meth docutils literal notranslate"><span class="pre">toPIL()</span></code></a></p></li>
+<li><p>Added image saving mode to <a class="reference internal" href="cli/index.html#k1lib.cli.output.file" title="k1lib.cli.output.file"><code class="xref py py-meth docutils literal notranslate"><span class="pre">file()</span></code></a></p></li>
+<li><p>Added separator mode to <a class="reference internal" href="cli/index.html#k1lib.cli.structural.oneHot" title="k1lib.cli.structural.oneHot"><code class="xref py py-class docutils literal notranslate"><span class="pre">oneHot</span></code></a></p></li>
+<li><p>Removed <code class="xref py py-class docutils literal notranslate"><span class="pre">conv.toStr</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">conv.toSet</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">conv.toIter</span></code>,
+<code class="xref py py-class docutils literal notranslate"><span class="pre">conv.toBin</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">conv.toIdx</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">conv.toDictF</span></code>, <a class="reference internal" href="cli/index.html#k1lib.cli.modifier.applySerial" title="k1lib.cli.modifier.applySerial"><code class="xref py py-class docutils literal notranslate"><span class="pre">modifier.applySerial</span></code></a>
+because they’re kinda meaningless and redundant.</p></li>
+<li><p>Added bytes mode chunking to <a class="reference internal" href="cli/index.html#k1lib.cli.inp.cat" title="k1lib.cli.inp.cat"><code class="xref py py-class docutils literal notranslate"><span class="pre">cat</span></code></a></p></li>
+<li><p>Removed module <code class="xref py py-mod docutils literal notranslate"><span class="pre">k1lib.cli.others</span></code> as it’s pretty useless</p></li>
+</ul>
+<p>Generic:</p>
+<ul class="simple">
+<li><p>Added <a class="reference internal" href="base.html#k1lib.pushNotification" title="k1lib.pushNotification"><code class="xref py py-meth docutils literal notranslate"><span class="pre">pushNotification()</span></code></a>, <code class="xref py py-meth docutils literal notranslate"><span class="pre">fmt.throughput()</span></code></p></li>
+<li><p>Removed <code class="xref py py-meth docutils literal notranslate"><span class="pre">clearLine()</span></code>, <code class="xref py py-meth docutils literal notranslate"><span class="pre">close()</span></code>, <code class="xref py py-meth docutils literal notranslate"><span class="pre">textToHtml()</span></code>
+as they are quite niche</p></li>
+<li><p>Moved <code class="xref py py-meth docutils literal notranslate"><span class="pre">k1lib.sameStorage()</span></code> to <code class="xref py py-meth docutils literal notranslate"><span class="pre">torch.sameStorage()</span></code></p></li>
+<li><p>Monkey patched <code class="xref py py-meth docutils literal notranslate"><span class="pre">pandas.core.frame.DataFrame.table()</span></code>, <a class="reference internal" href="monkey.html#builtins.str.splitCamel" title="builtins.str.splitCamel"><code class="xref py py-class docutils literal notranslate"><span class="pre">builtins.str.splitCamel</span></code></a></p></li>
+<li><p>Added intersection operation to <a class="reference internal" href="base.html#k1lib.Domain" title="k1lib.Domain"><code class="xref py py-class docutils literal notranslate"><span class="pre">Domain</span></code></a></p></li>
+<li><p>Removed library’s PyTorch dependency, so that it can be lightweight enough to be used
+inside containers</p></li>
+</ul>
+<p>Deep learning:</p>
+<ul class="simple">
+<li><p>Added <a class="reference internal" href="selector.html#k1lib.selector.ModuleSelector.intercept" title="k1lib.selector.ModuleSelector.intercept"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ModuleSelector.intercept()</span></code></a></p></li>
+<li><p>Added estimated time remaining and throughput estimations to <a class="reference internal" href="callbacks/index.html#k1lib.callbacks.progress.ProgressBar" title="k1lib.callbacks.progress.ProgressBar"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProgressBar</span></code></a></p></li>
+<li><p>Removed module <code class="xref py py-mod docutils literal notranslate"><span class="pre">k1lib.kdata</span></code>, as that provides no value</p></li>
+</ul>
+</section>
+<section id="aug-9th-2022">
+<h2><a class="reference external" href="/1.0">1.0</a> - Aug 9th, 2022<a class="headerlink" href="#aug-9th-2022" title="Permalink to this heading"></a></h2>
+<p>Cli:</p>
+<ul class="simple">
+<li><p>Removed <code class="xref py py-class docutils literal notranslate"><span class="pre">conv.toNumpy</span></code>, as <code class="docutils literal notranslate"><span class="pre">toList()</span> <span class="pre">|</span> <span class="pre">aS(np.array)</span></code> does the same thing</p></li>
+<li><p>Added fill mode to <a class="reference internal" href="cli/index.html#k1lib.cli.utils.lookup" title="k1lib.cli.utils.lookup"><code class="xref py py-class docutils literal notranslate"><span class="pre">lookup</span></code></a></p></li>
+<li><p>Changed <a class="reference internal" href="cli/index.html#k1lib.cli.output.tee" title="k1lib.cli.output.tee"><code class="xref py py-class docutils literal notranslate"><span class="pre">tee</span></code></a> style to be more natural</p></li>
+<li><p>Removed <code class="xref py py-class docutils literal notranslate"><span class="pre">utils.headerIdx</span></code>, as <a class="reference internal" href="cli/index.html#k1lib.cli.structural.insertIdColumn" title="k1lib.cli.structural.insertIdColumn"><code class="xref py py-meth docutils literal notranslate"><span class="pre">insertIdColumn()</span></code></a> roughly does the same thing</p></li>
+<li><p>Removed <code class="xref py py-class docutils literal notranslate"><span class="pre">init.manyToMany</span></code>, replaced with <a class="reference internal" href="cli/index.html#k1lib.cli.modifier.apply" title="k1lib.cli.modifier.apply"><code class="xref py py-class docutils literal notranslate"><span class="pre">apply</span></code></a> to simplify things</p></li>
+<li><p>Removed unstable <a class="reference internal" href="cli/index.html#k1lib.cli.modifier.op" title="k1lib.cli.modifier.op"><code class="xref py py-class docutils literal notranslate"><span class="pre">op</span></code></a> <code class="docutils literal notranslate"><span class="pre">in</span></code> feature and added combined compare ops to it</p></li>
+<li><p>Added bounds comparison to <a class="reference internal" href="cli/index.html#k1lib.cli.modifier.op" title="k1lib.cli.modifier.op"><code class="xref py py-class docutils literal notranslate"><span class="pre">op</span></code></a>, thus removed <code class="xref py py-class docutils literal notranslate"><span class="pre">filt.inRange</span></code></p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">every</span></code> mode to <a class="reference internal" href="cli/index.html#k1lib.cli.output.tee" title="k1lib.cli.output.tee"><code class="xref py py-class docutils literal notranslate"><span class="pre">tee</span></code></a>.</p></li>
+<li><p>Simplified <a class="reference internal" href="cli/index.html#k1lib.cli.structural.insertColumn" title="k1lib.cli.structural.insertColumn"><code class="xref py py-class docutils literal notranslate"><span class="pre">insertColumn</span></code></a></p></li>
+<li><p>Added <a class="reference internal" href="cli/index.html#k1lib.cli.structural.oneHot" title="k1lib.cli.structural.oneHot"><code class="xref py py-class docutils literal notranslate"><span class="pre">oneHot</span></code></a>.</p></li>
+<li><p>Restructured expand argument feature in <a class="reference internal" href="cli/index.html#k1lib.cli.modifier.applySerial" title="k1lib.cli.modifier.applySerial"><code class="xref py py-class docutils literal notranslate"><span class="pre">applySerial</span></code></a></p></li>
+<li><p>Added <a class="reference internal" href="cli/index.html#module-k1lib.cli.cif" title="k1lib.cli.cif"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cif</span></code></a> module</p></li>
+<li><p>Removed <code class="xref py py-mod docutils literal notranslate"><span class="pre">entrez</span></code> module, as it doesn’t add much value</p></li>
+<li><p>Simplified <a class="reference internal" href="cli/index.html#k1lib.cli.output.file" title="k1lib.cli.output.file"><code class="xref py py-class docutils literal notranslate"><span class="pre">file</span></code></a> by removing explicit text/byte mode param</p></li>
+</ul>
+<p>LLVM:</p>
+<ul class="simple">
+<li><p>Added LLVM compiler/optimizer system to cli.</p></li>
+<li><p>Added <a class="reference internal" href="cli/index.html#module-k1lib.cli.typehint" title="k1lib.cli.typehint"><code class="xref py py-mod docutils literal notranslate"><span class="pre">typehint</span></code></a> and <a class="reference internal" href="cli/index.html#module-k1lib.cli.optimizations" title="k1lib.cli.optimizations"><code class="xref py py-mod docutils literal notranslate"><span class="pre">optimizations</span></code></a> modules</p></li>
+<li><p>Optimizations: <a class="reference internal" href="cli/index.html#k1lib.cli.structural.unsqueeze" title="k1lib.cli.structural.unsqueeze"><code class="xref py py-class docutils literal notranslate"><span class="pre">unsqueeze</span></code></a>, <a class="reference internal" href="cli/index.html#k1lib.cli.kxml.node" title="k1lib.cli.kxml.node"><code class="xref py py-class docutils literal notranslate"><span class="pre">node</span></code></a>, <a class="reference internal" href="cli/index.html#k1lib.cli.inp.cat" title="k1lib.cli.inp.cat"><code class="xref py py-meth docutils literal notranslate"><span class="pre">cat()</span></code></a>, <a class="reference internal" href="cli/index.html#k1lib.cli.filt.head" title="k1lib.cli.filt.head"><code class="xref py py-class docutils literal notranslate"><span class="pre">head</span></code></a></p></li>
+</ul>
+<p>Generic:</p>
+<ul class="simple">
+<li><p>Added library <a class="reference external" href="https://github.com/157239n/k1a">k1a</a> to speed up certain
+parts of the main library by compiling things down to C.</p></li>
+<li><p>Added <a class="reference external" href="https://github.com/157239n/k1ui">k1ui</a> support within k1lib. It’s
+a Java program that can communicate over the network and provides apis to
+manipulate mouse/keyboard and screens.</p></li>
+</ul>
+<p>DL:</p>
+<ul class="simple">
+<li><p>Added callback <a class="reference internal" href="callbacks/index.html#k1lib.callbacks.limits.CancelOnOverfit" title="k1lib.callbacks.limits.CancelOnOverfit"><code class="xref py py-class docutils literal notranslate"><span class="pre">limits.CancelOnOverfit</span></code></a></p></li>
+</ul>
+</section>
+<section id="jul-15th-2022">
+<h2><a class="reference external" href="/0.17">0.17</a> - Jul 15th, 2022<a class="headerlink" href="#jul-15th-2022" title="Permalink to this heading"></a></h2>
+<p>Cli:</p>
+<ul class="simple">
+<li><p>Accelerated <a class="reference internal" href="cli/index.html#k1lib.cli.filt.head" title="k1lib.cli.filt.head"><code class="xref py py-class docutils literal notranslate"><span class="pre">head</span></code></a> for all sliceable types</p></li>
+<li><p>Add fractional mode to <a class="reference internal" href="cli/index.html#k1lib.cli.filt.head" title="k1lib.cli.filt.head"><code class="xref py py-class docutils literal notranslate"><span class="pre">head</span></code></a></p></li>
+<li><p>Added expanded arguments mode to <a class="reference internal" href="cli/index.html#k1lib.cli.modifier.apply" title="k1lib.cli.modifier.apply"><code class="xref py py-class docutils literal notranslate"><span class="pre">apply</span></code></a></p></li>
+<li><p>Added column mode to <a class="reference internal" href="cli/index.html#k1lib.cli.modifier.sortF" title="k1lib.cli.modifier.sortF"><code class="xref py py-class docutils literal notranslate"><span class="pre">sortF</span></code></a></p></li>
+<li><p>Added <a class="reference internal" href="cli/index.html#k1lib.cli.gb.feats.root" title="k1lib.cli.gb.feats.root"><code class="xref py py-meth docutils literal notranslate"><span class="pre">gb.feats.root()</span></code></a>, <a class="reference internal" href="cli/index.html#k1lib.cli.gb.feats.tags" title="k1lib.cli.gb.feats.tags"><code class="xref py py-meth docutils literal notranslate"><span class="pre">gb.feats.tags()</span></code></a></p></li>
+<li><p>Removed <code class="xref py py-meth docutils literal notranslate"><span class="pre">gb.feats.tag()</span></code>, use <a class="reference internal" href="cli/index.html#k1lib.cli.gb.feats.tags" title="k1lib.cli.gb.feats.tags"><code class="xref py py-meth docutils literal notranslate"><span class="pre">gb.feats.tags()</span></code></a> instead</p></li>
+<li><p>Added predicate mode to <a class="reference internal" href="cli/index.html#k1lib.cli.grep.grep" title="k1lib.cli.grep.grep"><code class="xref py py-class docutils literal notranslate"><span class="pre">grep</span></code></a></p></li>
+<li><p>Added <a class="reference internal" href="cli/index.html#k1lib.cli.utils.dictFields" title="k1lib.cli.utils.dictFields"><code class="xref py py-class docutils literal notranslate"><span class="pre">dictFields</span></code></a></p></li>
+<li><p>Accelerated <a class="reference internal" href="cli/index.html#k1lib.cli.structural.groupBy" title="k1lib.cli.structural.groupBy"><code class="xref py py-class docutils literal notranslate"><span class="pre">groupBy</span></code></a> significantly</p></li>
+<li><p>Removed <code class="xref py py-meth docutils literal notranslate"><span class="pre">collate()</span></code>, as there’s no use for it</p></li>
+<li><p>Accelerated <a class="reference internal" href="cli/index.html#k1lib.cli.utils.shape" title="k1lib.cli.utils.shape"><code class="xref py py-class docutils literal notranslate"><span class="pre">shape</span></code></a>, thus removing <code class="xref py py-class docutils literal notranslate"><span class="pre">conv.lengths</span></code> and
+<code class="xref py py-class docutils literal notranslate"><span class="pre">conv.toLens</span></code> as <code class="docutils literal notranslate"><span class="pre">shape(0).all()</span></code> is just as good</p></li>
+</ul>
+</section>
+<section id="jun-28th-2022">
+<h2><a class="reference external" href="/0.16">0.16</a> - Jun 28th, 2022<a class="headerlink" href="#jun-28th-2022" title="Permalink to this heading"></a></h2>
+<p>Cli:</p>
+<ul class="simple">
+<li><p>Accelerated <a class="reference internal" href="cli/index.html#k1lib.cli.filt.head" title="k1lib.cli.filt.head"><code class="xref py py-class docutils literal notranslate"><span class="pre">head</span></code></a> if input’s a <a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.1.0a0+gitbe0b12e ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a> or <code class="xref py py-class docutils literal notranslate"><span class="pre">np.ndarray</span></code>.</p></li>
+<li><p>Added <a class="reference internal" href="cli/index.html#k1lib.cli.utils.tree" title="k1lib.cli.utils.tree"><code class="xref py py-meth docutils literal notranslate"><span class="pre">tree()</span></code></a>, <a class="reference internal" href="cli/index.html#k1lib.cli.utils.timeLimit" title="k1lib.cli.utils.timeLimit"><code class="xref py py-class docutils literal notranslate"><span class="pre">timeLimit</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">split</span></code>,
+<a class="reference internal" href="cli/index.html#k1lib.cli.utils.lookup" title="k1lib.cli.utils.lookup"><code class="xref py py-class docutils literal notranslate"><span class="pre">lookup</span></code></a>.</p></li>
+<li><p>Renamed <code class="xref py py-class docutils literal notranslate"><span class="pre">joinList</span></code> to <a class="reference internal" href="cli/index.html#k1lib.cli.structural.insert" title="k1lib.cli.structural.insert"><code class="xref py py-class docutils literal notranslate"><span class="pre">insert</span></code></a>, cause that’s more intuitive</p></li>
+<li><p>Removed <code class="xref py py-class docutils literal notranslate"><span class="pre">structural.insertRow</span></code>, as <code class="docutils literal notranslate"><span class="pre">insertRow(1,</span> <span class="pre">2)</span></code> can be achieved using <code class="docutils literal notranslate"><span class="pre">~insert(1,</span> <span class="pre">2)</span></code></p></li>
+<li><p>Souped up <a class="reference internal" href="cli/index.html#k1lib.cli.structural.insertColumn" title="k1lib.cli.structural.insertColumn"><code class="xref py py-class docutils literal notranslate"><span class="pre">insertColumn</span></code></a></p></li>
+<li><p>Added column mode in <a class="reference internal" href="cli/index.html#k1lib.cli.grep.grep" title="k1lib.cli.grep.grep"><code class="xref py py-class docutils literal notranslate"><span class="pre">grep</span></code></a>.</p></li>
+<li><p>Added JIT compilation for <a class="reference internal" href="cli/index.html#k1lib.cli.modifier.op" title="k1lib.cli.modifier.op"><code class="xref py py-class docutils literal notranslate"><span class="pre">op</span></code></a></p></li>
+<li><p>Added alias <a class="reference internal" href="cli/index.html#k1lib.cli.modifier.parallel" title="k1lib.cli.modifier.parallel"><code class="xref py py-class docutils literal notranslate"><span class="pre">parallel</span></code></a> and <code class="xref py py-class docutils literal notranslate"><span class="pre">toLens</span></code></p></li>
+<li><p>Accelerated <a class="reference internal" href="cli/index.html#k1lib.cli.structural.batched" title="k1lib.cli.structural.batched"><code class="xref py py-class docutils literal notranslate"><span class="pre">batched</span></code></a> if input’s a <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#range" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">range</span></code></a></p></li>
+<li><p>Added accelerated mode to <a class="reference internal" href="cli/index.html#k1lib.cli.inp.cat" title="k1lib.cli.inp.cat"><code class="xref py py-meth docutils literal notranslate"><span class="pre">cat()</span></code></a></p></li>
+<li><p>Grouped <code class="docutils literal notranslate"><span class="pre">to__</span></code> clis into the module <a class="reference internal" href="cli/index.html#module-k1lib.cli.conv" title="k1lib.cli.conv"><code class="xref py py-mod docutils literal notranslate"><span class="pre">conv</span></code></a>.</p></li>
+<li><p>Removed redundant <code class="xref py py-class docutils literal notranslate"><span class="pre">toType</span></code> and <code class="xref py py-class docutils literal notranslate"><span class="pre">identity</span></code></p></li>
+</ul>
+</section>
+<section id="mar-22nd-2022">
+<h2><a class="reference external" href="/0.15">0.15</a> - Mar 22nd, 2022<a class="headerlink" href="#mar-22nd-2022" title="Permalink to this heading"></a></h2>
+<p>Generic:</p>
+<ul class="simple">
+<li><p>Added <a class="reference internal" href="base.html#k1lib.UValue" title="k1lib.UValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">UValue</span></code></a>, <a class="reference internal" href="base.html#k1lib.now" title="k1lib.now"><code class="xref py py-meth docutils literal notranslate"><span class="pre">now()</span></code></a></p></li>
+<li><p>Patched <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.25)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>’s <code class="docutils literal notranslate"><span class="pre">__or__</span></code> method to work better with cli tools</p></li>
+<li><p>Added a few mathematical and physics constants in <a class="reference internal" href="imports.html#module-k1lib.imports" title="k1lib.imports"><code class="xref py py-mod docutils literal notranslate"><span class="pre">k1lib.imports</span></code></a></p></li>
+<li><p>Added <code class="xref py py-meth docutils literal notranslate"><span class="pre">selector.ModuleSelector.cutOff()</span></code></p></li>
+<li><p>Renamed <code class="xref py py-meth docutils literal notranslate"><span class="pre">k1lib.integrate()</span></code> to <a class="reference internal" href="base.html#k1lib.integral" title="k1lib.integral"><code class="xref py py-meth docutils literal notranslate"><span class="pre">k1lib.integral()</span></code></a>, to avoid conflict with existing cli</p></li>
+<li><p>Added <code class="xref py py-meth docutils literal notranslate"><span class="pre">sameStorage()</span></code></p></li>
+</ul>
+<p>Cli:</p>
+<ul class="simple">
+<li><p>Moved <code class="xref py py-meth docutils literal notranslate"><span class="pre">k1lib.tab()</span></code> to <a class="reference internal" href="cli/index.html#k1lib.cli.utils.tab" title="k1lib.cli.utils.tab"><code class="xref py py-meth docutils literal notranslate"><span class="pre">utils.tab()</span></code></a>.</p></li>
+<li><p>Added keyword arguments to <a class="reference internal" href="cli/index.html#k1lib.cli.modifier.applyS" title="k1lib.cli.modifier.applyS"><code class="xref py py-class docutils literal notranslate"><span class="pre">applyS</span></code></a> and <a class="reference internal" href="cli/index.html#k1lib.cli.structural.repeatF" title="k1lib.cli.structural.repeatF"><code class="xref py py-meth docutils literal notranslate"><span class="pre">repeatF()</span></code></a></p></li>
+<li><p>Added <a class="reference internal" href="cli/index.html#k1lib.cli.structural.groupBy" title="k1lib.cli.structural.groupBy"><code class="xref py py-class docutils literal notranslate"><span class="pre">groupBy</span></code></a>, <a class="reference internal" href="cli/index.html#k1lib.cli.utils.disassemble" title="k1lib.cli.utils.disassemble"><code class="xref py py-class docutils literal notranslate"><span class="pre">disassemble</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">toProd</span></code></p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">mode</span></code> option to <code class="xref py py-class docutils literal notranslate"><span class="pre">toFloat</span></code> and <code class="xref py py-class docutils literal notranslate"><span class="pre">toInt</span></code></p></li>
+<li><p>Accelerated <code class="xref py py-class docutils literal notranslate"><span class="pre">toFloat</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">toInt</span></code>,
+<a class="reference internal" href="cli/index.html#k1lib.cli.structural.batched" title="k1lib.cli.structural.batched"><code class="xref py py-class docutils literal notranslate"><span class="pre">batched</span></code></a> and <a class="reference internal" href="cli/index.html#k1lib.cli.utils.smooth" title="k1lib.cli.utils.smooth"><code class="xref py py-class docutils literal notranslate"><span class="pre">smooth</span></code></a> if it’s a
+<a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.1.0a0+gitbe0b12e ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a> or <code class="xref py py-class docutils literal notranslate"><span class="pre">np.ndarray</span></code></p></li>
+</ul>
+</section>
+<section id="may-1st-2022">
+<h2><a class="reference external" href="/0.14">0.14</a> - May 1st, 2022<a class="headerlink" href="#may-1st-2022" title="Permalink to this heading"></a></h2>
+<p>Generic:</p>
+<ul class="simple">
+<li><p>Added <a class="reference internal" href="callbacks/index.html#k1lib.callbacks.shorts.OnProgress" title="k1lib.callbacks.shorts.OnProgress"><code class="xref py py-class docutils literal notranslate"><span class="pre">OnProgress</span></code></a> callback</p></li>
+</ul>
+<p>Cli:</p>
+<ul class="simple">
+<li><p>Changed implementation of <a class="reference internal" href="cli/index.html#k1lib.cli.filt.rows" title="k1lib.cli.filt.rows"><code class="xref py py-class docutils literal notranslate"><span class="pre">rows</span></code></a>. Should be much more stable and
+perdictable than the last version</p></li>
+<li><p>Fixed <a class="reference internal" href="cli/index.html#k1lib.cli.structural.transpose" title="k1lib.cli.structural.transpose"><code class="xref py py-class docutils literal notranslate"><span class="pre">transpose</span></code></a> so that it works efficiently with numpy arrays</p></li>
+<li><p>Fixed <a class="reference internal" href="cli/index.html#k1lib.cli.structural.splitW" title="k1lib.cli.structural.splitW"><code class="xref py py-class docutils literal notranslate"><span class="pre">splitW</span></code></a> so that it includes dangling elements at the end</p></li>
+<li><p>Revamped <a class="reference internal" href="cli/index.html#module-k1lib.cli.kxml" title="k1lib.cli.kxml"><code class="xref py py-mod docutils literal notranslate"><span class="pre">k1lib.cli.kxml</span></code></a> heavily</p></li>
+<li><p>Added <a class="reference internal" href="cli/index.html#k1lib.cli.structural.count.join" title="k1lib.cli.structural.count.join"><code class="xref py py-meth docutils literal notranslate"><span class="pre">structural.count.join()</span></code></a>, to join multiple count results together</p></li>
+<li><p>Added aliases <code class="xref py py-class docutils literal notranslate"><span class="pre">toImg</span></code>, <a class="reference internal" href="cli/index.html#k1lib.cli.modifier.aS" title="k1lib.cli.modifier.aS"><code class="xref py py-class docutils literal notranslate"><span class="pre">aS</span></code></a></p></li>
+<li><p>Added <code class="xref py py-class docutils literal notranslate"><span class="pre">toRgb</span></code> and <code class="xref py py-class docutils literal notranslate"><span class="pre">toRgba</span></code>.</p></li>
+<li><p>Added <a class="reference internal" href="cli/index.html#k1lib.cli.utils.clipboard" title="k1lib.cli.utils.clipboard"><code class="xref py py-class docutils literal notranslate"><span class="pre">clipboard</span></code></a> and its dependency requirement.</p></li>
+<li><p>Fixed bug in <code class="xref py py-class docutils literal notranslate"><span class="pre">accumulate</span></code>.</p></li>
+<li><p>Removed <code class="xref py py-meth docutils literal notranslate"><span class="pre">modifier.replace()</span></code> and <code class="xref py py-meth docutils literal notranslate"><span class="pre">modifier.remove()</span></code>, as those can be done by
+<a class="reference internal" href="cli/index.html#k1lib.cli.modifier.op" title="k1lib.cli.modifier.op"><code class="xref py py-class docutils literal notranslate"><span class="pre">op</span></code></a> just fine.</p></li>
+<li><p>Added seed option in <a class="reference internal" href="cli/index.html#k1lib.cli.modifier.randomize" title="k1lib.cli.modifier.randomize"><code class="xref py py-class docutils literal notranslate"><span class="pre">randomize</span></code></a></p></li>
+<li><p>Added <a class="reference internal" href="cli/index.html#k1lib.cli.structural.window" title="k1lib.cli.structural.window"><code class="xref py py-class docutils literal notranslate"><span class="pre">window</span></code></a>.</p></li>
+</ul>
+</section>
+<section id="mar-23rd-2022">
+<h2><a class="reference external" href="/0.13">0.13</a> - Mar 23rd, 2022<a class="headerlink" href="#mar-23rd-2022" title="Permalink to this heading"></a></h2>
+<p>Generic:</p>
+<ul class="simple">
+<li><p>Added <a class="reference internal" href="base.html#k1lib.pValue" title="k1lib.pValue"><code class="xref py py-meth docutils literal notranslate"><span class="pre">pValue()</span></code></a>.</p></li>
+<li><p><a class="reference internal" href="base.html#k1lib.captureStdout" title="k1lib.captureStdout"><code class="xref py py-meth docutils literal notranslate"><span class="pre">captureStdout()</span></code></a> now returns a <a class="reference internal" href="base.html#k1lib.Wrapper" title="k1lib.Wrapper"><code class="xref py py-class docutils literal notranslate"><span class="pre">Wrapper</span></code></a></p></li>
+<li><p>Added <a class="reference internal" href="base.html#k1lib.attrContext" title="k1lib.attrContext"><code class="xref py py-meth docutils literal notranslate"><span class="pre">attrContext()</span></code></a>, <a class="reference internal" href="base.html#k1lib.MovingAvg" title="k1lib.MovingAvg"><code class="xref py py-class docutils literal notranslate"><span class="pre">MovingAvg</span></code></a></p></li>
+<li><p>Monkey patched <a class="reference internal" href="monkey.html#matplotlib.pyplot.animate" title="matplotlib.pyplot.animate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">animate()</span></code></a></p></li>
+<li><p>Added mechanism to quickly insert a <a class="reference internal" href="callbacks/index.html#k1lib.callbacks.callbacks.Callback" title="k1lib.callbacks.callbacks.Callback"><code class="xref py py-class docutils literal notranslate"><span class="pre">Callback</span></code></a> in <a class="reference internal" href="callbacks/index.html#k1lib.callbacks.callbacks.Callbacks.add" title="k1lib.callbacks.callbacks.Callbacks.add"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Callbacks.add()</span></code></a></p></li>
+</ul>
+<p>Cli:</p>
+<ul class="simple">
+<li><p>Added support for <code class="docutils literal notranslate"><span class="pre">filt(4</span> <span class="pre">in</span> <span class="pre">op())</span></code> as extension for <a class="reference internal" href="cli/index.html#k1lib.cli.filt.contains" title="k1lib.cli.filt.contains"><code class="xref py py-meth docutils literal notranslate"><span class="pre">filt.contains()</span></code></a>.</p></li>
+<li><p>Added support for <code class="docutils literal notranslate"><span class="pre">filt(op()</span> <span class="pre">in</span> <span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">3])</span></code> as extension for <a class="reference internal" href="cli/index.html#k1lib.cli.filt.inSet" title="k1lib.cli.filt.inSet"><code class="xref py py-meth docutils literal notranslate"><span class="pre">filt.inSet()</span></code></a></p></li>
+<li><p>Removed <code class="xref py py-meth docutils literal notranslate"><span class="pre">filt.isFile()</span></code>, as <code class="docutils literal notranslate"><span class="pre">filt(os.path.isfile)</span></code> does the same thing.</p></li>
+<li><p>Added JIT basics. Just a stub feature for now.</p></li>
+<li><p>Added <code class="xref py py-class docutils literal notranslate"><span class="pre">toSorted</span></code>, <a class="reference internal" href="cli/index.html#k1lib.cli.structural.reshape" title="k1lib.cli.structural.reshape"><code class="xref py py-class docutils literal notranslate"><span class="pre">reshape</span></code></a>, <a class="reference internal" href="cli/index.html#k1lib.cli.modifier.integrate" title="k1lib.cli.modifier.integrate"><code class="xref py py-class docutils literal notranslate"><span class="pre">integrate</span></code></a>,
+<a class="reference internal" href="cli/index.html#k1lib.cli.output.tee" title="k1lib.cli.output.tee"><code class="xref py py-class docutils literal notranslate"><span class="pre">tee</span></code></a>, <a class="reference internal" href="cli/index.html#k1lib.cli.utils.rateLimit" title="k1lib.cli.utils.rateLimit"><code class="xref py py-class docutils literal notranslate"><span class="pre">rateLimit</span></code></a>.</p></li>
+<li><p>Added multidimensional option to <a class="reference internal" href="cli/index.html#k1lib.cli.structural.joinStreams" title="k1lib.cli.structural.joinStreams"><code class="xref py py-class docutils literal notranslate"><span class="pre">joinStreams</span></code></a>.</p></li>
+<li><p>Added pipe input mode to <a class="reference internal" href="cli/index.html#k1lib.cli.sam.cat" title="k1lib.cli.sam.cat"><code class="xref py py-meth docutils literal notranslate"><span class="pre">sam.cat()</span></code></a>.</p></li>
+<li><p>Added control flow blocking option to <a class="reference internal" href="cli/index.html#k1lib.cli.inp.cmd" title="k1lib.cli.inp.cmd"><code class="xref py py-class docutils literal notranslate"><span class="pre">inp.cmd</span></code></a>.</p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">unpack</span></code> param to <a class="reference internal" href="cli/index.html#k1lib.cli.modifier.applySerial" title="k1lib.cli.modifier.applySerial"><code class="xref py py-class docutils literal notranslate"><span class="pre">applySerial</span></code></a>.</p></li>
+<li><p>Renamed <code class="xref py py-meth docutils literal notranslate"><span class="pre">structural.splitList()</span></code> to <a class="reference internal" href="cli/index.html#k1lib.cli.structural.splitW" title="k1lib.cli.structural.splitW"><code class="xref py py-meth docutils literal notranslate"><span class="pre">splitW()</span></code></a></p></li>
+<li><p>Added <a class="reference internal" href="cli/index.html#k1lib.cli.modifier.stagger.tv" title="k1lib.cli.modifier.stagger.tv"><code class="xref py py-meth docutils literal notranslate"><span class="pre">modifier.stagger.tv()</span></code></a></p></li>
+<li><p>Replaced <code class="xref py py-meth docutils literal notranslate"><span class="pre">k1lib.smooth()</span></code> with <a class="reference internal" href="cli/index.html#k1lib.cli.utils.smooth" title="k1lib.cli.utils.smooth"><code class="xref py py-meth docutils literal notranslate"><span class="pre">utils.smooth()</span></code></a> with a simpler impl</p></li>
+</ul>
+</section>
+<section id="dec-1st-2021">
+<h2><a class="reference external" href="/0.12">0.12</a> - Dec 1st, 2021<a class="headerlink" href="#dec-1st-2021" title="Permalink to this heading"></a></h2>
+<p>Generic:</p>
+<ul class="simple">
+<li><p>Disallow adding new settings accidentally when using <a class="reference internal" href="base.html#k1lib.Settings.context" title="k1lib.Settings.context"><code class="xref py py-meth docutils literal notranslate"><span class="pre">context()</span></code></a>.</p></li>
+</ul>
+<p>Cli:</p>
+<ul class="simple">
+<li><p>Fixed <a class="reference internal" href="cli/index.html#k1lib.cli.inp.cmd" title="k1lib.cli.inp.cmd"><code class="xref py py-class docutils literal notranslate"><span class="pre">cmd</span></code></a> piping mechanism into each other.</p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">quiet</span></code> setting, used by <a class="reference internal" href="cli/index.html#k1lib.cli.inp.cmd" title="k1lib.cli.inp.cmd"><code class="xref py py-class docutils literal notranslate"><span class="pre">cmd</span></code></a>.</p></li>
+<li><p>Made <code class="xref py py-class docutils literal notranslate"><span class="pre">columns</span></code> more robust so that it can deal with missing elements
+and longer rows below.</p></li>
+<li><p>Added operator <code class="docutils literal notranslate"><span class="pre">-</span></code> to <a class="reference internal" href="cli/index.html#k1lib.cli.filt.filt" title="k1lib.cli.filt.filt"><code class="xref py py-class docutils literal notranslate"><span class="pre">filt</span></code></a> for extra intuitiveness.6</p></li>
+<li><p>Added <a class="reference internal" href="cli/index.html#k1lib.cli.utils.bindec" title="k1lib.cli.utils.bindec"><code class="xref py py-class docutils literal notranslate"><span class="pre">bindec</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">toBin</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">toIdx</span></code>,
+<a class="reference internal" href="cli/index.html#k1lib.cli.sam.flag" title="k1lib.cli.sam.flag"><code class="xref py py-class docutils literal notranslate"><span class="pre">sam.flag</span></code></a>, <a class="reference internal" href="cli/index.html#k1lib.cli.bio.longFa" title="k1lib.cli.bio.longFa"><code class="xref py py-meth docutils literal notranslate"><span class="pre">longFa()</span></code></a> and <a class="reference internal" href="cli/index.html#k1lib.cli.bio.idx" title="k1lib.cli.bio.idx"><code class="xref py py-class docutils literal notranslate"><span class="pre">idx</span></code></a>.</p></li>
+<li><p>Moved <code class="xref py py-class docutils literal notranslate"><span class="pre">sam.quality</span></code> to <a class="reference internal" href="cli/index.html#k1lib.cli.bio.quality" title="k1lib.cli.bio.quality"><code class="xref py py-meth docutils literal notranslate"><span class="pre">bio.quality()</span></code></a>, and added <code class="docutils literal notranslate"><span class="pre">cli.bio.phred</span></code>,
+<code class="docutils literal notranslate"><span class="pre">cli.sam.header</span></code> settings.</p></li>
+<li><p>Moved setting <code class="docutils literal notranslate"><span class="pre">cli.oboFile</span></code> to <code class="docutils literal notranslate"><span class="pre">cli.bio.go</span></code>, and <code class="docutils literal notranslate"><span class="pre">cli.lookupImgs</span></code> to
+<code class="docutils literal notranslate"><span class="pre">cli.bio.lookupImgs</span></code>.</p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">fill</span></code> param to <a class="reference internal" href="cli/index.html#k1lib.cli.utils.item" title="k1lib.cli.utils.item"><code class="xref py py-class docutils literal notranslate"><span class="pre">item</span></code></a>.</p></li>
+<li><p>Optimizes higher order operations quite a bit, and added setting <code class="docutils literal notranslate"><span class="pre">cli.atomic</span></code>.</p></li>
+<li><p>Renamed <code class="xref py py-class docutils literal notranslate"><span class="pre">init.manyToManySpecific</span></code> to <a class="reference internal" href="cli/index.html#k1lib.cli.init.mtmS" title="k1lib.cli.init.mtmS"><code class="xref py py-class docutils literal notranslate"><span class="pre">init.mtmS</span></code></a>, and added method
+<a class="reference internal" href="cli/index.html#k1lib.cli.init.mtmS.f" title="k1lib.cli.init.mtmS.f"><code class="xref py py-meth docutils literal notranslate"><span class="pre">f()</span></code></a>.</p></li>
+<li><p>Added <a class="reference internal" href="cli/index.html#k1lib.cli.structural.transpose.fill" title="k1lib.cli.structural.transpose.fill"><code class="xref py py-meth docutils literal notranslate"><span class="pre">fill()</span></code></a> and <a class="reference internal" href="cli/index.html#k1lib.cli.structural.transpose.wrap" title="k1lib.cli.structural.transpose.wrap"><code class="xref py py-meth docutils literal notranslate"><span class="pre">wrap()</span></code></a> to
+<a class="reference internal" href="cli/index.html#k1lib.cli.structural.transpose" title="k1lib.cli.structural.transpose"><code class="xref py py-meth docutils literal notranslate"><span class="pre">transpose()</span></code></a>.</p></li>
+<li><p>Revamped how <a class="reference internal" href="cli/index.html#k1lib.cli.inp.cmd" title="k1lib.cli.inp.cmd"><code class="xref py py-class docutils literal notranslate"><span class="pre">cmd</span></code></a> works, allowed real time output yielding, added
+bytes mode and option on how to return stdout and stderr.</p></li>
+</ul>
+</section>
+<section id="nov-24th-2021">
+<h2><a class="reference external" href="/0.11">0.11</a> - Nov 24th, 2021<a class="headerlink" href="#nov-24th-2021" title="Permalink to this heading"></a></h2>
+<p>DL:</p>
+<ul class="simple">
+<li><p>Added <a class="reference internal" href="base.html#k1lib.Settings" title="k1lib.Settings"><code class="xref py py-class docutils literal notranslate"><span class="pre">Settings</span></code></a>, and the centralized <a class="reference internal" href="base.html#k1lib.settings" title="k1lib.settings"><code class="xref py py-attr docutils literal notranslate"><span class="pre">settings</span></code></a> for the
+entire library. As a consequence, moved <code class="xref py py-attr docutils literal notranslate"><span class="pre">k1lib.cli.cliSettings</span></code> to
+<a class="reference internal" href="base.html#k1lib.settings" title="k1lib.settings"><code class="xref py py-attr docutils literal notranslate"><span class="pre">settings</span></code></a> under name “cli”.</p></li>
+<li><p>Added <code class="xref py py-class docutils literal notranslate"><span class="pre">TrainOnly</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">ValidOnly</span></code>.</p></li>
+<li><p>Removed “pause” concept from <a class="reference internal" href="callbacks/index.html#k1lib.callbacks.callbacks.Callback" title="k1lib.callbacks.callbacks.Callback"><code class="xref py py-class docutils literal notranslate"><span class="pre">Callback</span></code></a>.</p></li>
+<li><p>Patched <a class="reference internal" href="monkey.html#torch.Tensor.positionalEncode" title="torch.Tensor.positionalEncode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">torch.Tensor.positionalEncode()</span></code></a>, and removed procedural version
+(<code class="xref py py-meth docutils literal notranslate"><span class="pre">k1lib.positionalEncode()</span></code>).</p></li>
+<li><p>Added <a class="reference internal" href="knn.html#k1lib.knn.MultiheadAttention" title="k1lib.knn.MultiheadAttention"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiheadAttention</span></code></a>.</p></li>
+</ul>
+<p>Cli:</p>
+<ul class="simple">
+<li><p>Added multidimensional mode to <a class="reference internal" href="cli/index.html#k1lib.cli.structural.transpose" title="k1lib.cli.structural.transpose"><code class="xref py py-class docutils literal notranslate"><span class="pre">transpose</span></code></a>.</p></li>
+<li><p>Changed param position of <a class="reference internal" href="cli/index.html#k1lib.cli.utils.deref" title="k1lib.cli.utils.deref"><code class="xref py py-class docutils literal notranslate"><span class="pre">deref</span></code></a> so that it’s more convenient.</p></li>
+<li><p>Moved <code class="xref py py-class docutils literal notranslate"><span class="pre">inp.toPIL</span></code> to <code class="xref py py-class docutils literal notranslate"><span class="pre">utils.toPIL</span></code>, to be more consistent.</p></li>
+<li><p>Added <a class="reference internal" href="cli/index.html#module-k1lib.cli.nb" title="k1lib.cli.nb"><code class="xref py py-mod docutils literal notranslate"><span class="pre">nb</span></code></a>. As a consequence, removed <code class="xref py py-meth docutils literal notranslate"><span class="pre">nbCells()</span></code> and
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">executeNb()</span></code>.</p></li>
+<li><p>Added temporary file and append features to <a class="reference internal" href="cli/index.html#k1lib.cli.output.file" title="k1lib.cli.output.file"><code class="xref py py-meth docutils literal notranslate"><span class="pre">file()</span></code></a>.</p></li>
+<li><p>Added immediate resolve option to <a class="reference internal" href="cli/index.html#k1lib.cli.inp.cmd" title="k1lib.cli.inp.cmd"><code class="xref py py-class docutils literal notranslate"><span class="pre">cmd</span></code></a>.</p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">N</span></code> option (max sections) and changed <a class="reference internal" href="cli/index.html#k1lib.cli.grep.grep.till" title="k1lib.cli.grep.grep.till"><code class="xref py py-meth docutils literal notranslate"><span class="pre">till()</span></code></a> mechanics
+in <a class="reference internal" href="cli/index.html#k1lib.cli.grep.grep" title="k1lib.cli.grep.grep"><code class="xref py py-class docutils literal notranslate"><span class="pre">grep</span></code></a>. Also added <code class="docutils literal notranslate"><span class="pre">sep</span></code> option and as a consequence, removed
+<code class="xref py py-class docutils literal notranslate"><span class="pre">grepToTable</span></code>.</p></li>
+<li><p>Added home directory support for <a class="reference internal" href="cli/index.html#k1lib.cli.output.file" title="k1lib.cli.output.file"><code class="xref py py-class docutils literal notranslate"><span class="pre">file</span></code></a>, <a class="reference internal" href="cli/index.html#k1lib.cli.inp.cat" title="k1lib.cli.inp.cat"><code class="xref py py-meth docutils literal notranslate"><span class="pre">cat()</span></code></a> and
+<a class="reference internal" href="cli/index.html#k1lib.cli.inp.ls" title="k1lib.cli.inp.ls"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ls()</span></code></a>.</p></li>
+</ul>
+</section>
+<section id="nov-17th-2021">
+<h2><a class="reference external" href="/0.10">0.10</a> - Nov 17th, 2021<a class="headerlink" href="#nov-17th-2021" title="Permalink to this heading"></a></h2>
+<p>DL:</p>
+<ul class="simple">
+<li><p>Added <code class="xref py py-meth docutils literal notranslate"><span class="pre">nbCells()</span></code>, <a class="reference internal" href="base.html#k1lib.timer" title="k1lib.timer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">timer()</span></code></a></p></li>
+<li><p>Changed <a class="reference internal" href="base.html#k1lib.Absorber" title="k1lib.Absorber"><code class="xref py py-class docutils literal notranslate"><span class="pre">Absorber</span></code></a> methods so that it won’t use special words like
+<code class="docutils literal notranslate"><span class="pre">int</span></code>, <code class="docutils literal notranslate"><span class="pre">float</span></code>, <code class="docutils literal notranslate"><span class="pre">len</span></code>, <code class="docutils literal notranslate"><span class="pre">str</span></code> and added <a class="reference internal" href="base.html#k1lib.Absorber.ab_contains" title="k1lib.Absorber.ab_contains"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ab_contains()</span></code></a>
+and <a class="reference internal" href="base.html#k1lib.Absorber.ab_fastF" title="k1lib.Absorber.ab_fastF"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ab_fastF()</span></code></a>.</p></li>
+<li><p>Revamped lots of Callbacks docs</p></li>
+<li><p>Renamed <code class="xref py py-class docutils literal notranslate"><span class="pre">CaptureStdout</span></code> to <a class="reference internal" href="base.html#k1lib.captureStdout" title="k1lib.captureStdout"><code class="xref py py-class docutils literal notranslate"><span class="pre">captureStdout</span></code></a>, to match
+context manager’s styles.</p></li>
+</ul>
+<p>Cli:</p>
+<ul class="simple">
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">utilization</span></code> parameter to <a class="reference internal" href="cli/index.html#k1lib.cli.modifier.applyMp" title="k1lib.cli.modifier.applyMp"><code class="xref py py-class docutils literal notranslate"><span class="pre">applyMp</span></code></a>.</p></li>
+<li><p>Added <a class="reference internal" href="cli/index.html#k1lib.cli.init.fastF" title="k1lib.cli.init.fastF"><code class="xref py py-meth docutils literal notranslate"><span class="pre">fastF()</span></code></a></p></li>
+<li><p>Added tensor mode to <a class="reference internal" href="cli/index.html#k1lib.cli.filt.mask" title="k1lib.cli.filt.mask"><code class="xref py py-class docutils literal notranslate"><span class="pre">mask</span></code></a>.</p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">filt</span></code> and <code class="docutils literal notranslate"><span class="pre">apply</span></code> modes with columns to <a class="reference internal" href="cli/index.html#k1lib.cli.trace.trace" title="k1lib.cli.trace.trace"><code class="xref py py-class docutils literal notranslate"><span class="pre">trace</span></code></a>.</p></li>
+<li><p>Made <a class="reference internal" href="cli/index.html#k1lib.cli.utils.deref" title="k1lib.cli.utils.deref"><code class="xref py py-class docutils literal notranslate"><span class="pre">deref</span></code></a> so that it ignores dictionaries.</p></li>
+<li><p>Added some compatibility with numpy arrays across clis.</p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">cacheLimit</span></code> parameter to <a class="reference internal" href="cli/index.html#k1lib.cli.modifier.apply" title="k1lib.cli.modifier.apply"><code class="xref py py-class docutils literal notranslate"><span class="pre">apply</span></code></a> and as a consequence,
+removed <code class="xref py py-class docutils literal notranslate"><span class="pre">applyCached</span></code>.</p></li>
+<li><p>Added <code class="xref py py-class docutils literal notranslate"><span class="pre">toType</span></code> and <a class="reference internal" href="cli/index.html#k1lib.cli.modifier.applyTh" title="k1lib.cli.modifier.applyTh"><code class="xref py py-class docutils literal notranslate"><span class="pre">applyTh</span></code></a>.</p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">bs</span></code> parameter to <a class="reference internal" href="cli/index.html#k1lib.cli.modifier.applyMp" title="k1lib.cli.modifier.applyMp"><code class="xref py py-class docutils literal notranslate"><span class="pre">applyMp</span></code></a> and as a consequence, removed
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">applyMpBatched()</span></code>.</p></li>
+</ul>
+</section>
+<section id="mov-14th-2021">
+<h2><a class="reference external" href="/0.9">0.9</a> - Mov 14th, 2021<a class="headerlink" href="#mov-14th-2021" title="Permalink to this heading"></a></h2>
+<p>DL:</p>
+<ul class="simple">
+<li><p>Added <a class="reference internal" href="base.html#k1lib.scaleSvg" title="k1lib.scaleSvg"><code class="xref py py-meth docutils literal notranslate"><span class="pre">scaleSvg()</span></code></a>.</p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">prefix</span></code> option to <a class="reference internal" href="base.html#k1lib.AutoIncrement" title="k1lib.AutoIncrement"><code class="xref py py-class docutils literal notranslate"><span class="pre">AutoIncrement</span></code></a>.</p></li>
+</ul>
+<p>Cli:</p>
+<ul class="simple">
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">kwargs</span></code> argument to <code class="xref py py-meth docutils literal notranslate"><span class="pre">modifier.applyMpBatched()</span></code>.</p></li>
+<li><p>Added <a class="reference internal" href="base.html#k1lib.RunOnce" title="k1lib.RunOnce"><code class="xref py py-class docutils literal notranslate"><span class="pre">RunOnce</span></code></a>, <a class="reference internal" href="base.html#k1lib.MaxDepth" title="k1lib.MaxDepth"><code class="xref py py-class docutils literal notranslate"><span class="pre">MaxDepth</span></code></a>.</p></li>
+<li><p>Added alias <a class="reference internal" href="cli/index.html#k1lib.cli.utils.iden" title="k1lib.cli.utils.iden"><code class="xref py py-class docutils literal notranslate"><span class="pre">iden</span></code></a>.</p></li>
+<li><p>Added <a class="reference internal" href="cli/index.html#k1lib.cli.trace.trace" title="k1lib.cli.trace.trace"><code class="xref py py-meth docutils literal notranslate"><span class="pre">trace()</span></code></a> mechanism, with accompanying tutorial.</p></li>
+<li><p>Remove <a class="reference internal" href="cli/index.html#k1lib.cli.utils.shape" title="k1lib.cli.utils.shape"><code class="xref py py-class docutils literal notranslate"><span class="pre">shape</span></code></a>’s tensor special case</p></li>
+<li><p>Added <a class="reference internal" href="cli/index.html#k1lib.cli.modifier.applySerial" title="k1lib.cli.modifier.applySerial"><code class="xref py py-class docutils literal notranslate"><span class="pre">applySerial</span></code></a>.</p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">inf</span></code> and <code class="docutils literal notranslate"><span class="pre">context</span></code> to <code class="xref py py-attr docutils literal notranslate"><span class="pre">cliSettings</span></code>.</p></li>
+<li><p>Fixed bug where <code class="docutils literal notranslate"><span class="pre">&quot;abc&quot;</span> <span class="pre">|</span> <span class="pre">deref()</span></code> will actually split the string into characters.</p></li>
+<li><p>Terminates pool in <a class="reference internal" href="cli/index.html#k1lib.cli.modifier.applyMp" title="k1lib.cli.modifier.applyMp"><code class="xref py py-class docutils literal notranslate"><span class="pre">applyMp</span></code></a> if is keyboard interrupted, and in
+general made it much more robust.</p></li>
+<li><p>Stops <a class="reference internal" href="cli/index.html#k1lib.cli.utils.deref" title="k1lib.cli.utils.deref"><code class="xref py py-class docutils literal notranslate"><span class="pre">deref</span></code></a> early if encountered <code class="xref py py-attr docutils literal notranslate"><span class="pre">yieldSentinel</span></code></p></li>
+<li><p>Optimizes <a class="reference internal" href="cli/index.html#k1lib.cli.modifier.op" title="k1lib.cli.modifier.op"><code class="xref py py-class docutils literal notranslate"><span class="pre">op</span></code></a> even further, thus removing <code class="xref py py-meth docutils literal notranslate"><span class="pre">isValue()</span></code>,
+as <code class="docutils literal notranslate"><span class="pre">filt(op()</span> <span class="pre">==</span> <span class="pre">value)</span></code> does the same thing.</p></li>
+</ul>
+</section>
+<section id="nov-7th-2021">
+<h2><a class="reference external" href="/0.8">0.8</a> - Nov 7th, 2021<a class="headerlink" href="#nov-7th-2021" title="Permalink to this heading"></a></h2>
+<p>DL:</p>
+<ul class="simple">
+<li><p>Exposed <a class="reference internal" href="viz.html#module-k1lib.viz" title="k1lib.viz"><code class="xref py py-mod docutils literal notranslate"><span class="pre">k1lib.viz</span></code></a> automatically, and improve <a class="reference internal" href="viz.html#k1lib.viz.mask" title="k1lib.viz.mask"><code class="xref py py-meth docutils literal notranslate"><span class="pre">mask()</span></code></a> so
+that it smoothes out highlighted regions.</p></li>
+<li><p>Added <a class="reference internal" href="base.html#k1lib.perlin3d" title="k1lib.perlin3d"><code class="xref py py-meth docutils literal notranslate"><span class="pre">perlin3d()</span></code></a>.</p></li>
+<li><p>Monkey patched <a class="reference internal" href="monkey.html#mpl_toolkits.mplot3d.axes3d.Axes3D.march" title="mpl_toolkits.mplot3d.axes3d.Axes3D.march"><code class="xref py py-meth docutils literal notranslate"><span class="pre">march()</span></code></a>,
+<a class="reference internal" href="monkey.html#mpl_toolkits.mplot3d.axes3d.Axes3D.surface" title="mpl_toolkits.mplot3d.axes3d.Axes3D.surface"><code class="xref py py-meth docutils literal notranslate"><span class="pre">surface()</span></code></a>, <a class="reference internal" href="monkey.html#matplotlib.pyplot.k3d" title="matplotlib.pyplot.k3d"><code class="xref py py-meth docutils literal notranslate"><span class="pre">k3d()</span></code></a>,
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">loglinspace()</span></code>, <a class="reference internal" href="monkey.html#mpl_toolkits.mplot3d.axes3d.Axes3D.point" title="mpl_toolkits.mplot3d.axes3d.Axes3D.point"><code class="xref py py-meth docutils literal notranslate"><span class="pre">point()</span></code></a>,
+<a class="reference internal" href="monkey.html#mpl_toolkits.mplot3d.axes3d.Axes3D.line" title="mpl_toolkits.mplot3d.axes3d.Axes3D.line"><code class="xref py py-meth docutils literal notranslate"><span class="pre">line()</span></code></a>, <a class="reference internal" href="monkey.html#mpl_toolkits.mplot3d.axes3d.Axes3D.plane" title="mpl_toolkits.mplot3d.axes3d.Axes3D.plane"><code class="xref py py-meth docutils literal notranslate"><span class="pre">plane()</span></code></a>,
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">aspect()</span></code>.</p></li>
+<li><p>Renamed <code class="xref py py-meth docutils literal notranslate"><span class="pre">append()</span></code> to <a class="reference internal" href="callbacks/index.html#k1lib.callbacks.callbacks.Callbacks.add" title="k1lib.callbacks.callbacks.Callbacks.add"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add()</span></code></a>.</p></li>
+<li><p>Removed <code class="docutils literal notranslate"><span class="pre">with-</span></code> semantics for <a class="reference internal" href="callbacks/index.html#k1lib.callbacks.callbacks.Callback" title="k1lib.callbacks.callbacks.Callback"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Callback()</span></code></a>. Use <a class="reference internal" href="callbacks/index.html#k1lib.callbacks.callbacks.Cbs" title="k1lib.callbacks.callbacks.Cbs"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Cbs</span></code></a> instead.</p></li>
+<li><p>Changed <a class="reference internal" href="selector.html#k1lib.selector.ModuleSelector.__contains__" title="k1lib.selector.ModuleSelector.__contains__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__contains__()</span></code></a> so that it handles <code class="docutils literal notranslate"><span class="pre">*</span></code>
+differently.</p></li>
+</ul>
+<p>Cli:</p>
+<ul class="simple">
+<li><p>Modified <a class="reference internal" href="cli/index.html#k1lib.cli.utils.shape" title="k1lib.cli.utils.shape"><code class="xref py py-class docutils literal notranslate"><span class="pre">shape</span></code></a> so that it can detect multiple dimensions now, not
+just 2.</p></li>
+<li><p>Added <a class="reference internal" href="cli/index.html#k1lib.cli.structural.activeSamples.extend" title="k1lib.cli.structural.activeSamples.extend"><code class="xref py py-meth docutils literal notranslate"><span class="pre">extend()</span></code></a>, <code class="xref py py-meth docutils literal notranslate"><span class="pre">fullness()</span></code>.</p></li>
+<li><p>Added <code class="xref py py-class docutils literal notranslate"><span class="pre">applyCached</span></code>.</p></li>
+<li><p>Brought back <a class="reference internal" href="cli/index.html#k1lib.cli.structural.table" title="k1lib.cli.structural.table"><code class="xref py py-meth docutils literal notranslate"><span class="pre">table()</span></code></a>.</p></li>
+<li><p>Removed <code class="xref py py-meth docutils literal notranslate"><span class="pre">startswith()</span></code> and <code class="xref py py-meth docutils literal notranslate"><span class="pre">endswith()</span></code>, as <code class="docutils literal notranslate"><span class="pre">filt(op().startswith())</span></code>
+does the same thing.</p></li>
+</ul>
+</section>
+<section id="nov-3rd-2021">
+<h2><a class="reference external" href="/0.7">0.7</a> - Nov 3rd, 2021<a class="headerlink" href="#nov-3rd-2021" title="Permalink to this heading"></a></h2>
+<p>DL:</p>
+<ul class="simple">
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">metab</span></code> as extra metadata from dataloaders to <a class="reference internal" href="base.html#k1lib.Learner" title="k1lib.Learner"><code class="xref py py-class docutils literal notranslate"><span class="pre">Learner</span></code></a> in
+the core training loop and modified <a class="reference internal" href="callbacks/index.html#k1lib.callbacks.recorder.Recorder" title="k1lib.callbacks.recorder.Recorder"><code class="xref py py-class docutils literal notranslate"><span class="pre">Recorder</span></code></a> to
+return it if available.</p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">n</span></code> option to <a class="reference internal" href="base.html#k1lib.AutoIncrement" title="k1lib.AutoIncrement"><code class="xref py py-class docutils literal notranslate"><span class="pre">AutoIncrement</span></code></a>.</p></li>
+<li><p>Added <a class="reference internal" href="viz.html#k1lib.viz.mask" title="k1lib.viz.mask"><code class="xref py py-meth docutils literal notranslate"><span class="pre">mask()</span></code></a>.</p></li>
+<li><p>Removed <code class="xref py py-meth docutils literal notranslate"><span class="pre">k1lib.stats()</span></code>, replaced it with <code class="xref py py-meth docutils literal notranslate"><span class="pre">torch.Tensor.stats()</span></code> directly</p></li>
+<li><p>Added <a class="reference internal" href="cli/index.html#k1lib.cli.modifier.op" title="k1lib.cli.modifier.op"><code class="xref py py-class docutils literal notranslate"><span class="pre">op</span></code></a> option to <a class="reference internal" href="schedule.html#k1lib.schedule.Fn" title="k1lib.schedule.Fn"><code class="xref py py-class docutils literal notranslate"><span class="pre">Fn</span></code></a>.</p></li>
+<li><p>Added <a class="reference internal" href="monkey.html#torch.Tensor.hasInfs" title="torch.Tensor.hasInfs"><code class="xref py py-meth docutils literal notranslate"><span class="pre">torch.Tensor.hasInfs()</span></code></a></p></li>
+<li><p>Made <a class="reference internal" href="callbacks/lossFunctions.html#k1lib.callbacks.lossFunctions.shorts.LossNLLCross" title="k1lib.callbacks.lossFunctions.shorts.LossNLLCross"><code class="xref py py-class docutils literal notranslate"><span class="pre">LossNLLCross</span></code></a> integrates with
+<a class="reference internal" href="callbacks/lossFunctions.html#k1lib.callbacks.lossFunctions.accuracy.AccF" title="k1lib.callbacks.lossFunctions.accuracy.AccF"><code class="xref py py-class docutils literal notranslate"><span class="pre">AccF</span></code></a> instead.</p></li>
+<li><p>Made <a class="reference internal" href="callbacks/lossFunctions.html#k1lib.callbacks.lossFunctions.accuracy.AccF" title="k1lib.callbacks.lossFunctions.accuracy.AccF"><code class="xref py py-class docutils literal notranslate"><span class="pre">AccF</span></code></a> integrates with <a class="reference internal" href="callbacks/index.html#k1lib.callbacks.confusionMatrix.ConfusionMatrix" title="k1lib.callbacks.confusionMatrix.ConfusionMatrix"><code class="xref py py-class docutils literal notranslate"><span class="pre">ConfusionMatrix</span></code></a>.</p></li>
+<li><p>Made <a class="reference internal" href="callbacks/index.html#k1lib.callbacks.confusionMatrix.ConfusionMatrix" title="k1lib.callbacks.confusionMatrix.ConfusionMatrix"><code class="xref py py-class docutils literal notranslate"><span class="pre">ConfusionMatrix</span></code></a> resilient against nans and infs,
+and fixed norm strategy (tensor rows divide by max rows, instead of tensor columns
+divide by max rows, like before).</p></li>
+</ul>
+<p>Cli:</p>
+<ul class="simple">
+<li><p>Added <a class="reference internal" href="cli/index.html#k1lib.cli.filt.mask" title="k1lib.cli.filt.mask"><code class="xref py py-class docutils literal notranslate"><span class="pre">mask</span></code></a>, <a class="reference internal" href="cli/index.html#k1lib.cli.structural.unsqueeze" title="k1lib.cli.structural.unsqueeze"><code class="xref py py-meth docutils literal notranslate"><span class="pre">unsqueeze()</span></code></a>.</p></li>
+<li><p>Made <a class="reference internal" href="cli/index.html#k1lib.cli.modifier.op" title="k1lib.cli.modifier.op"><code class="xref py py-class docutils literal notranslate"><span class="pre">op</span></code></a> compatible with lots of other cli tools, so you can do
+stuff like <code class="docutils literal notranslate"><span class="pre">filt(op()</span> <span class="pre">&gt;</span> <span class="pre">3,</span> <span class="pre">1)</span></code>.</p></li>
+<li><p>Removed <code class="xref py py-class docutils literal notranslate"><span class="pre">split</span></code>, as <code class="docutils literal notranslate"><span class="pre">op().split().all()</span> <span class="pre">|</span> <span class="pre">joinStreams()</span></code> does
+the same thing. This is longer, so I kinda want to put it back in, but the name
+is incredibly oxymoronic.</p></li>
+<li><p>Removed <code class="xref py py-meth docutils literal notranslate"><span class="pre">listToTable()</span></code> and its alias <code class="xref py py-meth docutils literal notranslate"><span class="pre">tableFromList()</span></code>,
+as they are too simple, and the new <code class="docutils literal notranslate"><span class="pre">unsqueeze(1)</span></code> does the same thing.</p></li>
+<li><p>Removed <code class="docutils literal notranslate"><span class="pre">args</span></code> option in <a class="reference internal" href="cli/index.html#k1lib.cli.modifier.applyMp" title="k1lib.cli.modifier.applyMp"><code class="xref py py-class docutils literal notranslate"><span class="pre">applyMp</span></code></a>, as it feels clunky.</p></li>
+<li><p>Removed <code class="xref py py-class docutils literal notranslate"><span class="pre">cats</span></code> as <code class="docutils literal notranslate"><span class="pre">cat().all()</span></code> does the same job.</p></li>
+<li><p>Sped up <a class="reference internal" href="cli/index.html#k1lib.cli.modifier.op" title="k1lib.cli.modifier.op"><code class="xref py py-class docutils literal notranslate"><span class="pre">op</span></code></a> to have roughly same performance as
+<a class="reference internal" href="cli/index.html#k1lib.cli.modifier.apply" title="k1lib.cli.modifier.apply"><code class="xref py py-class docutils literal notranslate"><span class="pre">apply</span></code></a>. As a consequence, removed [<code class="xref py py-class docutils literal notranslate"><span class="pre">lstrip</span></code>,
+<code class="xref py py-class docutils literal notranslate"><span class="pre">rstrip</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">strip</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">upper</span></code>,
+<code class="xref py py-class docutils literal notranslate"><span class="pre">lower</span></code>] clis as stuff like <code class="docutils literal notranslate"><span class="pre">op().upper().all()</span></code> does the same
+and I want to simplify the collection of cli tools.</p></li>
+<li><p>Completely removed <code class="xref py py-mod docutils literal notranslate"><span class="pre">k1lib.cli.ctx</span></code> module, as the performance sacrifices are
+too much, and it doesn’t add a lot of useful features.</p></li>
+<li><p>Renamed <code class="xref py py-class docutils literal notranslate"><span class="pre">utils.to1Str</span></code> to <a class="reference internal" href="cli/index.html#k1lib.cli.utils.join" title="k1lib.cli.utils.join"><code class="xref py py-class docutils literal notranslate"><span class="pre">join</span></code></a> as that is more intuitive.</p></li>
+<li><p>Removed <a class="reference internal" href="cli/index.html#k1lib.cli.structural.table" title="k1lib.cli.structural.table"><code class="xref py py-class docutils literal notranslate"><span class="pre">structural.table</span></code></a>, as <code class="docutils literal notranslate"><span class="pre">op().split().all()</span></code> does the same thing</p></li>
+</ul>
+</section>
+<section id="oct-30th-2021">
+<h2><a class="reference external" href="/0.6">0.6</a> - Oct 30th, 2021<a class="headerlink" href="#oct-30th-2021" title="Permalink to this heading"></a></h2>
+<p>DL:</p>
+<ul class="simple">
+<li><p>Added <a class="reference internal" href="knn.html#k1lib.knn.LinBlock" title="k1lib.knn.LinBlock"><code class="xref py py-class docutils literal notranslate"><span class="pre">LinBlock</span></code></a>, <a class="reference internal" href="base.html#k1lib.Absorber" title="k1lib.Absorber"><code class="xref py py-class docutils literal notranslate"><span class="pre">Absorber</span></code></a>.</p></li>
+<li><p>Added __module__ impersonation for <a class="reference internal" href="base.html#k1lib.wrapMod" title="k1lib.wrapMod"><code class="xref py py-class docutils literal notranslate"><span class="pre">wrapMod</span></code></a>.</p></li>
+<li><p>Renamed <code class="xref py py-class docutils literal notranslate"><span class="pre">LossLambda</span></code> to <a class="reference internal" href="callbacks/lossFunctions.html#k1lib.callbacks.lossFunctions.shorts.LossF" title="k1lib.callbacks.lossFunctions.shorts.LossF"><code class="xref py py-class docutils literal notranslate"><span class="pre">LossF</span></code></a></p></li>
+<li><p>Renamed <code class="xref py py-meth docutils literal notranslate"><span class="pre">torch.nn.Module.preserveDevice()</span></code> to <code class="xref py py-meth docutils literal notranslate"><span class="pre">torch.nn.Module.deviceContext()</span></code>
+and add preserve buffers capability.</p></li>
+<li><p>Added <code class="xref py py-meth docutils literal notranslate"><span class="pre">torch.nn.Module.gradContext()</span></code>.</p></li>
+</ul>
+<p><a class="reference internal" href="selector.html#k1lib.selector.ModuleSelector" title="k1lib.selector.ModuleSelector"><code class="xref py py-class docutils literal notranslate"><span class="pre">k1lib.selector.ModuleSelector</span></code></a>:</p>
+<ul class="simple">
+<li><p>Renamed <code class="xref py py-meth docutils literal notranslate"><span class="pre">filter()</span></code> to <a class="reference internal" href="selector.html#k1lib.selector.preprocess" title="k1lib.selector.preprocess"><code class="xref py py-meth docutils literal notranslate"><span class="pre">preprocess()</span></code></a>.</p></li>
+<li><p>Added <a class="reference internal" href="selector.html#k1lib.selector.ModuleSelector.hookFp" title="k1lib.selector.ModuleSelector.hookFp"><code class="xref py py-meth docutils literal notranslate"><span class="pre">hookFp()</span></code></a>, <a class="reference internal" href="selector.html#k1lib.selector.ModuleSelector.hookF" title="k1lib.selector.ModuleSelector.hookF"><code class="xref py py-meth docutils literal notranslate"><span class="pre">hookF()</span></code></a>, and
+<a class="reference internal" href="selector.html#k1lib.selector.ModuleSelector.hookB" title="k1lib.selector.ModuleSelector.hookB"><code class="xref py py-meth docutils literal notranslate"><span class="pre">hookB()</span></code></a>.</p></li>
+<li><p>Removed <code class="xref py py-meth docutils literal notranslate"><span class="pre">selected()</span></code>, as <a class="reference internal" href="selector.html#k1lib.selector.ModuleSelector.__call__" title="k1lib.selector.ModuleSelector.__call__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__call__()</span></code></a>
+does the same thing and is more intuitive</p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">prop</span></code> option to <a class="reference internal" href="selector.html#k1lib.selector.ModuleSelector.named_children" title="k1lib.selector.ModuleSelector.named_children"><code class="xref py py-meth docutils literal notranslate"><span class="pre">named_children()</span></code></a>
+and <a class="reference internal" href="selector.html#k1lib.selector.ModuleSelector.children" title="k1lib.selector.ModuleSelector.children"><code class="xref py py-meth docutils literal notranslate"><span class="pre">children()</span></code></a>.</p></li>
+<li><p>Removed callback <code class="xref py py-class docutils literal notranslate"><span class="pre">Frozen</span></code> as
+<a class="reference internal" href="selector.html#k1lib.selector.ModuleSelector.freeze" title="k1lib.selector.ModuleSelector.freeze"><code class="xref py py-meth docutils literal notranslate"><span class="pre">freeze()</span></code></a> and <a class="reference internal" href="selector.html#k1lib.selector.ModuleSelector.unfreeze" title="k1lib.selector.ModuleSelector.unfreeze"><code class="xref py py-meth docutils literal notranslate"><span class="pre">unfreeze()</span></code></a> does the job
+and is much more robust.</p></li>
+<li><p>Added <a class="reference internal" href="selector.html#k1lib.selector.ModuleSelector.freeze" title="k1lib.selector.ModuleSelector.freeze"><code class="xref py py-meth docutils literal notranslate"><span class="pre">freeze()</span></code></a> and <a class="reference internal" href="selector.html#k1lib.selector.ModuleSelector.unfreeze" title="k1lib.selector.ModuleSelector.unfreeze"><code class="xref py py-meth docutils literal notranslate"><span class="pre">unfreeze()</span></code></a></p></li>
+<li><p>Removed <code class="xref py py-meth docutils literal notranslate"><span class="pre">copy()</span></code>, as you can just grab another selector
+straight from the model real quick.</p></li>
+<li><p>Removed <code class="xref py py-meth docutils literal notranslate"><span class="pre">parameters()</span></code>, as you can always access the
+associated <a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch vmaster (2.1.0a0+gitbe0b12e ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></a> inside and get params from there.</p></li>
+</ul>
+<p>Cli:</p>
+<ul class="simple">
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">raiseError</span></code> option in <a class="reference internal" href="cli/index.html#k1lib.cli.output.intercept" title="k1lib.cli.output.intercept"><code class="xref py py-class docutils literal notranslate"><span class="pre">intercept</span></code></a>.</p></li>
+<li><p>Added multi argument capabilities to <a class="reference internal" href="cli/index.html#k1lib.cli.init.BaseCli.__call__" title="k1lib.cli.init.BaseCli.__call__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__call__()</span></code></a>.</p></li>
+<li><p>Added <a class="reference internal" href="cli/index.html#k1lib.cli.modifier.op" title="k1lib.cli.modifier.op"><code class="xref py py-class docutils literal notranslate"><span class="pre">op</span></code></a>.</p></li>
+<li><p>Changed default param <code class="docutils literal notranslate"><span class="pre">ignoreTensors</span></code> of <a class="reference internal" href="cli/index.html#k1lib.cli.utils.deref" title="k1lib.cli.utils.deref"><code class="xref py py-class docutils literal notranslate"><span class="pre">deref</span></code></a> to True.</p></li>
+<li><p>Ignores <a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch vmaster (2.1.0a0+gitbe0b12e ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></a> by default in <a class="reference internal" href="cli/index.html#k1lib.cli.utils.deref" title="k1lib.cli.utils.deref"><code class="xref py py-class docutils literal notranslate"><span class="pre">deref</span></code></a>.</p></li>
+</ul>
+</section>
+<section id="oct-27th-2021">
+<h2><a class="reference external" href="/0.5">0.5</a> - Oct 27th, 2021<a class="headerlink" href="#oct-27th-2021" title="Permalink to this heading"></a></h2>
+<p>DL:</p>
+<ul class="simple">
+<li><p>Renamed <code class="xref py py-mod docutils literal notranslate"><span class="pre">k1lib.format</span></code> to <a class="reference internal" href="fmt.html#module-k1lib.fmt" title="k1lib.fmt"><code class="xref py py-mod docutils literal notranslate"><span class="pre">k1lib.fmt</span></code></a>, and exposed it automatically.</p></li>
+<li><p>Renamed <code class="xref py py-mod docutils literal notranslate"><span class="pre">computation</span></code> to <a class="reference internal" href="fmt.html#k1lib.fmt.comp" title="k1lib.fmt.comp"><code class="xref py py-mod docutils literal notranslate"><span class="pre">comp</span></code></a>,
+<code class="xref py py-mod docutils literal notranslate"><span class="pre">computationRate</span></code> to <a class="reference internal" href="fmt.html#k1lib.fmt.compRate" title="k1lib.fmt.compRate"><code class="xref py py-mod docutils literal notranslate"><span class="pre">compRate</span></code></a>.</p></li>
+<li><p>Added <a class="reference internal" href="fmt.html#k1lib.fmt.sizeOf" title="k1lib.fmt.sizeOf"><code class="xref py py-meth docutils literal notranslate"><span class="pre">sizeOf()</span></code></a></p></li>
+<li><p>Exposed <a class="reference internal" href="selector.html#module-k1lib.selector" title="k1lib.selector"><code class="xref py py-mod docutils literal notranslate"><span class="pre">selector</span></code></a> automatically.</p></li>
+<li><p>Deleted <code class="xref py py-mod docutils literal notranslate"><span class="pre">k1lib.website</span></code></p></li>
+<li><p>Fixed infinity elements in <a class="reference internal" href="callbacks/index.html#k1lib.callbacks.landscape.Landscape" title="k1lib.callbacks.landscape.Landscape"><code class="xref py py-class docutils literal notranslate"><span class="pre">landscape.Landscape</span></code></a>’s plots.</p></li>
+<li><p>Split <a class="reference internal" href="callbacks/index.html#k1lib.callbacks.loss_accuracy.Accuracy" title="k1lib.callbacks.loss_accuracy.Accuracy"><code class="xref py py-class docutils literal notranslate"><span class="pre">Accuracy</span></code></a>’s accuracy calculating part into
+<a class="reference internal" href="callbacks/lossFunctions.html#k1lib.callbacks.lossFunctions.accuracy.AccF" title="k1lib.callbacks.lossFunctions.accuracy.AccF"><code class="xref py py-class docutils literal notranslate"><span class="pre">AccF</span></code></a>.</p></li>
+</ul>
+<p>Cli:</p>
+<ul class="simple">
+<li><p>Added chained mode to <a class="reference internal" href="cli/index.html#k1lib.cli.utils.item" title="k1lib.cli.utils.item"><code class="xref py py-class docutils literal notranslate"><span class="pre">item</span></code></a></p></li>
+<li><p>Fixed ignoreTensor mechanic in <a class="reference internal" href="cli/index.html#k1lib.cli.utils.deref" title="k1lib.cli.utils.deref"><code class="xref py py-class docutils literal notranslate"><span class="pre">deref</span></code></a></p></li>
+<li><p>Added prefetch mode in <a class="reference internal" href="cli/index.html#k1lib.cli.modifier.applyMp" title="k1lib.cli.modifier.applyMp"><code class="xref py py-class docutils literal notranslate"><span class="pre">applyMp</span></code></a></p></li>
+<li><p>Added <code class="xref py py-class docutils literal notranslate"><span class="pre">applyMpBatched</span></code> that executes lots of transformations in
+a single job.</p></li>
+<li><p>Added <a class="reference internal" href="cli/index.html#k1lib.cli.modifier.applyMp.clearPools" title="k1lib.cli.modifier.applyMp.clearPools"><code class="xref py py-meth docutils literal notranslate"><span class="pre">clearPools()</span></code></a> and <a class="reference internal" href="cli/index.html#k1lib.cli.modifier.applyMp.pools" title="k1lib.cli.modifier.applyMp.pools"><code class="xref py py-meth docutils literal notranslate"><span class="pre">pools()</span></code></a>.</p></li>
+<li><p>Added bytes reading and writing to <a class="reference internal" href="cli/index.html#k1lib.cli.inp.cat" title="k1lib.cli.inp.cat"><code class="xref py py-class docutils literal notranslate"><span class="pre">cat</span></code></a> <a class="reference internal" href="cli/index.html#k1lib.cli.output.file" title="k1lib.cli.output.file"><code class="xref py py-class docutils literal notranslate"><span class="pre">file</span></code></a>.</p></li>
+<li><p>Added <a class="reference internal" href="cli/index.html#k1lib.cli.structural.activeSamples" title="k1lib.cli.structural.activeSamples"><code class="xref py py-class docutils literal notranslate"><span class="pre">activeSamples</span></code></a>.</p></li>
+<li><p>Removed aliases <code class="xref py py-class docutils literal notranslate"><span class="pre">splitColumns</span></code> and <code class="xref py py-class docutils literal notranslate"><span class="pre">joinColumns</span></code>.</p></li>
+<li><p>Removed <code class="xref py py-class docutils literal notranslate"><span class="pre">stitch</span></code>, as <code class="docutils literal notranslate"><span class="pre">to1Str().all()</span></code> does the same thing.</p></li>
+</ul>
+</section>
+<section id="oct-23rd-2021">
+<h2><a class="reference external" href="/0.4">0.4</a> - Oct 23rd, 2021<a class="headerlink" href="#oct-23rd-2021" title="Permalink to this heading"></a></h2>
+<p>This update moves things around a lot. The actual coding experience stays the same,
+but a lot of links &lt; 0.4 will be broken in 0.4 docs. Go to 0.3 docs if you wish to
+follow links.</p>
+<p>Molecule (<a class="reference internal" href="mo.html#module-k1lib.mo" title="k1lib.mo"><code class="xref py py-mod docutils literal notranslate"><span class="pre">k1lib.mo</span></code></a>):</p>
+<ul class="simple">
+<li><p>Added close coulomb force calculations to simulator to make it
+more realistic (cyclohexane chair config possible now!)</p></li>
+<li><p>Added optional Hydrogen viewing to various functions in <a class="reference internal" href="mo.html#module-k1lib.mo" title="k1lib.mo"><code class="xref py py-mod docutils literal notranslate"><span class="pre">mo</span></code></a></p></li>
+<li><p>Fixed parsing bug where it doesn’t recognize “3-methyl” group in
+“3-methylpentane”.</p></li>
+</ul>
+<p>DL:</p>
+<ul class="simple">
+<li><p>Don’t let <a class="reference internal" href="base.html#k1lib.AutoIncrement" title="k1lib.AutoIncrement"><code class="xref py py-class docutils literal notranslate"><span class="pre">AutoIncrement</span></code></a>’s <code class="docutils literal notranslate"><span class="pre">value</span></code> property to auto increment
+internal value.</p></li>
+<li><p>Removed <code class="xref py py-class docutils literal notranslate"><span class="pre">CyclicRandomSampler</span></code>, as <code class="docutils literal notranslate"><span class="pre">range(n)</span> <span class="pre">|</span> <span class="pre">repeatFrom()</span> <span class="pre">|</span> <span class="pre">randomize(n)`</span></code>
+does the same thing.</p></li>
+<li><p>Removed <code class="xref py py-class docutils literal notranslate"><span class="pre">FunctionDataset</span></code>, added simpler
+<code class="xref py py-class docutils literal notranslate"><span class="pre">FunctionData</span></code> as replacement.</p></li>
+<li><p>Removed <code class="xref py py-class docutils literal notranslate"><span class="pre">DataLoader</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Data</span></code> and
+<code class="xref py py-class docutils literal notranslate"><span class="pre">DatasetWithSampler</span></code>, as they’re complex and obsolete.</p></li>
+<li><p>Added <code class="xref py py-meth docutils literal notranslate"><span class="pre">tfImg()</span></code>, <code class="xref py py-meth docutils literal notranslate"><span class="pre">tfFloat()</span></code>,
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">analyzeFloat()</span></code></p></li>
+<li><p>Monkey-patched <a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch vmaster (2.1.0a0+gitbe0b12e ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></a> to have piping capabilities.</p></li>
+<li><p>Renamed <code class="xref py py-mod docutils literal notranslate"><span class="pre">k1lib.data</span></code> to <code class="xref py py-mod docutils literal notranslate"><span class="pre">k1lib.kdata</span></code>, and exposed it automatically in
+<a class="reference internal" href="imports.html#module-k1lib.imports" title="k1lib.imports"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imports</span></code></a>.</p></li>
+<li><p>Renamed <code class="xref py py-mod docutils literal notranslate"><span class="pre">k1lib.nn</span></code> to <a class="reference internal" href="knn.html#module-k1lib.knn" title="k1lib.knn"><code class="xref py py-mod docutils literal notranslate"><span class="pre">k1lib.knn</span></code></a>, and exposed it automatically.</p></li>
+</ul>
+<p>Bioinfo cli:</p>
+<ul class="simple">
+<li><p>Renamed <code class="xref py py-mod docutils literal notranslate"><span class="pre">k1lib.bioinfo.cli</span></code> to <a class="reference internal" href="cli/index.html#module-k1lib.cli" title="k1lib.cli"><code class="xref py py-mod docutils literal notranslate"><span class="pre">k1lib.cli</span></code></a></p></li>
+<li><p>Added <a class="reference internal" href="cli/index.html#k1lib.cli.modifier.stagger" title="k1lib.cli.modifier.stagger"><code class="xref py py-meth docutils literal notranslate"><span class="pre">stagger()</span></code></a> as the new interface for dataloaders.</p></li>
+<li><p>Added <a class="reference internal" href="cli/index.html#k1lib.cli.output.intercept" title="k1lib.cli.output.intercept"><code class="xref py py-class docutils literal notranslate"><span class="pre">intercept</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">toPIL</span></code>.</p></li>
+<li><p>Added PIL conversion mode to <code class="xref py py-class docutils literal notranslate"><span class="pre">utils.toTensor</span></code></p></li>
+<li><p>Added Tensor shape mode in <a class="reference internal" href="cli/index.html#k1lib.cli.utils.shape" title="k1lib.cli.utils.shape"><code class="xref py py-class docutils literal notranslate"><span class="pre">utils.shape</span></code></a>.</p></li>
+<li><p>Added <code class="xref py py-mod docutils literal notranslate"><span class="pre">others</span></code> module, with <code class="xref py py-meth docutils literal notranslate"><span class="pre">crissCross()</span></code></p></li>
+<li><p>Added Tensor mode to <code class="xref py py-class docutils literal notranslate"><span class="pre">toSum</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">toAvg</span></code>,
+<code class="xref py py-class docutils literal notranslate"><span class="pre">toMin</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">toMax</span></code> and <a class="reference internal" href="cli/index.html#k1lib.cli.init.oneToMany" title="k1lib.cli.init.oneToMany"><code class="xref py py-class docutils literal notranslate"><span class="pre">oneToMany</span></code></a>.</p></li>
+<li><p>Added alias <code class="xref py py-class docutils literal notranslate"><span class="pre">toMean</span></code>.</p></li>
+<li><p>Added dtype choice to <code class="xref py py-class docutils literal notranslate"><span class="pre">toTensor</span></code>.</p></li>
+</ul>
+</section>
+<section id="oct-18th-2021">
+<h2><a class="reference external" href="/0.3">0.3</a> - Oct 18th, 2021<a class="headerlink" href="#oct-18th-2021" title="Permalink to this heading"></a></h2>
+<p>Background stuff:</p>
+<ul class="simple">
+<li><p>Added mo tutorial</p></li>
+</ul>
+<p>DL:</p>
+<ul class="simple">
+<li><p>Added <a class="reference internal" href="viz.html#k1lib.viz.FAnim" title="k1lib.viz.FAnim"><code class="xref py py-meth docutils literal notranslate"><span class="pre">FAnim()</span></code></a></p></li>
+<li><p>Added <a class="reference internal" href="mo.html#module-k1lib.mo" title="k1lib.mo"><code class="xref py py-mod docutils literal notranslate"><span class="pre">mo</span></code></a> for stuff related to molecular dynamics</p></li>
+<li><p>Added <a class="reference internal" href="base.html#k1lib.graph" title="k1lib.graph"><code class="xref py py-meth docutils literal notranslate"><span class="pre">graph()</span></code></a>, <a class="reference internal" href="base.html#k1lib.digraph" title="k1lib.digraph"><code class="xref py py-meth docutils literal notranslate"><span class="pre">digraph()</span></code></a>, <a class="reference internal" href="base.html#k1lib.AutoIncrement.__call__" title="k1lib.AutoIncrement.__call__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__call__()</span></code></a></p></li>
+<li><p>Huge revamp of <a class="reference internal" href="schedule.html#module-k1lib.schedule" title="k1lib.schedule"><code class="xref py py-mod docutils literal notranslate"><span class="pre">schedule</span></code></a> to make it more intuitive. There’s only 1
+main schedule object now: <a class="reference internal" href="schedule.html#k1lib.schedule.Fn" title="k1lib.schedule.Fn"><code class="xref py py-class docutils literal notranslate"><span class="pre">Fn</span></code></a>.</p></li>
+<li><p>Added <a class="reference internal" href="base.html#k1lib.wraps" title="k1lib.wraps"><code class="xref py py-meth docutils literal notranslate"><span class="pre">k1lib.wraps()</span></code></a>, <code class="xref py py-meth docutils literal notranslate"><span class="pre">k1lib.Object.__delitem__()</span></code>, <a class="reference internal" href="base.html#k1lib.Range.fromRange" title="k1lib.Range.fromRange"><code class="xref py py-meth docutils literal notranslate"><span class="pre">k1lib.Range.fromRange()</span></code></a></p></li>
+<li><p>Added <a class="reference internal" href="base.html#k1lib.Every" title="k1lib.Every"><code class="xref py py-class docutils literal notranslate"><span class="pre">k1lib.Every</span></code></a></p></li>
+</ul>
+<p>Bioinfo cli:</p>
+<ul class="simple">
+<li><p>Removed <code class="xref py py-class docutils literal notranslate"><span class="pre">notIn</span></code>, as <code class="xref py py-class docutils literal notranslate"><span class="pre">inSet</span></code> does the job just as well</p></li>
+<li><p>Included cli import command in <a class="reference internal" href="imports.html#module-k1lib.imports" title="k1lib.imports"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imports</span></code></a> by default</p></li>
+<li><p>Modified <code class="xref py py-meth docutils literal notranslate"><span class="pre">toFloat()</span></code> and <code class="xref py py-meth docutils literal notranslate"><span class="pre">modifier.toInt()</span></code> so they can force
+weird values to 0.</p></li>
+<li><p>Moved existing <code class="xref py py-class docutils literal notranslate"><span class="pre">toDict</span></code> to <code class="xref py py-class docutils literal notranslate"><span class="pre">toDictF</span></code>, and
+created a new <code class="xref py py-class docutils literal notranslate"><span class="pre">toDict</span></code>.</p></li>
+</ul>
+</section>
+<section id="sep-24th-2021">
+<h2><a class="reference external" href="/0.2">0.2</a> - Sep 24th, 2021<a class="headerlink" href="#sep-24th-2021" title="Permalink to this heading"></a></h2>
+<p>Pretty minor update. I just want to push this out as soon as possible</p>
+<p>Background stuff:</p>
+<ul class="simple">
+<li><p>Changed versioning system so that it makes more sense</p></li>
+<li><p>Added osic and mp tutorials</p></li>
+<li><p>Added more speed analysis in the cli tutorial</p></li>
+</ul>
+<p>Bioinfo cli:</p>
+<ul class="simple">
+<li><p>Removed <code class="docutils literal notranslate"><span class="pre">dirs</span></code> and <code class="docutils literal notranslate"><span class="pre">files</span></code> parameters in <code class="xref py py-class docutils literal notranslate"><span class="pre">ls</span></code>, as <code class="xref py py-class docutils literal notranslate"><span class="pre">isFile</span></code> is good enough</p></li>
+<li><p>Disable module <code class="xref py py-mod docutils literal notranslate"><span class="pre">ctx</span></code> by default, to improve performance</p></li>
+<li><p>Replaced <code class="xref py py-class docutils literal notranslate"><span class="pre">nonEmptyStream</span></code> to <code class="xref py py-class docutils literal notranslate"><span class="pre">empty</span></code></p></li>
+</ul>
+</section>
+<section id="sep-20th-2021">
+<h2><a class="reference external" href="/0.1.13">0.1.13</a> - Sep 20th, 2021<a class="headerlink" href="#sep-20th-2021" title="Permalink to this heading"></a></h2>
+<p>Background stuff:</p>
+<ul class="simple">
+<li><p>Removed walrus operator library-wide, so that it can be used with Python &lt; 3.8</p></li>
+</ul>
+<p>Bioinfo cli:</p>
+<ul class="simple">
+<li><p>Added <code class="xref py py-class docutils literal notranslate"><span class="pre">breakIf</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">isFile</span></code></p></li>
+<li><p>Replaced <code class="xref py py-class docutils literal notranslate"><span class="pre">infiniteF</span></code> with <code class="xref py py-class docutils literal notranslate"><span class="pre">repeatF</span></code></p></li>
+<li><p>Replaced <code class="xref py py-class docutils literal notranslate"><span class="pre">infiniteFrom</span></code> with <code class="xref py py-class docutils literal notranslate"><span class="pre">repeatFrom</span></code></p></li>
+<li><p>Replaced <code class="xref py py-class docutils literal notranslate"><span class="pre">dereference</span></code> with <code class="xref py py-class docutils literal notranslate"><span class="pre">deref</span></code></p></li>
+<li><p>Replaced <code class="xref py py-class docutils literal notranslate"><span class="pre">ctx.dereference</span></code> with <code class="xref py py-class docutils literal notranslate"><span class="pre">ctx.deref</span></code></p></li>
+<li><p>Modified <code class="xref py py-class docutils literal notranslate"><span class="pre">applyMp</span></code> to use <code class="docutils literal notranslate"><span class="pre">dill</span></code> to deserialize everything</p></li>
+<li><p>Modified <code class="xref py py-class docutils literal notranslate"><span class="pre">to1Str</span></code> so that it returns a string, instead of yielding</p></li>
+<li><p>Modified <code class="xref py py-class docutils literal notranslate"><span class="pre">toStr</span></code> so that it can accept an optional column</p></li>
+<li><p>Modified <code class="xref py py-class docutils literal notranslate"><span class="pre">splitList</span></code> so that it accepts *args</p></li>
+<li><p>Removed <code class="xref py py-class docutils literal notranslate"><span class="pre">applySingle</span></code>, but retain <code class="xref py py-class docutils literal notranslate"><span class="pre">applyS</span></code></p></li>
+</ul>
+<p>DL:</p>
+<ul class="simple">
+<li><p>Added class <code class="xref py py-class docutils literal notranslate"><span class="pre">CaptureStdout</span></code></p></li>
+<li><p>Patched <a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (2.1.0a0+gitbe0b12e ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a> with <a class="reference internal" href="monkey.html#torch.Tensor.crissCross" title="torch.Tensor.crissCross"><code class="xref py py-meth docutils literal notranslate"><span class="pre">crissCross()</span></code></a>,
+<a class="reference internal" href="monkey.html#torch.Tensor.histBounds" title="torch.Tensor.histBounds"><code class="xref py py-meth docutils literal notranslate"><span class="pre">histBounds()</span></code></a> and <a class="reference internal" href="monkey.html#torch.Tensor.histScaled" title="torch.Tensor.histScaled"><code class="xref py py-meth docutils literal notranslate"><span class="pre">histScaled()</span></code></a></p></li>
+</ul>
+</section>
+<section id="sep-3rd-2021">
+<h2><a class="reference external" href="/0.1.12">0.1.12</a> - Sep 3rd, 2021<a class="headerlink" href="#sep-3rd-2021" title="Permalink to this heading"></a></h2>
+<p>Background stuff:</p>
+<ul class="simple">
+<li><p>Removed docs’s generated <code class="docutils literal notranslate"><span class="pre">fonts</span></code> folder, as it takes 8MB and isn’t even used. Should now be sustainable for 100 versions on github pages.</p></li>
+</ul>
+<p>Bioinfo cli:</p>
+<ul class="simple">
+<li><p>Removed wrapping <code class="docutils literal notranslate"><span class="pre">__ror__</span></code> operator if <code class="docutils literal notranslate"><span class="pre">__init__</span></code> is not defined, to make things performant.</p></li>
+<li><p>Added speed analysis in the <a class="reference external" href="tutorials.html">cli tutorial</a>.</p></li>
+<li><p>Added <code class="xref py py-meth docutils literal notranslate"><span class="pre">init.BaseCli.__call__()</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">consume</span></code>, <code class="xref py py-meth docutils literal notranslate"><span class="pre">ctx.ctx()</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">ctx.f</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">peekF</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">expandE</span></code>, <code class="xref py py-meth docutils literal notranslate"><span class="pre">utils.dereference.__invert__()</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">unique</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">notIn</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">sortF</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">toMax</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">toMin</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">union</span></code>, <code class="xref py py-meth docutils literal notranslate"><span class="pre">ls()</span></code>, <code class="xref py py-meth docutils literal notranslate"><span class="pre">instanceOf()</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">randomize</span></code></p></li>
+<li><p>Removed <code class="xref py py-class docutils literal notranslate"><span class="pre">ctx.identity</span></code></p></li>
+<li><p>Added shortcuts to <code class="xref py py-meth docutils literal notranslate"><span class="pre">ctx.setC()</span></code> and <code class="xref py py-meth docutils literal notranslate"><span class="pre">ctx.getC()</span></code></p></li>
+<li><p>Made <code class="xref py py-meth docutils literal notranslate"><span class="pre">headerIdx()</span></code> context-aware</p></li>
+<li><p>Put <code class="xref py py-class docutils literal notranslate"><span class="pre">ctx.Promise</span></code> dereferencing at <code class="xref py py-meth docutils literal notranslate"><span class="pre">init.BaseCli.__ror__()</span></code>, instead of dynamic patching at <code class="xref py py-mod docutils literal notranslate"><span class="pre">k1lib.bioinfo.cli</span></code> construction time</p></li>
+<li><p>Get rid of <code class="xref py py-class docutils literal notranslate"><span class="pre">stdout</span></code> style inconsistencies. Previously, it looks like <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2]</span> <span class="pre">|</span> <span class="pre">stdout</span></code>, now it looks like <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2]</span> <span class="pre">|</span> <span class="pre">stdout()</span></code>.</p></li>
+<li><p>Added multiprocessing capabilities with <code class="xref py py-class docutils literal notranslate"><span class="pre">applyMp</span></code></p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">maxDepth</span></code> option for <code class="xref py py-class docutils literal notranslate"><span class="pre">dereference</span></code></p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">includeLast</span></code> option to <code class="xref py py-class docutils literal notranslate"><span class="pre">batched</span></code></p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">float(&quot;inf&quot;)</span></code> option to <code class="docutils literal notranslate"><span class="pre">bs</span></code> parameter of <code class="xref py py-class docutils literal notranslate"><span class="pre">batched</span></code></p></li>
+<li><p>Fixed <code class="xref py py-class docutils literal notranslate"><span class="pre">permute</span></code> to be able to take in generator for rows.</p></li>
+<li><p>Fixed <code class="xref py py-class docutils literal notranslate"><span class="pre">stdout</span></code> to be able to display non-iterable inputs</p></li>
+<li><p>Fixed <code class="xref py py-class docutils literal notranslate"><span class="pre">dereference</span></code> so that it will handle poking errors</p></li>
+<li><p>Fixed <code class="xref py py-class docutils literal notranslate"><span class="pre">count</span></code> so that it can deal with list. Used to throw unhashable type: ‘list’</p></li>
+<li><p>Added more flexibility with <code class="xref py py-meth docutils literal notranslate"><span class="pre">toFloat()</span></code>, <code class="xref py py-meth docutils literal notranslate"><span class="pre">toInt()</span></code> and <code class="xref py py-class docutils literal notranslate"><span class="pre">sort</span></code></p></li>
+</ul>
+<p>DL:</p>
+<ul class="simple">
+<li><p>Added classes <a class="reference internal" href="base.html#k1lib.AutoIncrement" title="k1lib.AutoIncrement"><code class="xref py py-class docutils literal notranslate"><span class="pre">AutoIncrement</span></code></a>, <a class="reference internal" href="base.html#k1lib.Wrapper" title="k1lib.Wrapper"><code class="xref py py-class docutils literal notranslate"><span class="pre">Wrapper</span></code></a></p></li>
+<li><p>Added functions <code class="xref py py-meth docutils literal notranslate"><span class="pre">positionalEncode()</span></code>, <a class="reference internal" href="base.html#k1lib.debounce" title="k1lib.debounce"><code class="xref py py-meth docutils literal notranslate"><span class="pre">debounce()</span></code></a></p></li>
+<li><p>Fixed <code class="xref py py-class docutils literal notranslate"><span class="pre">executeNb</span></code>’s <code class="docutils literal notranslate"><span class="pre">_globals</span></code> doc-backref problem. Also clears plot automatically after executing a cell now.</p></li>
+</ul>
+</section>
+<section id="aug-25th-2021">
+<h2><a class="reference external" href="/0.1.11">0.1.11</a> - Aug 25th, 2021<a class="headerlink" href="#aug-25th-2021" title="Permalink to this heading"></a></h2>
+<p>Background stuff:</p>
+<ul class="simple">
+<li><p>Added testing section for unit tests (simple assert statements inside the notebooks)</p></li>
+</ul>
+<p>Bioinfo cli:</p>
+<ul class="simple">
+<li><p>Added numpy/torch checks to <code class="xref py py-class docutils literal notranslate"><span class="pre">dereference</span></code></p></li>
+<li><p>Renamed <code class="xref py py-class docutils literal notranslate"><span class="pre">sample</span></code> to <code class="xref py py-class docutils literal notranslate"><span class="pre">peek</span></code></p></li>
+<li><p>Added <code class="xref py py-class docutils literal notranslate"><span class="pre">infiniteFrom</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">joinStreamsRandom</span></code>,
+<code class="xref py py-class docutils literal notranslate"><span class="pre">batched</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">collate</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">splitList</span></code></p></li>
+<li><p>Added <code class="xref py py-class docutils literal notranslate"><span class="pre">infiniteF</span></code></p></li>
+<li><p>Added <code class="xref py py-class docutils literal notranslate"><span class="pre">toTensor</span></code></p></li>
+<li><p>Replaced <code class="xref py py-class docutils literal notranslate"><span class="pre">infinite</span></code> in favor of <code class="xref py py-class docutils literal notranslate"><span class="pre">repeat</span></code></p></li>
+<li><p>Updated all cli tools to use <code class="docutils literal notranslate"><span class="pre">super().__init__()</span></code></p></li>
+<li><p>Added <code class="xref py py-mod docutils literal notranslate"><span class="pre">ctx</span></code> module, with <code class="xref py py-class docutils literal notranslate"><span class="pre">Promise</span></code>,
+<code class="xref py py-class docutils literal notranslate"><span class="pre">enum</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">identity</span></code> classes, and <code class="xref py py-meth docutils literal notranslate"><span class="pre">getC()</span></code>,
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">setC()</span></code> methods</p></li>
+</ul>
+<p>DL:</p>
+<ul class="simple">
+<li><p>Added <code class="xref py py-class docutils literal notranslate"><span class="pre">k1lib.data.CyclicRandomSampler</span></code> and <code class="xref py py-class docutils literal notranslate"><span class="pre">k1lib.data.DatasetWithSampler</span></code></p></li>
+<li><p>Added highlight feature in <a class="reference internal" href="callbacks/index.html#k1lib.callbacks.callbacks.Callbacks.checkpointGraph" title="k1lib.callbacks.callbacks.Callbacks.checkpointGraph"><code class="xref py py-meth docutils literal notranslate"><span class="pre">callbacks.Callbacks.checkpointGraph()</span></code></a></p></li>
+<li><p>Added <code class="xref py py-meth docutils literal notranslate"><span class="pre">k1lib.viz.Carousel.pop()</span></code>, <code class="xref py py-meth docutils literal notranslate"><span class="pre">k1lib.viz.Carousel.__getitem__()</span></code></p></li>
+<li><p>Added <a class="reference internal" href="base.html#k1lib.Learner.sample" title="k1lib.Learner.sample"><code class="xref py py-meth docutils literal notranslate"><span class="pre">k1lib.Learner.sample()</span></code></a></p></li>
+<li><p>Disallow <code class="xref py py-meth docutils literal notranslate"><span class="pre">k1lib.executeNb()</span></code> to execute lines that starts with “!”, also
+removed parameter <code class="docutils literal notranslate"><span class="pre">catchErrors</span></code>, as it’s quite useless</p></li>
+<li><p>Added <a class="reference internal" href="base.html#k1lib.Object" title="k1lib.Object"><code class="xref py py-meth docutils literal notranslate"><span class="pre">k1lib.Object()</span></code></a></p></li>
+</ul>
+</section>
+<section id="aug-22nd-2021">
+<h2><a class="reference external" href="/0.1.10">0.1.10</a> - Aug 22nd, 2021<a class="headerlink" href="#aug-22nd-2021" title="Permalink to this heading"></a></h2>
+<p>Background stuff:</p>
+<ul class="simple">
+<li><p>Added notebook regression tests</p></li>
+<li><p>Added tutorials automated building tool</p></li>
+<li><p>Added <a class="reference internal" href="base.html#k1lib.ignoreWarnings" title="k1lib.ignoreWarnings"><code class="xref py py-class docutils literal notranslate"><span class="pre">k1lib.ignoreWarnings</span></code></a></p></li>
+<li><p>Tutorials part moved to official docs (rather than .md files on github)</p></li>
+<li><p>Added <a class="reference external" href="tutorials.html">covid tutorial</a></p></li>
+</ul>
+<p>Bioinfo cli:</p>
+<ul class="simple">
+<li><p>Reintroduced <code class="xref py py-class docutils literal notranslate"><span class="pre">permute</span></code>, as <code class="xref py py-class docutils literal notranslate"><span class="pre">rows</span></code> is inadequate</p></li>
+<li><p>Added <code class="xref py py-class docutils literal notranslate"><span class="pre">lengths</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">applySingle</span></code></p></li>
+<li><p>Exposed <code class="xref py py-class docutils literal notranslate"><span class="pre">serial</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">oneToMany</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">manyToMany</span></code>,
+and <code class="xref py py-class docutils literal notranslate"><span class="pre">manyToManySpecific</span></code></p></li>
+</ul>
+<p>DL:</p>
+<ul class="simple">
+<li><p>Added <a class="reference internal" href="callbacks/index.html#k1lib.callbacks.confusionMatrix.ConfusionMatrix" title="k1lib.callbacks.confusionMatrix.ConfusionMatrix"><code class="xref py py-class docutils literal notranslate"><span class="pre">confusionMatrix.ConfusionMatrix</span></code></a> and <a class="reference internal" href="viz.html#k1lib.viz.confusionMatrix" title="k1lib.viz.confusionMatrix"><code class="xref py py-meth docutils literal notranslate"><span class="pre">k1lib.viz.confusionMatrix()</span></code></a></p></li>
+<li><p>Added <a class="reference internal" href="callbacks/index.html#k1lib.callbacks.callbacks.Callbacks.checkpointGraph" title="k1lib.callbacks.callbacks.Callbacks.checkpointGraph"><code class="xref py py-meth docutils literal notranslate"><span class="pre">callbacks.Callbacks.checkpointGraph()</span></code></a></p></li>
+<li><p>Added <a class="reference internal" href="monkey.html#torch.nn.modules.Module.paramsContext" title="torch.nn.modules.Module.paramsContext"><code class="xref py py-meth docutils literal notranslate"><span class="pre">torch.nn.modules.Module.paramsContext()</span></code></a></p></li>
+<li><p>Modified <a class="reference internal" href="base.html#k1lib.Object" title="k1lib.Object"><code class="xref py py-class docutils literal notranslate"><span class="pre">k1lib.Object</span></code></a> to allow setting <code class="docutils literal notranslate"><span class="pre">getdoc</span></code> field</p></li>
+<li><p>Added <code class="xref py py-meth docutils literal notranslate"><span class="pre">k1lib.viz.Carousel.saveBytes()</span></code>, <code class="xref py py-meth docutils literal notranslate"><span class="pre">k1lib.viz.Carousel.saveFile()</span></code>,
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">k1lib.viz.Carousel.saveGraphviz()</span></code>, and handle different image formats much
+better now</p></li>
+</ul>
+</section>
+<section id="aug-19th-2021">
+<h2><a class="reference external" href="/0.1.9">0.1.9</a> - Aug 19th, 2021<a class="headerlink" href="#aug-19th-2021" title="Permalink to this heading"></a></h2>
+<p>Bioinfo cli:</p>
+<ul class="simple">
+<li><p>Added <a class="reference internal" href="base.html#k1lib.Domain" title="k1lib.Domain"><code class="xref py py-class docutils literal notranslate"><span class="pre">k1lib.Domain</span></code></a> class</p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">__invert__</span></code> option for <code class="xref py py-class docutils literal notranslate"><span class="pre">rows</span></code> and <code class="xref py py-class docutils literal notranslate"><span class="pre">columns</span></code> by
+incorporating <a class="reference internal" href="base.html#k1lib.Domain" title="k1lib.Domain"><code class="xref py py-class docutils literal notranslate"><span class="pre">k1lib.Domain</span></code></a></p></li>
+<li><p>Sped up <code class="xref py py-class docutils literal notranslate"><span class="pre">rows</span></code> significantly</p></li>
+<li><p>Removed cli tool <code class="xref py py-class docutils literal notranslate"><span class="pre">every</span></code> as <code class="xref py py-class docutils literal notranslate"><span class="pre">rows</span></code> is good enough</p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">__invert__</span></code> option for <code class="xref py py-class docutils literal notranslate"><span class="pre">head</span></code>. As a result, removed
+<code class="xref py py-class docutils literal notranslate"><span class="pre">nhead</span></code></p></li>
+<li><p>Added <code class="xref py py-meth docutils literal notranslate"><span class="pre">till()</span></code> mechanism to <code class="xref py py-class docutils literal notranslate"><span class="pre">grep</span></code> cli tool</p></li>
+<li><p>Added <code class="xref py py-mod docutils literal notranslate"><span class="pre">gb</span></code> cli module to deal with genbank file format</p></li>
+<li><p>Added <code class="xref py py-meth docutils literal notranslate"><span class="pre">tableFromList()</span></code> as alias of <code class="xref py py-meth docutils literal notranslate"><span class="pre">listToTable()</span></code></p></li>
+<li><p>Renamed <code class="xref py py-class docutils literal notranslate"><span class="pre">avg</span></code> to <code class="xref py py-class docutils literal notranslate"><span class="pre">toAvg</span></code></p></li>
+<li><p>Added <code class="xref py py-class docutils literal notranslate"><span class="pre">toSum</span></code></p></li>
+</ul>
+<p>DL:</p>
+<ul class="simple">
+<li><p>Added Callbacks tab completion to <a class="reference internal" href="base.html#k1lib.Learner" title="k1lib.Learner"><code class="xref py py-class docutils literal notranslate"><span class="pre">k1lib.Learner</span></code></a> and <a class="reference internal" href="callbacks/index.html#k1lib.callbacks.callbacks.Callbacks" title="k1lib.callbacks.callbacks.Callbacks"><code class="xref py py-class docutils literal notranslate"><span class="pre">Callbacks</span></code></a></p></li>
+<li><p>Refactored <code class="xref py py-class docutils literal notranslate"><span class="pre">lossLandscape.LossLandscape</span></code> to <a class="reference internal" href="callbacks/index.html#k1lib.callbacks.landscape.Landscape" title="k1lib.callbacks.landscape.Landscape"><code class="xref py py-class docutils literal notranslate"><span class="pre">landscape.Landscape</span></code></a>
+that can be used by any other callbacks, right now it’s <a class="reference internal" href="callbacks/index.html#k1lib.callbacks.loss_accuracy.Loss" title="k1lib.callbacks.loss_accuracy.Loss"><code class="xref py py-class docutils literal notranslate"><span class="pre">Loss</span></code></a>
+and <a class="reference internal" href="callbacks/index.html#k1lib.callbacks.loss_accuracy.Accuracy" title="k1lib.callbacks.loss_accuracy.Accuracy"><code class="xref py py-class docutils literal notranslate"><span class="pre">Accuracy</span></code></a></p></li>
+<li><p>Added <code class="xref py py-meth docutils literal notranslate"><span class="pre">callbacks.Callback.pause()</span></code> to help with <a class="reference internal" href="callbacks/index.html#k1lib.callbacks.loss_accuracy.Accuracy" title="k1lib.callbacks.loss_accuracy.Accuracy"><code class="xref py py-class docutils literal notranslate"><span class="pre">Accuracy</span></code></a>’s
+<a class="reference internal" href="callbacks/index.html#k1lib.callbacks.landscape.Landscape" title="k1lib.callbacks.landscape.Landscape"><code class="xref py py-class docutils literal notranslate"><span class="pre">Landscape</span></code></a></p></li>
+</ul>
+</section>
+<section id="aug-15th-2021">
+<h2><a class="reference external" href="/0.1.8">0.1.8</a> - Aug 15th, 2021<a class="headerlink" href="#aug-15th-2021" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>Fixed installation bug where readme.md would be absent, and setup.py won’t work
+at all.</p></li>
+</ul>
+<p>Bioinfo cli:</p>
+<ul class="simple">
+<li><p>Huge revamp of how tables are treated. Before, row elements are in a single string,
+separated by a delimiter. Now each row is a full fledged list</p></li>
+<li><p>Added <code class="xref py py-class docutils literal notranslate"><span class="pre">grepToTable</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">joinList</span></code>,
+<code class="xref py py-class docutils literal notranslate"><span class="pre">contains</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">table</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">stitch</span></code>,
+<code class="xref py py-class docutils literal notranslate"><span class="pre">listToTable</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">insertColumn</span></code> cli tools</p></li>
+<li><p>Removed <code class="xref py py-class docutils literal notranslate"><span class="pre">joinRows</span></code> but still keep <code class="xref py py-class docutils literal notranslate"><span class="pre">joinStreams</span></code>
+as “joinRows” is not really obvious</p></li>
+<li><p>Removed <code class="xref py py-class docutils literal notranslate"><span class="pre">permute</span></code> as <code class="xref py py-class docutils literal notranslate"><span class="pre">columns</span></code> is pretty much identical</p></li>
+<li><p>Renamed <code class="xref py py-class docutils literal notranslate"><span class="pre">inside</span></code> to <code class="xref py py-class docutils literal notranslate"><span class="pre">inSet</span></code></p></li>
+<li><p>Cut out nested functionality from <code class="xref py py-class docutils literal notranslate"><span class="pre">grep</span></code> to <code class="xref py py-class docutils literal notranslate"><span class="pre">grepToTable</span></code></p></li>
+</ul>
+</section>
+<section id="aug-14th-2021">
+<h2><a class="reference external" href="/0.1.7">0.1.7</a> - Aug 14th, 2021<a class="headerlink" href="#aug-14th-2021" title="Permalink to this heading"></a></h2>
+<p>Interface with external modules:</p>
+<ul class="simple">
+<li><p>Swapped out <code class="docutils literal notranslate"><span class="pre">register_backward_hook</span></code> with <a class="reference external" href="https://pytorch.org/docs/master/generated/torch.nn.Module.html#torch.nn.Module.register_full_backward_hook" title="(in PyTorch vmaster (2.1.0a0+gitbe0b12e ))"><code class="xref py py-meth docutils literal notranslate"><span class="pre">register_full_backward_hook()</span></code></a>
+in <a class="reference internal" href="callbacks/index.html#k1lib.callbacks.hookModule.HookModule" title="k1lib.callbacks.hookModule.HookModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">HookModule</span></code></a> callback</p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">torch.nn.Module.preserveDevice()</span></code> context manager</p></li>
+</ul>
+<p>Callbacks:</p>
+<ul class="simple">
+<li><p>Changed <a class="reference internal" href="callbacks/index.html#k1lib.callbacks.callbacks.Callbacks.suspend" title="k1lib.callbacks.callbacks.Callbacks.suspend"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Callbacks.suspend()</span></code></a> to take in names only</p></li>
+<li><p>Added <a class="reference internal" href="callbacks/index.html#k1lib.callbacks.callbacks.Callbacks.suspendClasses" title="k1lib.callbacks.callbacks.Callbacks.suspendClasses"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Callbacks.suspendClasses()</span></code></a> to take in classes</p></li>
+<li><p>Changed <code class="xref py py-meth docutils literal notranslate"><span class="pre">Callbacks.suspendEvaluation()</span></code> to <a class="reference internal" href="callbacks/index.html#k1lib.callbacks.callbacks.Callbacks.suspendEval" title="k1lib.callbacks.callbacks.Callbacks.suspendEval"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Callbacks.suspendEval()</span></code></a>, also
+added functionality for white and black lists</p></li>
+<li><p>Ripped out complex <code class="xref py py-meth docutils literal notranslate"><span class="pre">Callback.__getattr__()</span></code> mechanism (that automatically searches
+the parent learner for missing attributes) to improve speed</p></li>
+<li><p>Added <a class="reference internal" href="callbacks/index.html#module-k1lib.callbacks.core" title="k1lib.callbacks.core"><code class="xref py py-mod docutils literal notranslate"><span class="pre">k1lib.callbacks.core</span></code></a> callbacks <a class="reference internal" href="callbacks/index.html#k1lib.callbacks.core.CoreNormal" title="k1lib.callbacks.core.CoreNormal"><code class="xref py py-class docutils literal notranslate"><span class="pre">CoreNormal</span></code></a>
+and <a class="reference internal" href="callbacks/index.html#k1lib.callbacks.core.CoreRNN" title="k1lib.callbacks.core.CoreRNN"><code class="xref py py-class docutils literal notranslate"><span class="pre">CoreRNN</span></code></a></p></li>
+<li><p>Added more plot decorators for <a class="reference internal" href="callbacks/profilers.html#k1lib.callbacks.profilers.memory.MemoryProfiler" title="k1lib.callbacks.profilers.memory.MemoryProfiler"><code class="xref py py-class docutils literal notranslate"><span class="pre">MemoryProfiler</span></code></a>,
+including backward-forward separator with their text</p></li>
+<li><p>Changed <code class="xref py py-class docutils literal notranslate"><span class="pre">LossLandscape</span></code> callback so that it
+follows the common flow structure. Before, it implements a whole new <code class="docutils literal notranslate"><span class="pre">cbs(...)</span></code>
+schema that essentially duplicated the loop inside of <a class="reference internal" href="base.html#k1lib.Learner" title="k1lib.Learner"><code class="xref py py-class docutils literal notranslate"><span class="pre">k1lib.Learner</span></code></a></p></li>
+</ul>
+<p>Learner:</p>
+<ul class="simple">
+<li><p>Implemented grace stop handling for <a class="reference internal" href="base.html#k1lib.Learner" title="k1lib.Learner"><code class="xref py py-class docutils literal notranslate"><span class="pre">Learner</span></code></a>. Before, if someone throws
+<a class="reference internal" href="base.html#k1lib.CancelRunException" title="k1lib.CancelRunException"><code class="xref py py-exc docutils literal notranslate"><span class="pre">CancelRunException</span></code></a> while executing a batch, then it will immediately jump
+to the end of the run. Changed it so that it will be caught in the batch loop,
+execute checkpoints <code class="docutils literal notranslate"><span class="pre">cancelBatch</span></code> and <code class="docutils literal notranslate"><span class="pre">endBatch</span></code> and rethrow it. Same thing
+with <a class="reference internal" href="base.html#k1lib.CancelEpochException" title="k1lib.CancelEpochException"><code class="xref py py-exc docutils literal notranslate"><span class="pre">CancelEpochException</span></code></a></p></li>
+<li><p>Moved loss function from being a core functionality inside <a class="reference internal" href="base.html#k1lib.Learner" title="k1lib.Learner"><code class="xref py py-class docutils literal notranslate"><span class="pre">Learner</span></code></a>
+to an external callback, so that adapting multiple loss functions are possible</p></li>
+<li><p>Added <a class="reference internal" href="base.html#k1lib.Learner.__call__" title="k1lib.Learner.__call__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Learner.__call__()</span></code></a></p></li>
+</ul>
+<p>Bioinfo cli:</p>
+<ul class="simple">
+<li><p>Added <code class="xref py py-class docutils literal notranslate"><span class="pre">isValue</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">intersection</span></code>,
+<code class="xref py py-class docutils literal notranslate"><span class="pre">AA_</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">infinite</span></code>,
+<code class="xref py py-class docutils literal notranslate"><span class="pre">dereference</span></code> cli tools</p></li>
+<li><p>Modified <code class="xref py py-class docutils literal notranslate"><span class="pre">cat</span></code> to be able to take in file name by pipe</p></li>
+<li><p>Added new joining operator “+” between <code class="xref py py-class docutils literal notranslate"><span class="pre">init.BaseCli</span></code></p></li>
+</ul>
+<p>Style changes:</p>
+<ul class="simple">
+<li><p>Changed <code class="xref py py-attr docutils literal notranslate"><span class="pre">Callbacks.learner</span></code> to <a class="reference internal" href="callbacks/index.html#k1lib.callbacks.callbacks.Callbacks.l" title="k1lib.callbacks.callbacks.Callbacks.l"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Callbacks.l</span></code></a></p></li>
+<li><p>Changed <code class="xref py py-attr docutils literal notranslate"><span class="pre">Callback.learner</span></code> to <a class="reference internal" href="callbacks/index.html#k1lib.callbacks.callbacks.Callbacks.l" title="k1lib.callbacks.callbacks.Callbacks.l"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Callbacks.l</span></code></a></p></li>
+<li><p>Removed <a class="reference internal" href="eqn.html#module-k1lib.eqn" title="k1lib.eqn"><code class="xref py py-mod docutils literal notranslate"><span class="pre">k1lib.eqn</span></code></a> from <a class="reference internal" href="imports.html#module-k1lib.imports" title="k1lib.imports"><code class="xref py py-mod docutils literal notranslate"><span class="pre">k1lib.imports</span></code></a>’s namespace</p></li>
+</ul>
+</section>
+<section id="aug-13th-2021">
+<h2>0.1.6 - Aug 13th, 2021<a class="headerlink" href="#aug-13th-2021" title="Permalink to this heading"></a></h2>
+<p>I don’t really keep track of things 0.1.6 and before, so nothing here really.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="tutorials.html" class="btn btn-neutral float-left" title="Tutorials" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Quang Ho.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

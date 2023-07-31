@@ -307,14 +307,31 @@
     - retries     = 10                                                        ​how many times to retry sending the request before giving up
   - applyCl       = &lt;Settings&gt;                                                ​modifier.applyCl() settings
     - sudoTimeout = 300                                                       ​seconds before deleting the stored password for sudo commands
+    - cpuLimit    = None                                                      ​if specified (int), will not schedule more jobs if the current number of assigned cpus exceeds this
+  - repeat        = &lt;Settings&gt;                                                ​settings related to repeat() and repeatFrom()
+    - infBs = 100                                                             ​if dealing with infinite lists, how many elements at a time should be processed?
   - chem          = &lt;Settings&gt;                                                ​chemistry-related settings
     - imgSize = 200                                                           ​default image size used in toPIL() when drawing rdkit molecules
+  - models        = &lt;Settings&gt;                                                ​settings related to k1lib.cli.models
+    - cuda    = None                                                          ​whether to run the models on the GPU or not. True for GPU, False for CPU. None (default) for GPU if available, else CPU
+    - embed   = &lt;Settings&gt;                                                    ​
+      - model = all-MiniLM-L6-v2                                              ​what model to choose from `SentenceTransformer` library
+      - bs    = 512                                                           ​batch size to feed the model. For all-MiniLM-L6-v2, it seems to be able to deal with anything. I&#39;ve tried 10k batch and it&#39;s still doing good
+    - generic = &lt;Settings&gt;                                                    ​
+      - model = google/flan-t5-xl                                             ​what model to choose from `transformers` library
+      - bs    = 16                                                            ​batch size to feed the model. For flan-t5-xl, 16 seems to be the sweet spot for 24GB VRAM (RTX 3090/4090). Decrease it if you don&#39;t have as much VRAM
+    - bloom   = &lt;Settings&gt;                                                    ​bloom filter settings
+      - scalable = &lt;Settings&gt;                                                 ​settings for when you don&#39;t declare the bloom&#39;s capacity ahead of time
+        - capacity = 1000                                                     ​initial filter&#39;s capacity
+        - growth   = 4                                                        ​how fast does the filter&#39;s capacity grow over time when the capacity is reached
   - bio           = &lt;Settings&gt;                                                ​from k1lib.cli.bio module
     - blast      = None                                                       ​location of BLAST database
     - go         = None                                                       ​location of gene ontology file (.obo)
     - so         = None                                                       ​location of sequence ontology file
     - lookupImgs = True                                                       ​sort of niche. Whether to auto looks up extra gene ontology relationship images
     - phred      = !&quot;#$%&amp;&#39;()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJ                 ​Phred quality score
+  - ktree         = &lt;Settings&gt;                                                ​cli.ktree module settings
+    - tok =                                                                  ​Special token for internal processing
   - sam           = &lt;Settings&gt;                                                ​from k1lib.cli.sam module
     - flags  = [&#39;PAIRED&#39;, &#39;PROPER_PAIR&#39;, &#39;UNMAP&#39;, &#39;MUNMAP&#39;, &#39;R...             ​list of flags
     - header = &lt;Settings&gt;                                                     ​sam headers
@@ -1759,7 +1776,7 @@ string, with timezone and whatnot.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="k1lib.dep">
-<span class="sig-prename descclassname"><span class="pre">k1lib.</span></span><span class="sig-name descname"><span class="pre">dep</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/_basics.html#dep"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.dep" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">k1lib.</span></span><span class="sig-name descname"><span class="pre">dep</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/_basics.html#dep"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.dep" title="Permalink to this definition"></a></dt>
 <dd><p>Imports a potentially unavailable package
 Example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">graphviz</span> <span class="o">=</span> <span class="n">k1</span><span class="o">.</span><span class="n">dep</span><span class="p">(</span><span class="s2">&quot;graphviz&quot;</span><span class="p">)</span>
@@ -1771,6 +1788,15 @@ Example:</p>
 <p>I don’t imagine this would be useful for everyday use though.
 This is mainly for writing this library, so that it can use
 optional dependencies.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>s</strong> – name of the package. Can be nested, like <cite>matplotlib.pyplot</cite></p></li>
+<li><p><strong>alt</strong> – (optional) name of the package to display in error message if package is not found</p></li>
+<li><p><strong>url</strong> – (optional) url of the package’s website, so that they know where to get official docs</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
