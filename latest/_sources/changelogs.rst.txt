@@ -36,6 +36,7 @@ Cli:
 - Added robust Actor model for :class:`~modifier.applyCl`.
 - Accelerated :class:`~filt.rows` and :class:`~filt.cut` for array types
 - Added unsort mode to :class:`~modifier.sort`
+- Added :class:`~modifier.roll`
 
 Generic:
 
