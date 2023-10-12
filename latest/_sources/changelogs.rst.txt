@@ -36,7 +36,9 @@ Cli:
 - Added robust Actor model for :class:`~modifier.applyCl`.
 - Accelerated :class:`~filt.rows` and :class:`~filt.cut` for array types
 - Added unsort mode to :class:`~modifier.sort`
-- Added :class:`~modifier.roll`
+- Added :class:`~modifier.roll`, :method:`~k1lib.batchify`
+- Added :mod:`k1lib.cli.kapi` to use ML apis published on mlexps.com
+- Added :mod:`k1lib.selen` to extract main content of a webpage using Selenium
 
 Generic:
 

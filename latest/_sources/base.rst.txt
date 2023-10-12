@@ -188,3 +188,4 @@ Higher order functions
 .. autofunction:: k1lib.optimize
 .. autofunction:: k1lib.inverse
 .. autofunction:: k1lib.integral
+.. autofunction:: k1lib.batchify

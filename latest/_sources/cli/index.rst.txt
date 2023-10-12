@@ -619,6 +619,14 @@ inp module
 
    .. automethod:: k1lib.cli.inp.cat.pickle
 
+ktree module
+-------------------------
+
+.. automodule:: k1lib.cli.ktree
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 kxml module
 -------------------------
 

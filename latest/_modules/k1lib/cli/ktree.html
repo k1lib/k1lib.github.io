@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>k1lib.cli.ktree &mdash; k1lib  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> k1lib
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../base.html">Base module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../cli/index.html">k1lib.cli module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../callbacks/index.html">k1lib.callbacks module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../k1a.html">k1lib._k1a module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../k1ui.html">k1lib.k1ui module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eqn.html">k1lib.eqn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fmt.html">k1lib.fmt module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../graphEqn.html">k1lib.graphEqn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../imports.html">k1lib.imports module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mo.html">k1lib.mo module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../knn.html">k1lib.knn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../p5.html">k1lib.p5 module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../schedule.html">k1lib.schedule module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../selector.html">k1lib.selector module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../selen.html">k1lib.selen module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../serve.html">k1lib.serve module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../viz.html">k1lib.viz module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../monkey.html">Monkey patched classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelogs.html">Changelogs</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">k1lib</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">k1lib.cli.ktree</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for k1lib.cli.ktree</h1><div class="highlight"><pre>
+<span></span><span class="c1"># AUTOGENERATED FILE! PLEASE DON&#39;T EDIT HERE. EDIT THE SOURCE NOTEBOOKS INSTEAD</span>
+<span class="kn">import</span> <span class="nn">k1lib</span> <span class="k">as</span> <span class="nn">k1</span><span class="p">;</span> <span class="kn">import</span> <span class="nn">k1lib.cli</span> <span class="k">as</span> <span class="nn">cli</span>
+<span class="kn">from</span> <span class="nn">k1lib.cli</span> <span class="kn">import</span> <span class="n">BaseCli</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;create&quot;</span><span class="p">,</span> <span class="s2">&quot;apply&quot;</span><span class="p">,</span> <span class="s2">&quot;filt&quot;</span><span class="p">,</span> <span class="s2">&quot;select&quot;</span><span class="p">,</span> <span class="s2">&quot;flatten&quot;</span><span class="p">,</span> <span class="s2">&quot;pretty&quot;</span><span class="p">,</span> <span class="s2">&quot;display&quot;</span><span class="p">,</span> <span class="s2">&quot;search&quot;</span><span class="p">,</span> <span class="s2">&quot;walk&quot;</span><span class="p">]</span>
+<span class="n">settings</span> <span class="o">=</span> <span class="n">k1</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">cli</span>
+<span class="n">kSett</span> <span class="o">=</span> <span class="n">k1</span><span class="o">.</span><span class="n">Settings</span><span class="p">()</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;tok&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\ue000</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;Special token for internal processing&quot;</span><span class="p">)</span>
+<span class="n">settings</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;ktree&quot;</span><span class="p">,</span> <span class="n">kSett</span><span class="p">,</span> <span class="s2">&quot;cli.ktree module settings&quot;</span><span class="p">);</span>
+<span class="k">def</span> <span class="nf">_mktree</span><span class="p">(</span><span class="n">depth</span><span class="p">):</span>                                                              <span class="c1"># _mktree</span>
+    <span class="k">if</span> <span class="n">depth</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span> <span class="k">return</span> <span class="n">cli</span><span class="o">.</span><span class="n">iden</span><span class="p">()</span>                                             <span class="c1"># _mktree</span>
+    <span class="k">return</span> <span class="n">cli</span><span class="o">.</span><span class="n">groupBy</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">_mktree</span><span class="p">(</span><span class="n">depth</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>                 <span class="c1"># _mktree</span>
+<span class="k">class</span> <span class="nc">mktree1</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>                                                          <span class="c1"># mktree1</span>
+    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">):</span> <span class="n">it</span> <span class="o">=</span> <span class="n">it</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">deref</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span> <span class="k">return</span> <span class="p">(</span><span class="n">it</span> <span class="o">|</span> <span class="n">_mktree</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">it</span><span class="p">[</span><span class="mi">0</span><span class="p">])))</span><span class="c1"># if len(it) &gt; 0 else [] # mktree1</span>
+<span class="k">def</span> <span class="nf">prune1</span><span class="p">(</span><span class="n">x</span><span class="p">):</span> <span class="c1"># eliminating empty elements. For some reason, _mktree() creates an empty element at each leaf. No idea why and too lazy to dig in further # prune1</span>
+    <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>                                                               <span class="c1"># prune1</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="k">continue</span>                                              <span class="c1"># prune1</span>
+        <span class="n">s</span><span class="p">,</span> <span class="n">children</span> <span class="o">=</span> <span class="n">elem</span><span class="p">;</span> <span class="k">yield</span> <span class="p">[</span><span class="n">s</span><span class="p">,</span> <span class="n">prune1</span><span class="p">(</span><span class="n">children</span><span class="p">)]</span>                          <span class="c1"># prune1</span>
+<span class="k">def</span> <span class="nf">prune2</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;[children, hasToken]&quot;</span><span class="p">:</span> <span class="c1"># trying to grab whether there is a branch that ends at the parent or not # prune2</span>
+    <span class="n">hasToken</span> <span class="o">=</span> <span class="kc">False</span><span class="p">;</span> <span class="n">ans</span> <span class="o">=</span> <span class="p">[]</span>                                                   <span class="c1"># prune2</span>
+    <span class="k">for</span> <span class="n">s</span><span class="p">,</span> <span class="n">children</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>                                                        <span class="c1"># prune2</span>
+        <span class="n">children</span><span class="p">,</span> <span class="n">hT</span> <span class="o">=</span> <span class="n">prune2</span><span class="p">(</span><span class="n">children</span><span class="p">)</span>                                          <span class="c1"># prune2</span>
+        <span class="n">hasToken</span> <span class="o">=</span> <span class="n">hasToken</span> <span class="ow">or</span> <span class="n">s</span> <span class="o">==</span> <span class="n">kSett</span><span class="o">.</span><span class="n">tok</span>                                    <span class="c1"># prune2</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">children</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="n">hT</span> <span class="o">=</span> <span class="mi">1</span>                                            <span class="c1"># prune2</span>
+        <span class="n">ans</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">s</span><span class="p">,</span> <span class="n">children</span><span class="p">,</span> <span class="n">hT</span><span class="o">+</span><span class="mi">0</span><span class="p">])</span>                                          <span class="c1"># prune2</span>
+    <span class="k">return</span> <span class="n">ans</span><span class="p">,</span> <span class="n">hasToken</span>                                                         <span class="c1"># prune2</span>
+<span class="k">def</span> <span class="nf">prune3</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span> <span class="c1"># trying to eliminate the &quot;virtual&quot; elements tagged with the token # prune3</span>
+    <span class="n">ans</span> <span class="o">=</span> <span class="p">[]</span>                                                                     <span class="c1"># prune3</span>
+    <span class="k">for</span> <span class="n">s</span><span class="p">,</span> <span class="n">children</span><span class="p">,</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>                                                   <span class="c1"># prune3</span>
+        <span class="k">if</span> <span class="n">s</span> <span class="o">==</span> <span class="n">kSett</span><span class="o">.</span><span class="n">tok</span><span class="p">:</span> <span class="k">continue</span>                                              <span class="c1"># prune3</span>
+        <span class="n">ans</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">s</span><span class="p">,</span> <span class="n">prune3</span><span class="p">(</span><span class="n">children</span><span class="p">,</span> <span class="n">depth</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="n">num</span><span class="p">,</span> <span class="n">depth</span><span class="p">])</span>                   <span class="c1"># prune3</span>
+    <span class="k">return</span> <span class="n">ans</span>                                                                   <span class="c1"># prune3</span>
+<span class="k">def</span> <span class="nf">prune</span><span class="p">(</span><span class="n">x</span><span class="p">):</span> <span class="k">return</span> <span class="n">prune3</span><span class="p">(</span><span class="n">prune2</span><span class="p">(</span><span class="n">prune1</span><span class="p">(</span><span class="n">x</span><span class="p">))[</span><span class="mi">0</span><span class="p">])</span>                                <span class="c1"># prune</span>
+<span class="k">def</span> <span class="nf">prune_makeup</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>                                                             <span class="c1"># prune_makeup</span>
+    <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>                                                               <span class="c1"># prune_makeup</span>
+        <span class="k">yield</span> <span class="p">[</span><span class="n">elem</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">prune_makeup</span><span class="p">(</span><span class="n">elem</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="k">else</span> <span class="p">[</span><span class="n">elem</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="p">[],</span> <span class="mi">0</span><span class="p">]</span> <span class="c1"># last column for extra metadata slot # prune_makeup</span>
+<div class="viewcode-block" id="create"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.ktree.create">[docs]</a><span class="k">class</span> <span class="nc">create</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>                                                           <span class="c1"># create</span>
+<div class="viewcode-block" id="create.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.ktree.create.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>                                                          <span class="c1"># create</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Creates a tree structure from a flat table.</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    flat = [[&quot;a&quot;, &quot;b&quot;],</span>
+<span class="sd">            [&quot;a&quot;, &quot;b&quot;, &quot;2&quot;],</span>
+<span class="sd">            [&quot;a&quot;, &quot;b&quot;, &quot;3&quot;],</span>
+<span class="sd">            [&quot;a&quot;, &quot;c&quot;, &quot;4&quot;],</span>
+<span class="sd">            [&quot;a&quot;, &quot;c&quot;, &quot;5&quot;],</span>
+<span class="sd">            [&quot;a&quot;, &quot;d&quot;]]</span>
+<span class="sd">    flat | ktree.create()</span>
+
+<span class="sd">That will return this::</span>
+
+<span class="sd">    [[&#39;a&#39;,</span>
+<span class="sd">      [[&#39;b&#39;, [</span>
+<span class="sd">         [&#39;2&#39;, [], 1, 2],</span>
+<span class="sd">         [&#39;3&#39;, [], 1, 2]],</span>
+<span class="sd">       1, 1],</span>
+<span class="sd">       [&#39;c&#39;, [</span>
+<span class="sd">         [&#39;4&#39;, [], 1, 2],</span>
+<span class="sd">         [&#39;5&#39;, [], 1, 2]],</span>
+<span class="sd">       0, 1],</span>
+<span class="sd">       [&#39;d&#39;, [], 1, 1]],</span>
+<span class="sd">     0, 0]]</span>
+
+<span class="sd">Each element is represented by a 3-tuple: ``[name, children, ends here?, depth]``.</span>
+<span class="sd">Children is just a list of elements, and &quot;ends here?&quot; means whether there</span>
+<span class="sd">is a row in the flat table that exists for this particular element. Most</span>
+<span class="sd">has it, like &quot;a/b/2&quot; and &quot;a/b/3&quot;, but some don&#39;t, like &quot;a/c&quot;, so &quot;ends here?&quot;</span>
+<span class="sd">of &quot;c&quot; is 0.</span>
+
+<span class="sd">Everything in the :mod:`ktree` module is relatively unoptimized, because my use</span>
+<span class="sd">cases don&#39;t really require super high speed, so right now it can only handle</span>
+<span class="sd">18k rows/second.</span>
+
+<span class="sd">.. warning::</span>
+
+<span class="sd">    Internally, this makes use of the special character &quot;\\ue000&quot;, configurable</span>
+<span class="sd">    at ``settings.cli.ktree.tok`` to create the tree. This is in Unicode&#39;s private</span>
+<span class="sd">    use area, so it shouldn&#39;t appear anywhere in normal text. However, if your</span>
+<span class="sd">    application uses this character, it&#39;s best to change it to something else</span>
+<span class="sd">&quot;&quot;&quot;</span>                                                                              <span class="c1"># create</span></div>
+<div class="viewcode-block" id="create.__ror__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.ktree.create.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">):</span> <span class="k">return</span> <span class="n">prune</span><span class="p">(</span><span class="n">it</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="n">kSett</span><span class="o">.</span><span class="n">tok</span><span class="p">)</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span> <span class="o">|</span> <span class="n">mktree1</span><span class="p">())</span> <span class="c1"># create</span></div></div>
+<span class="k">def</span> <span class="nf">_applyRet</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;ch&quot;</span><span class="p">:</span>                                                     <span class="c1"># _applyRet</span>
+    <span class="n">ans</span> <span class="o">=</span> <span class="p">[]</span>                                                                     <span class="c1"># _applyRet</span>
+    <span class="k">for</span> <span class="n">s</span><span class="p">,</span> <span class="n">ch</span><span class="p">,</span> <span class="o">*</span><span class="n">other</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span> <span class="n">ans</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">_applyRet</span><span class="p">(</span><span class="n">ch</span><span class="p">,</span> <span class="n">f</span><span class="p">),</span> <span class="o">*</span><span class="n">other</span><span class="p">))</span>           <span class="c1"># _applyRet</span>
+    <span class="k">return</span> <span class="n">ans</span>                                                                   <span class="c1"># _applyRet</span>
+<div class="viewcode-block" id="apply"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.ktree.apply">[docs]</a><span class="k">class</span> <span class="nc">apply</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>                                                            <span class="c1"># apply</span>
+<div class="viewcode-block" id="apply.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.ktree.apply.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>                                                       <span class="c1"># apply</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Transforms the tree recursively.</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    a = flat | ktree.create() | ktree.apply(lambda s,ch,e,d: [s,ch,(s | (tryout(0) | aS(int))) + (ch | cut(2) | toSum())])</span>
+
+<span class="sd">That returns this::</span>
+
+<span class="sd">    [[&#39;a&#39;,</span>
+<span class="sd">      [[&#39;b&#39;, [[&#39;2&#39;, [], 2], [&#39;3&#39;, [], 3]], 5],</span>
+<span class="sd">       [&#39;c&#39;, [[&#39;4&#39;, [], 4], [&#39;5&#39;, [], 5]], 9],</span>
+<span class="sd">       [&#39;d&#39;, [], 0]],</span>
+<span class="sd">      14]]</span>
+
+<span class="sd">Extracting the final result::</span>
+
+<span class="sd">    a | cut(2) | item() # returns 14</span>
+
+<span class="sd">Here, I&#39;m trying to add up all elements that can be converted into an</span>
+<span class="sd">integer, but do that at every node in the tree. The ``s | (tryout(0) | aS(int))``</span>
+<span class="sd">part is trying to convert it into an integer, returning 0 if it can&#39;t do it.</span>
+<span class="sd">Then, the ``ch | cut(2) | toSum()`` tries to add up the result of all children</span>
+<span class="sd">underneath it. The results naturally trickle upwards and you get the result &quot;14&quot;</span>
+<span class="sd">at the top level, at which point it&#39;s trivial to extract.</span>
+
+<span class="sd">If you&#39;re using a lot of cli tools inside the lambda function and the performance</span>
+<span class="sd">is terrible, you can try to initialize the cli tools outside the lambda, and then</span>
+<span class="sd">just use it inside, to eliminate cli initialization cost, like this::</span>
+
+<span class="sd">    def getVal(x):</span>
+<span class="sd">        try: return int(x)</span>
+<span class="sd">        except: return 0</span>
+<span class="sd">    sumF = cut(2) | toSum()</span>
+<span class="sd">    flat | ktree.create() | ktree.apply(lambda s,ch,e,d: [s,ch,getVal(s) + sumF(ch)])</span>
+
+<span class="sd">This should give you enough performance for your purpose, but if you want even more</span>
+<span class="sd">perf, don&#39;t use cli tools inside the lambda at all.&quot;&quot;&quot;</span>                           <span class="c1"># apply</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">f</span> <span class="o">=</span> <span class="n">f</span>                                                               <span class="c1"># apply</span></div>
+<div class="viewcode-block" id="apply.__ror__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.ktree.apply.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">):</span> <span class="k">return</span> <span class="n">_applyRet</span><span class="p">(</span><span class="n">it</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">)</span>                          <span class="c1"># apply</span></div></div>
+<span class="k">def</span> <span class="nf">_filter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;ch&quot;</span><span class="p">:</span>                                                       <span class="c1"># _filter</span>
+    <span class="n">ans</span> <span class="o">=</span> <span class="p">[]</span>                                                                     <span class="c1"># _filter</span>
+    <span class="k">for</span> <span class="n">s</span><span class="p">,</span> <span class="n">ch</span><span class="p">,</span> <span class="o">*</span><span class="n">other</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>                                                      <span class="c1"># _filter</span>
+        <span class="n">ch</span> <span class="o">=</span> <span class="n">_filter</span><span class="p">(</span><span class="n">ch</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>                                                      <span class="c1"># _filter</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">ch</span><span class="p">,</span> <span class="o">*</span><span class="n">other</span><span class="p">)</span>                                                   <span class="c1"># _filter</span>
+        <span class="k">if</span> <span class="n">res</span><span class="p">:</span> <span class="n">ans</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">s</span><span class="p">,</span> <span class="n">ch</span><span class="p">,</span> <span class="o">*</span><span class="n">other</span><span class="p">])</span>                                      <span class="c1"># _filter</span>
+    <span class="k">return</span> <span class="n">ans</span>                                                                   <span class="c1"># _filter</span>
+<div class="viewcode-block" id="filt"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.ktree.filt">[docs]</a><span class="k">class</span> <span class="nc">filt</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>                                                             <span class="c1"># filt</span>
+<div class="viewcode-block" id="filt.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.ktree.filt.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>                                                       <span class="c1"># filt</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Filters out elements that don&#39;t pass a certain predicate.</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    # returns [[&#39;a&#39;, [[&#39;b&#39;, [], 1, 1], [&#39;c&#39;, [], 0, 1], [&#39;d&#39;, [], 1, 1]], 0, 0]]</span>
+<span class="sd">    flat | ktree.create() | ktree.filt(lambda s,ch,e,d: d&lt;2)</span>
+
+<span class="sd">Essentially, this filters out any elements that are of depth 2 or more.&quot;&quot;&quot;</span>       <span class="c1"># filt</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">f</span> <span class="o">=</span> <span class="n">f</span>                                                               <span class="c1"># filt</span></div>
+<div class="viewcode-block" id="filt.__ror__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.ktree.filt.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">):</span> <span class="k">return</span> <span class="n">_filter</span><span class="p">(</span><span class="n">it</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">)</span>                            <span class="c1"># filt</span></div></div>
+<div class="viewcode-block" id="select"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.ktree.select">[docs]</a><span class="k">class</span> <span class="nc">select</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>                                                           <span class="c1"># select</span>
+<div class="viewcode-block" id="select.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.ktree.select.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">term</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">depth</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">exact</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>                    <span class="c1"># select</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Selects for a single element at a particular depth.</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    # returns [[&#39;a&#39;, [[&#39;b&#39;, [[&#39;2&#39;, [], 1, 2], [&#39;3&#39;, [], 1, 2]], 1, 1]], 0, 0]]. It selects for &quot;/*/b&quot;</span>
+<span class="sd">    flat | ktree.create() | ktree.select(&quot;b&quot;, 1)</span>
+<span class="sd">    # returns [[&#39;a&#39;, [[&#39;b&#39;, [], 1, 1], [&#39;c&#39;, [], 0, 1], [&#39;d&#39;, [], 1, 1]], 0, 0]]. It selects for &quot;/*/*/b&quot;, which does not exist. But it still returns all elements in depth 1, as depth 1 is not selected for</span>
+<span class="sd">    flat | ktree.create() | ktree.select(&quot;b&quot;, 2)</span>
+<span class="sd">    # returns [[&#39;a&#39;, [[&#39;b&#39;, [[&#39;2&#39;, [], 1, 2], [&#39;3&#39;, [], 1, 2]], 1, 1]], 0, 0]]. It selects for &quot;/a/b&quot;</span>
+<span class="sd">    flat | ktree.create() | ktree.select(&quot;a&quot;, 0) | ktree.select(&quot;b&quot;, 1)</span>
+<span class="sd">    # returns []. It selects for &quot;/c/b&quot;, which does not exist</span>
+<span class="sd">    flat | ktree.create() | ktree.select(&quot;c&quot;, 0) | ktree.select(&quot;b&quot;, 1)</span>
+
+<span class="sd">:param term: term to select</span>
+<span class="sd">:param depth: depth at which to select term</span>
+<span class="sd">:param exact: if True, select for term exactly, else select for elements that contains term&quot;&quot;&quot;</span> <span class="c1"># select</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">term</span> <span class="o">=</span> <span class="n">term</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">depth</span> <span class="o">=</span> <span class="n">depth</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">exact</span> <span class="o">=</span> <span class="n">exact</span>                 <span class="c1"># select</span></div>
+<div class="viewcode-block" id="select.__ror__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.ktree.select.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">):</span>                                                       <span class="c1"># select</span>
+        <span class="n">term</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">term</span><span class="p">;</span> <span class="n">depth</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">depth</span><span class="p">;</span> <span class="n">exact</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">exact</span>                 <span class="c1"># select</span>
+        <span class="k">if</span> <span class="n">exact</span><span class="p">:</span> <span class="k">return</span> <span class="n">it</span> <span class="o">|</span> <span class="n">filt</span><span class="p">(</span><span class="k">lambda</span> <span class="n">s</span><span class="p">,</span><span class="n">ch</span><span class="p">,</span><span class="n">e</span><span class="p">,</span><span class="n">d</span><span class="p">:</span> <span class="p">(</span><span class="n">d</span> <span class="o">!=</span> <span class="n">depth</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">d</span> <span class="o">==</span> <span class="n">depth</span> <span class="ow">and</span> <span class="n">term</span> <span class="o">==</span> <span class="n">s</span><span class="p">))</span> <span class="c1"># select</span>
+        <span class="k">else</span><span class="p">:</span>     <span class="k">return</span> <span class="n">it</span> <span class="o">|</span> <span class="n">filt</span><span class="p">(</span><span class="k">lambda</span> <span class="n">s</span><span class="p">,</span><span class="n">ch</span><span class="p">,</span><span class="n">e</span><span class="p">,</span><span class="n">d</span><span class="p">:</span> <span class="p">(</span><span class="n">d</span> <span class="o">!=</span> <span class="n">depth</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">d</span> <span class="o">==</span> <span class="n">depth</span> <span class="ow">and</span> <span class="n">term</span> <span class="ow">in</span> <span class="n">s</span><span class="p">))</span> <span class="c1"># select</span></div></div>
+<span class="k">def</span> <span class="nf">_flatten</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">joinF</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>                                               <span class="c1"># _flatten</span>
+    <span class="k">for</span> <span class="n">s</span><span class="p">,</span><span class="n">ch</span><span class="p">,</span><span class="o">*</span><span class="n">other</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span> <span class="n">pre</span> <span class="o">=</span> <span class="n">joinF</span><span class="p">(</span><span class="n">prefix</span><span class="p">,</span> <span class="n">s</span><span class="p">);</span> <span class="k">yield</span> <span class="p">[</span><span class="n">pre</span><span class="p">,</span><span class="o">*</span><span class="n">other</span><span class="p">];</span> <span class="k">yield from</span> <span class="n">_flatten</span><span class="p">(</span><span class="n">ch</span><span class="p">,</span> <span class="n">joinF</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="n">pre</span><span class="p">)</span> <span class="c1"># _flatten</span>
+<div class="viewcode-block" id="flatten"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.ktree.flatten">[docs]</a><span class="k">class</span> <span class="nc">flatten</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>                                                          <span class="c1"># flatten</span>
+<div class="viewcode-block" id="flatten.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.ktree.flatten.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">joinF</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>                                              <span class="c1"># flatten</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Flattens the tree.</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    flat | ktree.create() | ktree.flatten() | deref()</span>
+
+<span class="sd">This returns::</span>
+
+<span class="sd">    [[&#39;/a&#39;, 0, 0],</span>
+<span class="sd">     [&#39;/a/b&#39;, 1, 1],</span>
+<span class="sd">     [&#39;/a/b/2&#39;, 1, 2],</span>
+<span class="sd">     [&#39;/a/b/3&#39;, 1, 2],</span>
+<span class="sd">     [&#39;/a/c&#39;, 0, 1],</span>
+<span class="sd">     [&#39;/a/c/4&#39;, 1, 2],</span>
+<span class="sd">     [&#39;/a/c/5&#39;, 1, 2],</span>
+<span class="sd">     [&#39;/a/d&#39;, 1, 1]]</span>
+
+<span class="sd">:param joinF: a function that takes in 2 parameters: prefix (like &quot;/a/b&quot;) and element</span>
+<span class="sd">    name (like &quot;2&quot;), to form a new prefix (&quot;/a/b/2&quot;). Defaulted to ``lambda p,s: f&quot;{p}/{s}&quot;``</span>
+<span class="sd">&quot;&quot;&quot;</span>                                                                              <span class="c1"># flatten</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">joinF</span> <span class="o">=</span> <span class="n">joinF</span> <span class="ow">or</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">p</span><span class="p">,</span><span class="n">s</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">s</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>                           <span class="c1"># flatten</span></div>
+<div class="viewcode-block" id="flatten.__ror__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.ktree.flatten.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">):</span> <span class="k">return</span> <span class="n">_flatten</span><span class="p">(</span><span class="n">it</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">joinF</span><span class="p">)</span>                       <span class="c1"># flatten</span></div></div>
+<span class="k">def</span> <span class="nf">_prettyDepth</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>                                                    <span class="c1"># _prettyDepth</span>
+    <span class="k">for</span> <span class="n">s</span><span class="p">,</span><span class="n">ch</span><span class="p">,</span><span class="o">*</span><span class="n">other</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>                                                        <span class="c1"># _prettyDepth</span>
+        <span class="k">yield</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">depth</span><span class="si">}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;  &quot;</span><span class="o">*</span><span class="p">(</span><span class="n">depth</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="p">([</span><span class="n">s</span><span class="p">,</span> <span class="o">*</span><span class="n">other</span><span class="p">]</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39; - &#39;</span><span class="p">))</span> <span class="c1"># _prettyDepth</span>
+        <span class="k">yield from</span> <span class="n">_prettyDepth</span><span class="p">(</span><span class="n">ch</span><span class="p">,</span> <span class="n">depth</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>                                     <span class="c1"># _prettyDepth</span>
+<span class="k">def</span> <span class="nf">_prettyNoDepth</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>                                                  <span class="c1"># _prettyNoDepth</span>
+    <span class="k">for</span> <span class="n">s</span><span class="p">,</span><span class="n">ch</span><span class="p">,</span><span class="o">*</span><span class="n">other</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>                                                        <span class="c1"># _prettyNoDepth</span>
+        <span class="k">yield</span> <span class="sa">f</span><span class="s2">&quot;  &quot;</span><span class="o">*</span><span class="n">depth</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">s</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">other</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">cli</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39; - &#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>                   <span class="c1"># _prettyNoDepth</span>
+        <span class="k">yield from</span> <span class="n">_prettyNoDepth</span><span class="p">(</span><span class="n">ch</span><span class="p">,</span> <span class="n">depth</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>                                   <span class="c1"># _prettyNoDepth</span>
+<div class="viewcode-block" id="pretty"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.ktree.pretty">[docs]</a><span class="k">class</span> <span class="nc">pretty</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>                                                           <span class="c1"># pretty</span>
+<div class="viewcode-block" id="pretty.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.ktree.pretty.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>                                              <span class="c1"># pretty</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Converts tree into a string iterator, indented</span>
+<span class="sd">with the correct level of depth. See also: :class:`display`</span>
+
+<span class="sd">:param depth: whether to display the depth at the start of each line or not&quot;&quot;&quot;</span>   <span class="c1"># pretty</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">depth</span> <span class="o">=</span> <span class="n">depth</span>                                                       <span class="c1"># pretty</span></div>
+<div class="viewcode-block" id="pretty.__ror__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.ktree.pretty.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">):</span> <span class="k">return</span> <span class="n">_prettyDepth</span><span class="p">(</span><span class="n">it</span><span class="p">)</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">depth</span> <span class="k">else</span> <span class="n">_prettyNoDepth</span><span class="p">(</span><span class="n">it</span><span class="p">)</span> <span class="c1"># pretty</span></div></div>
+<div class="viewcode-block" id="display"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.ktree.display">[docs]</a><span class="k">class</span> <span class="nc">display</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>                                                          <span class="c1"># display</span>
+<div class="viewcode-block" id="display.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.ktree.display.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lines</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>                                    <span class="c1"># display</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Displays the tree.</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    flat | ktree.create() | ktree.display()</span>
+<span class="sd">    # equivalent to the above</span>
+<span class="sd">    flat | ktree.create() | ktree.pretty() | stdout()</span>
+
+<span class="sd">:param lines: line limit. Put &quot;None&quot; to display all</span>
+<span class="sd">:param depth: whether to display the depth at the start of each line or not&quot;&quot;&quot;</span>   <span class="c1"># display</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lines</span> <span class="o">=</span> <span class="n">lines</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">depth</span> <span class="o">=</span> <span class="n">depth</span>                                   <span class="c1"># display</span></div>
+<div class="viewcode-block" id="display.__ror__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.ktree.display.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">):</span> <span class="n">it</span> <span class="o">|</span> <span class="n">pretty</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">depth</span><span class="p">)</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lines</span><span class="p">)</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">stdout</span><span class="p">()</span> <span class="c1"># display</span></div></div>
+<div class="viewcode-block" id="search"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.ktree.search">[docs]</a><span class="k">def</span> <span class="nf">search</span><span class="p">(</span><span class="n">term</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">exact</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>                                               <span class="c1"># search</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Searches for a specific term in the name of all elements.</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    # returns [[&#39;a&#39;, [[&#39;b&#39;, [[&#39;2&#39;, [], 1, 2]], 1, 1]], 0, 0]]</span>
+<span class="sd">    flat | ktree.create() | ktree.search(&quot;2&quot;)</span>
+
+<span class="sd">:param term: term to search for</span>
+<span class="sd">:param exact: if True, searches for that exact term, else searches</span>
+<span class="sd">    for the term inside the string&quot;&quot;&quot;</span>                                            <span class="c1"># search</span>
+    <span class="k">if</span> <span class="n">exact</span><span class="p">:</span> <span class="n">st1</span> <span class="o">=</span> <span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">s</span><span class="p">,</span><span class="n">ch</span><span class="p">,</span><span class="o">*</span><span class="n">o</span><span class="p">:</span> <span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="n">ch</span><span class="p">,(</span><span class="n">term</span> <span class="o">==</span> <span class="n">s</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">any</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">ch</span><span class="p">),</span><span class="o">*</span><span class="n">o</span><span class="p">])</span> <span class="c1"># search</span>
+    <span class="k">else</span><span class="p">:</span>     <span class="n">st1</span> <span class="o">=</span> <span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">s</span><span class="p">,</span><span class="n">ch</span><span class="p">,</span><span class="o">*</span><span class="n">o</span><span class="p">:</span> <span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="n">ch</span><span class="p">,(</span><span class="n">term</span> <span class="ow">in</span> <span class="n">s</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">any</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">ch</span><span class="p">),</span><span class="o">*</span><span class="n">o</span><span class="p">])</span> <span class="c1"># search</span>
+    <span class="k">return</span> <span class="n">st1</span> <span class="o">|</span> <span class="n">filt</span><span class="p">(</span><span class="k">lambda</span> <span class="n">s</span><span class="p">,</span><span class="n">ch</span><span class="p">,</span><span class="n">e</span><span class="p">,</span><span class="o">*</span><span class="n">o</span><span class="p">:</span> <span class="n">e</span><span class="p">)</span> <span class="o">|</span> <span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">s</span><span class="p">,</span><span class="n">ch</span><span class="p">,</span><span class="n">e</span><span class="p">,</span><span class="o">*</span><span class="n">o</span><span class="p">:</span> <span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="n">ch</span><span class="p">,</span><span class="o">*</span><span class="n">o</span><span class="p">])</span>  <span class="c1"># search</span></div>
+<span class="n">_walk</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">f</span><span class="p">:</span> <span class="n">cli</span><span class="o">.</span><span class="n">aS</span><span class="p">(</span><span class="k">lambda</span> <span class="n">fn</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="n">fn</span><span class="p">))</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">ungroup</span><span class="p">()</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span> <span class="o">|</span> <span class="n">f</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">op</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span> <span class="o">|</span> <span class="n">create</span><span class="p">())</span> <span class="c1"># search</span>
+<div class="viewcode-block" id="walk"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.ktree.walk">[docs]</a><span class="k">def</span> <span class="nf">walk</span><span class="p">(</span><span class="n">fn</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">f</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>                                                       <span class="c1"># walk</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Walks the file system and generates a tree of all files and folders.</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    &quot;/home/ubuntu&quot; | ktree.walk() # returns a tree</span>
+<span class="sd">    ktree.walk(&quot;/home/ubundu&quot;)    # same as above</span>
+<span class="sd">    ktree.walk(&quot;.&quot;)               # can also do relative paths</span>
+<span class="sd">    &quot;/home/ubuntu&quot; | ktree.walk(f=~grep(&quot;git&quot;)) # returns a tree with no hidden git-related files</span>
+<span class="sd">    ktree.walk(&quot;/home/ubuntu&quot;, ~grep(&quot;git&quot;))    # same as above</span>
+
+<span class="sd">:param fn: folder name</span>
+<span class="sd">:param f: optional function if you want to filter out paths (Iterator[str])&quot;&quot;&quot;</span>   <span class="c1"># walk</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="n">f</span> <span class="ow">or</span> <span class="n">cli</span><span class="o">.</span><span class="n">iden</span><span class="p">();</span> <span class="k">return</span> <span class="n">_walk</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">if</span> <span class="n">fn</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">fn</span> <span class="o">|</span> <span class="n">_walk</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>        <span class="c1"># walk</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Quang Ho.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
