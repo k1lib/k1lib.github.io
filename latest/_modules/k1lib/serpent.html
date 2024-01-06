@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>k1lib.serpent &mdash; k1lib  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> k1lib
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../base.html">Base module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../cli/index.html">k1lib.cli module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../callbacks/index.html">k1lib.callbacks module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../k1a.html">k1lib._k1a module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../k1ui.html">k1lib.k1ui module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../eqn.html">k1lib.eqn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fmt.html">k1lib.fmt module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../graphEqn.html">k1lib.graphEqn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../imports.html">k1lib.imports module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mo.html">k1lib.mo module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../knn.html">k1lib.knn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../p5.html">k1lib.p5 module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../schedule.html">k1lib.schedule module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../selector.html">k1lib.selector module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../selen.html">k1lib.selen module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../serpent.html">k1lib.serpent module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../serve.html">k1lib.serve module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../viz.html">k1lib.viz module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../monkey.html">Monkey patched classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../changelogs.html">Changelogs</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">k1lib</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">k1lib.serpent</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for k1lib.serpent</h1><div class="highlight"><pre>
+<span></span><span class="c1"># AUTOGENERATED FILE! PLEASE DON&#39;T EDIT HERE. EDIT THE SOURCE NOTEBOOKS INSTEAD</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">This module is for Lua&#39;s serpent module, which serializes object into a string</span>
+<span class="sd">similar to json. But maddingly, no one has actually wrote a serialization/deserialization</span>
+<span class="sd">code in Python before, and I desperately need it for a factorio project. Because</span>
+<span class="sd">this was written in a rush, I&#39;m in no way guaranteeing that it will work on all</span>
+<span class="sd">serialized objects out there, but from my testing, it seems pretty robust. This</span>
+<span class="sd">is exposed automatically with::</span>
+
+<span class="sd">   from k1lib.imports import *</span>
+<span class="sd">   serpent.loads(...) # exposed</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">k1lib</span><span class="o">,</span> <span class="nn">json</span><span class="o">,</span> <span class="nn">re</span><span class="o">,</span> <span class="nn">io</span><span class="p">;</span> <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">deque</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;deconstruct&quot;</span><span class="p">,</span> <span class="s2">&quot;listCorrection&quot;</span><span class="p">,</span> <span class="s2">&quot;loads_monolith&quot;</span><span class="p">,</span> <span class="s2">&quot;loads_fragments&quot;</span><span class="p">,</span> <span class="s2">&quot;loads&quot;</span><span class="p">,</span> <span class="s2">&quot;dumps&quot;</span><span class="p">]</span>
+<span class="k">def</span> <span class="nf">_deconstruct</span><span class="p">(</span><span class="n">s</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">i</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">meta</span><span class="p">,</span> <span class="n">stack</span><span class="p">,</span> <span class="n">ctx</span><span class="p">,</span> <span class="n">autoInc</span><span class="p">):</span>                       <span class="c1"># _deconstruct</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;{&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span> <span class="n">y</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;}&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>                                       <span class="c1"># _deconstruct</span>
+    <span class="k">if</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span> <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="kc">None</span>                                                    <span class="c1"># _deconstruct</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">y</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span> <span class="c1"># opens a new context and saves parent context to stack # _deconstruct</span>
+        <span class="k">if</span> <span class="n">ctx</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="n">ctx</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;=&quot;</span> <span class="ow">in</span> <span class="n">s</span><span class="p">[</span><span class="n">ctx</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span><span class="n">x</span><span class="p">]</span> <span class="c1"># not yet determined whether it&#39;s a list or dict # _deconstruct</span>
+        <span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span> <span class="n">ctx</span> <span class="o">=</span> <span class="p">[</span><span class="n">autoInc</span><span class="p">(),</span> <span class="n">x</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">ctx</span><span class="p">[</span><span class="mi">0</span><span class="p">]];</span> <span class="k">return</span> <span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">ctx</span> <span class="c1"># _deconstruct</span>
+    <span class="k">else</span><span class="p">:</span> <span class="c1"># closes the current context and go back to the parent context         # _deconstruct</span>
+        <span class="k">if</span> <span class="n">ctx</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="n">ctx</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;=&quot;</span> <span class="ow">in</span> <span class="n">s</span><span class="p">[</span><span class="n">ctx</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span><span class="n">y</span><span class="p">]</span>                           <span class="c1"># _deconstruct</span>
+        <span class="n">ctx</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">y</span><span class="p">;</span> <span class="n">meta</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ctx</span><span class="p">);</span> <span class="n">ctx</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">();</span> <span class="k">return</span> <span class="n">y</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">ctx</span>         <span class="c1"># _deconstruct</span>
+<div class="viewcode-block" id="deconstruct"><a class="viewcode-back" href="../../serpent.html#k1lib.serpent.deconstruct">[docs]</a><span class="k">def</span> <span class="nf">deconstruct</span><span class="p">(</span><span class="n">s</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;list[list[5]]&quot;</span><span class="p">:</span>                                       <span class="c1"># deconstruct</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Not intended for the end user. Deconstructs and grab metadata of some</span>
+<span class="sd">lua objects. Example::</span>
+
+<span class="sd">    a = &#39;{1,2,3,{a=3,b={c=6,d={5,6,7}}},{b=3}}&#39;</span>
+<span class="sd">    serpent.deconstruct(a)</span>
+
+<span class="sd">That returns::</span>
+
+<span class="sd">    [[&#39;_v3&#39;, 21, 27, False, &#39;_v2&#39;],</span>
+<span class="sd">     [&#39;_v2&#39;, 14, 28, True, &#39;_v1&#39;],</span>
+<span class="sd">     [&#39;_v1&#39;, 7, 29, True, &#39;_v0&#39;],</span>
+<span class="sd">     [&#39;_v4&#39;, 31, 35, True, &#39;_v0&#39;],</span>
+<span class="sd">     [&#39;_v0&#39;, 0, 36, False, &#39;root&#39;]]</span>
+
+<span class="sd">The columns are: [unique index of bracket, start byte, end byte, is it a dictionary?, parent index]</span>
+
+<span class="sd">This is a crucial step within :meth:`listCorrection`&quot;&quot;&quot;</span>                          <span class="c1"># deconstruct</span>
+    <span class="n">autoInc</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">AutoIncrement</span><span class="p">(</span><span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;_v&quot;</span><span class="p">);</span> <span class="n">meta</span> <span class="o">=</span> <span class="p">[];</span> <span class="n">stack</span> <span class="o">=</span> <span class="n">deque</span><span class="p">()</span>       <span class="c1"># deconstruct</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">);</span> <span class="n">ctx</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;root&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span> <span class="c1"># [idx, sB, eB, isDict?] # deconstruct</span>
+    <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">:</span> <span class="n">i</span><span class="p">,</span> <span class="n">ctx</span> <span class="o">=</span> <span class="n">_deconstruct</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">meta</span><span class="p">,</span> <span class="n">stack</span><span class="p">,</span> <span class="n">ctx</span><span class="p">,</span> <span class="n">autoInc</span><span class="p">)</span>          <span class="c1"># deconstruct</span>
+    <span class="k">return</span> <span class="n">meta</span>                                                                  <span class="c1"># deconstruct</span></div>
+<div class="viewcode-block" id="listCorrection"><a class="viewcode-back" href="../../serpent.html#k1lib.serpent.listCorrection">[docs]</a><span class="k">def</span> <span class="nf">listCorrection</span><span class="p">(</span><span class="n">s</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>                                                <span class="c1"># listCorrection</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Not intended for the end user. Corrects for lists in Lua.</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    a = &#39;{1,2,3,{a=3,b={c=6,d={5,6,7}}},{b=3}}&#39;</span>
+<span class="sd">    serpent.listCorrection(a) # returns &#39;[1,2,3,{a=3,b={c=6,d=[5,6,7]}},{b=3}]&#39;</span>
+
+<span class="sd">See how some pointy brackets have been replaced with square brackets?</span>
+
+<span class="sd">This is because there are no list or tuple types in lua, and there are also no sets</span>
+<span class="sd">in json, so kinda have to roll my own solution&quot;&quot;&quot;</span>                                <span class="c1"># listCorrection</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="nb">bytearray</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>                                                    <span class="c1"># listCorrection</span>
+    <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">sB</span><span class="p">,</span> <span class="n">eB</span><span class="p">,</span> <span class="n">isDict</span><span class="p">,</span> <span class="n">pIdx</span> <span class="ow">in</span> <span class="n">deconstruct</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>                             <span class="c1"># listCorrection</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">isDict</span><span class="p">:</span> <span class="n">b</span><span class="p">[</span><span class="n">sB</span><span class="p">]</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&quot;[&quot;</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span> <span class="n">b</span><span class="p">[</span><span class="n">eB</span><span class="p">]</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&quot;]&quot;</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>                          <span class="c1"># listCorrection</span>
+    <span class="k">return</span> <span class="nb">bytes</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>                                                     <span class="c1"># listCorrection</span></div>
+<span class="c1"># def _loads(lua):                                                               # listCorrection</span>
+<span class="c1">#     matches = re.findall(&quot;[a-zA-Z_\-\&quot;\[\]]+[ ]*=&quot;, lua); replacements = [m.rstrip(&quot;= &quot;).strip(&quot;[]\&quot;&#39;&quot;) for m in matches] # listCorrection</span>
+<span class="c1">#     for x, y in zip(matches, replacements): lua = lua.replace(x, f&#39;&quot;{y}&quot;: &#39;)   # listCorrection</span>
+<span class="c1">#     return json.loads(lua.replace(&quot; &quot;, &quot;&quot;))                                    # listCorrection</span>
+<span class="n">p1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;[a-zA-Z0-9_\-</span><span class="se">\&quot;</span><span class="s2">\[\]]+[ ]*=&quot;</span><span class="p">)</span>                                    <span class="c1"># listCorrection</span>
+<div class="viewcode-block" id="loads_monolith"><a class="viewcode-back" href="../../serpent.html#k1lib.serpent.loads_monolith">[docs]</a><span class="k">def</span> <span class="nf">loads_monolith</span><span class="p">(</span><span class="n">lua</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">object</span><span class="p">:</span>                                           <span class="c1"># loads_monolith</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Not intended for the end user. Core loading mechanism. See :meth:`loads`&quot;&quot;&quot;</span> <span class="c1"># loads_monolith</span>
+    <span class="n">lua</span> <span class="o">=</span> <span class="n">listCorrection</span><span class="p">(</span><span class="n">lua</span><span class="p">);</span> <span class="n">matches</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="n">lua</span><span class="p">),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="c1"># loads_monolith</span>
+    <span class="n">replacements</span> <span class="o">=</span> <span class="p">[</span><span class="n">m</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s2">&quot;= &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">&quot;[]</span><span class="se">\&quot;</span><span class="s2">&#39;&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">matches</span><span class="p">]</span>              <span class="c1"># loads_monolith</span>
+    <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">matches</span><span class="p">,</span> <span class="n">replacements</span><span class="p">):</span> <span class="n">lua</span> <span class="o">=</span> <span class="n">lua</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;&quot;</span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="s1">&quot;: &#39;</span><span class="p">)</span>     <span class="c1"># loads_monolith</span>
+    <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">lua</span><span class="p">)</span>                                                       <span class="c1"># loads_monolith</span></div>
+<div class="viewcode-block" id="loads_fragments"><a class="viewcode-back" href="../../serpent.html#k1lib.serpent.loads_fragments">[docs]</a><span class="k">def</span> <span class="nf">loads_fragments</span><span class="p">(</span><span class="n">lua</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">object</span><span class="p">:</span>                                          <span class="c1"># loads_fragments</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Not intended for the end user. See :meth:`loads`. Deserializes lua objects,</span>
+<span class="sd">breaking up the work into multiple fragments. So here&#39;s the general gist::</span>
+
+<span class="sd">    s = &quot;{1, 2, 3, {4, 5, 6}, {7, 8, 9}}&quot;</span>
+
+<span class="sd">    # then, we grab the fragments, which are the top level {} blocks, assigning a unique key (the character \ue000 and autoInc index)</span>
+<span class="sd">    fragments = {&quot;\ue0000&quot;: {4, 5, 6}, &quot;\ue0001&quot;: {7, 8, 9}}</span>
+<span class="sd">    # then, we replace the fragments with their keys</span>
+<span class="sd">    s = &quot;{1, 2, 3, &quot;\ue0000&quot;, &quot;\ue0001&quot;}&quot;</span>
+
+<span class="sd">    # then we load s, it will run fast since the fragments are just simple strings</span>
+<span class="sd">    s = serpent.loads_monolith(s)</span>
+
+<span class="sd">    # then we patch s, replacing the keys with actual parsed objects</span>
+<span class="sd">    s = {1, 2, 3, {4, 5, 6}, {7, 8, 9}}</span>
+
+<span class="sd">Why so convoluted? Well turns out, loads_monolith is pretty slow. It has a for loop there,</span>
+<span class="sd">and there&#39;s a .replace() within, which is a hidden for loop that copies the entire</span>
+<span class="sd">string over and over again, which slows it down. Haven&#39;t done extensive testing, but</span>
+<span class="sd">feels like O(n^2) time complexity while I was working with it.</span>
+
+<span class="sd">So this optimization assumes that the top level {} blocks are small, but there&#39;re many</span>
+<span class="sd">of them, thus this assigns less work (shorter string, hence faster .replace()) to each</span>
+<span class="sd">loads_monolith() calls. So if there&#39;re 10k fragments, this can potentially be 10k faster.</span>
+
+<span class="sd">This assumption of course is not that great and not very general, and you can easily find</span>
+<span class="sd">ways around it. But it&#39;s just enough for my use case right now, which is to analyze factorio.</span>
+<span class="sd">The correct way would be to dive deeper and benchmark everything more clearly, but I don&#39;t</span>
+<span class="sd">have time for that.&quot;&quot;&quot;</span>                                                           <span class="c1"># loads_fragments</span>
+    <span class="c1"># splits into fragments                                                      # loads_fragments</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="p">[[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\ue000</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">loads_monolith</span><span class="p">(</span><span class="n">lua</span><span class="p">[</span><span class="n">sB</span><span class="p">:</span><span class="n">eB</span><span class="o">+</span><span class="mi">1</span><span class="p">]),</span> <span class="n">sB</span><span class="p">,</span> <span class="n">eB</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span><span class="p">,[</span><span class="n">idx</span><span class="p">,</span><span class="n">sB</span><span class="p">,</span><span class="n">eB</span><span class="p">,</span><span class="n">d</span><span class="p">,</span><span class="n">pIdx</span><span class="p">]</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">deconstruct</span><span class="p">(</span><span class="n">lua</span><span class="p">))</span> <span class="k">if</span> <span class="n">pIdx</span> <span class="o">==</span> <span class="s2">&quot;_v0&quot;</span><span class="p">]</span> <span class="c1"># loads_fragments</span>
+                                                                                 <span class="c1"># loads_fragments</span>
+    <span class="c1"># fast way of replacing the fragments with the pua unicodes                  # loads_fragments</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">StringIO</span><span class="p">();</span> <span class="n">lastSeek</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="n">pua</span><span class="p">:</span><span class="n">o</span> <span class="k">for</span> <span class="n">pua</span><span class="p">,</span> <span class="n">o</span><span class="p">,</span> <span class="n">sB</span><span class="p">,</span> <span class="n">eB</span> <span class="ow">in</span> <span class="n">a</span><span class="p">}</span>         <span class="c1"># loads_fragments</span>
+    <span class="k">for</span> <span class="n">pua</span><span class="p">,</span><span class="n">obj</span><span class="p">,</span><span class="n">sB</span><span class="p">,</span><span class="n">eB</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">lua</span><span class="p">[</span><span class="n">lastSeek</span><span class="p">:</span><span class="n">sB</span><span class="p">]);</span> <span class="n">s</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;&quot;</span><span class="si">{</span><span class="n">pua</span><span class="si">}</span><span class="s1">&quot;&#39;</span><span class="p">);</span> <span class="n">lastSeek</span> <span class="o">=</span> <span class="n">eB</span><span class="o">+</span><span class="mi">1</span> <span class="c1"># loads_fragments</span>
+    <span class="n">s</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">lua</span><span class="p">[</span><span class="n">lastSeek</span><span class="p">:]);</span> <span class="n">s</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> <span class="n">c</span> <span class="o">=</span> <span class="n">loads_monolith</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>             <span class="c1"># loads_fragments</span>
+                                                                                 <span class="c1"># loads_fragments</span>
+    <span class="c1"># injecting                                                                  # loads_fragments</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span> <span class="k">return</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span><span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="n">c</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>          <span class="c1"># loads_fragments</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span> <span class="k">return</span> <span class="p">[</span><span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">c</span><span class="p">]</span>                    <span class="c1"># loads_fragments</span></div>
+<span class="k">def</span> <span class="nf">preprocess</span><span class="p">(</span><span class="n">lua</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span> <span class="k">return</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;--&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">lua</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)])</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\\\\</span><span class="s2">&quot;</span><span class="p">)</span> <span class="c1"># preprocess</span>
+<div class="viewcode-block" id="loads"><a class="viewcode-back" href="../../serpent.html#k1lib.serpent.loads">[docs]</a><span class="k">def</span> <span class="nf">loads</span><span class="p">(</span><span class="n">lua</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>                                                              <span class="c1"># loads</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Deserialize lua objects from string.</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    # returns [1, 2, 3, {&#39;a&#39;: 3, &#39;b&#39;: {&#39;c&#39;: 6, &#39;d&#39;: [5, 6, 7]}}, {&#39;b&#39;: 3}]</span>
+<span class="sd">    loads(&quot;{ 1, 2, 3, { a = 3, b = { c = 6, d = {5, 6, 7} } }, { b = 3 } }&quot;)</span>
+
+<span class="sd">See also: :meth:`dumps`</span>
+
+<span class="sd">What&#39;s the relative speed here? Because everything is written in Python, I</span>
+<span class="sd">expect it to be slower than json, but by how much? Here&#39;re some benchmark results:</span>
+
+<span class="sd">|             | lua  | json | binary |</span>
+<span class="sd">| ----------- | ---- | ---- | ------ |</span>
+<span class="sd">| from python | 21us | 11us | 184us  |</span>
+<span class="sd">| to   python | 92us | 10us | 5.8us  |</span>
+
+<span class="sd">The &quot;lua&quot; column uses &quot;serpent.loads()&quot;, &quot;json&quot; uses &quot;json.loads()&quot;, and</span>
+<span class="sd">&quot;binary&quot; uses &quot;dill.loads()&quot;</span>
+<span class="sd">&quot;&quot;&quot;</span>                                                                              <span class="c1"># loads</span>
+    <span class="n">lua</span> <span class="o">=</span> <span class="n">preprocess</span><span class="p">(</span><span class="n">lua</span><span class="p">)</span>                                                        <span class="c1"># loads</span>
+    <span class="k">return</span> <span class="n">loads_fragments</span><span class="p">(</span><span class="n">lua</span><span class="p">)</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">lua</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1000</span> <span class="k">else</span> <span class="n">loads_monolith</span><span class="p">(</span><span class="n">lua</span><span class="p">)</span>      <span class="c1"># loads</span></div>
+<span class="k">def</span> <span class="nf">_dumps_dict</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>                                                            <span class="c1"># _dumps_dict</span>
+    <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="n">obj</span><span class="o">.</span><span class="n">items</span><span class="p">():</span> <span class="n">k</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;[&quot;</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s1">&quot;]&#39;</span> <span class="k">if</span> <span class="s2">&quot;-&quot;</span> <span class="ow">in</span> <span class="n">k</span> <span class="k">else</span> <span class="n">k</span><span class="p">;</span> <span class="k">yield</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">=</span><span class="si">{</span><span class="n">dumps</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span> <span class="c1"># _dumps_dict</span>
+<div class="viewcode-block" id="dumps"><a class="viewcode-back" href="../../serpent.html#k1lib.serpent.dumps">[docs]</a><span class="k">def</span> <span class="nf">dumps</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>                                                           <span class="c1"># dumps</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Serialize Python objects into lua string.</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    # returns &#39;{1,2,3,{a=3,b={c=6,d={5,6,7}}},{b=3}}&#39;</span>
+<span class="sd">    serpent.dumps([1, 2, 3, {&#39;a&#39;: 3, &#39;b&#39;: {&#39;c&#39;: 6, &#39;d&#39;: [5, 6, 7]}}, {&#39;b&#39;: 3}])</span>
+
+<span class="sd">See also: :meth:`loads`&quot;&quot;&quot;</span>                                                       <span class="c1"># dumps</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span> <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="se">{{</span><span class="si">{</span><span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">_dumps_dict</span><span class="p">(</span><span class="n">obj</span><span class="p">))</span><span class="si">}</span><span class="se">}}</span><span class="s2">&quot;</span>         <span class="c1"># dumps</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)):</span> <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="se">{{</span><span class="si">{</span><span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">dumps</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">obj</span><span class="p">])</span><span class="si">}</span><span class="se">}}</span><span class="s2">&quot;</span> <span class="c1"># dumps</span>
+    <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>                                                       <span class="c1"># dumps</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Quang Ho.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

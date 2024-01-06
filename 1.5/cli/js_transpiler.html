@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JS transpiler tutorial &mdash; k1lib  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="LLVM optimizer tutorial" href="llvm.html" />
+    <link rel="prev" title="k1lib.cli module" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> k1lib
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../base.html">Base module</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">k1lib.cli module</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#setup">Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#intro">Intro</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#argument-expansion">Argument expansion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#inverting-conditions">Inverting conditions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#capturing-operators">Capturing operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#cli-composition">Cli composition</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#js-transpiler">JS transpiler</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">JS transpiler tutorial</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#basic-example">Basic example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#clis-that-take-in-functions">Clis that take in functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lots-of-moving-parts">Lots of moving parts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#custom-transpiler-logic">Custom transpiler logic</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#philosophy">Philosophy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#where-to-start">Where to start?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#summary">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#under-the-hood">Under the hood</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#creating-your-own-cli">Creating your own cli</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#accelerations">Accelerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.cli.bio">bio module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.cli.cif">cif module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.cli.conv">conv module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.cli.mgi">mgi module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.cli.filt">filt module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.cli.gb">gb module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.cli.grep">grep module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#init-module">init module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.cli.inp">inp module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.cli.kapi">kapi module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.cli.kgv">kgv module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.cli.kjs">kjs module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.cli.ktree">ktree module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.cli.kxml">kxml module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.cli.lsext">lsext module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.cli.models">models module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.cli.modifier">modifier module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#applycl-module">_applyCl module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.cli.nb">nb module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.cli.output">output module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.cli.sam">sam module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.cli.structural">structural module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.cli.trace">trace module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.cli.utils">utils module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.cli.typehint">typehint module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.cli.optimizations">optimizations module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#elsewhere-in-the-library">Elsewhere in the library</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../callbacks/index.html">k1lib.callbacks module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../k1a.html">k1lib._k1a module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../k1ui.html">k1lib.k1ui module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eqn.html">k1lib.eqn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fmt.html">k1lib.fmt module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../graphEqn.html">k1lib.graphEqn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../imports.html">k1lib.imports module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mo.html">k1lib.mo module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../knn.html">k1lib.knn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../p5.html">k1lib.p5 module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../schedule.html">k1lib.schedule module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../selector.html">k1lib.selector module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../selen.html">k1lib.selen module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../serpent.html">k1lib.serpent module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../serve.html">k1lib.serve module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../viz.html">k1lib.viz module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../monkey.html">Monkey patched classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelogs.html">Changelogs</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">k1lib</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">k1lib.cli module</a></li>
+      <li class="breadcrumb-item active">JS transpiler tutorial</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/cli/js_transpiler.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="js-transpiler-tutorial">
+<h1>JS transpiler tutorial<a class="headerlink" href="#js-transpiler-tutorial" title="Permalink to this heading"></a></h1>
+<p>Since version 1.5, k1lib has the ability to transpile clisfrom Python into JS
+code, ready to be built into an interface. Here’re some examples:</p>
+<section id="basic-example">
+<h2>Basic example<a class="headerlink" href="#basic-example" title="Permalink to this heading"></a></h2>
+<div style='margin-left: 30px'><h4>Source code</h4><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">repeatF</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">99</span><span class="p">),</span> <span class="mi">20</span><span class="p">)</span> <span class="o">|</span> <span class="n">deref</span><span class="p">()</span>
+<span class="n">jsFunc</span> <span class="o">=</span> <span class="n">data</span> <span class="o">|</span> <span class="p">(</span><span class="n">toJsFunc</span><span class="p">((</span><span class="s2">&quot;term&quot;</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span> <span class="o">|</span> <span class="n">head</span><span class="p">(</span><span class="s2">&quot;term&quot;</span><span class="p">))</span>
+<span class="n">jsFunc</span>
+</pre></div>
+<h4>Compiled JS function</h4>&lt;JsFunc _jsF_547_10_1704544380&gt;<br>Generated JS function:<br><br><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">_jsD_313_373_1704544380</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">86</span><span class="p">,</span><span class="w"> </span><span class="mf">61</span><span class="p">,</span><span class="w"> </span><span class="mf">21</span><span class="p">,</span><span class="w"> </span><span class="mf">66</span><span class="p">,</span><span class="w"> </span><span class="mf">15</span><span class="p">,</span><span class="w"> </span><span class="mf">48</span><span class="p">,</span><span class="w"> </span><span class="mf">14</span><span class="p">,</span><span class="w"> </span><span class="mf">55</span><span class="p">,</span><span class="w"> </span><span class="mf">12</span><span class="p">,</span><span class="w"> </span><span class="mf">55</span><span class="p">,</span><span class="w"> </span><span class="mf">33</span><span class="p">,</span><span class="w"> </span><span class="mf">90</span><span class="p">,</span><span class="w"> </span><span class="mf">17</span><span class="p">,</span><span class="w"> </span><span class="mf">21</span><span class="p">,</span><span class="w"> </span><span class="mf">57</span><span class="p">,</span><span class="w"> </span><span class="mf">85</span><span class="p">,</span><span class="w"> </span><span class="mf">28</span><span class="p">,</span><span class="w"> </span><span class="mf">79</span><span class="p">,</span><span class="w"> </span><span class="mf">67</span><span class="p">,</span><span class="w"> </span><span class="mf">19</span><span class="p">];</span>
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">_jsF_547_10_1704544380</span><span class="p">(</span><span class="nx">term</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">_jsF_547_9</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">_jsD_313_371</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">_jsD_313_371</span><span class="p">.</span><span class="nx">head</span><span class="p">(</span><span class="nx">term</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">_jsF_547_8</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">_jsD_313_370</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">_jsF_547_9</span><span class="p">(</span><span class="nx">_jsD_313_370</span><span class="p">);</span><span class="w"> </span><span class="p">};</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">_jsF_547_8</span><span class="p">(</span><span class="nx">_jsD_313_373_1704544380</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div><div style='margin-left: 30px'><h4>Source code</h4><div class="highlight"><pre><span></span><span class="n">jsFunc</span><span class="o">.</span><span class="n">interface</span><span class="p">(</span><span class="s2">&quot;jsone&quot;</span><span class="p">)</span>
+</pre></div>
+<h4>Html output</h4><!-- k1lib.JsFuncInterface -->
+<style>
+    ._jsF_547_11_btn:hover {
+    }
+</style>
+<div style='display: grid; grid-template-columns: 1fr 3fr; width: 400px'><div>term</div><div><input type='number' value='5' placeholder='term' id='_jsD_313_369' style='padding: 4px 4px'></div></div>
+<pre id="_jsF_547_11_error" style="color: red"></pre>
+<div id="_jsF_547_11_loading" style="margin-top: 4px">&nbsp;</div>
+<div id="_jsF_547_11_result"></div>
+<script src="https://mlexps.com/k1js/latest/amd.js"></script>
+<script>
+    const _jsF_547_11_loadF = () => {
+        
+const _jsD_313_373_1704544380 = [86, 61, 21, 66, 15, 48, 14, 55, 12, 55, 33, 90, 17, 21, 57, 85, 28, 79, 67, 19];
+async function _jsF_547_10_1704544380(term) {
+    const _jsF_547_9 = (_jsD_313_371) => _jsD_313_371.head(term, false)
+    const _jsF_547_8 = (_jsD_313_370) => { return _jsF_547_9(_jsD_313_370); };
+    return _jsF_547_8(_jsD_313_373_1704544380);
+}
+        window._jsF_547_10_1704544380 = _jsF_547_10_1704544380;
+        _jsF_547_11_error = document.querySelector("#_jsF_547_11_error");
+        _jsF_547_11_resultDiv = document.querySelector("#_jsF_547_11_result");
+        _jsF_547_11_loadingDiv = document.querySelector("#_jsF_547_11_loading");
+        const runningCoreHandle = [null];
+        const _jsF_547_11_reload_core = async (e) => {
+            if (runningCoreHandle[0]) { runningCoreHandle[0].cancel = true; }
+            const handle = {"cancel": false}; runningCoreHandle[0] = handle;
+            try {
+                _jsF_547_11_error.innerHTML = "";
+                _jsF_547_11_loadingDiv.innerHTML = "(loading...)";
+                const val = await _jsF_547_10_1704544380(parseInt(document.querySelector('#_jsD_313_369').value || 0));
+                if (!handle.cancel) {
+                    _jsF_547_11_loadingDiv.innerHTML = "&nbsp;";
+                    _jsF_547_11_resultDiv.innerHTML = `<pre>${JSON.stringify(val, null, 2)}</pre>`;
+                    
+                }
+            } catch (e) { if (!handle.cancel) _jsF_547_11_error.innerHTML = e.stack; }
+            runningCoreHandle[0] = null;
+        };
+        let _jsF_547_11_reload_timeout = null;
+        const _jsF_547_11_reload = async (e) => {
+            
+            if (0 <= 0) return _jsF_547_11_reload_core();
+            else {
+                clearTimeout(_jsF_547_11_reload_timeout);
+                _jsF_547_11_reload_timeout = setTimeout(_jsF_547_11_reload_core, 0)
+            }
+        }
+        document.querySelector('#_jsD_313_369').oninput = _jsF_547_11_reload;
+        
+        _jsF_547_11_reload(null);
+    };
+    // trying multiple loading schemes, because in a live jupyter nb, it's using umd, while in an exported jupyter nb, it's using amd. The madness of JS
+    (async () => {
+        try {
+            require(['k1js'], function(k1js) { (async () => { window.k1js = await k1js; _jsF_547_11_loadF(); })(); });
+        } catch (e) {}
+    })();
+    (async () => {
+        try {
+            const res = await (await fetch("https://mlexps.com/k1js/latest/umd.js")).text();
+            eval(res); window.k1js = await k1js; _jsF_547_11_loadF();
+        } catch (e) {}
+    })();
+</script></div><p>In this example, <code class="docutils literal notranslate"><span class="pre">data</span></code> is a list of 20 random numbers. You can then pipe
+it into a <a class="reference internal" href="index.html#k1lib.cli.kjs.toJsFunc" title="k1lib.cli.kjs.toJsFunc"><code class="xref py py-class docutils literal notranslate"><span class="pre">toJsFunc</span></code></a>-captured block (review <a class="reference external" href="index.html#capturing-operators">capturing concept here</a>).
+Every operation that’s captured will be transpiled into JS. and bundled into a
+<a class="reference internal" href="index.html#k1lib.cli.kjs.JsFunc" title="k1lib.cli.kjs.JsFunc"><code class="xref py py-class docutils literal notranslate"><span class="pre">JsFunc</span></code></a>. Then you can inject that function anywhere you
+want in your application. A lot of times, you’d want to display a search interface
+right away, so you can use the <a class="reference internal" href="index.html#k1lib.cli.kjs.JsFunc.interface" title="k1lib.cli.kjs.JsFunc.interface"><code class="xref py py-meth docutils literal notranslate"><span class="pre">JsFunc.interface()</span></code></a> function, which can
+display the interface right within your notebook. If you want to inject into your
+custom site, then the entire html can be accessed at <code class="docutils literal notranslate"><span class="pre">jsFunc._repr_html_()</span></code></p>
+<p>The arguments of <a class="reference internal" href="index.html#k1lib.cli.kjs.toJsFunc" title="k1lib.cli.kjs.toJsFunc"><code class="xref py py-class docutils literal notranslate"><span class="pre">toJsFunc</span></code></a> are the argument names for the JS function that
+you can use anywhere within the Python clis. Try playing around with the search
+box of the “Html output” section.</p>
+</section>
+<section id="clis-that-take-in-functions">
+<h2>Clis that take in functions<a class="headerlink" href="#clis-that-take-in-functions" title="Permalink to this heading"></a></h2>
+<p>This also works with clis that are expected to take in a function, like
+<a class="reference internal" href="index.html#k1lib.cli.modifier.apply" title="k1lib.cli.modifier.apply"><code class="xref py py-class docutils literal notranslate"><span class="pre">apply</span></code></a> or <a class="reference internal" href="index.html#k1lib.cli.filt.filt" title="k1lib.cli.filt.filt"><code class="xref py py-class docutils literal notranslate"><span class="pre">filt</span></code></a>:</p>
+<div style='margin-left: 30px'><h4>Source code</h4><div class="highlight"><pre><span></span><span class="n">jsFunc</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">|</span> <span class="n">deref</span><span class="p">()</span> <span class="o">|</span> <span class="p">(</span><span class="n">toJsFunc</span><span class="p">()</span> <span class="o">|</span> <span class="n">apply</span><span class="p">(</span><span class="s2">&quot;x**2&quot;</span><span class="p">))</span>
+<span class="n">jsFunc</span>
+</pre></div>
+<h4>Compiled JS function</h4>&lt;JsFunc _jsF_547_15_1704544380&gt;<br>Generated JS function:<br><br><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">_jsD_313_379_1704544380</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span><span class="w"> </span><span class="mf">6</span><span class="p">,</span><span class="w"> </span><span class="mf">7</span><span class="p">,</span><span class="w"> </span><span class="mf">8</span><span class="p">,</span><span class="w"> </span><span class="mf">9</span><span class="p">];</span>
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">_jsF_547_15_1704544380</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">_jsF_547_14</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">x</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">Math</span><span class="p">.</span><span class="nx">pow</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">_jsD_313_376</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{};</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">_jsF_547_13</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">_jsD_313_375</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">_jsD_313_375</span><span class="p">.</span><span class="nx">apply</span><span class="p">((</span><span class="nx">_jsD_313_377</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">_jsF_547_14</span><span class="p">(</span><span class="nx">_jsD_313_377</span><span class="p">),</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="nx">_jsD_313_376</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">_jsF_547_12</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">_jsD_313_374</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">_jsF_547_13</span><span class="p">(</span><span class="nx">_jsD_313_374</span><span class="p">);</span><span class="w"> </span><span class="p">};</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">_jsF_547_12</span><span class="p">(</span><span class="nx">_jsD_313_379_1704544380</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div><div style='margin-left: 30px'><h4>Source code</h4><div class="highlight"><pre><span></span><span class="n">jsFunc</span><span class="o">.</span><span class="n">interface</span><span class="p">(</span><span class="s2">&quot;json&quot;</span><span class="p">)</span>
+</pre></div>
+<h4>Html output</h4><!-- k1lib.JsFuncInterface -->
+<style>
+    ._jsF_547_16_btn:hover {
+    }
+</style>
+<div style='display: grid; grid-template-columns: 1fr 3fr; width: 400px'></div>
+<pre id="_jsF_547_16_error" style="color: red"></pre>
+<div id="_jsF_547_16_loading" style="margin-top: 4px">&nbsp;</div>
+<div id="_jsF_547_16_result"></div>
+<script src="https://mlexps.com/k1js/latest/amd.js"></script>
+<script>
+    const _jsF_547_16_loadF = () => {
+        
+const _jsD_313_379_1704544380 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+async function _jsF_547_15_1704544380() {
+    
+    const _jsF_547_14 = (x) => {
+        return Math.pow(x, 2);
+    }
+    const _jsD_313_376 = {};
+    const _jsF_547_13 = (_jsD_313_375) => _jsD_313_375.apply((_jsD_313_377) => _jsF_547_14(_jsD_313_377), null, _jsD_313_376, false)
+    const _jsF_547_12 = (_jsD_313_374) => { return _jsF_547_13(_jsD_313_374); };
+    return _jsF_547_12(_jsD_313_379_1704544380);
+}
+        window._jsF_547_15_1704544380 = _jsF_547_15_1704544380;
+        _jsF_547_16_error = document.querySelector("#_jsF_547_16_error");
+        _jsF_547_16_resultDiv = document.querySelector("#_jsF_547_16_result");
+        _jsF_547_16_loadingDiv = document.querySelector("#_jsF_547_16_loading");
+        const runningCoreHandle = [null];
+        const _jsF_547_16_reload_core = async (e) => {
+            if (runningCoreHandle[0]) { runningCoreHandle[0].cancel = true; }
+            const handle = {"cancel": false}; runningCoreHandle[0] = handle;
+            try {
+                _jsF_547_16_error.innerHTML = "";
+                _jsF_547_16_loadingDiv.innerHTML = "(loading...)";
+                const val = await _jsF_547_15_1704544380();
+                if (!handle.cancel) {
+                    _jsF_547_16_loadingDiv.innerHTML = "&nbsp;";
+                    _jsF_547_16_resultDiv.innerHTML = `<pre>${JSON.stringify(val)}</pre>`;
+                    
+                }
+            } catch (e) { if (!handle.cancel) _jsF_547_16_error.innerHTML = e.stack; }
+            runningCoreHandle[0] = null;
+        };
+        let _jsF_547_16_reload_timeout = null;
+        const _jsF_547_16_reload = async (e) => {
+            
+            if (0 <= 0) return _jsF_547_16_reload_core();
+            else {
+                clearTimeout(_jsF_547_16_reload_timeout);
+                _jsF_547_16_reload_timeout = setTimeout(_jsF_547_16_reload_core, 0)
+            }
+        }
+        
+        
+        _jsF_547_16_reload(null);
+    };
+    // trying multiple loading schemes, because in a live jupyter nb, it's using umd, while in an exported jupyter nb, it's using amd. The madness of JS
+    (async () => {
+        try {
+            require(['k1js'], function(k1js) { (async () => { window.k1js = await k1js; _jsF_547_16_loadF(); })(); });
+        } catch (e) {}
+    })();
+    (async () => {
+        try {
+            const res = await (await fetch("https://mlexps.com/k1js/latest/umd.js")).text();
+            eval(res); window.k1js = await k1js; _jsF_547_16_loadF();
+        } catch (e) {}
+    })();
+</script></div><p>More example, this time taking in a js argument:</p>
+<div style='margin-left: 30px'><h4>Source code</h4><div class="highlight"><pre><span></span><span class="n">jsFunc</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">|</span> <span class="n">deref</span><span class="p">()</span> <span class="o">|</span> <span class="p">(</span><span class="n">toJsFunc</span><span class="p">((</span><span class="s2">&quot;divisor&quot;</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span> <span class="o">|</span> <span class="n">filt</span><span class="p">(</span><span class="s2">&quot;x </span><span class="si">% d</span><span class="s2">ivisor == 1&quot;</span><span class="p">))</span>
+<span class="n">jsFunc</span>
+</pre></div>
+<h4>Compiled JS function</h4>&lt;JsFunc _jsF_547_20_1704544380&gt;<br>Generated JS function:<br><br><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">_jsD_313_385_1704544380</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span><span class="w"> </span><span class="mf">6</span><span class="p">,</span><span class="w"> </span><span class="mf">7</span><span class="p">,</span><span class="w"> </span><span class="mf">8</span><span class="p">,</span><span class="w"> </span><span class="mf">9</span><span class="p">];</span>
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">_jsF_547_20_1704544380</span><span class="p">(</span><span class="nx">divisor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">_jsF_547_19</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">x</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">((</span><span class="nx">x</span><span class="o">%</span><span class="nx">divisor</span><span class="p">)</span><span class="o">===</span><span class="mf">1</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">_jsF_547_18</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">_jsD_313_382</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">_jsD_313_382</span><span class="p">.</span><span class="nx">filt</span><span class="p">((</span><span class="nx">_jsD_313_383</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">(</span><span class="nx">_jsF_547_19</span><span class="p">(</span><span class="nx">_jsD_313_383</span><span class="p">)),</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">_jsF_547_17</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">_jsD_313_381</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">_jsF_547_18</span><span class="p">(</span><span class="nx">_jsD_313_381</span><span class="p">);</span><span class="w"> </span><span class="p">};</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">_jsF_547_17</span><span class="p">(</span><span class="nx">_jsD_313_385_1704544380</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div><div style='margin-left: 30px'><h4>Source code</h4><div class="highlight"><pre><span></span><span class="n">jsFunc</span><span class="o">.</span><span class="n">interface</span><span class="p">(</span><span class="s2">&quot;json&quot;</span><span class="p">)</span>
+</pre></div>
+<h4>Html output</h4><!-- k1lib.JsFuncInterface -->
+<style>
+    ._jsF_547_21_btn:hover {
+    }
+</style>
+<div style='display: grid; grid-template-columns: 1fr 3fr; width: 400px'><div>divisor</div><div><input type='number' value='3' placeholder='divisor' id='_jsD_313_380' style='padding: 4px 4px'></div></div>
+<pre id="_jsF_547_21_error" style="color: red"></pre>
+<div id="_jsF_547_21_loading" style="margin-top: 4px">&nbsp;</div>
+<div id="_jsF_547_21_result"></div>
+<script src="https://mlexps.com/k1js/latest/amd.js"></script>
+<script>
+    const _jsF_547_21_loadF = () => {
+        
+const _jsD_313_385_1704544380 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+async function _jsF_547_20_1704544380(divisor) {
+    
+    const _jsF_547_19 = (x) => {
+        return ((x%divisor)===1);
+    }
+    const _jsF_547_18 = (_jsD_313_382) => _jsD_313_382.filt((_jsD_313_383) => (_jsF_547_19(_jsD_313_383)), null)
+    const _jsF_547_17 = (_jsD_313_381) => { return _jsF_547_18(_jsD_313_381); };
+    return _jsF_547_17(_jsD_313_385_1704544380);
+}
+        window._jsF_547_20_1704544380 = _jsF_547_20_1704544380;
+        _jsF_547_21_error = document.querySelector("#_jsF_547_21_error");
+        _jsF_547_21_resultDiv = document.querySelector("#_jsF_547_21_result");
+        _jsF_547_21_loadingDiv = document.querySelector("#_jsF_547_21_loading");
+        const runningCoreHandle = [null];
+        const _jsF_547_21_reload_core = async (e) => {
+            if (runningCoreHandle[0]) { runningCoreHandle[0].cancel = true; }
+            const handle = {"cancel": false}; runningCoreHandle[0] = handle;
+            try {
+                _jsF_547_21_error.innerHTML = "";
+                _jsF_547_21_loadingDiv.innerHTML = "(loading...)";
+                const val = await _jsF_547_20_1704544380(parseInt(document.querySelector('#_jsD_313_380').value || 0));
+                if (!handle.cancel) {
+                    _jsF_547_21_loadingDiv.innerHTML = "&nbsp;";
+                    _jsF_547_21_resultDiv.innerHTML = `<pre>${JSON.stringify(val)}</pre>`;
+                    
+                }
+            } catch (e) { if (!handle.cancel) _jsF_547_21_error.innerHTML = e.stack; }
+            runningCoreHandle[0] = null;
+        };
+        let _jsF_547_21_reload_timeout = null;
+        const _jsF_547_21_reload = async (e) => {
+            
+            if (0 <= 0) return _jsF_547_21_reload_core();
+            else {
+                clearTimeout(_jsF_547_21_reload_timeout);
+                _jsF_547_21_reload_timeout = setTimeout(_jsF_547_21_reload_core, 0)
+            }
+        }
+        document.querySelector('#_jsD_313_380').oninput = _jsF_547_21_reload;
+        
+        _jsF_547_21_reload(null);
+    };
+    // trying multiple loading schemes, because in a live jupyter nb, it's using umd, while in an exported jupyter nb, it's using amd. The madness of JS
+    (async () => {
+        try {
+            require(['k1js'], function(k1js) { (async () => { window.k1js = await k1js; _jsF_547_21_loadF(); })(); });
+        } catch (e) {}
+    })();
+    (async () => {
+        try {
+            const res = await (await fetch("https://mlexps.com/k1js/latest/umd.js")).text();
+            eval(res); window.k1js = await k1js; _jsF_547_21_loadF();
+        } catch (e) {}
+    })();
+</script></div><p>It can be crazy complicated, yet still works:</p>
+<div style='margin-left: 30px'><h4>Source code</h4><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="mi">6</span> <span class="o">*</span> <span class="mi">2</span>
+<span class="n">jsFunc</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">|</span> <span class="n">deref</span><span class="p">()</span> <span class="o">|</span> <span class="p">(</span><span class="n">toJsFunc</span><span class="p">()</span> <span class="o">|</span> <span class="n">apply</span><span class="p">(</span><span class="s2">&quot;parseFloat((x//3 + c) ** 4)&quot;</span><span class="p">))</span>
+<span class="n">jsFunc</span>
+</pre></div>
+<h4>Compiled JS function</h4>&lt;JsFunc _jsF_547_25_1704544380&gt;<br>Generated JS function:<br><br><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">_jsD_313_391_1704544380</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span><span class="w"> </span><span class="mf">6</span><span class="p">,</span><span class="w"> </span><span class="mf">7</span><span class="p">,</span><span class="w"> </span><span class="mf">8</span><span class="p">,</span><span class="w"> </span><span class="mf">9</span><span class="p">];</span>
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">_jsF_547_25_1704544380</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">12</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">_jsF_547_24</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">x</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">parseFloat</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">pow</span><span class="p">((</span><span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nx">x</span><span class="o">/</span><span class="mf">3</span><span class="p">)</span><span class="o">+</span><span class="nx">c</span><span class="p">),</span><span class="w"> </span><span class="mf">4</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">_jsD_313_388</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{};</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">_jsF_547_23</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">_jsD_313_387</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">_jsD_313_387</span><span class="p">.</span><span class="nx">apply</span><span class="p">((</span><span class="nx">_jsD_313_389</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">_jsF_547_24</span><span class="p">(</span><span class="nx">_jsD_313_389</span><span class="p">),</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="nx">_jsD_313_388</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">_jsF_547_22</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">_jsD_313_386</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">_jsF_547_23</span><span class="p">(</span><span class="nx">_jsD_313_386</span><span class="p">);</span><span class="w"> </span><span class="p">};</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">_jsF_547_22</span><span class="p">(</span><span class="nx">_jsD_313_391_1704544380</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div><div style='margin-left: 30px'><h4>Source code</h4><div class="highlight"><pre><span></span><span class="n">jsFunc</span><span class="o">.</span><span class="n">interface</span><span class="p">(</span><span class="s2">&quot;json&quot;</span><span class="p">)</span>
+</pre></div>
+<h4>Html output</h4><!-- k1lib.JsFuncInterface -->
+<style>
+    ._jsF_547_26_btn:hover {
+    }
+</style>
+<div style='display: grid; grid-template-columns: 1fr 3fr; width: 400px'></div>
+<pre id="_jsF_547_26_error" style="color: red"></pre>
+<div id="_jsF_547_26_loading" style="margin-top: 4px">&nbsp;</div>
+<div id="_jsF_547_26_result"></div>
+<script src="https://mlexps.com/k1js/latest/amd.js"></script>
+<script>
+    const _jsF_547_26_loadF = () => {
+        
+const _jsD_313_391_1704544380 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+async function _jsF_547_25_1704544380() {
+    const c = 12;
+    const _jsF_547_24 = (x) => {
+        return parseFloat(Math.pow((Math.floor(x/3)+c), 4));
+    }
+    const _jsD_313_388 = {};
+    const _jsF_547_23 = (_jsD_313_387) => _jsD_313_387.apply((_jsD_313_389) => _jsF_547_24(_jsD_313_389), null, _jsD_313_388, false)
+    const _jsF_547_22 = (_jsD_313_386) => { return _jsF_547_23(_jsD_313_386); };
+    return _jsF_547_22(_jsD_313_391_1704544380);
+}
+        window._jsF_547_25_1704544380 = _jsF_547_25_1704544380;
+        _jsF_547_26_error = document.querySelector("#_jsF_547_26_error");
+        _jsF_547_26_resultDiv = document.querySelector("#_jsF_547_26_result");
+        _jsF_547_26_loadingDiv = document.querySelector("#_jsF_547_26_loading");
+        const runningCoreHandle = [null];
+        const _jsF_547_26_reload_core = async (e) => {
+            if (runningCoreHandle[0]) { runningCoreHandle[0].cancel = true; }
+            const handle = {"cancel": false}; runningCoreHandle[0] = handle;
+            try {
+                _jsF_547_26_error.innerHTML = "";
+                _jsF_547_26_loadingDiv.innerHTML = "(loading...)";
+                const val = await _jsF_547_25_1704544380();
+                if (!handle.cancel) {
+                    _jsF_547_26_loadingDiv.innerHTML = "&nbsp;";
+                    _jsF_547_26_resultDiv.innerHTML = `<pre>${JSON.stringify(val)}</pre>`;
+                    
+                }
+            } catch (e) { if (!handle.cancel) _jsF_547_26_error.innerHTML = e.stack; }
+            runningCoreHandle[0] = null;
+        };
+        let _jsF_547_26_reload_timeout = null;
+        const _jsF_547_26_reload = async (e) => {
+            
+            if (0 <= 0) return _jsF_547_26_reload_core();
+            else {
+                clearTimeout(_jsF_547_26_reload_timeout);
+                _jsF_547_26_reload_timeout = setTimeout(_jsF_547_26_reload_core, 0)
+            }
+        }
+        
+        
+        _jsF_547_26_reload(null);
+    };
+    // trying multiple loading schemes, because in a live jupyter nb, it's using umd, while in an exported jupyter nb, it's using amd. The madness of JS
+    (async () => {
+        try {
+            require(['k1js'], function(k1js) { (async () => { window.k1js = await k1js; _jsF_547_26_loadF(); })(); });
+        } catch (e) {}
+    })();
+    (async () => {
+        try {
+            const res = await (await fetch("https://mlexps.com/k1js/latest/umd.js")).text();
+            eval(res); window.k1js = await k1js; _jsF_547_26_loadF();
+        } catch (e) {}
+    })();
+</script></div><p>If you noticed, the transpiled JS code for <code class="docutils literal notranslate"><span class="pre">(x//3</span> <span class="pre">+</span> <span class="pre">6)</span> <span class="pre">**</span> <span class="pre">4</span></code> is actually
+<code class="docutils literal notranslate"><span class="pre">Math.pow((Math.floor(x/3)+6),</span> <span class="pre">4)</span></code>. The transpiler understands your code
+written in Python, and translates operations like <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">**</span> <span class="pre">b</span></code> into <code class="docutils literal notranslate"><span class="pre">Math.pow(a,</span> <span class="pre">b)</span></code>
+automatically. How cool is that! And as demonstrated in the previous example,
+you can also use JS variables too (<code class="docutils literal notranslate"><span class="pre">divisor</span></code>), instead of just Python variables.</p>
+<p>Notice how it also figures out that <code class="docutils literal notranslate"><span class="pre">c</span></code> must be a Python variable, so the
+transpiler will auto convert that to json and injects it into the JS code. Also
+notice how you can freely mix JS and Python code a little bit. For basic operations,
+use Python syntax, while for function calling, you can use JS functions.</p>
+<p>Lambda functions with lots of variables and <a class="reference internal" href="index.html#k1lib.cli.modifier.op" title="k1lib.cli.modifier.op"><code class="xref py py-class docutils literal notranslate"><span class="pre">op</span></code></a> works too:</p>
+<div style='margin-left: 30px'><h4>Source code</h4><div class="highlight"><pre><span></span><span class="n">jsFunc</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">|</span> <span class="n">deref</span><span class="p">()</span> <span class="o">|</span> <span class="p">(</span><span class="n">toJsFunc</span><span class="p">()</span> <span class="o">|</span> <span class="n">insertIdColumn</span><span class="p">()</span> <span class="o">|</span> <span class="o">~</span><span class="n">apply</span><span class="p">(</span><span class="s2">&quot;lambda x,y: x*y&quot;</span><span class="p">))</span>
+<span class="n">jsFunc</span>
+</pre></div>
+<h4>Compiled JS function</h4>&lt;JsFunc _jsF_547_31_1704544380&gt;<br>Generated JS function:<br><br><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">_jsD_313_398_1704544380</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span><span class="w"> </span><span class="mf">6</span><span class="p">,</span><span class="w"> </span><span class="mf">7</span><span class="p">,</span><span class="w"> </span><span class="mf">8</span><span class="p">,</span><span class="w"> </span><span class="mf">9</span><span class="p">];</span>
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">_jsF_547_31_1704544380</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">_jsF_547_28</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">_jsD_313_393</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">_jsD_313_393</span><span class="p">.</span><span class="nx">insertIdColumn</span><span class="p">(</span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">)</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">_jsF_547_30</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="nx">x</span><span class="o">*</span><span class="nx">y</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">_jsD_313_395</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{};</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">_jsF_547_29</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">_jsD_313_394</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">_jsD_313_394</span><span class="p">.</span><span class="nx">apply</span><span class="p">((</span><span class="nx">_jsD_313_396</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">_jsF_547_30</span><span class="p">(...</span><span class="nx">_jsD_313_396</span><span class="p">),</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="nx">_jsD_313_395</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">_jsF_547_27</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">_jsD_313_392</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">_jsF_547_29</span><span class="p">(</span><span class="nx">_jsF_547_28</span><span class="p">(</span><span class="nx">_jsD_313_392</span><span class="p">));</span><span class="w"> </span><span class="p">};</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">_jsF_547_27</span><span class="p">(</span><span class="nx">_jsD_313_398_1704544380</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div><div style='margin-left: 30px'><h4>Source code</h4><div class="highlight"><pre><span></span><span class="n">jsFunc</span><span class="o">.</span><span class="n">interface</span><span class="p">(</span><span class="s2">&quot;json&quot;</span><span class="p">)</span>
+</pre></div>
+<h4>Html output</h4><!-- k1lib.JsFuncInterface -->
+<style>
+    ._jsF_547_32_btn:hover {
+    }
+</style>
+<div style='display: grid; grid-template-columns: 1fr 3fr; width: 400px'></div>
+<pre id="_jsF_547_32_error" style="color: red"></pre>
+<div id="_jsF_547_32_loading" style="margin-top: 4px">&nbsp;</div>
+<div id="_jsF_547_32_result"></div>
+<script src="https://mlexps.com/k1js/latest/amd.js"></script>
+<script>
+    const _jsF_547_32_loadF = () => {
+        
+const _jsD_313_398_1704544380 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+async function _jsF_547_31_1704544380() {
+    const _jsF_547_28 = (_jsD_313_393) => _jsD_313_393.insertIdColumn(false, true)
+    
+    const _jsF_547_30 = (x, y) => {
+        return (x*y);
+    }
+    const _jsD_313_395 = {};
+    const _jsF_547_29 = (_jsD_313_394) => _jsD_313_394.apply((_jsD_313_396) => _jsF_547_30(..._jsD_313_396), null, _jsD_313_395, false)
+    const _jsF_547_27 = (_jsD_313_392) => { return _jsF_547_29(_jsF_547_28(_jsD_313_392)); };
+    return _jsF_547_27(_jsD_313_398_1704544380);
+}
+        window._jsF_547_31_1704544380 = _jsF_547_31_1704544380;
+        _jsF_547_32_error = document.querySelector("#_jsF_547_32_error");
+        _jsF_547_32_resultDiv = document.querySelector("#_jsF_547_32_result");
+        _jsF_547_32_loadingDiv = document.querySelector("#_jsF_547_32_loading");
+        const runningCoreHandle = [null];
+        const _jsF_547_32_reload_core = async (e) => {
+            if (runningCoreHandle[0]) { runningCoreHandle[0].cancel = true; }
+            const handle = {"cancel": false}; runningCoreHandle[0] = handle;
+            try {
+                _jsF_547_32_error.innerHTML = "";
+                _jsF_547_32_loadingDiv.innerHTML = "(loading...)";
+                const val = await _jsF_547_31_1704544380();
+                if (!handle.cancel) {
+                    _jsF_547_32_loadingDiv.innerHTML = "&nbsp;";
+                    _jsF_547_32_resultDiv.innerHTML = `<pre>${JSON.stringify(val)}</pre>`;
+                    
+                }
+            } catch (e) { if (!handle.cancel) _jsF_547_32_error.innerHTML = e.stack; }
+            runningCoreHandle[0] = null;
+        };
+        let _jsF_547_32_reload_timeout = null;
+        const _jsF_547_32_reload = async (e) => {
+            
+            if (0 <= 0) return _jsF_547_32_reload_core();
+            else {
+                clearTimeout(_jsF_547_32_reload_timeout);
+                _jsF_547_32_reload_timeout = setTimeout(_jsF_547_32_reload_core, 0)
+            }
+        }
+        
+        
+        _jsF_547_32_reload(null);
+    };
+    // trying multiple loading schemes, because in a live jupyter nb, it's using umd, while in an exported jupyter nb, it's using amd. The madness of JS
+    (async () => {
+        try {
+            require(['k1js'], function(k1js) { (async () => { window.k1js = await k1js; _jsF_547_32_loadF(); })(); });
+        } catch (e) {}
+    })();
+    (async () => {
+        try {
+            const res = await (await fetch("https://mlexps.com/k1js/latest/umd.js")).text();
+            eval(res); window.k1js = await k1js; _jsF_547_32_loadF();
+        } catch (e) {}
+    })();
+</script></div><div style='margin-left: 30px'><h4>Source code</h4><div class="highlight"><pre><span></span><span class="n">jsFunc</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">|</span> <span class="n">deref</span><span class="p">()</span> <span class="o">|</span> <span class="p">(</span><span class="n">toJsFunc</span><span class="p">()</span> <span class="o">|</span> <span class="n">apply</span><span class="p">(</span><span class="n">op</span><span class="p">()</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">jsFunc</span>
+</pre></div>
+<h4>Compiled JS function</h4>&lt;JsFunc _jsF_547_36_1704544380&gt;<br>Generated JS function:<br><br><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">_jsD_313_406_1704544380</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span><span class="w"> </span><span class="mf">6</span><span class="p">,</span><span class="w"> </span><span class="mf">7</span><span class="p">,</span><span class="w"> </span><span class="mf">8</span><span class="p">,</span><span class="w"> </span><span class="mf">9</span><span class="p">];</span>
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">_jsF_547_36_1704544380</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">_jsF_547_35</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">_jsD_313_404</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">Math</span><span class="p">.</span><span class="nx">pow</span><span class="p">(</span><span class="nx">_jsD_313_404</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">_jsD_313_402</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{};</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">_jsF_547_34</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">_jsD_313_401</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">_jsD_313_401</span><span class="p">.</span><span class="nx">apply</span><span class="p">((</span><span class="nx">_jsD_313_403</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">_jsF_547_35</span><span class="p">(</span><span class="nx">_jsD_313_403</span><span class="p">),</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="nx">_jsD_313_402</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">_jsF_547_33</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">_jsD_313_400</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">_jsF_547_34</span><span class="p">(</span><span class="nx">_jsD_313_400</span><span class="p">);</span><span class="w"> </span><span class="p">};</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">_jsF_547_33</span><span class="p">(</span><span class="nx">_jsD_313_406_1704544380</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div><div style='margin-left: 30px'><h4>Source code</h4><div class="highlight"><pre><span></span><span class="n">jsFunc</span><span class="o">.</span><span class="n">interface</span><span class="p">(</span><span class="s2">&quot;json&quot;</span><span class="p">)</span>
+</pre></div>
+<h4>Html output</h4><!-- k1lib.JsFuncInterface -->
+<style>
+    ._jsF_547_37_btn:hover {
+    }
+</style>
+<div style='display: grid; grid-template-columns: 1fr 3fr; width: 400px'></div>
+<pre id="_jsF_547_37_error" style="color: red"></pre>
+<div id="_jsF_547_37_loading" style="margin-top: 4px">&nbsp;</div>
+<div id="_jsF_547_37_result"></div>
+<script src="https://mlexps.com/k1js/latest/amd.js"></script>
+<script>
+    const _jsF_547_37_loadF = () => {
+        
+const _jsD_313_406_1704544380 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+async function _jsF_547_36_1704544380() {
+    
+    const _jsF_547_35 = (_jsD_313_404) => {
+        return Math.pow(_jsD_313_404, 2);
+    }
+    const _jsD_313_402 = {};
+    const _jsF_547_34 = (_jsD_313_401) => _jsD_313_401.apply((_jsD_313_403) => _jsF_547_35(_jsD_313_403), null, _jsD_313_402, false)
+    const _jsF_547_33 = (_jsD_313_400) => { return _jsF_547_34(_jsD_313_400); };
+    return _jsF_547_33(_jsD_313_406_1704544380);
+}
+        window._jsF_547_36_1704544380 = _jsF_547_36_1704544380;
+        _jsF_547_37_error = document.querySelector("#_jsF_547_37_error");
+        _jsF_547_37_resultDiv = document.querySelector("#_jsF_547_37_result");
+        _jsF_547_37_loadingDiv = document.querySelector("#_jsF_547_37_loading");
+        const runningCoreHandle = [null];
+        const _jsF_547_37_reload_core = async (e) => {
+            if (runningCoreHandle[0]) { runningCoreHandle[0].cancel = true; }
+            const handle = {"cancel": false}; runningCoreHandle[0] = handle;
+            try {
+                _jsF_547_37_error.innerHTML = "";
+                _jsF_547_37_loadingDiv.innerHTML = "(loading...)";
+                const val = await _jsF_547_36_1704544380();
+                if (!handle.cancel) {
+                    _jsF_547_37_loadingDiv.innerHTML = "&nbsp;";
+                    _jsF_547_37_resultDiv.innerHTML = `<pre>${JSON.stringify(val)}</pre>`;
+                    
+                }
+            } catch (e) { if (!handle.cancel) _jsF_547_37_error.innerHTML = e.stack; }
+            runningCoreHandle[0] = null;
+        };
+        let _jsF_547_37_reload_timeout = null;
+        const _jsF_547_37_reload = async (e) => {
+            
+            if (0 <= 0) return _jsF_547_37_reload_core();
+            else {
+                clearTimeout(_jsF_547_37_reload_timeout);
+                _jsF_547_37_reload_timeout = setTimeout(_jsF_547_37_reload_core, 0)
+            }
+        }
+        
+        
+        _jsF_547_37_reload(null);
+    };
+    // trying multiple loading schemes, because in a live jupyter nb, it's using umd, while in an exported jupyter nb, it's using amd. The madness of JS
+    (async () => {
+        try {
+            require(['k1js'], function(k1js) { (async () => { window.k1js = await k1js; _jsF_547_37_loadF(); })(); });
+        } catch (e) {}
+    })();
+    (async () => {
+        try {
+            const res = await (await fetch("https://mlexps.com/k1js/latest/umd.js")).text();
+            eval(res); window.k1js = await k1js; _jsF_547_37_loadF();
+        } catch (e) {}
+    })();
+</script></div><p>Let’s see a more complex example:</p>
+</section>
+<section id="lots-of-moving-parts">
+<h2>Lots of moving parts<a class="headerlink" href="#lots-of-moving-parts" title="Permalink to this heading"></a></h2>
+<div style='margin-left: 30px'><h4>Source code</h4><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">repeatF</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">9999</span><span class="p">),</span> <span class="mi">100</span><span class="p">)</span> <span class="o">|</span> <span class="n">deref</span><span class="p">()</span>
+<span class="n">f1</span> <span class="o">=</span> <span class="n">grep</span><span class="p">(</span><span class="s2">&quot;$</span><span class="si">{term}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="o">|</span> <span class="n">apply</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span> <span class="o">|</span> <span class="n">batched</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span> <span class="o">|</span> <span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">f2</span> <span class="o">=</span> <span class="n">pretty</span><span class="p">()</span> <span class="o">|</span> <span class="n">join</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span> <span class="o">|</span> <span class="n">aS</span><span class="p">(</span><span class="n">fmt</span><span class="o">.</span><span class="n">pre</span><span class="p">)</span>
+<span class="n">jsFunc</span> <span class="o">=</span> <span class="n">data</span> <span class="o">|</span> <span class="p">(</span><span class="n">toJsFunc</span><span class="p">(</span><span class="s2">&quot;term&quot;</span><span class="p">)</span> <span class="o">|</span> <span class="n">f1</span> <span class="o">|</span> <span class="n">f2</span><span class="p">)</span>
+<span class="n">jsFunc</span>
+</pre></div>
+<h4>Compiled JS function</h4>&lt;JsFunc _jsF_547_49_1704544380&gt;<br>Generated JS function:<br><br><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">_jsD_313_424_1704544380</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">1402</span><span class="p">,</span><span class="w"> </span><span class="mf">8435</span><span class="p">,</span><span class="w"> </span><span class="mf">7790</span><span class="p">,</span><span class="w"> </span><span class="mf">6040</span><span class="p">,</span><span class="w"> </span><span class="mf">3310</span><span class="p">,</span><span class="w"> </span><span class="mf">1044</span><span class="p">,</span><span class="w"> </span><span class="mf">7789</span><span class="p">,</span><span class="w"> </span><span class="mf">3240</span><span class="p">,</span><span class="w"> </span><span class="mf">7566</span><span class="p">,</span><span class="w"> </span><span class="mf">3325</span><span class="p">,</span><span class="w"> </span><span class="mf">7041</span><span class="p">,</span><span class="w"> </span><span class="mf">2672</span><span class="p">,</span><span class="w"> </span><span class="mf">9838</span><span class="p">,</span><span class="w"> </span><span class="mf">8638</span><span class="p">,</span><span class="w"> </span><span class="mf">8293</span><span class="p">,</span><span class="w"> </span><span class="mf">5201</span><span class="p">,</span><span class="w"> </span><span class="mf">5952</span><span class="p">,</span><span class="w"> </span><span class="mf">2684</span><span class="p">,</span><span class="w"> </span><span class="mf">7870</span><span class="p">,</span><span class="w"> </span><span class="mf">2914</span><span class="p">,</span><span class="w"> </span><span class="mf">7201</span><span class="p">,</span><span class="w"> </span><span class="mf">3230</span><span class="p">,</span><span class="w"> </span><span class="mf">2209</span><span class="p">,</span><span class="w"> </span><span class="mf">5774</span><span class="p">,</span><span class="w"> </span><span class="mf">5024</span><span class="p">,</span><span class="w"> </span><span class="mf">8068</span><span class="p">,</span><span class="w"> </span><span class="mf">3194</span><span class="p">,</span><span class="w"> </span><span class="mf">5371</span><span class="p">,</span><span class="w"> </span><span class="mf">9838</span><span class="p">,</span><span class="w"> </span><span class="mf">8296</span><span class="p">,</span><span class="w"> </span><span class="mf">3699</span><span class="p">,</span><span class="w"> </span><span class="mf">2905</span><span class="p">,</span><span class="w"> </span><span class="mf">6508</span><span class="p">,</span><span class="w"> </span><span class="mf">6275</span><span class="p">,</span><span class="w"> </span><span class="mf">1311</span><span class="p">,</span><span class="w"> </span><span class="mf">7314</span><span class="p">,</span><span class="w"> </span><span class="mf">1218</span><span class="p">,</span><span class="w"> </span><span class="mf">6920</span><span class="p">,</span><span class="w"> </span><span class="mf">4774</span><span class="p">,</span><span class="w"> </span><span class="mf">8678</span><span class="p">,</span><span class="w"> </span><span class="mf">7322</span><span class="p">,</span><span class="w"> </span><span class="mf">2913</span><span class="p">,</span><span class="w"> </span><span class="mf">8226</span><span class="p">,</span><span class="w"> </span><span class="mf">2110</span><span class="p">,</span><span class="w"> </span><span class="mf">7852</span><span class="p">,</span><span class="w"> </span><span class="mf">9339</span><span class="p">,</span><span class="w"> </span><span class="mf">6158</span><span class="p">,</span><span class="w"> </span><span class="mf">5168</span><span class="p">,</span><span class="w"> </span><span class="mf">4607</span><span class="p">,</span><span class="w"> </span><span class="mf">4483</span><span class="p">,</span><span class="w"> </span><span class="mf">7557</span><span class="p">,</span><span class="w"> </span><span class="mf">8332</span><span class="p">,</span><span class="w"> </span><span class="mf">6104</span><span class="p">,</span><span class="w"> </span><span class="mf">2403</span><span class="p">,</span><span class="w"> </span><span class="mf">3969</span><span class="p">,</span><span class="w"> </span><span class="mf">6681</span><span class="p">,</span><span class="w"> </span><span class="mf">6569</span><span class="p">,</span><span class="w"> </span><span class="mf">1245</span><span class="p">,</span><span class="w"> </span><span class="mf">9365</span><span class="p">,</span><span class="w"> </span><span class="mf">3760</span><span class="p">,</span><span class="w"> </span><span class="mf">9090</span><span class="p">,</span><span class="w"> </span><span class="mf">6564</span><span class="p">,</span><span class="w"> </span><span class="mf">7371</span><span class="p">,</span><span class="w"> </span><span class="mf">6162</span><span class="p">,</span><span class="w"> </span><span class="mf">2260</span><span class="p">,</span><span class="w"> </span><span class="mf">1073</span><span class="p">,</span><span class="w"> </span><span class="mf">9893</span><span class="p">,</span><span class="w"> </span><span class="mf">3518</span><span class="p">,</span><span class="w"> </span><span class="mf">8949</span><span class="p">,</span><span class="w"> </span><span class="mf">6504</span><span class="p">,</span><span class="w"> </span><span class="mf">2848</span><span class="p">,</span><span class="w"> </span><span class="mf">6232</span><span class="p">,</span><span class="w"> </span><span class="mf">2924</span><span class="p">,</span><span class="w"> </span><span class="mf">1124</span><span class="p">,</span><span class="w"> </span><span class="mf">1134</span><span class="p">,</span><span class="w"> </span><span class="mf">6648</span><span class="p">,</span><span class="w"> </span><span class="mf">3021</span><span class="p">,</span><span class="w"> </span><span class="mf">5753</span><span class="p">,</span><span class="w"> </span><span class="mf">8424</span><span class="p">,</span><span class="w"> </span><span class="mf">2075</span><span class="p">,</span><span class="w"> </span><span class="mf">9055</span><span class="p">,</span><span class="w"> </span><span class="mf">7055</span><span class="p">,</span><span class="w"> </span><span class="mf">1387</span><span class="p">,</span><span class="w"> </span><span class="mf">4711</span><span class="p">,</span><span class="w"> </span><span class="mf">1678</span><span class="p">,</span><span class="w"> </span><span class="mf">1072</span><span class="p">,</span><span class="w"> </span><span class="mf">3081</span><span class="p">,</span><span class="w"> </span><span class="mf">2939</span><span class="p">,</span><span class="w"> </span><span class="mf">2891</span><span class="p">,</span><span class="w"> </span><span class="mf">7453</span><span class="p">,</span><span class="w"> </span><span class="mf">6882</span><span class="p">,</span><span class="w"> </span><span class="mf">3893</span><span class="p">,</span><span class="w"> </span><span class="mf">5698</span><span class="p">,</span><span class="w"> </span><span class="mf">4918</span><span class="p">,</span><span class="w"> </span><span class="mf">5666</span><span class="p">,</span><span class="w"> </span><span class="mf">1859</span><span class="p">,</span><span class="w"> </span><span class="mf">1273</span><span class="p">,</span><span class="w"> </span><span class="mf">9531</span><span class="p">,</span><span class="w"> </span><span class="mf">5113</span><span class="p">,</span><span class="w"> </span><span class="mf">5514</span><span class="p">];</span>
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">_jsF_547_49_1704544380</span><span class="p">(</span><span class="nx">term</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">_jsF_547_40</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">_jsD_313_410</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">_jsD_313_410</span><span class="p">.</span><span class="nx">grep</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">term</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nx">col</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="nx">inv</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">})</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">_jsD_313_413</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{};</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">_jsF_547_41</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">_jsD_313_412</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">_jsD_313_412</span><span class="p">.</span><span class="nx">apply</span><span class="p">((</span><span class="nx">_jsD_313_414</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">String</span><span class="p">(</span><span class="nx">_jsD_313_414</span><span class="p">),</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="nx">_jsD_313_413</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">_jsF_547_42</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">_jsD_313_415</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">_jsD_313_415</span><span class="p">.</span><span class="nx">batched</span><span class="p">(</span><span class="mf">5</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">_jsF_547_43</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">_jsD_313_416</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">_jsD_313_416</span><span class="p">.</span><span class="nx">head</span><span class="p">(</span><span class="mf">10</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">_jsF_547_39</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">_jsD_313_409</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">_jsF_547_43</span><span class="p">(</span><span class="nx">_jsF_547_42</span><span class="p">(</span><span class="nx">_jsF_547_41</span><span class="p">(</span><span class="nx">_jsF_547_40</span><span class="p">(</span><span class="nx">_jsD_313_409</span><span class="p">))));</span><span class="w"> </span><span class="p">};</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">_jsF_547_45</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">_jsD_313_419</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">_jsD_313_419</span><span class="p">.</span><span class="nx">pretty</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">_jsF_547_46</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">_jsD_313_420</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">_jsD_313_420</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s2">&quot;\n&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">_jsF_547_48</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">_jsD_313_423</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="sb">`&lt;pre style=&#39;font-family: monospace&#39;&gt;</span><span class="si">${</span><span class="nx">_jsD_313_423</span><span class="si">}</span><span class="sb">&lt;/pre&gt;`</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">_jsF_547_44</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">_jsD_313_418</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">_jsF_547_48</span><span class="p">(</span><span class="nx">_jsF_547_46</span><span class="p">(</span><span class="nx">_jsF_547_45</span><span class="p">(</span><span class="nx">_jsD_313_418</span><span class="p">)));</span><span class="w"> </span><span class="p">};</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">_jsF_547_38</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">_jsD_313_408</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">_jsF_547_44</span><span class="p">(</span><span class="nx">_jsF_547_39</span><span class="p">(</span><span class="nx">_jsD_313_408</span><span class="p">));</span><span class="w"> </span><span class="p">};</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">_jsF_547_38</span><span class="p">(</span><span class="nx">_jsD_313_424_1704544380</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div><div style='margin-left: 30px'><h4>Source code</h4><div class="highlight"><pre><span></span><span class="n">jsFunc</span><span class="o">.</span><span class="n">interface</span><span class="p">(</span><span class="s2">&quot;html&quot;</span><span class="p">)</span>
+</pre></div>
+<h4>Html output</h4><!-- k1lib.JsFuncInterface -->
+<style>
+    ._jsF_547_50_btn:hover {
+    }
+</style>
+<div style='display: grid; grid-template-columns: 1fr 3fr; width: 400px'><div>term</div><div><input type='text' value='' placeholder='term' id='_jsD_313_407' style='padding: 4px 4px'></div></div>
+<pre id="_jsF_547_50_error" style="color: red"></pre>
+<div id="_jsF_547_50_loading" style="margin-top: 4px">&nbsp;</div>
+<div id="_jsF_547_50_result"></div>
+<script src="https://mlexps.com/k1js/latest/amd.js"></script>
+<script>
+    const _jsF_547_50_loadF = () => {
+        
+const _jsD_313_424_1704544380 = [1402, 8435, 7790, 6040, 3310, 1044, 7789, 3240, 7566, 3325, 7041, 2672, 9838, 8638, 8293, 5201, 5952, 2684, 7870, 2914, 7201, 3230, 2209, 5774, 5024, 8068, 3194, 5371, 9838, 8296, 3699, 2905, 6508, 6275, 1311, 7314, 1218, 6920, 4774, 8678, 7322, 2913, 8226, 2110, 7852, 9339, 6158, 5168, 4607, 4483, 7557, 8332, 6104, 2403, 3969, 6681, 6569, 1245, 9365, 3760, 9090, 6564, 7371, 6162, 2260, 1073, 9893, 3518, 8949, 6504, 2848, 6232, 2924, 1124, 1134, 6648, 3021, 5753, 8424, 2075, 9055, 7055, 1387, 4711, 1678, 1072, 3081, 2939, 2891, 7453, 6882, 3893, 5698, 4918, 5666, 1859, 1273, 9531, 5113, 5514];
+async function _jsF_547_49_1704544380(term) {
+    const _jsF_547_40 = (_jsD_313_410) => _jsD_313_410.grep(`${term}`, {col: null, inv: false})
+    
+    const _jsD_313_413 = {};
+    const _jsF_547_41 = (_jsD_313_412) => _jsD_313_412.apply((_jsD_313_414) => String(_jsD_313_414), null, _jsD_313_413, false)
+    const _jsF_547_42 = (_jsD_313_415) => _jsD_313_415.batched(5, true)
+    const _jsF_547_43 = (_jsD_313_416) => _jsD_313_416.head(10, false)
+    const _jsF_547_39 = (_jsD_313_409) => { return _jsF_547_43(_jsF_547_42(_jsF_547_41(_jsF_547_40(_jsD_313_409)))); };
+    const _jsF_547_45 = (_jsD_313_419) => _jsD_313_419.pretty("", false)
+    const _jsF_547_46 = (_jsD_313_420) => _jsD_313_420.join("\n")
+    const _jsF_547_48 = (_jsD_313_423) => `<pre style='font-family: monospace'>${_jsD_313_423}</pre>`
+    const _jsF_547_44 = (_jsD_313_418) => { return _jsF_547_48(_jsF_547_46(_jsF_547_45(_jsD_313_418))); };
+    const _jsF_547_38 = (_jsD_313_408) => { return _jsF_547_44(_jsF_547_39(_jsD_313_408)); };
+    return _jsF_547_38(_jsD_313_424_1704544380);
+}
+        window._jsF_547_49_1704544380 = _jsF_547_49_1704544380;
+        _jsF_547_50_error = document.querySelector("#_jsF_547_50_error");
+        _jsF_547_50_resultDiv = document.querySelector("#_jsF_547_50_result");
+        _jsF_547_50_loadingDiv = document.querySelector("#_jsF_547_50_loading");
+        const runningCoreHandle = [null];
+        const _jsF_547_50_reload_core = async (e) => {
+            if (runningCoreHandle[0]) { runningCoreHandle[0].cancel = true; }
+            const handle = {"cancel": false}; runningCoreHandle[0] = handle;
+            try {
+                _jsF_547_50_error.innerHTML = "";
+                _jsF_547_50_loadingDiv.innerHTML = "(loading...)";
+                const val = await _jsF_547_49_1704544380(document.querySelector('#_jsD_313_407').value);
+                if (!handle.cancel) {
+                    _jsF_547_50_loadingDiv.innerHTML = "&nbsp;";
+                    _jsF_547_50_resultDiv.innerHTML = val;
+                    
+const containerDiv = document.createElement('div'); containerDiv.innerHTML = val;
+for (const scriptElem of containerDiv.querySelectorAll('script')) eval(scriptElem.textContent);
+                }
+            } catch (e) { if (!handle.cancel) _jsF_547_50_error.innerHTML = e.stack; }
+            runningCoreHandle[0] = null;
+        };
+        let _jsF_547_50_reload_timeout = null;
+        const _jsF_547_50_reload = async (e) => {
+            
+            if (0 <= 0) return _jsF_547_50_reload_core();
+            else {
+                clearTimeout(_jsF_547_50_reload_timeout);
+                _jsF_547_50_reload_timeout = setTimeout(_jsF_547_50_reload_core, 0)
+            }
+        }
+        document.querySelector('#_jsD_313_407').oninput = _jsF_547_50_reload;
+        
+        _jsF_547_50_reload(null);
+    };
+    // trying multiple loading schemes, because in a live jupyter nb, it's using umd, while in an exported jupyter nb, it's using amd. The madness of JS
+    (async () => {
+        try {
+            require(['k1js'], function(k1js) { (async () => { window.k1js = await k1js; _jsF_547_50_loadF(); })(); });
+        } catch (e) {}
+    })();
+    (async () => {
+        try {
+            const res = await (await fetch("https://mlexps.com/k1js/latest/umd.js")).text();
+            eval(res); window.k1js = await k1js; _jsF_547_50_loadF();
+        } catch (e) {}
+    })();
+</script></div><p>Just a reminder, you can specify <a class="reference internal" href="index.html#k1lib.cli.kjs.toJsFunc" title="k1lib.cli.kjs.toJsFunc"><code class="xref py py-class docutils literal notranslate"><span class="pre">toJsFunc</span></code></a> at any point in
+the pipeline. As long as the data you pipe into the <a class="reference internal" href="index.html#k1lib.cli.kjs.toJsFunc" title="k1lib.cli.kjs.toJsFunc"><code class="xref py py-class docutils literal notranslate"><span class="pre">toJsFunc</span></code></a>-captured
+block can be converted into json, you’re good.</p>
+<div style='margin-left: 30px'><h4>Source code</h4><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">|</span> <span class="n">deref</span><span class="p">()</span>
+<span class="n">jsFunc</span> <span class="o">=</span> <span class="n">data</span> <span class="o">|</span> <span class="p">(</span><span class="n">toJsFunc</span><span class="p">()</span> <span class="o">|</span> <span class="n">filt</span><span class="p">(</span><span class="s2">&quot;x%3 == 0&quot;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">filt</span><span class="p">(</span><span class="s2">&quot;x%2 == 0&quot;</span><span class="p">))</span>
+<span class="n">jsFunc</span>
+</pre></div>
+<h4>Compiled JS function</h4>&lt;JsFunc _jsF_547_57_1704544380&gt;<br>Generated JS function:<br><br><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">_jsD_313_433_1704544380</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span><span class="w"> </span><span class="mf">6</span><span class="p">,</span><span class="w"> </span><span class="mf">7</span><span class="p">,</span><span class="w"> </span><span class="mf">8</span><span class="p">,</span><span class="w"> </span><span class="mf">9</span><span class="p">];</span>
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">_jsF_547_57_1704544380</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">_jsF_547_54</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">x</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">((</span><span class="nx">x</span><span class="o">%</span><span class="mf">3</span><span class="p">)</span><span class="o">===</span><span class="mf">0</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">_jsF_547_53</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">_jsD_313_427</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">_jsD_313_427</span><span class="p">.</span><span class="nx">filt</span><span class="p">((</span><span class="nx">_jsD_313_428</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">(</span><span class="nx">_jsF_547_54</span><span class="p">(</span><span class="nx">_jsD_313_428</span><span class="p">)),</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">_jsF_547_56</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">x</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">((</span><span class="nx">x</span><span class="o">%</span><span class="mf">2</span><span class="p">)</span><span class="o">===</span><span class="mf">0</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">_jsF_547_55</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">_jsD_313_430</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">_jsD_313_430</span><span class="p">.</span><span class="nx">filt</span><span class="p">((</span><span class="nx">_jsD_313_431</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">(</span><span class="nx">_jsF_547_56</span><span class="p">(</span><span class="nx">_jsD_313_431</span><span class="p">)),</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">_jsF_547_52</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">_jsD_313_426</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">[</span><span class="nx">_jsF_547_53</span><span class="p">(</span><span class="nx">_jsD_313_426</span><span class="p">),</span><span class="w"> </span><span class="nx">_jsF_547_55</span><span class="p">(</span><span class="nx">_jsD_313_426</span><span class="p">)];</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">_jsF_547_51</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">_jsD_313_425</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">_jsF_547_52</span><span class="p">(</span><span class="nx">_jsD_313_425</span><span class="p">);</span><span class="w"> </span><span class="p">};</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">_jsF_547_51</span><span class="p">(</span><span class="nx">_jsD_313_433_1704544380</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div><div style='margin-left: 30px'><h4>Source code</h4><div class="highlight"><pre><span></span><span class="n">jsFunc</span><span class="o">.</span><span class="n">interface</span><span class="p">(</span><span class="s2">&quot;json&quot;</span><span class="p">)</span>
+</pre></div>
+<h4>Html output</h4><!-- k1lib.JsFuncInterface -->
+<style>
+    ._jsF_547_58_btn:hover {
+    }
+</style>
+<div style='display: grid; grid-template-columns: 1fr 3fr; width: 400px'></div>
+<pre id="_jsF_547_58_error" style="color: red"></pre>
+<div id="_jsF_547_58_loading" style="margin-top: 4px">&nbsp;</div>
+<div id="_jsF_547_58_result"></div>
+<script src="https://mlexps.com/k1js/latest/amd.js"></script>
+<script>
+    const _jsF_547_58_loadF = () => {
+        
+const _jsD_313_433_1704544380 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+async function _jsF_547_57_1704544380() {
+    
+    const _jsF_547_54 = (x) => {
+        return ((x%3)===0);
+    }
+    const _jsF_547_53 = (_jsD_313_427) => _jsD_313_427.filt((_jsD_313_428) => (_jsF_547_54(_jsD_313_428)), null)
+    
+    const _jsF_547_56 = (x) => {
+        return ((x%2)===0);
+    }
+    const _jsF_547_55 = (_jsD_313_430) => _jsD_313_430.filt((_jsD_313_431) => (_jsF_547_56(_jsD_313_431)), null)
+    const _jsF_547_52 = (_jsD_313_426) => [_jsF_547_53(_jsD_313_426), _jsF_547_55(_jsD_313_426)];
+    const _jsF_547_51 = (_jsD_313_425) => { return _jsF_547_52(_jsD_313_425); };
+    return _jsF_547_51(_jsD_313_433_1704544380);
+}
+        window._jsF_547_57_1704544380 = _jsF_547_57_1704544380;
+        _jsF_547_58_error = document.querySelector("#_jsF_547_58_error");
+        _jsF_547_58_resultDiv = document.querySelector("#_jsF_547_58_result");
+        _jsF_547_58_loadingDiv = document.querySelector("#_jsF_547_58_loading");
+        const runningCoreHandle = [null];
+        const _jsF_547_58_reload_core = async (e) => {
+            if (runningCoreHandle[0]) { runningCoreHandle[0].cancel = true; }
+            const handle = {"cancel": false}; runningCoreHandle[0] = handle;
+            try {
+                _jsF_547_58_error.innerHTML = "";
+                _jsF_547_58_loadingDiv.innerHTML = "(loading...)";
+                const val = await _jsF_547_57_1704544380();
+                if (!handle.cancel) {
+                    _jsF_547_58_loadingDiv.innerHTML = "&nbsp;";
+                    _jsF_547_58_resultDiv.innerHTML = `<pre>${JSON.stringify(val)}</pre>`;
+                    
+                }
+            } catch (e) { if (!handle.cancel) _jsF_547_58_error.innerHTML = e.stack; }
+            runningCoreHandle[0] = null;
+        };
+        let _jsF_547_58_reload_timeout = null;
+        const _jsF_547_58_reload = async (e) => {
+            
+            if (0 <= 0) return _jsF_547_58_reload_core();
+            else {
+                clearTimeout(_jsF_547_58_reload_timeout);
+                _jsF_547_58_reload_timeout = setTimeout(_jsF_547_58_reload_core, 0)
+            }
+        }
+        
+        
+        _jsF_547_58_reload(null);
+    };
+    // trying multiple loading schemes, because in a live jupyter nb, it's using umd, while in an exported jupyter nb, it's using amd. The madness of JS
+    (async () => {
+        try {
+            require(['k1js'], function(k1js) { (async () => { window.k1js = await k1js; _jsF_547_58_loadF(); })(); });
+        } catch (e) {}
+    })();
+    (async () => {
+        try {
+            const res = await (await fetch("https://mlexps.com/k1js/latest/umd.js")).text();
+            eval(res); window.k1js = await k1js; _jsF_547_58_loadF();
+        } catch (e) {}
+    })();
+</script></div></section>
+<section id="custom-transpiler-logic">
+<h2>Custom transpiler logic<a class="headerlink" href="#custom-transpiler-logic" title="Permalink to this heading"></a></h2>
+<p>You can write transpiler logic for any custom class/functions that you desire!
+Let’s imagine the use case to be writing a function that calculates the factorial
+sequence, where an initial number is multiplied by increments of itself, and
+getting the first n elements out of it. Let’s see an example using classes:</p>
+<div style='margin-left: 30px'><h4>Source code</h4><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Factorio</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span> <span class="c1"># yes, the spelling is not the math func, but the game. But I love Factorio so</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">=</span> <span class="n">n</span>
+    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="p">):</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="n">start</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">):</span>
+            <span class="k">yield</span> <span class="n">value</span>
+            <span class="n">value</span> <span class="o">*=</span> <span class="n">start</span><span class="o">+</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span>
+    <span class="k">def</span> <span class="nf">_jsF</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">meta</span><span class="p">):</span>
+        <span class="n">fIdx</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;f_</span><span class="si">{</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1_000_000</span><span class="p">)</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">vIdx</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;f_</span><span class="si">{</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1_000_000</span><span class="p">)</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">  const </span><span class="si">{</span><span class="n">fIdx</span><span class="si">}</span><span class="s2"> = (</span><span class="si">{</span><span class="n">vIdx</span><span class="si">}</span><span class="s2">) =&gt; </span><span class="se">{{</span>
+<span class="s2">      const ans = []; let value = </span><span class="si">{</span><span class="n">vIdx</span><span class="si">}</span><span class="s2">;</span>
+<span class="s2">      for (let i = 0; i &lt; </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="si">}</span><span class="s2">; i++) </span><span class="se">{{</span>
+<span class="s2">          ans.push(value);</span>
+<span class="s2">          value = value * (</span><span class="si">{</span><span class="n">vIdx</span><span class="si">}</span><span class="s2"> + i + 1);</span>
+<span class="s2">      </span><span class="se">}}</span>
+<span class="s2">      return ans;</span>
+<span class="s2">  </span><span class="se">}}</span><span class="s2">;</span>
+<span class="s2">        &quot;&quot;&quot;</span><span class="p">,</span> <span class="n">fIdx</span>
+
+<span class="mi">2</span> <span class="o">|</span> <span class="n">Factorio</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">|</span> <span class="n">deref</span><span class="p">()</span> <span class="c1"># returns [2, 6, 24, 120, 720]</span>
+
+<span class="n">jsFunc</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">|</span> <span class="p">(</span><span class="n">toJsFunc</span><span class="p">((</span><span class="s2">&quot;size&quot;</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span> <span class="o">|</span> <span class="n">Factorio</span><span class="p">(</span><span class="s2">&quot;size&quot;</span><span class="p">))</span>
+<span class="n">jsFunc</span>
+</pre></div>
+<h4>Compiled JS function</h4>&lt;JsFunc _jsF_547_60_1704544380&gt;<br>Generated JS function:<br><br><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">_jsD_313_436_1704544380</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2</span><span class="p">;</span>
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">_jsF_547_60_1704544380</span><span class="p">(</span><span class="nx">size</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">f_672913_1704544380</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">f_295041_1704544380</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="kd">const</span><span class="w"> </span><span class="nx">ans</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">f_295041_1704544380</span><span class="p">;</span>
+<span class="w">          </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">size</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="nx">ans</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
+<span class="w">              </span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">value</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="nx">f_295041_1704544380</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="p">);</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">          </span><span class="k">return</span><span class="w"> </span><span class="nx">ans</span><span class="p">;</span>
+<span class="w">      </span><span class="p">};</span>
+<span class="w">            </span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">_jsF_547_59</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">_jsD_313_435</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">f_672913_1704544380</span><span class="p">(</span><span class="nx">_jsD_313_435</span><span class="p">);</span><span class="w"> </span><span class="p">};</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">_jsF_547_59</span><span class="p">(</span><span class="nx">_jsD_313_436_1704544380</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div><div style='margin-left: 30px'><h4>Source code</h4><div class="highlight"><pre><span></span><span class="n">jsFunc</span><span class="o">.</span><span class="n">interface</span><span class="p">()</span>
+</pre></div>
+<h4>Html output</h4><!-- k1lib.JsFuncInterface -->
+<style>
+    ._jsF_547_61_btn:hover {
+    }
+</style>
+<div style='display: grid; grid-template-columns: 1fr 3fr; width: 400px'><div>size</div><div><input type='number' value='3' placeholder='size' id='_jsD_313_434' style='padding: 4px 4px'></div></div>
+<pre id="_jsF_547_61_error" style="color: red"></pre>
+<div id="_jsF_547_61_loading" style="margin-top: 4px">&nbsp;</div>
+<div id="_jsF_547_61_result"></div>
+<script src="https://mlexps.com/k1js/latest/amd.js"></script>
+<script>
+    const _jsF_547_61_loadF = () => {
+        
+const _jsD_313_436_1704544380 = 2;
+async function _jsF_547_60_1704544380(size) {
+    
+      const f_672913_1704544380 = (f_295041_1704544380) => {
+          const ans = []; let value = f_295041_1704544380;
+          for (let i = 0; i < size; i++) {
+              ans.push(value);
+              value = value * (f_295041_1704544380 + i + 1);
+          }
+          return ans;
+      };
+            
+    const _jsF_547_59 = (_jsD_313_435) => { return f_672913_1704544380(_jsD_313_435); };
+    return _jsF_547_59(_jsD_313_436_1704544380);
+}
+        window._jsF_547_60_1704544380 = _jsF_547_60_1704544380;
+        _jsF_547_61_error = document.querySelector("#_jsF_547_61_error");
+        _jsF_547_61_resultDiv = document.querySelector("#_jsF_547_61_result");
+        _jsF_547_61_loadingDiv = document.querySelector("#_jsF_547_61_loading");
+        const runningCoreHandle = [null];
+        const _jsF_547_61_reload_core = async (e) => {
+            if (runningCoreHandle[0]) { runningCoreHandle[0].cancel = true; }
+            const handle = {"cancel": false}; runningCoreHandle[0] = handle;
+            try {
+                _jsF_547_61_error.innerHTML = "";
+                _jsF_547_61_loadingDiv.innerHTML = "(loading...)";
+                const val = await _jsF_547_60_1704544380(parseInt(document.querySelector('#_jsD_313_434').value || 0));
+                if (!handle.cancel) {
+                    _jsF_547_61_loadingDiv.innerHTML = "&nbsp;";
+                    _jsF_547_61_resultDiv.innerHTML = val;
+                    
+const containerDiv = document.createElement('div'); containerDiv.innerHTML = val;
+for (const scriptElem of containerDiv.querySelectorAll('script')) eval(scriptElem.textContent);
+                }
+            } catch (e) { if (!handle.cancel) _jsF_547_61_error.innerHTML = e.stack; }
+            runningCoreHandle[0] = null;
+        };
+        let _jsF_547_61_reload_timeout = null;
+        const _jsF_547_61_reload = async (e) => {
+            
+            if (0 <= 0) return _jsF_547_61_reload_core();
+            else {
+                clearTimeout(_jsF_547_61_reload_timeout);
+                _jsF_547_61_reload_timeout = setTimeout(_jsF_547_61_reload_core, 0)
+            }
+        }
+        document.querySelector('#_jsD_313_434').oninput = _jsF_547_61_reload;
+        
+        _jsF_547_61_reload(null);
+    };
+    // trying multiple loading schemes, because in a live jupyter nb, it's using umd, while in an exported jupyter nb, it's using amd. The madness of JS
+    (async () => {
+        try {
+            require(['k1js'], function(k1js) { (async () => { window.k1js = await k1js; _jsF_547_61_loadF(); })(); });
+        } catch (e) {}
+    })();
+    (async () => {
+        try {
+            const res = await (await fetch("https://mlexps.com/k1js/latest/umd.js")).text();
+            eval(res); window.k1js = await k1js; _jsF_547_61_loadF();
+        } catch (e) {}
+    })();
+</script></div><p>You can also write transpiler functions for any functions you want. Let’s write
+one for the inverse square root function:</p>
+<div style='margin-left: 30px'><h4>Source code</h4><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">inv_sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">numerator</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">numerator</span><span class="o">/</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">_jsF_inv_sqrt</span><span class="p">(</span><span class="n">meta</span><span class="p">,</span> <span class="n">numerator</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">fIdx</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;f_</span><span class="si">{</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1_000_000</span><span class="p">)</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="n">vIdx</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;f_</span><span class="si">{</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1_000_000</span><span class="p">)</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;const </span><span class="si">{</span><span class="n">fIdx</span><span class="si">}</span><span class="s2"> = (</span><span class="si">{</span><span class="n">vIdx</span><span class="si">}</span><span class="s2">) =&gt; </span><span class="se">{{</span><span class="s2"> return </span><span class="si">{</span><span class="n">numerator</span><span class="si">}</span><span class="s2">/Math.sqrt(</span><span class="si">{</span><span class="n">vIdx</span><span class="si">}</span><span class="s2">); </span><span class="se">}}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">fIdx</span>
+<span class="n">settings</span><span class="o">.</span><span class="n">cli</span><span class="o">.</span><span class="n">kjs</span><span class="o">.</span><span class="n">jsF</span><span class="p">[</span><span class="n">inv_sqrt</span><span class="p">]</span> <span class="o">=</span> <span class="n">_jsF_inv_sqrt</span>
+
+<span class="n">inv_sqrt</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="c1"># returns number close to 0.5</span>
+
+<span class="n">jsFunc</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="o">|</span> <span class="n">deref</span><span class="p">()</span> <span class="o">|</span> <span class="p">(</span><span class="n">toJsFunc</span><span class="p">((</span><span class="s2">&quot;someNum&quot;</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="o">|</span> <span class="n">apply</span><span class="p">(</span><span class="n">inv_sqrt</span><span class="p">,</span> <span class="n">numerator</span><span class="o">=</span><span class="s2">&quot;someNum&quot;</span><span class="p">)</span> <span class="o">|</span> <span class="n">apply</span><span class="p">(</span><span class="nb">round</span><span class="p">,</span> <span class="n">ndigits</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">jsFunc</span>
+</pre></div>
+<h4>Compiled JS function</h4>&lt;JsFunc _jsF_547_66_1704544380&gt;<br>Generated JS function:<br><br><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">_jsD_313_446_1704544380</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span><span class="w"> </span><span class="mf">6</span><span class="p">,</span><span class="w"> </span><span class="mf">7</span><span class="p">,</span><span class="w"> </span><span class="mf">8</span><span class="p">,</span><span class="w"> </span><span class="mf">9</span><span class="p">];</span>
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">_jsF_547_66_1704544380</span><span class="p">(</span><span class="nx">someNum</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">f_566929_1704544380</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">f_266452_1704544380</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">someNum</span><span class="o">/</span><span class="nb">Math</span><span class="p">.</span><span class="nx">sqrt</span><span class="p">(</span><span class="nx">f_266452_1704544380</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">_jsD_313_440</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="s2">&quot;numerator&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;someNum&quot;</span><span class="p">};</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">_jsF_547_63</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">_jsD_313_439</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">_jsD_313_439</span><span class="p">.</span><span class="nx">apply</span><span class="p">((</span><span class="nx">_jsD_313_441</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">f_566929_1704544380</span><span class="p">(</span><span class="nx">_jsD_313_441</span><span class="p">),</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="nx">_jsD_313_440</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">_jsF_547_65</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">_jsD_313_445</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">((</span><span class="nx">_jsD_313_445</span><span class="p">)</span><span class="o">*</span><span class="nb">Math</span><span class="p">.</span><span class="nx">pow</span><span class="p">(</span><span class="mf">10</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">)</span><span class="o">+</span><span class="nb">Number</span><span class="p">.</span><span class="nx">EPSILON</span><span class="p">)</span><span class="o">/</span><span class="nb">Math</span><span class="p">.</span><span class="nx">pow</span><span class="p">(</span><span class="mf">10</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">_jsD_313_443</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="s2">&quot;ndigits&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">};</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">_jsF_547_64</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">_jsD_313_442</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">_jsD_313_442</span><span class="p">.</span><span class="nx">apply</span><span class="p">((</span><span class="nx">_jsD_313_444</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">_jsF_547_65</span><span class="p">(</span><span class="nx">_jsD_313_444</span><span class="p">),</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="nx">_jsD_313_443</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">_jsF_547_62</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">_jsD_313_438</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">_jsF_547_64</span><span class="p">(</span><span class="nx">_jsF_547_63</span><span class="p">(</span><span class="nx">_jsD_313_438</span><span class="p">));</span><span class="w"> </span><span class="p">};</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">_jsF_547_62</span><span class="p">(</span><span class="nx">_jsD_313_446_1704544380</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div><div style='margin-left: 30px'><h4>Source code</h4><div class="highlight"><pre><span></span><span class="n">jsFunc</span><span class="o">.</span><span class="n">interface</span><span class="p">(</span><span class="s2">&quot;json&quot;</span><span class="p">)</span>
+</pre></div>
+<h4>Html output</h4><!-- k1lib.JsFuncInterface -->
+<style>
+    ._jsF_547_67_btn:hover {
+    }
+</style>
+<div style='display: grid; grid-template-columns: 1fr 3fr; width: 400px'><div>someNum</div><div><input type='number' value='1' placeholder='someNum' id='_jsD_313_437' style='padding: 4px 4px'></div></div>
+<pre id="_jsF_547_67_error" style="color: red"></pre>
+<div id="_jsF_547_67_loading" style="margin-top: 4px">&nbsp;</div>
+<div id="_jsF_547_67_result"></div>
+<script src="https://mlexps.com/k1js/latest/amd.js"></script>
+<script>
+    const _jsF_547_67_loadF = () => {
+        
+const _jsD_313_446_1704544380 = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+async function _jsF_547_66_1704544380(someNum) {
+    const f_566929_1704544380 = (f_266452_1704544380) => { return someNum/Math.sqrt(f_266452_1704544380); }
+    const _jsD_313_440 = {"numerator": "someNum"};
+    const _jsF_547_63 = (_jsD_313_439) => _jsD_313_439.apply((_jsD_313_441) => f_566929_1704544380(_jsD_313_441), null, _jsD_313_440, false)
+    const _jsF_547_65 = (_jsD_313_445) => Math.round((_jsD_313_445)*Math.pow(10, 2)+Number.EPSILON)/Math.pow(10, 2)
+    const _jsD_313_443 = {"ndigits": 2};
+    const _jsF_547_64 = (_jsD_313_442) => _jsD_313_442.apply((_jsD_313_444) => _jsF_547_65(_jsD_313_444), null, _jsD_313_443, false)
+    const _jsF_547_62 = (_jsD_313_438) => { return _jsF_547_64(_jsF_547_63(_jsD_313_438)); };
+    return _jsF_547_62(_jsD_313_446_1704544380);
+}
+        window._jsF_547_66_1704544380 = _jsF_547_66_1704544380;
+        _jsF_547_67_error = document.querySelector("#_jsF_547_67_error");
+        _jsF_547_67_resultDiv = document.querySelector("#_jsF_547_67_result");
+        _jsF_547_67_loadingDiv = document.querySelector("#_jsF_547_67_loading");
+        const runningCoreHandle = [null];
+        const _jsF_547_67_reload_core = async (e) => {
+            if (runningCoreHandle[0]) { runningCoreHandle[0].cancel = true; }
+            const handle = {"cancel": false}; runningCoreHandle[0] = handle;
+            try {
+                _jsF_547_67_error.innerHTML = "";
+                _jsF_547_67_loadingDiv.innerHTML = "(loading...)";
+                const val = await _jsF_547_66_1704544380(parseInt(document.querySelector('#_jsD_313_437').value || 0));
+                if (!handle.cancel) {
+                    _jsF_547_67_loadingDiv.innerHTML = "&nbsp;";
+                    _jsF_547_67_resultDiv.innerHTML = `<pre>${JSON.stringify(val)}</pre>`;
+                    
+                }
+            } catch (e) { if (!handle.cancel) _jsF_547_67_error.innerHTML = e.stack; }
+            runningCoreHandle[0] = null;
+        };
+        let _jsF_547_67_reload_timeout = null;
+        const _jsF_547_67_reload = async (e) => {
+            
+            if (0 <= 0) return _jsF_547_67_reload_core();
+            else {
+                clearTimeout(_jsF_547_67_reload_timeout);
+                _jsF_547_67_reload_timeout = setTimeout(_jsF_547_67_reload_core, 0)
+            }
+        }
+        document.querySelector('#_jsD_313_437').oninput = _jsF_547_67_reload;
+        
+        _jsF_547_67_reload(null);
+    };
+    // trying multiple loading schemes, because in a live jupyter nb, it's using umd, while in an exported jupyter nb, it's using amd. The madness of JS
+    (async () => {
+        try {
+            require(['k1js'], function(k1js) { (async () => { window.k1js = await k1js; _jsF_547_67_loadF(); })(); });
+        } catch (e) {}
+    })();
+    (async () => {
+        try {
+            const res = await (await fetch("https://mlexps.com/k1js/latest/umd.js")).text();
+            eval(res); window.k1js = await k1js; _jsF_547_67_loadF();
+        } catch (e) {}
+    })();
+</script></div><p>If your function is really simple and exists in JS natively, you can simplify it way down:</p>
+<div style='margin-left: 30px'><h4>Source code</h4><div class="highlight"><pre><span></span><span class="n">settings</span><span class="o">.</span><span class="n">cli</span><span class="o">.</span><span class="n">kjs</span><span class="o">.</span><span class="n">jsF</span><span class="p">[</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">]</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">meta</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;Math.sqrt&quot;</span><span class="p">)</span>
+
+<span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">|</span> <span class="n">deref</span><span class="p">()</span> <span class="o">|</span> <span class="p">(</span><span class="n">toJsFunc</span><span class="p">()</span> <span class="o">|</span> <span class="n">apply</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">)</span> <span class="o">|</span> <span class="n">apply</span><span class="p">(</span><span class="nb">round</span><span class="p">,</span> <span class="n">ndigits</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span> <span class="o">|</span> <span class="n">op</span><span class="p">()</span><span class="o">.</span><span class="n">interface</span><span class="p">(</span><span class="s2">&quot;json&quot;</span><span class="p">)</span>
+</pre></div>
+<h4>Html output</h4><!-- k1lib.JsFuncInterface -->
+<style>
+    ._jsF_547_73_btn:hover {
+    }
+</style>
+<div style='display: grid; grid-template-columns: 1fr 3fr; width: 400px'></div>
+<pre id="_jsF_547_73_error" style="color: red"></pre>
+<div id="_jsF_547_73_loading" style="margin-top: 4px">&nbsp;</div>
+<div id="_jsF_547_73_result"></div>
+<script src="https://mlexps.com/k1js/latest/amd.js"></script>
+<script>
+    const _jsF_547_73_loadF = () => {
+        
+const _jsD_313_455_1704544380 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+async function _jsF_547_72_1704544380() {
+    
+    const _jsD_313_449 = {};
+    const _jsF_547_69 = (_jsD_313_448) => _jsD_313_448.apply((_jsD_313_450) => Math.sqrt(_jsD_313_450), null, _jsD_313_449, false)
+    const _jsF_547_71 = (_jsD_313_454) => Math.round((_jsD_313_454)*Math.pow(10, 2)+Number.EPSILON)/Math.pow(10, 2)
+    const _jsD_313_452 = {"ndigits": 2};
+    const _jsF_547_70 = (_jsD_313_451) => _jsD_313_451.apply((_jsD_313_453) => _jsF_547_71(_jsD_313_453), null, _jsD_313_452, false)
+    const _jsF_547_68 = (_jsD_313_447) => { return _jsF_547_70(_jsF_547_69(_jsD_313_447)); };
+    return _jsF_547_68(_jsD_313_455_1704544380);
+}
+        window._jsF_547_72_1704544380 = _jsF_547_72_1704544380;
+        _jsF_547_73_error = document.querySelector("#_jsF_547_73_error");
+        _jsF_547_73_resultDiv = document.querySelector("#_jsF_547_73_result");
+        _jsF_547_73_loadingDiv = document.querySelector("#_jsF_547_73_loading");
+        const runningCoreHandle = [null];
+        const _jsF_547_73_reload_core = async (e) => {
+            if (runningCoreHandle[0]) { runningCoreHandle[0].cancel = true; }
+            const handle = {"cancel": false}; runningCoreHandle[0] = handle;
+            try {
+                _jsF_547_73_error.innerHTML = "";
+                _jsF_547_73_loadingDiv.innerHTML = "(loading...)";
+                const val = await _jsF_547_72_1704544380();
+                if (!handle.cancel) {
+                    _jsF_547_73_loadingDiv.innerHTML = "&nbsp;";
+                    _jsF_547_73_resultDiv.innerHTML = `<pre>${JSON.stringify(val)}</pre>`;
+                    
+                }
+            } catch (e) { if (!handle.cancel) _jsF_547_73_error.innerHTML = e.stack; }
+            runningCoreHandle[0] = null;
+        };
+        let _jsF_547_73_reload_timeout = null;
+        const _jsF_547_73_reload = async (e) => {
+            
+            if (0 <= 0) return _jsF_547_73_reload_core();
+            else {
+                clearTimeout(_jsF_547_73_reload_timeout);
+                _jsF_547_73_reload_timeout = setTimeout(_jsF_547_73_reload_core, 0)
+            }
+        }
+        
+        
+        _jsF_547_73_reload(null);
+    };
+    // trying multiple loading schemes, because in a live jupyter nb, it's using umd, while in an exported jupyter nb, it's using amd. The madness of JS
+    (async () => {
+        try {
+            require(['k1js'], function(k1js) { (async () => { window.k1js = await k1js; _jsF_547_73_loadF(); })(); });
+        } catch (e) {}
+    })();
+    (async () => {
+        try {
+            const res = await (await fetch("https://mlexps.com/k1js/latest/umd.js")).text();
+            eval(res); window.k1js = await k1js; _jsF_547_73_loadF();
+        } catch (e) {}
+    })();
+</script></div></section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="k1lib.cli module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="llvm.html" class="btn btn-neutral float-right" title="LLVM optimizer tutorial" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Quang Ho.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>k1lib.cli.kgv &mdash; k1lib  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> k1lib
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../base.html">Base module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../cli/index.html">k1lib.cli module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../callbacks/index.html">k1lib.callbacks module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../k1a.html">k1lib._k1a module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../k1ui.html">k1lib.k1ui module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eqn.html">k1lib.eqn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fmt.html">k1lib.fmt module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../graphEqn.html">k1lib.graphEqn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../imports.html">k1lib.imports module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mo.html">k1lib.mo module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../knn.html">k1lib.knn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../p5.html">k1lib.p5 module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../schedule.html">k1lib.schedule module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../selector.html">k1lib.selector module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../selen.html">k1lib.selen module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../serpent.html">k1lib.serpent module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../serve.html">k1lib.serve module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../viz.html">k1lib.viz module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../monkey.html">Monkey patched classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelogs.html">Changelogs</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">k1lib</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">k1lib.cli.kgv</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for k1lib.cli.kgv</h1><div class="highlight"><pre>
+<span></span><span class="c1"># AUTOGENERATED FILE! PLEASE DON&#39;T EDIT HERE. EDIT THE SOURCE NOTEBOOKS INSTEAD</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">This includes helper clis that make it quick to graph graphviz plots.&quot;&quot;&quot;</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;sketch&quot;</span><span class="p">,</span> <span class="s2">&quot;edges&quot;</span><span class="p">]</span>
+<span class="kn">import</span> <span class="nn">re</span><span class="o">,</span> <span class="nn">k1lib</span><span class="o">,</span> <span class="nn">math</span><span class="o">,</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span><span class="o">,</span> <span class="nn">io</span><span class="o">,</span> <span class="nn">json</span><span class="o">,</span> <span class="nn">base64</span><span class="o">,</span> <span class="nn">unicodedata</span><span class="o">,</span> <span class="nn">inspect</span>
+<span class="kn">from</span> <span class="nn">k1lib.cli.init</span> <span class="kn">import</span> <span class="n">BaseCli</span><span class="p">;</span> <span class="kn">import</span> <span class="nn">k1lib.cli</span> <span class="k">as</span> <span class="nn">cli</span><span class="o">,</span> <span class="nn">k1lib.cli.init</span> <span class="k">as</span> <span class="nn">init</span>
+<span class="n">graphviz</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">dep</span><span class="p">(</span><span class="s2">&quot;graphviz&quot;</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">deque</span><span class="p">,</span> <span class="n">defaultdict</span>
+<span class="n">settings</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">cli</span>
+<span class="n">_svgAutoInc</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">AutoIncrement</span><span class="p">(</span><span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;_k1_svg_&quot;</span><span class="p">)</span>
+<span class="n">_preAutoInc</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">AutoIncrement</span><span class="p">(</span><span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;_k1_svg_pre_&quot;</span><span class="p">)</span>
+<span class="n">_clusterAuto</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">AutoIncrement</span><span class="p">(</span><span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;cluster_&quot;</span><span class="p">)</span>
+<span class="n">_idxAuto</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">AutoIncrement</span><span class="p">(</span><span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;_idx_&quot;</span><span class="p">)</span>
+<div class="viewcode-block" id="sketch"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.kgv.sketch">[docs]</a><span class="k">class</span> <span class="nc">sketch</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>                                                           <span class="c1"># sketch</span>
+    <span class="n">_g</span> <span class="o">=</span> <span class="kc">None</span><span class="p">;</span> <span class="n">_name2Idx</span> <span class="o">=</span> <span class="kc">None</span><span class="p">;</span> <span class="n">ctxIdx</span> <span class="o">=</span> <span class="kc">None</span>                                   <span class="c1"># sketch</span>
+<div class="viewcode-block" id="sketch.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.kgv.sketch.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>                                                <span class="c1"># sketch</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Similar to :class:`~utils.sketch`, which makes it easier to plot multiple graphs quickly,</span>
+<span class="sd">this makes it easier to plot node graphs a lot quicker than I have before. This cli</span>
+<span class="sd">configures the graph in general, but doesn&#39;t dive too much into the specifics. Example::</span>
+
+<span class="sd">    [&quot;ab&quot;, &quot;bc&quot;, &quot;ca&quot;] | (kgv.sketch(engine=&quot;sfdp&quot;) | kgv.edges())</span>
+
+<span class="sd">Most of the complexities are in :class:`edges`, so check that class out for more comprehensive examples</span>
+
+<span class="sd">:param kwargs: keyword arguments passed into :class:`graphviz.Digraph`&quot;&quot;&quot;</span>        <span class="c1"># sketch</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">capture</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span> <span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span> <span class="o">=</span> <span class="n">kwargs</span>                     <span class="c1"># sketch</span></div>
+    <span class="nd">@staticmethod</span>                                                                <span class="c1"># sketch</span>
+    <span class="k">def</span> <span class="nf">_guard</span><span class="p">():</span>                                                                <span class="c1"># sketch</span>
+        <span class="k">if</span> <span class="n">sketch</span><span class="o">.</span><span class="n">_g</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Context has not been setup yet, can&#39;t proceed to plot the edges/nodes. This could be because you&#39;re doing `data | kgv.edges()` directly. Instead, do `data | (kgv.sketch() | kgv.edges())`. The operation `kgv.sketch()` will initialize the graph&quot;</span><span class="p">)</span> <span class="c1"># sketch</span>
+<div class="viewcode-block" id="sketch.__ror__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.kgv.sketch.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">):</span>                                                       <span class="c1"># sketch</span>
+        <span class="n">sketch</span><span class="o">.</span><span class="n">_g</span> <span class="o">=</span> <span class="n">g</span> <span class="o">=</span> <span class="n">graphviz</span><span class="o">.</span><span class="n">Digraph</span><span class="p">(</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span><span class="p">);</span> <span class="n">sketch</span><span class="o">.</span><span class="n">_idx2Popup</span> <span class="o">=</span> <span class="n">idx2Popup</span> <span class="o">=</span> <span class="p">{}</span> <span class="c1"># sketch</span>
+        <span class="n">sketch</span><span class="o">.</span><span class="n">_name2Idx</span> <span class="o">=</span> <span class="n">name2Idx</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="n">defaultdict</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="n">_idxAuto</span><span class="p">()))</span> <span class="c1"># sketch</span>
+        <span class="n">it</span> <span class="o">|</span> <span class="bp">self</span><span class="o">.</span><span class="n">capturedSerial</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">deref</span><span class="p">()</span>                                   <span class="c1"># sketch</span>
+        <span class="n">sketch</span><span class="o">.</span><span class="n">_g</span> <span class="o">=</span> <span class="kc">None</span><span class="p">;</span> <span class="n">sketch</span><span class="o">.</span><span class="n">_idx2Popup</span> <span class="o">=</span> <span class="kc">None</span><span class="p">;</span> <span class="n">sketch</span><span class="o">.</span><span class="n">_name2Idx</span> <span class="o">=</span> <span class="kc">None</span><span class="p">;</span> <span class="k">return</span> <span class="n">Graph</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">name2Idx</span><span class="p">,</span> <span class="n">idx2Popup</span><span class="p">)</span> <span class="c1"># sketch</span></div>
+    <span class="k">def</span> <span class="nf">_jsF</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">meta</span><span class="p">):</span>                                                        <span class="c1"># sketch</span>
+        <span class="n">fIdx</span> <span class="o">=</span> <span class="n">init</span><span class="o">.</span><span class="n">_jsFAuto</span><span class="p">();</span> <span class="n">dataIdx</span> <span class="o">=</span> <span class="n">init</span><span class="o">.</span><span class="n">_jsDAuto</span><span class="p">();</span> <span class="n">ctxIdx</span> <span class="o">=</span> <span class="n">init</span><span class="o">.</span><span class="n">_jsDAuto</span><span class="p">();</span> <span class="n">sketch</span><span class="o">.</span><span class="n">ctxIdx</span> <span class="o">=</span> <span class="n">ctxIdx</span> <span class="c1"># sketch</span>
+        <span class="n">header</span><span class="p">,</span> <span class="n">_fIdx</span><span class="p">,</span> <span class="n">_async</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">kast</span><span class="o">.</span><span class="n">asyncGuard</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">capturedSerial</span><span class="o">.</span><span class="n">_jsF</span><span class="p">(</span><span class="n">meta</span><span class="p">))</span> <span class="c1"># sketch</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span><span class="se">\</span>
+<span class="s2">let </span><span class="si">{</span><span class="n">ctxIdx</span><span class="si">}</span><span class="s2"> = null;</span><span class="se">\n</span><span class="si">{</span><span class="n">header</span><span class="si">}</span>
+<span class="s2">const </span><span class="si">{</span><span class="n">fIdx</span><span class="si">}</span><span class="s2"> = async (</span><span class="si">{</span><span class="n">dataIdx</span><span class="si">}</span><span class="s2">) =&gt; </span><span class="se">{{</span>
+<span class="s2">    </span><span class="si">{</span><span class="n">ctxIdx</span><span class="si">}</span><span class="s2"> = [];</span>
+<span class="s2">    const out = </span><span class="si">{</span><span class="s1">&#39;await &#39;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">_async</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="si">}{</span><span class="n">_fIdx</span><span class="si">}</span><span class="s2">(</span><span class="si">{</span><span class="n">dataIdx</span><span class="si">}</span><span class="s2">);</span>
+
+<span class="s2">    const res = (await (await fetch(&quot;https://local.mlexps.com/routeServer/kapi_10-graphviz&quot;, </span><span class="se">{{</span>
+<span class="s2">      method: &quot;POST&quot;,</span>
+<span class="s2">      body: JSON.stringify(</span><span class="se">{{</span><span class="s2"> &quot;obj&quot;: </span><span class="si">{</span><span class="n">ctxIdx</span><span class="si">}</span><span class="s2"> </span><span class="se">}}</span><span class="s2">),</span>
+<span class="s2">      headers: </span><span class="se">{{</span><span class="s2"> &quot;Content-Type&quot;: &quot;application/json&quot; </span><span class="se">}}</span>
+<span class="s2">    </span><span class="se">}}</span><span class="s2">)).json());</span>
+<span class="s2">    if (!res.success) throw new Error(res.reason);</span>
+<span class="s2">    return atob(res.data);</span>
+<span class="se">}}</span><span class="s2">&quot;&quot;&quot;</span><span class="p">,</span> <span class="n">fIdx</span>                                                                      <span class="c1"># sketch</span>
+        <span class="n">sketch</span><span class="o">.</span><span class="n">ctxIdx</span> <span class="o">=</span> <span class="kc">None</span><span class="p">;</span> <span class="k">return</span> <span class="n">res</span>                                         <span class="c1"># sketch</span></div>
+<span class="k">class</span> <span class="nc">nodes</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>                                                            <span class="c1"># nodes</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>                                                          <span class="c1"># nodes</span>
+        <span class="k">pass</span>                                                                     <span class="c1"># nodes</span>
+    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_it</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;5-column input&quot;</span><span class="p">:</span>                                  <span class="c1"># nodes</span>
+        <span class="k">if</span> <span class="n">sketch</span><span class="o">.</span><span class="n">_g</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="k">return</span> <span class="n">_it</span> <span class="o">|</span> <span class="p">(</span><span class="n">sketch</span><span class="p">()</span> <span class="o">|</span> <span class="bp">self</span><span class="p">)</span>                     <span class="c1"># nodes</span>
+        <span class="n">sketch</span><span class="o">.</span><span class="n">_guard</span><span class="p">();</span> <span class="n">it</span> <span class="o">=</span> <span class="p">[]</span>                                                 <span class="c1"># nodes</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">_it</span><span class="p">:</span>                                                          <span class="c1"># nodes</span>
+            <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>                                                         <span class="c1"># nodes</span>
+            <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span> <span class="n">it</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="p">{}])</span>                               <span class="c1"># nodes</span>
+            <span class="k">elif</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span> <span class="n">it</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="o">*</span><span class="n">row</span><span class="p">,</span> <span class="p">{}])</span>                                   <span class="c1"># nodes</span>
+            <span class="k">elif</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span> <span class="n">it</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>                                          <span class="c1"># nodes</span>
+            <span class="k">else</span><span class="p">:</span> <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;kgv.nodes() can only accept tables from 1 to 3 columns. Detected </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2"> columns instead&quot;</span><span class="p">)</span> <span class="c1"># nodes</span>
+        <span class="n">g</span> <span class="o">=</span> <span class="n">sketch</span><span class="o">.</span><span class="n">_g</span><span class="p">;</span> <span class="n">name2Idx</span> <span class="o">=</span> <span class="n">sketch</span><span class="o">.</span><span class="n">_name2Idx</span>                               <span class="c1"># nodes</span>
+        <span class="k">for</span> <span class="n">s1</span><span class="p">,</span><span class="n">n1</span><span class="p">,</span><span class="n">kw</span> <span class="ow">in</span> <span class="n">it</span><span class="p">:</span>                                                      <span class="c1"># nodes</span>
+            <span class="n">idx</span> <span class="o">=</span> <span class="n">name2Idx</span><span class="p">[</span><span class="n">s1</span><span class="p">][</span><span class="n">n1</span><span class="p">]</span>                                               <span class="c1"># nodes</span>
+            <span class="k">if</span> <span class="s2">&quot;popup&quot;</span> <span class="ow">in</span> <span class="n">kw</span><span class="p">:</span> <span class="n">sketch</span><span class="o">.</span><span class="n">_idx2Popup</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">kw</span><span class="p">[</span><span class="s2">&quot;popup&quot;</span><span class="p">];</span> <span class="n">kw</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">kw</span><span class="p">);</span> <span class="k">del</span> <span class="n">kw</span><span class="p">[</span><span class="s2">&quot;popup&quot;</span><span class="p">]</span> <span class="c1"># nodes</span>
+            <span class="n">g</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">)</span>                                                    <span class="c1"># nodes</span>
+        <span class="k">return</span> <span class="n">it</span>                                                                <span class="c1"># nodes</span>
+    <span class="k">def</span> <span class="nf">_jsF</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">meta</span><span class="p">):</span>                                                        <span class="c1"># nodes</span>
+        <span class="n">fIdx</span> <span class="o">=</span> <span class="n">init</span><span class="o">.</span><span class="n">_jsFAuto</span><span class="p">();</span> <span class="n">dataIdx</span> <span class="o">=</span> <span class="n">init</span><span class="o">.</span><span class="n">_jsDAuto</span><span class="p">();</span> <span class="n">ctxIdx</span> <span class="o">=</span> <span class="n">sketch</span><span class="o">.</span><span class="n">ctxIdx</span><span class="p">;</span> <span class="c1"># nodes</span>
+        <span class="k">if</span> <span class="n">ctxIdx</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="k">return</span> <span class="p">(</span><span class="n">sketch</span><span class="p">()</span> <span class="o">|</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">_jsF</span><span class="p">(</span><span class="n">meta</span><span class="p">)</span>                   <span class="c1"># nodes</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span><span class="se">\</span>
+<span class="s2">const </span><span class="si">{</span><span class="n">fIdx</span><span class="si">}</span><span class="s2"> = (</span><span class="si">{</span><span class="n">dataIdx</span><span class="si">}</span><span class="s2">) =&gt; </span><span class="se">{{</span>
+<span class="s2">    const it = [];</span>
+<span class="s2">    for (const row of </span><span class="si">{</span><span class="n">dataIdx</span><span class="si">}</span><span class="s2">) </span><span class="se">{{</span>
+<span class="s2">        const n = row.length;</span>
+<span class="s2">        if (n === 1) it.push([&quot;&quot;, row[0], </span><span class="se">{{}}</span><span class="s2">])</span>
+<span class="s2">        else if (n === 2) it.push([...row, </span><span class="se">{{}}</span><span class="s2">])</span>
+<span class="s2">        else if (n === 3) it.push(row)</span>
+<span class="s2">        else throw new Error(`kgv.nodes() can only accept tables from 1 to 3 columns. Detected $</span><span class="se">{{</span><span class="s2">n</span><span class="se">}}</span><span class="s2"> columns instead`)</span>
+<span class="s2">    </span><span class="se">}}</span>
+<span class="s2">    </span><span class="si">{</span><span class="n">ctxIdx</span><span class="si">}</span><span class="s2">.push([&quot;nodes&quot;, </span><span class="se">{{</span><span class="s2">it, args: []</span><span class="se">}}</span><span class="s2">]); return it;</span>
+<span class="se">}}</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">,</span> <span class="n">fIdx</span>                                                                        <span class="c1"># nodes</span>
+<span class="k">def</span> <span class="nf">drawSimple</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">names</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">name2Idx</span><span class="p">):</span> <span class="c1"># data here is List[[name1, name2, kw]], names is List[name] # drawSimple</span>
+    <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">set</span><span class="p">(</span><span class="n">names</span><span class="p">):</span> <span class="n">g</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="n">name2Idx</span><span class="p">[</span><span class="n">name</span><span class="p">],</span> <span class="n">name</span><span class="p">);</span>                        <span class="c1"># drawSimple</span>
+    <span class="k">for</span> <span class="n">name1</span><span class="p">,</span> <span class="n">name2</span><span class="p">,</span> <span class="n">kw</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span> <span class="n">g</span><span class="o">.</span><span class="n">edge</span><span class="p">(</span><span class="n">name2Idx</span><span class="p">[</span><span class="n">name1</span><span class="p">],</span> <span class="n">name2Idx</span><span class="p">[</span><span class="n">name2</span><span class="p">],</span> <span class="o">**</span><span class="n">kw</span><span class="p">)</span> <span class="c1"># drawSimple</span>
+<div class="viewcode-block" id="edges"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.kgv.edges">[docs]</a><span class="k">class</span> <span class="nc">edges</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>                                                            <span class="c1"># edges</span>
+<div class="viewcode-block" id="edges.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.kgv.edges.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>                                                          <span class="c1"># edges</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Plots out edges of the graph.</span>
+<span class="sd">Example 1::</span>
+
+<span class="sd">    [&quot;ab&quot;, &quot;bc&quot;, &quot;ca&quot;] | kgv.edges()</span>
+
+<span class="sd">Result:</span>
+
+<span class="sd">.. image:: ../images/kgv_edges_1.png</span>
+
+<span class="sd">If you need to customize the graph on initialization, then you can use :class:`sketch` to</span>
+<span class="sd">capture related operations (like :class:`edges`), and inject your params in :class:`sketch`::</span>
+
+<span class="sd">    [&quot;ab&quot;, &quot;bc&quot;, &quot;ca&quot;] | (kgv.sketch(engine=&quot;sfdp&quot;) | kgv.edges())</span>
+
+<span class="sd">Example 2::</span>
+
+<span class="sd">    [[&quot;a&quot;, &quot;b&quot;, {&quot;label&quot;: &quot;3%&quot;}], [&quot;b&quot;, &quot;c&quot;, {&quot;color&quot;: &quot;red&quot;}], &quot;ac&quot;, &quot;cb&quot;] | kgv.edges()</span>
+
+<span class="sd">Result:</span>
+
+<span class="sd">.. image:: ../images/kgv_edges_2.png</span>
+
+<span class="sd">Example 3::</span>
+
+<span class="sd">    [[&quot;group1&quot;, &quot;a&quot;, &quot;group1&quot;, &quot;b&quot;, {&quot;label&quot;: &quot;3%&quot;}],</span>
+<span class="sd">     &quot;ec&quot;,</span>
+<span class="sd">     [&quot;group1&quot;, &quot;b&quot;, &quot;&quot;, &quot;c&quot;, {&quot;color&quot;: &quot;red&quot;}],</span>
+<span class="sd">     [&quot;group1&quot;, &quot;a&quot;, &quot;&quot;, &quot;c&quot;],</span>
+<span class="sd">     [&quot;&quot;, &quot;c&quot;, &quot;group1&quot;, &quot;b&quot;],</span>
+<span class="sd">     [&quot;&quot;, &quot;c&quot;, &quot;group2&quot;, &quot;d&quot;, {&quot;color&quot;: &quot;green&quot;}]</span>
+<span class="sd">    ] | kgv.edges()</span>
+
+<span class="sd">Result:</span>
+
+<span class="sd">.. image:: ../images/kgv_edges_3.png</span>
+
+<span class="sd">So the idea is, each row describes a single edge on the graph. Each row</span>
+<span class="sd">can be multiple different lengths, but only these configurations are allowed:</span>
+
+<span class="sd">- [name1, name2]</span>
+<span class="sd">- [name1, name2, kwargs]</span>
+<span class="sd">- [group1, name1, group2, name2]</span>
+<span class="sd">- [group1, name1, group2, name2, kwargs]</span>
+
+<span class="sd">So if you don&#39;t need the complexity and just want to plot something out, you</span>
+<span class="sd">can just use the one at the top, but if you do want fancy features, then you</span>
+<span class="sd">can add those in the kwargs.</span>
+
+<span class="sd">Check out a gallery of more examples at `kapi/10-graphviz &lt;https://mlexps.com/kapi/10-graphviz/&gt;`_.</span>
+<span class="sd">&quot;&quot;&quot;</span>                                                                              <span class="c1"># edges</span>
+        <span class="k">pass</span>                                                                     <span class="c1"># edges</span></div>
+<div class="viewcode-block" id="edges.__ror__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.kgv.edges.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_it</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;5-column input&quot;</span><span class="p">:</span>                                  <span class="c1"># edges</span>
+        <span class="k">if</span> <span class="n">sketch</span><span class="o">.</span><span class="n">_g</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="k">return</span> <span class="n">_it</span> <span class="o">|</span> <span class="p">(</span><span class="n">sketch</span><span class="p">()</span> <span class="o">|</span> <span class="bp">self</span><span class="p">)</span>                     <span class="c1"># edges</span>
+        <span class="n">sketch</span><span class="o">.</span><span class="n">_guard</span><span class="p">();</span> <span class="n">it</span> <span class="o">=</span> <span class="p">[]</span>                                                 <span class="c1"># edges</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">_it</span><span class="p">:</span>                                                          <span class="c1"># edges</span>
+            <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>                                                         <span class="c1"># edges</span>
+            <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span> <span class="n">it</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="p">{}])</span>                   <span class="c1"># edges</span>
+            <span class="k">elif</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span> <span class="n">it</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="mi">2</span><span class="p">]])</span>             <span class="c1"># edges</span>
+            <span class="k">elif</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span> <span class="n">it</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="o">*</span><span class="n">row</span><span class="p">,</span> <span class="p">{}])</span>                                   <span class="c1"># edges</span>
+            <span class="k">elif</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span> <span class="n">it</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>                                          <span class="c1"># edges</span>
+            <span class="k">else</span><span class="p">:</span> <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;kgv.edges() can only accept tables from 2 to 5 columns. Detected </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2"> columns instead&quot;</span><span class="p">)</span> <span class="c1"># edges</span>
+        <span class="n">g</span> <span class="o">=</span> <span class="n">sketch</span><span class="o">.</span><span class="n">_g</span><span class="p">;</span> <span class="n">name2Idx</span> <span class="o">=</span> <span class="n">sketch</span><span class="o">.</span><span class="n">_name2Idx</span>                               <span class="c1"># edges</span>
+        <span class="c1"># grouping by segments and drawing their internals first                 # edges</span>
+        <span class="k">for</span> <span class="n">segN</span><span class="p">,</span> <span class="n">names</span> <span class="ow">in</span> <span class="n">it</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">batched</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">joinSt</span><span class="p">()</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">groupBy</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">cli</span><span class="o">.</span><span class="n">joinSt</span><span class="p">(),</span> <span class="mi">1</span><span class="p">)</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">deref</span><span class="p">():</span> <span class="c1"># edges</span>
+            <span class="k">if</span> <span class="n">segN</span><span class="p">:</span>                                                             <span class="c1"># edges</span>
+                <span class="k">with</span> <span class="n">g</span><span class="o">.</span><span class="n">subgraph</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">_clusterAuto</span><span class="p">())</span> <span class="k">as</span> <span class="n">subG</span><span class="p">:</span>                    <span class="c1"># edges</span>
+                    <span class="n">subG</span><span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">segN</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">);</span> <span class="n">drawSimple</span><span class="p">(</span><span class="n">subG</span><span class="p">,</span> <span class="n">names</span><span class="p">,</span> <span class="n">it</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">filt</span><span class="p">(</span><span class="n">cli</span><span class="o">.</span><span class="n">op</span><span class="p">()</span> <span class="o">==</span> <span class="n">segN</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">deref</span><span class="p">(),</span> <span class="n">name2Idx</span><span class="p">[</span><span class="n">segN</span><span class="p">])</span> <span class="c1"># edges</span>
+            <span class="k">else</span><span class="p">:</span> <span class="n">drawSimple</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">names</span><span class="p">,</span> <span class="n">it</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">filt</span><span class="p">(</span><span class="n">cli</span><span class="o">.</span><span class="n">op</span><span class="p">()</span> <span class="o">==</span> <span class="n">segN</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">deref</span><span class="p">(),</span> <span class="n">name2Idx</span><span class="p">[</span><span class="s2">&quot;&quot;</span><span class="p">])</span> <span class="c1"># edges</span>
+        <span class="c1"># then draw external edges                                               # edges</span>
+        <span class="k">for</span> <span class="n">s1</span><span class="p">,</span> <span class="n">n1</span><span class="p">,</span> <span class="n">s2</span><span class="p">,</span> <span class="n">n2</span><span class="p">,</span> <span class="n">kw</span> <span class="ow">in</span> <span class="n">it</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">filt</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">]):</span> <span class="n">g</span><span class="o">.</span><span class="n">edge</span><span class="p">(</span><span class="n">name2Idx</span><span class="p">[</span><span class="n">s1</span><span class="p">][</span><span class="n">n1</span><span class="p">],</span> <span class="n">name2Idx</span><span class="p">[</span><span class="n">s2</span><span class="p">][</span><span class="n">n2</span><span class="p">],</span> <span class="o">**</span><span class="n">kw</span><span class="p">)</span> <span class="c1"># edges</span>
+        <span class="k">return</span> <span class="n">it</span>                                                                <span class="c1"># edges</span></div>
+    <span class="k">def</span> <span class="nf">_jsF</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">meta</span><span class="p">):</span>                                                        <span class="c1"># edges</span>
+        <span class="n">fIdx</span> <span class="o">=</span> <span class="n">init</span><span class="o">.</span><span class="n">_jsFAuto</span><span class="p">();</span> <span class="n">dataIdx</span> <span class="o">=</span> <span class="n">init</span><span class="o">.</span><span class="n">_jsDAuto</span><span class="p">();</span> <span class="n">ctxIdx</span> <span class="o">=</span> <span class="n">sketch</span><span class="o">.</span><span class="n">ctxIdx</span><span class="p">;</span> <span class="c1"># edges</span>
+        <span class="k">if</span> <span class="n">ctxIdx</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="k">return</span> <span class="p">(</span><span class="n">sketch</span><span class="p">()</span> <span class="o">|</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">_jsF</span><span class="p">(</span><span class="n">meta</span><span class="p">)</span>                   <span class="c1"># edges</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span><span class="se">\</span>
+<span class="s2">const </span><span class="si">{</span><span class="n">fIdx</span><span class="si">}</span><span class="s2"> = (</span><span class="si">{</span><span class="n">dataIdx</span><span class="si">}</span><span class="s2">) =&gt; </span><span class="se">{{</span>
+<span class="s2">    // why not just pass dataIdx in directly? Well, in Python, the interface is that __ror__ should return a 5-column input, so here, gotta honor that, in case the user has some operation downstream of this</span>
+<span class="s2">    const it = [];</span>
+<span class="s2">    for (const row of </span><span class="si">{</span><span class="n">dataIdx</span><span class="si">}</span><span class="s2">) </span><span class="se">{{</span>
+<span class="s2">        const n = row.length;</span>
+<span class="s2">        if (n === 2) it.push([&quot;&quot;, row[0], &quot;&quot;, row[1], </span><span class="se">{{}}</span><span class="s2">])</span>
+<span class="s2">        else if (n === 3) it.push([&quot;&quot;, row[0], &quot;&quot;, row[1], row[2]])</span>
+<span class="s2">        else if (n === 4) it.push([...row, </span><span class="se">{{}}</span><span class="s2">])</span>
+<span class="s2">        else if (n === 5) it.push(row)</span>
+<span class="s2">        else throw new Error(`kgv.edges() can only accept tables from 2 to 5 columns. Detected $</span><span class="se">{{</span><span class="s2">n</span><span class="se">}}</span><span class="s2"> columns instead`)</span>
+<span class="s2">    </span><span class="se">}}</span>
+<span class="s2">    </span><span class="si">{</span><span class="n">ctxIdx</span><span class="si">}</span><span class="s2">.push([&quot;edges&quot;, </span><span class="se">{{</span><span class="s2">it, args: []</span><span class="se">}}</span><span class="s2">]); return it;</span>
+<span class="se">}}</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">,</span> <span class="n">fIdx</span>                                                                        <span class="c1"># edges</span></div>
+<span class="k">class</span> <span class="nc">Graph</span><span class="p">:</span>                                                                     <span class="c1"># Graph</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">name2Idx</span><span class="p">,</span> <span class="n">idx2Popup</span><span class="p">):</span>                                  <span class="c1"># Graph</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Wrapper around a :class:`graphviz.Graph` or :class:`graphviz.Digraph`. Internal graph</span>
+<span class="sd">object is available at ``self.g``. Not instantiated by end user, instead, returned by :class:`sketch`.&quot;&quot;&quot;</span> <span class="c1"># Graph</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">g</span> <span class="o">=</span> <span class="n">g</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">name2Idx</span> <span class="o">=</span> <span class="n">name2Idx</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">idx2Popup</span> <span class="o">=</span> <span class="n">idx2Popup</span>         <span class="c1"># Graph</span>
+    <span class="k">def</span> <span class="nf">_repr_mimebundle_</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">g</span><span class="o">.</span><span class="n">_repr_mimebundle_</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="c1"># Graph</span>
+    <span class="k">def</span> <span class="nf">_repr_html_</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_toHtml</span><span class="p">()</span>                                 <span class="c1"># Graph</span>
+    <span class="k">def</span> <span class="nf">_toHtml</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>                                                           <span class="c1"># Graph</span>
+        <span class="n">idx2Popup</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">idx2Popup</span><span class="p">;</span> <span class="n">name2Idx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">name2Idx</span><span class="p">;</span> <span class="n">s</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">g</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">toHtml</span><span class="p">()</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">op</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;&gt;&lt;&quot;</span><span class="p">,</span> <span class="s2">&quot;&gt;</span><span class="se">\n</span><span class="s2">&lt;&quot;</span><span class="p">)</span> <span class="c1"># Graph</span>
+        <span class="c1"># these ids are: List[(auto generated id, unique id we&#39;re replacing it with)] # Graph</span>
+        <span class="c1"># nodeIds = s.split(&quot;\n&quot;) | grep(&#39;&lt;g id=&quot;(?P&lt;g&gt;node[0-9]+)&quot;&#39;, extract=&quot;g&quot;) | apply(lambda x: [x, _svgAutoInc()]) | deref() # Graph</span>
+        <span class="n">nodeIds</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">grep</span><span class="p">(</span><span class="s1">&#39;class=&quot;node&quot;&#39;</span><span class="p">,</span> <span class="n">after</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">batched</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">cli</span><span class="o">.</span><span class="n">op</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;title&gt;&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">&quot;&lt;/&quot;</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">grep</span><span class="p">(</span><span class="s1">&#39;&lt;g id=&quot;(?P&lt;g&gt;node[0-9]+)&#39;</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">extract</span><span class="o">=</span><span class="s2">&quot;g&quot;</span><span class="p">)</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">deref</span><span class="p">()</span> <span class="c1"># Graph</span>
+        <span class="n">edgeIds</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">grep</span><span class="p">(</span><span class="s1">&#39;&lt;g id=&quot;(?P&lt;g&gt;edge[0-9]+)&quot;&#39;</span><span class="p">,</span> <span class="n">extract</span><span class="o">=</span><span class="s2">&quot;g&quot;</span><span class="p">)</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">_svgAutoInc</span><span class="p">()])</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">deref</span><span class="p">()</span> <span class="c1"># Graph</span>
+        <span class="n">graphIds</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">grep</span><span class="p">(</span><span class="s1">&#39;&lt;g id=&quot;(?P&lt;g&gt;graph[0-9]+)&quot;&#39;</span><span class="p">,</span> <span class="n">extract</span><span class="o">=</span><span class="s2">&quot;g&quot;</span><span class="p">)</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">_svgAutoInc</span><span class="p">()])</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">deref</span><span class="p">()</span> <span class="c1"># Graph</span>
+        <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="p">[</span><span class="n">nodeIds</span><span class="p">,</span> <span class="n">edgeIds</span><span class="p">,</span> <span class="n">graphIds</span><span class="p">]</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">joinSt</span><span class="p">():</span> <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;id=&quot;</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s1">&quot;&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;id=&quot;</span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="s1">&quot;&#39;</span><span class="p">)</span> <span class="c1"># Graph</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="n">nodeIds</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">idx</span><span class="p">:</span> <span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="n">idx2Popup</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="kc">None</span><span class="p">)])</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">deref</span><span class="p">();</span> <span class="n">pre</span> <span class="o">=</span> <span class="n">_preAutoInc</span><span class="p">()</span> <span class="c1"># Graph</span>
+        <span class="n">inside</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;rect.x &lt;= </span><span class="si">{</span><span class="n">pre</span><span class="si">}</span><span class="s2">_mouseX &amp;&amp; </span><span class="si">{</span><span class="n">pre</span><span class="si">}</span><span class="s2">_mouseX &lt; rect.x+rect.width &amp;&amp; rect.y &lt;= </span><span class="si">{</span><span class="n">pre</span><span class="si">}</span><span class="s2">_mouseY &amp;&amp; </span><span class="si">{</span><span class="n">pre</span><span class="si">}</span><span class="s2">_mouseY &lt; rect.y+rect.height&quot;</span> <span class="c1"># Graph</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">&lt;div id=&quot;</span><span class="si">{</span><span class="n">pre</span><span class="si">}</span><span class="s2">_wrapper&quot; style=&quot;position: relative&quot;&gt;</span><span class="si">{</span><span class="n">s</span><span class="si">}</span><span class="s2">&lt;div id=&quot;</span><span class="si">{</span><span class="n">pre</span><span class="si">}</span><span class="s2">_popup&quot; style=&quot;position: absolute; display: none; background: white; padding: 8px 12px; border-radius: 6px; box-shadow: 0 3px 5px rgb(0 0 0 / 0.3); z-index: 1000000&quot;&gt;&lt;/div&gt;&lt;/div&gt;</span>
+<span class="s2">&lt;script&gt;</span>
+<span class="s2">    const </span><span class="si">{</span><span class="n">pre</span><span class="si">}</span><span class="s2">_nodeId_node_popup = (</span><span class="si">{</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="si">}</span><span class="s2">).map(([x,y]) =&gt; [x, document.querySelector(`#$</span><span class="se">{{</span><span class="s2">x</span><span class="se">}}</span><span class="s2">`), y]);</span>
+<span class="s2">    const </span><span class="si">{</span><span class="n">pre</span><span class="si">}</span><span class="s2">_nodes = </span><span class="si">{</span><span class="n">pre</span><span class="si">}</span><span class="s2">_nodeId_node_popup.map(([x,n,y]) =&gt; n); let </span><span class="si">{</span><span class="n">pre</span><span class="si">}</span><span class="s2">_activeNode = null;</span>
+<span class="s2">    const </span><span class="si">{</span><span class="n">pre</span><span class="si">}</span><span class="s2">_popup = document.querySelector(&quot;#</span><span class="si">{</span><span class="n">pre</span><span class="si">}</span><span class="s2">_popup&quot;); const </span><span class="si">{</span><span class="n">pre</span><span class="si">}</span><span class="s2">_wrapper = document.querySelector(&quot;#</span><span class="si">{</span><span class="n">pre</span><span class="si">}</span><span class="s2">_wrapper&quot;);</span>
+<span class="s2">    const </span><span class="si">{</span><span class="n">pre</span><span class="si">}</span><span class="s2">_nodeId2popup = </span><span class="se">{{}}</span><span class="s2">; for (const [x,n,y] of </span><span class="si">{</span><span class="n">pre</span><span class="si">}</span><span class="s2">_nodeId_node_popup) </span><span class="se">{{</span><span class="s2"> </span><span class="si">{</span><span class="n">pre</span><span class="si">}</span><span class="s2">_nodeId2popup[x] = y; </span><span class="se">}}</span><span class="s2">;</span>
+<span class="s2">    let </span><span class="si">{</span><span class="n">pre</span><span class="si">}</span><span class="s2">_mouseX = 0; let </span><span class="si">{</span><span class="n">pre</span><span class="si">}</span><span class="s2">_mouseY = 0; </span><span class="si">{</span><span class="n">pre</span><span class="si">}</span><span class="s2">_wrapper.onmousemove = (e) =&gt; </span><span class="se">{{</span><span class="s2"> </span><span class="si">{</span><span class="n">pre</span><span class="si">}</span><span class="s2">_mouseX = e.clientX; </span><span class="si">{</span><span class="n">pre</span><span class="si">}</span><span class="s2">_mouseY = e.clientY; </span><span class="se">}}</span><span class="s2">;</span>
+
+<span class="s2">    setInterval(() =&gt; </span><span class="se">{{</span>
+<span class="s2">        if (</span><span class="si">{</span><span class="n">pre</span><span class="si">}</span><span class="s2">_activeNode) </span><span class="se">{{</span>
+<span class="s2">            const rect = </span><span class="si">{</span><span class="n">pre</span><span class="si">}</span><span class="s2">_activeNode.getBoundingClientRect();</span>
+<span class="s2">            if (!(</span><span class="si">{</span><span class="n">inside</span><span class="si">}</span><span class="s2">)) </span><span class="se">{{</span><span class="s2"> </span><span class="si">{</span><span class="n">pre</span><span class="si">}</span><span class="s2">_activeNode = null; </span><span class="si">{</span><span class="n">pre</span><span class="si">}</span><span class="s2">_popup.innerHTML = &quot;&quot;; </span><span class="si">{</span><span class="n">pre</span><span class="si">}</span><span class="s2">_popup.style.display = &quot;none&quot;; </span><span class="se">}}</span>
+<span class="s2">        </span><span class="se">}}</span>
+
+<span class="s2">        if (!</span><span class="si">{</span><span class="n">pre</span><span class="si">}</span><span class="s2">_activeNode) </span><span class="se">{{</span><span class="s2"> // can&#39;t just do `if (activeNode) ... else ...` btw. Separated out for a reason</span>
+<span class="s2">            const wRect = </span><span class="si">{</span><span class="n">pre</span><span class="si">}</span><span class="s2">_wrapper.getBoundingClientRect();</span>
+<span class="s2">            for (const node of </span><span class="si">{</span><span class="n">pre</span><span class="si">}</span><span class="s2">_nodes) </span><span class="se">{{</span>
+<span class="s2">                const rect = node.getBoundingClientRect();</span>
+<span class="s2">                if (</span><span class="si">{</span><span class="n">inside</span><span class="si">}</span><span class="s2">) </span><span class="se">{{</span>
+<span class="s2">                    const popup = </span><span class="si">{</span><span class="n">pre</span><span class="si">}</span><span class="s2">_nodeId2popup[node.id];</span>
+<span class="s2">                    </span><span class="si">{</span><span class="n">pre</span><span class="si">}</span><span class="s2">_activeNode = node;</span>
+<span class="s2">                    if (popup) </span><span class="se">{{</span>
+<span class="s2">                        </span><span class="si">{</span><span class="n">pre</span><span class="si">}</span><span class="s2">_popup.style.left = rect.x + rect.width/2 + 10 - wRect.x + &quot;px&quot;;</span>
+<span class="s2">                        </span><span class="si">{</span><span class="n">pre</span><span class="si">}</span><span class="s2">_popup.style.top = 0; </span><span class="si">{</span><span class="n">pre</span><span class="si">}</span><span class="s2">_popup.innerHTML = popup; </span><span class="si">{</span><span class="n">pre</span><span class="si">}</span><span class="s2">_popup.style.display = &quot;block&quot;;</span>
+<span class="s2">                        const pRect = </span><span class="si">{</span><span class="n">pre</span><span class="si">}</span><span class="s2">_popup.getBoundingClientRect();</span>
+<span class="s2">                        const t1 = rect.y + rect.height/2 + 10 - wRect.y; // &quot;t&quot; for &quot;top&quot;</span>
+<span class="s2">                        const t2 = wRect.height - pRect.height;</span>
+<span class="s2">                        </span><span class="si">{</span><span class="n">pre</span><span class="si">}</span><span class="s2">_popup.style.top = ((t2 &lt; 0) ? 0 : Math.min(t1, t2)) + &quot;px&quot;;</span>
+<span class="s2">                    </span><span class="se">}}</span>
+<span class="s2">                    break;</span>
+<span class="s2">                </span><span class="se">}}</span>
+<span class="s2">            </span><span class="se">}}</span>
+<span class="s2">        </span><span class="se">}}</span>
+<span class="s2">    </span><span class="se">}}</span><span class="s2">, 30);</span>
+<span class="s2">&lt;/script&gt;&quot;&quot;&quot;</span>                                                                     <span class="c1"># Graph</span>
+        <span class="k">return</span> <span class="n">s</span>                                                                 <span class="c1"># Graph</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Quang Ho.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
