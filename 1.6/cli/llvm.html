@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LLVM optimizer tutorial &mdash; k1lib  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="k1lib.callbacks module" href="../callbacks/index.html" />
+    <link rel="prev" title="JS transpiler tutorial" href="js_transpiler.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> k1lib
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../base.html">Base module</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">k1lib.cli module</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#setup">Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#intro">Intro</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#argument-expansion">Argument expansion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#inverting-conditions">Inverting conditions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#capturing-operators">Capturing operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#cli-composition">Cli composition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#js-transpiler">JS transpiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#philosophy">Philosophy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#where-to-start">Where to start?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#summary">Summary</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#under-the-hood">Under the hood</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">LLVM optimizer tutorial</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#basic-usage">Basic usage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#type-hint-system">Type hint system</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-optimization-pass">Creating optimization pass</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#creating-your-own-cli">Creating your own cli</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#accelerations">Accelerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.cli.bio">bio module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.cli.cif">cif module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.cli.conv">conv module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.cli.mgi">mgi module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.cli.filt">filt module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.cli.gb">gb module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.cli.grep">grep module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#init-module">init module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.cli.inp">inp module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.cli.kapi">kapi module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.cli.kgv">kgv module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.cli.kjs">kjs module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.cli.ktree">ktree module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.cli.kxml">kxml module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.cli.lsext">lsext module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.cli.models">models module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.cli.modifier">modifier module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#applycl-module">_applyCl module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.cli.nb">nb module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.cli.output">output module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.cli.sam">sam module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.cli.structural">structural module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.cli.trace">trace module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.cli.utils">utils module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.cli.typehint">typehint module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#module-k1lib.cli.optimizations">optimizations module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#elsewhere-in-the-library">Elsewhere in the library</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../callbacks/index.html">k1lib.callbacks module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../k1a.html">k1lib._k1a module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../k1ui.html">k1lib.k1ui module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../eqn.html">k1lib.eqn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fmt.html">k1lib.fmt module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../graphEqn.html">k1lib.graphEqn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../imports.html">k1lib.imports module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mo.html">k1lib.mo module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../knn.html">k1lib.knn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../p5.html">k1lib.p5 module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../schedule.html">k1lib.schedule module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../selector.html">k1lib.selector module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../selen.html">k1lib.selen module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../serpent.html">k1lib.serpent module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../serve.html">k1lib.serve module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../viz.html">k1lib.viz module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../monkey.html">Monkey patched classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelogs.html">Changelogs</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">k1lib</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">k1lib.cli module</a></li>
+      <li class="breadcrumb-item active">LLVM optimizer tutorial</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/cli/llvm.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="llvm-optimizer-tutorial">
+<h1>LLVM optimizer tutorial<a class="headerlink" href="#llvm-optimizer-tutorial" title="Permalink to this heading"></a></h1>
+<p>Since version 1.0, k1lib has an awesome compiler and optimizer that looks
+a lot like LLVM, a compiler infrastructure project created by Chris Lattner
+to unify all compilers. The idea is to define an intermediate representation
+(IR) that look like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">@.</span><span class="n">str</span> <span class="o">=</span> <span class="n">internal</span> <span class="n">constant</span> <span class="p">[</span><span class="mi">14</span> <span class="n">x</span> <span class="n">i8</span><span class="p">]</span> <span class="n">c</span><span class="s2">&quot;hello, world</span><span class="se">\0</span><span class="s2">A</span><span class="se">\00</span><span class="s2">&quot;</span>
+
+<span class="n">declare</span> <span class="n">i32</span> <span class="nd">@printf</span><span class="p">(</span><span class="n">i8</span><span class="o">*</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+
+<span class="n">define</span> <span class="n">i32</span> <span class="nd">@main</span><span class="p">(</span><span class="n">i32</span> <span class="o">%</span><span class="n">argc</span><span class="p">,</span> <span class="n">i8</span><span class="o">**</span> <span class="o">%</span><span class="n">argv</span><span class="p">)</span> <span class="n">nounwind</span> <span class="p">{</span>
+<span class="n">entry</span><span class="p">:</span>
+    <span class="o">%</span><span class="n">tmp1</span> <span class="o">=</span> <span class="n">getelementptr</span> <span class="p">[</span><span class="mi">14</span> <span class="n">x</span> <span class="n">i8</span><span class="p">],</span> <span class="p">[</span><span class="mi">14</span> <span class="n">x</span> <span class="n">i8</span><span class="p">]</span><span class="o">*</span> <span class="o">@.</span><span class="n">str</span><span class="p">,</span> <span class="n">i32</span> <span class="mi">0</span><span class="p">,</span> <span class="n">i32</span> <span class="mi">0</span>
+    <span class="o">%</span><span class="n">tmp2</span> <span class="o">=</span> <span class="n">call</span> <span class="n">i32</span> <span class="p">(</span><span class="n">i8</span><span class="o">*</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span> <span class="nd">@printf</span><span class="p">(</span> <span class="n">i8</span><span class="o">*</span> <span class="o">%</span><span class="n">tmp1</span> <span class="p">)</span> <span class="n">nounwind</span>
+    <span class="n">ret</span> <span class="n">i32</span> <span class="mi">0</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This is a “Hello World” program written in LLVM IR. Think of the IR as a
+flavor of assembly, but better, clearer, and is sort of abstract (does
+not follow any particular instruction set). Then, you can design <strong>frontends</strong>,
+which are programs that takes in code files in some language like C, C++, Go, etc,
+and spits out the IR. You can also design <strong>passes</strong>, essentially programs that
+takes in IR, do some analysis/optimization and spits out a different IR. Do
+this enough times and your code will become super optimized. Then you can design
+<strong>backends</strong>, which are programs that take in IR and spits out binary in the
+targeted instruction set.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>LLVM stands for “Low Level Virtual Machine”, but the project has evolved so much
+that this terminology kinda becomes meaningless. For more details on how it works,
+check these links out:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://www.aosabook.org/en/llvm.html">http://www.aosabook.org/en/llvm.html</a></p></li>
+<li><p><a class="reference external" href="https://blog.gopheracademy.com/advent-2018/llvm-ir-and-go/">https://blog.gopheracademy.com/advent-2018/llvm-ir-and-go/</a></p></li>
+</ul>
+</div>
+<section id="basic-usage">
+<h2>Basic usage<a class="headerlink" href="#basic-usage" title="Permalink to this heading"></a></h2>
+<p>Same idea here. Let’s say you have code to count the number of lines in a text file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;file.txt&quot;</span> <span class="o">|</span> <span class="n">cat</span><span class="p">()</span> <span class="o">|</span> <span class="n">shape</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This is pretty straightforward. <code class="docutils literal notranslate"><span class="pre">cat()</span></code> reads the file line by line, and <code class="docutils literal notranslate"><span class="pre">shape(0)</span></code>
+returns the total number of lines. You can then do something like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># returns `tOpt` object, but it behaves as if it&#39;s the true output</span>
+<span class="s2">&quot;file.txt&quot;</span> <span class="o">|</span> <span class="n">tOpt</span><span class="p">()</span> <span class="o">|</span> <span class="n">cat</span><span class="p">()</span> <span class="o">|</span> <span class="n">shape</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="c1"># returns the actual output (this case a single int), for when you need it directly</span>
+<span class="s2">&quot;file.txt&quot;</span> <span class="o">|</span> <span class="n">tOpt</span><span class="p">()</span> <span class="o">|</span> <span class="n">cat</span><span class="p">()</span> <span class="o">|</span> <span class="n">shape</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">|</span> <span class="n">yieldT</span>
+</pre></div>
+</div>
+<p>It will actually get optimized into this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># returns int, the number of lines in the file</span>
+<span class="kc">None</span> <span class="o">|</span> <span class="n">cmd</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;wc -l file.txt&quot;</span><span class="p">)</span> <span class="o">|</span> <span class="n">item</span><span class="p">()</span> <span class="o">|</span> <span class="n">op</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">ab_int</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This does not read the file at all. Instead, it executes the <code class="docutils literal notranslate"><span class="pre">wc</span></code> program (word count)
+in the terminal, parses <code class="docutils literal notranslate"><span class="pre">wc</span></code>’s output and return the number of lines. Because <code class="docutils literal notranslate"><span class="pre">wc</span></code>
+is coded in C, it’s super fast, around 6x faster than <code class="docutils literal notranslate"><span class="pre">cat()</span> <span class="pre">|</span> <span class="pre">shape(0)</span></code>.</p>
+<p>Normally, you’d use it in this form instead:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># returns the optimized cli</span>
+<span class="n">f</span> <span class="o">=</span> <span class="s2">&quot;file.txt&quot;</span> <span class="o">|</span> <span class="n">tOpt</span><span class="p">()</span> <span class="o">|</span> <span class="n">cat</span><span class="p">()</span> <span class="o">|</span> <span class="n">shape</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">|</span> <span class="n">tOpt</span>
+<span class="c1"># then you can do this to pass it through as usual</span>
+<span class="s2">&quot;other file.txt&quot;</span> <span class="o">|</span> <span class="n">f</span>
+</pre></div>
+</div>
+<p>Basically, you’re giving the optimizer an example input, it works
+its magic and spits out an optimized cli. Let’s see another example
+involving tensors:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
+<span class="c1"># returns [[tensor([1, 2, 3])], [tensor([4, 5, 6])]]</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">|</span> <span class="n">unsqueeze</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">|</span> <span class="n">deref</span><span class="p">()</span>
+<span class="c1"># returns `tOpt` object that behaves like the below tensor</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">|</span> <span class="n">tOpt</span><span class="p">()</span> <span class="o">|</span> <span class="n">unsqueeze</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">|</span> <span class="n">deref</span><span class="p">()</span>
+<span class="c1"># returns tensor([[[1, 2, 3]], [[4, 5, 6]]])</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">|</span> <span class="n">tOpt</span><span class="p">()</span> <span class="o">|</span> <span class="n">unsqueeze</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">|</span> <span class="n">yieldT</span>
+</pre></div>
+</div>
+<p>This is desirable because operations on PyTorch tensors are much faster than
+operations on lists of lists of tensors. So, you can create analysis/optimization
+passes that takes in clis, analyze what the user really wants and outputs a more
+optimized clis.</p>
+<p>In the following section, you’ll be learning how the type hint system works,
+how exactly do you create these passes and a few examples of them</p>
+</section>
+<section id="type-hint-system">
+<h2>Type hint system<a class="headerlink" href="#type-hint-system" title="Permalink to this heading"></a></h2>
+<p>So, there’s a quite strict type hint system across all clis located at
+<a class="reference internal" href="index.html#module-k1lib.cli.typehint" title="k1lib.cli.typehint"><code class="xref py py-mod docutils literal notranslate"><span class="pre">k1lib.cli.typehint</span></code></a>. The idea is to deduce type hint info after a cli if
+given the input’s type hint, like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">tList</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span> <span class="c1"># type hint, a list of integers</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">item</span><span class="p">();</span>
+<span class="c1"># returns int, output type hint</span>
+<span class="n">f</span><span class="o">.</span><span class="n">_typehint</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>There are several default type hint objects:</p>
+<ul class="simple">
+<li><p>tBase: base hint class</p></li>
+<li><p>tAny: matches any value/object</p></li>
+<li><p>tList: list of a specific type. Eg: <code class="docutils literal notranslate"><span class="pre">tList(tAny())</span></code> represents a list of generic
+objects, and <code class="docutils literal notranslate"><span class="pre">tList(str)</span></code> represents a list of strings</p></li>
+<li><p>tIter: iterator of a specific type. Same as tList, but you can’t get the length
+of it</p></li>
+<li><p>tSet: set of a specific type. Again, same as tList</p></li>
+<li><p>tCollection: iterator of many types. Eg: <code class="docutils literal notranslate"><span class="pre">tCollection(int,</span> <span class="pre">float)</span></code> matches a list
+like <code class="docutils literal notranslate"><span class="pre">[2,</span> <span class="pre">2.3]</span></code>.</p></li>
+<li><p>tNpArray: Numpy array with specific dtype and rank</p></li>
+<li><p>tTensor: PyTorch Tensor with specific dtype and rank</p></li>
+</ul>
+<p>There are a few convenience combined types:</p>
+<ul class="simple">
+<li><p>tListIter: a tuple of tList and tIter</p></li>
+<li><p>tListSet: a tuple of tList and tSet</p></li>
+<li><p>tListIterSet: a tuple of tList, tIter and tSet</p></li>
+<li><p>tArrayTypes: a tuple of tNpArray and tTensor</p></li>
+</ul>
+<p>There are a few utilities:</p>
+<ul class="simple">
+<li><p>inferType: infer the type of a specific object. <code class="docutils literal notranslate"><span class="pre">inferType(range(3))</span></code> returns
+<code class="docutils literal notranslate"><span class="pre">tList(int)</span></code></p></li>
+<li><p>tLowest: gets the common type of all input types. <code class="docutils literal notranslate"><span class="pre">assert</span> <span class="pre">tLowest(tIter(float),</span> <span class="pre">tList(int))</span></code> returns
+<code class="docutils literal notranslate"><span class="pre">tIter(float)</span></code></p></li>
+<li><p>tCheck: cli used to verify the integrity of type hints automatically</p></li>
+<li><p>tOpt: cli used to optimize everything</p></li>
+</ul>
+<p>This type hint system is almost mandatory because you just wouldn’t be able to do
+lots of optimizations without knowing some specifics on how your data looks like.</p>
+</section>
+<section id="creating-optimization-pass">
+<h2>Creating optimization pass<a class="headerlink" href="#creating-optimization-pass" title="Permalink to this heading"></a></h2>
+<p>Full code for this example pass looks like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">o1</span><span class="p">(</span><span class="n">cs</span><span class="p">,</span> <span class="n">ts</span><span class="p">,</span> <span class="n">metadata</span><span class="p">):</span>
+  <span class="k">return</span> <span class="p">[</span><span class="n">cs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">cs</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+<span class="n">tOpt</span><span class="o">.</span><span class="n">addPass</span><span class="p">(</span><span class="n">o1</span><span class="p">,</span> <span class="p">[</span><span class="n">toList</span><span class="p">,</span> <span class="n">head</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>What this optimization does is that it detects whether you’re prematurely creating a
+list or not. Here, you’re telling the system to run your pass if it encounters
+<code class="docutils literal notranslate"><span class="pre">toList()</span> <span class="pre">|</span> <span class="pre">head()</span></code> somewhere. <code class="docutils literal notranslate"><span class="pre">cs</span></code> is a list of instantiated clis, and <code class="docutils literal notranslate"><span class="pre">ts</span></code> is
+a list of input type hints for each of the clis. Then, you should return a list of
+new clis if you’re able to optimize it, or <code class="docutils literal notranslate"><span class="pre">None</span></code> if you can’t.</p>
+<p>How about an example that actually utilizes the type hints:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">oUnsqueeze</span><span class="p">(</span><span class="n">cs</span><span class="p">,</span> <span class="n">ts</span><span class="p">,</span> <span class="n">metadata</span><span class="p">):</span>
+  <span class="n">a</span> <span class="o">=</span> <span class="n">cs</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span> <span class="n">t</span> <span class="o">=</span> <span class="n">ts</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">tArrayTypes</span><span class="p">):</span> <span class="k">return</span> <span class="kc">None</span>
+  <span class="k">while</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">cli</span><span class="o">.</span><span class="n">apply</span><span class="p">)</span> <span class="ow">and</span> <span class="n">a</span><span class="o">.</span><span class="n">normal</span><span class="p">:</span> <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">a</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">f</span>
+  <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">cli</span><span class="o">.</span><span class="n">wrapList</span><span class="p">):</span> <span class="k">return</span> <span class="kc">None</span>
+  <span class="n">t</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">child</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">rank</span><span class="o">+</span><span class="mi">1</span> <span class="k">if</span> <span class="n">t</span><span class="o">.</span><span class="n">rank</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">None</span><span class="p">)</span>
+  <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">tNpArray</span><span class="p">):</span> <span class="k">return</span> <span class="p">[</span><span class="n">cli</span><span class="o">.</span><span class="n">aS</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">i</span><span class="p">))</span><span class="o">.</span><span class="n">hint</span><span class="p">(</span><span class="n">t</span><span class="p">)]</span>
+  <span class="k">else</span><span class="p">:</span> <span class="k">return</span> <span class="p">[</span><span class="n">cli</span><span class="o">.</span><span class="n">aS</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="n">i</span><span class="p">))</span><span class="o">.</span><span class="n">hint</span><span class="p">(</span><span class="n">t</span><span class="p">)]</span>
+<span class="n">tOpt</span><span class="o">.</span><span class="n">addPass</span><span class="p">(</span><span class="n">oUnsqueeze</span><span class="p">,</span> <span class="p">[</span><span class="n">cli</span><span class="o">.</span><span class="n">apply</span><span class="p">],</span> <span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This detects whether the input is a Numpy array or PyTorch tensor, and apply the
+respective unsqueeze operation instead of the normal <code class="docutils literal notranslate"><span class="pre">wrapList().all(dim)</span></code> that
+breaks the array/tensor up.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="js_transpiler.html" class="btn btn-neutral float-left" title="JS transpiler tutorial" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../callbacks/index.html" class="btn btn-neutral float-right" title="k1lib.callbacks module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Quang Ho.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

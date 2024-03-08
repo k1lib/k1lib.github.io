@@ -66,7 +66,8 @@
 <li class="toctree-l1"><a class="reference internal" href="monkey.html">Monkey patched classes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Changelogs</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#jan-6th-2024">1.5 - Jan 6th, 2024</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#jan-6th-2024">1.6 - Jan 6th, 2024</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">1.5 - Jan 6th, 2024</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#june-30th-2023">1.4 - June 30th, 2023</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#may-26th-2023">1.3 - May 26th, 2023</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#feb-7th-2023">1.2 - Feb 7th, 2023</a></li>
@@ -127,7 +128,28 @@
   <section id="changelogs">
 <h1>Changelogs<a class="headerlink" href="#changelogs" title="Permalink to this heading"></a></h1>
 <section id="jan-6th-2024">
-<h2><a class="reference external" href="/1.5">1.5</a> - Jan 6th, 2024<a class="headerlink" href="#jan-6th-2024" title="Permalink to this heading"></a></h2>
+<h2><a class="reference external" href="/1.6">1.6</a> - Jan 6th, 2024<a class="headerlink" href="#jan-6th-2024" title="Permalink to this heading"></a></h2>
+<p>Cli:</p>
+<ul class="simple">
+<li><p>Added <code class="xref py py-class docutils literal notranslate"><span class="pre">toPdf</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">lookupRange</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">branch</span></code></p></li>
+<li><p>Added optional delay to <a class="reference internal" href="cli/index.html#k1lib.cli.output.intercept" title="k1lib.cli.output.intercept"><code class="xref py py-class docutils literal notranslate"><span class="pre">intercept</span></code></a></p></li>
+<li><p>Added <code class="xref py py-class docutils literal notranslate"><span class="pre">iterDelay</span></code></p></li>
+<li><p>Added <code class="xref py py-class docutils literal notranslate"><span class="pre">toDist</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">toAngle</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">idxsToNdArray</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">toYaml</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">toMedian</span></code></p></li>
+<li><p>Added daemon mode to <a class="reference internal" href="cli/index.html#k1lib.cli.inp.cmd" title="k1lib.cli.inp.cmd"><code class="xref py py-class docutils literal notranslate"><span class="pre">cmd</span></code></a></p></li>
+<li><p>Added module <code class="xref py py-mod docutils literal notranslate"><span class="pre">kcv</span></code>, focusing on opencv aruco markers detection</p></li>
+<li><p>Added proper pandas support to most cli</p></li>
+<li><p>Added support for raw row ingestion to <a class="reference internal" href="cli/index.html#k1lib.cli.conv.toCsv" title="k1lib.cli.conv.toCsv"><code class="xref py py-class docutils literal notranslate"><span class="pre">toCsv</span></code></a></p></li>
+</ul>
+<p>Generic:</p>
+<ul class="simple">
+<li><p>Added monkey patched methods <code class="xref py py-meth docutils literal notranslate"><span class="pre">os.netstat()</span></code> and <code class="xref py py-meth docutils literal notranslate"><span class="pre">os.killPort()</span></code></p></li>
+<li><p>Added <code class="xref py py-meth docutils literal notranslate"><span class="pre">dollar()</span></code></p></li>
+<li><p>Added <code class="xref py py-mod docutils literal notranslate"><span class="pre">kcom</span></code> for external hardware communications, with <code class="xref py py-class docutils literal notranslate"><span class="pre">Gsm</span></code> and
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Host</span></code></p></li>
+</ul>
+</section>
+<section id="id3">
+<h2><a class="reference external" href="/1.5">1.5</a> - Jan 6th, 2024<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
 <p>Cli:</p>
 <ul class="simple">
 <li><p>Added s3 compatibility with <code class="docutils literal notranslate"><span class="pre">ls()</span></code> and <code class="docutils literal notranslate"><span class="pre">cat()</span></code> at <a class="reference internal" href="cli/index.html#module-k1lib.cli.lsext" title="k1lib.cli.lsext"><code class="xref py py-mod docutils literal notranslate"><span class="pre">k1lib.cli.lsext</span></code></a></p></li>
@@ -259,7 +281,7 @@ and <a class="reference internal" href="cli/index.html#k1lib.cli.modifier.random
 <li><p>Added padding option to <a class="reference internal" href="cli/index.html#k1lib.cli.structural.window" title="k1lib.cli.structural.window"><code class="xref py py-class docutils literal notranslate"><span class="pre">window</span></code></a></p></li>
 <li><p>Added probability weighting mode to <a class="reference internal" href="cli/index.html#k1lib.cli.structural.joinStreamsRandom" title="k1lib.cli.structural.joinStreamsRandom"><code class="xref py py-class docutils literal notranslate"><span class="pre">joinStreamsRandom</span></code></a></p></li>
 <li><p>Fixed <code class="xref py py-mod docutils literal notranslate"><span class="pre">forbiddenfruit</span></code> or-patching of <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.26)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a>,
-<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.Series.html#pandas.Series" title="(in pandas v2.1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.core.series.Series</span></code></a> and <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.1.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.core.frame.DataFrame</span></code></a></p></li>
+<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.Series.html#pandas.Series" title="(in pandas v2.2.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.core.series.Series</span></code></a> and <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.2.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.core.frame.DataFrame</span></code></a></p></li>
 </ul>
 <p>Generic:</p>
 <ul class="simple">

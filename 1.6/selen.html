@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>k1lib.selen module &mdash; k1lib  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="k1lib.serpent module" href="serpent.html" />
+    <link rel="prev" title="k1lib.selector module" href="selector.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> k1lib
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="base.html">Base module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cli/index.html">k1lib.cli module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="callbacks/index.html">k1lib.callbacks module</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="k1a.html">k1lib._k1a module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="k1ui.html">k1lib.k1ui module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="eqn.html">k1lib.eqn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fmt.html">k1lib.fmt module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graphEqn.html">k1lib.graphEqn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imports.html">k1lib.imports module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mo.html">k1lib.mo module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="knn.html">k1lib.knn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="p5.html">k1lib.p5 module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="schedule.html">k1lib.schedule module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="selector.html">k1lib.selector module</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">k1lib.selen module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.selen.getBrowser"><code class="docutils literal notranslate"><span class="pre">getBrowser()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.selen.Page"><code class="docutils literal notranslate"><span class="pre">Page</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.selen.Page.analyze"><code class="docutils literal notranslate"><span class="pre">Page.analyze()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.selen.Page.draw"><code class="docutils literal notranslate"><span class="pre">Page.draw()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.selen.Page.mainContents"><code class="docutils literal notranslate"><span class="pre">Page.mainContents()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.selen.Page.mainContent"><code class="docutils literal notranslate"><span class="pre">Page.mainContent</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.selen.Page.bound"><code class="docutils literal notranslate"><span class="pre">Page.bound()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.selen.Element"><code class="docutils literal notranslate"><span class="pre">Element</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.selen.Element.parent"><code class="docutils literal notranslate"><span class="pre">Element.parent</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.selen.Element.obj"><code class="docutils literal notranslate"><span class="pre">Element.obj</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.selen.Element.x"><code class="docutils literal notranslate"><span class="pre">Element.x</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.selen.Element.y"><code class="docutils literal notranslate"><span class="pre">Element.y</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.selen.Element.w"><code class="docutils literal notranslate"><span class="pre">Element.w</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.selen.Element.h"><code class="docutils literal notranslate"><span class="pre">Element.h</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.selen.Element.wh"><code class="docutils literal notranslate"><span class="pre">Element.wh</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.selen.Element.path"><code class="docutils literal notranslate"><span class="pre">Element.path</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.selen.Element.children"><code class="docutils literal notranslate"><span class="pre">Element.children</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.selen.Element.pArea"><code class="docutils literal notranslate"><span class="pre">Element.pArea</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="serpent.html">k1lib.serpent module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="serve.html">k1lib.serve module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="viz.html">k1lib.viz module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="monkey.html">Monkey patched classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelogs.html">Changelogs</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">k1lib</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">k1lib.selen module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/selen.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-k1lib.selen">
+<span id="k1lib-selen-module"></span><h1>k1lib.selen module<a class="headerlink" href="#module-k1lib.selen" title="Permalink to this heading"></a></h1>
+<p>Nice website analyzer based on Selenium. Whenever I used Selenium
+in the past, I’ve always have to find how to reach specific buttons,
+what paragraphs to capture, things like that, all manually. That
+really limits my usage of it. Recently, I’ve made the module <code class="docutils literal notranslate"><span class="pre">kapi</span></code>,
+capable of doing a bunch of DL stuff and feels like this is the right
+time to make something on top of Selenium that is able to pull out the
+main article, body, header, right/left bar automatically. After that, I
+can grab the main text to put it into an embedding db to use it further
+downstream. Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">k1lib.imports</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">browser</span> <span class="o">=</span> <span class="n">selen</span><span class="o">.</span><span class="n">getBrowser</span><span class="p">()</span> <span class="c1"># fires up the browser</span>
+<span class="n">browser</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://en.wikipedia.org/wiki/Cheese&quot;</span><span class="p">)</span>
+
+<span class="n">page</span> <span class="o">=</span> <span class="n">selen</span><span class="o">.</span><span class="n">Page</span><span class="o">.</span><span class="n">analyze</span><span class="p">(</span><span class="n">browser</span><span class="p">)</span> <span class="c1"># analyze everything. For a typical page, should take 8-14s total</span>
+<span class="n">page</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>             <span class="c1"># run this inside a notebook to view all stages</span>
+<span class="n">page</span><span class="o">.</span><span class="n">mainContents</span><span class="p">()</span>     <span class="c1"># return List[Element] of potential big pieces of the page, like header, footer, left/right bar, etc.</span>
+
+<span class="n">elem</span> <span class="o">=</span> <span class="n">page</span><span class="o">.</span><span class="n">mainContent</span> <span class="c1"># grabs what it think is the most likely meats of the page, ignoring everything else</span>
+<span class="n">elem</span><span class="o">.</span><span class="n">obj</span>                <span class="c1"># accesses the internal Selenium Element</span>
+<span class="n">elem</span><span class="o">.</span><span class="n">obj</span><span class="o">.</span><span class="n">text</span>           <span class="c1"># grabs element&#39;s text content</span>
+<span class="n">elem</span><span class="o">.</span><span class="n">obj</span><span class="o">.</span><span class="n">x</span>              <span class="c1"># grabs element&#39;s x location. Works with .y too</span>
+<span class="n">elem</span><span class="o">.</span><span class="n">obj</span><span class="o">.</span><span class="n">w</span>              <span class="c1"># grabs element&#39;s width. Works with .h too</span>
+</pre></div>
+</div>
+<dl class="py function">
+<dt class="sig sig-object py" id="k1lib.selen.getBrowser">
+<span class="sig-prename descclassname"><span class="pre">k1lib.selen.</span></span><span class="sig-name descname"><span class="pre">getBrowser</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Browser</span></span></span><a class="reference internal" href="_modules/k1lib/selen.html#getBrowser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.selen.getBrowser" title="Permalink to this definition"></a></dt>
+<dd><p>Launches new browser and return object to manage</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="k1lib.selen.Page">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.selen.</span></span><span class="sig-name descname"><span class="pre">Page</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stages</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Meta</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/selen.html#Page"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.selen.Page" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.selen.Page.analyze">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">analyze</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">browser</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bounded</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/selen.html#Page.analyze"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.selen.Page.analyze" title="Permalink to this definition"></a></dt>
+<dd><p>Analyze whatever is on the browser at this moment.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>bounded</strong> – if True, adjusts all internal bounding boxes so that they don’t overflow. If False, then children can be bigger than its parent</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.selen.Page.draw">
+<span class="sig-name descname"><span class="pre">draw</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/selen.html#Page.draw"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.selen.Page.draw" title="Permalink to this definition"></a></dt>
+<dd><p>Quickly views each analysis stages, see bounding boxes, their paths and whatnot</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.selen.Page.mainContents">
+<span class="sig-name descname"><span class="pre">mainContents</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/selen.html#Page.mainContents"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.selen.Page.mainContents" title="Permalink to this definition"></a></dt>
+<dd><p>Returns some candidate Elements that seems to be the main content. You’d have
+to write some minimum code to determine what you’d like to use, but the bulk
+of the work by this point is done</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="k1lib.selen.Page.mainContent">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">mainContent</span></span><a class="headerlink" href="#k1lib.selen.Page.mainContent" title="Permalink to this definition"></a></dt>
+<dd><p>Really tries to extract out the main content, so that this can be
+automated. It might not be good, but at least it’s automated.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.selen.Page.bound">
+<span class="sig-name descname"><span class="pre">bound</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#k1lib.selen.Page" title="k1lib.selen.Page"><span class="pre">Page</span></a></span></span><a class="reference internal" href="_modules/k1lib/selen.html#Page.bound"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.selen.Page.bound" title="Permalink to this definition"></a></dt>
+<dd><p>Some children is detached from the parent outside of it, and can grow bigger. But
+that messes up with the ranking technique that I have right now. So purpose of this
+is to limit the children to the parent’s size</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="k1lib.selen.Element">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.selen.</span></span><span class="sig-name descname"><span class="pre">Element</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">page</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/selen.html#Element"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.selen.Element" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dl class="py property">
+<dt class="sig sig-object py" id="k1lib.selen.Element.parent">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">parent</span></span><a class="headerlink" href="#k1lib.selen.Element.parent" title="Permalink to this definition"></a></dt>
+<dd><p>Grab this element’s parent element. If not found, then return None</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="k1lib.selen.Element.obj">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">obj</span></span><a class="headerlink" href="#k1lib.selen.Element.obj" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="k1lib.selen.Element.x">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">x</span></span><a class="headerlink" href="#k1lib.selen.Element.x" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="k1lib.selen.Element.y">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">y</span></span><a class="headerlink" href="#k1lib.selen.Element.y" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="k1lib.selen.Element.w">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">w</span></span><a class="headerlink" href="#k1lib.selen.Element.w" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="k1lib.selen.Element.h">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">h</span></span><a class="headerlink" href="#k1lib.selen.Element.h" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="k1lib.selen.Element.wh">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">wh</span></span><a class="headerlink" href="#k1lib.selen.Element.wh" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="k1lib.selen.Element.path">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">path</span></span><a class="headerlink" href="#k1lib.selen.Element.path" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="k1lib.selen.Element.children">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">children</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#k1lib.selen.Element" title="k1lib.selen.Element"><span class="pre">k1lib.selen.Element</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#k1lib.selen.Element.children" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="k1lib.selen.Element.pArea">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pArea</span></span><a class="headerlink" href="#k1lib.selen.Element.pArea" title="Permalink to this definition"></a></dt>
+<dd><p>Percentage area of this element vs the entire page</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="selector.html" class="btn btn-neutral float-left" title="k1lib.selector module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="serpent.html" class="btn btn-neutral float-right" title="k1lib.serpent module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Quang Ho.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

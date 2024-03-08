@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>k1lib.cli.kxml &mdash; k1lib  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> k1lib
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../base.html">Base module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../cli/index.html">k1lib.cli module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../callbacks/index.html">k1lib.callbacks module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../k1a.html">k1lib._k1a module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../k1ui.html">k1lib.k1ui module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eqn.html">k1lib.eqn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fmt.html">k1lib.fmt module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../graphEqn.html">k1lib.graphEqn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../imports.html">k1lib.imports module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mo.html">k1lib.mo module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../knn.html">k1lib.knn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../p5.html">k1lib.p5 module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../schedule.html">k1lib.schedule module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../selector.html">k1lib.selector module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../selen.html">k1lib.selen module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../serpent.html">k1lib.serpent module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../serve.html">k1lib.serve module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../viz.html">k1lib.viz module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../monkey.html">Monkey patched classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelogs.html">Changelogs</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">k1lib</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">k1lib.cli.kxml</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for k1lib.cli.kxml</h1><div class="highlight"><pre>
+<span></span><span class="c1"># AUTOGENERATED FILE! PLEASE DON&#39;T EDIT HERE. EDIT THE SOURCE NOTEBOOKS INSTEAD</span>
+<span class="sd">&quot;&quot;&quot;All tools related to xml file format. Expected to use behind the &quot;kxml&quot;</span>
+<span class="sd">module name, like this::</span>
+
+<span class="sd">    from k1lib.imports import *</span>
+<span class="sd">    cat(&quot;abc.xml&quot;) | kxml.node() | kxml.display()</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">k1lib</span> <span class="kn">import</span> <span class="n">cli</span><span class="p">;</span> <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Iterator</span>
+<span class="kn">import</span> <span class="nn">xml.etree.ElementTree</span> <span class="k">as</span> <span class="nn">ET</span><span class="p">;</span> <span class="kn">import</span> <span class="nn">copy</span><span class="o">,</span> <span class="nn">xml</span><span class="o">,</span> <span class="nn">k1lib</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
+<span class="kn">from</span> <span class="nn">k1lib.cli.typehint</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;node&quot;</span><span class="p">,</span> <span class="s2">&quot;maxDepth&quot;</span><span class="p">,</span> <span class="s2">&quot;tags&quot;</span><span class="p">,</span> <span class="s2">&quot;pretty&quot;</span><span class="p">,</span> <span class="s2">&quot;display&quot;</span><span class="p">]</span>
+<div class="viewcode-block" id="node"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.kxml.node">[docs]</a><span class="k">class</span> <span class="nc">node</span><span class="p">(</span><span class="n">cli</span><span class="o">.</span><span class="n">BaseCli</span><span class="p">):</span>                                                         <span class="c1"># node</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Turns lines into a single</span>
+<span class="sd">node. Example::</span>
+
+<span class="sd">    s = \&quot;\&quot;\&quot;</span>
+<span class="sd">    &lt;html&gt;</span>
+<span class="sd">        &lt;head&gt;</span>
+<span class="sd">            &lt;style&gt;&lt;/style&gt;</span>
+<span class="sd">        &lt;/head&gt;</span>
+<span class="sd">        &lt;body&gt;</span>
+<span class="sd">            &lt;div&gt;&lt;/div&gt;</span>
+<span class="sd">        &lt;/body&gt;</span>
+<span class="sd">    &lt;/html&gt;\&quot;\&quot;\&quot;</span>
+<span class="sd">    # returns root node</span>
+<span class="sd">    s | kxml.node()</span>
+<span class="sd">    # same thing as above, demonstrating you can pipe in list of strings</span>
+<span class="sd">    s.split(\&quot;\\n\&quot;) | kxml.node()</span>
+<span class="sd">&quot;&quot;&quot;</span>                                                                              <span class="c1"># node</span>
+    <span class="k">def</span> <span class="nf">_typehint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inp</span><span class="p">):</span> <span class="k">return</span> <span class="n">ET</span><span class="o">.</span><span class="n">Element</span>                                  <span class="c1"># node</span>
+<div class="viewcode-block" id="node.__ror__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.kxml.node.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">:</span><span class="n">Iterator</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">ET</span><span class="o">.</span><span class="n">Element</span><span class="p">:</span>                           <span class="c1"># node</span>
+        <span class="k">return</span> <span class="n">ET</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">it</span><span class="p">))</span>                                        <span class="c1"># node</span></div></div>
+<span class="k">def</span> <span class="nf">oCatNode</span><span class="p">(</span><span class="n">cs</span><span class="p">,</span> <span class="n">ts</span><span class="p">,</span> <span class="n">_</span><span class="p">):</span>                                                         <span class="c1"># oCatNode</span>
+    <span class="n">c</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="n">cs</span>                                                                    <span class="c1"># oCatNode</span>
+    <span class="k">if</span> <span class="n">c</span><span class="o">.</span><span class="n">text</span><span class="p">:</span>                                                                   <span class="c1"># oCatNode</span>
+        <span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="n">fn</span><span class="p">):</span>                                                           <span class="c1"># oCatNode</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span> <span class="k">return</span> <span class="n">ET</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>                   <span class="c1"># oCatNode</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">cli</span><span class="o">.</span><span class="n">aS</span><span class="p">(</span><span class="n">inner</span><span class="p">)</span><span class="o">.</span><span class="n">hint</span><span class="p">(</span><span class="n">ET</span><span class="o">.</span><span class="n">Element</span><span class="p">)]</span>                                  <span class="c1"># oCatNode</span>
+<span class="n">tOpt</span><span class="o">.</span><span class="n">addPass</span><span class="p">(</span><span class="n">oCatNode</span><span class="p">,</span> <span class="p">[</span><span class="n">cli</span><span class="o">.</span><span class="n">cat</span><span class="p">()</span><span class="o">.</span><span class="vm">__class__</span><span class="p">,</span> <span class="n">node</span><span class="p">])</span>                              <span class="c1"># oCatNode</span>
+<span class="k">def</span> <span class="nf">_maxDepth</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">maxDepth</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">depth</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>                                  <span class="c1"># _maxDepth</span>
+    <span class="k">if</span> <span class="n">depth</span> <span class="o">&gt;=</span> <span class="n">maxDepth</span><span class="p">:</span>                                                        <span class="c1"># _maxDepth</span>
+        <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">node</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span> <span class="k">del</span> <span class="n">node</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>                                         <span class="c1"># _maxDepth</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">node</span><span class="p">:</span> <span class="n">_maxDepth</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">maxDepth</span><span class="p">,</span> <span class="n">depth</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>                               <span class="c1"># _maxDepth</span>
+    <span class="k">return</span> <span class="n">node</span>                                                                  <span class="c1"># _maxDepth</span>
+<div class="viewcode-block" id="maxDepth"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.kxml.maxDepth">[docs]</a><span class="k">class</span> <span class="nc">maxDepth</span><span class="p">(</span><span class="n">cli</span><span class="o">.</span><span class="n">BaseCli</span><span class="p">):</span>                                                     <span class="c1"># maxDepth</span>
+<div class="viewcode-block" id="maxDepth.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.kxml.maxDepth.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">depth</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">copy</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>                          <span class="c1"># maxDepth</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Filters out too deep nodes.</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    # returns root node, but prunes children deeper than the specified depth</span>
+<span class="sd">    s | kxml.node() | kxml.maxDepth()</span>
+
+<span class="sd">:param depth: max depth to include in</span>
+<span class="sd">:param copy: whether to limit the nodes itself, or limit a copy&quot;&quot;&quot;</span>               <span class="c1"># maxDepth</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">depth</span> <span class="o">=</span> <span class="n">depth</span> <span class="k">if</span> <span class="n">depth</span> <span class="o">!=</span> <span class="kc">None</span> <span class="k">else</span> <span class="nb">float</span><span class="p">(</span><span class="s2">&quot;inf&quot;</span><span class="p">)</span>                    <span class="c1"># maxDepth</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">copy</span> <span class="o">=</span> <span class="n">copy</span>                                                         <span class="c1"># maxDepth</span></div>
+<div class="viewcode-block" id="maxDepth.__ror__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.kxml.maxDepth.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span><span class="n">ET</span><span class="o">.</span><span class="n">Element</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ET</span><span class="o">.</span><span class="n">Element</span><span class="p">:</span>                            <span class="c1"># maxDepth</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">copy</span><span class="p">:</span> <span class="n">node</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>                                 <span class="c1"># maxDepth</span>
+        <span class="k">return</span> <span class="n">_maxDepth</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">depth</span><span class="p">)</span>                                       <span class="c1"># maxDepth</span></div></div>
+<span class="k">def</span> <span class="nf">_tags</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">tag</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">nested</span><span class="p">):</span>                                                <span class="c1"># _tags</span>
+    <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">tag</span> <span class="o">==</span> <span class="n">tag</span><span class="p">:</span> <span class="k">yield</span> <span class="n">node</span>                                               <span class="c1"># _tags</span>
+    <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">tag</span> <span class="o">!=</span> <span class="n">tag</span> <span class="ow">or</span> <span class="n">nested</span><span class="p">:</span>                                                <span class="c1"># _tags</span>
+        <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">node</span><span class="p">:</span> <span class="k">yield from</span> <span class="n">_tags</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">tag</span><span class="p">,</span> <span class="n">nested</span><span class="p">)</span>                          <span class="c1"># _tags</span>
+<div class="viewcode-block" id="tags"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.kxml.tags">[docs]</a><span class="k">class</span> <span class="nc">tags</span><span class="p">(</span><span class="n">cli</span><span class="o">.</span><span class="n">BaseCli</span><span class="p">):</span>                                                         <span class="c1"># tags</span>
+<div class="viewcode-block" id="tags.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.kxml.tags.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">tags</span><span class="p">:</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">nested</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>                           <span class="c1"># tags</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Finds all tags that have a particular name.. Example::</span>
+
+<span class="sd">    s = \&quot;\&quot;\&quot;</span>
+<span class="sd">    &lt;EXPERIMENT_PACKAGE_SET&gt;</span>
+<span class="sd">      &lt;EXPERIMENT_PACKAGE&gt;</span>
+<span class="sd">        &lt;EXPERIMENT_PACKAGE/&gt;</span>
+<span class="sd">        &lt;Pool/&gt;</span>
+<span class="sd">        &lt;RUN_SET/&gt;</span>
+<span class="sd">      &lt;/EXPERIMENT_PACKAGE&gt;</span>
+<span class="sd">      &lt;EXPERIMENT_PACKAGE&gt;</span>
+<span class="sd">        &lt;Pool/&gt;</span>
+<span class="sd">        &lt;RUN_SET/&gt;</span>
+<span class="sd">      &lt;/EXPERIMENT_PACKAGE&gt;</span>
+<span class="sd">    &lt;/EXPERIMENT_PACKAGE_SET&gt;\&quot;\&quot;\&quot;</span>
+
+<span class="sd">    # returns a list of &quot;Pool&quot; tags (with 2 elements) that are 2 levels deep</span>
+<span class="sd">    s | kxml.node() | kxml.tags(&quot;Pool&quot;) | toList()</span>
+<span class="sd">    # returns list with 2 tags</span>
+<span class="sd">    s | kxml.node() | kxml.tags(&quot;EXPERIMENT_PACKAGE&quot;)</span>
+<span class="sd">    # returns list with 3 tags</span>
+<span class="sd">    s | kxml.node() | kxml.tags(&quot;EXPERIMENT_PACKAGE&quot;, nested=True)</span>
+
+<span class="sd">:param nested: whether to search for &quot;div&quot; tag inside of another &quot;div&quot; tag&quot;&quot;&quot;</span>    <span class="c1"># tags</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tags</span> <span class="o">=</span> <span class="n">tags</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">nested</span> <span class="o">=</span> <span class="n">nested</span>                                   <span class="c1"># tags</span></div>
+<div class="viewcode-block" id="tags.__ror__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.kxml.tags.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span><span class="n">ET</span><span class="o">.</span><span class="n">Element</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">ET</span><span class="o">.</span><span class="n">Element</span><span class="p">]:</span>                  <span class="c1"># tags</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">_tags</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">tag</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nested</span><span class="p">)</span> <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">tags</span><span class="p">]</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">joinStreams</span><span class="p">()</span> <span class="c1"># tags</span></div></div>
+<span class="k">def</span> <span class="nf">_pretty</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">depth</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">indents</span><span class="o">=</span><span class="p">[]):</span>                                      <span class="c1"># _pretty</span>
+    <span class="n">attr</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="sa">f</span><span class="s2">&quot; </span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">=</span><span class="se">\&quot;</span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="se">\&quot;</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">node</span><span class="o">.</span><span class="n">attrib</span><span class="o">.</span><span class="n">items</span><span class="p">()])</span>            <span class="c1"># _pretty</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">text</span> <span class="ow">or</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2"> </span><span class="se">\n\r</span><span class="s2">&quot;</span><span class="p">)</span>                                    <span class="c1"># _pretty</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">node</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>                                                           <span class="c1"># _pretty</span>
+        <span class="k">if</span> <span class="n">text</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span> <span class="k">yield</span> <span class="n">indents</span><span class="p">[</span><span class="n">depth</span><span class="p">]</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;&lt;</span><span class="si">{</span><span class="n">node</span><span class="o">.</span><span class="n">tag</span><span class="si">}{</span><span class="n">attr</span><span class="si">}</span><span class="s2">/&gt;&quot;</span>             <span class="c1"># _pretty</span>
+        <span class="k">else</span><span class="p">:</span> <span class="k">yield</span> <span class="n">indents</span><span class="p">[</span><span class="n">depth</span><span class="p">]</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;&lt;</span><span class="si">{</span><span class="n">node</span><span class="o">.</span><span class="n">tag</span><span class="si">}{</span><span class="n">attr</span><span class="si">}</span><span class="s2">&gt;</span><span class="si">{</span><span class="n">text</span><span class="si">}</span><span class="s2">&lt;/</span><span class="si">{</span><span class="n">node</span><span class="o">.</span><span class="n">tag</span><span class="si">}</span><span class="s2">&gt;&quot;</span>    <span class="c1"># _pretty</span>
+    <span class="k">else</span><span class="p">:</span>                                                                        <span class="c1"># _pretty</span>
+        <span class="k">yield</span> <span class="n">indents</span><span class="p">[</span><span class="n">depth</span><span class="p">]</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;&lt;</span><span class="si">{</span><span class="n">node</span><span class="o">.</span><span class="n">tag</span><span class="si">}{</span><span class="n">attr</span><span class="si">}</span><span class="s2">&gt;&quot;</span>                             <span class="c1"># _pretty</span>
+        <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">node</span><span class="p">:</span> <span class="k">yield from</span> <span class="n">_pretty</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">depth</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">indents</span><span class="p">)</span>                   <span class="c1"># _pretty</span>
+        <span class="k">yield</span> <span class="n">indents</span><span class="p">[</span><span class="n">depth</span><span class="p">]</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;&lt;/</span><span class="si">{</span><span class="n">node</span><span class="o">.</span><span class="n">tag</span><span class="si">}</span><span class="s2">&gt;&quot;</span>                                  <span class="c1"># _pretty</span>
+<div class="viewcode-block" id="pretty"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.kxml.pretty">[docs]</a><span class="k">class</span> <span class="nc">pretty</span><span class="p">(</span><span class="n">cli</span><span class="o">.</span><span class="n">BaseCli</span><span class="p">):</span>                                                       <span class="c1"># pretty</span>
+<div class="viewcode-block" id="pretty.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.kxml.pretty.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">indent</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>                                         <span class="c1"># pretty</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Converts the element into a list of xml strings, and make them pretty.</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    # prints out the element</span>
+<span class="sd">    s | kxml.node() | kxml.pretty() | stdout()&quot;&quot;&quot;</span>                                <span class="c1"># pretty</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">indent</span> <span class="o">=</span> <span class="n">cli</span><span class="o">.</span><span class="n">init</span><span class="o">.</span><span class="n">patchDefaultIndent</span><span class="p">(</span><span class="n">indent</span><span class="p">)</span>                        <span class="c1"># pretty</span></div>
+<div class="viewcode-block" id="pretty.__ror__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.kxml.pretty.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">:</span><span class="n">ET</span><span class="o">.</span><span class="n">Element</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>                           <span class="c1"># pretty</span>
+        <span class="n">indents</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">indent</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">)]</span>                            <span class="c1"># pretty</span>
+        <span class="k">return</span> <span class="n">_pretty</span><span class="p">(</span><span class="n">it</span><span class="p">,</span> <span class="n">indents</span><span class="o">=</span><span class="n">indents</span><span class="p">)</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">filt</span><span class="p">(</span><span class="n">cli</span><span class="o">.</span><span class="n">op</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>   <span class="c1"># pretty</span></div></div>
+<div class="viewcode-block" id="display"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.kxml.display">[docs]</a><span class="k">class</span> <span class="nc">display</span><span class="p">(</span><span class="n">cli</span><span class="o">.</span><span class="n">BaseCli</span><span class="p">):</span>                                                      <span class="c1"># display</span>
+<div class="viewcode-block" id="display.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.kxml.display.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">depth</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">lines</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">20</span><span class="p">):</span>                               <span class="c1"># display</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convenience method for getting head, make it pretty and print it out.</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    # prints out the element</span>
+<span class="sd">    s | kxml.node() | kxml.display()</span>
+
+<span class="sd">:param depth: prune tags deeper than the specified depth. Put &quot;None&quot; to not prune at all</span>
+<span class="sd">:param lines: max number of lines to print out. Put &quot;None&quot; if you want to display everything&quot;&quot;&quot;</span> <span class="c1"># display</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">depth</span> <span class="o">=</span> <span class="n">depth</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">lines</span> <span class="o">=</span> <span class="n">lines</span>                                   <span class="c1"># display</span></div>
+<div class="viewcode-block" id="display.__ror__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.kxml.display.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">it</span><span class="p">:</span><span class="n">ET</span><span class="o">.</span><span class="n">Element</span><span class="p">,</span> <span class="n">lines</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>                                  <span class="c1"># display</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">depth</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="n">it</span> <span class="o">=</span> <span class="n">it</span> <span class="o">|</span> <span class="n">maxDepth</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">depth</span><span class="p">)</span>                <span class="c1"># display</span>
+        <span class="n">it</span> <span class="o">|</span> <span class="n">pretty</span><span class="p">()</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lines</span><span class="p">)</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">stdout</span><span class="p">()</span>                      <span class="c1"># display</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Quang Ho.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

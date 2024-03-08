@@ -2,6 +2,29 @@
 Changelogs
 ==========
 
+`1.6 </1.6>`_ - Jan 6th, 2024
+-------------------------------
+
+.. currentmodule:: k1lib.cli
+
+Cli:
+
+- Added :class:`~utils.toPdf`, :class:`~utils.lookupRange`, :class:`~utils.branch`
+- Added optional delay to :class:`~output.intercept`
+- Added :class:`~modifier.iterDelay`
+- Added :class:`~conv.toDist`, :class:`~conv.toAngle`, :class:`~conv.idxsToNdArray`, :class:`~conv.toYaml`, :class:`~conv.toMedian`
+- Added daemon mode to :class:`~inp.cmd`
+- Added module :mod:`~k1lib.cli.kcv`, focusing on opencv aruco markers detection
+- Added proper pandas support to most cli
+- Added support for raw row ingestion to :class:`~conv.toCsv`
+
+Generic:
+
+- Added monkey patched methods :meth:`os.netstat` and :meth:`os.killPort`
+- Added :meth:`~k1lib.fmt.dollar`
+- Added :mod:`~k1lib.kcom` for external hardware communications, with :class:`~k1lib.kcom.Gsm` and
+  :class:`~k1lib.kcom.Host`
+
 `1.5 </1.5>`_ - Jan 6th, 2024
 -------------------------------
 

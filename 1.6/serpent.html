@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>k1lib.serpent module &mdash; k1lib  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="k1lib.serve module" href="serve.html" />
+    <link rel="prev" title="k1lib.selen module" href="selen.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> k1lib
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="base.html">Base module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cli/index.html">k1lib.cli module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="callbacks/index.html">k1lib.callbacks module</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="k1a.html">k1lib._k1a module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="k1ui.html">k1lib.k1ui module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="eqn.html">k1lib.eqn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fmt.html">k1lib.fmt module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graphEqn.html">k1lib.graphEqn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imports.html">k1lib.imports module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mo.html">k1lib.mo module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="knn.html">k1lib.knn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="p5.html">k1lib.p5 module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="schedule.html">k1lib.schedule module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="selector.html">k1lib.selector module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="selen.html">k1lib.selen module</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">k1lib.serpent module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.serpent.deconstruct"><code class="docutils literal notranslate"><span class="pre">deconstruct()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.serpent.listCorrection"><code class="docutils literal notranslate"><span class="pre">listCorrection()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.serpent.loads_monolith"><code class="docutils literal notranslate"><span class="pre">loads_monolith()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.serpent.loads_fragments"><code class="docutils literal notranslate"><span class="pre">loads_fragments()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.serpent.loads"><code class="docutils literal notranslate"><span class="pre">loads()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.serpent.dumps"><code class="docutils literal notranslate"><span class="pre">dumps()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="serve.html">k1lib.serve module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="viz.html">k1lib.viz module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="monkey.html">Monkey patched classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelogs.html">Changelogs</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">k1lib</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">k1lib.serpent module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/serpent.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-k1lib.serpent">
+<span id="k1lib-serpent-module"></span><h1>k1lib.serpent module<a class="headerlink" href="#module-k1lib.serpent" title="Permalink to this heading"></a></h1>
+<p>This module is for Lua’s serpent module, which serializes object into a string
+similar to json. But maddingly, no one has actually wrote a serialization/deserialization
+code in Python before, and I desperately need it for a factorio project. Because
+this was written in a rush, I’m in no way guaranteeing that it will work on all
+serialized objects out there, but from my testing, it seems pretty robust. This
+is exposed automatically with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">k1lib.imports</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">serpent</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="o">...</span><span class="p">)</span> <span class="c1"># exposed</span>
+</pre></div>
+</div>
+<dl class="py function">
+<dt class="sig sig-object py" id="k1lib.serpent.deconstruct">
+<span class="sig-prename descclassname"><span class="pre">k1lib.serpent.</span></span><span class="sig-name descname"><span class="pre">deconstruct</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">5</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/k1lib/serpent.html#deconstruct"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.serpent.deconstruct" title="Permalink to this definition"></a></dt>
+<dd><p>Not intended for the end user. Deconstructs and grab metadata of some
+lua objects. Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;{1,2,3,{a=3,b={c=6,d={5,6,7}}},{b=3}}&#39;</span>
+<span class="n">serpent</span><span class="o">.</span><span class="n">deconstruct</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>That returns:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[[</span><span class="s1">&#39;_v3&#39;</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">27</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;_v2&#39;</span><span class="p">],</span>
+ <span class="p">[</span><span class="s1">&#39;_v2&#39;</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;_v1&#39;</span><span class="p">],</span>
+ <span class="p">[</span><span class="s1">&#39;_v1&#39;</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;_v0&#39;</span><span class="p">],</span>
+ <span class="p">[</span><span class="s1">&#39;_v4&#39;</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;_v0&#39;</span><span class="p">],</span>
+ <span class="p">[</span><span class="s1">&#39;_v0&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">36</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;root&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+<p>The columns are: [unique index of bracket, start byte, end byte, is it a dictionary?, parent index]</p>
+<p>This is a crucial step within <a class="reference internal" href="#k1lib.serpent.listCorrection" title="k1lib.serpent.listCorrection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">listCorrection()</span></code></a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="k1lib.serpent.listCorrection">
+<span class="sig-prename descclassname"><span class="pre">k1lib.serpent.</span></span><span class="sig-name descname"><span class="pre">listCorrection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></span><a class="reference internal" href="_modules/k1lib/serpent.html#listCorrection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.serpent.listCorrection" title="Permalink to this definition"></a></dt>
+<dd><p>Not intended for the end user. Corrects for lists in Lua.
+Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;{1,2,3,{a=3,b={c=6,d={5,6,7}}},{b=3}}&#39;</span>
+<span class="n">serpent</span><span class="o">.</span><span class="n">listCorrection</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1"># returns &#39;[1,2,3,{a=3,b={c=6,d=[5,6,7]}},{b=3}]&#39;</span>
+</pre></div>
+</div>
+<p>See how some pointy brackets have been replaced with square brackets?</p>
+<p>This is because there are no list or tuple types in lua, and there are also no sets
+in json, so kinda have to roll my own solution</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="k1lib.serpent.loads_monolith">
+<span class="sig-prename descclassname"><span class="pre">k1lib.serpent.</span></span><span class="sig-name descname"><span class="pre">loads_monolith</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lua</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.12)"><span class="pre">object</span></a></span></span><a class="reference internal" href="_modules/k1lib/serpent.html#loads_monolith"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.serpent.loads_monolith" title="Permalink to this definition"></a></dt>
+<dd><p>Not intended for the end user. Core loading mechanism. See <a class="reference internal" href="#k1lib.serpent.loads" title="k1lib.serpent.loads"><code class="xref py py-meth docutils literal notranslate"><span class="pre">loads()</span></code></a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="k1lib.serpent.loads_fragments">
+<span class="sig-prename descclassname"><span class="pre">k1lib.serpent.</span></span><span class="sig-name descname"><span class="pre">loads_fragments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lua</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.12)"><span class="pre">object</span></a></span></span><a class="reference internal" href="_modules/k1lib/serpent.html#loads_fragments"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.serpent.loads_fragments" title="Permalink to this definition"></a></dt>
+<dd><p>Not intended for the end user. See <a class="reference internal" href="#k1lib.serpent.loads" title="k1lib.serpent.loads"><code class="xref py py-meth docutils literal notranslate"><span class="pre">loads()</span></code></a>. Deserializes lua objects,
+breaking up the work into multiple fragments. So here’s the general gist:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>s = &quot;{1, 2, 3, {4, 5, 6}, {7, 8, 9}}&quot;
+
+# then, we grab the fragments, which are the top level {} blocks, assigning a unique key (the character  and autoInc index)
+fragments = {&quot;0&quot;: {4, 5, 6}, &quot;1&quot;: {7, 8, 9}}
+# then, we replace the fragments with their keys
+s = &quot;{1, 2, 3, &quot;0&quot;, &quot;1&quot;}&quot;
+
+# then we load s, it will run fast since the fragments are just simple strings
+s = serpent.loads_monolith(s)
+
+# then we patch s, replacing the keys with actual parsed objects
+s = {1, 2, 3, {4, 5, 6}, {7, 8, 9}}
+</pre></div>
+</div>
+<p>Why so convoluted? Well turns out, loads_monolith is pretty slow. It has a for loop there,
+and there’s a .replace() within, which is a hidden for loop that copies the entire
+string over and over again, which slows it down. Haven’t done extensive testing, but
+feels like O(n^2) time complexity while I was working with it.</p>
+<p>So this optimization assumes that the top level {} blocks are small, but there’re many
+of them, thus this assigns less work (shorter string, hence faster .replace()) to each
+loads_monolith() calls. So if there’re 10k fragments, this can potentially be 10k faster.</p>
+<p>This assumption of course is not that great and not very general, and you can easily find
+ways around it. But it’s just enough for my use case right now, which is to analyze factorio.
+The correct way would be to dive deeper and benchmark everything more clearly, but I don’t
+have time for that.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="k1lib.serpent.loads">
+<span class="sig-prename descclassname"><span class="pre">k1lib.serpent.</span></span><span class="sig-name descname"><span class="pre">loads</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lua</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/serpent.html#loads"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.serpent.loads" title="Permalink to this definition"></a></dt>
+<dd><p>Deserialize lua objects from string.
+Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># returns [1, 2, 3, {&#39;a&#39;: 3, &#39;b&#39;: {&#39;c&#39;: 6, &#39;d&#39;: [5, 6, 7]}}, {&#39;b&#39;: 3}]</span>
+<span class="n">loads</span><span class="p">(</span><span class="s2">&quot;{ 1, 2, 3, { a = 3, b = { c = 6, d = {5, 6, 7} } }, { b = 3 } }&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>See also: <a class="reference internal" href="#k1lib.serpent.dumps" title="k1lib.serpent.dumps"><code class="xref py py-meth docutils literal notranslate"><span class="pre">dumps()</span></code></a></p>
+<p>What’s the relative speed here? Because everything is written in Python, I
+expect it to be slower than json, but by how much? Here’re some benchmark results:</p>
+<div class="line-block">
+<div class="line-block">
+<div class="line">| lua  | json | binary |</div>
+</div>
+<div class="line">———– | —- | —- | —— |</div>
+<div class="line">from python | 21us | 11us | 184us  |</div>
+<div class="line">to   python | 92us | 10us | 5.8us  |</div>
+</div>
+<p>The “lua” column uses “serpent.loads()”, “json” uses “json.loads()”, and
+“binary” uses “dill.loads()”</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="k1lib.serpent.dumps">
+<span class="sig-prename descclassname"><span class="pre">k1lib.serpent.</span></span><span class="sig-name descname"><span class="pre">dumps</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></span><a class="reference internal" href="_modules/k1lib/serpent.html#dumps"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.serpent.dumps" title="Permalink to this definition"></a></dt>
+<dd><p>Serialize Python objects into lua string.
+Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># returns &#39;{1,2,3,{a=3,b={c=6,d={5,6,7}}},{b=3}}&#39;</span>
+<span class="n">serpent</span><span class="o">.</span><span class="n">dumps</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">]}},</span> <span class="p">{</span><span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}])</span>
+</pre></div>
+</div>
+<p>See also: <a class="reference internal" href="#k1lib.serpent.loads" title="k1lib.serpent.loads"><code class="xref py py-meth docutils literal notranslate"><span class="pre">loads()</span></code></a></p>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="selen.html" class="btn btn-neutral float-left" title="k1lib.selen module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="serve.html" class="btn btn-neutral float-right" title="k1lib.serve module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Quang Ho.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
