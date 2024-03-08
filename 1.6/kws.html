@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>k1lib.kws module &mdash; k1lib  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="k1lib.p5 module" href="p5.html" />
+    <link rel="prev" title="k1lib.kop module" href="kop.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> k1lib
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="base.html">Base module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cli/index.html">k1lib.cli module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="callbacks/index.html">k1lib.callbacks module</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="k1a.html">k1lib._k1a module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="k1ui.html">k1lib.k1ui module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="eqn.html">k1lib.eqn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fmt.html">k1lib.fmt module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graphEqn.html">k1lib.graphEqn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imports.html">k1lib.imports module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mo.html">k1lib.mo module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kast.html">k1lib.kast module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kcom.html">k1lib.kcom module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="knn.html">k1lib.knn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kop.html">k1lib.kop module</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">k1lib.kws module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.kws.serverHandle"><code class="docutils literal notranslate"><span class="pre">serverHandle()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.kws.serverSend"><code class="docutils literal notranslate"><span class="pre">serverSend()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.kws.serverClose"><code class="docutils literal notranslate"><span class="pre">serverClose()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.kws.WsClient"><code class="docutils literal notranslate"><span class="pre">WsClient</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.kws.WsClient.__init__"><code class="docutils literal notranslate"><span class="pre">WsClient.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.kws.WsClient.alive"><code class="docutils literal notranslate"><span class="pre">WsClient.alive</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.kws.WsClient.send"><code class="docutils literal notranslate"><span class="pre">WsClient.send()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.kws.WsClient.recv"><code class="docutils literal notranslate"><span class="pre">WsClient.recv()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="p5.html">k1lib.p5 module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="schedule.html">k1lib.schedule module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="selector.html">k1lib.selector module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="selen.html">k1lib.selen module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="serpent.html">k1lib.serpent module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="serve.html">k1lib.serve module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="viz.html">k1lib.viz module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zircon.html">k1lib.zircon module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="monkey.html">Monkey patched classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelogs.html">Changelogs</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">k1lib</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">k1lib.kws module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/kws.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-k1lib.kws">
+<span id="k1lib-kws-module"></span><h1>k1lib.kws module<a class="headerlink" href="#module-k1lib.kws" title="Permalink to this heading"></a></h1>
+<p>Reliable websocket client and server handle functions</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="k1lib.kws.serverHandle">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.kws.</span></span><span class="sig-name descname"><span class="pre">serverHandle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ws</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">websockets.WebSocketServerProtocol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.12)"><span class="pre">bytes</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="reference internal" href="_modules/k1lib/kws.html#serverHandle"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kws.serverHandle" title="Permalink to this definition"></a></dt>
+<dd><p>Tiny server handle addon function.
+Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">def</span> <span class="nf">handle_client</span><span class="p">(</span><span class="n">ws</span><span class="p">:</span> <span class="s2">&quot;websockets.WebSocketServerProtocol&quot;</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># Continuously listen for messages from the client</span>
+        <span class="k">async</span> <span class="k">for</span> <span class="n">raw</span> <span class="ow">in</span> <span class="n">ws</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="k">await</span> <span class="n">kws</span><span class="o">.</span><span class="n">serverHandle</span><span class="p">(</span><span class="n">ws</span><span class="p">,</span> <span class="n">raw</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">msg</span><span class="p">:</span> <span class="c1"># can be None</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Received message: </span><span class="si">{</span><span class="n">msg</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="k">await</span> <span class="n">kws</span><span class="o">.</span><span class="n">serverSend</span><span class="p">(</span><span class="n">ws</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;modified msg (</span><span class="si">{</span><span class="n">msg</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">websockets</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">ConnectionClosed</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Client at </span><span class="si">{</span><span class="n">ws</span><span class="o">.</span><span class="n">remote_address</span><span class="si">}</span><span class="s2"> disconnected&quot;</span><span class="p">)</span>
+
+<span class="c1"># Create a WebSocket server</span>
+<span class="n">asyncio</span><span class="o">.</span><span class="n">get_event_loop</span><span class="p">()</span><span class="o">.</span><span class="n">run_until_complete</span><span class="p">(</span><span class="n">websockets</span><span class="o">.</span><span class="n">serve</span><span class="p">(</span><span class="n">handle_client</span><span class="p">,</span> <span class="s2">&quot;localhost&quot;</span><span class="p">,</span> <span class="mi">8765</span><span class="p">))</span>
+<span class="n">asyncio</span><span class="o">.</span><span class="n">get_event_loop</span><span class="p">()</span><span class="o">.</span><span class="n">run_forever</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Essentially, this function will convert the raw message received (json
+string with extra metadata) into your intended message sent from
+<a class="reference internal" href="#k1lib.kws.WsClient" title="k1lib.kws.WsClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">WsClient</span></code></a>.</p>
+<p>So, if you do <cite>ws.send(“abc”)</cite> on the client side, then msg variable will
+be “abc” on the server side.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="k1lib.kws.serverSend">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.kws.</span></span><span class="sig-name descname"><span class="pre">serverSend</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ws</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://websockets.readthedocs.io/en/stable/reference/asyncio/server.html#websockets.server.WebSocketServerProtocol" title="(in websockets v12.0)"><span class="pre">WebSocketServerProtocol</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">retries</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/kws.html#serverSend"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kws.serverSend" title="Permalink to this definition"></a></dt>
+<dd><p>Msg send wrapper. Basically adds some metadata to the message. Also resends
+if it errors out for some reason. See <a class="reference internal" href="#k1lib.kws.serverHandle" title="k1lib.kws.serverHandle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">serverHandle()</span></code></a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="k1lib.kws.serverClose">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.kws.</span></span><span class="sig-name descname"><span class="pre">serverClose</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ws</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://websockets.readthedocs.io/en/stable/reference/asyncio/server.html#websockets.server.WebSocketServerProtocol" title="(in websockets v12.0)"><span class="pre">WebSocketServerProtocol</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/kws.html#serverClose"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kws.serverClose" title="Permalink to this definition"></a></dt>
+<dd><p>Msg send wrapper. Basically adds some metadata to the message. See <a class="reference internal" href="#k1lib.kws.serverHandle" title="k1lib.kws.serverHandle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">serverHandle()</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="k1lib.kws.WsClient">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.kws.</span></span><span class="sig-name descname"><span class="pre">WsClient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/kws.html#WsClient"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kws.WsClient" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.kws.WsClient.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/kws.html#WsClient.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kws.WsClient.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>WebSocket client that works with <code class="xref py py-class docutils literal notranslate"><span class="pre">WsServer</span></code> class.
+This features automatic pings and will attempt to reconnect whenever
+the network fails. Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="k">async</span> <span class="k">with</span> <span class="n">kws</span><span class="o">.</span><span class="n">WsClient</span><span class="p">(</span><span class="s2">&quot;ws://localhost:8765&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">ws</span><span class="p">:</span>
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="k">await</span> <span class="n">aioconsole</span><span class="o">.</span><span class="n">ainput</span><span class="p">(</span><span class="s2">&quot;Enter a message to send (or &#39;exit&#39; to quit): &quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">msg</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;exit&quot;</span><span class="p">:</span> <span class="k">break</span>
+            <span class="k">await</span> <span class="n">ws</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Received response: </span><span class="si">{</span><span class="k">await</span><span class="w"> </span><span class="n">ws</span><span class="o">.</span><span class="n">recv</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">get_event_loop</span><span class="p">()</span><span class="o">.</span><span class="n">run_until_complete</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>See <a class="reference internal" href="#k1lib.kws.serverHandle" title="k1lib.kws.serverHandle"><code class="xref py py-meth docutils literal notranslate"><span class="pre">serverHandle()</span></code></a> for a ws server example</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>url</strong> – websocket server url, like ‘ws://localhost:8765’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="k1lib.kws.WsClient.alive">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">alive</span></span><a class="headerlink" href="#k1lib.kws.WsClient.alive" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.kws.WsClient.send">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">send</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.12)"><span class="pre">bytes</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/kws.html#WsClient.send"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kws.WsClient.send" title="Permalink to this definition"></a></dt>
+<dd><p>Send data to server. If server offline, then will hang until
+server is online again. Won’t resolve until message has been sent</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.kws.WsClient.recv">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">recv</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/kws.html#WsClient.recv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kws.WsClient.recv" title="Permalink to this definition"></a></dt>
+<dd><p>Receive data from server. If no data received or server offline,
+then hangs until some data is received</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="kop.html" class="btn btn-neutral float-left" title="k1lib.kop module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="p5.html" class="btn btn-neutral float-right" title="k1lib.p5 module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Quang Ho.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

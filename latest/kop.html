@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>k1lib.kop module &mdash; k1lib  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="k1lib.kws module" href="kws.html" />
+    <link rel="prev" title="k1lib.knn module" href="knn.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> k1lib
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="base.html">Base module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cli/index.html">k1lib.cli module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="callbacks/index.html">k1lib.callbacks module</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="k1a.html">k1lib._k1a module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="k1ui.html">k1lib.k1ui module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="eqn.html">k1lib.eqn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fmt.html">k1lib.fmt module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graphEqn.html">k1lib.graphEqn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imports.html">k1lib.imports module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mo.html">k1lib.mo module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kast.html">k1lib.kast module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kcom.html">k1lib.kcom module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="knn.html">k1lib.knn module</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">k1lib.kop module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.kop.Drawable"><code class="docutils literal notranslate"><span class="pre">Drawable</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.kop.Drawable.bounds"><code class="docutils literal notranslate"><span class="pre">Drawable.bounds()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.kop.Drawable.img"><code class="docutils literal notranslate"><span class="pre">Drawable.img()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.kop.Drawable.svg"><code class="docutils literal notranslate"><span class="pre">Drawable.svg()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.kop.RandomPoints"><code class="docutils literal notranslate"><span class="pre">RandomPoints</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.kop.RandomPoints.__init__"><code class="docutils literal notranslate"><span class="pre">RandomPoints.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.kop.RandomPoints.bounds"><code class="docutils literal notranslate"><span class="pre">RandomPoints.bounds()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.kop.Drawables"><code class="docutils literal notranslate"><span class="pre">Drawables</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.kop.Drawables.__init__"><code class="docutils literal notranslate"><span class="pre">Drawables.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.kop.Drawables.bounds"><code class="docutils literal notranslate"><span class="pre">Drawables.bounds()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.kop.RaysFocus"><code class="docutils literal notranslate"><span class="pre">RaysFocus</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.kop.RaysFocus.bounds"><code class="docutils literal notranslate"><span class="pre">RaysFocus.bounds()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.kop.Rays"><code class="docutils literal notranslate"><span class="pre">Rays</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.kop.Rays.__init__"><code class="docutils literal notranslate"><span class="pre">Rays.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.kop.Rays.parallel"><code class="docutils literal notranslate"><span class="pre">Rays.parallel()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.kop.Rays.parallelToBounds"><code class="docutils literal notranslate"><span class="pre">Rays.parallelToBounds()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.kop.Rays.pointToBounds"><code class="docutils literal notranslate"><span class="pre">Rays.pointToBounds()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.kop.Rays.bounds"><code class="docutils literal notranslate"><span class="pre">Rays.bounds()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.kop.Rays.hitbox"><code class="docutils literal notranslate"><span class="pre">Rays.hitbox()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.kop.Rays.focus"><code class="docutils literal notranslate"><span class="pre">Rays.focus()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.kop.Wavelengths"><code class="docutils literal notranslate"><span class="pre">Wavelengths</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.kop.Wavelengths.__init__"><code class="docutils literal notranslate"><span class="pre">Wavelengths.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.kop.sellmeier"><code class="docutils literal notranslate"><span class="pre">sellmeier()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.kop.Surface"><code class="docutils literal notranslate"><span class="pre">Surface</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.kop.Surface.__init__"><code class="docutils literal notranslate"><span class="pre">Surface.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.kop.Surface.castS"><code class="docutils literal notranslate"><span class="pre">Surface.castS()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.kop.Surface.cast"><code class="docutils literal notranslate"><span class="pre">Surface.cast()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.kop.LineSurface"><code class="docutils literal notranslate"><span class="pre">LineSurface</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.kop.LineSurface.__init__"><code class="docutils literal notranslate"><span class="pre">LineSurface.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.kop.LineSurface.bounds"><code class="docutils literal notranslate"><span class="pre">LineSurface.bounds()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.kop.ArcSurface"><code class="docutils literal notranslate"><span class="pre">ArcSurface</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.kop.ArcSurface.__init__"><code class="docutils literal notranslate"><span class="pre">ArcSurface.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.kop.ArcSurface.from2Points"><code class="docutils literal notranslate"><span class="pre">ArcSurface.from2Points()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.kop.ArcSurface.bounds"><code class="docutils literal notranslate"><span class="pre">ArcSurface.bounds()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.kop.polySolver"><code class="docutils literal notranslate"><span class="pre">polySolver()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.kop.PolySurface"><code class="docutils literal notranslate"><span class="pre">PolySurface</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.kop.PolySurface.__init__"><code class="docutils literal notranslate"><span class="pre">PolySurface.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.kop.PolySurface.parabola"><code class="docutils literal notranslate"><span class="pre">PolySurface.parabola()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.kop.PolySurface.parabolaFrom2Points"><code class="docutils literal notranslate"><span class="pre">PolySurface.parabolaFrom2Points()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.kop.PolySurface.world2poly"><code class="docutils literal notranslate"><span class="pre">PolySurface.world2poly()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.kop.PolySurface.poly2world"><code class="docutils literal notranslate"><span class="pre">PolySurface.poly2world()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.kop.PolySurface.bounds"><code class="docutils literal notranslate"><span class="pre">PolySurface.bounds()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.kop.RaysPath"><code class="docutils literal notranslate"><span class="pre">RaysPath</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.kop.RaysPath.__init__"><code class="docutils literal notranslate"><span class="pre">RaysPath.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.kop.RaysPath.bounds"><code class="docutils literal notranslate"><span class="pre">RaysPath.bounds()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.kop.OpticElement"><code class="docutils literal notranslate"><span class="pre">OpticElement</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.kop.OpticElement.surfaces"><code class="docutils literal notranslate"><span class="pre">OpticElement.surfaces</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.kop.OpticElement.__init__"><code class="docutils literal notranslate"><span class="pre">OpticElement.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.kop.OpticElement.cast"><code class="docutils literal notranslate"><span class="pre">OpticElement.cast()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.kop.Polygon"><code class="docutils literal notranslate"><span class="pre">Polygon</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.kop.Polygon.__init__"><code class="docutils literal notranslate"><span class="pre">Polygon.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.kop.Polygon.surfaces"><code class="docutils literal notranslate"><span class="pre">Polygon.surfaces</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.kop.Polygon.bounds"><code class="docutils literal notranslate"><span class="pre">Polygon.bounds()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.kop.Lens"><code class="docutils literal notranslate"><span class="pre">Lens</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.kop.Lens.__init__"><code class="docutils literal notranslate"><span class="pre">Lens.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.kop.Lens.surfaces"><code class="docutils literal notranslate"><span class="pre">Lens.surfaces</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.kop.Lens.bounds"><code class="docutils literal notranslate"><span class="pre">Lens.bounds()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.kop.OpticSystem"><code class="docutils literal notranslate"><span class="pre">OpticSystem</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.kop.OpticSystem.add"><code class="docutils literal notranslate"><span class="pre">OpticSystem.add()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.kop.OpticSystem.surfaces"><code class="docutils literal notranslate"><span class="pre">OpticSystem.surfaces</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.kop.OpticSystem.cast"><code class="docutils literal notranslate"><span class="pre">OpticSystem.cast()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.kop.OpticSystem.bounds"><code class="docutils literal notranslate"><span class="pre">OpticSystem.bounds()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="kws.html">k1lib.kws module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="p5.html">k1lib.p5 module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="schedule.html">k1lib.schedule module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="selector.html">k1lib.selector module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="selen.html">k1lib.selen module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="serpent.html">k1lib.serpent module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="serve.html">k1lib.serve module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="viz.html">k1lib.viz module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zircon.html">k1lib.zircon module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="monkey.html">Monkey patched classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelogs.html">Changelogs</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">k1lib</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">k1lib.kop module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/kop.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-k1lib.kop">
+<span id="k1lib-kop-module"></span><h1>k1lib.kop module<a class="headerlink" href="#module-k1lib.kop" title="Permalink to this heading"></a></h1>
+<p>This module is for communication with hardware. This is exposed automatically with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">k1lib.imports</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">kop</span><span class="o">.</span><span class="n">Rays</span><span class="o">.</span><span class="n">parallel</span><span class="p">(</span><span class="o">...</span><span class="p">)</span> <span class="c1"># exposed</span>
+</pre></div>
+</div>
+<p>A comprehensive introduction is available here: <a class="reference external" href="https://mlexps.com/optics/1-kop-intro/">https://mlexps.com/optics/1-kop-intro/</a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="k1lib.kop.Drawable">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.kop.</span></span><span class="sig-name descname"><span class="pre">Drawable</span></span><a class="reference internal" href="_modules/k1lib/kop.html#Drawable"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kop.Drawable" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Base class to do common drawing routines</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.kop.Drawable.bounds">
+<span class="sig-name descname"><span class="pre">bounds</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/kop.html#Drawable.bounds"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kop.Drawable.bounds" title="Permalink to this definition"></a></dt>
+<dd><p>Should return (x1, y1, x2, y2). Base classes should always implement this method</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.kop.Drawable.img">
+<span class="sig-name descname"><span class="pre">img</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.Image" title="(in Pillow (PIL Fork) v10.2.0)"><span class="pre">PIL.Image.Image</span></a></span></span><a class="reference internal" href="_modules/k1lib/kop.html#Drawable.img"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kop.Drawable.img" title="Permalink to this definition"></a></dt>
+<dd><p>Returns PIL image</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.kop.Drawable.svg">
+<span class="sig-name descname"><span class="pre">svg</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></span><a class="reference internal" href="_modules/k1lib/kop.html#Drawable.svg"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kop.Drawable.svg" title="Permalink to this definition"></a></dt>
+<dd><p>Returns svg string</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="k1lib.kop.RandomPoints">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.kop.</span></span><span class="sig-name descname"><span class="pre">RandomPoints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/kop.html#RandomPoints"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kop.RandomPoints" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#k1lib.kop.Drawable" title="k1lib.kop.Drawable"><code class="xref py py-class docutils literal notranslate"><span class="pre">Drawable</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.kop.RandomPoints.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/kop.html#RandomPoints.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kop.RandomPoints.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Container to place random points to be graphed either alone or inside a <a class="reference internal" href="#k1lib.kop.Drawables" title="k1lib.kop.Drawables"><code class="xref py py-class docutils literal notranslate"><span class="pre">Drawables</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.kop.RandomPoints.bounds">
+<span class="sig-name descname"><span class="pre">bounds</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/kop.html#RandomPoints.bounds"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kop.RandomPoints.bounds" title="Permalink to this definition"></a></dt>
+<dd><p>Should return (x1, y1, x2, y2). Base classes should always implement this method</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="k1lib.kop.Drawables">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.kop.</span></span><span class="sig-name descname"><span class="pre">Drawables</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">drawables</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#k1lib.kop.Drawable" title="k1lib.kop.Drawable"><span class="pre">Drawable</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/kop.html#Drawables"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kop.Drawables" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#k1lib.kop.Drawable" title="k1lib.kop.Drawable"><code class="xref py py-class docutils literal notranslate"><span class="pre">Drawable</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.kop.Drawables.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">drawables</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#k1lib.kop.Drawable" title="k1lib.kop.Drawable"><span class="pre">Drawable</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/kop.html#Drawables.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kop.Drawables.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>A container with multiple :class:<a href="#id1"><span class="problematic" id="id2">`</span></a>Drawable`s, to draw out everything possible within a single coordinate frame</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.kop.Drawables.bounds">
+<span class="sig-name descname"><span class="pre">bounds</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/kop.html#Drawables.bounds"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kop.Drawables.bounds" title="Permalink to this definition"></a></dt>
+<dd><p>Should return (x1, y1, x2, y2). Base classes should always implement this method</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="k1lib.kop.RaysFocus">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.kop.</span></span><span class="sig-name descname"><span class="pre">RaysFocus</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rays</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#k1lib.kop.Rays" title="k1lib.kop.Rays"><span class="pre">Rays</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/kop.html#RaysFocus"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kop.RaysFocus" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#k1lib.kop.Drawable" title="k1lib.kop.Drawable"><code class="xref py py-class docutils literal notranslate"><span class="pre">Drawable</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.kop.RaysFocus.bounds">
+<span class="sig-name descname"><span class="pre">bounds</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/kop.html#RaysFocus.bounds"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kop.RaysFocus.bounds" title="Permalink to this definition"></a></dt>
+<dd><p>Should return (x1, y1, x2, y2). Base classes should always implement this method</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="k1lib.kop.Rays">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.kop.</span></span><span class="sig-name descname"><span class="pre">Rays</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prevRays</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.12)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#k1lib.kop.Rays" title="k1lib.kop.Rays"><span class="pre">Rays</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ogSurface</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.12)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#k1lib.kop.Surface" title="k1lib.kop.Surface"><span class="pre">Surface</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/kop.html#Rays"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kop.Rays" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#k1lib.kop.Drawable" title="k1lib.kop.Drawable"><code class="xref py py-class docutils literal notranslate"><span class="pre">Drawable</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.kop.Rays.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prevRays</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.12)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#k1lib.kop.Rays" title="k1lib.kop.Rays"><span class="pre">Rays</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ogSurface</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.12)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#k1lib.kop.Surface" title="k1lib.kop.Surface"><span class="pre">Surface</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/kop.html#Rays.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kop.Rays.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Represents a bunch of rays, stored in a numpy array so that all
+operations are fast</p>
+<p><cite>data</cite> format: array of shape (N, 6)
+- 0) x coordinate of starting point
+- 1) y coordinate of starting point
+- 2) angle counter clockwise from positive x axis
+- 3) length (inf for forever)
+- 4) wavelength in nm
+- 5) #transforms
+- 6) power in Watts, defaulted to 1W
+- 7) intersected?: used for outgoing rays exiting out of a surface. If surface._cast(prevRay) shows that it does intersect, then add that to the outgoing rays</p>
+<p>The #transforms is a little complicated:
+- Original ray is 0, then each time a glass/mirror surface does something interesting,</p>
+<blockquote>
+<div><p>the outgoing ray is incremented by 1. If it doesn’t touch the optic element, then
+it keeps the same number as before</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>prevRays</strong> – a reference to the previous Rays object, in order to limit the length of all previous rays!</p></li>
+<li><p><strong>ogSurface</strong> – the surface that generates this Rays</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.kop.Rays.parallel">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">parallel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">700</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">power</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/kop.html#Rays.parallel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kop.Rays.parallel" title="Permalink to this definition"></a></dt>
+<dd><p>Creates parallel rays starting from a particular point with a particular angle</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>theta</strong> – angle from positive x axis counterclockwise</p></li>
+<li><p><strong>N</strong> – how many rays to create total?</p></li>
+<li><p><strong>height</strong> – the height of the parallel rays if it were to have no angle</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.kop.Rays.parallelToBounds">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">parallelToBounds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bounds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">700</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">power</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coverage</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.9</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angleOffset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/kop.html#Rays.parallelToBounds"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kop.Rays.parallelToBounds" title="Permalink to this definition"></a></dt>
+<dd><p>Creates parallel rays starting from a particular point to the center of some bounds.
+The bounds should have the format (xmin, ymin, xmax, ymax). :class:<a href="#id3"><span class="problematic" id="id4">`</span></a>Surface`s, :class:<a href="#id5"><span class="problematic" id="id6">`</span></a>OpticElement`s
+all have the .bounds() method, so you can use them</p>
+<p>See also: <a class="reference internal" href="#k1lib.kop.Rays.parallel" title="k1lib.kop.Rays.parallel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">parallel()</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>coverage</strong> – number from 0 to 1. 1 meaning the parallel lines should cover the entire (rotated)
+height of the bounds, 0.5 means it covers only half of the height, and so on. Think of this as %height</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.kop.Rays.pointToBounds">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pointToBounds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bounds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">700</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">power</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coverage</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.9</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angleOffset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/kop.html#Rays.pointToBounds"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kop.Rays.pointToBounds" title="Permalink to this definition"></a></dt>
+<dd><p>Creates rays starting from a particular point to the bounds.</p>
+<p>See also: <a class="reference internal" href="#k1lib.kop.Rays.parallelToBounds" title="k1lib.kop.Rays.parallelToBounds"><code class="xref py py-meth docutils literal notranslate"><span class="pre">parallelToBounds()</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>coverage</strong> – instead of %height like <a class="reference internal" href="#k1lib.kop.Rays.parallelToBounds" title="k1lib.kop.Rays.parallelToBounds"><code class="xref py py-meth docutils literal notranslate"><span class="pre">parallelToBounds()</span></code></a>, this is the anglular coverage,
+1 for covering the entire object.</p></li>
+<li><p><strong>angleOffset</strong> – offset to the angle from the starting point to the center of the bounds</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.kop.Rays.bounds">
+<span class="sig-name descname"><span class="pre">bounds</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/kop.html#Rays.bounds"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kop.Rays.bounds" title="Permalink to this definition"></a></dt>
+<dd><p>Should return (x1, y1, x2, y2). Base classes should always implement this method</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.kop.Rays.hitbox">
+<span class="sig-name descname"><span class="pre">hitbox</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spread</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxWH</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">400</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'simple'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intersectOnly</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.Image" title="(in Pillow (PIL Fork) v10.2.0)"><span class="pre">PIL.Image.Image</span></a></span></span><a class="reference internal" href="_modules/k1lib/kop.html#Rays.hitbox"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kop.Rays.hitbox" title="Permalink to this definition"></a></dt>
+<dd><p>Visualizes the Ray’s starting point, with colors and whatnot.
+Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">r</span> <span class="o">=</span> <span class="n">Rays</span><span class="o">.</span><span class="n">parallel</span><span class="p">(</span><span class="n">theta</span><span class="o">=</span><span class="n">pi</span><span class="o">/</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">r</span><span class="o">.</span><span class="n">hitbox</span><span class="p">()</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>spread</strong> – will color this much nearby pixels</p></li>
+<li><p><strong>maxWH</strong> – size of the returned image. Either width or height will be around this big, whichever is bigger</p></li>
+<li><p><strong>mode</strong> – several plotting modes, each with its own performance and accuracy characteristics</p></li>
+<li><p><strong>intersectOnly</strong> – if True (default), will only plot the hitbox of the rays that actually hits
+the Surface that generates the ray and not some previous surface</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.kop.Rays.focus">
+<span class="sig-name descname"><span class="pre">focus</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#k1lib.kop.RaysFocus" title="k1lib.kop.RaysFocus"><span class="pre">RaysFocus</span></a></span></span><a class="reference internal" href="_modules/k1lib/kop.html#Rays.focus"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kop.Rays.focus" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="k1lib.kop.Wavelengths">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.kop.</span></span><span class="sig-name descname"><span class="pre">Wavelengths</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wavs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/kop.html#Wavelengths"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kop.Wavelengths" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.kop.Wavelengths.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wavs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/kop.html#Wavelengths.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kop.Wavelengths.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Container for wavelengths in nm. Pretty much only used to convert to rgb in vectorized way</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="k1lib.kop.sellmeier">
+<span class="sig-prename descclassname"><span class="pre">k1lib.kop.</span></span><span class="sig-name descname"><span class="pre">sellmeier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wavelengths</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.26)"><span class="pre">ndarray</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">glassParam</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/kop.html#sellmeier"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kop.sellmeier" title="Permalink to this definition"></a></dt>
+<dd><p>Runs the sellmeier equation to get the index of refraction for multiple wavelengths
+for a particular glass material</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="k1lib.kop.Surface">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.kop.</span></span><span class="sig-name descname"><span class="pre">Surface</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gp1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gp2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'glass'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">capture</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angleStd</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">opticElement</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/kop.html#Surface"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kop.Surface" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#k1lib.kop.Drawable" title="k1lib.kop.Drawable"><code class="xref py py-class docutils literal notranslate"><span class="pre">Drawable</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.kop.Surface.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gp1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gp2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'glass'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">capture</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angleStd</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">opticElement</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/kop.html#Surface.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kop.Surface.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Represents a geometry, like line, arc, or parabola. Rays can interact with a
+surface, resulting in new Rays. An optic element can have multiple of these surfaces and
+react differently to incoming rays.</p>
+<p>The convension is that gp1 is the environment’s glassParam, while gp2 is the Surface’s
+glassParam. A surface needs both in order to calculate the deflection angles.</p>
+<p>These modes are available:</p>
+<ul class="simple">
+<li><p>glass: transparent (or semi-transparent) surface, bends incoming rays</p></li>
+<li><p>mirror: perfectly reflective (or allow some percentage of light to pass through)</p></li>
+<li><p>sensor: absorbes all incoming rays, can retrieve the image that’s absorbed</p></li>
+<li><p>opaque: reflects incoming rays in a random direction outward</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>gp1</strong> – glass params 1, usually this is of the environment (air)</p></li>
+<li><p><strong>gp2</strong> – glass param 2, usually this is of the object (borosilicate glass, sapphire, water)</p></li>
+<li><p><strong>mode</strong> – explained above</p></li>
+<li><p><strong>capture</strong> – if True, captures all rays that comes in through .cast() function. Captures
+will stay the same across copy.copy() instances to save perf! The captures will be
+available at <code class="docutils literal notranslate"><span class="pre">.captures</span></code></p></li>
+<li><p><strong>angleStd</strong> – if specified, when casting outgoing rays, will add this much standard deviation
+in the rays’ angle, useful to quickly simulate a bumpy piece of glass</p></li>
+<li><p><strong>opticElement</strong> – the OpticElement that this Surface is a part of</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.kop.Surface.castS">
+<span class="sig-name descname"><span class="pre">castS</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rays</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#k1lib.kop.Rays" title="k1lib.kop.Rays"><span class="pre">Rays</span></a></span></span><a class="reference internal" href="_modules/k1lib/kop.html#Surface.castS"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kop.Surface.castS" title="Permalink to this definition"></a></dt>
+<dd><p>This will truncate the lengths of the incoming Rays object, and return
+a new rays, as well as the lengths of the old rays, for easy comparison. If the
+rays don’t interact with the lens at all, then just copy the old rays over, and the
+length is the same.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.kop.Surface.cast">
+<span class="sig-name descname"><span class="pre">cast</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rays</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#k1lib.kop.RaysPath" title="k1lib.kop.RaysPath"><span class="pre">RaysPath</span></a></span></span><a class="reference internal" href="_modules/k1lib/kop.html#Surface.cast"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kop.Surface.cast" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="k1lib.kop.LineSurface">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.kop.</span></span><span class="sig-name descname"><span class="pre">LineSurface</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y2</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/kop.html#LineSurface"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kop.LineSurface" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#k1lib.kop.Surface" title="k1lib.kop.Surface"><code class="xref py py-class docutils literal notranslate"><span class="pre">Surface</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.kop.LineSurface.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y2</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/kop.html#LineSurface.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kop.LineSurface.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Surface defined using a straight line.</p>
+<p>If x1,y1 is on the left, x2,y2 on the right, then gp1 (glass param) is on top, gp2 is
+at the bottom.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.kop.LineSurface.bounds">
+<span class="sig-name descname"><span class="pre">bounds</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/kop.html#LineSurface.bounds"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kop.LineSurface.bounds" title="Permalink to this definition"></a></dt>
+<dd><p>Should return (x1, y1, x2, y2). Base classes should always implement this method</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="k1lib.kop.ArcSurface">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.kop.</span></span><span class="sig-name descname"><span class="pre">ArcSurface</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">startAngle</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">endAngle</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/kop.html#ArcSurface"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kop.ArcSurface" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#k1lib.kop.Surface" title="k1lib.kop.Surface"><code class="xref py py-class docutils literal notranslate"><span class="pre">Surface</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.kop.ArcSurface.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">startAngle</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">endAngle</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/kop.html#ArcSurface.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kop.ArcSurface.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Surface defined using a circular arc</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.kop.ArcSurface.from2Points">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from2Points</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#k1lib.kop.ArcSurface" title="k1lib.kop.ArcSurface"><span class="pre">ArcSurface</span></a></span></span><a class="reference internal" href="_modules/k1lib/kop.html#ArcSurface.from2Points"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kop.ArcSurface.from2Points" title="Permalink to this definition"></a></dt>
+<dd><p>Creates an <a class="reference internal" href="#k1lib.kop.ArcSurface" title="k1lib.kop.ArcSurface"><code class="xref py py-class docutils literal notranslate"><span class="pre">ArcSurface</span></code></a> from 2 points and a radius.
+Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">kop</span><span class="o">.</span><span class="n">ArcSurface</span><span class="o">.</span><span class="n">from2Points</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.kop.ArcSurface.bounds">
+<span class="sig-name descname"><span class="pre">bounds</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/kop.html#ArcSurface.bounds"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kop.ArcSurface.bounds" title="Permalink to this definition"></a></dt>
+<dd><p>Should return (x1, y1, x2, y2). Base classes should always implement this method</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="k1lib.kop.polySolver">
+<span class="sig-prename descclassname"><span class="pre">k1lib.kop.</span></span><span class="sig-name descname"><span class="pre">polySolver</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">polys</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/kop.html#polySolver"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kop.polySolver" title="Permalink to this definition"></a></dt>
+<dd><p>Expected to take in a (N,F) array of N different polynomials with order F-1 and return 2 arrays:</p>
+<ul class="simple">
+<li><p>intersected (N,) bool array: whether there’re any roots</p></li>
+<li><p>beta (N,) float array: the root of each polynomial that’s &gt;0 and is the minimum out of all roots</p></li>
+</ul>
+<p>Right now, only supports vectorized solvers with order 2 polynomials. Any higher and it
+falls back to using un-vectorized np.roots(), or other methods like it. This is separated out
+so that it can be swapped out for a better implementation</p>
+<p>Potential candidates for &gt;2 order polynomials:
+- scipy: fsolve, root, newton, brentq</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="k1lib.kop.PolySurface">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.kop.</span></span><span class="sig-name descname"><span class="pre">PolySurface</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x=0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y=0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle=0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale=1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xmin=-10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xmax=10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coeff=(0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">0.1)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">solver=&lt;function</span> <span class="pre">polySolver&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/kop.html#PolySurface"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kop.PolySurface" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#k1lib.kop.Surface" title="k1lib.kop.Surface"><code class="xref py py-class docutils literal notranslate"><span class="pre">Surface</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.kop.PolySurface.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x=0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y=0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle=0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale=1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xmin=-10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xmax=10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coeff=(0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">0.1)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">solver=&lt;function</span> <span class="pre">polySolver&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/kop.html#PolySurface.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kop.PolySurface.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Surface defined using a polynomial.</p>
+<p>Let’s say there’s a parabola that you’d like to input into the simulation, say <code class="docutils literal notranslate"><span class="pre">x^2/10</span></code>. There
+are several dials and knobs that you can change to position your Surface right where you want it.</p>
+<p>There are 2 frame of reference I’ll be using. First is world frame, where all your elements sits in,
+and second is poly frame, where your polynomial coefficients will define (x, y) in.</p>
+<p>In the poly frame, the surface is defined as all x points in (xmin, xmax), together with all y points
+calculated straight from your coefficients. So if <code class="docutils literal notranslate"><span class="pre">coeff</span> <span class="pre">=</span> <span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">3]</span></code>, then the equation will be
+<code class="docutils literal notranslate"><span class="pre">py</span> <span class="pre">=</span> <span class="pre">f(px)</span> <span class="pre">=</span> <span class="pre">3px^2</span> <span class="pre">+</span> <span class="pre">2px</span> <span class="pre">+</span> <span class="pre">1</span></code>. Now pairs of (px, py) points in poly frame is obtained.</p>
+<p>Then (px, py) will go through several transformations to get to the world frame:
+- Rotated by <code class="docutils literal notranslate"><span class="pre">angle</span></code> radians counterclockwise
+- Scaled by <code class="docutils literal notranslate"><span class="pre">scale</span></code>
+- Translated by <code class="docutils literal notranslate"><span class="pre">(x,</span> <span class="pre">y)</span></code></p>
+<p>Then to calculate reflections and whatnot, internally, all rays will be translated from world to poly
+frame, then the intersection points are solved and then results will be translated from poly back
+to world frame.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – translation applied to surface</p></li>
+<li><p><strong>angle</strong> – angle to rotate the surface by</p></li>
+<li><p><strong>scale</strong> – scaling factor to scale the surface by</p></li>
+<li><p><strong>xmin</strong> – to define the domain of the given polynomial in poly frame</p></li>
+<li><p><strong>coeff</strong> – polynomial coefficients</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.kop.PolySurface.parabola">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">parabola</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">16</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/kop.html#PolySurface.parabola"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kop.PolySurface.parabola" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.kop.PolySurface.parabolaFrom2Points">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">parabolaFrom2Points</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/kop.html#PolySurface.parabolaFrom2Points"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kop.PolySurface.parabolaFrom2Points" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.kop.PolySurface.world2poly">
+<span class="sig-name descname"><span class="pre">world2poly</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wxs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wys</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/kop.html#PolySurface.world2poly"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kop.PolySurface.world2poly" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.kop.PolySurface.poly2world">
+<span class="sig-name descname"><span class="pre">poly2world</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pxs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pys</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/kop.html#PolySurface.poly2world"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kop.PolySurface.poly2world" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.kop.PolySurface.bounds">
+<span class="sig-name descname"><span class="pre">bounds</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/kop.html#PolySurface.bounds"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kop.PolySurface.bounds" title="Permalink to this definition"></a></dt>
+<dd><p>Should return (x1, y1, x2, y2). Base classes should always implement this method</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="k1lib.kop.RaysPath">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.kop.</span></span><span class="sig-name descname"><span class="pre">RaysPath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rayss</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#k1lib.kop.Rays" title="k1lib.kop.Rays"><span class="pre">Rays</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/kop.html#RaysPath"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kop.RaysPath" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#k1lib.kop.Drawable" title="k1lib.kop.Drawable"><code class="xref py py-class docutils literal notranslate"><span class="pre">Drawable</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.kop.RaysPath.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rayss</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#k1lib.kop.Rays" title="k1lib.kop.Rays"><span class="pre">Rays</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/kop.html#RaysPath.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kop.RaysPath.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Container for a list of <a class="reference internal" href="#k1lib.kop.Rays" title="k1lib.kop.Rays"><code class="xref py py-class docutils literal notranslate"><span class="pre">Rays</span></code></a>, and have mechanism to
+draw them out with a slight path correction. Expected to contain
+output of a ray tracing session.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.kop.RaysPath.bounds">
+<span class="sig-name descname"><span class="pre">bounds</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/kop.html#RaysPath.bounds"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kop.RaysPath.bounds" title="Permalink to this definition"></a></dt>
+<dd><p>Should return (x1, y1, x2, y2). Base classes should always implement this method</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="k1lib.kop.OpticElement">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.kop.</span></span><span class="sig-name descname"><span class="pre">OpticElement</span></span><a class="reference internal" href="_modules/k1lib/kop.html#OpticElement"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kop.OpticElement" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#k1lib.kop.Drawable" title="k1lib.kop.Drawable"><code class="xref py py-class docutils literal notranslate"><span class="pre">Drawable</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="k1lib.kop.OpticElement.surfaces">
+<span class="sig-name descname"><span class="pre">surfaces</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#k1lib.kop.Surface" title="k1lib.kop.Surface"><span class="pre">Surface</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#k1lib.kop.OpticElement.surfaces" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.kop.OpticElement.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/kop.html#OpticElement.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kop.OpticElement.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Represents a solid object with several Surfaces</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.kop.OpticElement.cast">
+<span class="sig-name descname"><span class="pre">cast</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rays</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/kop.html#OpticElement.cast"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kop.OpticElement.cast" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="k1lib.kop.Polygon">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.kop.</span></span><span class="sig-name descname"><span class="pre">Polygon</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">points</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kw</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/kop.html#Polygon"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kop.Polygon" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#k1lib.kop.OpticElement" title="k1lib.kop.OpticElement"><code class="xref py py-class docutils literal notranslate"><span class="pre">OpticElement</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.kop.Polygon.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">points</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kw</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/kop.html#Polygon.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kop.Polygon.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Creates an OpticElement that has the shape of any polygon you want.
+Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">Polygon</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
+</pre></div>
+</div>
+<p>This will create a prism with verticies at the specified points</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="k1lib.kop.Polygon.surfaces">
+<span class="sig-name descname"><span class="pre">surfaces</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#k1lib.kop.Surface" title="k1lib.kop.Surface"><span class="pre">Surface</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#k1lib.kop.Polygon.surfaces" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.kop.Polygon.bounds">
+<span class="sig-name descname"><span class="pre">bounds</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/kop.html#Polygon.bounds"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kop.Polygon.bounds" title="Permalink to this definition"></a></dt>
+<dd><p>Should return (x1, y1, x2, y2). Base classes should always implement this method</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="k1lib.kop.Lens">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.kop.</span></span><span class="sig-name descname"><span class="pre">Lens</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">R1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">300</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">R2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">300</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thickness</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">surface</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'arc'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kw</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/kop.html#Lens"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kop.Lens" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#k1lib.kop.OpticElement" title="k1lib.kop.OpticElement"><code class="xref py py-class docutils literal notranslate"><span class="pre">OpticElement</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.kop.Lens.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">R1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">300</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">R2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">300</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thickness</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">surface</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'arc'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kw</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/kop.html#Lens.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kop.Lens.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Represents a Lens with center at (x, y), and with 2 radiuses, R1 for left and R2 for right.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>R1</strong> – radius of the left side, works for both arc and parabola mode</p></li>
+<li><p><strong>angle</strong> – angle offset of the Lens</p></li>
+<li><p><strong>surface</strong> – either “arc” or “parabola”, which will make a lens of that geometry</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="k1lib.kop.Lens.surfaces">
+<span class="sig-name descname"><span class="pre">surfaces</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#k1lib.kop.Surface" title="k1lib.kop.Surface"><span class="pre">Surface</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#k1lib.kop.Lens.surfaces" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.kop.Lens.bounds">
+<span class="sig-name descname"><span class="pre">bounds</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/kop.html#Lens.bounds"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kop.Lens.bounds" title="Permalink to this definition"></a></dt>
+<dd><p>Should return (x1, y1, x2, y2). Base classes should always implement this method</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="k1lib.kop.OpticSystem">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.kop.</span></span><span class="sig-name descname"><span class="pre">OpticSystem</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">elements</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#k1lib.kop.OpticElement" title="k1lib.kop.OpticElement"><span class="pre">OpticElement</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#k1lib.kop.Surface" title="k1lib.kop.Surface"><span class="pre">Surface</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">envGlassParam</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/kop.html#OpticSystem"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kop.OpticSystem" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#k1lib.kop.Drawable" title="k1lib.kop.Drawable"><code class="xref py py-class docutils literal notranslate"><span class="pre">Drawable</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.kop.OpticSystem.add">
+<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">elements</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/kop.html#OpticSystem.add"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kop.OpticSystem.add" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="k1lib.kop.OpticSystem.surfaces">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">surfaces</span></span><a class="headerlink" href="#k1lib.kop.OpticSystem.surfaces" title="Permalink to this definition"></a></dt>
+<dd><p>Grabs all surfaces from all optic elements and raw surfaces</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.kop.OpticSystem.cast">
+<span class="sig-name descname"><span class="pre">cast</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rays</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#k1lib.kop.Rays" title="k1lib.kop.Rays"><span class="pre">Rays</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">passes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#k1lib.kop.RaysPath" title="k1lib.kop.RaysPath"><span class="pre">RaysPath</span></a></span></span><a class="reference internal" href="_modules/k1lib/kop.html#OpticSystem.cast"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kop.OpticSystem.cast" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.kop.OpticSystem.bounds">
+<span class="sig-name descname"><span class="pre">bounds</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/kop.html#OpticSystem.bounds"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kop.OpticSystem.bounds" title="Permalink to this definition"></a></dt>
+<dd><p>Should return (x1, y1, x2, y2). Base classes should always implement this method</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="knn.html" class="btn btn-neutral float-left" title="k1lib.knn module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="kws.html" class="btn btn-neutral float-right" title="k1lib.kws module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Quang Ho.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

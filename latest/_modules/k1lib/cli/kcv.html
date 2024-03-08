@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>k1lib.cli.kcv &mdash; k1lib  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> k1lib
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../base.html">Base module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../cli/index.html">k1lib.cli module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../callbacks/index.html">k1lib.callbacks module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../k1a.html">k1lib._k1a module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../k1ui.html">k1lib.k1ui module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eqn.html">k1lib.eqn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fmt.html">k1lib.fmt module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../graphEqn.html">k1lib.graphEqn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../imports.html">k1lib.imports module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mo.html">k1lib.mo module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../kast.html">k1lib.kast module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../kcom.html">k1lib.kcom module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../knn.html">k1lib.knn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../kop.html">k1lib.kop module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../kws.html">k1lib.kws module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../p5.html">k1lib.p5 module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../schedule.html">k1lib.schedule module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../selector.html">k1lib.selector module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../selen.html">k1lib.selen module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../serpent.html">k1lib.serpent module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../serve.html">k1lib.serve module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../viz.html">k1lib.viz module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../zircon.html">k1lib.zircon module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../monkey.html">Monkey patched classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelogs.html">Changelogs</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">k1lib</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">k1lib.cli.kcv</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for k1lib.cli.kcv</h1><div class="highlight"><pre>
+<span></span><span class="c1"># AUTOGENERATED FILE! PLEASE DON&#39;T EDIT HERE. EDIT THE SOURCE NOTEBOOKS INSTEAD</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">This includes helper clis that make it quick to graph graphviz plots.&quot;&quot;&quot;</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;markers&quot;</span><span class="p">,</span> <span class="s2">&quot;Markers&quot;</span><span class="p">,</span> <span class="s2">&quot;map3d&quot;</span><span class="p">]</span>
+<span class="kn">import</span> <span class="nn">re</span><span class="o">,</span> <span class="nn">k1lib</span><span class="o">,</span> <span class="nn">math</span><span class="o">,</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span><span class="o">,</span> <span class="nn">io</span><span class="o">,</span> <span class="nn">json</span><span class="o">,</span> <span class="nn">base64</span><span class="o">,</span> <span class="nn">html</span>
+<span class="kn">from</span> <span class="nn">k1lib.cli.init</span> <span class="kn">import</span> <span class="n">BaseCli</span><span class="p">;</span> <span class="kn">import</span> <span class="nn">k1lib.cli</span> <span class="k">as</span> <span class="nn">cli</span><span class="o">,</span> <span class="nn">k1lib.cli.init</span> <span class="k">as</span> <span class="nn">init</span>
+<span class="n">cv2</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">dep</span><span class="p">(</span><span class="s2">&quot;cv2&quot;</span><span class="p">,</span> <span class="s2">&quot;opencv-python&quot;</span><span class="p">,</span> <span class="s2">&quot;https://opencv.org/&quot;</span><span class="p">)</span>
+<span class="n">aruco</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">dep</span><span class="p">(</span><span class="s2">&quot;cv2.aruco&quot;</span><span class="p">,</span> <span class="s2">&quot;opencv-python&quot;</span><span class="p">,</span> <span class="s2">&quot;https://opencv.org/&quot;</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">deque</span><span class="p">,</span> <span class="n">defaultdict</span>
+<span class="n">settings</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">cli</span>
+<div class="viewcode-block" id="markers"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.kcv.markers">[docs]</a><span class="k">class</span> <span class="nc">markers</span><span class="p">(</span><span class="n">BaseCli</span><span class="p">):</span>                                                          <span class="c1"># markers</span>
+<div class="viewcode-block" id="markers.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.kcv.markers.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">d</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>                                              <span class="c1"># markers</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Detect aruco markers. Returns :class:`Markers`.</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    im = &quot;some/image.jpg&quot; | toImg()</span>
+<span class="sd">    markers = im | kcv.markers()</span>
+
+<span class="sd">    markers # run this in a notebook cell to quickly view where the bounding boxes are</span>
+<span class="sd">    markers | item() # grab first detection, a tuple (aruco dictionary, coords (with shape (4,2)), number)</span>
+<span class="sd">    markers[0] # same as above</span>
+<span class="sd">    markers | deref() # dereference into just lists, instead of kcv.Markers object</span>
+
+<span class="sd">For a moderately complex scene with 20 markers of size (1000, 800), this should take ~15ms to run. The same</span>
+<span class="sd">scene of size (4000, 3000) should take ~170ms to run</span>
+
+<span class="sd">:param d: aruco dictionary string, like &#39;DICT_7X7_1000&#39;. If specified, then will only look in</span>
+<span class="sd">    those dictionaries. If not specified will look in all dictionaries&quot;&quot;&quot;</span>        <span class="c1"># markers</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ds</span> <span class="o">=</span> <span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="k">if</span> <span class="n">d</span> <span class="k">else</span> <span class="p">[</span><span class="s2">&quot;DICT_4X4_1000&quot;</span><span class="p">,</span> <span class="s2">&quot;DICT_5X5_1000&quot;</span><span class="p">,</span> <span class="s2">&quot;DICT_6X6_1000&quot;</span><span class="p">,</span> <span class="s2">&quot;DICT_7X7_1000&quot;</span><span class="p">]</span> <span class="c1"># markers</span></div>
+<div class="viewcode-block" id="markers.__ror__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.kcv.markers.__ror__">[docs]</a>    <span class="k">def</span> <span class="fm">__ror__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">im</span><span class="p">):</span>                                                       <span class="c1"># markers</span>
+        <span class="n">arr</span> <span class="o">=</span> <span class="n">im</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">toNdArray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">op</span><span class="p">()</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>         <span class="c1"># markers</span>
+        <span class="k">return</span> <span class="n">Markers</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ds</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="p">[</span><span class="n">d</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">aruco</span><span class="o">.</span><span class="n">detectMarkers</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">aruco</span><span class="o">.</span><span class="n">Dictionary_get</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">aruco</span><span class="p">,</span> <span class="n">d</span><span class="p">)))[:</span><span class="mi">2</span><span class="p">]])</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">deref</span><span class="p">()</span> <span class="o">|</span> <span class="o">~</span><span class="n">cli</span><span class="o">.</span><span class="n">filt</span><span class="p">(</span><span class="s2">&quot;x[1] is None&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">cli</span><span class="o">.</span><span class="n">item</span><span class="p">()</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">T</span><span class="p">()</span> <span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">ungroup</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">deref</span><span class="p">())</span> <span class="c1"># markers</span></div></div>
+<div class="viewcode-block" id="Markers"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.kcv.Markers">[docs]</a><span class="k">class</span> <span class="nc">Markers</span><span class="p">:</span>                                                                   <span class="c1"># Markers</span>
+<div class="viewcode-block" id="Markers.__init__"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.kcv.Markers.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">im</span><span class="p">,</span> <span class="n">ms</span><span class="p">):</span>                                                  <span class="c1"># Markers</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Resulting Markers object, obtained from :class:`markers` cli, not</span>
+<span class="sd">intended to be instantiated by the end user.&quot;&quot;&quot;</span>                                  <span class="c1"># Markers</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">im</span> <span class="o">=</span> <span class="n">im</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ms</span> <span class="o">=</span> <span class="n">ms</span>                                              <span class="c1"># Markers</span></div>
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ms</span><span class="p">[</span><span class="n">s</span><span class="p">]</span>                                 <span class="c1"># Markers</span>
+    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="nb">iter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_ms</span><span class="p">)</span>                                    <span class="c1"># Markers</span>
+    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_ms</span><span class="p">)</span>                                      <span class="c1"># Markers</span>
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;&lt;Markers n=</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="si">}</span><span class="s2"> im.shape=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">im</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">cli</span><span class="o">.</span><span class="n">shape</span><span class="p">()</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">cli</span><span class="o">.</span><span class="n">op</span><span class="p">()[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2"> ds=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_ms</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">cli</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">cli</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">~</span><span class="n">cli</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">cli</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">cli</span><span class="o">.</span><span class="n">deref</span><span class="p">()</span><span class="si">}</span><span class="s2">&gt;&quot;</span> <span class="c1"># Markers</span>
+    <span class="k">def</span> <span class="nf">_repr_html_</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>                                                       <span class="c1"># Markers</span>
+        <span class="n">im</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">im</span><span class="p">;</span> <span class="n">ms</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ms</span><span class="p">;</span> <span class="n">p5</span> <span class="o">=</span> <span class="n">k1lib</span><span class="o">.</span><span class="n">p5</span><span class="p">;</span> <span class="n">p5</span><span class="o">.</span><span class="n">newSketch</span><span class="p">(</span><span class="o">*</span><span class="n">im</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">shape</span><span class="p">(),</span> <span class="kc">False</span><span class="p">)</span> <span class="c1"># Markers</span>
+        <span class="n">p5</span><span class="o">.</span><span class="n">image</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span> <span class="n">p5</span><span class="o">.</span><span class="n">background</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">220</span><span class="p">)</span>                              <span class="c1"># Markers</span>
+        <span class="k">for</span> <span class="n">_dict</span><span class="p">,</span> <span class="n">coords</span><span class="p">,</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">ms</span><span class="p">:</span>                                            <span class="c1"># Markers</span>
+            <span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">d</span> <span class="o">=</span> <span class="n">coords</span>                                                     <span class="c1"># Markers</span>
+            <span class="n">p5</span><span class="o">.</span><span class="n">stroke</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>   <span class="n">p5</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="o">*</span><span class="n">a</span><span class="p">,</span><span class="o">*</span><span class="n">b</span><span class="p">)</span>                               <span class="c1"># Markers</span>
+            <span class="n">p5</span><span class="o">.</span><span class="n">stroke</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>   <span class="n">p5</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="o">*</span><span class="n">b</span><span class="p">,</span><span class="o">*</span><span class="n">c</span><span class="p">)</span>                               <span class="c1"># Markers</span>
+            <span class="n">p5</span><span class="o">.</span><span class="n">stroke</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">);</span>   <span class="n">p5</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="o">*</span><span class="n">c</span><span class="p">,</span><span class="o">*</span><span class="n">d</span><span class="p">)</span>                               <span class="c1"># Markers</span>
+            <span class="n">p5</span><span class="o">.</span><span class="n">stroke</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span> <span class="n">p5</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="o">*</span><span class="n">d</span><span class="p">,</span><span class="o">*</span><span class="n">a</span><span class="p">)</span>                               <span class="c1"># Markers</span>
+            <span class="n">p5</span><span class="o">.</span><span class="n">stroke</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">);</span> <span class="n">p5</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">num</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="o">*</span><span class="n">a</span><span class="p">)</span>                        <span class="c1"># Markers</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">html</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="fm">__repr__</span><span class="p">())</span><span class="si">}</span><span class="s2">&lt;br&gt;</span><span class="si">{</span><span class="n">p5</span><span class="o">.</span><span class="n">svg</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span>                   <span class="c1"># Markers</span></div>
+<div class="viewcode-block" id="map3d"><a class="viewcode-back" href="../../../cli/index.html#k1lib.cli.kcv.map3d">[docs]</a><span class="k">def</span> <span class="nf">map3d</span><span class="p">(</span><span class="n">ws</span><span class="p">,</span><span class="n">cs</span><span class="p">):</span>                                                                <span class="c1"># map3d</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Creates 2 functions that maps from world points (ws) to camera points (cs).</span>
+<span class="sd">Example::</span>
+
+<span class="sd">    ws = np.random.randn(10, 3)</span>
+<span class="sd">    cs = np.copy(ws); cs[:,1] = -cs[:,1]; cs[:,2] = -cs[:,2]</span>
+
+<span class="sd">    f1, f2 = kcv.map3d(ws, cs)</span>
+
+<span class="sd">    f1(ws) # returns matrix similar to cs</span>
+<span class="sd">    f2(cs) # returns matrix similar to ws</span>
+<span class="sd">&quot;&quot;&quot;</span>                                                                              <span class="c1"># map3d</span>
+    <span class="n">wc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">ws</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">);</span> <span class="n">wsp</span> <span class="o">=</span> <span class="n">ws</span> <span class="o">-</span> <span class="n">wc</span>                                      <span class="c1"># map3d</span>
+    <span class="n">cc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">cs</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">);</span> <span class="n">csp</span> <span class="o">=</span> <span class="n">cs</span> <span class="o">-</span> <span class="n">cc</span>                                      <span class="c1"># map3d</span>
+    <span class="n">H</span> <span class="o">=</span> <span class="n">wsp</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">csp</span><span class="p">;</span> <span class="n">U</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">Vt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span><span class="n">H</span><span class="p">)</span>                                 <span class="c1"># map3d</span>
+    <span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">Vt</span><span class="p">);</span> <span class="n">R_inv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">R</span><span class="p">)</span>                                  <span class="c1"># map3d</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">cc</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">wc</span><span class="p">)</span>                                                       <span class="c1"># map3d</span>
+    <span class="c1"># main equation is given by chatgpt, but the transformation for some reason is translated by a # map3d</span>
+    <span class="c1"># fixed vector, so this is to figure out the correct bias vector to add to   # map3d</span>
+    <span class="n">b1</span> <span class="o">=</span> <span class="n">cc</span><span class="o">-</span><span class="p">(</span><span class="n">ws</span><span class="nd">@R</span><span class="o">+</span><span class="n">t</span><span class="p">)</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">T</span><span class="p">()</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">toMean</span><span class="p">()</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>                              <span class="c1"># map3d</span>
+    <span class="n">b2</span> <span class="o">=</span> <span class="n">ws</span><span class="o">-</span><span class="p">(</span><span class="n">cs</span><span class="o">-</span><span class="n">t</span><span class="p">)</span><span class="nd">@R_inv</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">T</span><span class="p">()</span> <span class="o">|</span> <span class="n">cli</span><span class="o">.</span><span class="n">toMean</span><span class="p">()</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>                          <span class="c1"># map3d</span>
+    <span class="k">return</span> <span class="k">lambda</span> <span class="n">vs</span><span class="p">:</span> <span class="p">(</span><span class="n">vs</span><span class="p">)</span><span class="nd">@R</span><span class="o">+</span><span class="n">t</span><span class="o">+</span><span class="n">b1</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">vs</span><span class="p">:</span> <span class="p">(</span><span class="n">vs</span><span class="o">-</span><span class="n">t</span><span class="p">)</span><span class="nd">@R_inv</span><span class="o">+</span><span class="n">b2</span>                    <span class="c1"># map3d</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Quang Ho.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

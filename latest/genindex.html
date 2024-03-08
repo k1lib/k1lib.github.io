@@ -51,7 +51,11 @@
 <li class="toctree-l1"><a class="reference internal" href="graphEqn.html">k1lib.graphEqn module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="imports.html">k1lib.imports module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mo.html">k1lib.mo module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kast.html">k1lib.kast module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kcom.html">k1lib.kcom module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="knn.html">k1lib.knn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kop.html">k1lib.kop module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kws.html">k1lib.kws module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="p5.html">k1lib.p5 module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="schedule.html">k1lib.schedule module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="selector.html">k1lib.selector module</a></li>
@@ -59,6 +63,7 @@
 <li class="toctree-l1"><a class="reference internal" href="serpent.html">k1lib.serpent module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="serve.html">k1lib.serve module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="viz.html">k1lib.viz module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zircon.html">k1lib.zircon module</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="monkey.html">Monkey patched classes</a></li>
@@ -376,6 +381,10 @@
 </li>
         <li><a href="cli/index.html#k1lib.cli.kapi.txt2im.__init__">(k1lib.cli.kapi.txt2im method)</a>
 </li>
+        <li><a href="cli/index.html#k1lib.cli.kcv.Markers.__init__">(k1lib.cli.kcv.Markers method)</a>
+</li>
+        <li><a href="cli/index.html#k1lib.cli.kcv.markers.__init__">(k1lib.cli.kcv.markers method)</a>
+</li>
         <li><a href="cli/index.html#k1lib.cli.kgv.edges.__init__">(k1lib.cli.kgv.edges method)</a>
 </li>
         <li><a href="cli/index.html#k1lib.cli.kgv.Graph.__init__">(k1lib.cli.kgv.Graph method)</a>
@@ -630,11 +639,45 @@
 </li>
         <li><a href="k1ui.html#k1lib.k1ui.main.WsSession.__init__">(k1lib.k1ui.main.WsSession method)</a>
 </li>
+        <li><a href="kast.html#k1lib.kast.pretty.__init__">(k1lib.kast.pretty method)</a>
+</li>
+        <li><a href="kast.html#k1lib.kast.walk.__init__">(k1lib.kast.walk method)</a>
+</li>
+        <li><a href="kcom.html#k1lib.kcom.Gsm.__init__">(k1lib.kcom.Gsm method)</a>
+</li>
+        <li><a href="kcom.html#k1lib.kcom.Host.__init__">(k1lib.kcom.Host method)</a>
+</li>
         <li><a href="knn.html#k1lib.knn.Lambda.__init__">(k1lib.knn.Lambda method)</a>
 </li>
         <li><a href="knn.html#k1lib.knn.LinBlock.__init__">(k1lib.knn.LinBlock method)</a>
 </li>
         <li><a href="knn.html#k1lib.knn.MultiheadAttention.__init__">(k1lib.knn.MultiheadAttention method)</a>
+</li>
+        <li><a href="kop.html#k1lib.kop.ArcSurface.__init__">(k1lib.kop.ArcSurface method)</a>
+</li>
+        <li><a href="kop.html#k1lib.kop.Drawables.__init__">(k1lib.kop.Drawables method)</a>
+</li>
+        <li><a href="kop.html#k1lib.kop.Lens.__init__">(k1lib.kop.Lens method)</a>
+</li>
+        <li><a href="kop.html#k1lib.kop.LineSurface.__init__">(k1lib.kop.LineSurface method)</a>
+</li>
+        <li><a href="kop.html#k1lib.kop.OpticElement.__init__">(k1lib.kop.OpticElement method)</a>
+</li>
+        <li><a href="kop.html#k1lib.kop.Polygon.__init__">(k1lib.kop.Polygon method)</a>
+</li>
+        <li><a href="kop.html#k1lib.kop.PolySurface.__init__">(k1lib.kop.PolySurface method)</a>
+</li>
+        <li><a href="kop.html#k1lib.kop.RandomPoints.__init__">(k1lib.kop.RandomPoints method)</a>
+</li>
+        <li><a href="kop.html#k1lib.kop.Rays.__init__">(k1lib.kop.Rays method)</a>
+</li>
+        <li><a href="kop.html#k1lib.kop.RaysPath.__init__">(k1lib.kop.RaysPath method)</a>
+</li>
+        <li><a href="kop.html#k1lib.kop.Surface.__init__">(k1lib.kop.Surface method)</a>
+</li>
+        <li><a href="kop.html#k1lib.kop.Wavelengths.__init__">(k1lib.kop.Wavelengths method)</a>
+</li>
+        <li><a href="kws.html#k1lib.kws.WsClient.__init__">(k1lib.kws.WsClient method)</a>
 </li>
         <li><a href="base.html#k1lib.MaxDepth.__init__">(k1lib.MaxDepth method)</a>
 </li>
@@ -711,6 +754,10 @@
         <li><a href="base.html#k1lib.wrapMod.__init__">(k1lib.wrapMod method)</a>
 </li>
         <li><a href="base.html#k1lib.Wrapper.__init__">(k1lib.Wrapper method)</a>
+</li>
+        <li><a href="zircon.html#k1lib.zircon.BrowserGroup.__init__">(k1lib.zircon.BrowserGroup method)</a>
+</li>
+        <li><a href="zircon.html#k1lib.zircon.Element.__init__">(k1lib.zircon.Element method)</a>
 </li>
       </ul></li>
   </ul></td>
@@ -958,6 +1005,8 @@
 </li>
         <li><a href="cli/index.html#k1lib.cli.kapi.txt2im.__ror__">(k1lib.cli.kapi.txt2im method)</a>
 </li>
+        <li><a href="cli/index.html#k1lib.cli.kcv.markers.__ror__">(k1lib.cli.kcv.markers method)</a>
+</li>
         <li><a href="cli/index.html#k1lib.cli.kgv.edges.__ror__">(k1lib.cli.kgv.edges method)</a>
 </li>
         <li><a href="cli/index.html#k1lib.cli.kgv.nodes.__ror__">(k1lib.cli.kgv.nodes method)</a>
@@ -1160,6 +1209,10 @@
 </li>
         <li><a href="cli/index.html#k1lib.cli.utils.zeroes.__ror__">(k1lib.cli.utils.zeroes method)</a>
 </li>
+        <li><a href="kast.html#k1lib.kast.pretty.__ror__">(k1lib.kast.pretty method)</a>
+</li>
+        <li><a href="kast.html#k1lib.kast.walk.__ror__">(k1lib.kast.walk method)</a>
+</li>
         <li><a href="p5.html#k1lib.p5.Entity.__ror__">(k1lib.p5.Entity method)</a>
 </li>
         <li><a href="viz.html#k1lib.viz.Carousel.__ror__">(k1lib.viz.Carousel method)</a>
@@ -1212,9 +1265,13 @@
       <li><a href="callbacks/index.html#k1lib.callbacks.callbacks.Callbacks.add">add() (k1lib.callbacks.callbacks.Callbacks method)</a>
 
       <ul>
+        <li><a href="kop.html#k1lib.kop.OpticSystem.add">(k1lib.kop.OpticSystem method)</a>
+</li>
         <li><a href="base.html#k1lib.Settings.add">(k1lib.Settings method)</a>
 </li>
       </ul></li>
+      <li><a href="zircon.html#k1lib.zircon.Locator.addChild">addChild() (k1lib.zircon.Locator method)</a>
+</li>
       <li><a href="cli/index.html#k1lib.cli.typehint.tOpt.addPass">addPass() (k1lib.cli.typehint.tOpt static method)</a>
 </li>
       <li><a href="k1ui.html#k1lib.k1ui.main.TrainScreen.addRule">addRule() (k1lib.k1ui.main.TrainScreen method)</a>
@@ -1224,6 +1281,8 @@
       <li><a href="k1ui.html#k1lib.k1ui.main.Recording.addTracks">addTracks() (k1lib.k1ui.main.Recording method)</a>
 </li>
       <li><a href="mo.html#k1lib.mo.alcohol">alcohol() (in module k1lib.mo)</a>
+</li>
+      <li><a href="kws.html#k1lib.kws.WsClient.alive">alive (k1lib.kws.WsClient property)</a>
 </li>
       <li><a href="mo.html#k1lib.mo.alkane">alkane() (in module k1lib.mo)</a>
 </li>
@@ -1269,9 +1328,13 @@
 </li>
       <li><a href="p5.html#k1lib.p5.arc">arc() (in module k1lib.p5)</a>
 </li>
+      <li><a href="kop.html#k1lib.kop.ArcSurface">ArcSurface (class in k1lib.kop)</a>
+</li>
       <li><a href="cli/index.html#k1lib.cli.modifier.aS">aS (in module k1lib.cli.modifier)</a>
 </li>
       <li><a href="cli/index.html#k1lib.cli.modifier.applyCl.aS">aS() (k1lib.cli.modifier.applyCl static method)</a>
+</li>
+      <li><a href="kast.html#k1lib.kast.asyncGuard">asyncGuard() (in module k1lib.kast)</a>
 </li>
       <li><a href="mo.html#k1lib.mo.Atom">Atom (class in k1lib.mo)</a>
 </li>
@@ -1467,9 +1530,33 @@
         <li><a href="selen.html#k1lib.selen.Page.bound">(k1lib.selen.Page method)</a>
 </li>
       </ul></li>
-      <li><a href="p5.html#k1lib.p5.Circle.bounds">bounds() (k1lib.p5.Circle class method)</a>
+      <li><a href="kop.html#k1lib.kop.ArcSurface.bounds">bounds() (k1lib.kop.ArcSurface method)</a>
 
       <ul>
+        <li><a href="kop.html#k1lib.kop.Drawable.bounds">(k1lib.kop.Drawable method)</a>
+</li>
+        <li><a href="kop.html#k1lib.kop.Drawables.bounds">(k1lib.kop.Drawables method)</a>
+</li>
+        <li><a href="kop.html#k1lib.kop.Lens.bounds">(k1lib.kop.Lens method)</a>
+</li>
+        <li><a href="kop.html#k1lib.kop.LineSurface.bounds">(k1lib.kop.LineSurface method)</a>
+</li>
+        <li><a href="kop.html#k1lib.kop.OpticSystem.bounds">(k1lib.kop.OpticSystem method)</a>
+</li>
+        <li><a href="kop.html#k1lib.kop.Polygon.bounds">(k1lib.kop.Polygon method)</a>
+</li>
+        <li><a href="kop.html#k1lib.kop.PolySurface.bounds">(k1lib.kop.PolySurface method)</a>
+</li>
+        <li><a href="kop.html#k1lib.kop.RandomPoints.bounds">(k1lib.kop.RandomPoints method)</a>
+</li>
+        <li><a href="kop.html#k1lib.kop.Rays.bounds">(k1lib.kop.Rays method)</a>
+</li>
+        <li><a href="kop.html#k1lib.kop.RaysFocus.bounds">(k1lib.kop.RaysFocus method)</a>
+</li>
+        <li><a href="kop.html#k1lib.kop.RaysPath.bounds">(k1lib.kop.RaysPath method)</a>
+</li>
+        <li><a href="p5.html#k1lib.p5.Circle.bounds">(k1lib.p5.Circle class method)</a>
+</li>
         <li><a href="p5.html#k1lib.p5.Entity.bounds">(k1lib.p5.Entity class method)</a>
 </li>
         <li><a href="p5.html#k1lib.p5.IR.bounds">(k1lib.p5.IR static method)</a>
@@ -1485,7 +1572,15 @@
 </li>
       <li><a href="cli/index.html#k1lib.cli.filt.breakIf">breakIf (class in k1lib.cli.filt)</a>
 </li>
+      <li><a href="zircon.html#k1lib.zircon.Browser">Browser (class in k1lib.zircon)</a>
+</li>
+      <li><a href="zircon.html#k1lib.zircon.BrowserCancel">BrowserCancel</a>
+</li>
+      <li><a href="zircon.html#k1lib.zircon.BrowserGroup">BrowserGroup (class in k1lib.zircon)</a>
+</li>
       <li><a href="serve.html#k1lib.serve.main.BuildDashFile">BuildDashFile (class in k1lib.serve.main)</a>
+</li>
+      <li><a href="zircon.html#k1lib.zircon.Locator.builder">builder() (k1lib.zircon.Locator static method)</a>
 </li>
       <li><a href="serve.html#k1lib.serve.main.BuildPythonFile">BuildPythonFile (class in k1lib.serve.main)</a>
 </li>
@@ -1549,6 +1644,16 @@
 </li>
       <li><a href="viz.html#k1lib.viz.Carousel">Carousel (class in k1lib.viz)</a>
 </li>
+      <li><a href="kop.html#k1lib.kop.OpticElement.cast">cast() (k1lib.kop.OpticElement method)</a>
+
+      <ul>
+        <li><a href="kop.html#k1lib.kop.OpticSystem.cast">(k1lib.kop.OpticSystem method)</a>
+</li>
+        <li><a href="kop.html#k1lib.kop.Surface.cast">(k1lib.kop.Surface method)</a>
+</li>
+      </ul></li>
+      <li><a href="kop.html#k1lib.kop.Surface.castS">castS() (k1lib.kop.Surface method)</a>
+</li>
       <li><a href="cli/index.html#k1lib.cli.inp.cat">cat() (in module k1lib.cli.inp)</a>
 
       <ul>
@@ -1602,6 +1707,12 @@
       <li><a href="selen.html#k1lib.selen.Element.children">children (k1lib.selen.Element property)</a>
 </li>
       <li><a href="selector.html#k1lib.selector.ModuleSelector.children">children() (k1lib.selector.ModuleSelector method)</a>
+
+      <ul>
+        <li><a href="zircon.html#k1lib.zircon.Element.children">(k1lib.zircon.Element method)</a>
+</li>
+      </ul></li>
+      <li><a href="zircon.html#k1lib.zircon.Element.childrenC">childrenC() (k1lib.zircon.Element method)</a>
 </li>
       <li><a href="p5.html#k1lib.p5.Circle">Circle (class in k1lib.p5)</a>
 </li>
@@ -1631,14 +1742,20 @@
 </li>
       <li><a href="selector.html#k1lib.selector.ModuleSelector.clearProps">clearProps() (k1lib.selector.ModuleSelector method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="k1ui.html#k1lib.k1ui.main.ClickTrack">ClickTrack (class in k1lib.k1ui.main)</a>
 </li>
       <li><a href="cli/index.html#k1lib.cli.utils.clipboard">clipboard (class in k1lib.cli.utils)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="k1ui.html#k1lib.k1ui.main.WsSession.close">close() (k1lib.k1ui.main.WsSession method)</a>
+
+      <ul>
+        <li><a href="kcom.html#k1lib.kcom.Gsm.close">(k1lib.kcom.Gsm method)</a>
 </li>
+        <li><a href="zircon.html#k1lib.zircon.Browser.close">(k1lib.zircon.Browser method)</a>
+</li>
+      </ul></li>
       <li><a href="cli/index.html#k1lib.cli.inp.cmd">cmd (class in k1lib.cli.inp)</a>
 </li>
       <li><a href="cli/index.html#k1lib.cli.modifier.applyCl.cmd">cmd() (k1lib.cli.modifier.applyCl static method)</a>
@@ -1847,10 +1964,10 @@
 </li>
       <li><a href="base.html#k1lib.digraph">digraph() (in module k1lib)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="selector.html#k1lib.selector.ModuleSelector.directParams">directParams (k1lib.selector.ModuleSelector property)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="cli/index.html#k1lib.cli.utils.disassemble">disassemble() (in module k1lib.cli.utils)</a>
 </li>
       <li><a href="cli/index.html#k1lib.cli.modifier.applyCl.diskScan">diskScan() (k1lib.cli.modifier.applyCl static method)</a>
@@ -1885,6 +2002,8 @@
 </li>
       <li><a href="k1ui.html#k1lib.k1ui.main.distNet">distNet() (in module k1lib.k1ui.main)</a>
 </li>
+      <li><a href="zircon.html#k1lib.zircon.Browser.document">document() (k1lib.zircon.Browser method)</a>
+</li>
       <li><a href="fmt.html#k1lib.fmt.dollar">dollar() (in module k1lib.fmt)</a>
 </li>
       <li><a href="base.html#k1lib.Domain">Domain (class in k1lib)</a>
@@ -1898,6 +2017,10 @@
       <li><a href="base.html#k1lib.dontWrap">dontWrap() (in module k1lib)</a>
 </li>
       <li><a href="selen.html#k1lib.selen.Page.draw">draw() (k1lib.selen.Page method)</a>
+</li>
+      <li><a href="kop.html#k1lib.kop.Drawable">Drawable (class in k1lib.kop)</a>
+</li>
+      <li><a href="kop.html#k1lib.kop.Drawables">Drawables (class in k1lib.kop)</a>
 </li>
       <li><a href="callbacks/index.html#k1lib.callbacks.shorts.DType">DType (class in k1lib.callbacks.shorts)</a>
 </li>
@@ -1924,7 +2047,11 @@
       <li><a href="cli/index.html#k1lib.cli.kgv.edges">edges (class in k1lib.cli.kgv)</a>
 </li>
       <li><a href="selen.html#k1lib.selen.Element">Element (class in k1lib.selen)</a>
+
+      <ul>
+        <li><a href="zircon.html#k1lib.zircon.Element">(class in k1lib.zircon)</a>
 </li>
+      </ul></li>
       <li><a href="p5.html#k1lib.p5.ellipse">ellipse() (in module k1lib.p5)</a>
 </li>
       <li><a href="cli/index.html#k1lib.cli.kapi.embed">embed (class in k1lib.cli.kapi)</a>
@@ -1973,10 +2100,10 @@
 </li>
       <li><a href="eqn.html#k1lib.eqn.Eqns">Eqns (class in k1lib.eqn)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="cli/index.html#k1lib.cli.utils.equals">equals (class in k1lib.cli.utils)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="base.html#k1lib.Learner.evaluate">evaluate() (k1lib.Learner method)</a>
 </li>
       <li><a href="k1ui.html#k1lib.k1ui.main.CharTrack.events">events() (k1lib.k1ui.main.CharTrack method)</a>
@@ -2001,12 +2128,18 @@
 </li>
       <li><a href="base.html#k1lib.UValue.exact">exact (k1lib.UValue property)</a>
 </li>
+      <li><a href="kcom.html#k1lib.kcom.Host.execPy">execPy() (k1lib.kcom.Host method)</a>
+</li>
+      <li><a href="kcom.html#k1lib.kcom.Host.execSh">execSh() (k1lib.kcom.Host method)</a>
+</li>
       <li><a href="cli/index.html#k1lib.cli.nb.execute">execute (class in k1lib.cli.nb)</a>
 </li>
       <li><a href="k1ui.html#k1lib.k1ui.main.execute">execute() (in module k1lib.k1ui.main)</a>
 
       <ul>
         <li><a href="k1ui.html#k1lib.k1ui.main.WsSession.execute">(k1lib.k1ui.main.WsSession method)</a>
+</li>
+        <li><a href="zircon.html#k1lib.zircon.BrowserGroup.execute">(k1lib.zircon.BrowserGroup method)</a>
 </li>
       </ul></li>
       <li><a href="cli/index.html#k1lib.cli.nb.executeTags">executeTags() (in module k1lib.cli.nb)</a>
@@ -2081,16 +2214,20 @@
 </li>
       <li><a href="base.html#k1lib.Range.fixOrder">fixOrder() (k1lib.Range method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="cli/index.html#k1lib.cli.sam.flag">flag (class in k1lib.cli.sam)</a>
 </li>
       <li><a href="cli/index.html#k1lib.cli.ktree.flatten">flatten (class in k1lib.cli.ktree)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="schedule.html#k1lib.schedule.Fn">Fn (class in k1lib.schedule)</a>
 </li>
       <li><a href="cli/index.html#k1lib.cli.kgv.Graph.focus">focus() (k1lib.cli.kgv.Graph method)</a>
+
+      <ul>
+        <li><a href="kop.html#k1lib.kop.Rays.focus">(k1lib.kop.Rays method)</a>
 </li>
+      </ul></li>
       <li><a href="k1ui.html#k1lib.k1ui.main.Recording.formWords">formWords() (k1lib.k1ui.main.Recording method)</a>
 </li>
       <li><a href="cli/index.html#k1lib.cli.inp.splitSeek.forward">forward() (k1lib.cli.inp.splitSeek static method)</a>
@@ -2107,11 +2244,15 @@
 </li>
       <li><a href="selector.html#k1lib.selector.ModuleSelector.freeze">freeze() (k1lib.selector.ModuleSelector method)</a>
 </li>
+      <li><a href="kop.html#k1lib.kop.ArcSurface.from2Points">from2Points() (k1lib.kop.ArcSurface static method)</a>
+</li>
       <li><a href="base.html#k1lib.UValue.fromBounds">fromBounds() (k1lib.UValue static method)</a>
 </li>
       <li><a href="base.html#k1lib.Object.fromDict">fromDict() (k1lib.Object static method)</a>
 </li>
       <li><a href="base.html#k1lib.Domain.fromInts">fromInts() (k1lib.Domain static method)</a>
+</li>
+      <li><a href="zircon.html#k1lib.zircon.Locator.fromJson">fromJson() (k1lib.zircon.Locator static method)</a>
 </li>
       <li><a href="serve.html#k1lib.serve.main.FromNotebook">FromNotebook (class in k1lib.serve.main)</a>
 </li>
@@ -2124,6 +2265,8 @@
       <li><a href="fmt.html#k1lib.fmt.fromSize">fromSize() (in module k1lib.fmt)</a>
 </li>
       <li><a href="base.html#k1lib.Range.fromUnit">fromUnit() (k1lib.Range method)</a>
+</li>
+      <li><a href="zircon.html#k1lib.zircon.Element.func">func() (k1lib.zircon.Element method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -2157,6 +2300,8 @@
 </li>
       <li><a href="callbacks/index.html#k1lib.callbacks.confusionMatrix.ConfusionMatrix.goodMatrix">goodMatrix (k1lib.callbacks.confusionMatrix.ConfusionMatrix property)</a>
 </li>
+      <li><a href="zircon.html#k1lib.zircon.Browser.goto">goto() (k1lib.zircon.Browser method)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="cli/index.html#k1lib.cli.nb.grabTags">grabTags() (in module k1lib.cli.nb)</a>
@@ -2184,6 +2329,8 @@
       <li><a href="p5.html#k1lib.p5.grid">grid (class in k1lib.p5)</a>
 </li>
       <li><a href="cli/index.html#k1lib.cli.structural.groupBy">groupBy (class in k1lib.cli.structural)</a>
+</li>
+      <li><a href="kcom.html#k1lib.kcom.Gsm">Gsm (class in k1lib.kcom)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -2213,15 +2360,17 @@
 </li>
       <li><a href="selector.html#k1lib.selector.ModuleSelector.highlight">highlight() (k1lib.selector.ModuleSelector method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="cli/index.html#k1lib.cli.init.BaseCli.hint">hint() (k1lib.cli.init.BaseCli method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="cli/index.html#k1lib.cli.structural.hist">hist (class in k1lib.cli.structural)</a>
 </li>
       <li><a href="monkey.html#torch.Tensor.histBounds">histBounds() (torch.Tensor method)</a>
 </li>
       <li><a href="monkey.html#torch.Tensor.histScaled">histScaled() (torch.Tensor method)</a>
+</li>
+      <li><a href="kop.html#k1lib.kop.Rays.hitbox">hitbox() (k1lib.kop.Rays method)</a>
 </li>
       <li><a href="selector.html#k1lib.selector.ModuleSelector.hookB">hookB() (k1lib.selector.ModuleSelector method)</a>
 </li>
@@ -2232,6 +2381,8 @@
       <li><a href="callbacks/index.html#k1lib.callbacks.hookModule.HookModule">HookModule (class in k1lib.callbacks.hookModule)</a>
 </li>
       <li><a href="callbacks/index.html#k1lib.callbacks.hookParam.HookParam">HookParam (class in k1lib.callbacks.hookParam)</a>
+</li>
+      <li><a href="kcom.html#k1lib.kcom.Host">Host (class in k1lib.kcom)</a>
 </li>
       <li><a href="serve.html#k1lib.serve.main.html">html (class in k1lib.serve.main)</a>
 </li>
@@ -2264,7 +2415,11 @@
       <li><a href="base.html#k1lib.ignoreWarnings">ignoreWarnings (class in k1lib)</a>
 </li>
       <li><a href="p5.html#k1lib.p5.img">img() (in module k1lib.p5)</a>
+
+      <ul>
+        <li><a href="kop.html#k1lib.kop.Drawable.img">(k1lib.kop.Drawable method)</a>
 </li>
+      </ul></li>
       <li><a href="monkey.html#torch.nn.modules.Module.importParams">importParams() (torch.nn.modules.Module method)</a>
 </li>
       <li><a href="cli/index.html#k1lib.cli.utils.indent">indent() (in module k1lib.cli.utils)</a>
@@ -2281,6 +2436,8 @@
         <li><a href="callbacks/lossFunctions.html#k1lib.callbacks.lossFunctions.shorts.LossNLLCross.inLoss">(k1lib.callbacks.lossFunctions.shorts.LossNLLCross method)</a>
 </li>
       </ul></li>
+      <li><a href="zircon.html#k1lib.zircon.Element.inputText">inputText() (k1lib.zircon.Element method)</a>
+</li>
       <li><a href="cli/index.html#k1lib.cli.structural.insert">insert (class in k1lib.cli.structural)</a>
 </li>
       <li><a href="cli/index.html#k1lib.cli.lsext.sqltable.insert">insert() (k1lib.cli.lsext.sqltable method)</a>
@@ -2299,10 +2456,10 @@
 </li>
       <li><a href="callbacks/index.html#k1lib.callbacks.shorts.InspectLoss">InspectLoss (class in k1lib.callbacks.shorts)</a>
 </li>
-      <li><a href="callbacks/index.html#k1lib.callbacks.shorts.InspectOutput">InspectOutput (class in k1lib.callbacks.shorts)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="callbacks/index.html#k1lib.callbacks.shorts.InspectOutput">InspectOutput (class in k1lib.callbacks.shorts)</a>
+</li>
       <li><a href="cli/index.html#k1lib.cli.modifier.applyCl.installSo">installSo() (k1lib.cli.modifier.applyCl static method)</a>
 </li>
       <li><a href="cli/index.html#k1lib.cli.filt.instanceOf">instanceOf() (in module k1lib.cli.filt)</a>
@@ -2383,10 +2540,10 @@
         <li><a href="eqn.html#k1lib.eqn.Eqn.join">(k1lib.eqn.Eqn method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="cli/index.html#k1lib.cli.structural.joinSt">joinSt (in module k1lib.cli.structural)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="cli/index.html#k1lib.cli.structural.joinStreams">joinStreams (class in k1lib.cli.structural)</a>
 </li>
       <li><a href="cli/index.html#k1lib.cli.structural.joinStreamsRandom">joinStreamsRandom (class in k1lib.cli.structural)</a>
@@ -2400,6 +2557,8 @@
       <li><a href="cli/index.html#k1lib.cli.kjs.JsFunc">JsFunc (class in k1lib.cli.kjs)</a>
 </li>
       <li><a href="serve.html#k1lib.serve.main.json">json (class in k1lib.serve.main)</a>
+</li>
+      <li><a href="zircon.html#k1lib.zircon.Locator.json">json() (k1lib.zircon.Locator method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -2645,8 +2804,6 @@
         <li><a href="cli/index.html#module-k1lib.cli.init">module</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     k1lib.cli.inp
 
@@ -2661,6 +2818,15 @@
         <li><a href="cli/index.html#module-k1lib.cli.kapi">module</a>
 </li>
       </ul></li>
+      <li>
+    k1lib.cli.kcv
+
+      <ul>
+        <li><a href="cli/index.html#module-k1lib.cli.kcv">module</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     k1lib.cli.kgv
 
@@ -2809,10 +2975,38 @@
 </li>
       </ul></li>
       <li>
+    k1lib.kast
+
+      <ul>
+        <li><a href="kast.html#module-k1lib.kast">module</a>
+</li>
+      </ul></li>
+      <li>
+    k1lib.kcom
+
+      <ul>
+        <li><a href="kcom.html#module-k1lib.kcom">module</a>
+</li>
+      </ul></li>
+      <li>
     k1lib.knn
 
       <ul>
         <li><a href="knn.html#module-k1lib.knn">module</a>
+</li>
+      </ul></li>
+      <li>
+    k1lib.kop
+
+      <ul>
+        <li><a href="kop.html#module-k1lib.kop">module</a>
+</li>
+      </ul></li>
+      <li>
+    k1lib.kws
+
+      <ul>
+        <li><a href="kws.html#module-k1lib.kws">module</a>
 </li>
       </ul></li>
       <li>
@@ -2871,6 +3065,13 @@
         <li><a href="viz.html#module-k1lib.viz">module</a>
 </li>
       </ul></li>
+      <li>
+    k1lib.zircon
+
+      <ul>
+        <li><a href="zircon.html#module-k1lib.zircon">module</a>
+</li>
+      </ul></li>
       <li><a href="monkey.html#matplotlib.pyplot.k3d">k3d() (matplotlib.pyplot method)</a>
 </li>
       <li><a href="monkey.html#k1lib._monkey.os.killPort">killPort() (k1lib._monkey.os method)</a>
@@ -2911,6 +3112,8 @@
 </li>
       <li><a href="p5.html#k1lib.p5.IR.length_L">length_L() (k1lib.p5.IR static method)</a>
 </li>
+      <li><a href="kop.html#k1lib.kop.Lens">Lens (class in k1lib.kop)</a>
+</li>
       <li><a href="base.html#k1lib.limitChars">limitChars() (in module k1lib)</a>
 </li>
       <li><a href="base.html#k1lib.limitLines">limitLines() (in module k1lib)</a>
@@ -2927,10 +3130,12 @@
 </li>
       <li><a href="schedule.html#k1lib.schedule.linear">linear() (in module k1lib.schedule)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="kop.html#k1lib.kop.LineSurface">LineSurface (class in k1lib.kop)</a>
+</li>
       <li><a href="serpent.html#k1lib.serpent.listCorrection">listCorrection() (in module k1lib.serpent)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="base.html#k1lib.Learner.load">load() (k1lib.Learner static method)</a>
 </li>
       <li><a href="serpent.html#k1lib.serpent.loads">loads() (in module k1lib.serpent)</a>
@@ -2940,6 +3145,20 @@
       <li><a href="serpent.html#k1lib.serpent.loads_monolith">loads_monolith() (in module k1lib.serpent)</a>
 </li>
       <li><a href="cli/index.html#k1lib.cli.modifier.applyCl.loadTest">loadTest() (k1lib.cli.modifier.applyCl static method)</a>
+</li>
+      <li><a href="zircon.html#k1lib.zircon.Browser.locate">locate() (k1lib.zircon.Browser method)</a>
+
+      <ul>
+        <li><a href="zircon.html#k1lib.zircon.Element.locate">(k1lib.zircon.Element method)</a>
+</li>
+      </ul></li>
+      <li><a href="zircon.html#k1lib.zircon.Browser.locate2">locate2() (k1lib.zircon.Browser method)</a>
+
+      <ul>
+        <li><a href="zircon.html#k1lib.zircon.Element.locate2">(k1lib.zircon.Element method)</a>
+</li>
+      </ul></li>
+      <li><a href="zircon.html#k1lib.zircon.Locator">Locator (class in k1lib.zircon)</a>
 </li>
       <li><a href="monkey.html#k1lib._monkey.torch.loglinspace">loglinspace() (k1lib._monkey.torch method)</a>
 </li>
@@ -2981,7 +3200,13 @@
 </li>
       <li><a href="selen.html#k1lib.selen.Page.mainContents">mainContents() (k1lib.selen.Page method)</a>
 </li>
+      <li><a href="cli/index.html#k1lib.cli.kcv.map3d">map3d() (in module k1lib.cli.kcv)</a>
+</li>
       <li><a href="monkey.html#mpl_toolkits.mplot3d.axes3d.Axes3D.march">march() (mpl_toolkits.mplot3d.axes3d.Axes3D method)</a>
+</li>
+      <li><a href="cli/index.html#k1lib.cli.kcv.Markers">Markers (class in k1lib.cli.kcv)</a>
+</li>
+      <li><a href="cli/index.html#k1lib.cli.kcv.markers">markers (class in k1lib.cli.kcv)</a>
 </li>
       <li><a href="cli/index.html#k1lib.cli.filt.mask">mask (class in k1lib.cli.filt)</a>
 </li>
@@ -3089,6 +3314,8 @@
 </li>
         <li><a href="cli/index.html#module-k1lib.cli.kapi">k1lib.cli.kapi</a>
 </li>
+        <li><a href="cli/index.html#module-k1lib.cli.kcv">k1lib.cli.kcv</a>
+</li>
         <li><a href="cli/index.html#module-k1lib.cli.kgv">k1lib.cli.kgv</a>
 </li>
         <li><a href="cli/index.html#module-k1lib.cli.kjs">k1lib.cli.kjs</a>
@@ -3131,7 +3358,15 @@
 </li>
         <li><a href="k1ui.html#module-k1lib.k1ui.main">k1lib.k1ui.main</a>
 </li>
+        <li><a href="kast.html#module-k1lib.kast">k1lib.kast</a>
+</li>
+        <li><a href="kcom.html#module-k1lib.kcom">k1lib.kcom</a>
+</li>
         <li><a href="knn.html#module-k1lib.knn">k1lib.knn</a>
+</li>
+        <li><a href="kop.html#module-k1lib.kop">k1lib.kop</a>
+</li>
+        <li><a href="kws.html#module-k1lib.kws">k1lib.kws</a>
 </li>
         <li><a href="mo.html#module-k1lib.mo">k1lib.mo</a>
 </li>
@@ -3148,6 +3383,8 @@
         <li><a href="serve.html#module-k1lib.serve.main">k1lib.serve.main</a>
 </li>
         <li><a href="viz.html#module-k1lib.viz">k1lib.viz</a>
+</li>
+        <li><a href="zircon.html#module-k1lib.zircon">k1lib.zircon</a>
 </li>
       </ul></li>
   </ul></td>
@@ -3193,6 +3430,8 @@
       <li><a href="mo.html#k1lib.mo.Atom.nBonds">nBonds() (k1lib.mo.Atom method)</a>
 </li>
       <li><a href="monkey.html#k1lib._monkey.os.netstat">netstat() (k1lib._monkey.os method)</a>
+</li>
+      <li><a href="zircon.html#k1lib.zircon.newBrowser">newBrowser() (in module k1lib.zircon)</a>
 </li>
       <li><a href="k1ui.html#k1lib.k1ui.main.TrainScreen.newEvent">newEvent() (k1lib.k1ui.main.TrainScreen method)</a>
 </li>
@@ -3256,10 +3495,10 @@
 </li>
       <li><a href="cli/index.html#k1lib.cli.init.oneToMany">oneToMany (class in k1lib.cli.init)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="callbacks/index.html#k1lib.callbacks.shorts.OnProgress">OnProgress (class in k1lib.callbacks.shorts)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="cli/index.html#k1lib.cli.modifier.op">op (class in k1lib.cli.modifier)</a>
 </li>
       <li><a href="cli/index.html#k1lib.cli.modifier.op.op_hint">op_hint() (k1lib.cli.modifier.op method)</a>
@@ -3267,6 +3506,10 @@
       <li><a href="base.html#k1lib.Learner.opt">opt (k1lib.Learner property)</a>
 </li>
       <li><a href="cli/index.html#k1lib.cli.typehint.tOpt.optCli">optCli (k1lib.cli.typehint.tOpt property)</a>
+</li>
+      <li><a href="kop.html#k1lib.kop.OpticElement">OpticElement (class in k1lib.kop)</a>
+</li>
+      <li><a href="kop.html#k1lib.kop.OpticSystem">OpticSystem (class in k1lib.kop)</a>
 </li>
       <li><a href="base.html#k1lib.optimize">optimize() (in module k1lib)</a>
 </li>
@@ -3282,7 +3525,15 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="selen.html#k1lib.selen.Page">Page (class in k1lib.selen)</a>
 </li>
+      <li><a href="kop.html#k1lib.kop.PolySurface.parabola">parabola() (k1lib.kop.PolySurface static method)</a>
+</li>
+      <li><a href="kop.html#k1lib.kop.PolySurface.parabolaFrom2Points">parabolaFrom2Points() (k1lib.kop.PolySurface static method)</a>
+</li>
       <li><a href="cli/index.html#k1lib.cli.modifier.parallel">parallel (in module k1lib.cli.modifier)</a>
+</li>
+      <li><a href="kop.html#k1lib.kop.Rays.parallel">parallel() (k1lib.kop.Rays static method)</a>
+</li>
+      <li><a href="kop.html#k1lib.kop.Rays.parallelToBounds">parallelToBounds() (k1lib.kop.Rays static method)</a>
 </li>
       <li><a href="callbacks/index.html#k1lib.callbacks.paramFinder.ParamFinder">ParamFinder (class in k1lib.callbacks.paramFinder)</a>
 </li>
@@ -3293,6 +3544,10 @@
       <li><a href="selen.html#k1lib.selen.Element.pArea">pArea (k1lib.selen.Element property)</a>
 </li>
       <li><a href="selen.html#k1lib.selen.Element.parent">parent (k1lib.selen.Element property)</a>
+</li>
+      <li><a href="zircon.html#k1lib.zircon.Element.parent">parent() (k1lib.zircon.Element method)</a>
+</li>
+      <li><a href="zircon.html#k1lib.zircon.Element.parentC">parentC() (k1lib.zircon.Element method)</a>
 </li>
       <li><a href="mo.html#k1lib.mo.parse">parse() (in module k1lib.mo)</a>
 
@@ -3336,6 +3591,10 @@
 </li>
       <li><a href="eqn.html#k1lib.eqn.Eqns.pick">pick() (k1lib.eqn.Eqns method)</a>
 </li>
+      <li><a href="zircon.html#k1lib.zircon.Browser.pickExt">pickExt() (k1lib.zircon.Browser method)</a>
+</li>
+      <li><a href="zircon.html#k1lib.zircon.Browser.pickExtFromGroup">pickExtFromGroup() (k1lib.zircon.Browser method)</a>
+</li>
       <li><a href="cli/index.html#k1lib.cli.inp.cat.pickle">pickle() (k1lib.cli.inp.cat method)</a>
 </li>
       <li><a href="monkey.html#mpl_toolkits.mplot3d.axes3d.Axes3D.plane">plane() (mpl_toolkits.mplot3d.axes3d.Axes3D method)</a>
@@ -3361,6 +3620,8 @@
 </li>
         <li><a href="base.html#k1lib.UValue.plot">(k1lib.UValue method)</a>
 </li>
+        <li><a href="zircon.html#k1lib.zircon.Locator.plot">(k1lib.zircon.Locator method)</a>
+</li>
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
@@ -3380,7 +3641,17 @@
 </li>
       <li><a href="p5.html#k1lib.p5.point_sym">point_sym (class in k1lib.p5)</a>
 </li>
+      <li><a href="kop.html#k1lib.kop.Rays.pointToBounds">pointToBounds() (k1lib.kop.Rays static method)</a>
+</li>
+      <li><a href="kop.html#k1lib.kop.PolySurface.poly2world">poly2world() (k1lib.kop.PolySurface method)</a>
+</li>
       <li><a href="base.html#k1lib.polyfit">polyfit() (in module k1lib)</a>
+</li>
+      <li><a href="kop.html#k1lib.kop.Polygon">Polygon (class in k1lib.kop)</a>
+</li>
+      <li><a href="kop.html#k1lib.kop.polySolver">polySolver() (in module k1lib.kop)</a>
+</li>
+      <li><a href="kop.html#k1lib.kop.PolySurface">PolySurface (class in k1lib.kop)</a>
 </li>
       <li><a href="cli/index.html#k1lib.cli.modifier.applyMp.pools">pools() (k1lib.cli.modifier.applyMp static method)</a>
 </li>
@@ -3403,6 +3674,8 @@
 </li>
         <li><a href="cli/index.html#k1lib.cli.output.pretty">(class in k1lib.cli.output)</a>
 </li>
+        <li><a href="kast.html#k1lib.kast.pretty">(class in k1lib.kast)</a>
+</li>
       </ul></li>
       <li><a href="callbacks/index.html#k1lib.callbacks.profiler.Profiler">Profiler (class in k1lib.callbacks.profiler)</a>
 </li>
@@ -3423,6 +3696,8 @@
       <li><a href="base.html#k1lib.pValue">pValue() (in module k1lib)</a>
 </li>
       <li><a href="fmt.html#k1lib.fmt.py">py() (in module k1lib.fmt)</a>
+</li>
+      <li><a href="kast.html#k1lib.kast.py2js">py2js() (in module k1lib.kast)</a>
 </li>
       <li><a href="serve.html#k1lib.serve.main.pyToWeb">pyToWeb() (in module k1lib.serve.main)</a>
 </li>
@@ -3460,6 +3735,18 @@
         <li><a href="cli/index.html#k1lib.cli.lsext.sqltable.queryMany">(k1lib.cli.lsext.sqltable method)</a>
 </li>
       </ul></li>
+      <li><a href="zircon.html#k1lib.zircon.Browser.querySelector">querySelector() (k1lib.zircon.Browser method)</a>
+
+      <ul>
+        <li><a href="zircon.html#k1lib.zircon.Element.querySelector">(k1lib.zircon.Element method)</a>
+</li>
+      </ul></li>
+      <li><a href="zircon.html#k1lib.zircon.Browser.querySelectorAll">querySelectorAll() (k1lib.zircon.Browser method)</a>
+
+      <ul>
+        <li><a href="zircon.html#k1lib.zircon.Element.querySelectorAll">(k1lib.zircon.Element method)</a>
+</li>
+      </ul></li>
   </ul></td>
 </tr></table>
 
@@ -3472,11 +3759,21 @@
 </li>
       <li><a href="cli/index.html#k1lib.cli.modifier.randomize">randomize (class in k1lib.cli.modifier)</a>
 </li>
+      <li><a href="kop.html#k1lib.kop.RandomPoints">RandomPoints (class in k1lib.kop)</a>
+</li>
       <li><a href="base.html#k1lib.Range">Range (class in k1lib)</a>
 </li>
       <li><a href="base.html#k1lib.Range.range_">range_ (k1lib.Range property)</a>
 </li>
       <li><a href="cli/index.html#k1lib.cli.utils.rateLimit">rateLimit (class in k1lib.cli.utils)</a>
+</li>
+      <li><a href="kop.html#k1lib.kop.Rays">Rays (class in k1lib.kop)</a>
+</li>
+      <li><a href="kop.html#k1lib.kop.RaysFocus">RaysFocus (class in k1lib.kop)</a>
+</li>
+      <li><a href="kop.html#k1lib.kop.RaysPath">RaysPath (class in k1lib.kop)</a>
+</li>
+      <li><a href="kcom.html#k1lib.kcom.Gsm.readSms">readSms() (k1lib.kcom.Gsm method)</a>
 </li>
       <li><a href="k1ui.html#k1lib.k1ui.main.record">record() (in module k1lib.k1ui.main)</a>
 
@@ -3491,6 +3788,8 @@
       <li><a href="cli/index.html#k1lib.cli.cif.records">records() (in module k1lib.cli.cif)</a>
 </li>
       <li><a href="p5.html#k1lib.p5.rect">rect() (in module k1lib.p5)</a>
+</li>
+      <li><a href="kws.html#k1lib.kws.WsClient.recv">recv() (k1lib.kws.WsClient method)</a>
 </li>
       <li><a href="fmt.html#k1lib.fmt.txt.red">red() (k1lib.fmt.txt static method)</a>
 </li>
@@ -3516,14 +3815,14 @@
 </li>
       <li><a href="k1ui.html#k1lib.k1ui.main.Recording.removeTime">removeTime() (k1lib.k1ui.main.Recording method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="k1ui.html#k1lib.k1ui.main.Recording.removeTracks">removeTracks() (k1lib.k1ui.main.Recording method)</a>
 </li>
       <li><a href="cli/index.html#k1lib.cli.structural.repeat">repeat (class in k1lib.cli.structural)</a>
 </li>
       <li><a href="cli/index.html#k1lib.cli.init.serial.repeat">repeat() (k1lib.cli.init.serial static method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="cli/index.html#k1lib.cli.structural.repeatF">repeatF() (in module k1lib.cli.structural)</a>
 </li>
       <li><a href="cli/index.html#k1lib.cli.structural.repeatFrom">repeatFrom (class in k1lib.cli.structural)</a>
@@ -3622,7 +3921,11 @@
       </ul></li>
       <li><a href="base.html#k1lib.scaleSvg">scaleSvg() (in module k1lib)</a>
 </li>
+      <li><a href="zircon.html#k1lib.zircon.Browser.scan">scan() (k1lib.zircon.Browser method)</a>
+</li>
       <li><a href="viz.html#k1lib.viz.Scroll">Scroll (class in k1lib.viz)</a>
+</li>
+      <li><a href="zircon.html#k1lib.zircon.Browser.scrollDown">scrollDown() (k1lib.zircon.Browser method)</a>
 </li>
       <li><a href="cli/index.html#k1lib.cli.ktree.search">search() (in module k1lib.cli.ktree)</a>
 </li>
@@ -3644,15 +3947,37 @@
       </ul></li>
       <li><a href="k1ui.html#k1lib.k1ui.main.selectArea">selectArea() (in module k1lib.k1ui.main)</a>
 </li>
+      <li><a href="kop.html#k1lib.kop.sellmeier">sellmeier() (in module k1lib.kop)</a>
+</li>
+      <li><a href="kcom.html#k1lib.kcom.Gsm.send">send() (k1lib.kcom.Gsm method)</a>
+
+      <ul>
+        <li><a href="kws.html#k1lib.kws.WsClient.send">(k1lib.kws.WsClient method)</a>
+</li>
+        <li><a href="zircon.html#k1lib.zircon.Browser.send">(k1lib.zircon.Browser method)</a>
+</li>
+      </ul></li>
+      <li><a href="kcom.html#k1lib.kcom.Gsm.sendRaw">sendRaw() (k1lib.kcom.Gsm method)</a>
+</li>
+      <li><a href="kcom.html#k1lib.kcom.Gsm.sendSms">sendSms() (k1lib.kcom.Gsm method)</a>
+</li>
       <li><a href="cli/index.html#k1lib.cli.init.serial">serial (class in k1lib.cli.init)</a>
 </li>
       <li><a href="serve.html#k1lib.serve.main.serialized">serialized (class in k1lib.serve.main)</a>
 </li>
       <li><a href="serve.html#k1lib.serve.main.serve">serve() (in module k1lib.serve.main)</a>
 </li>
+      <li><a href="kws.html#k1lib.kws.serverClose">serverClose() (in module k1lib.kws)</a>
+</li>
+      <li><a href="kws.html#k1lib.kws.serverHandle">serverHandle() (in module k1lib.kws)</a>
+</li>
+      <li><a href="kws.html#k1lib.kws.serverSend">serverSend() (in module k1lib.kws)</a>
+</li>
       <li><a href="base.html#k1lib.Settings">Settings (class in k1lib)</a>
 </li>
       <li><a href="base.html#k1lib.settings">settings (k1lib attribute)</a>
+</li>
+      <li><a href="zircon.html#k1lib.zircon.Element.setValue">setValue() (k1lib.zircon.Element method)</a>
 </li>
       <li><a href="cli/index.html#k1lib.cli.utils.shape">shape (in module k1lib.cli.utils)</a>
 </li>
@@ -3688,6 +4013,10 @@
 </li>
       <li><a href="schedule.html#k1lib.schedule.smooth">smooth() (in module k1lib.schedule)</a>
 </li>
+      <li><a href="zircon.html#k1lib.zircon.Element.snake">snake() (k1lib.zircon.Element method)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="cli/index.html#k1lib.cli.modifier.op.solidify">solidify() (k1lib.cli.modifier.op static method)</a>
 </li>
       <li><a href="cli/index.html#k1lib.cli.modifier.sort">sort (class in k1lib.cli.modifier)</a>
@@ -3696,8 +4025,6 @@
 </li>
       <li><a href="cli/index.html#k1lib.cli.kapi.speech">speech (class in k1lib.cli.kapi)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="eqn.html#k1lib.eqn.System.spellCheck">spellCheck() (k1lib.eqn.System method)</a>
 </li>
       <li><a href="cli/index.html#k1lib.cli.filt.filt.split">split() (k1lib.cli.filt.filt method)</a>
@@ -3784,8 +4111,20 @@
 </li>
       <li><a href="cli/index.html#k1lib.cli.kapi.summarize">summarize (class in k1lib.cli.kapi)</a>
 </li>
+      <li><a href="kop.html#k1lib.kop.Surface">Surface (class in k1lib.kop)</a>
+</li>
       <li><a href="monkey.html#mpl_toolkits.mplot3d.axes3d.Axes3D.surface">surface() (mpl_toolkits.mplot3d.axes3d.Axes3D method)</a>
 </li>
+      <li><a href="kop.html#k1lib.kop.Lens.surfaces">surfaces (k1lib.kop.Lens attribute)</a>
+
+      <ul>
+        <li><a href="kop.html#k1lib.kop.OpticElement.surfaces">(k1lib.kop.OpticElement attribute)</a>
+</li>
+        <li><a href="kop.html#k1lib.kop.OpticSystem.surfaces">(k1lib.kop.OpticSystem property)</a>
+</li>
+        <li><a href="kop.html#k1lib.kop.Polygon.surfaces">(k1lib.kop.Polygon attribute)</a>
+</li>
+      </ul></li>
       <li><a href="callbacks/index.html#k1lib.callbacks.callbacks.Callback.suspend">suspend() (k1lib.callbacks.callbacks.Callback method)</a>
 
       <ul>
@@ -3797,6 +4136,8 @@
       <li><a href="callbacks/index.html#k1lib.callbacks.callbacks.Callbacks.suspendClasses">suspendClasses() (k1lib.callbacks.callbacks.Callbacks method)</a>
 </li>
       <li><a href="callbacks/index.html#k1lib.callbacks.callbacks.Callbacks.suspendEval">suspendEval() (k1lib.callbacks.callbacks.Callbacks method)</a>
+</li>
+      <li><a href="kop.html#k1lib.kop.Drawable.svg">svg() (k1lib.kop.Drawable method)</a>
 </li>
       <li><a href="cli/index.html#k1lib.cli.utils.syncStepper">syncStepper (class in k1lib.cli.utils)</a>
 </li>
@@ -4108,6 +4449,8 @@
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="zircon.html#k1lib.zircon.Element.value">value() (k1lib.zircon.Element method)</a>
+</li>
       <li><a href="graphEqn.html#k1lib.graphEqn.Variable">Variable (class in k1lib.graphEqn)</a>
 </li>
   </ul></td>
@@ -4119,8 +4462,14 @@
       <li><a href="selen.html#k1lib.selen.Element.w">w (k1lib.selen.Element property)</a>
 </li>
       <li><a href="cli/index.html#k1lib.cli.inp.walk">walk (class in k1lib.cli.inp)</a>
+
+      <ul>
+        <li><a href="kast.html#k1lib.kast.walk">(class in k1lib.kast)</a>
 </li>
+      </ul></li>
       <li><a href="cli/index.html#k1lib.cli.ktree.walk">walk() (in module k1lib.cli.ktree)</a>
+</li>
+      <li><a href="kop.html#k1lib.kop.Wavelengths">Wavelengths (class in k1lib.kop)</a>
 </li>
       <li><a href="serve.html#k1lib.serve.main.webToPy">webToPy() (in module k1lib.serve.main)</a>
 </li>
@@ -4132,6 +4481,8 @@
 </li>
       <li><a href="cli/index.html#k1lib.cli.structural.window">window (class in k1lib.cli.structural)</a>
 </li>
+      <li><a href="zircon.html#k1lib.zircon.Browser.window">window() (k1lib.zircon.Browser method)</a>
+</li>
       <li><a href="callbacks/index.html#k1lib.callbacks.callbacks.Callbacks.withAdvanced">withAdvanced() (k1lib.callbacks.callbacks.Callbacks method)</a>
 </li>
       <li><a href="base.html#k1lib.Object.withAutoDeclare">withAutoDeclare() (k1lib.Object method)</a>
@@ -4142,10 +4493,10 @@
 </li>
       <li><a href="callbacks/index.html#k1lib.callbacks.callbacks.Callback.withCheckpoint">withCheckpoint() (k1lib.callbacks.callbacks.Callback method)</a>
 </li>
-      <li><a href="callbacks/index.html#k1lib.callbacks.hookModule.HookModule.withForwardHook">withForwardHook() (k1lib.callbacks.hookModule.HookModule method)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="callbacks/index.html#k1lib.callbacks.hookModule.HookModule.withForwardHook">withForwardHook() (k1lib.callbacks.hookModule.HookModule method)</a>
+</li>
       <li><a href="callbacks/index.html#k1lib.callbacks.hookModule.HookModule.withHook">withHook() (k1lib.callbacks.hookModule.HookModule method)</a>
 </li>
       <li><a href="callbacks/index.html#k1lib.callbacks.hookModule.HookModule.withMaxRecorder">withMaxRecorder() (k1lib.callbacks.hookModule.HookModule method)</a>
@@ -4162,6 +4513,8 @@
 </li>
       <li><a href="k1ui.html#k1lib.k1ui.main.WordTrack">WordTrack (class in k1lib.k1ui.main)</a>
 </li>
+      <li><a href="kop.html#k1lib.kop.PolySurface.world2poly">world2poly() (k1lib.kop.PolySurface method)</a>
+</li>
       <li><a href="cli/index.html#k1lib.cli.structural.transpose.wrap">wrap() (k1lib.cli.structural.transpose static method)</a>
 </li>
       <li><a href="cli/index.html#k1lib.cli.utils.wrapList">wrapList (class in k1lib.cli.utils)</a>
@@ -4171,6 +4524,8 @@
       <li><a href="base.html#k1lib.Wrapper">Wrapper (class in k1lib)</a>
 </li>
       <li><a href="base.html#k1lib.wraps">wraps() (in module k1lib)</a>
+</li>
+      <li><a href="kws.html#k1lib.kws.WsClient">WsClient (class in k1lib.kws)</a>
 </li>
       <li><a href="k1ui.html#k1lib.k1ui.main.WsSession">WsSession (class in k1lib.k1ui.main)</a>
 </li>

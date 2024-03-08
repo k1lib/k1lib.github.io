@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>k1lib.kast module &mdash; k1lib  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="k1lib.kcom module" href="kcom.html" />
+    <link rel="prev" title="k1lib.mo module" href="mo.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> k1lib
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="base.html">Base module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cli/index.html">k1lib.cli module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="callbacks/index.html">k1lib.callbacks module</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="k1a.html">k1lib._k1a module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="k1ui.html">k1lib.k1ui module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="eqn.html">k1lib.eqn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fmt.html">k1lib.fmt module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graphEqn.html">k1lib.graphEqn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imports.html">k1lib.imports module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mo.html">k1lib.mo module</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">k1lib.kast module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.kast.walk"><code class="docutils literal notranslate"><span class="pre">walk</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.kast.walk.__init__"><code class="docutils literal notranslate"><span class="pre">walk.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.kast.walk.__ror__"><code class="docutils literal notranslate"><span class="pre">walk.__ror__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.kast.pretty"><code class="docutils literal notranslate"><span class="pre">pretty</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.kast.pretty.__init__"><code class="docutils literal notranslate"><span class="pre">pretty.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.kast.pretty.__ror__"><code class="docutils literal notranslate"><span class="pre">pretty.__ror__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.kast.py2js"><code class="docutils literal notranslate"><span class="pre">py2js()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.kast.asyncGuard"><code class="docutils literal notranslate"><span class="pre">asyncGuard()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="kcom.html">k1lib.kcom module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="knn.html">k1lib.knn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kop.html">k1lib.kop module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kws.html">k1lib.kws module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="p5.html">k1lib.p5 module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="schedule.html">k1lib.schedule module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="selector.html">k1lib.selector module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="selen.html">k1lib.selen module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="serpent.html">k1lib.serpent module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="serve.html">k1lib.serve module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="viz.html">k1lib.viz module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zircon.html">k1lib.zircon module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="monkey.html">Monkey patched classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelogs.html">Changelogs</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">k1lib</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">k1lib.kast module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/kast.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-k1lib.kast">
+<span id="k1lib-kast-module"></span><h1>k1lib.kast module<a class="headerlink" href="#module-k1lib.kast" title="Permalink to this heading"></a></h1>
+<p>Small module with helper functions to analyze and manipulate Python abstract syntax tree</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="k1lib.kast.walk">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.kast.</span></span><span class="sig-name descname"><span class="pre">walk</span></span><a class="reference internal" href="_modules/k1lib/kast.html#walk"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kast.walk" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="cli/index.html#k1lib.cli.init.BaseCli" title="k1lib.cli.init.BaseCli"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseCli</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.kast.walk.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/kast.html#walk.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kast.walk.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Walks the AST tree, returning (elem, parent, parent accessor, depth) tuple.
+Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;abc.py&quot;</span> <span class="o">|</span> <span class="n">cat</span><span class="p">()</span> <span class="o">|</span> <span class="n">join</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span> <span class="o">|</span> <span class="n">kast</span><span class="o">.</span><span class="n">walk</span><span class="p">()</span> <span class="c1"># returns generator of tuples</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.kast.walk.__ror__">
+<span class="sig-name descname"><span class="pre">__ror__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/kast.html#walk.__ror__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kast.walk.__ror__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="k1lib.kast.pretty">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.kast.</span></span><span class="sig-name descname"><span class="pre">pretty</span></span><a class="reference internal" href="_modules/k1lib/kast.html#pretty"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kast.pretty" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="cli/index.html#k1lib.cli.init.BaseCli" title="k1lib.cli.init.BaseCli"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseCli</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.kast.pretty.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/kast.html#pretty.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kast.pretty.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Returns list[str] containing the prettified tree structure of the AST. Mainly
+for asthetic, not for parsing by other tools downstream. Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;x+3&quot;</span> <span class="o">|</span> <span class="n">kast</span><span class="o">.</span><span class="n">pretty</span><span class="p">()</span>
+<span class="s2">&quot;lambda x: x+3&quot;</span> <span class="o">|</span> <span class="n">kast</span><span class="o">.</span><span class="n">pretty</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.kast.pretty.__ror__">
+<span class="sig-name descname"><span class="pre">__ror__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">it</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/kast.html#pretty.__ror__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kast.pretty.__ror__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="k1lib.kast.py2js">
+<span class="sig-prename descclassname"><span class="pre">k1lib.kast.</span></span><span class="sig-name descname"><span class="pre">py2js</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/kast.html#py2js"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kast.py2js" title="Permalink to this definition"></a></dt>
+<dd><p>Converts simple python expression into js code.
+Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">kast</span><span class="o">.</span><span class="n">py2js</span><span class="p">(</span><span class="s2">&quot;x+3&quot;</span><span class="p">)</span>                 <span class="c1"># returns (&#39;(x+3)&#39;, {&#39;x&#39;})</span>
+<span class="n">kast</span><span class="o">.</span><span class="n">py2js</span><span class="p">(</span><span class="s2">&quot;lambda x: x+3&quot;</span><span class="p">)</span>       <span class="c1"># returns (&#39;(x+3)&#39;, {&#39;x&#39;})</span>
+<span class="n">kast</span><span class="o">.</span><span class="n">py2js</span><span class="p">(</span><span class="s2">&quot;lambda y: y+3&quot;</span><span class="p">)</span>       <span class="c1"># returns (&#39;(y+3)&#39;, {&#39;y&#39;})</span>
+<span class="n">kast</span><span class="o">.</span><span class="n">py2js</span><span class="p">(</span><span class="s2">&quot;lambda y: y+3*x&quot;</span><span class="p">)</span>     <span class="c1"># returns (&#39;(y+(3*x))&#39;, {&#39;x&#39;, &#39;y&#39;})</span>
+<span class="n">kast</span><span class="o">.</span><span class="n">py2js</span><span class="p">(</span><span class="s2">&quot;x&lt;3 and 45&gt;10&quot;</span><span class="p">)</span>       <span class="c1"># returns (&#39;((x&lt;3)&amp;&amp;(45&gt;10))&#39;, {&#39;x&#39;})</span>
+<span class="n">kast</span><span class="o">.</span><span class="n">py2js</span><span class="p">(</span><span class="s2">&quot;abs((x//5.1) * 2.3)&quot;</span><span class="p">)</span> <span class="c1"># returns (&#39;Math.abs((Math.floor(x/5.1)*2.3))&#39;, {&#39;x&#39;})</span>
+<span class="n">kast</span><span class="o">.</span><span class="n">py2js</span><span class="p">(</span><span class="s2">&quot;not x &gt; 3&quot;</span><span class="p">)</span>           <span class="c1"># returns (&#39;!(x&gt;3)&#39;, {&#39;x&#39;})</span>
+</pre></div>
+</div>
+<p>This will return a tuple of 2 objects. First is the JS code, and second is the
+set of unknown variables in the JS code. If the code is a lambda function,
+then it only considers what’s inside the function. More complex examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># returns (&#39;[...Array(10).keys()].map((x, i) =&gt; [x, i]).filter(([x, y]) =&gt; ((x%3)===1)).map(([x, y]) =&gt; (Math.pow(x, y)+z))&#39;, {&#39;z&#39;})</span>
+<span class="n">kast</span><span class="o">.</span><span class="n">py2js</span><span class="p">(</span><span class="s2">&quot;[x**y + z for x, y in enumerate(range(10)) if x % 3 == 1]&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Both JS and Python code when run should return [1, 256, 823543] for z = 0.</p>
+<p>A lot of builtin Python functions are transpiled automatically, including:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">abs</span><span class="p">,</span> <span class="nb">all</span><span class="p">,</span> <span class="nb">any</span><span class="p">,</span> <span class="nb">divmod</span><span class="p">,</span> <span class="nb">enumerate</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">getattr</span><span class="p">,</span> <span class="nb">hasattr</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">iter</span>
+<span class="nb">len</span><span class="p">,</span> <span class="nb">list</span><span class="p">,</span> <span class="nb">max</span><span class="p">,</span> <span class="nb">min</span><span class="p">,</span> <span class="nb">pow</span><span class="p">,</span> <span class="nb">print</span><span class="p">,</span> <span class="nb">range</span><span class="p">,</span> <span class="nb">reversed</span><span class="p">,</span> <span class="nb">round</span><span class="p">,</span> <span class="nb">set</span><span class="p">,</span> <span class="nb">setattr</span>
+<span class="nb">str</span><span class="p">,</span> <span class="nb">sum</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="nb">zip</span>
+</pre></div>
+</div>
+<p>Other builtin operations don’t quite make sense though. But the neat thing
+is, any functions beyond these builtin functions are not transpiled, and
+instead just passes along to the JS code. This allows you to kinda mix and
+match code styles from both Python and JS. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># returns (&quot;(document.querySelector((&#39;#&#39; + someIdx + &#39;_tail&#39;)).style[&#39;color&#39;] = (((Math.round(Math.pow(x, 2))===Math.abs(-12))) ? (&#39;red&#39;) : (&#39;green&#39;)))&quot;, {&#39;someIdx&#39;, &#39;x&#39;})</span>
+<span class="n">kast</span><span class="o">.</span><span class="n">py2js</span><span class="p">(</span><span class="s2">&quot;setattr(document.querySelector(f&#39;#</span><span class="si">{someIdx}</span><span class="s2">_tail&#39;).style, &#39;color&#39;, &#39;red&#39; if round(x**2) == Math.abs(-12) else &#39;green&#39;)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>See how we’re both using the Python transpiled <code class="docutils literal notranslate"><span class="pre">**</span></code> (to <code class="docutils literal notranslate"><span class="pre">Math.pow(...)</span></code>),
+yet uses <code class="docutils literal notranslate"><span class="pre">Math.abs(...)</span></code> directly, which is not defined in Python, but is
+defined in JS, without any trouble. Also notice that <code class="docutils literal notranslate"><span class="pre">document.querySelector</span></code>
+and f-strings work too. So in short, overall syntax is Python’s, but you can
+call random JS functions!</p>
+<p>This can do lots of transformations, but don’t expect it to be airtight. I’ve
+done all I can to make the thing airtight, but I’m sure you can come up with
+some complex scenario where it would fail. This is meant to be applied on
+short pieces of code only.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="k1lib.kast.asyncGuard">
+<span class="sig-prename descclassname"><span class="pre">k1lib.kast.</span></span><span class="sig-name descname"><span class="pre">asyncGuard</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data:</span> <span class="pre">(header</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fIdx))</span> <span class="pre">-&gt;</span> <span class="pre">(header</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fIdx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">async?</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/kast.html#asyncGuard"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kast.asyncGuard" title="Permalink to this definition"></a></dt>
+<dd><p>Converts ._jsF() function signatures from (header, fIdx) into (header, fIdx, is fIdx async?).
+Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># returns tuple (header, fIdx, async?)</span>
+<span class="n">kast</span><span class="o">.</span><span class="n">asyncGuard</span><span class="p">(</span><span class="n">apply</span><span class="p">(</span><span class="s2">&quot;x**2&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">_jsF</span><span class="p">(</span><span class="kc">None</span><span class="p">))</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="mo.html" class="btn btn-neutral float-left" title="k1lib.mo module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="kcom.html" class="btn btn-neutral float-right" title="k1lib.kcom module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Quang Ho.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

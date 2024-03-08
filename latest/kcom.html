@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>k1lib.kcom module &mdash; k1lib  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="k1lib.knn module" href="knn.html" />
+    <link rel="prev" title="k1lib.kast module" href="kast.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> k1lib
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="base.html">Base module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cli/index.html">k1lib.cli module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="callbacks/index.html">k1lib.callbacks module</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="k1a.html">k1lib._k1a module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="k1ui.html">k1lib.k1ui module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="eqn.html">k1lib.eqn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fmt.html">k1lib.fmt module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graphEqn.html">k1lib.graphEqn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imports.html">k1lib.imports module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mo.html">k1lib.mo module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kast.html">k1lib.kast module</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">k1lib.kcom module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.kcom.Gsm"><code class="docutils literal notranslate"><span class="pre">Gsm</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.kcom.Gsm.__init__"><code class="docutils literal notranslate"><span class="pre">Gsm.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.kcom.Gsm.sendRaw"><code class="docutils literal notranslate"><span class="pre">Gsm.sendRaw()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.kcom.Gsm.send"><code class="docutils literal notranslate"><span class="pre">Gsm.send()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.kcom.Gsm.sendSms"><code class="docutils literal notranslate"><span class="pre">Gsm.sendSms()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.kcom.Gsm.readSms"><code class="docutils literal notranslate"><span class="pre">Gsm.readSms()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.kcom.Gsm.close"><code class="docutils literal notranslate"><span class="pre">Gsm.close()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.kcom.Host"><code class="docutils literal notranslate"><span class="pre">Host</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.kcom.Host.__init__"><code class="docutils literal notranslate"><span class="pre">Host.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.kcom.Host.execPy"><code class="docutils literal notranslate"><span class="pre">Host.execPy()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.kcom.Host.execSh"><code class="docutils literal notranslate"><span class="pre">Host.execSh()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="knn.html">k1lib.knn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kop.html">k1lib.kop module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kws.html">k1lib.kws module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="p5.html">k1lib.p5 module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="schedule.html">k1lib.schedule module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="selector.html">k1lib.selector module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="selen.html">k1lib.selen module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="serpent.html">k1lib.serpent module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="serve.html">k1lib.serve module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="viz.html">k1lib.viz module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zircon.html">k1lib.zircon module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="monkey.html">Monkey patched classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelogs.html">Changelogs</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">k1lib</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">k1lib.kcom module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/kcom.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-k1lib.kcom">
+<span id="k1lib-kcom-module"></span><h1>k1lib.kcom module<a class="headerlink" href="#module-k1lib.kcom" title="Permalink to this heading"></a></h1>
+<p>This module is for communication with hardware. This is exposed automatically with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">k1lib.imports</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">kcom</span><span class="o">.</span><span class="n">Gsm</span> <span class="c1"># exposed</span>
+</pre></div>
+</div>
+<dl class="py class">
+<dt class="sig sig-object py" id="k1lib.kcom.Gsm">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.kcom.</span></span><span class="sig-name descname"><span class="pre">Gsm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'/dev/ttyUSB0'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/kcom.html#Gsm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kcom.Gsm" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.kcom.Gsm.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'/dev/ttyUSB0'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/kcom.html#Gsm.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kcom.Gsm.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Communicates with a GSM module using AT codes via a serial device.
+Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="n">kcom</span><span class="o">.</span><span class="n">Gsm</span><span class="p">(</span><span class="s2">&quot;/dev/ttyUSB0&quot;</span><span class="p">)</span>
+<span class="n">g</span> <span class="c1"># display in cell, will show basic info</span>
+
+<span class="n">g</span><span class="o">.</span><span class="n">sendSms</span><span class="p">(</span><span class="s2">&quot;+1215123456&quot;</span><span class="p">,</span> <span class="s2">&quot;some message&quot;</span><span class="p">)</span>
+<span class="n">s</span><span class="o">.</span><span class="n">readSms</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.kcom.Gsm.sendRaw">
+<span class="sig-name descname"><span class="pre">sendRaw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.12)"><span class="pre">bytes</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/kcom.html#Gsm.sendRaw"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kcom.Gsm.sendRaw" title="Permalink to this definition"></a></dt>
+<dd><p>Sends data to the module and read response until ‘OKn’ is received</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.kcom.Gsm.send">
+<span class="sig-name descname"><span class="pre">send</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.12)"><span class="pre">bytes</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/kcom.html#Gsm.send"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kcom.Gsm.send" title="Permalink to this definition"></a></dt>
+<dd><p>Similar to <a class="reference internal" href="#k1lib.kcom.Gsm.sendRaw" title="k1lib.kcom.Gsm.sendRaw"><code class="xref py py-meth docutils literal notranslate"><span class="pre">sendRaw()</span></code></a>, but this time clean up control signals like ‘OKn’</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.kcom.Gsm.sendSms">
+<span class="sig-name descname"><span class="pre">sendSms</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">number</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.12)"><span class="pre">bytes</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/kcom.html#Gsm.sendSms"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kcom.Gsm.sendSms" title="Permalink to this definition"></a></dt>
+<dd><p>Sends text message to some number.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.kcom.Gsm.readSms">
+<span class="sig-name descname"><span class="pre">readSms</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/kcom.html#Gsm.readSms"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kcom.Gsm.readSms" title="Permalink to this definition"></a></dt>
+<dd><p>Reads text messages.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>mode</strong> – 0 for all, 1 for unread, 2 for read</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.kcom.Gsm.close">
+<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/kcom.html#Gsm.close"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kcom.Gsm.close" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="k1lib.kcom.Host">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.kcom.</span></span><span class="sig-name descname"><span class="pre">Host</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">host</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">container</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stripPredicates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/kcom.html#Host"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kcom.Host" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.kcom.Host.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">host</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">container</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stripPredicates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/kcom.html#Host.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kcom.Host.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Represents another computer that you might want to execute commands in.
+Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">h</span> <span class="o">=</span> <span class="n">kcom</span><span class="o">.</span><span class="n">Host</span><span class="p">(</span><span class="s2">&quot;username&quot;</span><span class="p">,</span> <span class="s2">&quot;hostname&quot;</span><span class="p">)</span>
+<span class="n">h</span><span class="o">.</span><span class="n">execPy</span><span class="p">(</span><span class="s2">&quot;print(&#39;something&#39;)&quot;</span><span class="p">,</span> <span class="n">fns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;~/.bashrc&quot;</span><span class="p">],</span> <span class="n">rmFn</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="c1"># returns [List[bytes], List[bytes], List[bytes]]</span>
+</pre></div>
+</div>
+<p>There are several available modes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">h</span> <span class="o">=</span> <span class="n">kcom</span><span class="o">.</span><span class="n">Host</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="s2">&quot;username&quot;</span><span class="p">,</span> <span class="n">host</span><span class="o">=</span><span class="s2">&quot;hostname&quot;</span><span class="p">)</span>     <span class="c1"># Mode 1: executes in ssh host</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">kcom</span><span class="o">.</span><span class="n">Host</span><span class="p">(</span><span class="n">container</span><span class="o">=</span><span class="s2">&quot;nginx-1&quot;</span><span class="p">)</span>                  <span class="c1"># Mode 2: executes in container on localhost</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">kcom</span><span class="o">.</span><span class="n">Host</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s2">&quot;hostname&quot;</span><span class="p">,</span> <span class="n">container</span><span class="o">=</span><span class="s2">&quot;nginx-1&quot;</span><span class="p">)</span> <span class="c1"># Mode 3: executes in container on remote ssh host</span>
+</pre></div>
+</div>
+<p>Mode 1 and 2 are relatively straightforward and airtight. Mode 3 is a little buggy
+in stdout and stderr. Once you have constructed them, you can execute random
+python/bash scripts in the remote host:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">h</span><span class="o">.</span><span class="n">execPy</span><span class="p">(</span><span class="s2">&quot;import os; print(os.environ)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Main value of this class is that it can execute random scripts in a convenient
+manner. I’ve found myself needing this way more often than expected.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>user</strong> – username of the ssh host</p></li>
+<li><p><strong>host</strong> – host name of the ssh host</p></li>
+<li><p><strong>container</strong> – container name. If specified will run commands inside that container</p></li>
+<li><p><strong>verbose</strong> – if True, will print out detailed commands that’re executed and their results</p></li>
+<li><p><strong>password</strong> – if True, will try to login to ssh host using a password instead of the default key file</p></li>
+<li><p><strong>stripPredicates</strong> – list of predicates that if match, will delete those first few lines in stdout
+and stderr. This is to strip away annoying boilerplate messages that I couldn’t quite get rid of myself</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.kcom.Host.execPy">
+<span class="sig-name descname"><span class="pre">execPy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">c</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">fns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rmFn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pyExec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/kcom.html#Host.execPy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kcom.Host.execPy" title="Permalink to this definition"></a></dt>
+<dd><p>Executes some python code.
+Examples:</p>
+<p>If .fns is not specified, then will return (List[bytes], List[bytes]) containing (stdout, stderr).</p>
+<p>If .fns is specified, then will return (List[bytes], List[bytes], List[bytes], …) containing
+(stdout, stderr, fn1, fn2, …). Each file is a List[bytes], with endline byte at the end of each bytes chunk</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>c</strong> – Python commands</p></li>
+<li><p><strong>fns</strong> – file names to retrieve. Don’t use paths that can expand, like “~/.bashrc” or
+“$HOME/.bashrc”, they won’t be expanded</p></li>
+<li><p><strong>rmFn</strong> – if True, removes the files after running and exiting, else don’t remove the
+files. Some scripts auto generates files that should be removed, but others don’t</p></li>
+<li><p><strong>pyExec</strong> – py executable used to run the generated python file, like “/usr/bin/python”. If
+not specified will try to auto detect what python binaries are available</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.kcom.Host.execSh">
+<span class="sig-name descname"><span class="pre">execSh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">c</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">fns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rmFn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shExec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'/bin/bash'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/kcom.html#Host.execSh"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.kcom.Host.execSh" title="Permalink to this definition"></a></dt>
+<dd><p>Executes some bash code. Pretty much the same
+as <a class="reference internal" href="#k1lib.kcom.Host.execPy" title="k1lib.kcom.Host.execPy"><code class="xref py py-meth docutils literal notranslate"><span class="pre">execPy()</span></code></a>, but for bash. See that method’s docs.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="kast.html" class="btn btn-neutral float-left" title="k1lib.kast module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="knn.html" class="btn btn-neutral float-right" title="k1lib.knn module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Quang Ho.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

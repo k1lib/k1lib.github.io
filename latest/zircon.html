@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>k1lib.zircon module &mdash; k1lib  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Monkey patched classes" href="monkey.html" />
+    <link rel="prev" title="k1lib.viz module" href="viz.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> k1lib
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="base.html">Base module</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cli/index.html">k1lib.cli module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="callbacks/index.html">k1lib.callbacks module</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="k1a.html">k1lib._k1a module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="k1ui.html">k1lib.k1ui module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="eqn.html">k1lib.eqn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fmt.html">k1lib.fmt module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graphEqn.html">k1lib.graphEqn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imports.html">k1lib.imports module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mo.html">k1lib.mo module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kast.html">k1lib.kast module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kcom.html">k1lib.kcom module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="knn.html">k1lib.knn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kop.html">k1lib.kop module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kws.html">k1lib.kws module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="p5.html">k1lib.p5 module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="schedule.html">k1lib.schedule module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="selector.html">k1lib.selector module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="selen.html">k1lib.selen module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="serpent.html">k1lib.serpent module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="serve.html">k1lib.serve module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="viz.html">k1lib.viz module</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">k1lib.zircon module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.zircon.newBrowser"><code class="docutils literal notranslate"><span class="pre">newBrowser()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.zircon.Browser"><code class="docutils literal notranslate"><span class="pre">Browser</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.zircon.Browser.close"><code class="docutils literal notranslate"><span class="pre">Browser.close()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.zircon.Browser.send"><code class="docutils literal notranslate"><span class="pre">Browser.send()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.zircon.Browser.scan"><code class="docutils literal notranslate"><span class="pre">Browser.scan()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.zircon.Browser.pickExt"><code class="docutils literal notranslate"><span class="pre">Browser.pickExt()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.zircon.Browser.pickExtFromGroup"><code class="docutils literal notranslate"><span class="pre">Browser.pickExtFromGroup()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.zircon.Browser.goto"><code class="docutils literal notranslate"><span class="pre">Browser.goto()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.zircon.Browser.querySelector"><code class="docutils literal notranslate"><span class="pre">Browser.querySelector()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.zircon.Browser.querySelectorAll"><code class="docutils literal notranslate"><span class="pre">Browser.querySelectorAll()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.zircon.Browser.window"><code class="docutils literal notranslate"><span class="pre">Browser.window()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.zircon.Browser.document"><code class="docutils literal notranslate"><span class="pre">Browser.document()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.zircon.Browser.locate"><code class="docutils literal notranslate"><span class="pre">Browser.locate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.zircon.Browser.locate2"><code class="docutils literal notranslate"><span class="pre">Browser.locate2()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.zircon.Browser.scrollDown"><code class="docutils literal notranslate"><span class="pre">Browser.scrollDown()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.zircon.Element"><code class="docutils literal notranslate"><span class="pre">Element</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.zircon.Element.__init__"><code class="docutils literal notranslate"><span class="pre">Element.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.zircon.Element.value"><code class="docutils literal notranslate"><span class="pre">Element.value()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.zircon.Element.setValue"><code class="docutils literal notranslate"><span class="pre">Element.setValue()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.zircon.Element.func"><code class="docutils literal notranslate"><span class="pre">Element.func()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.zircon.Element.inputText"><code class="docutils literal notranslate"><span class="pre">Element.inputText()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.zircon.Element.parent"><code class="docutils literal notranslate"><span class="pre">Element.parent()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.zircon.Element.parentC"><code class="docutils literal notranslate"><span class="pre">Element.parentC()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.zircon.Element.children"><code class="docutils literal notranslate"><span class="pre">Element.children()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.zircon.Element.childrenC"><code class="docutils literal notranslate"><span class="pre">Element.childrenC()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.zircon.Element.querySelector"><code class="docutils literal notranslate"><span class="pre">Element.querySelector()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.zircon.Element.querySelectorAll"><code class="docutils literal notranslate"><span class="pre">Element.querySelectorAll()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.zircon.Element.snake"><code class="docutils literal notranslate"><span class="pre">Element.snake()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.zircon.Element.locate"><code class="docutils literal notranslate"><span class="pre">Element.locate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.zircon.Element.locate2"><code class="docutils literal notranslate"><span class="pre">Element.locate2()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.zircon.Locator"><code class="docutils literal notranslate"><span class="pre">Locator</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.zircon.Locator.addChild"><code class="docutils literal notranslate"><span class="pre">Locator.addChild()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.zircon.Locator.json"><code class="docutils literal notranslate"><span class="pre">Locator.json()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.zircon.Locator.fromJson"><code class="docutils literal notranslate"><span class="pre">Locator.fromJson()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.zircon.Locator.builder"><code class="docutils literal notranslate"><span class="pre">Locator.builder()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.zircon.Locator.plot"><code class="docutils literal notranslate"><span class="pre">Locator.plot()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.zircon.BrowserCancel"><code class="docutils literal notranslate"><span class="pre">BrowserCancel</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#k1lib.zircon.BrowserGroup"><code class="docutils literal notranslate"><span class="pre">BrowserGroup</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.zircon.BrowserGroup.__init__"><code class="docutils literal notranslate"><span class="pre">BrowserGroup.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#k1lib.zircon.BrowserGroup.execute"><code class="docutils literal notranslate"><span class="pre">BrowserGroup.execute()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="monkey.html">Monkey patched classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelogs.html">Changelogs</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">k1lib</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">k1lib.zircon module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/zircon.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-k1lib.zircon">
+<span id="k1lib-zircon-module"></span><h1>k1lib.zircon module<a class="headerlink" href="#module-k1lib.zircon" title="Permalink to this heading"></a></h1>
+<p>Browser automation tool. This is kinda like selenium, but way more awesome.</p>
+<p>How it works is that I’ve developed a chrome extension that can communicate with
+one of my servers, and functions here also communicate with it. After installing
+the extension, you can open up a bunch of chrome windows, then using this module,
+you can “attach” to a specific window. Then using methods provided here, you can
+execute any random pieces of code as it you’re in chrome’s console.</p>
+<p>This works already for some of my projects, but it takes too much time to document
+everything, and I have so many other things to do, so if you’re interested, ping
+me at <a class="reference external" href="mailto:157239q&#37;&#52;&#48;gmail&#46;com">157239q<span>&#64;</span>gmail<span>&#46;</span>com</a> and I’ll finalize this module. Some examples of what this
+can do:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://mlexps.com/other/43-touhou/">https://mlexps.com/other/43-touhou/</a></p></li>
+<li><p><a class="reference external" href="https://mlexps.com/other/44-gensokyo-days/">https://mlexps.com/other/44-gensokyo-days/</a></p></li>
+</ul>
+<p>(yes, I’m still addicted to touhou and it’s slowly destroying my life)</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="k1lib.zircon.newBrowser">
+<span class="sig-prename descclassname"><span class="pre">k1lib.zircon.</span></span><span class="sig-name descname"><span class="pre">newBrowser</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#k1lib.zircon.Browser" title="k1lib.zircon.Browser"><span class="pre">Browser</span></a></span></span><a class="reference internal" href="_modules/k1lib/zircon.html#newBrowser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.zircon.newBrowser" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a new browser</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="k1lib.zircon.Browser">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.zircon.</span></span><span class="sig-name descname"><span class="pre">Browser</span></span><a class="reference internal" href="_modules/k1lib/zircon.html#Browser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.zircon.Browser" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.zircon.Browser.close">
+<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/zircon.html#Browser.close"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.zircon.Browser.close" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.zircon.Browser.send">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">send</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">res</span></span></span><a class="reference internal" href="_modules/k1lib/zircon.html#Browser.send"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.zircon.Browser.send" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.zircon.Browser.scan">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">scan</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">groupPath</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/zircon.html#Browser.scan"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.zircon.Browser.scan" title="Permalink to this definition"></a></dt>
+<dd><p>Scans for all attached Extensions in the system.
+Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="n">zircon</span><span class="o">.</span><span class="n">newBrowser</span><span class="p">()</span>
+<span class="k">await</span> <span class="n">b</span><span class="o">.</span><span class="n">scan</span><span class="p">()</span>                    <span class="c1"># grab metadata about every Extension that&#39;s ready</span>
+<span class="k">await</span> <span class="n">b</span><span class="o">.</span><span class="n">scan</span><span class="p">(</span><span class="s2">&quot;touhou&quot;</span><span class="p">)</span>            <span class="c1"># grab metadata for Extensions in `touhou` group only</span>
+<span class="k">await</span> <span class="n">b</span><span class="o">.</span><span class="n">scan</span><span class="p">([</span><span class="s2">&quot;touhou&quot;</span><span class="p">,</span> <span class="s2">&quot;mint2&quot;</span><span class="p">])</span> <span class="c1"># grab metadata for Extensions in `touhou` or `mint2` groups</span>
+</pre></div>
+</div>
+<p>The result might look something like this:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{&#39;_ext_254175259_1701581542_5&#39;: {&#39;basics&#39;: {&#39;title&#39;: &#39;&#39;,
+   &#39;url&#39;: &#39;https://zircon.mlexps.com/&#39;},
+  &#39;tabInfo&#39;: {&#39;tabId&#39;: 872280718,
+   &#39;data&#39;: {&#39;extId&#39;: &#39;_ext_254175259_1701581542_5&#39;, &#39;groupPath&#39;: &#39;touhou&#39;}},
+  &#39;lastUpdated&#39;: 1701584077.7896328,
+  &#39;lastPing&#39;: 1701587171.1521692},
+ &#39;_ext_254175259_1701581542_11&#39;: {&#39;basics&#39;: {&#39;title&#39;: &#39;&#39;,
+   &#39;url&#39;: &#39;https://zircon.mlexps.com/&#39;},
+  &#39;tabInfo&#39;: {&#39;tabId&#39;: 872280722,
+   &#39;data&#39;: {&#39;extId&#39;: &#39;_ext_254175259_1701581542_11&#39;, &#39;groupPath&#39;: &#39;touhou&#39;}},
+  &#39;lastUpdated&#39;: 1701583562.7153254,
+  &#39;lastPing&#39;: 1701587171.2784846}}
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>groupPath</strong> – (optional) If specified, only returns metadata for Extensions that
+have the specified group</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.zircon.Browser.pickExt">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pickExt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extId</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/zircon.html#Browser.pickExt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.zircon.Browser.pickExt" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.zircon.Browser.pickExtFromGroup">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pickExtFromGroup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">groupName</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/zircon.html#Browser.pickExtFromGroup"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.zircon.Browser.pickExtFromGroup" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.zircon.Browser.goto">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">goto</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">15</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/zircon.html#Browser.goto"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.zircon.Browser.goto" title="Permalink to this definition"></a></dt>
+<dd><p>Typical times for this to be waiting for page change confirmation:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://en.touhouwiki.net/wiki/Touhou_Wiki">https://en.touhouwiki.net/wiki/Touhou_Wiki</a>: 4.42s</p></li>
+<li><p><a class="reference external" href="https://www.google.com">https://www.google.com</a>: 5s</p></li>
+<li><p><a class="reference external" href="https://mlexps.com">https://mlexps.com</a>: 5.2s</p></li>
+<li><p><a class="reference external" href="https://www.amazon.com">https://www.amazon.com</a>: 6.2s</p></li>
+<li><p><a class="reference external" href="https://www.youtube.com">https://www.youtube.com</a>: 9.4s</p></li>
+</ul>
+<p>Quite a distribution. So I figure 15s would be a reasonable middle ground</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>url</strong> – url to navigate the page to</p></li>
+<li><p><strong>timeout</strong> – will hang until received confirmation that the extension has been
+loaded on the new page. If has not received anything after this many seconds,
+will return regardless</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.zircon.Browser.querySelector">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">querySelector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">selector</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#k1lib.zircon.Element" title="k1lib.zircon.Element"><span class="pre">Element</span></a></span></span><a class="reference internal" href="_modules/k1lib/zircon.html#Browser.querySelector"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.zircon.Browser.querySelector" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.zircon.Browser.querySelectorAll">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">querySelectorAll</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">selector</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#k1lib.zircon.Element" title="k1lib.zircon.Element"><span class="pre">k1lib.zircon.Element</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/k1lib/zircon.html#Browser.querySelectorAll"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.zircon.Browser.querySelectorAll" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.zircon.Browser.window">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">window</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#k1lib.zircon.Element" title="k1lib.zircon.Element"><span class="pre">Element</span></a></span></span><a class="reference internal" href="_modules/k1lib/zircon.html#Browser.window"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.zircon.Browser.window" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.zircon.Browser.document">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">document</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#k1lib.zircon.Element" title="k1lib.zircon.Element"><span class="pre">Element</span></a></span></span><a class="reference internal" href="_modules/k1lib/zircon.html#Browser.document"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.zircon.Browser.document" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.zircon.Browser.locate">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">locate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#k1lib.zircon.Element" title="k1lib.zircon.Element"><span class="pre">k1lib.zircon.Element</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/k1lib/zircon.html#Browser.locate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.zircon.Browser.locate" title="Permalink to this definition"></a></dt>
+<dd><p>Locates text somewhere and returns plausible Elements</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.zircon.Browser.locate2">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">locate2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">locator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#k1lib.zircon.Locator" title="k1lib.zircon.Locator"><span class="pre">Locator</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/zircon.html#Browser.locate2"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.zircon.Browser.locate2" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.zircon.Browser.scrollDown">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">scrollDown</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">120</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sleep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/zircon.html#Browser.scrollDown"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.zircon.Browser.scrollDown" title="Permalink to this definition"></a></dt>
+<dd><p>Scrolls &lt;step&gt; pixels down continuously every &lt;sleep&gt; seconds, until can’t, or time exceeds &lt;timeout&gt;</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="k1lib.zircon.Element">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.zircon.</span></span><span class="sig-name descname"><span class="pre">Element</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">browser</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selector</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><span class="pre">dict</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">extras</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.12)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><span class="pre">dict</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/zircon.html#Element"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.zircon.Element" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.zircon.Element.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">browser</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selector</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><span class="pre">dict</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">extras</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.12)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><span class="pre">dict</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/zircon.html#Element.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.zircon.Element.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Represents a specific element in the current browser</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>extras</strong> – extra metadata, for nice displaying</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.zircon.Element.value">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chain</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/zircon.html#Element.value"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.zircon.Element.value" title="Permalink to this definition"></a></dt>
+<dd><p>Gets the value of some property of the current element.
+Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">browser</span> <span class="o">=</span> <span class="o">...</span>
+<span class="c1"># returns value of `document.querySelector(&quot;body&quot;).innerHTML`</span>
+<span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">querySelector</span><span class="p">(</span><span class="s2">&quot;body&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="s2">&quot;.innerHTML&quot;</span><span class="p">)</span>
+<span class="c1"># returns value of `document.querySelector(&quot;h1&quot;).style.color`</span>
+<span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">querySelector</span><span class="p">(</span><span class="s2">&quot;h1&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="s2">&quot;.style.color&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>chain</strong> – resolving chain to the property</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.zircon.Element.setValue">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">setValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chain</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/zircon.html#Element.setValue"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.zircon.Element.setValue" title="Permalink to this definition"></a></dt>
+<dd><p>Sets value of element’s properties</p>
+<p>See also: <a class="reference internal" href="#k1lib.zircon.Element.value" title="k1lib.zircon.Element.value"><code class="xref py py-meth docutils literal notranslate"><span class="pre">value()</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>chain</strong> – resolving chain to the property</p></li>
+<li><p><strong>value</strong> – anything json-dumpable</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.zircon.Element.func">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">func</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chain</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/zircon.html#Element.func"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.zircon.Element.func" title="Permalink to this definition"></a></dt>
+<dd><p>Executes any function on this element.
+Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">browser</span> <span class="o">=</span> <span class="o">...</span>
+<span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">querySelector</span><span class="p">(</span><span class="s2">&quot;#someBtn&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">func</span><span class="p">(</span><span class="s2">&quot;.click&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>chain</strong> – resolving chain to the function</p></li>
+<li><p><strong>args</strong> – tuple of json-dumpable objects</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.zircon.Element.inputText">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">inputText</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/zircon.html#Element.inputText"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.zircon.Element.inputText" title="Permalink to this definition"></a></dt>
+<dd><p>Input text to this element (assuming input box/text area). Also
+dispatches ‘input’ event to trigger many systems</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.zircon.Element.parent">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">parent</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/zircon.html#Element.parent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.zircon.Element.parent" title="Permalink to this definition"></a></dt>
+<dd><p>Grabs the direct parent of this element. Short, sweet and simple</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.zircon.Element.parentC">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">parentC</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">minWidth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minHeight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deltaX</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deltaY</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxTries</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">30</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">takeAfter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/zircon.html#Element.parentC"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.zircon.Element.parentC" title="Permalink to this definition"></a></dt>
+<dd><p>Grabs a nested parent element of this element that meets the specified conditions.
+“parentC” can be thought of as “complex parent”. Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">await</span> <span class="n">e</span><span class="o">.</span><span class="n">parent</span><span class="p">()</span> <span class="c1"># most straightforwardly, gets the immediate parent</span>
+<span class="k">await</span> <span class="n">e</span><span class="o">.</span><span class="n">parentC</span><span class="p">(</span><span class="n">minWidth</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span> <span class="n">takeAfter</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The second line requires some explaining. Let’s say that there’re these elements: A -&gt; B -&gt; C -&gt; D -&gt; E
+Assume E is the current element. Then the second line will recursively grabs parent elements, check if
+it’s width is at least that width (in this case, say “B”), then returns the element B if takeAfter is True,
+else it returns element C.</p>
+<p>There’re more selectors:
+- minWidth: grab parent that’s at least this wide
+- minHeight: same with minWidth
+- deltaY: if positive, grab parent that has y’ &gt; y + deltaY (y is the current element’s y). If</p>
+<blockquote>
+<div><p>negative, grab parent that has y’ &lt; y + deltaY</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>deltaX: same with deltaY</p></li>
+</ul>
+<p>These together with <a class="reference internal" href="#k1lib.zircon.Element.childrenC" title="k1lib.zircon.Element.childrenC"><code class="xref py py-meth docutils literal notranslate"><span class="pre">childrenC()</span></code></a> should help you to navigate around locally.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>minWidth</strong> – if specified, finds smallest parent that is bigger than this</p></li>
+<li><p><strong>maxTries</strong> – the number of consecutive parents to try out if minWidth or minHeight is specified</p></li>
+<li><p><strong>takeAfter</strong> – if True, take the parent bigger than the constraints, else take the parent just shy of that</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.zircon.Element.children">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">children</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#k1lib.zircon.Element" title="k1lib.zircon.Element"><span class="pre">Element</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/k1lib/zircon.html#Element.children"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.zircon.Element.children" title="Permalink to this definition"></a></dt>
+<dd><p>Grabs all direct children of this element.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.zircon.Element.childrenC">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">childrenC</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">minWidth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minHeight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxWidth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">inf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxHeight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">inf</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#k1lib.zircon.Element" title="k1lib.zircon.Element"><span class="pre">Element</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/k1lib/zircon.html#Element.childrenC"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.zircon.Element.childrenC" title="Permalink to this definition"></a></dt>
+<dd><p>Recursively grabs all children, and returns all elements that’s within the specified bounds.
+Note that if A is the parent of B, and both meets the conditions, then only A is returned.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.zircon.Element.querySelector">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">querySelector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">selector</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#k1lib.zircon.Element" title="k1lib.zircon.Element"><span class="pre">Element</span></a></span></span><a class="reference internal" href="_modules/k1lib/zircon.html#Element.querySelector"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.zircon.Element.querySelector" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.zircon.Element.querySelectorAll">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">querySelectorAll</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">selector</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#k1lib.zircon.Element" title="k1lib.zircon.Element"><span class="pre">k1lib.zircon.Element</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/k1lib/zircon.html#Element.querySelectorAll"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.zircon.Element.querySelectorAll" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.zircon.Element.snake">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">snake</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></span><a class="reference internal" href="_modules/k1lib/zircon.html#Element.snake"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.zircon.Element.snake" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.zircon.Element.locate">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">locate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#k1lib.zircon.Element" title="k1lib.zircon.Element"><span class="pre">k1lib.zircon.Element</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/k1lib/zircon.html#Element.locate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.zircon.Element.locate" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.zircon.Element.locate2">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">locate2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">locator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#k1lib.zircon.Locator" title="k1lib.zircon.Locator"><span class="pre">Locator</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/zircon.html#Element.locate2"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.zircon.Element.locate2" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="k1lib.zircon.Locator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.zircon.</span></span><span class="sig-name descname"><span class="pre">Locator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">topleft</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">bottomright</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tag</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">klass</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nChildren</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/zircon.html#Locator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.zircon.Locator" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.zircon.Locator.addChild">
+<span class="sig-name descname"><span class="pre">addChild</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">child</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#k1lib.zircon.Locator" title="k1lib.zircon.Locator"><span class="pre">Locator</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/zircon.html#Locator.addChild"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.zircon.Locator.addChild" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.zircon.Locator.json">
+<span class="sig-name descname"><span class="pre">json</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/zircon.html#Locator.json"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.zircon.Locator.json" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.zircon.Locator.fromJson">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">fromJson</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/zircon.html#Locator.fromJson"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.zircon.Locator.fromJson" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.zircon.Locator.builder">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">builder</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/zircon.html#Locator.builder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.zircon.Locator.builder" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.zircon.Locator.plot">
+<span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/zircon.html#Locator.plot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.zircon.Locator.plot" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="k1lib.zircon.BrowserCancel">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.zircon.</span></span><span class="sig-name descname"><span class="pre">BrowserCancel</span></span><a class="reference internal" href="_modules/k1lib/zircon.html#BrowserCancel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.zircon.BrowserCancel" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#Exception" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="k1lib.zircon.BrowserGroup">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">k1lib.zircon.</span></span><span class="sig-name descname"><span class="pre">BrowserGroup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">groupPath</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">3</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/zircon.html#BrowserGroup"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.zircon.BrowserGroup" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.zircon.BrowserGroup.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">groupPath</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">3</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/zircon.html#BrowserGroup.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.zircon.BrowserGroup.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Constructs a browser group.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>groupPath</strong> – what group of browsers do you want to take control over?</p></li>
+<li><p><strong>limit</strong> – only take over this many browsers</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="k1lib.zircon.BrowserGroup.execute">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">execute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">aFn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/k1lib/zircon.html#BrowserGroup.execute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#k1lib.zircon.BrowserGroup.execute" title="Permalink to this definition"></a></dt>
+<dd><p>Executes the specified async function repeatedly whenever a browser frees up.
+Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">linksToVisit</span> <span class="o">=</span> <span class="n">deque</span><span class="p">([</span>
+    <span class="s1">&#39;https://en.touhouwiki.net/wiki/Reimu_Hakurei&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;https://en.touhouwiki.net/wiki/Marisa_Kirisame&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;https://en.touhouwiki.net/wiki/Touhou_Project&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;https://en.touhouwiki.net/wiki/Imperishable_Night&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;https://en.touhouwiki.net/wiki/Perfect_Cherry_Blossom&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;https://en.touhouwiki.net/wiki/Embodiment_of_Scarlet_Devil&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;https://en.touhouwiki.net/wiki/Subterranean_Animism&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;https://en.touhouwiki.net/wiki/Mountain_of_Faith&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;https://en.touhouwiki.net/wiki/Phantasmagoria_of_Flower_View&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;https://en.touhouwiki.net/wiki/Hakurei_Shrine&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;https://en.touhouwiki.net/wiki/Touhou_Wiki:Projects&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;https://en.touhouwiki.net/wiki/Yukari_Yakumo&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;https://en.touhouwiki.net/wiki/Undefined_Fantastic_Object&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;https://en.touhouwiki.net/wiki/Aya_Shameimaru&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;https://en.touhouwiki.net/wiki/Sakuya_Izayoi&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;https://en.touhouwiki.net/wiki/Immaterial_and_Missing_Power&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;https://en.touhouwiki.net/wiki/Sanae_Kochiya&#39;</span>
+<span class="p">])</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">crawl</span><span class="p">(</span><span class="n">b</span><span class="p">:</span><span class="s2">&quot;zircon.Browser&quot;</span><span class="p">):</span>
+    <span class="c1"># put here because it seems to resolve lots of problems that I have</span>
+    <span class="c1"># when browser instances are scheduled too close together</span>
+    <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># if it seems like there&#39;re no more data to process, then throw zircon.BrowserCancel().</span>
+    <span class="c1"># The current browser will never be scheduled while executing this function again</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">linksToVisit</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="k">raise</span> <span class="n">zircon</span><span class="o">.</span><span class="n">BrowserCancel</span><span class="p">()</span>
+
+
+    <span class="n">url</span> <span class="o">=</span> <span class="n">linksToVisit</span><span class="o">.</span><span class="n">popleft</span><span class="p">()</span>
+    <span class="k">try</span><span class="p">:</span> <span class="c1"># do your normal web crawling stuff here</span>
+        <span class="k">await</span> <span class="n">b</span><span class="o">.</span><span class="n">goto</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+        <span class="n">title</span> <span class="o">=</span> <span class="k">await</span> <span class="p">(</span><span class="k">await</span> <span class="n">b</span><span class="o">.</span><span class="n">querySelector</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="s2">&quot;innerHTML&quot;</span><span class="p">)</span>
+
+        <span class="c1"># save data somewhere</span>
+        <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">url</span><span class="p">,</span> <span class="n">title</span><span class="p">])</span>
+    <span class="k">except</span><span class="p">:</span> <span class="n">linksToVisit</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="c1"># try again later</span>
+
+<span class="n">bg</span> <span class="o">=</span> <span class="n">zircon</span><span class="o">.</span><span class="n">BrowserGroup</span><span class="p">(</span><span class="s2">&quot;public&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="c1"># bg = zircon.BrowserGroup([&quot;public&quot;, &quot;starcraft&quot;], 5) # or can also be this</span>
+<span class="k">await</span> <span class="n">bg</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">crawl</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The last command will run the crawl function over and over again, as long as there’s a free browser
+to do it. Also, by default, this will only use inactive browsers (no Python clients are sending them
+commands for a while, configurable at <code class="docutils literal notranslate"><span class="pre">settings.zircon.conflictDuration</span></code>)</p>
+<p>Notice how I wrapped all browser interactions inside a try-except block? If some errors were to
+appear, like connection lost and the system is trying to restore the connection and you don’t
+resolve it, .execute() will throw that same error and cancels all current tasks. So if you want
+to design something that will run for a long time, catch it and try to schedule the job for later</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>aFn</strong> – async function to be executed</p></li>
+<li><p><strong>timeout</strong> – if the function takes longer than this amount of time,
+then cancel the task and make the browser available in the future
+again. Can be None, but I’d advise against that</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="viz.html" class="btn btn-neutral float-left" title="k1lib.viz module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="monkey.html" class="btn btn-neutral float-right" title="Monkey patched classes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Quang Ho.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

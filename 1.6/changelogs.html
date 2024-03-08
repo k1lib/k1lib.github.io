@@ -53,7 +53,11 @@
 <li class="toctree-l1"><a class="reference internal" href="graphEqn.html">k1lib.graphEqn module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="imports.html">k1lib.imports module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mo.html">k1lib.mo module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kast.html">k1lib.kast module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kcom.html">k1lib.kcom module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="knn.html">k1lib.knn module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kop.html">k1lib.kop module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kws.html">k1lib.kws module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="p5.html">k1lib.p5 module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="schedule.html">k1lib.schedule module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="selector.html">k1lib.selector module</a></li>
@@ -61,6 +65,7 @@
 <li class="toctree-l1"><a class="reference internal" href="serpent.html">k1lib.serpent module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="serve.html">k1lib.serve module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="viz.html">k1lib.viz module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zircon.html">k1lib.zircon module</a></li>
 </ul>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="monkey.html">Monkey patched classes</a></li>
@@ -136,7 +141,7 @@
 <li><p>Added <a class="reference internal" href="cli/index.html#k1lib.cli.modifier.iterDelay" title="k1lib.cli.modifier.iterDelay"><code class="xref py py-class docutils literal notranslate"><span class="pre">iterDelay</span></code></a></p></li>
 <li><p>Added <a class="reference internal" href="cli/index.html#k1lib.cli.conv.toDist" title="k1lib.cli.conv.toDist"><code class="xref py py-class docutils literal notranslate"><span class="pre">toDist</span></code></a>, <a class="reference internal" href="cli/index.html#k1lib.cli.conv.toAngle" title="k1lib.cli.conv.toAngle"><code class="xref py py-class docutils literal notranslate"><span class="pre">toAngle</span></code></a>, <a class="reference internal" href="cli/index.html#k1lib.cli.conv.idxsToNdArray" title="k1lib.cli.conv.idxsToNdArray"><code class="xref py py-class docutils literal notranslate"><span class="pre">idxsToNdArray</span></code></a>, <a class="reference internal" href="cli/index.html#k1lib.cli.conv.toYaml" title="k1lib.cli.conv.toYaml"><code class="xref py py-class docutils literal notranslate"><span class="pre">toYaml</span></code></a>, <a class="reference internal" href="cli/index.html#k1lib.cli.conv.toMedian" title="k1lib.cli.conv.toMedian"><code class="xref py py-class docutils literal notranslate"><span class="pre">toMedian</span></code></a></p></li>
 <li><p>Added daemon mode to <a class="reference internal" href="cli/index.html#k1lib.cli.inp.cmd" title="k1lib.cli.inp.cmd"><code class="xref py py-class docutils literal notranslate"><span class="pre">cmd</span></code></a></p></li>
-<li><p>Added module <code class="xref py py-mod docutils literal notranslate"><span class="pre">kcv</span></code>, focusing on opencv aruco markers detection</p></li>
+<li><p>Added module <a class="reference internal" href="cli/index.html#module-k1lib.cli.kcv" title="k1lib.cli.kcv"><code class="xref py py-mod docutils literal notranslate"><span class="pre">kcv</span></code></a>, focusing on opencv aruco markers detection</p></li>
 <li><p>Added proper pandas support to most cli</p></li>
 <li><p>Added support for raw row ingestion to <a class="reference internal" href="cli/index.html#k1lib.cli.conv.toCsv" title="k1lib.cli.conv.toCsv"><code class="xref py py-class docutils literal notranslate"><span class="pre">toCsv</span></code></a></p></li>
 <li><p>Added powerful <code class="docutils literal notranslate"><span class="pre">nparray</span> <span class="pre">|</span> <span class="pre">(~aS(lambda</span> <span class="pre">x,y:</span> <span class="pre">x+y)).all(3)</span></code> array optimization strategy</p></li>
@@ -149,12 +154,14 @@
 <li><p>Added monkey patched methods <code class="xref py py-meth docutils literal notranslate"><span class="pre">os.netstat()</span></code> and <code class="xref py py-meth docutils literal notranslate"><span class="pre">os.killPort()</span></code></p></li>
 <li><p>Added <a class="reference internal" href="fmt.html#k1lib.fmt.dollar" title="k1lib.fmt.dollar"><code class="xref py py-meth docutils literal notranslate"><span class="pre">dollar()</span></code></a></p></li>
 <li><p>Added several language formatters like <a class="reference internal" href="fmt.html#k1lib.fmt.js" title="k1lib.fmt.js"><code class="xref py py-class docutils literal notranslate"><span class="pre">js</span></code></a>, <a class="reference internal" href="fmt.html#k1lib.fmt.py" title="k1lib.fmt.py"><code class="xref py py-class docutils literal notranslate"><span class="pre">py</span></code></a>, <a class="reference internal" href="fmt.html#k1lib.fmt.html" title="k1lib.fmt.html"><code class="xref py py-class docutils literal notranslate"><span class="pre">html</span></code></a>, <a class="reference internal" href="fmt.html#k1lib.fmt.sql" title="k1lib.fmt.sql"><code class="xref py py-class docutils literal notranslate"><span class="pre">sql</span></code></a></p></li>
-<li><p>Added <code class="xref py py-mod docutils literal notranslate"><span class="pre">kcom</span></code> for external hardware communications, with <code class="xref py py-class docutils literal notranslate"><span class="pre">Gsm</span></code> and
-<code class="xref py py-class docutils literal notranslate"><span class="pre">Host</span></code></p></li>
+<li><p>Added <a class="reference internal" href="kcom.html#module-k1lib.kcom" title="k1lib.kcom"><code class="xref py py-mod docutils literal notranslate"><span class="pre">kcom</span></code></a> for external hardware communications, with <a class="reference internal" href="kcom.html#k1lib.kcom.Gsm" title="k1lib.kcom.Gsm"><code class="xref py py-class docutils literal notranslate"><span class="pre">Gsm</span></code></a> and
+<a class="reference internal" href="kcom.html#k1lib.kcom.Host" title="k1lib.kcom.Host"><code class="xref py py-class docutils literal notranslate"><span class="pre">Host</span></code></a></p></li>
 <li><p>Added monkey-patched method <code class="xref py py-meth docutils literal notranslate"><span class="pre">torch.transpose_axes()</span></code> to match numpy’s signature</p></li>
 <li><p>Added monkey-patched method <code class="xref py py-meth docutils literal notranslate"><span class="pre">plt.worldmap()</span></code> to quickly plot out a world map</p></li>
 <li><p>Added monkey-patched method <code class="xref py py-meth docutils literal notranslate"><span class="pre">html.b64escape()</span></code> to provide a more robust html escaping where JS is available</p></li>
 <li><p>Added monkey-patched method <code class="xref py py-meth docutils literal notranslate"><span class="pre">pandas.DataFrame.newColName()</span></code></p></li>
+<li><p>Added module <a class="reference internal" href="kop.html#module-k1lib.kop" title="k1lib.kop"><code class="xref py py-mod docutils literal notranslate"><span class="pre">kop</span></code></a> for optics simulation</p></li>
+<li><p>Added module <a class="reference internal" href="zircon.html#module-k1lib.zircon" title="k1lib.zircon"><code class="xref py py-mod docutils literal notranslate"><span class="pre">zircon</span></code></a> for browser automation</p></li>
 </ul>
 </section>
 <section id="jan-6th-2024">
@@ -179,9 +186,9 @@
 </ul>
 <p>Generic:</p>
 <ul class="simple">
-<li><p>Added websocket client and server support at <code class="xref py py-mod docutils literal notranslate"><span class="pre">kws</span></code></p></li>
+<li><p>Added websocket client and server support at <a class="reference internal" href="kws.html#module-k1lib.kws" title="k1lib.kws"><code class="xref py py-mod docutils literal notranslate"><span class="pre">kws</span></code></a></p></li>
 <li><p>Added logging integration with <a class="reference external" href="https://logs.mlexps.com">https://logs.mlexps.com</a> using :meth`~k1lib.log`</p></li>
-<li><p>Added module <code class="xref py py-mod docutils literal notranslate"><span class="pre">kast</span></code> for advanced abstract syntax tree manipulation
+<li><p>Added module <a class="reference internal" href="kast.html#module-k1lib.kast" title="k1lib.kast"><code class="xref py py-mod docutils literal notranslate"><span class="pre">kast</span></code></a> for advanced abstract syntax tree manipulation
 in support for the JS transpiler</p></li>
 <li><p>Added <code class="xref py py-meth docutils literal notranslate"><span class="pre">resolve()</span></code> to resolve coroutines everywhere</p></li>
 <li><p>Added <code class="xref py py-meth docutils literal notranslate"><span class="pre">serve.json()</span></code>, <code class="xref py py-meth docutils literal notranslate"><span class="pre">serve.date()</span></code>, <code class="xref py py-meth docutils literal notranslate"><span class="pre">serve.serialized()</span></code>, <code class="xref py py-meth docutils literal notranslate"><span class="pre">serve.apiKey()</span></code> and souped up <code class="xref py py-mod docutils literal notranslate"><span class="pre">serve</span></code> a little</p></li>

@@ -33,6 +33,8 @@ Generic:
 - Added monkey-patched method :meth:`plt.worldmap` to quickly plot out a world map
 - Added monkey-patched method :meth:`html.b64escape` to provide a more robust html escaping where JS is available
 - Added monkey-patched method :meth:`pandas.DataFrame.newColName`
+- Added module :mod:`~k1lib.kop` for optics simulation
+- Added module :mod:`~k1lib.zircon` for browser automation
 
 `1.5 </1.5>`_ - Jan 6th, 2024
 -------------------------------
